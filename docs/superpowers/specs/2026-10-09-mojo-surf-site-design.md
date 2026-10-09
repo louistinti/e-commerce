@@ -16,7 +16,7 @@ Le site doit mettre en avant deux choses : il surfe toute l'année, et il se dé
 - Photos : images Unsplash temporaires, à remplacer. Pas de logo : le nom « Mojo Surf » est composé en typo.
 - Le formulaire n'envoie rien tant qu'il n'est pas branché sur Formspree (ou équivalent). Le README le rappelle.
 
-Hors périmètre : réservation en ligne avec paiement, multilingue, blog, location de matériel seule.
+Hors périmètre : réservation en ligne avec paiement, multilingue, blog, location de matériel seule, stand-up paddle (mentionné sur la page Facebook mais pas proposé sur le site).
 
 ## Direction visuelle
 
@@ -28,30 +28,30 @@ Chaleureux, esprit van et road trip côtier. Palette sable, terracotta, bleu oc�
 2. **Ouverture** : accroche du type « Du surf toute l'année, là où sont les vagues », une phrase de présentation, bouton Réserver et lien vers les spots, trois repères (toute l'année, 4 spots, tous niveaux), une grande photo.
 3. **Le concept** : trois arguments courts. On se déplace selon les conditions ; on surfe toute l'année, combi fournie ; adapté aux débutants et intermédiaires.
 4. **Les spots** : carte illustrée + carrousel (détaillé ci-dessous).
-5. **Les cours** : quatre formules. Cours collectif ; perfectionnement en petit groupe de 4 maximum ; cours privé avec vidéo-analyse ; stand-up paddle sur le lac du Jaunay, sur demande.
-6. **Tarifs** : grille ci-dessous, plus un bloc options matériel.
+5. **Les cours** : trois formules. Cours collectif ; perfectionnement en petit groupe de 4 maximum ; cours privé avec vidéo-analyse.
+6. **Tarifs** : grille ci-dessous, plus un bloc options matériel. Le prix du cours collectif affiché est celui de la saison en cours, calculé en JS à partir de la date du jour.
 7. **Questions** : liste dépliable. Niveau requis, âge minimum, quoi apporter, comment on connaît le lieu du rendez-vous (annoncé la veille selon les conditions), que se passe-t-il si les conditions sont mauvaises (report), comment payer.
-8. **Réserver** : formulaire. Champs : formule (choix), nombre de personnes, niveau (débutant / déjà pratiqué / autonome), date souhaitée, nom, email, téléphone, message. Validation côté client, message de confirmation fictif.
+8. **Réserver** : formulaire. Champs : formule (choix parmi les trois), nombre de personnes, niveau (débutant / déjà pratiqué / autonome), date souhaitée, nom, email, téléphone, message. Validation côté client, message de confirmation fictif.
 9. **Pied de page** : téléphone et email relevés sur la page Facebook (`+33 6 14 26 36 42`, `mojosurf360@gmail.com`), à faire vérifier par le moniteur avant mise en ligne ; lien vers la page Facebook ; mention des 4 communes.
 
 ## Grille tarifaire
 
 | Formule | Prix |
 |---|---|
-| Cours collectif, hors saison (octobre à mars) | 20 € par personne, planche incluse |
-| Cours collectif, saison (avril à fin septembre) | 25 € par personne, planche incluse |
+| Cours collectif | 20 € par personne hors saison, 25 € en saison (voir ci-dessous), planche incluse |
 | Perfectionnement, groupe de 4 maximum | 60 € par personne |
 | Cours privé avec vidéo-analyse | 80 € |
-| Stand-up paddle, lac du Jaunay | sur demande |
 
 Options matériel, en plus de chaque formule : combinaison 5 €, gants 1 €, chaussons 1 €.
+
+**Prix saisonnier automatique.** La page n'affiche qu'un seul prix pour le cours collectif. Un script lit la date du jour : du 1er avril au 30 septembre inclus, le prix affiché est 25 € ; le reste de l'année, 20 €. Une courte mention sous le prix indique la saison en cours (par exemple « tarif haute saison, d'avril à septembre »). Les deux valeurs et les bornes de dates sont dans un seul objet JS en tête de script, pour être modifiées facilement. Sans JavaScript, le HTML contient le prix hors saison par défaut.
 
 ## La carte des spots
 
 Composant central de la page, sans dépendance externe.
 
 - **Dessin** : un SVG en ligne représentant un trait de côte stylisé, orienté nord-sud, avec les 4 spots du nord au sud : Saint-Gilles-Croix-de-Vie, La Sauzaie (Bretignolles), Les Dunes (Bretignolles), Les Sables-d'Olonne. Chaque spot est un point cliquable avec son nom. Le dessin est volontairement simple : il sera remplacé par le croquis que le propriétaire du site fournira plus tard, donc les coordonnées des spots sont centralisées dans un petit tableau JS, pas dispersées dans le SVG.
-- **Camion** : un pictogramme SVG de van. Il est positionné sur le spot actif et glisse d'un spot à l'autre (transition CSS sur `transform`, environ 700 ms, désactivée avec `prefers-reduced-motion`).
+- **Camion** : un pictogramme SVG de van, rouge (la couleur est une variable CSS dédiée, lisible en clair et en sombre). Il est positionné sur le spot actif et glisse d'un spot à l'autre (transition CSS sur `transform`, environ 700 ms, désactivée avec `prefers-reduced-motion`).
 - **Carrousel** : un panneau par spot avec le nom, une description de 2-3 phrases (type de vague, pour qui, ambiance) et 2-3 photos placeholder. Navigation par flèches, par clic sur un point de la carte, et par balayage sur mobile. Les panneaux et les points de la carte partagent le même index actif.
 - **Disposition** : sur desktop, carte à gauche et carrousel à droite ; sur mobile, carte en haut (réduite en hauteur) et carrousel en dessous.
 - **Accessibilité** : les points de la carte sont des boutons avec `aria-pressed`, le panneau actif est annoncé via `aria-live="polite"`, les flèches sont au clavier.
