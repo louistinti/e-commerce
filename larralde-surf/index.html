@@ -16,7 +16,7 @@
   --fg:#141516;
   --fg-2:#565a5c;
   --line:#c4c8c6;
-  --accent:#d9531e;      /* orange bouée de sauvetage */
+  --accent:#c4461a;      /* orange bouée de sauvetage, assombri pour 4.5:1 avec le texte clair */
   --on-accent:#fff8f3;
   --font:"Archivo","Helvetica Neue",Arial,sans-serif;
   --gutter:clamp(16px,4vw,56px);
@@ -54,7 +54,9 @@ section{scroll-margin-top:72px}
 /* nav */
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px}
-.nav-logo{font-weight:800;font-stretch:80%;font-size:18px;text-decoration:none;text-transform:uppercase;letter-spacing:.01em}
+.nav-logo{font-weight:800;font-stretch:80%;font-size:18px;text-decoration:none;text-transform:uppercase;letter-spacing:.01em;transition:opacity .3s,transform .3s cubic-bezier(.16,1,.3,1)}
+/* le nom est déjà en très grand dans l'ouverture : le logo n'apparaît qu'une fois le titre passé */
+.nav.at-top .nav-logo{opacity:0;transform:translateY(6px);pointer-events:none}
 .nav-links{display:flex;align-items:center;gap:32px}
 .nav-links a:not(.btn){text-decoration:none;font-size:15px;font-weight:500;color:var(--fg-2)}
 .nav-links a:not(.btn):hover{color:var(--fg)}
@@ -114,7 +116,8 @@ section{scroll-margin-top:72px}
 .rate h3{font-size:clamp(36px,4vw,56px)}
 .price{font-weight:800;font-stretch:75%;font-size:clamp(32px,3.4vw,48px);line-height:1;font-variant-numeric:tabular-nums}
 .rate p{margin:0;color:var(--fg-2);max-width:52ch}
-.combo{margin:48px 0 0;font-size:clamp(20px,2vw,26px);font-weight:500;max-width:40ch}
+.combo{margin:48px 0 0;font-size:clamp(20px,2vw,26px);font-weight:500;text-wrap:pretty}
+.combo strong{white-space:nowrap}
 .combo strong{color:var(--accent);font-weight:700}
 @media (max-width:860px){.rates-grid{grid-template-columns:1fr}.rate--video{margin-top:24px}}
 
@@ -183,13 +186,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 /* menu plein écran et barre de réservation (mobile uniquement) */
-.menu-btn{display:none;font:600 15px/1 var(--font);background:none;border:0;color:var(--fg);padding:12px 0 12px 12px;cursor:pointer}
+.menu-btn{display:none;font:600 15px/1 var(--font);background:none;border:0;color:var(--fg);min-height:44px;padding:0 0 0 16px;cursor:pointer}
 .menu{position:fixed;inset:0;z-index:40;background:var(--bg);display:flex;flex-direction:column;
   padding:calc(env(safe-area-inset-top,0px)) var(--gutter) calc(24px + env(safe-area-inset-bottom,0px))}
 .menu-top{display:flex;justify-content:space-between;align-items:center;height:64px}
 .menu nav{display:flex;flex-direction:column;gap:4px;margin-top:auto}
 .menu nav a{font-weight:900;font-stretch:62.5%;font-variation-settings:"wdth" 62;text-transform:uppercase;font-size:clamp(56px,19vw,96px);line-height:.92;text-decoration:none}
-.menu nav a:active{color:var(--accent)}
+.menu nav a:active,.menu nav a:last-child{color:var(--accent)}
 .menu-foot{margin-top:40px;display:flex;flex-direction:column;gap:4px;color:var(--fg-2);font-size:15px}
 .menu-foot strong{color:var(--fg)}
 @media (prefers-reduced-motion:no-preference){
@@ -207,7 +210,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   .hero{padding-block:4px 56px}
   .hero h1{font-size:23.5vw;line-height:.84;margin-left:-.02em}
   .hero-row{margin-top:18px;gap:20px}
-  .hero-img img{aspect-ratio:4/5;object-position:58% center}
+  .hero-img img{aspect-ratio:1/1;object-position:58% center}
   .hero-text{gap:0}
   .hero-text p{font-size:18px;max-width:none}
   .hero-ctas{display:none}
@@ -217,10 +220,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   /* galerie : 2 colonnes serrées, filtres à faire glisser */
   .work{padding-block:56px}
   .work-head{gap:18px;margin-bottom:20px}
-  .filters{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;
+  .filters{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:var(--gutter);scrollbar-width:none;
     margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
   .filters::-webkit-scrollbar{display:none}
-  .filter{flex:none;scroll-snap-align:start;padding:12px 16px}
+  .filters::after{content:"";flex:0 0 1px}
+  .filter{flex:none;scroll-snap-align:start;padding:14px 16px}
   .masonry{columns:2;column-gap:8px}
   .shot{margin-bottom:8px}
   .shot figcaption{font-size:12px;padding-top:4px;line-height:1.3}
@@ -244,9 +248,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
   /* réservation */
   .book{padding-block:56px 40px}
-  .book-grid{gap:32px}
-  .book-intro p{font-size:18px}
-  .contact{margin-top:0}
+  .book-grid{gap:28px}
+  .book-intro{display:contents}
+  .book-intro h2{order:1}
+  .book-intro p{order:2;font-size:18px}
+  #form{order:3}
+  .contact{order:4;margin-top:8px;padding-top:24px;border-top:1px solid var(--line)}
   .choices{grid-template-columns:1fr;gap:6px}
   .choice{flex-direction:row;justify-content:space-between;align-items:center;padding:16px}
   .form-end .btn{width:100%;padding-block:18px}
@@ -268,7 +275,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 </head>
 <body>
 
-<nav class="nav" aria-label="Navigation">
+<nav class="nav at-top" aria-label="Navigation">
   <div class="wrap">
     <a class="nav-logo" href="#top">Iban Larralde</a>
     <div class="nav-links">
@@ -336,7 +343,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <h2 id="tarifs-title">Tarifs</h2>
   <div class="rates-grid">
     <article class="rate rate--photo">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1526342122811-2a9c8512023d?w=1400&q=80&auto=format&fit=crop" alt="Surfeur qui descend une vague">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=1400&q=80&auto=format&fit=crop" alt="Surfeur sur la lèvre d'une vague">
       <div class="rate-top"><h3>Session photo</h3><span class="price">180 €</span></div>
       <p>Deux heures. Je me place sur la plage au téléobjectif, ou je nage avec toi si le spot le permet. Tu reçois entre 40 et 80 photos retouchées le lendemain soir.</p>
     </article>
@@ -346,7 +353,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <p>Une heure et demie de vidéo, avec des ralentis et un vol au-dessus du line-up. Je te monte un clip d'une minute et je te donne tous les rushes.</p>
     </article>
   </div>
-  <p class="combo">Tu veux les deux le même jour ? <strong>420 €</strong> au lieu de 470.</p>
+  <p class="combo">Photo, vidéo et drone le même jour : <strong>420 €</strong> au lieu de 470 €.</p>
 </section>
 
 <section class="faq" id="questions" aria-labelledby="faq-title">
@@ -457,14 +464,12 @@ const src = (id, w) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto
 const PHOTOS = [
   {id:"1535182463927-440364075d9c", t:"bord",  cap:"Parlementia, janvier", alt:"Surfeur en noir et blanc sur une grosse vague"},
   {id:"1498330177096-689e3fb901ca", t:"eau",   cap:"La Gravière, octobre", alt:"Vague creuse qui casse près du bord"},
-  {id:"1493225255756-d9584f8606e9", t:"bord",  cap:"Lafitenia, septembre", alt:"Surfeur sur la lèvre d'une vague"},
+  {id:"1649276021786-c771a8cd76c5", t:"eau",   cap:"La Gravière, septembre", alt:"Vague qui se creuse, vue depuis l'eau"},
   {id:"1559627755-42212e5c5fdf",    t:"drone", cap:"Guéthary, août", alt:"Surfeur qui rame dans une eau turquoise, vu du ciel"},
   {id:"1513569143478-b38b2c0ef97f", t:"bord",  cap:"Côte des Basques, juillet", alt:"Surfeur au coucher du soleil"},
   {id:"1454123253751-1fe2b9e0c10d", t:"eau",   cap:"Les Cavaliers, novembre", alt:"Intérieur d'un tube vu depuis l'eau"},
   {id:"1609870025624-98b62826e80a", t:"bord",  cap:"Lafitenia, juin", alt:"Surfeuse sur une planche rose"},
-  {id:"1517699418036-fb5d179fef0c", t:"bord",  cap:"Uhabia, mai", alt:"Deux surfeurs marchent vers l'eau"},
-  {id:"1649276021786-c771a8cd76c5", t:"bord",  cap:"La Gravière, octobre", alt:"Surfeur en haut de la vague"},
-  {id:"1551524358-f34c0214781d",    t:"eau",   cap:"Belharra, décembre", alt:"Grosse houle au large"},
+  {id:"1517699418036-fb5d179fef0c", t:"bord",  cap:"Uhabia, mai", alt:"Deux surfeurs marchent vers l'eau"},  {id:"1551524358-f34c0214781d",    t:"eau",   cap:"Belharra, décembre", alt:"Grosse houle au large"},
   {id:"1459745930869-b3d0d72c3cbb", t:"bord",  cap:"Les Cavaliers, avril", alt:"Surfeur en pleine manoeuvre"},];
 
 const grid = document.getElementById('grid');
@@ -511,6 +516,11 @@ lb.addEventListener('touchend',e=>{
   else if(dy>90 && Math.abs(dy)>Math.abs(dx)) closeLb();
   tx=ty=null;
 });
+
+// logo de la nav masqué tant que le grand titre est visible
+const nav=document.querySelector('.nav');
+new IntersectionObserver(([en])=>nav.classList.toggle('at-top',en.isIntersecting),{rootMargin:'-64px 0px 0px 0px'})
+  .observe(document.querySelector('.hero h1'));
 
 // menu mobile
 const menu=document.getElementById('menu'), menuOpen=document.getElementById('menu-open');
