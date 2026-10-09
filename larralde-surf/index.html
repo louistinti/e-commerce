@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Iban Larralde</title>
+<meta name="description" content="Photo et vidéo de surf à Guéthary. Sessions depuis le bord, dans l'eau ou au drone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&display=swap">
+<style>
+/* Layout : nom en très grand, photo d'ouverture décalée à droite, galerie en colonnes libres, tarifs 7/5, questions en liste dépliable, formulaire 5/7. Tout à angles droits. */
+:root{
+  --bg:#ecedea;
+  --bg-2:#e1e3df;
+  --fg:#141516;
+  --fg-2:#565a5c;
+  --line:#c4c8c6;
+  --accent:#d9531e;      /* orange bouée de sauvetage */
+  --on-accent:#fff8f3;
+  --font:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --gutter:clamp(16px,4vw,56px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121314;--bg-2:#1b1d1e;--fg:#e8e9e5;--fg-2:#9da2a3;--line:#303436;--accent:#ef6a37;--on-accent:#140a05;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{--bg:#121314;--bg-2:#1b1d1e;--fg:#e8e9e5;--fg-2:#9da2a3;--line:#303436;--accent:#ef6a37;--on-accent:#140a05;color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:var(--accent);color:var(--on-accent)}
+.wrap{max-width:1400px;margin-inline:auto;padding-inline:var(--gutter)}
+h1,h2,h3{font-stretch:62.5%;font-variation-settings:"wdth" 62;font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-.005em;margin:0;text-wrap:balance}
+h2{font-size:clamp(52px,8vw,120px)}
+section{scroll-margin-top:72px}
+
+/* boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font:700 16px/1 var(--font);
+  padding:16px 26px;background:var(--accent);color:var(--on-accent);border:0;text-decoration:none;cursor:pointer;
+  transition:transform .25s cubic-bezier(.16,1,.3,1),background-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn-ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 2px var(--fg)}
+.btn-ghost:hover{background:var(--fg);color:var(--bg)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px}
+.nav-logo{font-weight:800;font-stretch:80%;font-size:18px;text-decoration:none;text-transform:uppercase;letter-spacing:.01em}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a:not(.btn){text-decoration:none;font-size:15px;font-weight:500;color:var(--fg-2)}
+.nav-links a:not(.btn):hover{color:var(--fg)}
+.nav .btn{padding:12px 18px;font-size:14px}
+@media (max-width:720px){.nav-links a:not(.btn){display:none}}
+
+/* hero */
+.hero{padding-block:clamp(12px,2vw,24px) clamp(56px,7vw,96px)}
+.hero h1{font-size:clamp(68px,15.2vw,232px);line-height:.8;margin-left:-.04em}
+.hero-row{display:grid;grid-template-columns:4fr 8fr;gap:clamp(20px,3vw,48px);margin-top:clamp(20px,2.5vw,36px);align-items:end}
+.hero-text{display:flex;flex-direction:column;gap:28px;padding-bottom:4px}
+.hero-text p{margin:0;font-size:clamp(18px,1.5vw,21px);line-height:1.45;max-width:30ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero-img{overflow:hidden;background:var(--bg-2)}
+.hero-img img{width:100%;aspect-ratio:16/9;object-fit:cover}
+@media (prefers-reduced-motion:no-preference){
+  .hero-img img{animation:settle 1.4s cubic-bezier(.16,1,.3,1) both}
+  .hero h1{animation:up .9s cubic-bezier(.16,1,.3,1) both}
+  @keyframes settle{from{transform:scale(1.08)}}
+  @keyframes up{from{transform:translateY(18px);opacity:.01}}
+}
+@media (max-width:860px){
+  .hero-row{grid-template-columns:1fr}
+  .hero-img{order:-1}
+}
+
+/* galerie */
+.work{padding-block:clamp(64px,8vw,120px)}
+.work-head{display:flex;flex-direction:column;gap:24px;margin-bottom:40px}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filter{font:500 15px/1 var(--font);padding:10px 16px;background:transparent;color:var(--fg-2);border:1px solid var(--line);cursor:pointer}
+.filter:hover{color:var(--fg);border-color:var(--fg)}
+.filter[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.masonry{columns:3 320px;column-gap:clamp(12px,1.6vw,24px)}
+.shot{break-inside:avoid;margin:0 0 clamp(12px,1.6vw,24px);cursor:zoom-in}
+.shot .frame{overflow:hidden;background:var(--bg-2)}
+.shot img{width:100%;height:auto;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.shot:hover img{transform:scale(1.035)}
+.shot figcaption{font-size:14px;color:var(--fg-2);padding-top:8px}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .shot{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+    @keyframes rise{from{transform:translateY(40px)}}
+  }
+}
+
+/* tarifs */
+.rates{padding-block:clamp(64px,8vw,120px);border-top:1px solid var(--line)}
+.rates h2{margin-bottom:48px}
+.rates-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,3vw,48px);align-items:start}
+.rate{display:flex;flex-direction:column;gap:20px;min-width:0}
+.rate img{width:100%;object-fit:cover}
+.rate--photo img{aspect-ratio:4/3}
+.rate--video{margin-top:clamp(0px,8vw,120px)}
+.rate--video img{aspect-ratio:1/1}
+.rate-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.rate h3{font-size:clamp(36px,4vw,56px)}
+.price{font-weight:800;font-stretch:75%;font-size:clamp(32px,3.4vw,48px);line-height:1;font-variant-numeric:tabular-nums}
+.rate p{margin:0;color:var(--fg-2);max-width:52ch}
+.combo{margin:48px 0 0;font-size:clamp(20px,2vw,26px);font-weight:500;max-width:40ch}
+.combo strong{color:var(--accent);font-weight:700}
+@media (max-width:860px){.rates-grid{grid-template-columns:1fr}.rate--video{margin-top:24px}}
+
+/* questions */
+.faq{padding-block:clamp(64px,8vw,120px);background:var(--bg-2)}
+.faq-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,4vw,64px);align-items:start}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;padding:22px 0;font-weight:700;font-size:clamp(18px,1.6vw,22px)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:400;font-size:28px;line-height:.8;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 24px;color:var(--fg-2);max-width:56ch}
+@media (max-width:860px){.faq-grid{grid-template-columns:1fr}}
+
+/* réservation */
+.book{padding-block:clamp(64px,8vw,120px)}
+.book-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,80px);align-items:start}
+.book-intro{display:flex;flex-direction:column;gap:20px}
+.book-intro p{margin:0;max-width:34ch;font-size:19px}
+.contact{display:flex;flex-direction:column;gap:6px;margin-top:12px;font-size:16px}
+.contact span{color:var(--fg-2)}
+.copy{font:500 14px/1 var(--font);background:none;border:0;padding:0;color:var(--fg);text-decoration:underline;text-underline-offset:4px;cursor:pointer;align-self:flex-start}
+form{display:grid;grid-template-columns:1fr 1fr;gap:22px 18px}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.full{grid-column:1/-1}
+label,legend{font-size:15px;font-weight:600}
+.hint{font-size:14px;color:var(--fg-2);margin:0}
+input,select,textarea{font:400 17px/1.4 var(--font);color:var(--fg);background:var(--bg);border:1px solid var(--fg-2);padding:13px 14px;border-radius:0;width:100%}
+input::placeholder,textarea::placeholder{color:var(--fg-2)}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+[aria-invalid="true"]{border-color:#c22f1f}
+.err{font-size:14px;color:#c22f1f;margin:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#ff8a78}}
+fieldset{border:0;margin:0;padding:0;grid-column:1/-1;min-width:0}
+legend{margin-bottom:8px;padding:0}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.choice{position:relative;display:flex;flex-direction:column;gap:2px;padding:14px 16px;border:1px solid var(--fg-2);cursor:pointer;font-weight:400}
+.choice b{font-weight:700;font-size:17px}
+.choice span{color:var(--fg-2);font-size:15px;font-variant-numeric:tabular-nums}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice:has(input:checked){background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.choice:has(input:checked) span{color:inherit;opacity:.75}
+.choice:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
+.form-end{grid-column:1/-1;display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-top:8px}
+.done{grid-column:1/-1;margin:0;padding:18px 20px;background:var(--fg);color:var(--bg);font-size:17px}
+.done small{display:block;opacity:.7;font-size:14px;margin-top:4px}
+@media (max-width:860px){.book-grid{grid-template-columns:1fr}}
+@media (max-width:560px){form{grid-template-columns:1fr}.choices{grid-template-columns:1fr}}
+
+/* pied de page */
+footer{border-top:1px solid var(--line);padding-block:32px calc(32px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(--fg-2)}
+
+/* visionneuse */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,11,12,.95);color:#e8e9e5;display:grid;grid-template-rows:auto 1fr auto;gap:12px;
+  padding:calc(16px + env(safe-area-inset-top,0px)) var(--gutter) calc(16px + env(safe-area-inset-bottom,0px))}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:15px}
+.lb-stage{display:flex;min-height:0}
+.lb img{margin:auto;max-width:100%;max-height:100%;object-fit:contain}
+.lb button{font:500 15px/1 var(--font);background:none;color:inherit;border:1px solid rgba(232,233,229,.4);padding:10px 14px;cursor:pointer}
+.lb button:hover{border-color:#e8e9e5}
+.lb-nav{display:flex;gap:8px}
+@media (prefers-reduced-motion:no-preference){.lb:not([hidden]){animation:fade .25s ease-out}@keyframes fade{from{opacity:0}}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* menu plein écran et barre de réservation (mobile uniquement) */
+.menu-btn{display:none;font:600 15px/1 var(--font);background:none;border:0;color:var(--fg);padding:12px 0 12px 12px;cursor:pointer}
+.menu{position:fixed;inset:0;z-index:40;background:var(--bg);display:flex;flex-direction:column;
+  padding:calc(env(safe-area-inset-top,0px)) var(--gutter) calc(24px + env(safe-area-inset-bottom,0px))}
+.menu-top{display:flex;justify-content:space-between;align-items:center;height:64px}
+.menu nav{display:flex;flex-direction:column;gap:4px;margin-top:auto}
+.menu nav a{font-weight:900;font-stretch:62.5%;font-variation-settings:"wdth" 62;text-transform:uppercase;font-size:clamp(56px,19vw,96px);line-height:.92;text-decoration:none}
+.menu nav a:active{color:var(--accent)}
+.menu-foot{margin-top:40px;display:flex;flex-direction:column;gap:4px;color:var(--fg-2);font-size:15px}
+.menu-foot strong{color:var(--fg)}
+@media (prefers-reduced-motion:no-preference){
+  .menu:not([hidden]){animation:menu-in .35s cubic-bezier(.16,1,.3,1)}
+  @keyframes menu-in{from{transform:translateY(-12px);opacity:0}}
+}
+.bar{display:none}
+
+@media (max-width:720px){
+  body{font-size:16px}
+  .nav .btn{display:none}
+  .menu-btn{display:block}
+
+  /* ouverture : le nom prend toute la largeur, photo verticale */
+  .hero{padding-block:4px 56px}
+  .hero h1{font-size:23.5vw;line-height:.84;margin-left:-.02em}
+  .hero-row{margin-top:18px;gap:20px}
+  .hero-img img{aspect-ratio:4/5;object-position:58% center}
+  .hero-text{gap:0}
+  .hero-text p{font-size:18px;max-width:none}
+  .hero-ctas{display:none}
+
+  h2{font-size:17vw}
+
+  /* galerie : 2 colonnes serrées, filtres à faire glisser */
+  .work{padding-block:56px}
+  .work-head{gap:18px;margin-bottom:20px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;
+    margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
+  .filters::-webkit-scrollbar{display:none}
+  .filter{flex:none;scroll-snap-align:start;padding:12px 16px}
+  .masonry{columns:2;column-gap:8px}
+  .shot{margin-bottom:8px}
+  .shot figcaption{font-size:12px;padding-top:4px;line-height:1.3}
+
+  /* tarifs */
+  .rates{padding-block:56px}
+  .rates h2{margin-bottom:28px}
+  .rates-grid{gap:48px}
+  .rate{gap:14px}
+  .rate--video{margin-top:0}
+  .rate--photo img,.rate--video img{aspect-ratio:4/3}
+  .rate-top{flex-wrap:nowrap;align-items:flex-end}
+  .rate h3{font-size:44px}
+  .price{font-size:36px;color:var(--accent)}
+  .combo{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:20px}
+
+  /* questions */
+  .faq{padding-block:56px}
+  .faq-grid{gap:24px}
+  .faq summary{padding:20px 0;font-size:18px}
+
+  /* réservation */
+  .book{padding-block:56px 40px}
+  .book-grid{gap:32px}
+  .book-intro p{font-size:18px}
+  .contact{margin-top:0}
+  .choices{grid-template-columns:1fr;gap:6px}
+  .choice{flex-direction:row;justify-content:space-between;align-items:center;padding:16px}
+  .form-end .btn{width:100%;padding-block:18px}
+
+  /* barre fixe en bas, dans la zone du pouce */
+  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;align-items:center;justify-content:space-between;gap:16px;
+    padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line);
+    transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .bar p{margin:0;font-size:14px;color:var(--fg-2);line-height:1.3}
+  .bar p strong{display:block;color:var(--fg);font-size:16px}
+  .bar .btn{padding:15px 22px}
+  .bar.away{transform:translateY(110%)}
+  footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+  footer .wrap{flex-direction:column;gap:4px}
+
+  .lb-nav button{padding:12px 16px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Navigation">
+  <div class="wrap">
+    <a class="nav-logo" href="#top">Iban Larralde</a>
+    <div class="nav-links">
+      <a href="#photos">Photos</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#questions">Questions</a>
+      <a class="btn" href="#reserver">Réserver</a>
+    </div>
+    <button class="menu-btn" type="button" id="menu-open" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</nav>
+
+<div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="menu-top">
+    <span class="nav-logo">Iban Larralde</span>
+    <button class="menu-btn" type="button" id="menu-close">Fermer</button>
+  </div>
+  <nav aria-label="Menu mobile">
+    <a href="#photos">Photos</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#questions">Questions</a>
+    <a href="#reserver">Réserver</a>
+  </nav>
+  <div class="menu-foot">
+    <strong>iban@larralde-surf.fr</strong>
+    <span>@iban.larralde sur Instagram</span>
+  </div>
+</div>
+
+<div class="bar" id="bar">
+  <p><strong>Session photo</strong>à partir de 180 €</p>
+  <a class="btn" href="#reserver">Réserver</a>
+</div>
+
+<header class="hero wrap" id="top">
+  <h1>Iban Larralde</h1>
+  <div class="hero-row">
+    <div class="hero-text">
+      <p>Photo et vidéo de surf à Guéthary. Je te shoote depuis le bord, dans l'eau ou au drone.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#reserver">Réserver</a>
+        <a class="btn btn-ghost" href="#photos">Voir les photos</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?w=1800&q=80&auto=format&fit=crop" alt="Surfeur en plein virage sur une vague" fetchpriority="high">
+    </div>
+  </div>
+</header>
+
+<section class="work wrap" id="photos" aria-labelledby="photos-title">
+  <div class="work-head">
+    <h2 id="photos-title">Dernières sessions</h2>
+    <div class="filters" role="group" aria-label="Filtrer les photos">
+      <button class="filter" id="f-all" data-f="all" aria-pressed="true">Tout</button>
+      <button class="filter" id="f-eau" data-f="eau" aria-pressed="false">Dans l'eau</button>
+      <button class="filter" id="f-bord" data-f="bord" aria-pressed="false">Depuis le bord</button>
+      <button class="filter" id="f-drone" data-f="drone" aria-pressed="false">Au drone</button>
+    </div>
+  </div>
+  <div class="masonry" id="grid"></div>
+</section>
+
+<section class="rates wrap" id="tarifs" aria-labelledby="tarifs-title">
+  <h2 id="tarifs-title">Tarifs</h2>
+  <div class="rates-grid">
+    <article class="rate rate--photo">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1526342122811-2a9c8512023d?w=1400&q=80&auto=format&fit=crop" alt="Surfeur qui descend une vague">
+      <div class="rate-top"><h3>Session photo</h3><span class="price">180 €</span></div>
+      <p>Deux heures. Je me place sur la plage au téléobjectif, ou je nage avec toi si le spot le permet. Tu reçois entre 40 et 80 photos retouchées le lendemain soir.</p>
+    </article>
+    <article class="rate rate--video">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1527731149372-fae504a1185f?w=1000&q=80&auto=format&fit=crop" alt="Surfeurs vus du ciel au drone">
+      <div class="rate-top"><h3>Vidéo et drone</h3><span class="price">290 €</span></div>
+      <p>Une heure et demie de vidéo, avec des ralentis et un vol au-dessus du line-up. Je te monte un clip d'une minute et je te donne tous les rushes.</p>
+    </article>
+  </div>
+  <p class="combo">Tu veux les deux le même jour ? <strong>420 €</strong> au lieu de 470.</p>
+</section>
+
+<section class="faq" id="questions" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <h2 id="faq-title">Questions</h2>
+    <div>
+      <details open>
+        <summary>Et s'il n'y a pas de vagues ?</summary>
+        <p>On décale. La veille, on regarde les prévisions ensemble. Si c'est flat ou trop venté, on choisit un autre jour, sans frais.</p>
+      </details>
+      <details>
+        <summary>Je débute, ça vaut le coup ?</summary>
+        <p>Oui. Je shoote souvent des débutants à Uhabia, en mousse. Je reste plus près du bord et tu repars avec tes premières vraies vagues en photo.</p>
+      </details>
+      <details>
+        <summary>Tu peux voler au drone sur tous les spots ?</summary>
+        <p>Non. Autour de Biarritz, la zone de l'aéroport interdit le drone sur plusieurs plages. À Guéthary et Lafitenia, je peux voler. Je te dis ce qui est possible quand tu réserves.</p>
+      </details>
+      <details>
+        <summary>Quand est-ce que je reçois les images ?</summary>
+        <p>Les photos arrivent le lendemain soir dans une galerie en ligne. Pour la vidéo, compte cinq jours.</p>
+      </details>
+      <details>
+        <summary>Comment je paie ?</summary>
+        <p>Tu verses 50 € d'acompte pour bloquer la date et tu règles le reste après la session, par virement.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="book wrap" id="reserver" aria-labelledby="book-title">
+  <div class="book-grid">
+    <div class="book-intro">
+      <h2 id="book-title">Réserver</h2>
+      <p>Dis-moi quand et où tu veux surfer. Je te réponds dans la journée.</p>
+      <div class="contact">
+        <span>Ou écris-moi directement</span>
+        <strong id="mail">iban@larralde-surf.fr</strong>
+        <button class="copy" type="button" id="copy">Copier l'adresse</button>
+        <span style="margin-top:12px">Instagram</span>
+        <strong>@iban.larralde</strong>
+      </div>
+    </div>
+
+    <form id="form" novalidate>
+      <fieldset>
+        <legend>Formule</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="pack" id="pk-photo" value="Session photo" checked><b>Photo</b><span>180 €</span></label>
+          <label class="choice"><input type="radio" name="pack" id="pk-video" value="Vidéo et drone"><b>Vidéo et drone</b><span>290 €</span></label>
+          <label class="choice"><input type="radio" name="pack" id="pk-both" value="Les deux"><b>Les deux</b><span>420 €</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="name">Prénom</label>
+        <input id="name" name="name" autocomplete="given-name">
+        <p class="err" id="name-err" hidden>Indique ton prénom.</p>
+      </div>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email">
+        <p class="err" id="email-err" hidden>Cette adresse ne semble pas complète.</p>
+      </div>
+      <div class="field">
+        <label for="date">Date</label>
+        <input id="date" name="date" type="date">
+        <p class="err" id="date-err" hidden>Choisis une date.</p>
+      </div>
+      <div class="field">
+        <label for="spot">Spot</label>
+        <select id="spot" name="spot">
+          <option>Parlementia, Guéthary</option>
+          <option>Lafitenia</option>
+          <option>Uhabia, Bidart</option>
+          <option>Les Cavaliers, Anglet</option>
+          <option>La Gravière, Hossegor</option>
+          <option>On en parle</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="msg">Autre chose ?</label>
+        <p class="hint" id="msg-hint">Ton niveau, ta planche, la couleur de ta combi. Ça m'aide à te repérer dans l'eau.</p>
+        <textarea id="msg" name="msg" aria-describedby="msg-hint"></textarea>
+      </div>
+      <div class="form-end">
+        <button class="btn" type="submit">Envoyer la demande</button>
+      </div>
+      <p class="done" id="done" hidden></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Iban Larralde, Guéthary</span>
+    <span>Photos de démonstration : Unsplash</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo en grand">
+  <div class="lb-bar"><span id="lb-cap"></span><button type="button" id="lb-close">Fermer</button></div>
+  <div class="lb-stage" id="lb-stage"><img id="lb-img" alt=""></div>
+  <div class="lb-bar"><span id="lb-count"></span><div class="lb-nav"><button type="button" id="lb-prev">Précédente</button><button type="button" id="lb-next">Suivante</button></div></div>
+</div>
+
+<script>
+const src = (id, w) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format`;
+const PHOTOS = [
+  {id:"1535182463927-440364075d9c", t:"bord",  cap:"Parlementia, janvier", alt:"Surfeur en noir et blanc sur une grosse vague"},
+  {id:"1498330177096-689e3fb901ca", t:"eau",   cap:"La Gravière, octobre", alt:"Vague creuse qui casse près du bord"},
+  {id:"1493225255756-d9584f8606e9", t:"bord",  cap:"Lafitenia, septembre", alt:"Surfeur sur la lèvre d'une vague"},
+  {id:"1559627755-42212e5c5fdf",    t:"drone", cap:"Guéthary, août", alt:"Surfeur qui rame dans une eau turquoise, vu du ciel"},
+  {id:"1513569143478-b38b2c0ef97f", t:"bord",  cap:"Côte des Basques, juillet", alt:"Surfeur au coucher du soleil"},
+  {id:"1454123253751-1fe2b9e0c10d", t:"eau",   cap:"Les Cavaliers, novembre", alt:"Intérieur d'un tube vu depuis l'eau"},
+  {id:"1609870025624-98b62826e80a", t:"bord",  cap:"Lafitenia, juin", alt:"Surfeuse sur une planche rose"},
+  {id:"1517699418036-fb5d179fef0c", t:"bord",  cap:"Uhabia, mai", alt:"Deux surfeurs marchent vers l'eau"},
+  {id:"1649276021786-c771a8cd76c5", t:"bord",  cap:"La Gravière, octobre", alt:"Surfeur en haut de la vague"},
+  {id:"1551524358-f34c0214781d",    t:"eau",   cap:"Belharra, décembre", alt:"Grosse houle au large"},
+  {id:"1459745930869-b3d0d72c3cbb", t:"bord",  cap:"Les Cavaliers, avril", alt:"Surfeur en pleine manoeuvre"},];
+
+const grid = document.getElementById('grid');
+grid.innerHTML = PHOTOS.map((p,i)=>`
+  <figure class="shot" data-t="${p.t}" data-i="${i}" tabindex="0" role="button" aria-label="Agrandir : ${p.alt}">
+    <div class="frame"><img loading="lazy" src="${src(p.id,900)}" alt="${p.alt}"></div>
+    <figcaption>${p.cap}</figcaption>
+  </figure>`).join('');
+
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filter').forEach(x=>x.setAttribute('aria-pressed', x===b));
+  grid.querySelectorAll('.shot').forEach(s=>s.hidden = !(b.dataset.f==='all' || s.dataset.t===b.dataset.f));
+}));
+
+// visionneuse
+const lb=document.getElementById('lb'), img=document.getElementById('lb-img');
+let cur=0, back=null;
+const shown=()=>[...grid.querySelectorAll('.shot:not([hidden])')].map(s=>+s.dataset.i);
+function show(i){
+  cur=i; const p=PHOTOS[i], list=shown();
+  img.src=src(p.id,2200); img.alt=p.alt;
+  document.getElementById('lb-cap').textContent=p.cap;
+  document.getElementById('lb-count').textContent=`${list.indexOf(i)+1} sur ${list.length}`;
+}
+function openLb(i){back=document.activeElement; show(i); lb.hidden=false; document.body.style.overflow='hidden'; document.getElementById('lb-close').focus();}
+function closeLb(){lb.hidden=true; document.body.style.overflow=''; back&&back.focus();}
+function move(d){const l=shown(); show(l[(l.indexOf(cur)+d+l.length)%l.length]);}
+grid.addEventListener('click',e=>{const s=e.target.closest('.shot'); if(s) openLb(+s.dataset.i);});
+grid.addEventListener('keydown',e=>{const s=e.target.closest('.shot'); if(s&&(e.key==='Enter'||e.key===' ')){e.preventDefault(); openLb(+s.dataset.i);}});
+document.getElementById('lb-close').onclick=closeLb;
+document.getElementById('lb-prev').onclick=()=>move(-1);
+document.getElementById('lb-next').onclick=()=>move(1);
+document.getElementById('lb-stage').addEventListener('click',e=>{if(e.target.id==='lb-stage') closeLb();});
+document.addEventListener('keydown',e=>{if(lb.hidden) return;
+  if(e.key==='Escape') closeLb(); else if(e.key==='ArrowRight') move(1); else if(e.key==='ArrowLeft') move(-1);});
+
+// swipe dans la visionneuse
+let tx=null, ty=null;
+lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX; ty=e.touches[0].clientY;},{passive:true});
+lb.addEventListener('touchend',e=>{
+  if(tx===null) return;
+  const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)) move(dx<0?1:-1);
+  else if(dy>90 && Math.abs(dy)>Math.abs(dx)) closeLb();
+  tx=ty=null;
+});
+
+// menu mobile
+const menu=document.getElementById('menu'), menuOpen=document.getElementById('menu-open');
+function setMenu(open){
+  menu.hidden=!open; menuOpen.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+  (open?document.getElementById('menu-close'):menuOpen).focus();
+}
+menuOpen.onclick=()=>setMenu(true);
+document.getElementById('menu-close').onclick=()=>setMenu(false);
+menu.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden) setMenu(false);});
+
+// la barre du bas s'efface quand le formulaire est à l'écran
+const bar=document.getElementById('bar');
+new IntersectionObserver(([en])=>bar.classList.toggle('away',en.isIntersecting),{rootMargin:'0px 0px -30% 0px'})
+  .observe(document.getElementById('reserver'));
+// et se met à jour quand on choisit une formule
+const PACKS={"Session photo":["Session photo","à partir de 180 €"],"Vidéo et drone":["Vidéo et drone","290 €"],"Les deux":["Photo, vidéo et drone","420 €"]};
+document.querySelectorAll('input[name=pack]').forEach(r=>r.addEventListener('change',()=>{
+  const [t,p]=PACKS[r.value]; bar.querySelector('p').innerHTML=`<strong>${t}</strong>${p}`;
+}));
+
+// formulaire (maquette, rien n'est envoyé)
+const form=document.getElementById('form'), done=document.getElementById('done');
+const dateIn=document.getElementById('date');
+dateIn.min=new Date().toISOString().slice(0,10);
+function check(id, ok){
+  const el=document.getElementById(id), err=document.getElementById(id+'-err');
+  el.setAttribute('aria-invalid', !ok); err.hidden=ok; return ok;
+}
+form.addEventListener('submit',e=>{
+  e.preventDefault(); done.hidden=true;
+  const ok=[
+    check('name', form.name.value.trim()!==''),
+    check('email', /^\S+@\S+\.\S+$/.test(form.email.value)),
+    check('date', form.date.value!=='')
+  ].every(Boolean);
+  if(!ok){form.querySelector('[aria-invalid="true"]').focus(); return;}
+  const d=new Date(form.date.value+'T12:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+  done.innerHTML=`Merci ${form.name.value.trim()}, c'est noté pour le ${d} (${form.spot.value}). Je te réponds dans la journée.<small>Maquette : rien n'est envoyé pour l'instant.</small>`;
+  done.hidden=false;
+});
+
+document.getElementById('copy').addEventListener('click',async e=>{
+  const btn=e.currentTarget, mail=document.getElementById('mail');
+  try{await navigator.clipboard.writeText(mail.textContent); btn.textContent='Adresse copiée';}
+  catch{const r=document.createRange(); r.selectNodeContents(mail); getSelection().removeAllRanges(); getSelection().addRange(r); btn.textContent='Sélectionnée, fais Ctrl+C';}
+  setTimeout(()=>btn.textContent="Copier l'adresse",2000);
+});
+</script>
+</body>
+</html>
