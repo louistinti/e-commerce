@@ -32,3 +32,11 @@ Des artisans et petites entreprises du bâtiment (2 à 20 salariés), RGE, qui v
 ## Mobile
 
 « Appeler » et « Visite gratuite » fixés en bas, estimateur d'aides en plein écran.
+
+## Dossier
+
+- [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
+- [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
+- [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
+
+Les visuels des références n'ont pas pu être ouverts depuis la session : les descriptions viennent des résultats de recherche. Ouvre chaque lien et fais des captures avant de présenter le moodboard.
