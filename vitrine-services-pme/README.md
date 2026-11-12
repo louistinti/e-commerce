@@ -39,6 +39,6 @@ Barre fixe en bas avec « Appeler » et « Devis ». Formulaire de devis en 3 é
 
 - [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
+- [Bench](BENCH.md) : les références (sites réels et galeries Dribbble et One Page Love, avec captures), les directions de moodboard, les design tokens, les composants
 
-Les visuels des références n'ont pas pu être ouverts depuis la session : les descriptions viennent des résultats de recherche. Ouvre chaque lien et fais des captures avant de présenter le moodboard.
+Les références ont été ouvertes et capturées le 2026-11-12 (dossier `captures/`), sauf les 2 pages Stratus, bloquées par une protection anti-robots. Pinterest, Land-book, Lapa Ninja et Behance n'ont pas pu être consultés : le détail est dans le bench.
