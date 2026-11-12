@@ -34,6 +34,7 @@ Références réelles à prospecter : Goodweek, Webyn, Reduck, AQQI, INEVITABLE,
 ## Mobile
 
 CTA « Démo » fixe en bas, démo produit en format vertical, logos d'intégration en défilement horizontal.
+Vu sur Ramp, Fin et Pennylane en 390 px : la démo verticale est confirmée (Ramp montre une facture qui se remplit ligne par ligne). Aucun des trois n'a de barre fixe en bas, ni de logos en défilement horizontal : ce sont des choix d'Ordo, à tester. Détails dans la section « Mobile » du bench.
 
 ## Dossier
 
@@ -41,4 +42,4 @@ CTA « Démo » fixe en bas, démo produit en format vertical, logos d'intégrat
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
 - [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
 
-Les visuels des références n'ont pas pu être ouverts depuis la session : les descriptions viennent des résultats de recherche. Ouvre chaque lien et fais des captures avant de présenter le moodboard.
+Les références du bench ont été ouvertes et capturées le 2026-11-12 (dossier [`captures/`](captures/)). Behance, Land-book, Lapa Ninja et Pinterest restent bloqués : ces références sont marquées « non vérifié » dans le bench, et la plupart sont remplacées par une référence vue. Lis d'abord la section « Limites, à lire en premier » du bench.
