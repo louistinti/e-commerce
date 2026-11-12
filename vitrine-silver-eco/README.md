@@ -40,4 +40,4 @@ Numéro de téléphone cliquable en haut de chaque écran, formulaire de rappel 
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
 - [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
 
-Les visuels des références n'ont pas pu être ouverts depuis la session : les descriptions viennent des résultats de recherche. Ouvre chaque lien et fais des captures avant de présenter le moodboard.
+Les références du bench ont été ouvertes et capturées le 2026-11-12 (dossier `captures/`). Quatre restent inaccessibles (deux pages Behance, une épingle Pinterest supprimée, Land-book et Lapa Ninja) : voir la section « Limites, à lire en premier » du bench.
