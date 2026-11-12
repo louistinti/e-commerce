@@ -39,6 +39,6 @@ Barre fixe en bas avec « Appeler » et « Devis ». Formulaire de devis en 3 é
 
 - [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : les références (sites réels et galeries Dribbble et One Page Love, avec captures), les directions de moodboard, les design tokens, les composants
+- [Bench](BENCH.md) : les références (sites réels et galeries Dribbble et One Page Love, avec captures) triées bloc par bloc selon le brief, la direction de maquette, les design tokens, les composants
 
-Les références ont été ouvertes et capturées le 2026-11-12 (dossier `captures/`), sauf les 2 pages Stratus, bloquées par une protection anti-robots. Pinterest, Land-book, Lapa Ninja et Behance n'ont pas pu être consultés : le détail est dans le bench.
+Les références ont été ouvertes et capturées le 2026-11-12, sauf les 2 pages Stratus, bloquées par une protection anti-robots. Les captures sont rangées en deux dossiers : [`captures/inspis/`](captures/inspis/) pour les inspirations et [`captures/a-cote/`](captures/a-cote/) pour les références mises de côté. Pinterest, Land-book, Lapa Ninja et Behance n'ont pas pu être consultés : le détail est dans le bench.

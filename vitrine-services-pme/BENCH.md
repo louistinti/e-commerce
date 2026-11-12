@@ -1,163 +1,204 @@
 # Benchmark : site vitrine Brillance Pro (nettoyage B2B, Bordeaux, entreprise fictive)
 
+Ce bench suit le brief client bloc par bloc : chaque référence retenue sert une exigence précise de [BRIEF-CLIENT.md](BRIEF-CLIENT.md), les autres sont rangées à côté avec leur raison.
+
 ## Limites, à lire en premier
 
-- **Sites ouverts et capturés le 2026-11-12**, dans un navigateur Chrome piloté (viewport 1440×900, au-dessus de la ligne de flottaison, et 390×844 pour le mobile). Les captures sont dans [`captures/`](captures/). Les couleurs et les polices citées ont été relevées dans la page (styles calculés), pas devinées. Les contrastes sont recalculés selon la formule WCAG 2.1.
-- **14 références sur 16 vues et capturées.** Les 2 pages Stratus (n° 9 et 10) sont **inaccessibles (protection anti-robots)** : un challenge Cloudflare « Verify you are human » s'affiche, et il n'a pas été contourné. Leur texte reste celui de la session précédente, **non vérifié**.
-- **La première version se trompait sur plusieurs points**, corrigés ci-dessous. Lebontri est une plateforme d'annonces (intervenants vérifiés, acompte de 10 %), pas une entreprise de nettoyage. Aucun « {city} » n'est visible sur ses pages. Son « simulateur » n'a ni champ ni prix : l'estimation est floutée et demande un compte. L'« estimation instantanée » de Coverall exige les coordonnées avant le prix. Les titles « devis sous 24h » et la mention « free, no-obligation » d'Office Pride n'existent plus.
-- **9 références de galerie ajoutées** (7 Dribbble, 1 One Page Love, 1 composant réel). Pinterest exige un compte, Land-book et Lapa Ninja bloquent par Cloudflare, Behance renvoie une erreur 400, Awwwards ne renvoie rien de pertinent et Godly redirige vers un autre site. Le détail est en fin de section « Galeries d'inspiration ».
+- **Sites ouverts et capturés le 2026-11-12**, dans un navigateur Chrome piloté (viewport 1440×900, au-dessus de la ligne de flottaison, et 390×844 pour le mobile). Les couleurs et les polices citées ont été relevées dans la page (styles calculés), pas devinées. Les contrastes sont recalculés selon la formule WCAG 2.1.
+- **14 références sur 16 vues et capturées**, plus 9 références de galerie. Les 2 pages Stratus (n° 9 et 10) sont **inaccessibles (protection anti-robots)** : un challenge Cloudflare « Verify you are human » s'affiche, et il n'a pas été contourné. Elles sont à côté, **non vérifiées**.
+- **La première version se trompait sur plusieurs points**, corrigés ici. Lebontri est une plateforme d'annonces (intervenants vérifiés, acompte de 10 %), pas une entreprise de nettoyage. Aucun « {city} » n'est visible sur ses pages. Son « simulateur » n'a ni champ ni prix : l'estimation est floutée et demande un compte. L'« estimation instantanée » de Coverall exige les coordonnées avant le prix. Les titles « devis sous 24h » et la mention « free, no-obligation » d'Office Pride n'existent plus.
+- **Refonte du 2026-11-12** :
+  - Tri des 25 références : **11 inspirations** (et 1 capture mobile) dans [`captures/inspis/`](captures/inspis/), **14 références à côté** (et 2 captures mobiles) dans [`captures/a-cote/`](captures/a-cote/). Les numéros et les noms de fichiers n'ont pas changé.
+  - Le bench est réorganisé par bloc de l'arborescence du brief (section 6), avec un tableau de couverture.
+  - **Une seule direction** est gardée, car le brief prévoit « 1 piste et 2 allers-retours » (section 10). Les directions B et C sont retirées, la raison est dans « Directions ».
+  - **Tokens corrigés** : le vert accent `#22C55E` ne sert plus pour les icônes porteuses de sens (2,3:1 sur blanc, sous le seuil de 3:1 du critère WCAG 1.4.11), seulement pour le décor. L'icône de la carte de prestation est précisée en `brand.blue`. L'exemple chiffré du bloc avis (« 4,8 sur 5, 37 avis ») est remplacé par un format, pour ne pas afficher d'avis qui n'existent pas.
+  - **Aucune nouvelle référence retenue.** 5 recherches Dribbble pour la zone d'intervention et « Comment ça marche » n'ont rien donné de conforme au brief (détail en fin de bench).
 - Aucun formulaire n'a été rempli ni envoyé. Les captures ne montrent pas de données personnelles (les signatures d'auteurs et les avatars ont été masqués avant la capture).
 
 ---
 
-## Hero et SEO local
+## Couverture du brief
 
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 1 | Lebontri : Nettoyage de bureau à Bordeaux | https://lebontri.fr/nettoyage-bureau/bordeaux | Plateforme FR (annonces et devis d'intervenants) | [capture](captures/01-lebontri-bordeaux.jpg) | Hero vert foncé sur photo floutée, H1 blanc « Nettoyage de bureaux à Bordeaux – Service sur mesure pour entreprises » en Bricolage Grotesque 700, 48 px, texte en Hanken Grotesk. Au-dessus du H1, une pastille « Bordeaux et alentours · intervenants vérifiés ». CTA vert clair `#D1ED92`, texte `#12372A` (10,1:1), puis « Gratuit · 3 minutes · une photo suffit » et 5 coches. Pas de délai dans le H1. Aucun « {city} » dans le texte de la page. **À reprendre** : la pastille de zone au-dessus du H1 et la micro-ligne sous le CTA. **À éviter** : le gabarit dupliqué (Bordeaux, Tours et Valenciennes ont le même hero, seuls la ville et la fin du H1 changent, voir n° 2 et 6). |
-| 2 | Lebontri : Nettoyage de bureau à Tours | https://lebontri.fr/nettoyage-bureau/tours | Plateforme FR | [capture](captures/02-lebontri-tours.jpg) | Le title a changé : « Nettoyage de bureaux Tours (37) : devis de pros \| LeBonTri ». La promesse « devis sous 24h » a disparu, mais le numéro de département entre parenthèses reste un bon signal local. Seuls la ville, la fin du H1 et le département de la coche changent. **À reprendre** : « Nettoyage de bureaux Bordeaux (33) : devis en 24 h \| Brillance Pro » pour le title. |
-| 3 | Onet : agence de Lyon | https://www.onet.fr/en/agencies/onet-proprete-et-services-lyon/ | Site réel (FR, version anglaise) | [capture](captures/03-onet-lyon.jpg) | L'URL mène à la version anglaise. Une vraie photo d'agent Onet en tenue sur tout le hero, le H1 centré en Montserrat 700, une pastille « Open » et 2 boutons-pilules de même taille : « Ask for a quote » blanc sur `#F34028` (3,8:1) et « Give us a call » blanc sur `#41C5E7` (2,0:1). Plus bas : horaires (lundi au vendredi, 8 h-12 h et 14 h-17 h), adresse, téléphone et une carte OpenStreetMap. Les données `LocalBusiness` sont présentes. **À reprendre** : le bloc horaires, adresse et carte OSM légère. **À éviter** : 2 CTA au même poids, et du blanc sur des couleurs vives sous 4,5:1. |
-| 4 | Onet : agence du Mans | https://www.onet.fr/en/agencies/onet-proprete-et-services-le-mans/ | Site réel (FR, version anglaise) | [capture](captures/04-onet-le-mans.jpg) | Même gabarit, avec la photo du bâtiment de l'agence (à Arnage, comme le dit le title). Le label Qualipropre n'est pas près du CTA : il est dans une section « Certifications » plus bas, avec son logo et une phrase. **À reprendre** : un bloc « Certifications » avec logo et phrase d'explication, seulement si le label est obtenu. |
-| 5 | Office Pride : Colorado Springs Downtown | https://officepride.com/colorado-springs-downtown/ | Site réel (US) | [capture](captures/05-office-pride-colorado-springs.jpg) | Photo d'équipe en polos verts sous un dégradé bleu, H1 « Professional Cleaners » en CeraPro, la ville sous le H1 et un repère de lieu au-dessus. Deux boutons : « Request a Quote » blanc sur `#00964D` (3,8:1) et le téléphone en bouton blanc. À droite, une carte « Step 1 of 3 » avec barre de progression, 4 champs (nom, e-mail, société, téléphone) et « Next » bleu nuit `#12345A`, puis 3 réassurances (« Highly reviewed · Locally owned · Professional crews »). La mention « free, no-obligation » n'apparaît plus, seulement « Free Quote ». **À reprendre** : « Étape 1 sur 3 » avec barre de progression, la ligne de 3 réassurances sous le bouton. **À éviter** : les coordonnées dès l'étape 1. |
-
-## Devis et estimateur
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 6 | Lebontri : simulateur (Valenciennes) | https://lebontri.fr/nettoyage-bureau/valenciennes | Plateforme FR | [hero](captures/06-lebontri-valenciennes.jpg), [estimation](captures/06-lebontri-valenciennes-estimation.jpg) | **Correction** : pas de simulateur dans la page, ni champ ni prix (les « 180 € et 720 € » de la première version n'existent pas). La section « Quel budget… » montre 4 cartes à icône (la surface, la fréquence, les prestations, les horaires) et une carte sombre « Votre estimation personnalisée » où le prix est flouté (« ••• € »), avec « Gratuit et sans engagement · compte requis ». Plus haut, une photo de techniciens en combinaison dans une salle de bain moisie illustre une page de bureaux. **À reprendre** : les 4 facteurs de prix en cartes à icône. **À éviter** : le prix caché derrière un compte, et une photo hors sujet. |
-| 7 | Coverall : estimateur janitorial | https://www.coverall.com/commercial-cleaning-services/janitorial/ | Site réel (US) | [hero](captures/07-coverall-janitorial.jpg), [estimateur](captures/07-coverall-janitorial-estimateur.jpg) | H1 « COMMERCIAL JANITORIAL SERVICES » en Roboto Condensed 900, 80 px, capitales blanches sur une photo d'équipe posée. CTA d'en-tête blanc sur `#00AB48` (3,0:1). L'encart « Get an instant cleaning quote » est un formulaire de 10 champs : prénom, nom, e-mail, téléphone, code postal, société, type de lieu, type de nettoyage, surface, passages par semaine. La fourchette mensuelle n'apparaît qu'après l'envoi. Sous l'encart, le périmètre en 5 tâches (sols, déchets, aspirateur, poussière, surfaces). **À reprendre** : la liste courte du périmètre. **À éviter** : une estimation « instantanée » qui exige les coordonnées avant le prix. |
-| 8 | Coverall : Get a Quote | https://www.coverall.com/get-a-quote/ | Site réel (US) | [capture](captures/08-coverall-get-a-quote.jpg) | Photo de 4 agents souriants face à l'objectif, gants verts en avant : un cliché de banque d'images. Le formulaire a 6 champs obligatoires (prénom, nom, e-mail, code postal, téléphone, type de lieu). Pas de lien « besoin ponctuel » visible. La section « How we determine your quote » explique la visite : état et agencement des locaux, surface nettoyable, zones de passage, fréquence, complexité, budget. **À reprendre** : un paragraphe « Comment on calcule votre devis » qui justifie la visite. |
-| 9 | Stratus : Get a Quote | https://www.stratusclean.com/get-quote/ | Site réel (US) | inaccessible | **Inaccessible (protection anti-robots, Cloudflare)**, non vérifié. D'après la session précédente : un formulaire court (nom, société, téléphone, e-mail, code postal, service) et l'argument « devis bâti sur vos locaux, pas sur des hypothèses ». |
-| 10 | Stratus : devis Miami | https://www.stratusclean.com/locations/miami/get-quote/ | Site réel (US) | inaccessible | **Inaccessible (protection anti-robots, Cloudflare)**, non vérifié. Une page devis par implantation : pour Brillance Pro, une seule page suffit, le code postal peut pré-remplir la commune. |
-| 11 | Companeo : devis express nettoyage | https://www.companeo.com/nettoyage-de-locaux/devis-express | Plateforme FR | [capture](captures/11-companeo-devis-express.jpg) | H1 « Entreprise de nettoyage, comparez les prix et faites jusqu'à 55 % d'économies ! » en bleu `#00A3E4` (2,8:1 sur blanc). Promesses : « les devis de 4 sociétés de nettoyage », « 60 secondes chrono », « 157 entreprises ». Aucun délai de 48 h n'est affiché. L'étape 1 demande le type de local en 7 cartes à icône, puis « Continuer » blanc sur orange `#F89827` (2,2:1). Photo de banque d'images et carte de France à figurines 3D. **À reprendre** : le type de local en cartes à icône à l'étape 1. **À retenir** : Companeo promet la rapidité de la demande, pas de la réponse. Afficher « devis en 24 h » et un interlocuteur unique reste différenciant. |
-
-## Preuves et avis
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 12 | Coverall Fresno : plus de 100 avis Google 5 étoiles | https://www.coverall.com/in-the-news/coverall-of-fresno-reinforces-role-as-the-best-commercial-cleaning-provider-with-5-star-rating-and-over-100-google-reviews/ | Site réel (US) | [capture](captures/12-coverall-fresno-avis.jpg) | Un communiqué du 19 août 2026, en texte seul : pas d'étoiles, pas de widget. Le seul verbatim est anonyme et non daté (« One recent reviewer shared… »). **À reprendre** : la note et le nombre d'avis dans un titre. **À éviter** : un verbatim sans prénom ni date. |
-| 13 | Coverall Gainesville : 40e avis 5 étoiles | https://www.coverall.com/in-the-news/coverall-of-gainesville-celebrates-40th-5-star-review-and-perfect-5-star-google-rating-reinforcing-role-as-best-commercial-cleaning-service-in-gainesville-fl/ | Site réel (US) | [capture](captures/13-coverall-gainesville-avis.jpg) | Même format, daté du 2 septembre 2026. La citation vient de la direction, pas d'un client. **À retenir** : 40 avis suffisent à faire une annonce locale, ce qui confirme l'objectif de 30 avis du brief. |
-
-## Pédagogie du prix et prestations
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 14 | Coverall : Pricing Commercial Cleaning Services | https://www.coverall.com/commercial-cleaning-services/pricing-commercial-cleaning-services-for-your-business/ | Site réel (US) | [capture](captures/14-coverall-pricing.jpg) | **Correction** : c'est un article de blog en texte seul, sans icônes ni estimateur. Il cite la surface (au m² ou à l'heure), la fréquence et le nombre de tâches. Les 4 facteurs en icônes ont en fait été vus chez Lebontri (n° 6). **À reprendre** : le ton « questions à poser à votre prestataire », en 3 ou 4 lignes sous l'estimateur. |
-| 15 | Coverall : FAQ nettoyage commercial | https://www.coverall.com/faqs/commercial-cleaning/ | Site réel (US) | [capture](captures/15-coverall-faq.jpg) | 14 questions en accordéon, en capitales, sous une photo de foule de banque d'images. Pas de données structurées FAQPage dans la page. La réponse sur le prix est repliée et n'a pas été lue. **À reprendre** : une FAQ de 5 questions, avec FAQPage (Coverall ne le fait pas). **À éviter** : la photo de foule sans rapport avec le métier. |
-| 16 | Lebontri : fin de chantier à Bordeaux | https://lebontri.fr/nettoyage-fin-chantier/bordeaux | Plateforme FR | [capture](captures/16-lebontri-fin-chantier-bordeaux.jpg) | Même gabarit que les pages bureaux, mais un sous-titre propre au métier : « Poussières de plâtre, voiles de ciment, traces de peinture ». Une coche précise « Revêtements fragiles et date de livraison ». **À reprendre** : la carte « Fin de chantier » renvoie vers une page dédiée « Nettoyage fin de chantier en Gironde », avec les salissures et la date de livraison dans les premières lignes. |
-
----
-
-## Galeries d'inspiration
-
-Requêtes lancées le 2026-11-12 : « cleaning service website », « commercial cleaning landing page », « office cleaning website », « multi step quote form », « before after slider ». Les URL sont celles des pages de shot ou de site réellement ouvertes. Les numéros suivent ceux du bench.
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 17 | PartnerPlus, Commercial Cleaning Service Website (Wavespace) | https://dribbble.com/shots/27382820-PartnerPlus-Commercial-Cleaning-Service-Website | Dribbble | [capture](captures/17-dribbble-partnerplus.jpg) | Le plus proche de la direction A pour la couleur : fond blanc, un bleu franc pour le seul CTA « Check Our Prices », le téléphone juste dessous en texte. Une pastille « The standard for commercial » au-dessus du H1. Les illustrations de bâtiments remplacent les photos. **À reprendre** : un seul CTA bleu, le téléphone dessous, la pastille. **À éviter** : l'illustration à la place de vraies photos d'équipe. |
-| 18 | Polar, Commercial Cleaning Website Design (Systra Studios) | https://dribbble.com/shots/27768209-Polar-Commercial-Cleaning-Website-Design | Dribbble | [capture](captures/18-dribbble-polar.jpg) | Hero sombre (contraire à la direction A), mais la preuve est bien placée : « 5,0 basierend auf 36 Google-Bewertungen » et des cartes d'avis sous le CTA, puis un carrousel de prestations avec de vraies photos de lieux (cage d'escalier, bureaux). Promesse « Wir sind fertig, bevor Ihr Tag beginnt ». **À reprendre** : la note Google et le nombre d'avis sous le CTA, et la promesse horaire (« Tout est propre avant votre arrivée »). |
-| 19 | Cleaning Lead Generation Landing Page (WPLanding) | https://dribbble.com/shots/27223369-Cleaning-Lead-Generation-Landing-Page | Dribbble | [capture](captures/19-dribbble-cleanpolish.jpg) | La ville en couleur dans le H1 (« Cleaning for busy people in New York »), 2 boutons, puis « 4.9/5 » avec étoiles et pastilles d'avatars, et une bande de logos clients. **À reprendre** : la ligne note et nombre de clients sous les boutons. **À éviter** : les logos factices (« Logoipsum ») tant qu'il n'y a pas de vrais clients à citer. |
-| 20 | Local Cleaning Service Website, Flatiron Maids (Jabel Ahmed) | https://dribbble.com/shots/27650887-Local-Cleaning-Service-Website-Landing-Page-UI | Dribbble | [capture](captures/20-dribbble-flatiron-maids.jpg) | L'estimateur est dans le hero : 4 listes (ville, type de logement, pièces, formule) et un bouton orange. Un argument « Want the same team? » et la note « 4.8/5, 1000+ reviews ». C'est le meilleur exemple pour la direction C. **À reprendre** : l'argument « la même équipe chaque semaine », et des champs dans le hero si on choisit la direction C. |
-| 21 | Multistep request quote form (Amine) | https://dribbble.com/shots/24125199-Multistep-request-quote-form | Dribbble | [capture](captures/21-dribbble-multistep-quote-form.jpg) | Une barre d'étapes nommées (type, préférences, recommandation, coordonnées), des cartes à grande icône pour le type, et la recommandation affichée **avant** les coordonnées. **À reprendre** : exactement cet ordre pour le devis en 3 étapes, avec des étapes nommées plutôt que des points. |
-| 22 | Before/After slider (Diana Fabiańczuk) | https://dribbble.com/shots/27731233-Before-After-slider | Dribbble | [capture](captures/22-dribbble-before-after-slider.jpg) | Une ligne de séparation fine, une poignée ronde avec 2 flèches, et 2 étiquettes en pilule « Before us » et « After us » dans les coins hauts. **À reprendre** : la poignée à flèches (elle dit qu'on peut glisser) et les étiquettes « Avant » et « Après » toujours visibles. |
-| 23 | KD Enterprises, Commercial Cleaning & Facility Landing page (Carlos Pessane) | https://dribbble.com/shots/27818578-KD-Enterprises-Commercial-Cleaning-Facility-Landing-page | Dribbble | [capture](captures/23-dribbble-kd-enterprises.jpg) | **Contre-exemple** : tous les clichés du secteur réunis. Femme en tablier avec éponge et gants rouges, étincelles dorées, « We provide Efficient Cleaning Services ». Rien ne dit qui, où ni à quel prix. |
-| 24 | Cleaning Service Website Examples | https://onepagelove.com/tag/cleaning-service | One Page Love | [capture](captures/24-onepagelove-cleaning-service.jpg) | Seulement 4 exemples, tous de 2012-2013 et aujourd'hui hors ligne. Ils montrent un autre cliché : la mascotte (super-héros « Schluss mit Schmutzig », chapeau haut-de-forme). **À retenir** : la galerie confirme que le secteur a peu de références soignées, donc une vitrine nette se démarque vite. |
-| 25 | img-comparison-slider (composant open source) | https://img-comparison-slider.sneas.io/ | Site réel (composant web) | [capture](captures/25-img-comparison-slider.jpg) | Un vrai curseur avant/après, testé dans la page : après un clic, les flèches du clavier déplacent la séparation (de 4 % à 95 % en maintenant la flèche droite). C'est un composant web, compatible avec un site statique. L'élément n'expose pas de rôle ARIA. **À reprendre** : ce composant ou équivalent, avec un `aria-label` (« Comparer avant et après, bureaux Chartrons, mars 2027 ») et une légende visible. |
-
-**Plateformes sans référence retenue**
-- Behance : inaccessible, erreur HTTP 400 renvoyée au navigateur automatisé.
-- Pinterest : la recherche « cleaning business website design blue » s'affiche derrière une fenêtre de connexion obligatoire. Inaccessible sans compte, aucun lien de pin lisible.
-- Land-book : inaccessible (protection anti-robots, challenge Cloudflare persistant).
-- Lapa Ninja : inaccessible (protection anti-robots, page « Sorry, you have been blocked »).
-- Awwwards : la recherche « cleaning » renvoie des sites d'agences et de portfolios sans rapport. Aucun retenu.
-- Godly : godly.website redirige vers recent.design, sans recherche et sans site de services locaux.
-
-**Clichés croisés** : agents souriants face à l'objectif avec gants colorés (n° 8, 23), femme à l'éponge et étincelles (n° 23), mascotte (n° 24), foule de banque d'images (n° 15), carte de France à figurines 3D (n° 11), photo spectaculaire hors sujet (n° 6), logos factices (n° 19).
-
-## Avant/après et mobile
-
-**Avant/après.** Aucun site réel de nettoyage avec un curseur n'a été trouvé (recherches web en anglais et en français, et une page Jan-Pro qui renvoie une erreur 403). Les deux références vues sont le shot n° 22 pour le dessin et le composant n° 25 pour le comportement au clavier. Les recommandations restent :
-- un curseur utilisable au clavier, avec une légende (lieu, date, type de chantier) et 3 ou 4 cas maximum ;
-- une poignée ronde à flèches et les étiquettes « Avant » et « Après » toujours visibles (n° 22) ;
-- un `aria-label` explicite, car le composant n'en fournit pas (n° 25).
-
-**Mobile (390×844).**
-
-| Site | Capture | Ce qu'on observe |
+| Exigence du brief | Inspirations | Manque |
 |---|---|---|
-| Lebontri, Bordeaux | [capture](captures/mobile-lebontri-bordeaux.jpg) | Une barre fixe en bas, un seul bouton pleine largeur « Estimer mon nettoyage · Gratuit ». Pas de bouton d'appel. Au premier écran, le même CTA apparaît 2 fois (hero et barre). |
-| Office Pride | [capture](captures/mobile-office-pride.jpg) | Dans le hero, 2 boutons de même largeur : « Request a Quote » vert et le téléphone en blanc. Le formulaire « Step 1 of 3 » suit. La barre fixe « Ready to get started? Request a Quote » reste visible même quand le formulaire est à l'écran, et le bouton d'accessibilité la chevauche. |
-| Coverall, janitorial | [capture](captures/mobile-coverall-janitorial.jpg) | Pas de barre fixe. Le numéro est en lien `tel:` dans le bandeau du haut. Le H1 en capitales prend 3 lignes et la photo occupe presque tout l'écran. |
-
-**À retenir** : aucun des 3 ne met « Appeler » et « Devis » côte à côte dans la barre fixe. La barre en 2 boutons égaux du brief reste un vrai plus. Office Pride montre pourquoi il faut la masquer quand le formulaire est visible (règle déjà dans les tokens). Recommandations inchangées :
-- une barre mobile fixe en bas, en 2 boutons égaux (« Appeler » en blanc bordé de bleu, « Devis » en bleu plein) ;
-- un formulaire en 3 écrans, avec une barre de progression, des boutons-cartes pour le type de local et des pastilles pour la fréquence ;
-- l'estimation s'affiche avant les coordonnées.
+| 1. Hero (H1 ville et délai, CTA « Obtenir mon estimation », téléphone, vraie photo d'équipe) | 1, 3, 5, 17, 19 | Aucun H1 vu avec la ville et le délai ensemble. Les photos d'équipe restent à produire (séance photo prévue en S1). |
+| 2. Prestations (4 cartes : pour qui, fréquence, « à partir de ») | 16, 18 | Aucune grille de 4 cartes avec « pour qui », fréquence et prix de départ. Détail repris du n° 7 (à côté). |
+| 3. Pourquoi nous (3 arguments et « Comment ça marche » en 3 étapes) | 4, 5 | « Comment ça marche » : aucune référence conforme (les shots vus sont B2C et hors marque). Détail repris du n° 20 (à côté). |
+| 4. Zone d'intervention (carte légère statique ou SVG, communes en texte) | aucune | Onet (n° 3) charge une carte OpenStreetMap interactive d'office, et le seul shot Dribbble « Service Area Map » embarque une carte Google. Aucune liste de communes en texte vue. Le bloc est à dessiner sans modèle. |
+| 5. Avant / après (curseur sur 3 à 4 chantiers, clavier) | 22, 25 | Aucun site réel de nettoyage avec un curseur. |
+| 6. Avis Google (note, nombre, 3 verbatims, lien vers la fiche) | 18, 19 | Aucun site réel avec des verbatims datés et un lien vers la fiche. |
+| 7. Devis en ligne en 3 étapes (type, surface et fréquence puis fourchette, coordonnées) | 5, 21 | Aucun site réel n'affiche la fourchette avant les coordonnées (n° 6 et 7 la cachent). Détails repris des n° 6, 8, 11 et 14 (à côté). |
+| 8. Contact (téléphone, e-mail, horaires, adresse, hors horaires) | 3 | La mention d'intervention hors horaires : aucune référence. |
+| Pages SEO (bureaux, fin de chantier, vitres) | 16 | Aucune page vitres vue. Format de title repris du n° 2 (à côté). |
+| Mobile : barre « Appeler » / « Devis » de 44 px minimum, estimation en moins de 60 s | capture mobile Office Pride | Aucune barre fixe à 2 boutons vue. |
+| Marque : blanc, bleu franc, accent vert, Figtree ou Nunito Sans | 17 | Aucune référence en Figtree ou Nunito Sans. |
+| Accessibilité WCAG 2.1 AA (vert jamais en texte sur blanc, labels visibles, clavier) | 25 | Contre-exemples de contraste nombreux (n° 3, 7, 11), aucune référence de formulaire à labels visibles vérifiée. |
+| Preuve « Local » (adresse, carte des communes, photos datées) | 1, 3, 19 | Photos de chantiers locaux datées : aucune. |
+| Preuve « Devis en 24 h » (estimation immédiate, délai écrit) | aucune | Aucune référence n'affiche un délai de réponse. Companeo (n° 11) promet la vitesse de la demande, Lebontri (n° 2) a retiré « devis sous 24h ». |
+| Preuve « Équipe salariée et assurée » (photos avec prénoms, attestation) | 3, 5 | Prénoms des agents et attestation téléchargeable : aucune. |
+| Preuve « Sans engagement » (préavis, remplacement, interlocuteur unique) | aucune | Aucun encart vu. Lebontri (n° 6) écrit « sans engagement » à côté de « compte requis ». |
+| Preuve « Produits respectueux » et label | 4 | Seulement si le label est obtenu. |
+| Preuve « Clients satisfaits » (note et 3 à 6 avis datés) | 18, 19 | Voir bloc 6. |
 
 ---
 
-## Synthèse du moodboard
+## Inspirations, bloc par bloc
 
-Les 3 directions sont maintenues. Deux ajustements, justifiés par ce qui a été vu : la direction C ne s'appuie plus sur Coverall (son estimateur n'est pas dans le hero et demande les coordonnées avant le prix), et chaque direction cite maintenant ses références capturées.
+### 1. Hero
 
-**Direction A : « Net et lumineux »** (recommandée)
-- Beaucoup de blanc, le bleu franc pour le seul CTA, le vert en pastilles de validation (« ✓ sans engagement »). Références : PartnerPlus (n° 17) pour le blanc et le bleu.
-- De vraies photos de l'équipe en tenue, en lumière naturelle, et des icônes au trait. Références : Onet (n° 3), un agent au travail, de dos, logo visible, et Office Pride (n° 5), une équipe en tenue. C'est plus crédible que les poses face à l'objectif de Coverall (n° 8).
-- La note Google sous le CTA (n° 18, 19) et le formulaire « Étape 1 sur 3 » visible dès le hero (n° 5), mais avec le type de local en premier.
-- C'est la plus sûre pour inspirer confiance et la plus facile à décliner pour d'autres métiers.
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 1 | [Lebontri : Nettoyage de bureau à Bordeaux](https://lebontri.fr/nettoyage-bureau/bordeaux) (plateforme FR) | [capture](captures/inspis/01-lebontri-bordeaux.jpg) | Au-dessus du H1 « Nettoyage de bureaux à Bordeaux – Service sur mesure pour entreprises », une pastille « Bordeaux et alentours · intervenants vérifiés ». Sous le CTA (vert clair `#D1ED92`, texte `#12372A`, 10,1:1), la micro-ligne « Gratuit · 3 minutes · une photo suffit ». À éviter : le gabarit dupliqué d'une ville à l'autre (voir n° 2 et 6, à côté). | Sous-titre « Bordeaux Métropole et Gironde » en pastille, preuve « Local » ; micro-ligne pour « Devis en 24 h ». |
+| 3 | [Onet : agence de Lyon](https://www.onet.fr/en/agencies/onet-proprete-et-services-lyon/) (site réel FR, version anglaise) | [capture](captures/inspis/03-onet-lyon.jpg) | Une vraie photo d'agent Onet en tenue, de dos, logo visible, sur tout le hero. À éviter : 2 CTA au même poids, et du blanc sur `#F34028` (3,8:1) et `#41C5E7` (2,0:1). | « Une vraie photo de l'équipe », preuve « Équipe salariée ». |
+| 5 | [Office Pride : Colorado Springs Downtown](https://officepride.com/colorado-springs-downtown/) (site réel US) | [capture](captures/inspis/05-office-pride-colorado-springs.jpg) | Photo d'équipe en polos sous un dégradé bleu, la ville sous le H1 et un repère de lieu au-dessus. Le téléphone en bouton blanc à côté du CTA. Sous le formulaire, 3 réassurances (« Highly reviewed · Locally owned · Professional crews »). À éviter : « Request a Quote » blanc sur `#00964D` (3,8:1). | Photo d'équipe, téléphone visible en CTA secondaire « Appeler le 05… ». |
+| 17 | [PartnerPlus, Commercial Cleaning Service Website](https://dribbble.com/shots/27382820-PartnerPlus-Commercial-Cleaning-Service-Website) (Dribbble, Wavespace) | [capture](captures/inspis/17-dribbble-partnerplus.jpg) | Fond blanc, un bleu franc pour le seul CTA « Check Our Prices », le téléphone juste dessous en texte, une pastille « The standard for commercial » au-dessus du H1. À éviter : l'illustration de bâtiments à la place de vraies photos. | Marque « blanc, bleu franc », un seul CTA primaire, téléphone sous le CTA. |
+| 19 | [Cleaning Lead Generation Landing Page](https://dribbble.com/shots/27223369-Cleaning-Lead-Generation-Landing-Page) (Dribbble, WPLanding) | [capture](captures/inspis/19-dribbble-cleanpolish.jpg) | La ville en couleur dans le H1 (« Cleaning for busy people in New York »), puis « 4.9/5 » avec étoiles sous les boutons. Pour Brillance Pro, « Bordeaux » en bleu, pas en orange. À éviter : les logos factices (« Logoipsum »). | SEO local « la ville dans le H1 », preuve « Clients satisfaits » près du CTA. |
 
-**Direction B : « Artisan de quartier »**
-- Un fond très légèrement teinté, des photos de lieux bordelais reconnaissables, la carte des communes mise en avant (le bloc horaires et carte OSM d'Onet, n° 3, en version chaleureuse).
-- Ton chaleureux, prénoms, citation de la gérante.
-- Le risque est que ce soit moins décliné tel quel pour un autre métier ou une autre ville.
+### 2. Prestations
 
-**Direction C : « Le comparateur »**
-- L'estimateur occupe le hero, comme le shot Flatiron Maids (n° 20), avec une fourchette tout de suite et sans coordonnées.
-- Une interface très fonctionnelle, avec des cartes de prestations sous forme de « produits ».
-- La plus efficace pour la conversion, mais la moins différenciante émotionnellement.
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 16 | [Lebontri : fin de chantier à Bordeaux](https://lebontri.fr/nettoyage-fin-chantier/bordeaux) (plateforme FR) | [capture](captures/inspis/16-lebontri-fin-chantier-bordeaux.jpg) | Un sous-titre propre au métier : « Poussières de plâtre, voiles de ciment, traces de peinture ». Une coche « Revêtements fragiles et date de livraison ». | Carte « Fin de chantier » qui parle à Nadia (salissures, date fixe), lien vers la page SEO dédiée. |
+| 18 | [Polar, Commercial Cleaning Website Design](https://dribbble.com/shots/27768209-Polar-Commercial-Cleaning-Website-Design) (Dribbble, Systra Studios) | [capture](captures/inspis/18-dribbble-polar.jpg) | Sur fond blanc, un carrousel de prestations avec de vraies photos de lieux (cage d'escalier, bureaux), une prestation par carte. À éviter : le hero sombre, hors de la marque « blanc ». | Cartes illustrées par de vrais lieux, pas par des clichés. |
 
-**Palette recommandée** (contrastes WCAG calculés)
+Détail repris d'une référence à côté : sous l'estimateur Coverall (n° 7), le périmètre en 5 tâches (sols, déchets, aspirateur, poussière, surfaces). Une liste aussi courte peut détailler « quelle prestation » dans chaque carte.
 
-Inchangée. Les observations la confortent : les CTA verts des concurrents portent du texte blanc à 3,0:1 (Coverall, `#00AB48`) et 3,8:1 (Office Pride, `#00964D`), le bouton orange de Companeo tombe à 2,2:1. Garder le vert pour les pastilles et le bleu `#1D4ED8` (6,7:1) pour les CTA évite ce défaut.
+### 3. Pourquoi nous
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 4 | [Onet : agence du Mans](https://www.onet.fr/en/agencies/onet-proprete-et-services-le-mans/) (site réel FR, version anglaise) | [capture](captures/inspis/04-onet-le-mans.jpg) | Le label Qualipropre est dans une section « Certifications » avec son logo et une phrase d'explication, pas collé au CTA. | « Label Qualipropre si obtenu », « Produits écolabellisés si justifiés ». |
+| 5 | [Office Pride : Colorado Springs Downtown](https://officepride.com/colorado-springs-downtown/) (site réel US) | [capture](captures/inspis/05-office-pride-colorado-springs.jpg) | Une ligne de 3 réassurances courtes avec une icône chacune. | Les 3 arguments (salariée et assurée, écolabellisés, sans engagement) en version courte. |
+
+Détail repris d'une référence à côté : l'argument « Want the same team? » de Flatiron Maids (n° 20). Il rejoint l'option B du brief (« La même équipe, chaque semaine ») et le frein de Sophie (un agent différent chaque mois).
+
+« Comment ça marche » en 3 étapes : aucune inspiration. À dessiner avec les 3 preuves du brief : préavis d'un mois, remplacement en cas d'absence, interlocuteur unique.
+
+### 4. Zone d'intervention
+
+Aucune inspiration. Onet (n° 3) affiche une carte OpenStreetMap interactive chargée d'office, et le shot « Service Area Map & Wide Coverage » (Dribbble, ouvert pendant la refonte) embarque une carte Google : les deux vont contre « sans Google Maps chargé d'office » et « image statique ou SVG ». À faire : un SVG léger de Bordeaux Métropole et de la Gironde, et la liste des communes en texte (utile au SEO local et à Thomas, à Pessac).
+
+### 5. Avant / après
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 22 | [Before/After slider](https://dribbble.com/shots/27731233-Before-After-slider) (Dribbble, Diana Fabiańczuk) | [capture](captures/inspis/22-dribbble-before-after-slider.jpg) | Une ligne de séparation fine, une poignée ronde avec 2 flèches (elle dit qu'on peut glisser), 2 étiquettes en pilule « Before us » et « After us » dans les coins hauts. | Curseur de comparaison, étiquettes « Avant » et « Après » toujours visibles. |
+| 25 | [img-comparison-slider](https://img-comparison-slider.sneas.io/) (composant open source) | [capture](captures/inspis/25-img-comparison-slider.jpg) | Testé dans la page : après un clic, les flèches du clavier déplacent la séparation (de 4 % à 95 % en maintenant la flèche droite). Composant web, compatible avec un site statique. L'élément n'expose pas de rôle ARIA. | « Accessible au clavier », générateur statique. Ajouter un `aria-label` (« Comparer avant et après, bureaux Chartrons, mars 2027 ») et une légende visible. |
+
+Aucun site réel de nettoyage avec un curseur n'a été trouvé (recherches web en anglais et en français, et une page Jan-Pro qui renvoie une erreur 403). Recommandations : 3 ou 4 cas au plus, chacun légendé (lieu, date, type de chantier), comme le demande la preuve « photos de chantiers locaux datées ».
+
+### 6. Avis Google
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 18 | [Polar, Commercial Cleaning Website Design](https://dribbble.com/shots/27768209-Polar-Commercial-Cleaning-Website-Design) (Dribbble, Systra Studios) | [capture](captures/inspis/18-dribbble-polar.jpg) | « 5,0 basierend auf 36 Google-Bewertungen » en tête, puis des cartes d'avis avec étoiles, prénom et ancienneté de l'avis. La note revient aussi sous le CTA du hero. | La note, le nombre d'avis, 3 verbatims ; la date demandée par le Code de la consommation. |
+| 19 | [Cleaning Lead Generation Landing Page](https://dribbble.com/shots/27223369-Cleaning-Lead-Generation-Landing-Page) (Dribbble, WPLanding) | [capture](captures/inspis/19-dribbble-cleanpolish.jpg) | Une ligne compacte note et étoiles sous les boutons, qui renvoie vers le bloc avis. | Rappel de la note Google en haut de page. |
+
+Détail repris d'une référence à côté : Coverall Fresno (n° 12) met la note et le nombre d'avis dans un titre. Son verbatim anonyme et non daté est à éviter.
+
+### 7. Devis en ligne en 3 étapes
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 5 | [Office Pride : Colorado Springs Downtown](https://officepride.com/colorado-springs-downtown/) (site réel US) | [capture](captures/inspis/05-office-pride-colorado-springs.jpg) | Une carte « Step 1 of 3 » avec barre de progression et un bouton « Next » bleu nuit `#12345A`, visible dès le hero. À éviter : les coordonnées (nom, e-mail, société, téléphone) dès l'étape 1. | Formulaire en 3 étapes, barre de progression « Étape 2 sur 3 ». |
+| 21 | [Multistep request quote form](https://dribbble.com/shots/24125199-Multistep-request-quote-form) (Dribbble, Amine) | [capture](captures/inspis/21-dribbble-multistep-quote-form.jpg) | Une barre d'étapes nommées (type, préférences, recommandation, coordonnées), des cartes à grande icône pour le type, et la recommandation affichée **avant** les coordonnées. | Ordre du brief : (a) type de local, (b) surface et fréquence puis fourchette, (c) coordonnées. |
+
+Détails repris de références à côté :
+- les 4 facteurs de prix en cartes à icône (surface, fréquence, prestations, horaires) de Lebontri (n° 6), pour expliquer la fourchette de l'étape (b) ;
+- le type de local en cartes à icône à l'étape 1 de Companeo (n° 11) ;
+- le paragraphe « How we determine your quote » de Coverall (n° 8), qui justifie la visite : il colle à la mention « indicatifs, confirmés après visite » ;
+- le ton « questions à poser à votre prestataire » de l'article prix de Coverall (n° 14), en 3 ou 4 lignes sous l'estimateur.
+
+### 8. Contact
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 3 | [Onet : agence de Lyon](https://www.onet.fr/en/agencies/onet-proprete-et-services-lyon/) (site réel FR, version anglaise) | [capture](captures/inspis/03-onet-lyon.jpg) | Plus bas dans la page : horaires (lundi au vendredi, 8 h-12 h et 14 h-17 h), adresse, téléphone, pastille « Open ». Les données `LocalBusiness` sont présentes. La carte OSM interactive n'est pas reprise (voir bloc 4). | Téléphone, horaires, adresse ; données structurées `LocalBusiness`. |
+
+Détail repris d'une référence à côté : sur mobile, Coverall (n° 7) met le numéro en lien `tel:` dans le bandeau du haut.
+
+### Pages SEO
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 16 | [Lebontri : fin de chantier à Bordeaux](https://lebontri.fr/nettoyage-fin-chantier/bordeaux) (plateforme FR) | [capture](captures/inspis/16-lebontri-fin-chantier-bordeaux.jpg) | Les salissures du métier et la date de livraison dans les premières lignes : c'est la partie qui n'est pas dupliquée d'une page à l'autre. | Page « Nettoyage fin de chantier en Gironde », contenu rédigé et non dupliqué. |
+
+Détail repris d'une référence à côté : le title de Lebontri Tours (n° 2), « Nettoyage de bureaux Tours (37) : devis de pros \| LeBonTri ». Pour Brillance Pro : « Nettoyage de bureaux Bordeaux (33) : devis en 24 h \| Brillance Pro ».
+
+---
+
+## Mobile
+
+| Site | Capture | Ce qu'on observe | Exigence du brief |
+|---|---|---|---|
+| Office Pride (inspiration) | [capture](captures/inspis/mobile-office-pride.jpg) | Dans le hero, 2 boutons de même largeur : « Request a Quote » vert et le téléphone en blanc. Le formulaire « Step 1 of 3 » suit. La barre fixe « Ready to get started? Request a Quote » reste visible même quand le formulaire est à l'écran, et le bouton d'accessibilité la chevauche. | « Appeler » et « Devis » au même niveau ; montre pourquoi masquer la barre quand le formulaire est visible. |
+| Lebontri, Bordeaux (à côté) | [capture](captures/a-cote/mobile-lebontri-bordeaux.jpg) | Une barre fixe en bas, un seul bouton pleine largeur « Estimer mon nettoyage · Gratuit ». Pas de bouton d'appel. Au premier écran, le même CTA apparaît 2 fois. | Contre-exemple de la barre « Appeler » / « Devis ». |
+| Coverall, janitorial (à côté) | [capture](captures/a-cote/mobile-coverall-janitorial.jpg) | Pas de barre fixe. Le numéro est en lien `tel:` dans le bandeau du haut. Le H1 en capitales prend 3 lignes et la photo occupe presque tout l'écran. | Contre-exemple pour le LCP mobile < 2,0 s et l'estimation en moins de 60 s. |
+
+**À retenir** : aucun des 3 ne met « Appeler » et « Devis » côte à côte dans une barre fixe. Pour tenir les cibles du brief (complétion mobile ≥ 45 %, estimation en moins de 60 s, boutons d'au moins 44 px) :
+- une barre fixe en bas, en 2 boutons égaux de 56 px (« Appeler » en blanc bordé de bleu, « Devis » en bleu plein), masquée quand le formulaire est visible ;
+- un formulaire en 3 écrans, avec une barre de progression, des boutons-cartes pour le type de local et des pastilles pour la fréquence ;
+- l'estimation avant les coordonnées ;
+- une photo de hero compressée (WebP/AVIF) et dimensionnée, pas une photo plein écran comme Coverall.
+
+---
+
+## Directions
+
+Le brief prévoit **1 piste** de maquette (section 10). Une seule direction est donc gardée.
+
+**Direction unique : « Net et lumineux »**
+- Beaucoup de blanc, le bleu franc pour le seul CTA de chaque section, le vert en pastilles et en décor (« sans engagement » en texte encre sur pastille verte). Inspirations : n° 17 pour le blanc et le bleu.
+- De vraies photos de l'équipe en tenue, en lumière naturelle, avec les prénoms, et des icônes au trait. Inspirations : n° 3 (un agent au travail, logo visible) et n° 5 (une équipe en tenue).
+- La ville dans le H1 et une pastille de zone au-dessus (n° 1, 19), le téléphone sous le CTA (n° 17, 5).
+- La note Google sous le CTA et des avis datés (n° 18, 19).
+- Le devis en 3 étapes nommées, la fourchette avant les coordonnées (n° 21, 5).
+- Le curseur avant/après au clavier (n° 22, 25).
+- La carte des communes en SVG et la liste en texte, à dessiner (aucune inspiration).
+- C'est la plus facile à décliner pour un autre métier : seuls les textes, les icônes et `brand.green` changent (critère de réussite du brief).
+
+**Directions retirées**
+- **B « Artisan de quartier »** : son fond teinté s'écarte du « blanc » de la marque, et elle se décline moins vite pour un autre métier, alors que le brief demande moins d'une journée. Ses bons éléments (carte des communes, prénoms) sont déjà exigés par le brief et passent dans la direction unique.
+- **C « Le comparateur »** : l'estimateur dans le hero prend la place de la « vraie photo de l'équipe » exigée par le bloc Hero, et le brief place le devis en bloc 7. Elle s'appuyait sur Flatiron Maids (n° 20), hors de la marque.
+
+---
+
+## Palette, polices, design tokens, composants
+
+Contrastes calculés selon la formule WCAG 2.1. Le fond de référence est `bg.default` (`#FFFFFF`). Toutes les valeurs ont été revérifiées contre la section 9 du brief (marque et accessibilité) ; les 3 corrections sont signalées.
+
+### Palette
+
+Les observations la confortent : les CTA verts des concurrents portent du texte blanc à 3,0:1 (Coverall, `#00AB48`) et 3,8:1 (Office Pride, `#00964D`), le bouton orange de Companeo tombe à 2,2:1. Garder le vert en décor et le bleu `#1D4ED8` (6,7:1) pour les CTA évite ce défaut.
 
 | Rôle | Hex | Usage |
 |---|---|---|
 | Blanc | `#FFFFFF` | Fond principal |
 | Bleu franc | `#1D4ED8` | CTA, liens, titres d'accent. Contraste de 6,7:1 sur blanc, blanc sur bleu : 6,7:1 |
 | Bleu très clair | `#EFF6FF` | Fonds de section, cartes. Le bleu y garde un contraste de 6,2:1 |
-| Vert frais | `#22C55E` | Pastilles, icônes, bordures. **Jamais du texte sur blanc** (2,3:1). Texte foncé sur vert : 7,8:1 |
-| Vert texte | `#15803D` | Mentions « ✓ » en texte sur blanc (5,0:1) |
+| Vert frais | `#22C55E` | Pastilles, bordures et icônes décoratives. **Jamais du texte sur blanc** (2,3:1), ni une icône porteuse de sens (sous 3:1). Texte encre sur vert : 7,8:1 |
+| Vert texte | `#15803D` | Mentions « ✓ » en texte et coches porteuses de sens sur blanc (5,0:1). Ce n'est pas le vert accent |
 | Encre | `#0F172A` | Corps de texte (17,9:1) |
 | Gris | `#475569` | Texte secondaire (7,6:1) |
 
-**Polices Google Fonts**
-- **Figtree** (700 et 800) pour les titres, **Figtree** (400 et 500) pour le texte. Une seule famille.
+### Polices Google Fonts
+
+- **Figtree** (700 et 800) pour les titres, **Figtree** (400 et 500) pour le texte. Une seule famille, conforme au brief.
 - Alternative : **Nunito Sans**.
-- Relevé chez les concurrents : Bricolage Grotesque et Hanken Grotesk (Lebontri), Montserrat (Onet), Roboto Condensed en capitales (Coverall), CeraPro (Office Pride), Roboto (Companeo). Rien ne justifie de changer : Figtree reste plus lisible que les capitales condensées de Coverall et se distingue de Montserrat.
+- Relevé chez les concurrents : Bricolage Grotesque et Hanken Grotesk (Lebontri), Montserrat (Onet), Roboto Condensed en capitales (Coverall), CeraPro (Office Pride), Roboto (Companeo). Rien ne justifie de changer.
 
-**3 choses à ne pas faire**
-1. Pas de banque d'images (main gantée, éponge, sourire face à l'objectif, foule) : de vraies photos de l'équipe et des chantiers, sinon rien. Vu chez Coverall (n° 8, 15) et Companeo (n° 11).
-2. Pas de pages-villes générées en masse ni de texte dupliqué. Le « {city} » visible n'a pas été constaté, mais les pages Lebontri de Bordeaux, Tours et Valenciennes ont le même hero, à la ville et à la fin du H1 près (n° 1, 2, 6).
-3. Pas de vert en texte sur fond blanc, pas de prix caché derrière un compte ou des coordonnées (n° 6, 7), et pas d'avis sans source ni date (n° 12).
-
----
-
-## Design tokens (format design system)
-
-Contrastes calculés selon la formule WCAG 2.1. Le fond de référence est `bg.default` (`#FFFFFF`).
-
-### Couleurs
+### Couleurs (tokens)
 
 | Token | Hex | Usage | Contraste |
 |---|---|---|---|
-| `brand.blue` | `#1D4ED8` | CTA, liens, accents de titre | 6,7:1. Blanc sur bleu : 6,7:1 |
+| `brand.blue` | `#1D4ED8` | CTA, liens, accents de titre, icônes porteuses de sens | 6,7:1. Blanc sur bleu : 6,7:1. Sur `brand.green-50` : 6,4:1 |
 | `brand.blue-hover` | `#1E40AF` | Survol du CTA | 8,7:1 |
 | `brand.blue-50` | `#EFF6FF` | Fonds de section, cartes | Le bleu y garde 6,2:1 |
-| `brand.green` | `#22C55E` | Pastilles, icônes, bordures | **2,3:1 sur blanc, donc jamais en texte**. Texte encre sur vert : 7,8:1 |
+| `brand.green` | `#22C55E` | Pastilles, bordures, icônes décoratives | **2,3:1 sur blanc, donc jamais en texte ni en icône porteuse de sens** (corrigé). Texte encre sur vert : 7,8:1 |
 | `brand.green-50` | `#F0FDF4` | Fond des encarts « sans engagement » | sans objet |
-| `semantic.success` | `#15803D` | Messages de succès, coches en texte | 5,0:1 |
+| `semantic.success` | `#15803D` | Messages de succès, coches en texte | 5,0:1 (4,8:1 sur `brand.green-50`) |
 | `semantic.error` | `#B91C1C` | Erreurs de formulaire | 6,5:1 |
-| `semantic.warning` | `#B45309` | Avertissements (« estimation indicative ») | 5,0:1 |
+| `semantic.warning` | `#B45309` | Avertissements (« estimation indicative ») | 5,0:1, et 4,6:1 sur `brand.blue-50` (encart d'estimation) |
 | `neutral.900` | `#0F172A` | Corps de texte | 17,9:1 |
 | `neutral.600` | `#475569` | Texte secondaire | 7,6:1 |
 | `neutral.400` | `#7A8699` | Bordures de champs (≥ 3:1) | 3,7:1 |
@@ -198,25 +239,78 @@ Déclinaison métier : seul `brand.green` change (par exemple un orange pour la 
 
 **Bouton secondaire** : fond blanc, bordure de 1,5 px `brand.blue`, texte bleu. Survol : fond `brand.blue-50`. C'est le bouton « Appeler » de la barre mobile.
 
-**Barre mobile fixe** : 2 boutons de largeur égale (secondaire « Appeler », primaire « Devis »), hauteur 56 px, `safe-area-inset-bottom` respecté. Elle est masquée quand le formulaire de devis est visible.
+**Barre mobile fixe** : 2 boutons de largeur égale (secondaire « Appeler », primaire « Devis »), hauteur 56 px (au-dessus des 44 px du brief), `safe-area-inset-bottom` respecté. Elle est masquée quand le formulaire de devis est visible.
 
-**Carte de prestation** : fond `bg.default`, bordure `neutral.200`, `radius.lg`, icône au trait sur pastille `brand.green-50`. Elle contient un titre `h3`, une ligne « pour qui », un « à partir de » optionnel et un lien d'action. Au survol : `shadow.md`.
+**Carte de prestation** : fond `bg.default`, bordure `neutral.200`, `radius.lg`, icône au trait `brand.blue` sur pastille `brand.green-50` (couleur de l'icône précisée). Elle contient un titre `h3`, une ligne « pour qui », la fréquence, un « à partir de » optionnel (HT, « indicatif, confirmé après visite ») et un lien d'action (« Estimer le nettoyage de mes bureaux »). Au survol : `shadow.md`.
 
 **Formulaire de devis en 3 étapes** :
-- barre de progression « Étape 2 sur 3 » ;
+- barre de progression « Étape 2 sur 3 », étapes nommées ;
 - étape 1 : type de local en cartes radio ;
-- étape 2 : surface en tranches ou champ numérique, fréquence en pastilles, puis l'estimation dans un encart `brand.blue-50` avec la mention `semantic.warning` « indicative, confirmée après visite » ;
-- étape 3 : 4 champs avec labels visibles ;
+- étape 2 : surface en tranches ou champ numérique, fréquence en pastilles, puis « Voir mon estimation » et l'estimation dans un encart `brand.blue-50` avec la mention `semantic.warning` « indicative, confirmée après visite » ;
+- étape 3 : nom, téléphone, e-mail, code postal et message facultatif, avec labels visibles, puis « Recevoir mon devis sous 24 h » et la mention RGPD sous le formulaire ;
 - erreur sous le champ, en texte et avec icône, et `aria-describedby`.
 
-**Bloc avis** : la note en grand (`price`), des étoiles avec un texte alternatif (« 4,8 sur 5, 37 avis Google »), 3 verbatims avec prénom, initiale et date.
+**Bloc avis** : la note en grand (`price`), des étoiles avec un texte alternatif au format « [note] sur 5, [nombre] avis Google » (rempli avec les vrais chiffres de la fiche, corrigé), 3 verbatims avec prénom, initiale, date et source, et un lien vers la fiche.
 
 | À faire | À ne pas faire |
 |---|---|
 | Un seul CTA primaire par section | « Devis », « Contact » et « Rappel » côte à côte au même poids |
-| Le vert en pastilles, icônes et bordures | Du texte vert clair sur blanc (2,3:1) |
+| Le vert en pastilles, bordures et décor | Du texte ou une icône porteuse de sens en vert clair sur blanc (2,3:1) |
 | L'estimation affichée avant de demander les coordonnées | Les coordonnées exigées dès l'étape 1 |
 | Le téléphone en lien `tel:`, visible dans l'en-tête | Le numéro en image ou en pied de page seulement |
 | De vraies photos compressées (WebP/AVIF) avec dimensions fixées | Des photos de banque d'images lourdes qui décalent la mise en page |
 | Les avis datés, sourcés, avec un lien vers la fiche Google | Des avis sans date ni source, ou un widget qui charge 500 Ko de JavaScript |
 | Un focus visible et un curseur avant/après utilisable au clavier | Un curseur uniquement au glisser |
+| Une carte des communes en SVG et la liste en texte | Une carte Google ou OSM chargée d'office |
+
+---
+
+## Points à remonter au client
+
+- **KPI du pack local** : la cible est « 2 requêtes sur 4 », mais le brief ne cite que 2 requêtes (« nettoyage bureaux Bordeaux », « entreprise de nettoyage Mérignac »). Il faut nommer les 2 autres.
+- **Vert accent** : le brief l'interdit en texte sur blanc. Le critère WCAG 1.4.11 (niveau AA, exigé par le brief) l'interdit aussi pour les icônes et coches porteuses de sens (2,3:1, sous 3:1). Le bench le garde en décor : à confirmer avec le client, et à revérifier pour chaque couleur d'accent d'une déclinaison métier.
+- **Avis Google au lancement** : le bloc demande une note, un nombre et 3 verbatims datés, alors que la fiche Google est aujourd'hui incomplète et que la cible est 30 avis à 6 mois. Combien d'avis réels existent ? S'il y en a peu, prévoir un bloc plus court plutôt que d'attendre ou de compléter avec des avis qui n'existent pas.
+
+---
+
+## À côté
+
+| # | Référence | Capture | Pourquoi à côté |
+|---|---|---|---|
+| 2 | [Lebontri : Nettoyage de bureau à Tours](https://lebontri.fr/nettoyage-bureau/tours) (plateforme FR) | [capture](captures/a-cote/02-lebontri-tours.jpg) | Page-ville dupliquée : seuls la ville, la fin du H1 et le département changent. Le brief interdit les « pages-villes générées en masse ». La promesse « devis sous 24h » a disparu du title. Seul le format du title est repris (voir Pages SEO). |
+| 6 | [Lebontri : simulateur (Valenciennes)](https://lebontri.fr/nettoyage-bureau/valenciennes) (plateforme FR) | [hero](captures/a-cote/06-lebontri-valenciennes.jpg), [estimation](captures/a-cote/06-lebontri-valenciennes-estimation.jpg) | Pas de simulateur : ni champ ni prix, l'estimation est floutée (« ••• € ») et demande un compte, contre « l'estimation immédiate » du brief. Photo de techniciens dans une salle de bain moisie sur une page de bureaux, contre « vraies photos ». Seules les 4 cartes de facteurs de prix sont reprises (bloc 7). |
+| 7 | [Coverall : estimateur janitorial](https://www.coverall.com/commercial-cleaning-services/janitorial/) (site réel US) | [hero](captures/a-cote/07-coverall-janitorial.jpg), [estimateur](captures/a-cote/07-coverall-janitorial-estimateur.jpg) | Une estimation « instantanée » de 10 champs qui exige les coordonnées avant la fourchette, contre l'ordre du devis du brief (fourchette à l'étape b, coordonnées à l'étape c). H1 en capitales condensées 80 px, CTA blanc sur `#00AB48` (3,0:1), contre WCAG AA. Seul le périmètre en 5 tâches est repris (bloc 2). |
+| 8 | [Coverall : Get a Quote](https://www.coverall.com/get-a-quote/) (site réel US) | [capture](captures/a-cote/08-coverall-get-a-quote.jpg) | Photo de banque d'images (4 agents souriants face à l'objectif, gants verts), contre « une vraie photo de l'équipe ». 6 champs obligatoires dont les coordonnées. Seul le paragraphe « How we determine your quote » est repris (bloc 7). |
+| 9 | [Stratus : Get a Quote](https://www.stratusclean.com/get-quote/) (site réel US) | inaccessible | **Non vérifié** : protection anti-robots (Cloudflare), non contournée. |
+| 10 | [Stratus : devis Miami](https://www.stratusclean.com/locations/miami/get-quote/) (site réel US) | inaccessible | **Non vérifié** : protection anti-robots (Cloudflare), non contournée. Une page devis par implantation ne sert pas : Brillance Pro a une seule zone. |
+| 11 | [Companeo : devis express nettoyage](https://www.companeo.com/nettoyage-de-locaux/devis-express) (plateforme FR) | [capture](captures/a-cote/11-companeo-devis-express.jpg) | Comparateur de 4 sociétés, pas une entreprise locale. H1 bleu `#00A3E4` à 2,8:1 et bouton blanc sur orange `#F89827` à 2,2:1, contre WCAG AA. Photo de banque d'images et carte de France à figurines 3D. Il promet la rapidité de la demande (« 60 secondes chrono »), pas de la réponse. Seules les cartes de type de local sont reprises (bloc 7). |
+| 12 | [Coverall Fresno : plus de 100 avis Google 5 étoiles](https://www.coverall.com/in-the-news/coverall-of-fresno-reinforces-role-as-the-best-commercial-cleaning-provider-with-5-star-rating-and-over-100-google-reviews/) (site réel US) | [capture](captures/a-cote/12-coverall-fresno-avis.jpg) | Communiqué du 19 août 2026 en texte seul. Le seul verbatim est anonyme et non daté, contre la règle du brief « indiquer leur source et leur date ». Seule l'idée de la note dans un titre est reprise (bloc 6). |
+| 13 | [Coverall Gainesville : 40e avis 5 étoiles](https://www.coverall.com/in-the-news/coverall-of-gainesville-celebrates-40th-5-star-review-and-perfect-5-star-google-rating-reinforcing-role-as-best-commercial-cleaning-service-in-gainesville-fl/) (site réel US) | [capture](captures/a-cote/13-coverall-gainesville-avis.jpg) | Contexte sectoriel seulement : communiqué du 2 septembre 2026, citation de la direction et pas d'un client. Il montre que 40 avis suffisent à faire une annonce locale, ce qui confirme la cible de 30 avis du brief. |
+| 14 | [Coverall : Pricing Commercial Cleaning Services](https://www.coverall.com/commercial-cleaning-services/pricing-commercial-cleaning-services-for-your-business/) (site réel US) | [capture](captures/a-cote/14-coverall-pricing.jpg) | Contexte sectoriel seulement : article de blog en texte seul, sans icônes ni estimateur. Il cite la surface, la fréquence et le nombre de tâches. Seul le ton est repris (bloc 7). |
+| 15 | [Coverall : FAQ nettoyage commercial](https://www.coverall.com/faqs/commercial-cleaning/) (site réel US) | [capture](captures/a-cote/15-coverall-faq.jpg) | Pas de bloc FAQ dans l'arborescence du brief. Photo de foule de banque d'images, contre « vraies photos ». 14 questions en capitales, sans données FAQPage. |
+| 20 | [Local Cleaning Service Website, Flatiron Maids](https://dribbble.com/shots/27650887-Local-Cleaning-Service-Website-Landing-Page-UI) (Dribbble, Jabel Ahmed) | [capture](captures/a-cote/20-dribbble-flatiron-maids.jpg) | Hors de la marque du brief (orange, fond turquoise, titres à empattements en capitales) et ménage à domicile. L'estimateur dans le hero remplace la photo d'équipe exigée par le bloc Hero. Seul l'argument « Want the same team? » est repris (bloc 3). |
+| 23 | [KD Enterprises, Commercial Cleaning & Facility Landing page](https://dribbble.com/shots/27818578-KD-Enterprises-Commercial-Cleaning-Facility-Landing-page) (Dribbble, Carlos Pessane) | [capture](captures/a-cote/23-dribbble-kd-enterprises.jpg) | Contre-exemple : femme en tablier avec éponge et gants rouges, étincelles dorées, « We provide Efficient Cleaning Services ». Rien ne dit qui, où ni à quel prix, contre le H1 local du brief et ses vraies photos. |
+| 24 | [Cleaning Service Website Examples](https://onepagelove.com/tag/cleaning-service) (One Page Love) | [capture](captures/a-cote/24-onepagelove-cleaning-service.jpg) | URL mortes : 4 exemples de 2012-2013, tous hors ligne. Mascottes (super-héros « Schluss mit Schmutzig », chapeau haut-de-forme), hors du ton « simple, professionnel » du brief. |
+
+**Clichés croisés** : agents souriants face à l'objectif avec gants colorés (n° 8, 23), femme à l'éponge et étincelles (n° 23), mascotte (n° 24), foule de banque d'images (n° 15), carte de France à figurines 3D (n° 11), photo spectaculaire hors sujet (n° 6), logos factices (n° 19). Le secteur a peu de références soignées : une vitrine nette se démarque vite.
+
+---
+
+## Galeries : requêtes lancées
+
+| Date | Plateforme | Requête | Résultat |
+|---|---|---|---|
+| 2026-11-12 | Dribbble | « cleaning service website », « commercial cleaning landing page », « office cleaning website » | Retenus : n° 17, 18, 19 (inspirations), n° 20, 23 (à côté) |
+| 2026-11-12 | Dribbble | « multi step quote form » | Retenu : n° 21 |
+| 2026-11-12 | Dribbble | « before after slider » | Retenu : n° 22 |
+| 2026-11-12 | One Page Love | tag « cleaning-service » | n° 24 (à côté) |
+| 2026-11-12 | Web | curseur avant/après d'un vrai site de nettoyage (anglais et français) | Aucun site réel ; page Jan-Pro en erreur 403. Composant n° 25 retenu |
+| 2026-11-12 | Behance | | Inaccessible, erreur HTTP 400 renvoyée au navigateur automatisé |
+| 2026-11-12 | Pinterest | « cleaning business website design blue » | Fenêtre de connexion obligatoire, aucun lien de pin lisible |
+| 2026-11-12 | Land-book | | Inaccessible (protection anti-robots, challenge Cloudflare persistant) |
+| 2026-11-12 | Lapa Ninja | | Inaccessible (protection anti-robots, page « Sorry, you have been blocked ») |
+| 2026-11-12 | Awwwards | « cleaning » | Sites d'agences et de portfolios sans rapport, aucun retenu |
+| 2026-11-12 | Godly | | godly.website redirige vers recent.design, sans recherche et sans site de services locaux |
+| 2026-11-12 (refonte) | Dribbble | « service area map » | 1 shot ouvert (« Service Area Map & Wide Coverage ») : carte Google intégrée, contre le brief. Non retenu |
+| 2026-11-12 (refonte) | Dribbble | « areas we serve », « service area », « locations we serve » | Sites d'artisans américains (plomberie, déménagement, élagage) et hors sujet. 1 shot plomberie ouvert, section zone non lisible dans la capture. Non retenu |
+| 2026-11-12 (refonte) | Dribbble | « how it works cleaning » | 3 shots ouverts : Gala Cleaning (photos de banque d'images, gants jaunes), CleaniX (banque d'images, logos de marques, ménage à domicile), Bella Cleaning (magenta et empattements, ton luxe B2C). Hors marque ou clichés. Non retenus |
