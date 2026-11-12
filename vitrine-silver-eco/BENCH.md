@@ -1,195 +1,239 @@
 # Benchmark visuel : Les Jours Tranquilles (silver économie / aide à domicile)
 
+Le bench suit le brief client bloc par bloc : chaque inspiration est rattachée à une exigence précise de [`BRIEF-CLIENT.md`](BRIEF-CLIENT.md), les autres références sont rangées à côté avec leur raison.
+
 > **Les Jours Tranquilles est fictive.** Les références sont réelles. Les URL d'origine viennent de résultats de recherche (novembre 2026), les références ajoutées ont été ouvertes le 2026-11-12.
 
 ## Limites, à lire en premier
 
-- **Sites ouverts et capturés le 2026-11-12**, dans un navigateur Chrome piloté (viewport 1440×900, au-dessus de la ligne de flottaison, et 390×844 pour le mobile). Les captures sont dans [`captures/`](captures/). Les couleurs et les polices citées ont été relevées dans la page (styles calculés), pas devinées. Les contrastes sont recalculés selon la formule WCAG 2.1.
-- **12 références sur 16 vues et capturées**, dont 2 épingles Pinterest seulement en partie (n° 11 et 15 : le mur de connexion assombrit la page, seule une zone reste lisible). **4 inaccessibles**, aucune protection n'a été contournée :
-  - n° 6 et 10 (Behance) : erreur HTTP 400 renvoyée au navigateur automatisé. Elles sont **remplacées** par deux shots Dribbble ouverts (n° 6 bis et 10 bis). Le n° 10 bis porte exactement le titre du projet Behance cité.
-  - n° 14 (Pinterest) : **épingle supprimée**. L'URL redirige vers la page « ideas » et l'identifiant seul mène à l'accueil.
-  - n° 16 : Land-book affiche un challenge Cloudflare, Lapa Ninja « Sorry, you have been blocked ».
-- **Corrections importantes** (détail dans chaque ligne) :
-  - **Petits-fils (n° 4)** : la page citée ne parle ni des 3 ans d'expérience, ni d'auxiliaire attitrée, ni de prix. Les critères de recrutement sont sur une autre page, les tarifs dans une grille par agence. Et Petits-fils travaille en **mode mandataire** (la famille est l'employeur), l'inverse de notre modèle.
-  - **Cera (n° 5)** : l'URL redirige vers Home Healthcare Connected. Le régulateur (CQC) n'est pas cité. L'application famille est décrite en texte, sans aucun visuel.
-  - **O2 (n° 8)** : la visite et le devis gratuits sont confirmés. Le « contrat résiliable sans frais » et la « remplaçante en cas d'absence » n'apparaissent pas sur la page.
-  - **O2 (n° 13)** : l'URL redirige. Sur mobile, aucun numéro en haut : une barre fixe en bas à 3 icônes, dont le combiné ouvre une demande de rappel et non un appel.
-  - **Home Instead (n° 7)** : le process compte 7 étapes non numérotées, pas 4.
-  - **Dribbble (n° 9)** : 245 shots, pas environ 170. Le téléphone de Birdie affiche une alerte de chute, pas un compte-rendu de visite.
-  - **« À ne pas faire » n° 3** : le texte blanc sur `#C8775A` est à 3,4:1 (3,1:1 est le contraste de `#C8775A` sur le crème). La règle ne change pas.
-- **7 références ajoutées** (5 Dribbble, 1 Awwwards, 1 site réel), numérotées 6 bis, 10 bis et 17 à 21. One Page Love ne contient aucun site d'aide aux seniors, Godly redirige vers recent.design et ThemeForest (pour retrouver le thème du n° 11) bloque par Cloudflare. Le détail est en fin de section « Références ajoutées ».
+- **Sites ouverts et capturés le 2026-11-12**, dans un navigateur Chrome piloté (viewport 1440×900, au-dessus de la ligne de flottaison, et 390×844 pour le mobile). Les couleurs et les polices citées ont été relevées dans la page (styles calculés), pas devinées. Les contrastes sont recalculés selon la formule WCAG 2.1.
+- **Refonte du 2026-11-12** : les références ont été triées en **11 inspirations** et **13 références à côté**. Les captures sont rangées dans [`captures/inspis/`](captures/inspis/) et [`captures/a-cote/`](captures/a-cote/), sans changer les noms de fichiers ni les numéros. Le bench est réorganisé selon l'arborescence du brief. Rien n'a été supprimé : chaque référence à côté garde sa ligne et sa raison.
+  - Le n° 9 est scindé : la page de tag Dribbble va à côté (contexte seulement), le shot Birdie qu'elle contient est une inspiration.
+  - Les captures mobiles sont triées sur leur propre contenu : celle d'Ouihelp va dans `inspis/`, celles d'O2 et de Petits-fils dans `a-cote/` (contre-exemples), même si Petits-fils (n° 4) est une inspiration sur desktop.
+  - La direction B est retirée et la direction C corrigée (voir « Directions »).
+  - **Tokens corrigés** pour la cible du brief (corps de texte ≥ 7:1, ≥ 18 px partout) : `color-neutral-600`, les 4 couleurs sémantiques, l'anneau de focus, un nouveau `color-link`, et la suppression de `text-small` (16 px). Le détail est dans « Palette, polices, design tokens, composants ».
+  - Deux composants du kit demandé par le brief (livrable 4) manquaient : le bloc tarif et le bloc avis. Ils sont ajoutés.
+  - **Aucune nouvelle référence** : Dribbble renvoie désormais une page « Let's confirm you are human » (HTTP 405), non contournée. One Page Love ne contient rien d'utilisable pour les blocs manquants (détail dans « Galeries : requêtes lancées »).
+- **12 références sur 16 vues et capturées** dans la session d'origine, dont 2 épingles Pinterest seulement en partie (n° 11 et 15 : le mur de connexion assombrit la page). **4 inaccessibles**, aucune protection n'a été contournée : n° 6 et 10 (Behance, erreur HTTP 400, remplacées par les n° 6 bis et 10 bis), n° 14 (épingle Pinterest supprimée), n° 16 (Land-book : challenge Cloudflare ; Lapa Ninja : « Sorry, you have been blocked »).
+- **Corrections de la vérification** (détail dans chaque ligne) :
+  - Petits-fils (n° 4) travaille en **mode mandataire** (la famille est l'employeur), l'inverse de notre modèle. La page services ne parle ni d'expérience, ni d'auxiliaire attitrée, ni de prix : critères et tarifs sont sur d'autres pages.
+  - Cera (n° 5) redirige vers Home Healthcare Connected ; l'application famille n'y a aucun visuel.
+  - O2 (n° 8) : visite et devis gratuits confirmés, pas de « contrat résiliable sans frais » ni de « remplaçante ». O2 (n° 13) : sur mobile, aucun numéro en haut.
+  - Home Instead (n° 7) : 7 étapes non numérotées, pas 4.
+  - Dribbble (n° 9) : 245 shots ; le téléphone de Birdie affiche une alerte de chute, pas un compte-rendu.
+- **7 références ajoutées** dans la session d'origine (n° 6 bis, 10 bis, 17 à 21).
 - Aucun formulaire n'a été rempli ni envoyé. Sur Dribbble, les avatars et les noms de designers ont été masqués avant la capture. Les personnes visibles sont celles des photos publiées par les entreprises.
 
 **Répartition** : 16 entrées d'origine (17 URL) et 7 ajoutées. Sites réels 8, Dribbble 7 (dont 1 page de tag), Pinterest 3, Behance 2 (inaccessibles), One Page Love 1, Awwwards 1, Land-book et Lapa Ninja 1 (inaccessibles, regroupés dans l'entrée 16).
 
 ---
 
-## Hero
+## Couverture du brief
 
-| # | Titre | Source | URL | Capture | À retenir |
-|---|---|---|---|---|---|
-| 1 | Honor, « Quality of life has no expiration date » | Site réel (US) | https://www.honorcare.com/home-care/ | [capture](captures/01-honor-home-care.jpg) | Fond pêche `#FFF6F0`, accroche en Plus Jakarta Sans 400, 38 px, orange `#E76124` (3,2:1 : acceptable en grand texte seulement). Pas de H1 : le titre est une simple div. Un seul bouton « Find home care », blanc sur brun `#662A12` (11,0:1), et à droite une photo de deux hommes âgés qui rient, dans un cadre arrondi. Texte courant brun `#662A12`. Aucun numéro de téléphone sur la page. Honor est aussi la maison mère de Home Instead (n° 7). **À reprendre** : le ton digne, et le duo fond clair chaud + CTA brun foncé, très proche de notre crème + terracotta foncée. **À éviter** : un titre orange clair à 3,2:1, et une page sans numéro. |
-| 2 | Agedly, a Home Care Service for Seniors Landing Page (Animated), 10am Studio | Dribbble | https://dribbble.com/shots/16641466-Agedly-a-Home-Care-Service-for-Seniors-Landing-Page-Animated | [capture](captures/02-dribbble-agedly.jpg) | Vidéo de 30 s (image de départ capturée). Hero blanc, H1 en grotesque grasse « We Provide Home Care Services for Seniors », « Seniors » en rouge, un champ code postal et un bouton rouge « Get Started ». La photo montre une soignante en blouse qui enlace une dame en fauteuil roulant. Plus bas, une bande bleu nuit et un gros plan de mains sur une canne. **À reprendre** : un seul champ ou un seul bouton dans le hero. **À éviter** : fauteuil roulant, mains sur la canne, blouse médicale : exactement les codes de dépendance que le brief exclut. L'animation reste à proscrire. |
-| 3 | Ouihelp, landing « aide à domicile de confiance » | Site réel (FR) | https://lp.ouihelp.fr/l/aide-domicile-confiance | [capture](captures/03-ouihelp-landing.jpg) | Pas de menu : le logo et le numéro « 01 89 72 41 76, numéro gratuit ». Hero photo sur fond bleu, H1 blanc « Aide à domicile de confiance » en Source Sans Pro 700, 38 px, sous-titre en 14 px blanc (« disponible en 48h »). Bouton-pilule vert `#3ED096` avec le numéro, texte bleu nuit `#002C5A` (7,1:1). Deux pastilles : « Plus de 35 000 familles accompagnées depuis 2016 » et « Plus de 100 agences partout en France ». À droite, une carte « Je souhaite échanger avec un conseiller » : 4 champs (nom, téléphone, code postal, e-mail) et 2 cases de consentement, **la première déjà cochée**. Sous le hero : Certifié SAD, chèques CESU, avance immédiate, Google 4,5/5 et plus de 2400 avis. **À reprendre** : le numéro en gros bouton dans le hero, et la ligne de 4 preuves juste dessous. **À éviter** : la case de consentement pré-cochée (non conforme au RGPD), 4 champs au lieu de 2, du texte en 14 px blanc sur photo. |
+| Exigence du brief | Inspirations | Manque |
+|---|---|---|
+| 1. Hero (photo réelle, « Vos parents chez eux, bien entourés », CTA « Être rappelé », téléphone en grand) | 1, 3, 7, 10 bis, 18, 20 | Rien de bloquant. |
+| 2. Les services (6 cartes : icône, titre, phrase) | 6 bis, 8 | Aucune grille de 6 cartes vue : seulement des pastilles (n° 6 bis) et un bandeau de 5 engagements (n° 8). |
+| 3. Comment ça se passe (4 étapes numérotées, point à 15 jours) | 8, 7 | Aucun parcours numéroté en 4 étapes. Le seul process vu (n° 7) compte 7 étapes sans numéro. |
+| Bloc transverse « Votre parent sort de l'hôpital ? » | 4 (forme de l'encart), 3 (délai affiché) | Aucun bloc sortie d'hôpital vu, ni délai de démarrage pour les prescripteurs. À écrire depuis le brief (option C de l'UX copy). |
+| 4. Le lien avec la famille (maquette de téléphone, exemple de compte-rendu, choix SMS ou application) | 9 (Birdie), 17, 7 | Aucun vrai compte-rendu de passage vu, ni de choix SMS ou application. Les sites réels décrivent leur appli en texte (n° 5, 7). |
+| 5. Tarifs et aides (tarif TTC, exemple de calcul, APA, crédit d'impôt, avance immédiate, sources officielles, devis gratuit) | 4, 3, 8 | Aucune explication APA et crédit d'impôt avec liens officiels n'a été relevée. |
+| 6. L'équipe (4 à 6 portraits avec prénom, ancienneté, une phrase ; formations ; responsable de secteur nommée) | 4, 7, 18 | Aucun bloc de portraits avec prénom et ancienneté, aucune responsable nommée. |
+| 7. Avis des familles (3 à 5 avis vérifiés, note globale, lien vers la source) | 8, 3 | Aucun bloc d'avis détaillé relevé : seulement des notes agrégées. |
+| 8. Zone d'intervention et contact (carte, communes, téléphone en très grand, formulaire nom + téléphone, horaires, adresse) | 18, 3 | Aucune carte ni liste de communes. Aucun bon formulaire à 2 champs (le n° 3 en a 4). |
+| Pages annexes (Nous rejoindre, mentions, accessibilité, modération des avis) | 4 (critères de recrutement) | Rien sur les mentions, la déclaration d'accessibilité ou la modération des avis. |
+| Mobile : `tel:` en haut de chaque écran, barre fixe | 3 (mobile), 7, 18 | Aucun site vu ne met un numéro cliquable en haut de l'écran mobile (voir « Mobile »). |
+| Marque : crème, terracotta douce, olive ; Lora et Atkinson Hyperlegible | 1, 6 bis, 7, 17, 20 | Aucune référence n'utilise Atkinson Hyperlegible. Aucune n'associe terracotta et olive. |
+| Photos réelles, lumière naturelle, personnes actives | 1, 7, 18, 20 | Rien de bloquant. |
+| Accessibilité : corps ≥ 7:1 et ≥ 18 px, pas de texte sur photo sans voile, pas de carrousel | 1, 3, 7 | Le corps de 18 px n'a été relevé que sur le n° 21 (à côté). |
+| Preuve « La même auxiliaire, semaine après semaine » | 8 (engagement « continuité de service ») | Aucun taux de continuité publié par un concurrent. |
+| Preuve « Le vrai prix, aides déduites » | 4 | Rien de bloquant. |
+| Preuve « Rappel sous 2 h ouvrées, démarrage sous [48-72 h] » | 4, 3 | Rien de bloquant. |
+| Preuve « Les familles en parlent » (avis vérifiés, note, nombre) | 8, 3 | Rien de bloquant. |
+| Preuve « Service autorisé par le Département » | 3 (« Certifié SAD » dans la ligne de preuves) | Aucun numéro d'autorisation ni SAP affiché vu. |
+| RGPD : formulaire minimal, aucune case pré-cochée | aucune | Seul contre-exemple vu : le n° 3 (4 champs, case pré-cochée). |
+| SEO local (ville, zone) | 10 bis (zone dans la pastille) | La ville dans le H1 (n° 21, à côté) heurte le titre imposé : voir « Points à remonter au client ». |
 
-## Réassurance et preuves
+---
 
-| # | Titre | Source | URL | Capture | À retenir |
-|---|---|---|---|---|---|
-| 4 | Petits-fils, nos services d'aide à domicile | Site réel (FR) | https://www.petits-fils.com/nos-services-aide-a-domicile/ | [services](captures/04-petits-fils-services.jpg), [tarifs](captures/04-petits-fils-tarifs.jpg) | H1 « Aide à domicile : nos services » en Montserrat 700, 38 px, cyan `#27CDE8` sur blanc (1,9:1). Encart bleu `#0067DA` « Rappel immédiat, dans les 2 heures ouvrables » avec un bouton orange `#EF7D00` (texte blanc 2,8:1). Note « 4.5/5 (12942 avis) » en haut de page, services en 4 blocs à pastille de couleur, illustration d'une dame dans un fauteuil. **Correction** : cette page ne mentionne ni les 3 ans d'expérience, ni l'auxiliaire attitrée, ni de prix (seulement un bouton « Demander les tarifs »). Les critères sont sur la page https://www.petits-fils.com/auxiliaires-de-vie/ : formation qualifiante ou certification Croix-Rouge, 3 ans d'expérience minimum, 3 références vérifiées. Les tarifs sont publiés par agence (https://www.petits-fils.com/tarifs-petits-fils/, puis choix d'une agence) : à Bordeaux Chartrons, 35,50 € TTC de l'heure jusqu'à 25 h par semaine, et une colonne « Coût indicatif réel après crédit d'impôt » à 17,75 € (seconde capture). Petits-fils travaille en **mode mandataire**. Incohérences : « 275 agences » en pied de page contre « 330+ agences » sur la page agence, et « Accessibilité : Non conforme » en pied de page. **À reprendre** : la colonne « coût réel après crédit d'impôt » dans le tableau des tarifs, et des critères de recrutement chiffrés. **À éviter** : le cyan et l'orange pour du texte, l'en-tête de tableau blanc sur jaune `#F9AE00` (1,9:1). |
-| 5 | Cera, Care at Home | Site réel (UK) | https://ceracare.co.uk/home-care | [capture](captures/05-cera-home-care.jpg) | **Redirigée** vers https://homehealthcareconnected.co.uk/home-care (Home Healthcare Connected). Bannière rose à cœurs dessinés, H1 « Home Care » en Kinder Boy (police manuscrite), violet `#76299B` (8,2:1), une auxiliaire en blouse violette avec un monsieur âgé. Texte en Lato. **Correction** : le CQC n'est pas cité sur la page. La « Family App » tient en une phrase et une puce (planning, notes de visite, état de santé), sans capture d'écran. Le lien téléphone est cassé (`tel:"0330 123 9180"`, guillemets compris). **À reprendre** : l'idée « chaque visite est enregistrée et visible par la famille ». **À éviter** : un titre en police manuscrite, les cœurs dessinés, une promesse « famille » sans montrer à quoi elle ressemble. |
-| 6 | Senior care branding (dont « Seniare – Brand Identity & UI/UX Design for Homecare ») | Behance (page de recherche) | https://www.behance.net/search/projects/senior%20care%20branding | inaccessible | **Inaccessible (erreur HTTP 400)**, non vérifié. D'après la session précédente : identités de marque pour l'aide à domicile, Seniare étant le projet le plus vu. Aucun shot « Seniare » sur Dribbble. Remplacée par le n° 6 bis. |
-| 6 bis | AgeFree, Elder Care Branding and Identity Design (Techwitpro) | Dribbble | https://dribbble.com/shots/27547230-AgeFree-Elder-Care-Branding-and-Identity-Design | [capture](captures/06-dribbble-agefree.jpg) | Planche d'identité : vert sapin, crème, orange et jaune doux. Logo serif « AgeFree » avec un pictogramme de deux personnes, slogan « Respect. Support. Smile. ». Une carte « Dignity in every moment », des pastilles de services à icône au trait (Free Consultation, Daily Support, Home Visits…), une affiche « Helping elders live with dignity and joy » avec la fin en italique orange. **À reprendre** : l'accord vert profond + crème + orange, cousin de notre olive + crème + terracotta, et les pastilles de service à icône au trait. **À éviter** : les silhouettes à canne au coucher de soleil, et le mot « elders » (l'équivalent de « nos aînés », interdit par le brief). |
+## Inspirations, bloc par bloc
 
-## Parcours (comment ça se passe)
+### 1. Hero
 
-| # | Titre | Source | URL | Capture | À retenir |
-|---|---|---|---|---|---|
-| 7 | Home Instead, « Our process to provide quality senior care » | Site réel (US) | https://www.homeinstead.com/location/782/home-care-services/our-process-to-provide-quality-senior-care/ | [hero](captures/07-home-instead-process.jpg), [étapes](captures/07-home-instead-etapes.jpg) | **Redirigée** vers la page de l'agence de St Charles (Missouri). Hero en deux moitiés : photo d'une auxiliaire en polo vert qui montre un vase à une dame, et aplat bleu clair `#D3ECFF` avec le H1 « Creating the Right Care Plan » en PP Editorial New (serif), 48 px, vert foncé `#2C4F26` (7,6:1). Fond de page crème `#FAFFEE`, texte `#2C4F26` (9,1:1) en Plus Jakarta Sans. Dans l'en-tête, le numéro en pilule blanche et « Get Started » sur vert anis `#DEED6A` (7,3:1). **Correction** : le process compte 7 étapes (besoins, actes du quotidien, pistes d'aide, sécurité du logement, isolement, plan de coordination, recommandations), en liste à icônes, non numérotées. La page finit sur « Honor Family App » : 6 puces (« Get a comprehensive update after every visit »…), sans visuel. Deux numéros différents : (636) 477-6025 en en-tête, (636) 206-4199 en pied de page. **À reprendre** : le serif éditorial vert foncé sur fond crème, la pilule téléphone dans l'en-tête. **À éviter** : 7 étapes sans numéro (on garde 4 étapes numérotées), deux numéros sur la même page. |
-| 8 | O2, la méthode O2 | Site réel (FR) | https://www.o2.fr/aide-aux-personnes-agees/selon-o2/la-methode-o2 | [hero](captures/08-o2-methode.jpg), [avis](captures/08-o2-methode-avis.jpg) | Hero bleu `#005CB9`, H1 blanc « La Méthode O2 Faire Ensemble » en MontBold, 59 px (6,5:1), photo d'une dame âgée et d'une jeune femme qui regardent un album. Bandeau « Choisir O2 c'est » : 5 engagements à icône au trait (continuité de service, auxiliaires salariés et formés, accompagnement sur mesure, démarches administratives, coordination médicale). Puis « 4,7/5 sur 589 avis Google récoltés entre le 01/03/2026 et le 31/03/2026 ». La méthode écrit en toutes lettres « Ne pas infantiliser la personne ». **Correction** : « visite gratuite et sans engagement » et « devis personnalisé, gratuit et sans engagement » sont bien écrits. Le contrat résiliable sans frais et la remplaçante en cas d'absence n'y sont pas. **À reprendre** : la note avec le nombre d'avis et la période de collecte (bon modèle pour l'information sur les avis), et les micro-réassurances sous le CTA. **À éviter** : le H2 vert `#00BFA2` sur blanc (2,3:1). |
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 1 | Honor, « Quality of life has no expiration date » (site réel, US), https://www.honorcare.com/home-care/ | [capture](captures/inspis/01-honor-home-care.jpg) | Fond pêche `#FFF6F0`, un seul bouton blanc sur brun `#662A12` (11,0:1), photo de deux hommes âgés qui rient dans un cadre arrondi, ton digne. À éviter : l'accroche orange `#E76124` à 3,2:1 et l'absence de numéro sur la page. | Photo chaleureuse et réelle ; CTA unique ; duo crème + terracotta foncée. |
+| 3 | Ouihelp, landing « aide à domicile de confiance » (site réel, FR), https://lp.ouihelp.fr/l/aide-domicile-confiance | [capture](captures/inspis/03-ouihelp-landing.jpg) | Pas de menu : le logo et « 01 89 72 41 76, numéro gratuit ». Le numéro en gros bouton-pilule dans le hero, texte bleu nuit `#002C5A` sur vert `#3ED096` (7,1:1). Sous le hero, une ligne de 4 preuves. À éviter : le sous-titre en 14 px blanc sur photo. | « Le téléphone en grand » dans le hero. |
+| 7 | Home Instead, « Our process to provide quality senior care » (site réel, US), redirigée vers l'agence de St Charles | [hero](captures/inspis/07-home-instead-process.jpg) | H1 « Creating the Right Care Plan » en PP Editorial New (serif), 48 px, vert foncé `#2C4F26` (7,6:1), fond de page crème `#FAFFEE`, texte `#2C4F26` (9,1:1). Le numéro en pilule blanche dans l'en-tête. Photo d'une auxiliaire en polo qui montre un vase à une dame. À éviter : deux numéros différents sur la même page. | Titre en serif (Lora) sur crème ; téléphone en haut de l'écran ; personne active. |
+| 10 bis | Senior Care Website Redesign (Orbillo), Dribbble, https://dribbble.com/shots/27644508-Senior-Care-Website-Redesign-Healthcare-UI-UX-Project | [capture](captures/inspis/10-dribbble-senior-care-redesign.jpg) | Une pastille preuves + zone au-dessus du H1 (« BBB Accredited · A+ Rated · Serving Indiana & Ohio »), le numéro en lien texte juste à côté du CTA, un mot du H1 en serif italique. À éviter : la blouse médicale. | Preuves et zone visibles dès le hero ; CTA + téléphone côte à côte. |
+| 18 | Sincere In-Home Care, Landing Page Design (Brandframer.com), Dribbble, https://dribbble.com/shots/27743802-Sincere-In-Home-Care-Landing-Page-Design | [capture](captures/inspis/18-dribbble-sincere-in-home-care.jpg) | Fond crème, numéro en pilule dans l'en-tête, puis « Call for Care » plein et « Request a Consultation » bordé, et dessous « Speak with a real person: (661) 888-4908 ». Photo naturelle d'une auxiliaire et d'une dame dans un salon. Le meilleur modèle de hiérarchie vu. | CTA « Être rappelé aujourd'hui » + téléphone en grand ; photo réelle. |
+| 20 | The Legacy Senior Communities (Tegan Digital), Honorable Mention Awwwards du 24 septembre 2021, https://www.awwwards.com/sites/the-legacy-senior-communities | [capture](captures/inspis/20-awwwards-legacy-senior.jpg) | Un couple de seniors actifs qui marchent main dans la main dans un jardin, logo et titre en serif fin. Palette relevée par Awwwards : `#2779A7`, `#DF6C4F` (cousin de notre terracotta douce), blanc. À éviter : le titre blanc posé sur la photo ; avec nous, il faut un voile. | Photos de personnes actives ; serif pour l'émotion. |
 
-## Lien famille, services et cartes
+Détails repris de références à côté : un seul champ ou un seul bouton dans le hero (n° 2, Agedly) ; la note des avis au-dessus du titre (n° 19, CareHaven).
 
-| # | Titre | Source | URL | Capture | À retenir |
-|---|---|---|---|---|---|
-| 9 | Elderly care tag (dont « Birdie Family Landing Page », Koncepted) | Dribbble | https://dribbble.com/tags/elderly-care | [tag](captures/09-dribbble-elderly-care.jpg), [Birdie](captures/09-dribbble-birdie-famille.jpg) | **Correction** : 245 shots, pas environ 170. La première page mélange des sites (Agewise, CareHaven, Agedly), une illustration de robot qui aide une dame à traverser et un logo sans rapport. Les 3 shots Birdie sont plus bas ; le plus utile est https://dribbble.com/shots/5413993-Birdie-Family-Landing-Page. On y voit un hero photo mère et fille, un CTA turquoise, le téléphone dans l'en-tête, puis un téléphone qui affiche « Fall detected in the living room » à côté de « Wellbeing reports, live updates after every visit », et des formules à 49,99 £. **À reprendre** : la maquette de téléphone à côté d'une courte liste de bénéfices. **À éviter** : une alerte de chute comme exemple de message. Notre compte-rendu doit rassurer (« Repas préparé, courses faites »), pas alerter. |
-| 10 | Home care website (dont « Senior Care Website Redesign \| Healthcare UI/UX Project ») | Behance (page de recherche) | https://www.behance.net/search/projects/home%20care%20website | inaccessible | **Inaccessible (erreur HTTP 400)**, non vérifié. Un projet du même titre existe sur Dribbble : voir le n° 10 bis. |
-| 10 bis | Senior Care Website Redesign \| Healthcare UI/UX Project (Orbillo) | Dribbble | https://dribbble.com/shots/27644508-Senior-Care-Website-Redesign-Healthcare-UI-UX-Project | [capture](captures/10-dribbble-senior-care-redesign.jpg) | Refonte d'un site d'aide à domicile (« A Day After Day Home Care »). Hero bleu nuit, photo d'une soignante en blouse bleue et d'une dame qui sourient, H1 « Compassionate Home Care Your Loved One Deserves » avec la fin en serif italique. Au-dessus, une pastille « BBB Accredited · A+ Rated · Serving Indiana & Ohio ». CTA vert anis « Get A Free Care Assessment » et le numéro en lien texte juste à côté. Dessous, fond crème, « Personalized Care For Every Need » et 3 cartes photo. **À reprendre** : la pastille preuves + zone au-dessus du H1, le numéro à côté du CTA, un mot en serif italique. **À éviter** : la blouse médicale (on vend de l'aide à domicile, pas du soin). |
+### 2. Les services
 
-## Accessibilité et lisibilité
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 6 bis | AgeFree, Elder Care Branding and Identity Design (Techwitpro), Dribbble, https://dribbble.com/shots/27547230-AgeFree-Elder-Care-Branding-and-Identity-Design | [capture](captures/inspis/06-dribbble-agefree.jpg) | Pastilles de services à icône au trait avec un titre court (Free Consultation, Daily Support, Home Visits…). Accord vert sapin, crème, orange et jaune doux. À éviter : les silhouettes à canne et le mot « elders » (équivalent de « nos aînés », interdit). | Cartes « une icône, un titre, une phrase » ; palette olive + crème + terracotta. |
+| 8 | O2, la méthode O2 (site réel, FR), https://www.o2.fr/aide-aux-personnes-agees/selon-o2/la-methode-o2 | [hero](captures/inspis/08-o2-methode.jpg) | Bandeau « Choisir O2 c'est » : 5 engagements à icône au trait, libellés courts. La méthode écrit « Ne pas infantiliser la personne ». À éviter : le H2 vert `#00BFA2` sur blanc (2,3:1). | Format des cartes de service ; ton respectueux. |
 
-| # | Titre | Source | URL | Capture | À retenir |
-|---|---|---|---|---|---|
-| 11 | Eldcare, Senior Living WordPress Theme | Pinterest | https://www.pinterest.com/pin/973340538222802684/ | [capture partielle](captures/11-pinterest-eldcare.jpg) | Mur de connexion : seule la vignette de l'épingle reste lisible, assombrie. Thème vert sapin et jaune moutarde, « Best senior care with love », photos de seniors qui s'enlacent. La description confirme « warm, accessible design that conveys trust, compassion ». La fiche du thème n'a pas pu être ouverte (ThemeForest bloque par Cloudflare) : **contrastes non vérifiables**. **À retenir** : même famille que le n° 6 bis, vert profond et accent chaud. |
-| 12 | Health & Healthcare Website Examples | One Page Love | https://onepagelove.com/tag/health | [capture](captures/12-onepagelove-health.jpg) | « 78 Real Examples ». Les premiers : chirurgie, IA, logiciel de santé, appli d'aide à l'arrêt de l'alcool (SafeStep), dentiste. Aucun service d'aide aux seniors, et les recherches « senior », « elderly », « home care » et « retirement » sur le site ne donnent rien de pertinent. **À retenir** : peu utile pour notre secteur, sauf pour la longueur de page. Les n° 17 à 19 sont plus proches. |
+### 3. Comment ça se passe
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 8 | O2, la méthode O2 | [hero](captures/inspis/08-o2-methode.jpg) | « Visite gratuite et sans engagement » et « devis personnalisé, gratuit et sans engagement » écrits en toutes lettres, avec des micro-réassurances sous le CTA. | Étape 2 « visite d'évaluation gratuite à domicile » ; devis gratuit (arrêté du 17 mars 2015). |
+| 7 | Home Instead, page process | [étapes](captures/inspis/07-home-instead-etapes.jpg) | Une liste d'étapes à icônes au trait. À éviter : 7 étapes sans numéro ; le brief en veut 4, numérotées. | Mise en forme des 4 étapes. |
+
+### Bloc transverse : « Votre parent sort de l'hôpital ? »
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 4 | Petits-fils, nos services d'aide à domicile (site réel, FR), https://www.petits-fils.com/nos-services-aide-a-domicile/ | [services](captures/inspis/04-petits-fils-services.jpg) | Un encart de couleur pleine « Rappel immédiat, dans les 2 heures ouvrables » avec un bouton, détaché du reste de la page. À éviter : le bouton orange `#EF7D00` à texte blanc (2,8:1). | Forme de l'encart pour « Organiser une aide dès cette semaine », placé entre les sections 3 et 4. |
+| 3 | Ouihelp, hero | [capture](captures/inspis/03-ouihelp-landing.jpg) | Le délai écrit dans le sous-titre : « disponible en 48h ». À éviter : ce sous-titre en 14 px blanc sur photo. | « Démarrage possible sous [48-72 h] » affiché dans l'encart. |
+
+### 4. Le lien avec la famille
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 9 | Birdie Family Landing Page (Koncepted), Dribbble, https://dribbble.com/shots/5413993-Birdie-Family-Landing-Page | [Birdie](captures/inspis/09-dribbble-birdie-famille.jpg) | Une maquette de téléphone à côté d'une courte liste de bénéfices (« Wellbeing reports, live updates after every visit »). À éviter : l'alerte « Fall detected in the living room » ; notre message doit rassurer, pas alerter. | Maquette de téléphone avec un exemple de compte-rendu. |
+| 17 | Family Caregiver Mobile iOS App Design (Purrweb UI/UX Agency), Dribbble, https://dribbble.com/shots/27740425-Family-Caregiver-Mobile-iOS-App-Design | [capture](captures/inspis/17-dribbble-family-caregiver-app.jpg) | Une carte de résumé de journée : qui est passé, à quelle heure (« Leo checked in », « 3/4 care actions covered »). Fond olive et titre serif « Care, in relay. ». À éviter : les médicaments et toute donnée de santé ; le site n'en collecte aucune. | Contenu du compte-rendu (horaire, actions faites) ; olive + serif. |
+| 7 | Home Instead, « Honor Family App » en bas de page | [étapes](captures/inspis/07-home-instead-etapes.jpg) | 6 puces de bénéfices (« Get a comprehensive update after every visit »…). Elles n'ont aucun visuel : c'est là que notre maquette fait la différence. | Liste de bénéfices à côté du téléphone. |
+
+Détail repris d'une référence à côté : l'idée « chaque visite est enregistrée et visible par la famille » (n° 5, Home Healthcare Connected), à montrer et non à décrire.
+
+### 5. Tarifs et aides
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 4 | Petits-fils, tarifs par agence, https://www.petits-fils.com/tarifs-petits-fils/ | [tarifs](captures/inspis/04-petits-fils-tarifs.jpg) | Le tableau de tarifs avec une colonne « Coût indicatif réel après crédit d'impôt » : à Bordeaux Chartrons, 35,50 € TTC de l'heure jusqu'à 25 h par semaine, et 17,75 € après crédit d'impôt. À éviter : l'en-tête blanc sur jaune `#F9AE00` (1,9:1). Modèle mandataire : on reprend la forme, pas les montants. | Tarif horaire TTC et exemple de calcul « aides déduites ». |
+| 3 | Ouihelp, ligne de preuves sous le hero | [capture](captures/inspis/03-ouihelp-landing.jpg) | « Chèques CESU » et « avance immédiate » cités en une ligne, avec des pictos. | Mention de l'avance immédiate, **seulement si le service est inscrit auprès de l'Urssaf** (brief). |
+| 8 | O2, la méthode O2 | [hero](captures/inspis/08-o2-methode.jpg) | « Devis personnalisé, gratuit et sans engagement » écrit en clair. | CTA « Recevoir un devis gratuit » ; devis gratuit obligatoire. |
+
+### 6. L'équipe
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 4 | Petits-fils, page auxiliaires de vie, https://www.petits-fils.com/auxiliaires-de-vie/ | pas de capture (texte relevé sur la page) | Des critères chiffrés : formation qualifiante ou certification Croix-Rouge, 3 ans d'expérience minimum, 3 références vérifiées. | « Des auxiliaires formées » : diplômes et formation continue chiffrés. |
+| 7 | Home Instead, hero | [hero](captures/inspis/07-home-instead-process.jpg) | Une auxiliaire en polo de couleur, en action avec la personne aidée, sans blouse. | Direction photo des portraits. |
+| 18 | Sincere In-Home Care | [capture](captures/inspis/18-dribbble-sincere-in-home-care.jpg) | Une auxiliaire et une dame dans un salon, lumière naturelle. | Direction photo des portraits. |
+
+### 7. Avis des familles
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 8 | O2, la méthode O2 | [avis](captures/inspis/08-o2-methode-avis.jpg) | « 4,7/5 sur 589 avis Google récoltés entre le 01/03/2026 et le 31/03/2026 » : note, nombre, source et période. | Note globale et lien vers la source ; information sur le contrôle des avis (art. L111-7-2). |
+| 3 | Ouihelp, ligne de preuves | [capture](captures/inspis/03-ouihelp-landing.jpg) | « Google 4,5/5 » et « plus de 2400 avis » repris juste sous le hero. | Rappel de la note dès le premier écran. |
+
+### 8. Zone d'intervention et contact
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 18 | Sincere In-Home Care | [capture](captures/inspis/18-dribbble-sincere-in-home-care.jpg) | Le numéro répété en clair sous les boutons, avec « Speak with a real person », et la pastille « Locally owned & family operated ». | Téléphone en très grand ; ancrage local. |
+| 3 | Ouihelp | [capture](captures/inspis/03-ouihelp-landing.jpg) | Le numéro écrit en clair avec « numéro gratuit » à côté. À éviter : le formulaire à 4 champs et la case de consentement **pré-cochée**. | Téléphone en très grand ; contre-exemple pour le formulaire nom + téléphone. |
+
+Détail repris d'une référence à côté : la ville écrite dans le titre principal (n° 21, The Legacy), utile au SEO local mais incompatible avec le H1 imposé (voir « Points à remonter au client »).
+
+### Pages annexes
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 4 | Petits-fils, page auxiliaires de vie | pas de capture | Les critères de recrutement chiffrés. À éviter : « Accessibilité : Non conforme » en pied de page. | Page « Nous rejoindre » ; déclaration d'accessibilité. |
+
+---
 
 ## Mobile
 
-| # | Titre | Source | URL | Capture | À retenir |
-|---|---|---|---|---|---|
-| 13 | O2, aide à domicile des personnes âgées | Site réel (FR) | https://www.o2.fr/aide-aux-personnes-agees/aide-a-domicile | [desktop](captures/13-o2-aide-a-domicile.jpg), [mobile](captures/mobile-o2.jpg) | **Redirigée** vers https://www.o2.fr/aide-aux-personnes-agees. Desktop : hero bleu `#005CB9`, H1 « Aide à domicile pour les personnes âgées » en MontBold sur deux graisses, « plus de 92 000 familles » depuis 1996, grand bouton « Obtenir un devis · Gratuit & sans engagement » en blanc sur jaune `#E7BA63` (1,8:1). Le seul lien `tel:` (02 43 72 02 02) est dans le pied de page. Mobile : voir ci-dessous. **À éviter** : du texte blanc sur jaune clair, et le numéro relégué en pied de page. |
+Exigences du brief : numéro `tel:` **en haut de chaque écran**, en barre fixe sur mobile ; formulaire de rappel en 2 champs envoyé en moins de 20 s ; corps ≥ 18 px ; cibles ≥ 48 px ; prix réel trouvé en moins de 30 s sur mobile.
 
 **Observé en 390×844**
 
-| Site | Capture | Ce qu'on observe |
-|---|---|---|
-| O2 | [capture](captures/mobile-o2.jpg) | Un bandeau « Espace Salarié · Espace Client », puis un en-tête de 80 px (menu, logo, compte). Aucun numéro en haut. Une barre fixe en bas, 50 px, en 3 aplats à icône seule (agence, être rappelé, rendez-vous pour une visite) : les libellés existent dans le code mais ne s'affichent pas, et le combiné mène à une page de rappel, pas à un appel. Le bouton d'accessibilité chevauche le bouton devis. Le seul lien `tel:` est tout en bas de page. |
-| Ouihelp | [capture](captures/mobile-ouihelp.jpg) | En-tête collant de 64 px avec un bouton vert à icône de rappel (lien `#`, sans libellé accessible). Le lien `tel:` de l'en-tête est masqué sur mobile. Dans le hero, le numéro en grand bouton vert (vrai lien `tel:`), puis « Être rappelé » en blanc. L'accroche est en 14 px blanc sur photo. Le formulaire n'est pas au premier écran. |
-| Petits-fils | [capture](captures/mobile-petits-fils.jpg) | Le bandeau « À la recherche d'un emploi ? » occupe la première ligne. Aucun numéro, ni dans l'en-tête ni ailleurs sur la page. Le premier appel à l'action est l'encart « Rappel immédiat » (bouton orange). La note 4,5/5 visible sur desktop disparaît. |
+| Site | Capture | Ce qu'on observe | Exigence du brief |
+|---|---|---|---|
+| Ouihelp (n° 3) | [capture](captures/inspis/mobile-ouihelp.jpg) | En-tête collant de 64 px avec un bouton vert à icône de rappel (lien `#`, sans libellé accessible). Le lien `tel:` de l'en-tête est masqué sur mobile. Dans le hero, le numéro en grand bouton vert (vrai lien `tel:`), puis « Être rappelé » en blanc. L'accroche est en 14 px blanc sur photo. Le formulaire n'est pas au premier écran. | Inspiration pour le bouton-numéro du hero ; contre-exemple pour l'en-tête et le 14 px. |
+| O2 (n° 13) | [capture](captures/a-cote/mobile-o2.jpg) | Un bandeau « Espace Salarié · Espace Client », puis un en-tête de 80 px. Aucun numéro en haut. Une barre fixe en bas, 50 px, en 3 aplats à icône seule : les libellés existent dans le code mais ne s'affichent pas, et le combiné mène à une page de rappel, pas à un appel. Le bouton d'accessibilité chevauche le bouton devis. Le seul lien `tel:` est tout en bas. | Contre-exemple : barre fixe sans numéro, icône seule. |
+| Petits-fils (n° 4) | [capture](captures/a-cote/mobile-petits-fils.jpg) | Le bandeau « À la recherche d'un emploi ? » occupe la première ligne. Aucun numéro sur la page. Le premier appel à l'action est l'encart « Rappel immédiat ». La note 4,5/5 visible sur desktop disparaît. | Contre-exemple : aucun numéro, preuve perdue sur mobile. |
 
-**À retenir** : aucun des 3 sites ne met un numéro cliquable en haut de l'écran mobile. Les deux qui proposent une action fixe poussent la demande de rappel, pas l'appel. Le numéro en haut de chaque écran, demandé par le brief, est donc un vrai différenciant. Recommandations, confirmées par ces observations :
-- une barre d'appel fixe en haut, avec le numéro **écrit en clair** et le libellé « Appeler », jamais une icône seule (contrairement à O2) ;
+**À retenir** : aucun des 3 sites ne met un numéro cliquable en haut de l'écran mobile, et les deux qui proposent une action fixe poussent la demande de rappel, pas l'appel. L'exigence du brief est donc un vrai différenciant. Recommandations :
+- une barre d'appel fixe en haut, avec le numéro **écrit en clair** et le libellé « Appeler le 0X XX XX XX XX » (UX copy du brief), jamais une icône seule (contrairement à O2) ;
 - un seul numéro, identique partout, en vrai lien `tel:` (Home Instead en affiche deux, n° 7 ; celui de Home Healthcare Connected est cassé, n° 5) ;
 - le formulaire de rappel en 2 champs, sans case pré-cochée (contrairement à Ouihelp, n° 3) ;
-- un corps de texte d'au moins 18 px, y compris sur photo et avec un voile (Ouihelp descend à 14 px).
-
-## Palette et typographie
-
-| # | Titre | Source | URL | Capture | À retenir |
-|---|---|---|---|---|---|
-| 14 | Elderly Care Wix Studio Website Template | Pinterest | https://in.pinterest.com/pin/elderly-care-wix-studio-website-template-inhome-caregiver-senior-care-assisted-living-nursing-homes-in-2025--4602749301043693056/ | inaccessible | **Inaccessible : épingle supprimée** (redirection vers https://in.pinterest.com/ideas/). Non vérifié. D'après la session précédente : décrit comme « warm, trustworthy », couleurs douces. Remplacée pour l'ambiance par les n° 6 bis et 17. |
-| 15 | 12 Assisted Living Website Themes ideas | Pinterest (tableau) | https://www.pinterest.com/cricketpond/assisted-living-website-themes/ | [capture partielle](captures/15-pinterest-assisted-living.jpg) | Mur de connexion, une colonne reste lisible. Tableau de 12 épingles créé il y a 9 ans (« Mix of templated themes »). On y voit les clichés attendus : gros plans de visages de seniors souriants, équipes en blouse, bandeaux verts et bleus. **Confirmé** : sert à repérer les clichés **pour s'en écarter**. |
-| 16 | Health & fitness, galeries filtrables par couleur | Land-book et Lapa Ninja | https://land-book.com/?industry=health-and-fitness et https://www.lapa.ninja/category/health-fitness/ | inaccessible | **Inaccessibles (protection anti-robots)** : challenge Cloudflare persistant sur Land-book, « Sorry, you have been blocked » sur Lapa Ninja. Non vérifié. Les associations crème et terracotta en contexte réel ont été vues ailleurs : Honor (n° 1), Home Instead (n° 7), The Legacy (n° 20). |
+- un corps d'au moins 18 px, y compris sur photo et avec un voile (Ouihelp descend à 14 px) ;
+- la note des avis gardée sur mobile (Petits-fils la perd).
 
 ---
 
-## Références ajoutées (vues le 2026-11-12)
+## Directions
 
-Requêtes Dribbble : « senior care branding », « home care website », « senior care website », « seniare ». Requêtes Awwwards : « senior », « home care », « elderly ». Les URL sont celles des pages réellement ouvertes.
+Le brief ne fixe pas de nombre de pistes. Deux directions restent, toutes deux dans la marque (crème, terracotta douce, olive, Lora et Atkinson Hyperlegible) et dans le ton du brief. Quelle que soit la direction, le bloc « lien avec la famille » montre un vrai exemple de compte-rendu : c'est la différence clé du client et aucun concurrent vu ne la montre.
 
-| # | Titre | Source | URL | Capture | À retenir |
-|---|---|---|---|---|---|
-| 17 | Family Caregiver Mobile iOS App Design (Purrweb UI/UX Agency) | Dribbble | https://dribbble.com/shots/27740425-Family-Caregiver-Mobile-iOS-App-Design | [capture](captures/17-dribbble-family-caregiver-app.jpg) | Fond olive, titre serif « Care, in relay. », application sombre où la famille se répartit les tâches : « 3/4 care actions covered », « Leo checked in », « Call Mom · 6:30 PM ». **À reprendre** : la carte de résumé de journée (qui est passé, à quelle heure), et l'accord olive + serif, qui valide notre olive. **À éviter** : afficher des médicaments ou des données de santé ; le site n'en collecte aucune. |
-| 18 | Sincere In-Home Care, Landing Page Design (Brandframer.com) | Dribbble | https://dribbble.com/shots/27743802-Sincere-In-Home-Care-Landing-Page-Design | [capture](captures/18-dribbble-sincere-in-home-care.jpg) | Fond crème, H1 sans-serif noir, sous-titre vert « The care you need for the life you want. », pastille « Locally owned & family operated ». Le numéro en pilule verte dans l'en-tête, puis 2 boutons : « Call for Care » plein et « Request a Consultation » bordé, et dessous « Speak with a real person: (661) 888-4908 ». Photo naturelle d'une auxiliaire et d'une dame dans un salon. **À reprendre** : la hiérarchie claire (une action pleine, une bordée, le numéro répété en clair) et la formule « parlez à une vraie personne ». C'est le meilleur modèle pour le hero de la direction C. |
-| 19 | CareHaven, Senior Care & Home Assistance Website Design (Trexa Lab) | Dribbble | https://dribbble.com/shots/27047677-CareHaven-Senior-Care-Home-Assistance-Website-Design | [capture](captures/19-dribbble-carehaven.jpg) | Hero vert très foncé, H1 « Your Parents Smile. Matters right? », note « 4.9/5 · 810+ Reviews » au-dessus, CTA jaune-vert « Find Your Caregiver Today », numéro en pilule dans l'en-tête. Chiffres « 3,200+ », « 5k% », « 97.5% », puis des logos Slack et Dropbox. **À reprendre** : parler des parents dès le H1 (comme « Vos parents chez eux, bien entourés »), la note au-dessus du titre. **À éviter** : un chiffre absurde (« 5k% ») et des logos de marques tech sans rapport : ça détruit la confiance. |
-| 20 | The Legacy Senior Communities (Tegan Digital), Honorable Mention du 24 septembre 2021 | Awwwards | https://www.awwwards.com/sites/the-legacy-senior-communities | [capture](captures/20-awwwards-legacy-senior.jpg) | La version primée : logo serif, titre serif blanc sur photo de jardin (« Reinventing Senior Living »), un couple de seniors actifs qui marchent main dans la main, bouton « Call now » bordé. Palette relevée par Awwwards : `#2779A7`, `#DF6C4F` (un orangé cousin de notre terracotta douce) et blanc. C'est un lieu de vie, pas de l'aide à domicile. **À reprendre** : des seniors actifs plutôt que dépendants, un serif fin pour l'émotion. |
-| 21 | The Legacy Senior Communities (site actuel) | Site réel (US) | https://thelegacyseniorcommunities.org/ | [capture](captures/21-legacy-senior-site.jpg) | Le site a changé depuis le prix : H1 « Luxury Senior Living in Dallas, TX » (la ville dans le H1) en Cormorant 600, 65 px, blanc sur photo ; texte en Work Sans 18 px ; bouton « Get in touch » blanc sur bleu nuit `#141C3B` (16,7:1) ; badge « Safest places to live 2026 ». Une rubrique « The Legacy at Home ». **À reprendre** : la ville dans le H1 (SEO local du brief), le corps à 18 px. **À éviter** : un titre blanc fin posé sur une photo sans voile (le brief l'interdit). |
-
-**Plateformes sans référence retenue**
-- Behance : inaccessible, erreur HTTP 400 renvoyée au navigateur automatisé (n° 6 et 10).
-- Pinterest : mur de connexion obligatoire. Les n° 11 et 15 ne sont lisibles qu'en partie, le n° 14 est supprimé.
-- Land-book : inaccessible (challenge Cloudflare persistant). Lapa Ninja : inaccessible (« Sorry, you have been blocked »).
-- One Page Love : aucun site d'aide aux seniors (voir n° 12).
-- Awwwards : en plus du n° 20, la recherche renvoie un modèle « Senior Care » (wCopilot, nominé en 2023) et Canary Care (télésurveillance, nominé en 2025). Non retenus : un gabarit générique et un autre métier.
-- Godly : godly.website redirige vers recent.design, sans recherche.
-- ThemeForest : challenge Cloudflare (tenté pour retrouver le thème du n° 11).
-
-**Clichés croisés** : fauteuil roulant et mains sur une canne (n° 2), blouses médicales (n° 2, 5, 10 bis), silhouettes à canne (n° 6 bis), gros plans de visages souriants (n° 15), alerte de chute (n° 9), cœurs dessinés et police manuscrite (n° 5), chiffres absurdes et faux logos clients (n° 19).
-
----
-
-## Synthèse du moodboard
-
-Les 3 directions sont maintenues et la A reste recommandée. Trois ajustements, justifiés par ce qui a été vu :
-- **Chaque direction cite maintenant ses références capturées.**
-- **La direction B perd son appui** : aucun site réel vu ne montre un vrai compte-rendu de passage. Home Instead (n° 7) et Home Healthcare Connected (n° 5) décrivent leur application en texte, Birdie (n° 9) montre une alerte de chute. Montrer un exemple de SMS reste notre différence, quelle que soit la direction : c'est un bloc à garder dans la A.
-- **Deux modèles concrets pour les sections 5 et 7** : le tableau de Petits-fils avec la colonne « coût réel après crédit d'impôt » (n° 4) et la note d'O2 avec le nombre d'avis et la période de collecte (n° 8).
+**Direction B « Carnet de famille » retirée** : elle reposait sur des comptes-rendus présentés comme des notes manuscrites et des portraits en polaroïd, ce qui demande une écriture manuscrite hors des deux polices imposées par le brief. Son seul élément fort, l'exemple de compte-rendu, est obligatoire dans toutes les directions (bloc 4).
 
 ### Direction A : « Maison chaleureuse » (recommandée)
-- Fond crème, titres en Lora, CTA terracotta foncée, olive pour les icônes et les séparateurs. Le secteur a déjà ses meilleurs exemples dans cette veine : Honor (n° 1, fond pêche et CTA brun), Home Instead (n° 7, serif vert foncé sur crème), AgeFree (n° 6 bis, vert profond, crème et orange). Aucun n'associe terracotta et olive : la palette reste distinctive.
-- Photos réelles en lumière naturelle, personnes actives, cadres arrondis, beaucoup d'air (Honor, n° 1 ; The Legacy, n° 20).
-- Évoque le foyer, pas l'hôpital. Reprend directement le README.
-
-### Direction B : « Carnet de famille »
-- Mise en page éditoriale : comptes-rendus de passage présentés comme des notes manuscrites ou des SMS, portraits en polaroïd.
-- Met en scène le lien famille, notre différence clé. Seule référence visuelle : un shot d'application (n° 17).
-- Risque de mièvrerie : il faut une typo sobre et aucune police manuscrite pour le texte courant (contre-exemple : le titre manuscrit et les cœurs du n° 5).
+- Fond crème, titres en Lora, CTA terracotta foncée, olive pour les icônes et les séparateurs. Le secteur a ses meilleurs exemples dans cette veine : Honor (n° 1, fond pêche et CTA brun), Home Instead (n° 7, serif vert foncé sur crème), AgeFree (n° 6 bis, vert profond, crème et orange). Aucun n'associe terracotta et olive : la palette reste distinctive.
+- Photos réelles en lumière naturelle, personnes actives, cadres arrondis, beaucoup d'air (Honor, n° 1 ; The Legacy, n° 20 ; Sincere, n° 18).
+- Lien famille en maquette de téléphone à côté d'une courte liste (n° 9, n° 17).
+- Évoque le foyer, pas l'hôpital.
 
 ### Direction C : « Service clair »
-- Fond blanc, aplats olive et crème, grandes cartes de service, chiffres et tarifs très visibles.
-- Le hero de Sincere (n° 18) en est le meilleur modèle : une action pleine, une bordée, le numéro répété en clair. La ligne de 4 preuves d'Ouihelp (n° 3) et le tableau de Petits-fils (n° 4) complètent.
+- Fond crème `#FBF5EC`, cartes blanches, aplats olive, grandes cartes de service, chiffres et tarifs très visibles. **Corrigé** : la version précédente posait un fond blanc, hors de la palette crème du brief.
+- Le hero de Sincere (n° 18) en est le meilleur modèle : une action pleine, une bordée, le numéro répété en clair. La pastille preuves + zone d'Orbillo (n° 10 bis), la ligne de preuves d'Ouihelp (n° 3) et le tableau de Petits-fils (n° 4) complètent.
 - Maximise la conversion, au risque de paraître moins humain.
+
+---
+
+## Palette, polices, design tokens, composants
 
 ### Palette recommandée (contrastes calculés sur #FBF5EC)
 
-Inchangée : rien de ce qui a été vu ne justifie de modifier une couleur. Les valeurs ont été recalculées et sont exactes. Le titre orange d'Honor à 3,2:1 (n° 1) confirme la règle « décor seulement » pour la terracotta douce.
+Les couleurs de marque ne changent pas. **Corrigé** : la terracotta foncée `#9E4A2F` servait aussi aux liens, à 5,6:1, sous la cible de 7:1 du brief pour le corps de texte. Les liens passent sur une terracotta plus sombre. Le titre orange d'Honor à 3,2:1 (n° 1) confirme la règle « décor seulement » pour la terracotta douce.
 
 | Rôle | Hex | Contraste |
 |---|---|---|
 | Crème (fond) | `#FBF5EC` | fond de référence |
 | Crème foncée (sections) | `#F3E6D3` | texte #2B2420 : 12,4:1 |
 | Texte | `#2B2420` | 14,1:1 |
-| Terracotta foncée (CTA, liens) | `#9E4A2F` | 5,6:1 ; texte blanc sur le bouton : 6,0:1 |
+| Terracotta foncée (boutons) | `#9E4A2F` | texte blanc sur le bouton : 6,0:1. **Pas pour du texte courant** (5,6:1) |
+| Terracotta sombre (liens dans le texte) | `#743522` | 8,5:1 ; 7,5:1 sur la crème foncée |
 | Terracotta douce (décor) | `#C8775A` | 3,1:1 ; texte blanc dessus : 3,4:1 (**décor ou grands éléments seulement**) |
-| Olive foncée (titres secondaires, icônes) | `#4A5628` | 7,3:1 ; texte blanc : 7,9:1 |
+| Olive foncée (titres secondaires, icônes) | `#4A5628` | 7,3:1 (6,4:1 sur la crème foncée, titres ≥ 24 px seulement) ; texte blanc : 7,9:1 |
 | Olive | `#6B7B3A` | 4,3:1 (texte ≥ 24 px ou icônes seulement) |
 
 ### Polices (Google Fonts)
 - **Lora** (titres, 600 et 700).
-- **Atkinson Hyperlegible** (texte et interface, 18 px minimum, 20 px recommandé sur mobile).
+- **Atkinson Hyperlegible** (texte et interface, 18 px minimum partout, y compris mentions légales ; 20 px recommandé sur mobile).
 
 ### 3 « à ne pas faire »
 1. **Des gros plans de mains ridées, de cannes ou de fauteuils roulants, et des blouses médicales** (vus aux n° 2, 5, 6 bis et 10 bis) : ça infantilise, ça angoisse l'acheteur et ça confond aide à domicile et soin.
-2. **Un carrousel automatique dans le hero** : illisible pour les seniors, et il masque le numéro.
+2. **Un carrousel automatique dans le hero** : interdit par le brief, illisible pour les seniors, et il masque le numéro.
 3. **De la terracotta douce (#C8775A) pour du texte ou un bouton avec texte blanc** : le contraste est insuffisant (3,1:1 sur le crème, 3,4:1 en texte blanc).
 
----
+### Design tokens
 
-## Design tokens
+> Format design system. Noms en kebab-case, valeurs prêtes à passer en variables CSS (`--color-brand-primary`, etc.). Contrastes calculés sur `#FBF5EC`, puis sur `#F3E6D3` quand le texte peut y être posé. Cible du brief : ≥ 7:1 pour tout texte de taille courante sur les deux fonds.
 
-> Format design system. Noms en kebab-case, valeurs prêtes à passer en variables CSS (`--color-brand-primary`, etc.). Contrastes calculés sur `#FBF5EC`.
-
-### Couleurs
+#### Couleurs
 
 **Marque**
 
 | Token | Hex | Usage |
 |---|---|---|
-| `color-brand-primary` | `#9E4A2F` | CTA, liens (5,6:1) |
-| `color-brand-primary-hover` | `#7F3A24` | Survol et état pressé (7,7:1 ; texte blanc 8,3:1) |
+| `color-brand-primary` | `#9E4A2F` | Fond des boutons (texte blanc 6,0:1). Pas pour du texte |
+| `color-brand-primary-hover` | `#7F3A24` | Survol et état pressé des boutons (texte blanc 8,3:1) |
+| `color-link` | `#743522` | **Ajouté.** Liens dans le texte courant, soulignés (8,5:1 ; 7,5:1 sur la crème foncée). Survol : soulignement épaissi |
 | `color-brand-primary-soft` | `#C8775A` | Illustrations, filets, puces décoratives |
 | `color-brand-secondary` | `#4A5628` | Titres secondaires, icônes (7,3:1) |
 | `color-brand-secondary-strong` | `#3A4520` | Texte sur fond olive clair (9,4:1) |
 | `color-brand-secondary-soft` | `#6B7B3A` | Icônes, grands chiffres ≥ 24 px |
 
-**Sémantiques** (toujours accompagnées d'une icône et d'un texte, jamais la couleur seule)
+**Sémantiques** (toujours accompagnées d'une icône et d'un texte, jamais la couleur seule). **Corrigées** : les messages d'erreur sont en 18 px (brief), donc du texte courant ; les anciennes valeurs étaient entre 5,5 et 6,8:1.
 
-| Token | Hex | Contraste |
-|---|---|---|
-| `color-success` | `#3F6B2A` | 5,8:1 |
-| `color-error` | `#A8322A` | 6,1:1. Proche de la terracotta, d'où l'obligation de l'icône et du libellé « Erreur » |
-| `color-warning` | `#8A5A00` | 5,5:1 |
-| `color-info` | `#2F5A7A` | 6,8:1 |
+| Token | Hex | Contraste | Ancienne valeur |
+|---|---|---|---|
+| `color-success` | `#2E521C` | 8,3:1 ; 7,3:1 sur la crème foncée | `#3F6B2A` (5,8:1) |
+| `color-error` | `#86281F` | 8,3:1 ; 7,3:1 sur la crème foncée. Proche de la terracotta, d'où l'obligation de l'icône et du libellé « Erreur » | `#A8322A` (6,1:1) |
+| `color-warning` | `#664300` | 8,2:1 ; 7,2:1 sur la crème foncée | `#8A5A00` (5,5:1) |
+| `color-info` | `#264B66` | 8,5:1 ; 7,5:1 sur la crème foncée | `#2F5A7A` (6,8:1) |
 
 **Neutres**
 
@@ -199,10 +243,10 @@ Inchangée : rien de ce qui a été vu ne justifie de modifier une couleur. Les 
 | `color-neutral-50` | `#FBF5EC` | Fond de page |
 | `color-neutral-100` | `#F3E6D3` | Fonds de section alternés |
 | `color-neutral-300` | `#D9CBB6` | Bordures décoratives (1,5:1, **pas pour les bordures de champs**) |
-| `color-neutral-600` | `#5E534C` | Texte secondaire (6,9:1) et bordures de champs |
+| `color-neutral-600` | `#504641` | Texte secondaire et bordures de champs (8,5:1 ; 7,4:1 sur la crème foncée). **Corrigé** : `#5E534C` était à 6,9:1 |
 | `color-neutral-900` | `#2B2420` | Texte principal (14,1:1) |
 
-### Échelle typographique (base 18 px, ratio ≈ 1,25)
+#### Échelle typographique (base 18 px, ratio ≈ 1,25)
 
 | Token | Police | Taille | Graisse | Interlignage |
 |---|---|---|---|---|
@@ -211,29 +255,30 @@ Inchangée : rien de ce qui a été vu ne justifie de modifier une couleur. Les 
 | `text-h2` | Lora | 32 px (mobile 28) | 600 | 1,25 |
 | `text-h3` | Lora | 24 px | 600 | 1,3 |
 | `text-body-lg` | Atkinson Hyperlegible | 20 px | 400 | 1,6 |
-| `text-body` | Atkinson Hyperlegible | 18 px | 400 | 1,6 |
+| `text-body` | Atkinson Hyperlegible | 18 px | 400 | 1,6. Sert aussi aux mentions légales et au pied de page |
 | `text-label` | Atkinson Hyperlegible | 18 px | 700 | 1,4 |
-| `text-small` | Atkinson Hyperlegible | 16 px | 400 | 1,5. **Mentions légales uniquement** |
 | `text-phone` | Atkinson Hyperlegible | 28 px (barre mobile 22) | 700 | 1,2 |
+
+**Corrigé** : `text-small` (16 px, mentions légales) est supprimé. Le brief demande un corps de texte ≥ 18 px partout (critères de réussite).
 
 Longueur de ligne : 60 à 70 caractères maximum.
 
-### Espacements (base 8 px)
+#### Espacements (base 8 px)
 
 `space-1` 4 · `space-2` 8 · `space-3` 12 · `space-4` 16 · `space-5` 24 · `space-6` 32 · `space-7` 48 · `space-8` 64 · `space-9` 96 (entre sections, desktop) · gouttière mobile : 16 px (20 px recommandé).
 
-### Rayons
+#### Rayons
 
 `radius-sm` 6 px (champs, badges) · `radius-md` 12 px (boutons) · `radius-lg` 20 px (cartes, photos) · `radius-full` 999 px (pastilles, avatars).
 
-### Ombres (teintées brun, jamais noir pur)
+#### Ombres (teintées brun, jamais noir pur)
 
 - `shadow-sm` : `0 1px 2px rgba(43, 36, 32, 0.08)` (champs)
 - `shadow-md` : `0 4px 12px rgba(43, 36, 32, 0.10)` (cartes)
 - `shadow-lg` : `0 12px 32px rgba(43, 36, 32, 0.14)` (barre d'appel fixe, modale)
-- `focus-ring` : `0 0 0 3px #FBF5EC, 0 0 0 6px #2F5A7A` (double anneau visible sur tous les fonds)
+- `focus-ring` : `0 0 0 3px #FBF5EC, 0 0 0 6px #264B66` (double anneau visible sur tous les fonds ; suit le nouveau `color-info`)
 
-### Motion
+#### Motion
 
 | Token | Valeur | Usage |
 |---|---|---|
@@ -245,30 +290,38 @@ Longueur de ligne : 60 à 70 caractères maximum.
 
 `@media (prefers-reduced-motion: reduce)` : toutes les durées passent à 0 ms. Pas de parallaxe, pas d'apparition au scroll sur le texte.
 
----
+### Composants clés
 
-## Composants clés
-
-### Bouton primaire (« Être rappelé »)
+#### Bouton primaire (« Être rappelé aujourd'hui »)
 - Fond `color-brand-primary`, texte blanc `text-label`, hauteur minimale 56 px, padding horizontal 24 px, `radius-md`.
-- **États** : *repos* #9E4A2F · *survol* #7F3A24 · *focus* `focus-ring` · *pressé* #7F3A24 avec translation de 1 px · *désactivé* fond #D9CBB6, texte #5E534C, curseur « not-allowed », et la raison expliquée à côté · *chargement* : spinner, libellé « Envoi en cours… », bouton désactivé.
+- **États** : *repos* #9E4A2F · *survol* #7F3A24 · *focus* `focus-ring` · *pressé* #7F3A24 avec translation de 1 px · *désactivé* fond #D9CBB6, texte #504641, curseur « not-allowed », et la raison expliquée à côté · *chargement* : spinner, libellé « Envoi en cours… », bouton désactivé.
 
-### Bouton secondaire (« Voir les tarifs », « Appeler le 0X XX XX XX XX »)
+#### Bouton secondaire (« Voir les tarifs », « Appeler le 0X XX XX XX XX »)
 - Fond transparent, bordure 2 px `color-brand-secondary`, texte `color-brand-secondary`, même hauteur que le primaire.
-- **États** : *survol* fond #F3E6D3 · *focus* `focus-ring` · *pressé* fond #E9D9C1 · *désactivé* bordure et texte #5E534C à 60 %.
+- **États** : *survol* fond #F3E6D3 · *focus* `focus-ring` · *pressé* fond #E9D9C1 · *désactivé* bordure et texte #504641 à 60 %.
 
-### Carte de service
-- Fond blanc, `radius-lg`, `shadow-md`, padding `space-6`, une icône olive de 40 px, un titre `text-h3` et une phrase `text-body`. Toute la carte est cliquable si elle mène quelque part (et alors un seul lien).
+#### Carte de service
+- Fond blanc, `radius-lg`, `shadow-md`, padding `space-6`, une icône olive au trait de 40 px (n° 6 bis, n° 8), un titre `text-h3` et une phrase `text-body`. Toute la carte est cliquable si elle mène quelque part (et alors un seul lien).
 
-### Formulaire de rappel
+#### Bloc tarif (ajouté : demandé dans le kit du brief)
+- Tarif horaire TTC en `text-h2`, puis un exemple de calcul en tableau à 3 colonnes : prix TTC, aides déduites (APA si perçue, crédit d'impôt de 50 %), coût réel. Forme reprise du tableau de Petits-fils (n° 4), montants fournis par le client.
+- En-têtes de tableau en `color-neutral-900` sur `color-neutral-100`, jamais de texte blanc sur une couleur claire (contre-exemple n° 4, 1,9:1).
+- Mention « sous réserve de la législation en vigueur », lien vers impots.gouv.fr en `color-link`, CTA primaire « Recevoir un devis gratuit ».
+
+#### Bloc avis (ajouté : demandé dans le kit du brief)
+- En tête : note globale, nombre d'avis, source et période de collecte, sur le modèle d'O2 (n° 8), avec un lien vers la source.
+- 3 à 5 cartes blanches `radius-lg` : texte de l'avis en `text-body`, prénom ou initiale, date. Pas de carrousel automatique.
+- Une ligne qui dit si les avis sont contrôlés et comment, avec un lien vers la page de modération (art. L111-7-2).
+
+#### Formulaire de rappel
 - 2 champs : « Votre nom », « Votre téléphone » (`type="tel"`, `autocomplete="tel"`). Libellés **au-dessus** des champs, jamais en placeholder seul.
-- Champs de 56 px de haut, bordure 2 px #5E534C, focus `focus-ring`, erreur : bordure `color-error`, icône et message sous le champ.
-- Mention RGPD d'une ligne et lien vers la politique de confidentialité.
+- Champs de 56 px de haut, bordure 2 px #504641, focus `focus-ring`, erreur : bordure `color-error`, icône et message de 18 px sous le champ, annoncé avec `aria-live="polite"`, aucune donnée effacée.
+- Mention RGPD d'une ligne et lien vers la politique de confidentialité. Aucune case pré-cochée.
 
-### Barre d'appel mobile
-- Fixée en haut, 56 px, fond `color-neutral-0`, `shadow-lg`, numéro en `text-phone` cliquable (`tel:`), icône téléphone et libellé « Appeler ».
+#### Barre d'appel mobile
+- Fixée en haut, 56 px, fond `color-neutral-0`, `shadow-lg`, numéro en `text-phone` cliquable (`tel:`), icône téléphone et libellé « Appeler le 0X XX XX XX XX ».
 
-### À faire / À ne pas faire
+#### À faire / À ne pas faire
 
 | À faire | À ne pas faire |
 |---|---|
@@ -281,3 +334,51 @@ Longueur de ligne : 60 à 70 caractères maximum.
 | Note des avis avec leur nombre et leur période de collecte (O2, n° 8) | Note seule, sans source ni date |
 | Photos réelles avec consentement signé | Banques d'images de seniors stéréotypés |
 | Respect de `prefers-reduced-motion` | Carrousels automatiques, parallaxe |
+
+---
+
+## Points à remonter au client
+
+- **H1 et SEO local** : le H1 recommandé (« Vos parents chez eux, bien entourés ») ne contient pas la ville, alors que le SEO local est prioritaire. Le n° 21 met la ville dans son H1. Sans toucher au titre, on peut proposer la ville dans un surtitre au-dessus du H1 et dans la balise `title`. Décision du client.
+- **Libellé du CTA du hero** : « Être rappelé » dans l'arborescence (section 6), « Être rappelé aujourd'hui » dans l'UX copy (section 9). Le bench suit la section 9.
+- **Preuves à fournir tôt** : aucun concurrent vu ne publie de taux de continuité ni de vrai compte-rendu de passage. Ces deux preuves dépendent entièrement des contenus du client ([x %], exemples anonymisés) : sans elles dès S1, le bloc 4 et le message « La même auxiliaire » restent vides.
+
+---
+
+## À côté
+
+| # | Référence | Capture | Pourquoi à côté |
+|---|---|---|---|
+| 2 | Agedly, a Home Care Service for Seniors Landing Page (10am Studio), Dribbble, https://dribbble.com/shots/16641466-Agedly-a-Home-Care-Service-for-Seniors-Landing-Page-Animated | [capture](captures/a-cote/02-dribbble-agedly.jpg) | Photo d'une soignante en blouse qui enlace une dame en fauteuil roulant, gros plan de mains sur une canne : le brief veut des personnes actives et jamais de gros plans sur des mains ridées. Vidéo animée de 30 s. Seul détail repris : un seul champ ou bouton dans le hero (bloc 1). |
+| 5 | Cera, Care at Home, https://ceracare.co.uk/home-care, redirigée vers https://homehealthcareconnected.co.uk/home-care | [capture](captures/a-cote/05-cera-home-care.jpg) | H1 en police manuscrite Kinder Boy et cœurs dessinés : hors des deux polices de marque. Auxiliaire en blouse. La « Family App » tient en une phrase, sans visuel, alors que le bloc 4 demande une maquette. Lien `tel:` cassé (`tel:"0330 123 9180"`). Le CQC n'est pas cité. Détail repris : l'idée de visite enregistrée et visible par la famille (bloc 4). |
+| 6 | Senior care branding (dont « Seniare »), Behance, https://www.behance.net/search/projects/senior%20care%20branding | inaccessible | Non vérifié : erreur HTTP 400 renvoyée au navigateur automatisé. Remplacée par le n° 6 bis. |
+| 9 | Elderly care tag (page de tag), Dribbble, https://dribbble.com/tags/elderly-care | [tag](captures/a-cote/09-dribbble-elderly-care.jpg) | Contexte seulement : 245 shots mêlant sites, illustration d'un robot qui aide une dame à traverser et un logo sans rapport. Le shot Birdie qu'elle contient est une inspiration (bloc 4). |
+| 10 | Home care website (dont « Senior Care Website Redesign »), Behance, https://www.behance.net/search/projects/home%20care%20website | inaccessible | Non vérifié : erreur HTTP 400. Le projet du même titre est le n° 10 bis. |
+| 11 | Eldcare, Senior Living WordPress Theme, Pinterest, https://www.pinterest.com/pin/973340538222802684/ | [capture partielle](captures/a-cote/11-pinterest-eldcare.jpg) | Non vérifié : mur de connexion, seule la vignette reste lisible ; la fiche ThemeForest bloque par Cloudflare, contrastes non vérifiables. Même famille que le n° 6 bis (vert profond, accent chaud). |
+| 12 | Health & Healthcare Website Examples, One Page Love, https://onepagelove.com/tag/health | [capture](captures/a-cote/12-onepagelove-health.jpg) | Contexte seulement : « 78 Real Examples » (chirurgie, IA, dentiste, SafeStep…), aucun service d'aide aux seniors ; les recherches « senior », « elderly », « home care », « retirement » ne donnent rien. |
+| 13 | O2, aide à domicile des personnes âgées, https://www.o2.fr/aide-aux-personnes-agees/aide-a-domicile, redirigée vers https://www.o2.fr/aide-aux-personnes-agees | [desktop](captures/a-cote/13-o2-aide-a-domicile.jpg), [mobile](captures/a-cote/mobile-o2.jpg) | Contre-exemple : bouton « Obtenir un devis » en blanc sur jaune `#E7BA63` (1,8:1), sous le minimum AA du brief ; le seul lien `tel:` (02 43 72 02 02) est en pied de page, et sur mobile aucun numéro en haut, alors que le brief l'exige en haut de chaque écran. Cité dans « Mobile ». |
+| 4 (mobile) | Petits-fils en 390×844 | [mobile](captures/a-cote/mobile-petits-fils.jpg) | Contre-exemple : aucun numéro sur la page mobile (brief : `tel:` en haut de chaque écran), note des avis perdue. Le n° 4 reste une inspiration sur desktop. Cité dans « Mobile ». |
+| 14 | Elderly Care Wix Studio Website Template, Pinterest, https://in.pinterest.com/pin/elderly-care-wix-studio-website-template-inhome-caregiver-senior-care-assisted-living-nursing-homes-in-2025--4602749301043693056/ | inaccessible | Non vérifié : épingle supprimée (redirection vers https://in.pinterest.com/ideas/). |
+| 15 | 12 Assisted Living Website Themes ideas, Pinterest (tableau), https://www.pinterest.com/cricketpond/assisted-living-website-themes/ | [capture partielle](captures/a-cote/15-pinterest-assisted-living.jpg) | Contre-exemple : gros plans de visages de seniors souriants, équipes en blouse, thèmes génériques d'il y a 9 ans ; le brief veut des photos réelles de personnes actives, sans banque d'images. Sert à repérer les clichés. |
+| 16 | Health & fitness, Land-book et Lapa Ninja, https://land-book.com/?industry=health-and-fitness et https://www.lapa.ninja/category/health-fitness/ | inaccessible | Non vérifié : challenge Cloudflare persistant sur Land-book, « Sorry, you have been blocked » sur Lapa Ninja. |
+| 19 | CareHaven, Senior Care & Home Assistance Website Design (Trexa Lab), Dribbble, https://dribbble.com/shots/27047677-CareHaven-Senior-Care-Home-Assistance-Website-Design | [capture](captures/a-cote/19-dribbble-carehaven.jpg) | Un chiffre absurde (« 5k% ») et des logos Slack et Dropbox sans rapport : contraire aux preuves vérifiables que demande le brief (section 5, avis vérifiés avec note et nombre). Détail repris : la note des avis au-dessus du H1 (bloc 1). |
+| 21 | The Legacy Senior Communities (site actuel), https://thelegacyseniorcommunities.org/ | [capture](captures/a-cote/21-legacy-senior-site.jpg) | H1 blanc en Cormorant 600, 65 px, posé sur photo sans voile : le brief interdit le texte sur photo sans voile. Lieu de vie de luxe (« Luxury Senior Living in Dallas, TX »), hors du ton du brief. Détails repris : la ville dans le titre (bloc 8, voir « Points à remonter au client ») ; corps en Work Sans 18 px. |
+
+**Clichés croisés** : fauteuil roulant et mains sur une canne (n° 2), blouses médicales (n° 2, 5, 10 bis), silhouettes à canne (n° 6 bis), gros plans de visages souriants (n° 15), alerte de chute (n° 9), cœurs dessinés et police manuscrite (n° 5), chiffres absurdes et faux logos clients (n° 19).
+
+---
+
+## Galeries : requêtes lancées
+
+| Plateforme | Requêtes ou pages | Résultat |
+|---|---|---|
+| Dribbble (session d'origine) | « senior care branding », « home care website », « senior care website », « seniare », tag « elderly-care » | Retenues : n° 6 bis, 9, 10 bis, 17, 18, 19. Aucun shot « Seniare ». |
+| Dribbble (refonte, 2026-11-12) | Recherche « home care how it works », tag « home-care » | Page « Let's confirm you are human » (HTTP 405). Non contournée, aucune référence. |
+| Awwwards | « senior », « home care », « elderly » | Retenu : n° 20. Non retenus : un modèle « Senior Care » (wCopilot, nominé en 2023, gabarit générique) et Canary Care (télésurveillance, nominé en 2025, autre métier). |
+| One Page Love (session d'origine) | Tag « health », recherches « senior », « elderly », « home care », « retirement » | Aucun site d'aide aux seniors (n° 12). |
+| One Page Love (refonte, 2026-11-12) | Sections « How It Works » (56 premiers exemples chargés) et « Team » (39 premiers) ; recherches « care », « nursing », « carer », « family », « cleaning », « therapy » | Rien d'utilisable pour les blocs 3, 6 et 8 : agences, SaaS et studios. « Team » de LAVA dental Studio : portraits en tenue médicale, hors du brief. Putzengel (ménage, Vienne) : site hors ligne, style illustratif hors ton. « nursing » et « carer » : aucun résultat. |
+| Behance | Recherches des n° 6 et 10 | Inaccessible, erreur HTTP 400. |
+| Pinterest | Épingles et tableau des n° 11, 14, 15 | Mur de connexion ; n° 11 et 15 lisibles en partie, n° 14 supprimé. |
+| Land-book, Lapa Ninja | Catégorie santé (n° 16) | Inaccessibles (Cloudflare, « Sorry, you have been blocked »). |
+| Godly | Accueil | godly.website redirige vers recent.design, sans recherche. |
+| ThemeForest | Thème du n° 11 | Challenge Cloudflare. |
