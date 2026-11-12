@@ -1,19 +1,21 @@
 # Benchmark visuel : Ordo (IA B2B, entreprise fictive)
 
+Ce bench suit le brief client bloc par bloc : chaque référence retenue sert une exigence précise de [`BRIEF-CLIENT.md`](BRIEF-CLIENT.md), les autres sont rangées à côté avec leur raison.
+
 ## Limites, à lire en premier
 
-Mise à jour du 2026-11-12, faite avec un vrai navigateur (Chrome piloté par Playwright).
+Vérification du 2026-11-12, faite avec un vrai navigateur (Chrome piloté par Playwright).
 
-- **Ce qui a été vu** : 14 des 20 références d'origine ont été ouvertes et capturées, dont 11 sur leur lien d'origine. Pour 3 autres, le lien d'origine était bloqué et une page équivalente a été ouverte à la place : le site réel de Fin (n° 6) et de Factory (n° 11), le shot Dribbble d'Archon (n° 4). 6 références ont été ajoutées (n° 21 à 26). Captures en 1440 × 900 px, au-dessus de la ligne de flottaison, dans [`captures/`](captures/), plus 2 captures complémentaires (site actuel de Well au n° 7, page de Ramp au n° 12) et 4 captures mobiles. Les couleurs et les polices citées ont été relevées dans la page (`getComputedStyle`), pas devinées. Les chiffres cités sont ceux affichés le 2026-11-12.
-- **Ce qui reste bloqué** : Behance (n° 9, 16, 18) renvoie « HTTP ERROR 400 » au navigateur automatisé. Land-book (n° 5, 14) et Lapa Ninja (n° 6, 11) bloquent par Cloudflare. Pinterest (n° 4, 19) affiche un mur de connexion : rien n'a été capturé (pas de page de connexion dans le dépôt). Ces références gardent leur texte, marqué « non vérifié ».
-- **Corrections importantes** :
-  - **Well (n° 7)**, présentée comme « la référence la plus proche », a changé de produit : le site actuel est un assistant généraliste sur WhatsApp, sur fond noir. La facture n'y est plus qu'une tâche parmi d'autres.
-  - **Bubble Flow (n° 10)** ne montre aucune frise en 3 étapes : c'est un concept à bulles 3D roses et violettes. Il passe en contre-exemple.
-  - **Ramp (n° 1)** ne nomme pas quatre agents sur sa page : elle parle de « Ramp's agent », au singulier. Les agents nommés par tâche se voient chez Dust (n° 2).
-  - **Fin (n° 6)** : l'exemple du hero est un changement d'adresse avec un justificatif PDF, pas un remboursement.
-  - **11sight (n° 17)** : l'aperçu primé est un téléphone 3D sur fond noir, pas un SaaS sobre, et le site ne répond plus.
-  - **Quid AI (n° 15)** est la vraie référence la plus proche : une facture au centre du hero, des agents pour la compta fournisseurs, un bloc « pas d'entraînement sur vos données ». Le site est hors ligne, One Page Love en garde une copie.
-- **Palette** : l'accent d'Ordo (`#19E07A`) est presque identique au vert des boutons de Pennylane (`#00F872`) et au vert de Catalyze AI (`#1AD079`, n° 20). La palette n'est pas changée (le brief impose un vert électrique), mais le point est à trancher avec Ordo. Voir la synthèse.
+- **Ce qui a été vu** : 14 des 20 références d'origine ont été ouvertes et capturées, dont 11 sur leur lien d'origine. Pour 3 autres, le lien d'origine était bloqué et une page équivalente a été ouverte à la place : le site réel de Fin (n° 6) et de Factory (n° 11), le shot Dribbble d'Archon (n° 4). 6 références ont été ajoutées (n° 21 à 26). Captures en 1440 × 900 px, au-dessus de la ligne de flottaison, plus 2 captures complémentaires (site actuel de Well au n° 7, page de Ramp au n° 12) et 4 captures mobiles en 390 × 844 px. Les couleurs et les polices citées ont été relevées dans la page (`getComputedStyle`), pas devinées. Les chiffres cités sont ceux affichés le 2026-11-12.
+- **Ce qui reste bloqué** : Behance (n° 9, 16, 18) renvoie « HTTP ERROR 400 » au navigateur automatisé. Land-book (n° 5, 14) et Lapa Ninja (n° 6, 11) bloquent par Cloudflare. Pinterest (n° 4, 19) affiche un mur de connexion. Ces références sont marquées « non vérifié » et rangées à côté.
+- **Corrections de la vérification** : Well (n° 7) a changé de produit et passe sur fond noir. Bubble Flow (n° 10) ne montre aucune frise en 3 étapes. La page de Ramp (n° 1) parle de « Ramp's agent » au singulier, pas de quatre agents. L'exemple de Fin (n° 6) est un changement d'adresse, pas un remboursement. 11sight (n° 17) est un téléphone 3D sur fond noir, et le site ne répond plus. Quid AI (n° 15) est la référence la plus proche d'Ordo.
+- **Refonte du 2026-11-12** :
+  - Chaque référence est triée : **13 inspirations** (n° 1, 2, 6, 8, 11, 12, 15, 20, 21, 22, 23, 25, 26) et **13 références à côté** (n° 3, 4, 5, 7, 9, 10, 13, 14, 16, 17, 18, 19, 24). Rien n'est supprimé, les numéros ne changent pas.
+  - Les captures sont rangées dans [`captures/inspis/`](captures/inspis/) et [`captures/a-cote/`](captures/a-cote/). Les captures mobiles suivent le tri de leur référence (Ramp, Fin et Pennylane sont des inspirations).
+  - Le bench est réorganisé selon l'arborescence du brief (9 blocs), avec un tableau de couverture.
+  - La direction C « Éditorial » est retirée (voir **Directions**). Le brief ne fixe pas de nombre de pistes : 2 sont gardées.
+  - **Tokens corrigés** pour suivre le brief : l'anneau de focus (2,2:1, sous le seuil de 3:1), les usages du vert (réservés à l'état « traité », plus au succès du formulaire), la police du texte courant (Inter n'est pas cité par le brief), et un token de bordure de champ ajouté (le bench demandait au moins 3:1 sans donner de valeur). Détails dans **Palette, polices, design tokens, composants**.
+  - **Recherche complémentaire** pour les blocs Tarifs et FAQ : One Page Love (sections Pricing, Pricing Table, Pricing Slider, Contact Form, FAQ Accordion) vu, rien retenu. Dribbble demande une vérification « Let's confirm you are human » sur la recherche : non contournée. Aucune référence ajoutée.
 - **Bannières cookies** : refusées partout où un refus existait (« Reject all », « Opt out of all »). Sur SaaS Landing Page, la seule option était « I agree » : la bannière a été masquée, pas acceptée. Sur Pennylane, la fenêtre de choix du pays a été fermée en choisissant « France ».
 - **Données personnelles** : les avatars des designers sur Dribbble et One Page Love sont floutés. Les noms restent quand ils créditent un studio ou un auteur.
 
@@ -32,193 +34,215 @@ Mise à jour du 2026-11-12, faite avec un vrai navigateur (Chrome piloté par Pl
 
 ---
 
-## Hero
+## Couverture du brief
 
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 1 | Ramp, page Accounts Payable | https://ramp.com/accounts-payable | Site réel (États-Unis) | [capture](captures/01-ramp-ap.jpg) | Fond blanc, titre « A month of AP done in minutes. » en Lausanne 64 px, graisse 400, encre `#0C0A08`. Bouton jaune-vert `#E4F222` à texte noir (16:1). À droite, une animation « Routing to approvals. » fait défiler de vraies lignes de factures (fournisseur, montant, date, numéro). Chiffres confirmés : « 2.4x faster » dans le sous-titre, « 85,000+ businesses », puis plus bas « Up to 7x fewer clicks to process a bill vs Bill.com », « Up to 95% », OCR « 99% accuracy ». Chaque chiffre porte un renvoi numéroté (1, 2, 3). **Correction** : la page ne nomme pas quatre agents. Elle parle de « Ramp's agent », qui impute, vérifie par rapprochement à deux et trois voies, recommande les validations et repère les fournisseurs payables par carte. Les quatre agents viennent de l'annonce d'octobre 2025 citée dans l'étude de cas. **À reprendre** : de vraies lignes de factures dans le hero, et le renvoi numéroté sous chaque chiffre, qui sert de ligne de périmètre. **À éviter** : le jaune fluo. |
-| 2 | Dust | https://dust.tt | Site réel (France, site en anglais) | [capture](captures/02-dust.jpg) | Fond blanc, titre « Multiplayer AI for human-agent collaboration » en Geist 69 px, graisse 550, encre `#191715`, texte `#57534D`. Bouton bleu en dégradé `#4BABFF` vers `#1C91FF`, texte blanc à 3,2:1 au mieux, sous le seuil AA. Le visuel est une scène isométrique avec des avatars et des bulles d'agents nommés par tâche (@LeadQual, @Incident, @TicketRouter), chacune montrant un résultat. Confirmé : « Trusted by teams at 3,000+ global organizations », menu « Solutions » classé par équipe (Sales, Support, Marketing…) et par secteur. La page annonce « 70+ connectors ». Un encart d'événement a été fermé avant la capture. **À reprendre** : nommer chaque agent par sa tâche et montrer son résultat dans une bulle (pour Ordo : « Lecture », « Rapprochement », « Relance »). **À éviter** : la scène 3D isométrique. |
-| 3 | AI Workflow Landing Page, par Mao Lop | https://dribbble.com/shots/25092081-AI-Workflow-Landing-Page | Dribbble | [capture](captures/03-dribbble-leap.jpg) | Concept pour « Leap ». Fond blanc, titre « Automate any workflow with AI » avec le seul mot « workflow » en italique, sous-titre « 10x more efficient », boutons noirs. À droite, un schéma de nœuds dans un cadre (déclencheur Slack, extraction web, LLM, Typefully). La description promet « 5x your velocity ». **À reprendre** : un seul mot en italique dans le titre. **À éviter** : le schéma abstrait. Pour Ordo, la facture elle-même le remplace, comme chez Quid AI (n° 15). |
-| 4 | « AI landing page website animation screens » (Archon, par Lazarev) | Épingle d'origine : https://in.pinterest.com/pin/884746289449134596/ (non vérifiée : mur de connexion). Vu à la place : https://dribbble.com/shots/26000451-AI-Landing-page-website-animation-screens-Archon | Pinterest, puis Dribbble (shot d'origine du même studio) | [capture](captures/04-dribbble-archon.jpg) | Même titre que l'épingle. C'est une animation qui fait défiler les écrans du site d'Archon (mise en conformité FedRAMP pour vendre du logiciel au gouvernement américain). Palette relevée sur Dribbble : rouge `#DD1200`, noir `#080607`. Panneaux noirs à texte rose, aplats orange et bleus. **Correction** : ce n'est pas un enchaînement hero puis démo, c'est une vitrine d'écrans. Et ce n'est pas « minimaliste » au sens clair : les blocs sont pleins et saturés. **À reprendre** : la grande phrase qui contient un chiffre (« 20% of the U.S. software market ») en guise d'intertitre. **À éviter** : les aplats saturés. |
-| 5 | Operator, AI Agent Agency | https://land-book.com/websites/95503-operator-a-ai-agent-agency-custom-ai-agents-for-business | Land-book (template Framer) | Non vérifié | **Non vérifié** : Land-book bloque par Cloudflare, et la recherche « operator ai agent » sur la marketplace Framer ne le trouve pas. Texte d'origine, d'après la fiche : noir et blanc strict, grosse typo en pied de page. **À reprendre** : la discipline monochrome, qui laisse la place au seul accent vert. Factory (n° 11), vu, illustre la même discipline sur fond clair. |
-
-## Démo produit
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 6 | Fin, agent de service client | Fiche d'origine : https://www.lapa.ninja/post/fin-ai/ (non vérifiée : Cloudflare). Vu à la place : https://fin.ai/ | Lapa Ninja, puis site réel | [capture](captures/06-fin.jpg) | Titre en serif fine (« Serrif », 72 px, graisse 300), texte en Saans, tube 3D orange en fond. Bouton noir « View demo ». Chiffres : « 76% resolution rate, across 12,000+ businesses ». Le logo porte « from salesforce ». La démo est une conversation : le client signale un déménagement, Fin demande un justificatif, le PDF « UtilityBill.pdf » arrive, Fin confirme la nouvelle adresse. **Correction** : l'exemple n'est ni un remboursement ni une annulation. L'idée tient : l'agent termine une tâche à partir d'une pièce jointe. L'agent d'exploitation porte un nom, « Operator ». **À reprendre** : la démo en messages courts, avec un PDF qui arrive puis une confirmation. Pour Ordo : facture reçue, « rapprochée avec la commande », pastille « Traité ». **À éviter** : l'objet 3D décoratif. |
-| 7 | Well, AI Invoice Magnet | https://www.awwwards.com/sites/well-ai-invoice-magnet | Awwwards (mention honorable, 19 mai 2025) | [capture](captures/07-awwwards-well.jpg) ; [site actuel](captures/07-well-site.jpg) | Version primée : fond noir, nuage de particules gris, bouton « Start collecting », compteur GitHub. Catégorie Awwwards « Business & Corporate », pas comptabilité. **Correction majeure** : le site actuel (https://wellapp.ai/) a changé de produit. Titre « Sharper founders, side quests handled », assistant généraliste sur WhatsApp, fond `#101010`, Inter 72 px graisse 500, photos noir et blanc d'un modèle. La facture n'est plus qu'une tâche parmi d'autres (billets de concert, prospects). Plus bas, un journal horodaté : « 10:40 Hexa Cloud invoice fetched and filed », « 14:20 Copyhaus receipt matched to the card payment ». **À reprendre** : le journal horodaté, pour la direction B. **À éviter** : le fond noir. Ce n'est plus la référence la plus proche : c'est Quid AI (n° 15). |
-| 8 | invoicemon | https://onepagelove.com/invoicemon | One Page Love (publié le 17 juin 2026) | [capture](captures/08-onepagelove-invoicemon.jpg) | Confirmé. La fiche parle d'une « scroll-to-demo interactive experience », tags « In-Page Demo » et « Interactive », police Inter, tons beige. Sur le site (https://invoicemon.com/), sous le titre « A complete invoicing workflow in your browser » (Inter 36 px, graisse 600, encre `#1A1816`), l'éditeur de facture complet est utilisable dans la page : lignes, quantités, totaux. Ce n'est pas un agent IA mais un générateur de factures. **À reprendre** en phase 2 : une démo jouable sur une facture d'exemple, plutôt qu'une simple vidéo. |
-| 9 | AI Automation SaaS Landing Page Design | https://www.behance.net/gallery/242896981/AI-Automation-SaaS-Landing-Page-Design | Behance | Non vérifié | **Non vérifié** : Behance renvoie une erreur 400. Texte d'origine, d'après la description : étude de cas complète, utile pour la structure « comment ça marche » et « démo ». Remplacée par le n° 21, vu, qui couvre ces deux sections sur le même sujet (comptabilité fournisseurs). |
-
-## Comment ça marche / flux
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 10 | Bubble Flow, AI automation landing page (Eslam) | https://dribbble.com/shots/23013037-Bubble-Flow-Ai-automation-landing-page | Dribbble | [capture](captures/10-dribbble-bubble-flow.jpg) | **Correction** : aucune frise en 3 étapes n'apparaît dans le shot. C'est un concept très coloré : bulles 3D roses, violettes et bleues, fonds crème, gribouillis violets, titres dans une police arrondie, bouton violet. L'auteur écrit lui-même qu'il pensait que ce thème coloré ne conviendrait pas à un service sérieux. **Contre-exemple** pour Ordo (décor 3D, violet). Pour la frise, voir les n° 21 et 23. |
-| 11 | Factory | Fiche d'origine : https://www.lapa.ninja/post/factory/ (non vérifiée : Cloudflare). Vu à la place : https://factory.ai/, qui redirige vers https://factory.com/ | Lapa Ninja, puis site réel | [capture](captures/11-factory.jpg) | Fond `#F9F9F9`, titre en capitales « AI CODING AGENTS FOR THE ENTERPRISE » en Geist 60 px, graisse 500. Sous-titre, boutons et commande `curl` en Geist Mono. Plus bas, l'interface en sombre : liste de sessions avec une pastille orange d'état. Confirmé : la mono porte les statuts et les commandes. C'est exactement le couple Geist et Geist Mono des tokens d'Ordo. **À reprendre** : la mono pour les statuts et les numéros. **À éviter** : la mono gris clair `#8A8380` pour du texte (3,5:1, sous AA). |
-
-## Intégrations
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 12 | 15 Outstanding Integration Page Examples (page intégrations de Ramp) | https://saaslandingpage.com/articles/15-outstanding-integration-page-examples/ | SaaS Landing Page (article publié le 27 décembre 2023, mis à jour le 23 octobre 2026) | [capture](captures/12-saaslp-integrations.jpg) ; [Ramp](captures/12b-saaslp-ramp-integrations.jpg) | Ramp est le n° 6 de l'article. La capture montre « Explore Integrations », un champ de recherche, des filtres par catégorie (Accounting, Expense Automation, HR and payroll, Procurement…), « 123 Integrations », puis une grille logo, nom et catégorie (Xero, NetSuite, Sage Intacct, QuickBooks). L'article cite aussi Resend (n° 7) : un annuaire en trois parties, apps disponibles, à venir et sur mesure. C'est la réponse au brief, qui veut des « connecteurs en cours, marqués comme tels ». **À reprendre** : 3 logos en grand (Pennylane, Sage, Qonto), puis une liste avec catégorie et un groupe « bientôt disponible ». |
-| 13 | Dayos | https://saaslandingpage.com/dayos/ | SaaS Landing Page (septembre 2025) | [capture](captures/13-saaslp-dayos.jpg) | Fiche : police Suisse Int'l, palette `#000000` et `#FFF200`. Hero en capitales condensées « AGENTIC COPILOT FOR YOUR ENTERPRISE », à côté d'une colonne de blocs 3D empilés aux logos de Workday et ServiceNow. Confirmé : l'agent est montré comme une couche posée sur les logiciels existants. Plus bas, « WE'RE REVOLUTIONIZING » en grand. **À reprendre** : les logos des outils existants dans le visuel principal. **À éviter** : le jaune, les capitales condensées et le mot « revolutionizing », interdit dans le brief. |
-
-## Preuves et chiffres
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 14 | Sections « stats » | https://land-book.com/sections/stats | Land-book (galerie de sections) | Non vérifié | **Non vérifié** : Land-book bloque par Cloudflare. Remplacé par le n° 26, la galerie « Metrics » de One Page Love, vue. |
-| 15 | Quid AI | https://onepagelove.com/quid-ai | One Page Love (publié le 23 septembre 2025) | [capture](captures/15-onepagelove-quid-ai.jpg) | **La référence la plus proche d'Ordo.** Le site est hors ligne, One Page Love garde une copie (https://onepagelove.com/preserved/2025-09-23-quid-ai.html), ouverte. Titre « AI agents for your AP/AR workflows » en Space Grotesk 60 px, graisse 500, encre `#190806`, la fin surlignée en rose pâle. Le visuel est une facture au centre, avec les champs extraits en étiquettes (centre de coût, numéro, compte général), les sources à gauche (Office, Slack, Gmail, Stripe) et les logiciels comptables à droite (DATEV, LexOffice, NetSuite, Sage). Ensuite : logos clients, AP puis AR, alertes Slack, un chat (« approve all invoices under €500 from this vendor »), un témoignage de CFO, les intégrations, un bloc sécurité en 3 points (RGPD, « Your data will not be used to train AI models available publicly », chiffrement), une FAQ. Pas de tarifs. Bouton `#F94B38` à texte blanc : 3,45:1, sous AA. **À reprendre** : la facture au centre entre sources et logiciels, et le bloc sécurité en 3 points avec la phrase sur l'entraînement. **À éviter** : le bouton rouge-orangé sous le seuil. |
-
-## Sobriété B2B et sécurité
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 16 | Loopra, CRM & AI Automation Website | https://www.behance.net/gallery/238403873/Loopra-CRM-AI-Automation-Website-UXUI-Design | Behance (novembre 2025) | Non vérifié | **Non vérifié** : erreur 400. Texte d'origine, d'après la description : « communication produit claire et navigation structurée pour une audience B2B ». Remplacé par le n° 25 (Pennylane), un vrai site B2B français vu. |
-| 17 | 11sight, B2B SaaS Platform (Lazarev) | https://www.awwwards.com/sites/11sight-video-call-platform | Awwwards (mention honorable, 7 juillet 2022) | [capture](captures/17-awwwards-11sight.jpg) | Plateforme d'appels vidéo entrants, pas d'IA. Palette de la fiche : `#49C5B6` et blanc, tags « Clean », « Parallax », « Data Visualization ». **Correction** : l'aperçu primé est un fond noir avec un téléphone en 3D et une courbe verte, pas un hero sobre. Le site (https://www.11sight.io/) ne répond plus : nom de domaine introuvable le 2026-11-12. Référence faible, à retirer du moodboard. |
-
-## Palette, typo et contre-exemples
-
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 18 | AI Agent Landing Page & UI/UX Design, par Romeo Saha | https://www.behance.net/gallery/236924567/AI-Agent-Landing-Page-UIUX-Design | Behance | Non vérifié | **Non vérifié** : erreur 400. Texte d'origine : **contre-exemple**, mode sombre « futuriste », réalisé avec Midjourney et After Effects. Remplacé par le n° 24, vu. |
-| 19 | Idées « SaaS Landing Page UI Design » | https://www.pinterest.com/ideas/saas-landing-page-ui-design/902357840411/ | Pinterest (page d'idées) | Non vérifié | **Non vérifié** : mur de connexion, pas de capture. Derrière la fenêtre, les vignettes visibles sont surtout claires, bleues et violettes, une seule est sombre. **Correction** : le « vert et noir » annoncé n'apparaît pas dans cette partie visible. Sur Dribbble, la recherche « ai agent landing page » donne environ 5 vignettes sombres sur 11, dont 2 en vert néon. Le vert vif dosé sur fond clair se voit en revanche chez Pennylane (n° 25). |
-| 20 | Catalyze AI, SaaS website (Halo Lab) | https://www.awwwards.com/sites/catalyze-ai-saas-website | Awwwards (mention honorable, 17 mars 2023) | [capture](captures/20-awwwards-catalyze.jpg) | Palette de la fiche : marine `#07133B` et vert `#1AD079`. Le site (https://catalyzeai.webflow.io/) est en ligne : fond `#F8F9FB`, encre `#07133B`, titre en Hellix 58 px, graisse 600, texte en Poppins, 3 chiffres sous le hero (400mm+, $3Tn, $77Bn). Les liens « Sign up » et « Log in » sont en vert sur fond clair : 1,9:1. **Observation clé** : c'est presque la palette d'Ordo (encre `#0E1A2E`, accent `#19E07A`), primée dès 2023. **À éviter** : le vert en texte, que les tokens d'Ordo interdisent déjà. |
+| Exigence du brief | Inspirations | Manque |
+|---|---|---|
+| 1. Hero (chiffre héros, CTA démo, lien tarifs, « 120 PME ») | 1, 15, 21, 22, 23, 2 | Parmi les titres de hero relevés, aucun ne contient de chiffre. Le seul exemple de grande phrase chiffrée est Archon (n° 4, à côté). |
+| 2. Démo produit (boucle de 20 s sur une facture, version verticale) | 6, 1, 8, 2, 11, 23 | Aucun écart montré en entier (Ramp affiche seulement l'état « Checking for discrepancies… »). Contrôle pause et `prefers-reduced-motion` non vérifiés dans le panel. |
+| 3. Comment ça marche (3 étapes) | 21, 23, 15 | Aucune frise en exactement 3 étapes : 5 onglets chez Agemandi, 4 pastilles chez FiscalPro. |
+| 4. Intégrations (Pennylane, Sage, Qonto, connecteurs en cours marqués) | 12, 15 | Aucun délai de mise en route affiché à côté des logos. |
+| 5. Résultats clients (3 chiffres, 2 ou 3 témoignages avec photo) | 26, 20, 1, 15 | Aucun témoignage avec photo en capture. Celui de Quid AI est décrit, pas capturé. |
+| 6. Sécurité et données (RGPD, France, pas d'entraînement, chiffrement, droits, `/securite`) | 15, 25, 21 | Aucun DPA téléchargeable ni liste de sous-traitants vus. Aucune page `/securite` ouverte. |
+| 7. Tarifs (3 paliers publics par volume de factures, HT) | aucune | Quid AI n'a pas de tarifs. Numira (n° 22) montre le titre « Simple Pricing That Fits Any Team », paliers illisibles. One Page Love : exemples d'agences, d'apps ou sur fond sombre. |
+| 8. On recrute (3 à 5 postes, lien carrières) | aucune | Aucune section emploi dans le panel. Pas de galerie dédiée sur One Page Love, non cherché ailleurs. |
+| 9. FAQ et formulaire de démo (8 questions, 4 champs) | 25 (rôle du cabinet, pour Sophie) | Aucun formulaire à 4 champs ni FAQ en capture. La FAQ de Quid AI est décrite, pas capturée. One Page Love « Contact Form » et « FAQ Accordion » : rien retenu. |
+| Mobile (démo verticale, barre fixe, logos en défilement) | 1, 6, 25 (captures mobiles) | Barre fixe en bas et logos en défilement horizontal : vus nulle part. |
+| Marque : palette (presque blanc, bleu nuit, vert réservé à « traité ») | 20, 25, 11 | Aucun site ne réserve son vert à un seul état : Pennylane et Catalyze le mettent sur les boutons ou les liens. |
+| Marque : typo (Inter Tight ou Geist, mono pour les chiffres) | 11, 2 | Aucun exemple de chiffres héros en mono (n° 26 le confirme). |
+| Marque : une seule animation forte | 1 | Ramp a une animation dans le hero. Le reste de la page n'a pas été audité sous cet angle. |
+| Accessibilité (contrastes, vert jamais en texte, focus) | 1, 25 (boutons à 16:1 et 8,5:1) | Contre-exemples nombreux (n° 2, 11, 15, 20). Navigation clavier non testée dans le panel. |
+| Preuve « 4 h gagnées », avec périmètre et date | 1, 26 | Aucune ligne de périmètre datée vue : Ramp utilise des renvois numérotés. |
+| Preuve « rapprochée avec sa commande » | 1, 15 | Aucun écart facture et commande montré côte à côte. |
+| Preuve « Vous validez, Ordo exécute » (validation, journal) | 15, 6, 2 | Journal horodaté vu seulement chez Well (n° 7, à côté). |
+| Preuve « branché en une journée » | 12 | Délai de mise en route : vu nulle part. |
+| Preuve « données en France, pas d'entraînement » | 15, 25 | Hébergeur et région nommés : vus nulle part. |
+| Preuve « un prix lisible » | aucune | Voir le bloc Tarifs. |
+| Mention IA (AI Act) | aucune | Pas observée sous cet angle dans le panel. |
 
 ---
 
-## Références ajoutées (vues le 2026-11-12)
+## Inspirations, bloc par bloc
 
-Elles remplacent les références bloquées ou fausses, sur le même rôle. Les numéros suivent ceux du bench.
+### 1. Hero
 
-| # | Référence | URL | Source | Capture | Ce qu'on retient |
-|---|---|---|---|---|---|
-| 21 | Accounts Payable Automation SaaS Website (Agemandi) | https://dribbble.com/shots/27640668-Accounts-Payable-Automation-SaaS-Website | Dribbble | [capture](captures/21-dribbble-ap-automation.jpg) | Remplace les n° 9 et 10. Hero « AI-powered Accounts Payable. » au-dessus d'un tableau de bord (liste des factures fournisseurs, statuts). Puis une frise à onglets numérotés : 01 Capture, 02 Extract & store, 03 Recognise, 04 Auto-match, 05 Approve & pay, avec un panneau marine par étape. Un bloc auditabilité affiche « 10 years » de conservation des pièces. La description dit ouvrir « with a product dashboard rather than an abstract promise about AI ». **À reprendre** : la frise à onglets numérotés, un panneau par étape (3 chez Ordo), et le bloc piste d'audit pour Claire, la DAF. **À éviter** : la photo de banque d'images et le bleu-violet `#354AEA`. |
-| 22 | Landing Page for Invoice Management platform (Nadia Kapyrina, pour Numira) | https://dribbble.com/shots/27166316-Landing-Page-for-Invoice-Management-platform | Dribbble | [capture](captures/22-dribbble-numira.jpg) | Palette publiée : `#F2F6F7`, `#010F14`, `#B1D9D0`, `#263B4A`. Grand aplat sarcelle foncé, page blanche, et au centre un tableau de factures (fournisseur, montant, date, pièce, statut). Sections « Collect Documents from Anywhere » et « Simple Pricing That Fits Any Team ». La description vise un « calm tone », sans page « heavy or technical ». **À reprendre** : le tableau de factures comme visuel principal, c'est la direction A. |
-| 23 | Remittance Reconciliation Software Website Design (Crevio, pour FiscalPro) | https://dribbble.com/shots/27821027-Remittance-Reconciliation-Software-Website-Design | Dribbble (studio Crevio) | [capture](captures/23-dribbble-fiscalpro.jpg) | Titre « Reconcile PDF Remittance Advice in Xero. Instantly. » : l'outil comptable est nommé dans le titre. Au-dessus du tableau de bord, 4 pastilles d'étape (Upload a file, Review, Reconcile, Completion), et des statuts « Paid » en vert, « Pending » en orange. **À reprendre** : nommer les outils dans le titre ou le sous-titre (« dans Pennylane, Sage ou Qonto », déjà dans le brief) et des étapes en pastilles. **À éviter** : le fond photo de fleurs floues. |
-| 24 | Open source ai agents landing page (FANCY) | https://dribbble.com/shots/27029567-Open-source-ai-agents-landing-page-web-design-3d-animation | Dribbble (studio FANCY) | [capture](captures/24-dribbble-contre-exemple.jpg) | **Contre-exemple**, remplace le n° 18. Fond noir, cubes-robots 3D argentés aux yeux vert néon sur un tapis lumineux, palette `#020503` et `#3DAA53`. Tout ce que la liste « à ne pas faire » interdit. Il représente bien la recherche : sur 11 vignettes « ai agent landing page », 4 montrent un robot ou un objet 3D. |
-| 25 | Pennylane | https://www.pennylane.com/fr | Site réel (France) | [capture](captures/25-pennylane.jpg) | Remplace le n° 16. Fond blanc, encre sarcelle `#003D3D`, titre en Manrope 52 px, graisse 600. Bouton vert électrique `#00F872` à texte `#003D3D` (8,5:1). Onglets d'audience au-dessus de l'en-tête : « Indépendants et TPE », « PME et ETI », « Cabinet expertise comptable ». Preuves : « +1 500 000 dirigeants… », « +300 intégrations », ISO/IEC 27001, « Made in France », bloc « Plateforme Agréée immatriculée » pour la facture électronique. **Observation clé** : ce vert et l'accent d'Ordo sont presque identiques (1,22:1 entre eux). Ordo se branche sur Pennylane : risque d'être pris pour un module Pennylane. **À reprendre** : l'onglet « Cabinet expertise comptable » pour le persona Sophie, et les preuves de conformité en ligne courte. |
-| 26 | Metrics Section Examples | https://onepagelove.com/section/metrics | One Page Love (galerie de 150 sections) | [capture](captures/26-onepagelove-metrics.jpg) | Remplace le n° 14. Kelvin : 4 chiffres sur une ligne, sous un filet, avec un libellé en petites capitales. The Queue : 3 pourcentages, chacun avec une ligne d'explication dessous. Confirme le format « grand chiffre, unité, ligne de périmètre ». Aucun des exemples vus n'utilise la mono : c'est un choix propre à Ordo. |
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 1 | Ramp, page Accounts Payable (https://ramp.com/accounts-payable) | [capture](captures/inspis/01-ramp-ap.jpg) | Fond blanc, titre « A month of AP done in minutes. » en Lausanne 64 px, graisse 400, encre `#0C0A08`. À droite, une animation « Routing to approvals. » fait défiler de vraies lignes de factures (fournisseur, montant, date, numéro). Chiffres : « 2.4x faster », « 85,000+ businesses », chacun avec un renvoi numéroté (1, 2, 3). À éviter : le bouton jaune-vert `#E4F222`. | De vraies lignes de factures dès le hero. Le renvoi sous chaque chiffre sert la ligne de périmètre du « 4 h » et la règle des allégations. |
+| 15 | Quid AI (https://onepagelove.com/quid-ai, copie https://onepagelove.com/preserved/2025-09-23-quid-ai.html) | [capture](captures/inspis/15-onepagelove-quid-ai.jpg) | Titre « AI agents for your AP/AR workflows » en Space Grotesk 60 px, graisse 500, encre `#190806`. Une facture au centre, avec les champs extraits en étiquettes (centre de coût, numéro, compte général), les sources à gauche (Office, Slack, Gmail, Stripe), les logiciels comptables à droite (DATEV, LexOffice, NetSuite, Sage). À éviter : le bouton `#F94B38` à texte blanc (3,45:1). | Comprendre Ordo en moins de 5 secondes : la facture entre sources et outils dit lecture, rapprochement, écriture. |
+| 21 | Accounts Payable Automation SaaS Website, Agemandi (https://dribbble.com/shots/27640668-Accounts-Payable-Automation-SaaS-Website) | [capture](captures/inspis/21-dribbble-ap-automation.jpg) | Hero « AI-powered Accounts Payable. » au-dessus d'une liste de factures fournisseurs avec statuts. La description dit ouvrir « with a product dashboard rather than an abstract promise about AI ». À éviter : la photo de banque d'images et le bleu-violet `#354AEA`. | Montrer le produit plutôt qu'une promesse, pour Claire qui veut voir le vrai traitement. |
+| 22 | Landing Page for Invoice Management platform, Nadia Kapyrina pour Numira (https://dribbble.com/shots/27166316-Landing-Page-for-Invoice-Management-platform) | [capture](captures/inspis/22-dribbble-numira.jpg) | Palette publiée `#F2F6F7`, `#010F14`, `#B1D9D0`, `#263B4A`. Au centre, un tableau de factures (fournisseur, montant, date, pièce, statut). La description vise un « calm tone ». | Le tableau de factures comme visuel principal (direction A), ton sobre du brief. |
+| 23 | Remittance Reconciliation Software Website Design, Crevio pour FiscalPro (https://dribbble.com/shots/27821027-Remittance-Reconciliation-Software-Website-Design) | [capture](captures/inspis/23-dribbble-fiscalpro.jpg) | Titre « Reconcile PDF Remittance Advice in Xero. Instantly. » : l'outil comptable est nommé dans le titre. À éviter : le fond photo de fleurs floues. | Sous-titre du brief qui nomme Pennylane, Sage ou Qonto. |
+| 2 | Dust (https://dust.tt) | [capture](captures/inspis/02-dust.jpg) | Sous le hero, « Trusted by teams at 3,000+ global organizations ». Bouton principal « Request a demo » et lien secondaire « Try for free → ». À éviter : le bouton bleu en dégradé (texte blanc à 3,2:1 au mieux). | La mention « 120 PME » sous la ligne de flottaison, et le couple CTA principal plus lien secondaire (« Voir les tarifs »). |
 
-### Galeries : requêtes lancées
+### 2. Démo produit
 
-| Plateforme | Requêtes | Résultat |
-|---|---|---|
-| Behance | liens d'origine n° 9, 16, 18 | Inaccessible : « HTTP ERROR 400 » au navigateur automatisé. |
-| Dribbble | « invoice automation landing page », « ai agent landing page », « archon lazarev » | 4 retenues (n° 21 à 24) et l'équivalent du n° 4. Les maquettes de compta fournisseurs sont presque toutes claires, avec un tableau de factures. Les maquettes « agent IA » sont environ pour moitié sombres. |
-| Pinterest | liens d'origine n° 4, 19 | Mur de connexion sur les deux. Aucune capture. |
-| Awwwards | liens d'origine n° 7, 17, 20 | 3 vues. Deux sites primés ont changé ou disparu depuis (Well, 11sight). |
-| Land-book | liens d'origine n° 5, 14 | Inaccessible (challenge Cloudflare). |
-| Lapa Ninja | liens d'origine n° 6, 11 | Inaccessible (« Sorry, you have been blocked »). Sites réels vus à la place. |
-| One Page Love | liens d'origine n° 8, 15 ; sections « Metrics » et « How It Works » | 3 retenues (n° 8, 15, 26). « How It Works » vue, rien de retenu : aucun exemple B2B ou finance en tête de liste. |
-| Framer Marketplace | « operator ai agent » | Le template Operator (n° 5) n'apparaît pas. |
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 6 | Fin (https://fin.ai/, fiche Lapa Ninja d'origine non vérifiée) | [capture](captures/inspis/06-fin.jpg) | Démo en conversation : le client signale un déménagement, Fin demande un justificatif, le PDF « UtilityBill.pdf » arrive, Fin confirme la nouvelle adresse. Chiffre : « 76% resolution rate, across 12,000+ businesses ». À éviter : le tube 3D orange et la serif fine du titre (« Serrif », 72 px). | Une tâche terminée à partir d'une pièce jointe. Pour Ordo : facture reçue, « rapprochée avec la commande », pastille « Traité ». |
+| 1 | Ramp, version mobile | [démo facture](captures/inspis/mobile-ramp-facture.jpg) | Une facture se remplit ligne par ligne (« Draft Invoice #CI-14884 », catégorie, département, lieu), avec les états « Auto coding… » puis « Checking for discrepancies… ». | Démo verticale sur mobile, et l'état de recherche d'écart qui annonce le rapprochement. |
+| 8 | invoicemon (https://onepagelove.com/invoicemon, site https://invoicemon.com/) | [capture](captures/inspis/08-onepagelove-invoicemon.jpg) | Sous le titre « A complete invoicing workflow in your browser » (Inter 36 px, graisse 600, encre `#1A1816`), l'éditeur de facture est rendu en HTML dans la page : lignes, quantités, totaux. Ce n'est pas un agent IA. | Démo en HTML/CSS plutôt qu'en vidéo : texte lisible par Google (SEO) et poids léger (< 1,5 Mo sur mobile). Une démo jouable reste une piste de phase 2. |
+| 2 | Dust | [capture](captures/inspis/02-dust.jpg) | Des bulles d'agents nommés par tâche (@LeadQual, @Incident, @TicketRouter), chacune avec son résultat (« API gateway p99 latency > 2s »). À éviter : la scène 3D isométrique. | Le journal des actions de la preuve « Vous validez, Ordo exécute » : une bulle « Lecture », « Rapprochement » ou « Relance » avec son résultat. |
+| 11 | Factory (https://factory.com/, fiche Lapa Ninja d'origine non vérifiée) | [capture](captures/inspis/11-factory.jpg) | Plus bas, l'interface liste des sessions avec une pastille d'état. Les statuts et les commandes sont en Geist Mono. À éviter : la mono gris clair `#8A8380` en texte (3,5:1). | Statuts et numéros de facture en mono, comme le demande le brief pour les chiffres. |
+| 23 | FiscalPro | [capture](captures/inspis/23-dribbble-fiscalpro.jpg) | Statuts « Paid » en vert, « Pending » en orange dans le tableau de bord. | Deux états lisibles dans la démo : « Traité » (vert, avec le mot) et « Écart » (alerte). |
+
+Détail repris d'une référence à côté : le journal horodaté de Well (« 10:40 Hexa Cloud invoice fetched and filed », n° 7) montre une forme possible du journal des actions.
+
+### 3. Comment ça marche
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 21 | Agemandi | [capture](captures/inspis/21-dribbble-ap-automation.jpg) | Frise à onglets numérotés : 01 Capture, 02 Extract & store, 03 Recognise, 04 Auto-match, 05 Approve & pay, avec un panneau marine par étape. | Les 3 étapes du brief (connecter vos outils, Ordo traite, vous validez), un panneau par étape. |
+| 23 | FiscalPro | [capture](captures/inspis/23-dribbble-fiscalpro.jpg) | 4 pastilles d'étape au-dessus du tableau de bord : Upload a file, Review, Reconcile, Completion. | Une version compacte des étapes, réutilisable dans la démo. |
+| 15 | Quid AI | [capture](captures/inspis/15-onepagelove-quid-ai.jpg) | Plus bas sur la page, un chat : « approve all invoices under €500 from this vendor ». | L'étape « vous validez » et les règles que le client définit lui-même (brief, section 1 : un fournisseur récurrent sous un certain montant). |
+
+### 4. Intégrations
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 12 | 15 Outstanding Integration Page Examples, page intégrations de Ramp (https://saaslandingpage.com/articles/15-outstanding-integration-page-examples/) | [article](captures/inspis/12-saaslp-integrations.jpg) ; [Ramp](captures/inspis/12b-saaslp-ramp-integrations.jpg) | Ramp : « Explore Integrations », recherche, filtres par catégorie (Accounting, Expense Automation, HR and payroll, Procurement…), « 123 Integrations », grille logo, nom et catégorie. L'article cite aussi Resend : apps disponibles, à venir et sur mesure. | 3 logos en grand (Pennylane, Sage, Qonto), puis un groupe « bientôt disponible » : les « connecteurs en cours, marqués comme tels » du brief. |
+| 15 | Quid AI | [capture](captures/inspis/15-onepagelove-quid-ai.jpg) | Logiciels comptables à droite de la facture (DATEV, LexOffice, NetSuite, Sage). | Les connecteurs dans le visuel principal, puis repris dans la section. CTA « Vérifier la compatibilité de mon outil » juste dessous. |
+
+Détail repris d'une référence à côté : Dayos (n° 13) pose son agent sur les logos de Workday et ServiceNow, comme une couche au-dessus des outils existants.
+
+### 5. Résultats clients
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 26 | Metrics Section Examples (https://onepagelove.com/section/metrics) | [capture](captures/inspis/26-onepagelove-metrics.jpg) | Kelvin : 4 chiffres sur une ligne, sous un filet, libellés en petites capitales. The Queue : 3 pourcentages, chacun avec une ligne d'explication. Aucun exemple n'utilise la mono. | Les 3 chiffres du brief, au format « grand chiffre, unité, ligne de périmètre ». |
+| 20 | Catalyze AI, Halo Lab (https://www.awwwards.com/sites/catalyze-ai-saas-website, site https://catalyzeai.webflow.io/) | [capture](captures/inspis/20-awwwards-catalyze.jpg) | 3 chiffres sous le hero (400mm+, $3Tn, $77Bn). À éviter : les liens en vert sur fond clair (1,9:1). | Une rangée de 3 chiffres sobre, sans compteur animé. |
+| 1 | Ramp | [capture](captures/inspis/01-ramp-ap.jpg) | Plus bas : « Up to 7x fewer clicks to process a bill vs Bill.com », « Up to 95% », OCR « 99% accuracy », chacun avec un renvoi numéroté. | Chaque chiffre affiché avec sa source (brief : allégations sourcées, date et périmètre). |
+| 15 | Quid AI | [capture](captures/inspis/15-onepagelove-quid-ai.jpg) | Logos clients sous le hero, puis un témoignage de CFO (vu sur la copie, hors capture). | Témoignage d'un profil proche de Claire (DAF). |
+
+Détail repris d'une référence à côté : Archon (n° 4) utilise une grande phrase chiffrée comme intertitre (« 20% of the U.S. software market »).
+
+### 6. Sécurité et données
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 15 | Quid AI | [capture](captures/inspis/15-onepagelove-quid-ai.jpg) | Bloc sécurité en 3 points : RGPD, « Your data will not be used to train AI models available publicly », chiffrement (hors capture). | La phrase « pas d'entraînement sur vos données » attendue par Karim, dans un bloc court. |
+| 25 | Pennylane (https://www.pennylane.com/fr) | [capture](captures/inspis/25-pennylane.jpg) | Preuves en ligne courte : ISO/IEC 27001, « Made in France », bloc « Plateforme Agréée immatriculée » pour la facture électronique. | Hébergement en France et conformité, affichés comme des preuves sobres. |
+| 21 | Agemandi | [capture](captures/inspis/21-dribbble-ap-automation.jpg) | Bloc auditabilité : « 10 years » de conservation des pièces. | La piste d'audit attendue par Claire, à côté des droits d'accès. |
+
+### 7. Tarifs
+
+Aucune inspiration. Voir **Couverture du brief**. À produire sans modèle : 3 paliers par volume de factures par mois, prix HT, ce qui est inclus, et le libellé de CTA par palier donné par le brief.
+
+### 8. On recrute
+
+Aucune inspiration. À produire sans modèle : 3 à 5 postes, lien vers la page carrières.
+
+### 9. FAQ et formulaire de démo
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 25 | Pennylane | [capture](captures/inspis/25-pennylane.jpg) | Onglets d'audience au-dessus de l'en-tête : « Indépendants et TPE », « PME et ETI », « Cabinet expertise comptable ». | Une mention claire du rôle de l'expert-comptable pour Sophie, et son contact partenaire (FAQ et pied de page). |
+
+### Transverse : marque et accessibilité
+
+| # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
+|---|---|---|---|---|
+| 20 | Catalyze AI | [capture](captures/inspis/20-awwwards-catalyze.jpg) | Fond `#F8F9FB`, encre `#07133B`, vert `#1AD079`, titre en Hellix 58 px, graisse 600. Presque la palette d'Ordo, primée en 2023. | Preuve que fond clair, encre marine et vert vif tiennent ensemble. Risque de ressemblance : voir **Points à remonter au client**. |
+| 25 | Pennylane | [capture](captures/inspis/25-pennylane.jpg) | Encre sarcelle `#003D3D`, titre en Manrope 52 px, graisse 600. Bouton vert `#00F872` à texte `#003D3D` (8,5:1). | Un vert vif dosé sur fond clair, avec un texte foncé dessus. Ce vert et l'accent d'Ordo sont à 1,22:1 l'un de l'autre. |
+| 11 | Factory | [capture](captures/inspis/11-factory.jpg) | Fond `#F9F9F9`, titre en capitales Geist 60 px, graisse 500. Sous-titre, boutons et commande `curl` en Geist Mono. | Le couple Geist et Geist Mono autorisé par le brief, sur fond presque blanc. |
+| 2 | Dust | [capture](captures/inspis/02-dust.jpg) | Titre en Geist 69 px, graisse 550, encre `#191715`, texte `#57534D`. | Geist en grand corps pour les titres. |
+| 1 | Ramp | [capture](captures/inspis/01-ramp-ap.jpg) | Bouton à texte noir sur fond clair : 16:1. | Bouton principal très contrasté : le bouton encre d'Ordo (17,4:1) suit cette logique. |
 
 ---
 
 ## Mobile
 
-Trois sites vus en 390 × 844 px :
+Trois sites vus en 390 × 844 px. Le brief demande : CTA « Réserver une démo » en barre fixe, démo verticale, poids de la démo < 1,5 Mo, LCP mobile < 2,5 s.
 
-| Site | Capture | Ce qu'on observe |
-|---|---|---|
-| Ramp, Accounts Payable | [hero](captures/mobile-ramp.jpg) ; [démo facture](captures/mobile-ramp-facture.jpg) | Titre centré, champ e-mail et bouton jaune en pleine largeur, puis l'animation de factures empilée dessous, dans une carte grise. Plus bas, une facture se remplit ligne par ligne (« Draft Invoice #CI-14884 », catégorie, département, lieu), avec les états « Auto coding… » puis « Checking for discrepancies… ». Seul l'en-tête est fixe : aucun bouton fixe en bas. |
-| Fin | [capture](captures/mobile-fin.jpg) | Le bouton noir « Contact sales » reste dans l'en-tête fixe, en haut. La démo en conversation passe sous les boutons, au format vertical, sans adaptation particulière. Aucun élément fixe en bas. |
-| Pennylane | [capture](captures/mobile-pennylane.jpg) | Les onglets d'audience défilent horizontalement en haut. L'en-tête reste collé en haut, mais sans bouton : seulement le logo et le menu. Le bouton vert est dans le hero, pas fixe. La photo d'écran de bureau n'est pas recadrée pour le mobile. |
+| Site | Capture | Ce qu'on observe | Exigence du brief |
+|---|---|---|---|
+| Ramp (n° 1) | [hero](captures/inspis/mobile-ramp.jpg) ; [démo facture](captures/inspis/mobile-ramp-facture.jpg) | Titre centré, champ e-mail et bouton jaune en pleine largeur, puis l'animation de factures empilée dessous, dans une carte grise. Plus bas, une facture se remplit ligne par ligne, avec « Auto coding… » puis « Checking for discrepancies… ». Seul l'en-tête est fixe. | Démo verticale : confirmée. Une facture tient en largeur mobile avec 3 colonnes courtes par ligne. |
+| Fin (n° 6) | [capture](captures/inspis/mobile-fin.jpg) | Le bouton noir « Contact sales » reste dans l'en-tête fixe, en haut. La démo en conversation passe sous les boutons, au format vertical. Aucun élément fixe en bas. | CTA toujours accessible : ici en haut, pas en bas. |
+| Pennylane (n° 25) | [capture](captures/inspis/mobile-pennylane.jpg) | Les onglets d'audience défilent horizontalement en haut. L'en-tête reste collé en haut, sans bouton. La capture d'écran de bureau n'est pas recadrée pour le mobile. | À éviter : visuel desktop réduit. Prévoir un visuel recadré pour la démo verticale. |
 
 Ce que ces observations changent pour Ordo :
-- **Démo verticale** : confirmée. Ramp montre qu'une facture tient en largeur mobile si on garde 3 colonnes courtes par ligne. C'est le modèle de la démo d'Ordo : une facture qui se remplit, puis l'état « Traité ».
-- **CTA fixe** : aucun des 3 sites n'a de barre fixe en bas. Fin garde son CTA dans l'en-tête fixe. La barre « Réserver une démo » en bas du brief reste un choix d'Ordo, non observé dans le panel. Elle doit se masquer quand le formulaire est à l'écran, pour ne pas le doubler.
+- **Démo verticale** : le modèle est la facture de Ramp qui se remplit, puis l'état « Traité ».
+- **CTA fixe** : aucun des 3 sites n'a de barre fixe en bas. La barre « Réserver une démo » reste une demande du brief, non observée. Elle doit se masquer quand le formulaire est à l'écran.
 - **Défilement horizontal** : vu chez Pennylane pour les onglets d'audience, pas pour les logos. Les logos d'intégration en défilement horizontal restent une proposition non vérifiée.
-- **Visuels** : éviter la capture d'écran desktop réduite (Pennylane). Prévoir un visuel recadré pour le mobile.
 
 ---
 
-## Synthèse du moodboard
+## Directions
 
-### Ajustements après observation (2026-11-12)
-- **Direction A renforcée** : les trois exemples les plus proches du sujet mettent la facture ou le tableau de factures au centre. Quid AI (n° 15) en hero, Ramp (n° 1) dans son animation et sa démo mobile, Numira (n° 22) en visuel principal. La recommandation est maintenue, avec ces preuves en plus. Well, citée avant comme modèle, ne l'est plus (n° 7).
-- **Agents nommés** : l'idée vient de Dust (n° 2) et de Fin (« Operator », n° 6), pas de la page de Ramp. Elle reste valable pour Ordo.
-- **Frise** : Bubble Flow (n° 10) est retiré au profit d'Agemandi (n° 21, 5 onglets numérotés) et de FiscalPro (n° 23, 4 pastilles).
-- **Boutons** : deux sites du panel ont un bouton principal sous le seuil AA (Dust 3,2:1, Quid AI 3,45:1). Le bouton encre d'Ordo est à 17,4:1 : à garder.
-- **Palette** : non changée, voir ci-dessous.
+Le brief ne fixe pas de nombre de pistes (2 allers-retours prévus en S3 et S4). Deux directions compatibles avec la marque sont gardées. Les deux respectent la même base : fond presque blanc, encre bleu nuit, vert seulement pour « traité », Inter Tight ou Geist avec une mono, une seule animation forte (la démo).
 
-### Direction A : « Relevé comptable »
-- Fond presque blanc, filets fins, grille de tableau visible, chiffres en mono.
+### Direction A : « Relevé comptable » (recommandée)
+- Filets fins, grille de tableau visible, chiffres en mono.
 - La démo ressemble à un vrai document : la facture se surligne ligne par ligne, et une pastille verte « Traité » apparaît à la fin.
-- Références vues : Quid AI (n° 15) pour la facture entre sources et logiciels, Ramp mobile pour la facture qui se remplit ligne par ligne, Numira (n° 22) pour le tableau.
-- Registre : sérieux, vérifiable, rassurant pour une DAF. **C'est la direction recommandée.**
+- Inspirations : Quid AI (n° 15) pour la facture entre sources et logiciels, Ramp (n° 1) pour la facture qui se remplit sur mobile, Numira (n° 22) et Agemandi (n° 21) pour le tableau de factures, One Page Love Metrics (n° 26) pour les chiffres.
+- Registre : sérieux, vérifiable. Elle répond au frein de Claire (« l'IA va se tromper et je ne le verrai pas »).
 
 ### Direction B : « Console calme »
-- Interface produit en très grand (n° 1, 11), avec des panneaux gris clair et un journal d'actions de l'agent en mono.
-- Le hero est une capture recadrée sur l'action de l'agent (« Relance envoyée à Fournisseur X »).
-- Références vues : Factory (n° 11) pour la mono et les pastilles d'état, le journal horodaté de Well (n° 7).
-- Registre : outil puissant, plus tech, adapté si la cible glisse vers les ETI.
+- Interface produit en grand, panneaux gris clair (jamais d'interface sombre), journal d'actions de l'agent en mono.
+- Le visuel du hero est recadré sur l'action de l'agent (« Relance envoyée à Fournisseur X »), sous le titre chiffré.
+- Inspirations : Factory (n° 11) pour la mono et les pastilles d'état, Dust (n° 2) pour l'agent nommé par tâche avec son résultat, Fin (n° 6) pour la démo en messages courts. Le journal horodaté de Well (n° 7, à côté) en donne une forme.
+- Registre : outil précis. Elle met en avant la preuve « Vous validez, Ordo exécute » et le journal des actions.
 
-### Direction C : « Éditorial »
-- Grand titre serré en Inter Tight, beaucoup de blanc, peu de visuels, chiffres héros en très grand corps.
-- La démo est un bloc unique, centré, avec du texte autour comme dans un article.
-- Référence vue : Fin (n° 6), titre en serif fine et démo en conversation à côté.
-- Registre : premium et calme, idéal pour la relation investisseurs. Moins démonstratif pour les PME.
-
-### Palette recommandée
-
-Contrastes WCAG 2.1 calculés le 2026-11-12.
-
-| Rôle | Hex | Usage |
-|---|---|---|
-| Fond | `#FAFAF7` | Fond principal, presque blanc et légèrement chaud |
-| Surface | `#F1F2EE` | Cartes, panneaux de démo |
-| Filet | `#E2E4DE` | Bordures, séparateurs |
-| Encre | `#0E1A2E` | Titres et texte, bleu nuit (16,7:1 sur le fond) |
-| Texte secondaire | `#4A5568` | Sous-titres, légendes (7,2:1 sur le fond, 6,7:1 sur la surface) |
-| Accent « traité » | `#19E07A` | Pastilles, fonds d'état. Jamais pour du texte sur fond clair (1,7:1 sur le fond). Le mot « Traité » en encre sur la pastille : 9,9:1 |
-| Accent texte | `#0B7A43` | Vert foncé pour le texte « Traité » : 5,2:1 sur le fond, 4,8:1 sur la surface, 4,9:1 sur `success.bg`. Conforme AA |
-| Alerte écart | `#C2410C` | Écart détecté dans la démo, avec parcimonie (5,0:1 sur le fond, 4,8:1 sur `warning.bg`) |
-
-**Pourquoi la palette ne change pas, et ce qu'il faut trancher.** Deux observations touchent l'accent vert. Pennylane (n° 25) met un vert presque identique (`#00F872`) sur tous ses boutons, et Ordo se branche sur Pennylane. Catalyze AI (n° 20) avait dès 2023 une palette marine et vert très proche (`#07133B`, `#1AD079`). Le brief impose pourtant un vert électrique, et la règle d'Ordo (vert seulement pour l'état « traité », jamais sur un bouton) le distingue déjà de ces deux sites, qui mettent le vert sur leurs boutons ou leurs liens. La palette reste donc telle quelle. **À valider avec Ordo** : voir la pastille « Traité » à côté du logo Pennylane dans la section intégrations. Si elle se confond, décaler l'accent plutôt que de le mettre sur les boutons.
-
-### Polices (Google Fonts)
-- **Titres et texte** : Inter Tight (titres, graisses 600 et 700) et Inter (texte courant), ou Geist, qui est aussi disponible sur Google Fonts.
-- **Chiffres et statuts** : Geist Mono, ou JetBrains Mono à défaut. Montants avec `font-variant-numeric: tabular-nums`.
-- **Vu dans le panel** : Geist chez Dust (n° 2) et Factory (n° 11), Geist Mono chez Factory pour les statuts et les commandes. Le choix est cohérent avec le secteur, mais peu distinctif : c'est le rôle de la mono et de la mise en page « relevé » de faire la différence.
+### Direction retirée
+- **C « Éditorial »** : retirée. Sa seule référence était la serif fine de Fin, alors que le brief impose Inter Tight ou Geist. Elle réduisait aussi la démo à un bloc parmi du texte, alors que la démo porte un KPI (40 % des visiteurs la voient jusqu'au bout) et deux preuves clés.
 
 ### 3 « à ne pas faire »
-1. Pas de fond sombre, de halo violet ni de cerveau ou de robot en 3D (n° 24, et n° 10 pour les bulles 3D). C'est le code d'une bonne part du secteur, et il contredit le registre comptable.
+1. Pas de fond sombre, de halo violet, de cerveau ni de robot en 3D (n° 24, n° 10). Le brief demande un fond presque blanc et un ton sobre.
 2. Pas de vert décoratif : il ne sert qu'à l'état « traité ». S'il apparaît dans les boutons, les icônes et les illustrations, il perd son sens.
 3. Pas de deuxième animation forte (parallaxe, compteurs qui défilent, logos qui volent). La démo est la seule chose qui bouge vraiment.
 
 ---
 
-## Design tokens (proposition)
+## Palette, polices, design tokens, composants
 
-### Couleurs
+Contrastes WCAG 2.1 calculés le 2026-11-12, puis recalculés lors de la refonte (mêmes valeurs). Cible : AA, soit 4,5:1 pour le texte et 3:1 pour les éléments d'interface.
+
+### Palette
+
+| Rôle | Hex | Usage |
+|---|---|---|
+| Fond | `#FAFAF7` | Fond principal, presque blanc et légèrement chaud |
+| Surface | `#F1F2EE` | Cartes, panneaux de démo |
+| Filet | `#E2E4DE` | Bordures décoratives, séparateurs |
+| Encre | `#0E1A2E` | Titres et texte, bleu nuit (16,7:1 sur le fond) |
+| Texte secondaire | `#4A5568` | Sous-titres, légendes (7,2:1 sur le fond, 6,7:1 sur la surface) |
+| Accent « traité » | `#19E07A` | Pastilles, fonds d'état. Jamais pour du texte (1,7:1 sur le fond). Le mot « Traité » en encre sur la pastille : 9,9:1 |
+| Accent texte | `#0B7A43` | Libellé « Traité » seulement : 5,2:1 sur le fond, 4,8:1 sur la surface, 4,9:1 sur `success.bg` |
+| Alerte écart | `#C2410C` | Écart détecté dans la démo, avec parcimonie (5,0:1 sur le fond, 4,8:1 sur `warning.bg`) |
+
+La palette suit le brief. Le risque de confusion avec le vert de Pennylane est remonté au client (voir plus bas).
+
+### Polices (Google Fonts)
+- **Titres et texte** : Inter Tight pour tout (titres en graisses 600 et 700, texte en 400), ou Geist pour tout. **Corrigé** : le bench proposait Inter pour le texte courant, que le brief ne cite pas.
+- **Chiffres et statuts** : Geist Mono, ou JetBrains Mono à défaut. Montants avec `font-variant-numeric: tabular-nums`.
+- **Vu dans le panel** : Geist chez Dust (n° 2) et Factory (n° 11), Geist Mono chez Factory pour les statuts. Le choix est cohérent avec le secteur, mais peu distinctif : la mono et la mise en page « relevé » font la différence.
+
+### Couleurs (tokens)
 
 | Token | Hex | Usage |
 |---|---|---|
-| `color.brand.ink` | `#0E1A2E` | Encre principale, boutons primaires |
+| `color.brand.ink` | `#0E1A2E` | Encre principale, boutons primaires, anneau de focus |
 | `color.brand.ink-hover` | `#1D2D4A` | Survol du bouton primaire |
 | `color.brand.accent` | `#19E07A` | État « traité » : pastilles, fonds. Jamais pour du texte |
-| `color.success.text` | `#0B7A43` | Texte « Traité » et validation de formulaire |
-| `color.success.bg` | `#E6F9EF` | Fond des messages de succès |
+| `color.success.text` | `#0B7A43` | Libellé « Traité » seulement. **Corrigé** : n'est plus utilisé pour la validation du formulaire |
+| `color.success.bg` | `#E6F9EF` | Fond de ligne « traitée » dans la démo. **Corrigé** : n'est plus le fond du message de succès du formulaire |
 | `color.error.text` | `#B42318` | Erreurs de formulaire |
 | `color.error.bg` | `#FEF0EE` | Fond des messages d'erreur |
 | `color.warning.text` | `#C2410C` | Écart détecté (démo), alertes |
 | `color.warning.bg` | `#FFF4E8` | Fond des alertes |
 | `color.neutral.0` | `#FFFFFF` | Champs, cartes surélevées |
 | `color.neutral.50` | `#FAFAF7` | Fond de page |
-| `color.neutral.100` | `#F1F2EE` | Surfaces, panneau de démo |
-| `color.neutral.200` | `#E2E4DE` | Filets, bordures |
+| `color.neutral.100` | `#F1F2EE` | Surfaces, panneau de démo, message de succès du formulaire |
+| `color.neutral.200` | `#E2E4DE` | Filets, bordures décoratives |
+| `color.neutral.400` | `#868B94` | **Ajouté** : bordure des champs de formulaire (3,4:1 sur blanc, 3,3:1 sur le fond) |
 | `color.neutral.500` | `#6B7280` | Texte désactivé, placeholders (4,8:1 sur blanc, 4,6:1 sur le fond) |
 | `color.neutral.700` | `#4A5568` | Texte secondaire |
 | `color.neutral.900` | `#0E1A2E` | Texte principal (même valeur que `brand.ink`) |
 
-Contrastes calculés le 2026-11-12 avec la formule WCAG 2.1. Cible : AA, soit 4,5:1 pour le texte et 3:1 pour les éléments d'interface.
-
 | Paire | Ratio | Verdict |
 |---|---|---|
 | `neutral.900` sur `neutral.50` | 16,7:1 | AA |
+| `neutral.900` sur `neutral.100` (message de succès) | 15,5:1 | AA |
 | Blanc sur `brand.ink` (bouton) | 17,4:1 | AA |
 | Blanc sur `brand.ink-hover` | 13,8:1 | AA |
 | `neutral.700` sur `neutral.50` | 7,2:1 | AA |
@@ -226,12 +250,14 @@ Contrastes calculés le 2026-11-12 avec la formule WCAG 2.1. Cible : AA, soit 4,
 | `error.text` sur blanc / `error.bg` | 6,6:1 / 5,9:1 | AA |
 | `warning.text` sur `neutral.50` / `warning.bg` | 5,0:1 / 4,8:1 | AA |
 | `neutral.500` sur blanc | 4,8:1 | AA |
+| `neutral.400` (bordure de champ) sur blanc / `neutral.50` | 3,4:1 / 3,3:1 | AA (élément d'interface) |
 | `neutral.500` sur `neutral.200` (bouton désactivé) | 3,8:1 | Exempté (élément désactivé) |
 | `brand.accent` sur `neutral.50` | 1,7:1 | Sous 3:1 : la pastille porte toujours le mot « Traité » en encre (9,9:1), l'état ne passe jamais par la couleur seule |
-| `neutral.200` (filet) sur `neutral.50` | 1,2:1 | Décoratif uniquement : les champs de formulaire ont besoin d'une bordure plus foncée (au moins 3:1) |
+| `neutral.200` (filet) sur `neutral.50` | 1,2:1 | Décoratif uniquement |
+| Anneau de focus d'origine (`rgba(14,26,46,.35)`) sur `neutral.50` | 2,2:1 | **Sous 3:1, corrigé** : contour plein `brand.ink` (16,7:1) |
 
 ### Typographie
-Familles : `font.sans` = Inter Tight (titres) et Inter (texte) ; `font.mono` = Geist Mono. Chiffres : `font-variant-numeric: tabular-nums`.
+Familles : `font.sans` = Inter Tight (titres et texte), ou Geist pour tout ; `font.mono` = Geist Mono. Chiffres : `font-variant-numeric: tabular-nums`.
 
 | Token | Taille desktop / mobile | Graisse | Interligne | Usage |
 |---|---|---|---|---|
@@ -251,8 +277,9 @@ Sections : 128 px en desktop, 64 px en mobile. Marges latérales : 16 px en mobi
 ### Rayons
 `radius.sm` = 6 px (pastilles, champs), `radius.md` = 10 px (boutons, cartes), `radius.lg` = 16 px (panneau de démo), `radius.full` = 999 px (badges d'état).
 
-### Ombres
-`shadow.sm` = `0 1px 2px rgba(14,26,46,.06)` (cartes) ; `shadow.md` = `0 8px 24px rgba(14,26,46,.08)` (panneau de démo) ; `shadow.focus` = `0 0 0 3px rgba(14,26,46,.35)` (anneau de focus).
+### Ombres et focus
+`shadow.sm` = `0 1px 2px rgba(14,26,46,.06)` (cartes) ; `shadow.md` = `0 8px 24px rgba(14,26,46,.08)` (panneau de démo).
+`focus.ring` = `outline: 2px solid #0E1A2E; outline-offset: 2px`. **Corrigé** : remplace `shadow.focus` (`0 0 0 3px rgba(14,26,46,.35)`), à 2,2:1 sur le fond. Le décalage de 2 px garde l'anneau visible autour du bouton encre.
 Les ombres restent discrètes : on privilégie les filets.
 
 ### Motion
@@ -264,25 +291,70 @@ Les ombres restent discrètes : on privilégie les filets.
 | `motion.ease.standard` | `cubic-bezier(.2,0,0,1)` | Défaut |
 | `motion.ease.emphasis` | `cubic-bezier(.3,0,0,1.2)` | Pastille « traité » uniquement |
 
-Avec `prefers-reduced-motion: reduce`, la démo passe en images fixes avec étapes numérotées, et les transitions sont réduites à 0 ms.
+Avec `prefers-reduced-motion: reduce`, la démo passe en images fixes avec étapes numérotées, et les transitions sont réduites à 0 ms. La démo a toujours un bouton pause (brief, accessibilité).
 
 ### Composants clés
 
 **Bouton primaire** : fond `brand.ink`, texte blanc, `radius.md`, hauteur 48 px (44 px minimum en mobile).
-États : repos ; survol (`brand.ink-hover`) ; focus (`shadow.focus`, toujours visible) ; actif (enfoncé de 1 px) ; désactivé (fond `neutral.200`, texte `neutral.500`) ; chargement (indicateur et libellé « Envoi… », bouton bloqué).
+États : repos ; survol (`brand.ink-hover`) ; focus (`focus.ring`, toujours visible) ; actif (enfoncé de 1 px) ; désactivé (fond `neutral.200`, texte `neutral.500`) ; chargement (indicateur et libellé « Envoi… », bouton bloqué).
 
 **Bouton secondaire** : fond transparent, bordure 1 px `neutral.200`, texte `brand.ink`. Mêmes états, avec un fond `neutral.100` au survol.
 
 **Carte** (étape, témoignage, palier tarifaire) : fond `neutral.0`, bordure `neutral.200`, `radius.md`, padding `space.6`, `shadow.sm` facultative. Le palier mis en avant reçoit une bordure `brand.ink` de 2 px, pas de couleur vive.
 
-**Formulaire de démo** : 4 champs, label visible au-dessus de chaque champ (jamais seulement un placeholder), hauteur 48 px. Erreur sous le champ en `error.text`, avec une icône et `aria-describedby`. Succès dans un bloc `success.bg`.
+**Formulaire de démo** : 4 champs, label visible au-dessus de chaque champ (jamais seulement un placeholder), hauteur 48 px, bordure `neutral.400`. Erreur sous le champ en `error.text`, avec une icône et `aria-describedby`. Succès dans un bloc `neutral.100` avec une bordure gauche `brand.ink` et une icône, texte en encre. **Corrigé** : le succès n'utilise plus le vert, réservé à l'état « traité ».
 
 | À faire | À ne pas faire |
 |---|---|
 | Un seul bouton primaire par écran | Deux boutons primaires côte à côte |
 | Libellés de CTA avec un verbe et un objet (« Réserver une démo de 20 min ») | « En savoir plus », « Cliquez ici » |
 | Anneau de focus visible sur tous les éléments interactifs | `outline: none` sans remplacement |
-| Vert uniquement pour l'état « traité » | Vert sur les boutons, les icônes ou les illustrations |
+| Vert uniquement pour l'état « traité » | Vert sur les boutons, les icônes, les illustrations ou les messages de formulaire |
 | Chiffres en mono tabulaire, avec unité et périmètre | Compteurs animés qui défilent jusqu'au chiffre |
 | Labels de champ toujours visibles | Placeholders utilisés comme labels |
 | Messages d'erreur près du champ, qui disent comment corriger | « Erreur » seul en haut du formulaire |
+
+---
+
+## Points à remonter au client
+
+- **Accent vert et Pennylane** : le vert imposé par le brief (`#19E07A`) est à 1,22:1 du vert des boutons de Pennylane (`#00F872`, n° 25), et Ordo se branche sur Pennylane. Catalyze AI (n° 20) avait dès 2023 une palette marine et vert très proche (`#07133B`, `#1AD079`). La règle d'Ordo (vert seulement pour « traité », jamais sur un bouton) le distingue déjà. À valider : voir la pastille « Traité » à côté du logo Pennylane dans la section intégrations. Si elle se confond, décaler la teinte de l'accent plutôt que de le mettre sur les boutons.
+- **Police du texte courant** : le brief cite Inter Tight ou Geist. Inter Tight est dessinée serrée pour les grands corps. Si Ordo accepte Inter (la version normale de la même famille) pour le texte à 16 et 17 px, la lisibilité y gagne. Sans accord, le bench reste sur Inter Tight ou Geist.
+- **Barre fixe mobile** : demandée par le brief, vue chez aucun des 3 sites observés. À tester en recherche utilisateur (S3), avec masquage quand le formulaire est à l'écran.
+
+---
+
+## À côté
+
+| # | Référence | Capture | Pourquoi à côté |
+|---|---|---|---|
+| 3 | AI Workflow Landing Page, par Mao Lop, concept « Leap » (https://dribbble.com/shots/25092081-AI-Workflow-Landing-Page) | [capture](captures/a-cote/03-dribbble-leap.jpg) | Le visuel est un schéma de nœuds abstrait (Slack, extraction web, LLM), alors que le brief veut une démo « sur une facture anonymisée ». « 10x more efficient » est un chiffre sans périmètre (règle des allégations). Le seul détail propre, un mot en italique dans le titre, ne sert aucune exigence du brief. |
+| 4 | « AI landing page website animation screens », Archon par Lazarev (épingle https://in.pinterest.com/pin/884746289449134596/ non vérifiée ; vu https://dribbble.com/shots/26000451-AI-Landing-page-website-animation-screens-Archon) | [capture](captures/a-cote/04-dribbble-archon.jpg) | Aplats saturés rouge `#DD1200`, orange et bleu, panneaux noirs à texte rose : contraire à la palette du brief (fond presque blanc, encre bleu nuit, un seul accent). L'épingle d'origine n'est pas vérifiée (mur de connexion). Détail cité dans **Résultats clients**. |
+| 5 | Operator, AI Agent Agency (https://land-book.com/websites/95503-operator-a-ai-agent-agency-custom-ai-agents-for-business) | Non vérifié | Non vérifié : Land-book bloque par Cloudflare, et la recherche « operator ai agent » sur la marketplace Framer ne le trouve pas. Factory (n° 11), vu, illustre la même discipline monochrome. |
+| 7 | Well, AI Invoice Magnet (https://www.awwwards.com/sites/well-ai-invoice-magnet ; site actuel https://wellapp.ai/) | [Awwwards](captures/a-cote/07-awwwards-well.jpg) ; [site actuel](captures/a-cote/07-well-site.jpg) | Fond noir (`#101010` sur le site actuel, nuage de particules sur la version primée) : contraire au fond presque blanc du brief. Le produit est devenu un assistant généraliste sur WhatsApp, la facture n'est qu'une tâche parmi d'autres. Détail cité dans **Démo produit** (journal horodaté). |
+| 9 | AI Automation SaaS Landing Page Design (https://www.behance.net/gallery/242896981/AI-Automation-SaaS-Landing-Page-Design) | Non vérifié | Non vérifié : Behance renvoie « HTTP ERROR 400 ». Remplacé par le n° 21. |
+| 10 | Bubble Flow, AI automation landing page, Eslam (https://dribbble.com/shots/23013037-Bubble-Flow-Ai-automation-landing-page) | [capture](captures/a-cote/10-dribbble-bubble-flow.jpg) | Bulles 3D roses, violettes et bleues, fonds crème, bouton violet : contraire à la palette et au ton sobre du brief. Aucune frise en 3 étapes. L'auteur écrit lui-même que ce thème ne conviendrait pas à un service sérieux. |
+| 13 | Dayos (https://saaslandingpage.com/dayos/) | [capture](captures/a-cote/13-saaslp-dayos.jpg) | Palette `#000000` et `#FFF200`, capitales condensées, et « WE'RE REVOLUTIONIZING » en grand : « révolutionner » est un mot interdit par le brief. Détail cité dans **Intégrations**. |
+| 14 | Sections « stats » (https://land-book.com/sections/stats) | Non vérifié | Non vérifié : Land-book bloque par Cloudflare. Remplacé par le n° 26. |
+| 16 | Loopra, CRM & AI Automation Website (https://www.behance.net/gallery/238403873/Loopra-CRM-AI-Automation-Website-UXUI-Design) | Non vérifié | Non vérifié : Behance renvoie « HTTP ERROR 400 ». Remplacé par le n° 25. |
+| 17 | 11sight, B2B SaaS Platform, Lazarev (https://www.awwwards.com/sites/11sight-video-call-platform) | [capture](captures/a-cote/17-awwwards-11sight.jpg) | Fond noir et téléphone en 3D : contraire à la palette du brief et à la liste « à ne pas faire ». Plateforme d'appels vidéo, sans IA. URL morte : https://www.11sight.io/ introuvable le 2026-11-12. |
+| 18 | AI Agent Landing Page & UI/UX Design, Romeo Saha (https://www.behance.net/gallery/236924567/AI-Agent-Landing-Page-UIUX-Design) | Non vérifié | Non vérifié : Behance renvoie « HTTP ERROR 400 ». D'après sa description, mode sombre « futuriste » : contre-exemple. Remplacé par le n° 24. |
+| 19 | Idées « SaaS Landing Page UI Design » (https://www.pinterest.com/ideas/saas-landing-page-ui-design/902357840411/) | Non vérifié | Non vérifié : mur de connexion. Derrière la fenêtre, les vignettes visibles sont surtout claires, bleues et violettes. Le « vert et noir » annoncé n'y apparaît pas. |
+| 24 | Open source ai agents landing page, FANCY (https://dribbble.com/shots/27029567-Open-source-ai-agents-landing-page-web-design-3d-animation) | [capture](captures/a-cote/24-dribbble-contre-exemple.jpg) | Contre-exemple. Fond noir, cubes-robots 3D aux yeux vert néon, palette `#020503` et `#3DAA53` : contraire au fond presque blanc, au vert réservé à « traité » et à la liste « à ne pas faire ». Sur 11 vignettes « ai agent landing page », 4 montrent un robot ou un objet 3D. |
+
+---
+
+## Galeries : requêtes lancées
+
+| Plateforme | Requêtes | Résultat |
+|---|---|---|
+| Behance | liens d'origine n° 9, 16, 18 | Inaccessible : « HTTP ERROR 400 » au navigateur automatisé. |
+| Dribbble | « invoice automation landing page », « ai agent landing page », « archon lazarev » | 4 retenues (n° 21 à 24) et l'équivalent du n° 4. Les maquettes de compta fournisseurs sont presque toutes claires, avec un tableau de factures. Les maquettes « agent IA » sont environ pour moitié sombres. |
+| Dribbble (refonte) | « invoice pricing » | Page « Let's confirm you are human » (HTTP 405). Non contournée, rien vu. |
+| Pinterest | liens d'origine n° 4, 19 | Mur de connexion sur les deux. Aucune capture. |
+| Awwwards | liens d'origine n° 7, 17, 20 | 3 vues. Deux sites primés ont changé ou disparu depuis (Well, 11sight). |
+| Land-book | liens d'origine n° 5, 14 | Inaccessible (challenge Cloudflare). |
+| Lapa Ninja | liens d'origine n° 6, 11 | Inaccessible (« Sorry, you have been blocked »). Sites réels vus à la place. |
+| One Page Love | liens d'origine n° 8, 15 ; sections « Metrics » et « How It Works » | 3 retenues (n° 8, 15, 26). « How It Works » vue, rien de retenu : aucun exemple B2B ou finance en tête de liste. |
+| One Page Love (refonte) | sections « Pricing », « Pricing Table », « Pricing Slider », « Contact Form », « FAQ Accordion » | Rien retenu. Tarifs : festival (Kelvin), apps (Pairio, Mappy), agences (Diligent flow sur fond sombre, OhhMyDesign, Flowjam). Formulaires et FAQ : agences et sites sur fond sombre (Flashform, vert acide sur quasi-noir). Aucun palier par volume ni formulaire B2B à 4 champs. |
+| Framer Marketplace | « operator ai agent » | Le template Operator (n° 5) n'apparaît pas. |

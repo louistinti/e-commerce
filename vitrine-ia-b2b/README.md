@@ -40,6 +40,6 @@ Vu sur Ramp, Fin et Pennylane en 390 px : la démo verticale est confirmée (Ram
 
 - [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
+- [Bench](BENCH.md) : les références classées bloc par bloc selon le brief (inspirations, puis références à côté), la couverture du brief, 2 directions de maquette, les design tokens, les composants
 
-Les références du bench ont été ouvertes et capturées le 2026-11-12 (dossier [`captures/`](captures/)). Behance, Land-book, Lapa Ninja et Pinterest restent bloqués : ces références sont marquées « non vérifié » dans le bench, et la plupart sont remplacées par une référence vue. Lis d'abord la section « Limites, à lire en premier » du bench.
+Les références du bench ont été ouvertes et capturées le 2026-11-12. Les captures sont triées dans [`captures/inspis/`](captures/inspis/) (13 inspirations) et [`captures/a-cote/`](captures/a-cote/) (contre-exemples et références hors marque). Behance, Land-book, Lapa Ninja et Pinterest restent bloqués : ces références sont marquées « non vérifié » et rangées à côté. Lis d'abord la section « Limites, à lire en premier » du bench.
