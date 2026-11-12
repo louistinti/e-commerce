@@ -40,4 +40,4 @@ Le simulateur en premier écran après le hero. Les chiffres d'impact s'empilent
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
 - [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
 
-Les visuels des références n'ont pas pu être ouverts depuis la session : les descriptions viennent des résultats de recherche. Ouvre chaque lien et fais des captures avant de présenter le moodboard.
+Les références du bench ont été ouvertes et capturées le 2026-11-12 (dossier [`captures/`](captures/)) : 17 des 22 références d'origine sont vues, 3 ont été ajoutées. Land-book, Lapa Ninja, Behance et Pinterest restent bloqués (protection anti-robots ou connexion) : voir « Limites, à lire en premier » dans le [bench](BENCH.md).
