@@ -221,7 +221,7 @@ Observé chez Huntress (n° 1, à côté) : un bouton cyan à texte sombre. L'é
 
 - **Manrope** (600 à 800) pour les titres, **Manrope** (400 et 500) pour le texte. Une seule famille, rapide à charger (LCP inférieur à 2,5 s).
 - Alternative : **Plus Jakarta Sans** pour les titres.
-- **Corrigé** : JetBrains Mono n'est plus proposé pour les horodatages de la timeline. Le brief limite la typographie à Manrope ou Plus Jakarta Sans. Les horodatages (« T+05 min ») passent en Manrope 600 avec `font-variant-numeric: tabular-nums` (à vérifier sur la fonte chargée).
+- **Corrigé** : JetBrains Mono n'est plus proposé pour les horodatages de la timeline. Le brief limite la typographie à Manrope ou Plus Jakarta Sans. Les horodatages (« T+05 min ») passent en Manrope 600 avec `font-variant-numeric: tabular-nums` (vérifié le 2026-11-12 sur le Manrope de Google Fonts : avec `tabular-nums`, « 1111 » et « 0000 » ont la même largeur).
 - Observé : les références les plus rassurantes des galeries (n° 25, 26) titrent en serif. Le brief impose une grotesque : on ne reprend pas la serif.
 
 ### Couleurs
