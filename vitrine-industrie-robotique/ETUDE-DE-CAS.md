@@ -1,6 +1,6 @@
 # Étude de cas : site vitrine industrie 4.0 / maintenance prédictive
 
-> Document de travail de l'agence. **Vibra est une entreprise fictive.** Les entreprises analysées sont réelles. Leurs sites **n'ont pas pu être ouverts** (réseau de la session bloqué) : les critiques reposent sur les pages indexées, les documents publics (PDF, références) et la presse. Voir les notes de méthode en fin de document.
+> Document de travail de l'agence. **Vibra est une entreprise fictive.** Les entreprises analysées sont réelles. Leurs sites **n'ont pas pu être ouverts** (réseau de la session bloqué) : les critiques reposent sur les pages indexées, les documents publics (PDF, références) et la presse. Voir les notes de méthode en fin de document. **Mise à jour du 2026-11-12** : les pages citées ont depuis été ouvertes et capturées (voir les limites du [bench](BENCH.md)). Les erreurs factuelles relevées sont corrigées ci-dessous (I-care, Augury, Tractian, Sereact) ; le reste de l'analyse n'a pas été réécrit.
 
 ## Executive summary
 
@@ -38,7 +38,7 @@ Grille utilisée : première impression (2 s), usabilité, hiérarchie visuelle,
   3. Proposer une version française.
 
 ### 2.2 I-care (Belgique, présent en France), service de maintenance prédictive et capteur Wi-care
-- **URL** : https://www.icareweb.com/ppc/wireless-vibration-sensor ; [étude de cas Barry Callebaut, Louviers (PDF)](https://www.icareweb.com/wp-content/uploads/2022/06/FR-I-care-Barry-Callebaut-Success-Story.pdf.pdf)
+- **URL** : https://www.icareweb.com/ppc/wireless-vibration-sensor ; [étude de cas Barry Callebaut, Louviers](https://www.icareweb.com/knowledge/predictive-maintenance/success-story-barry-callebaut/) (le PDF cité auparavant renvoie une erreur 404 ; l'étude existe en HTML, en anglais)
 - **Positionnement** : un service complet (capteurs, plateforme I-see, analystes), en abonnement « Wi-care as a Service ».
 - **Première impression** : non observée. Ce sont des landing pages publicitaires par mot-clé (`/ppc/…`).
 - **Usabilité** : le contenu est éclaté entre pages ppc, brochures PDF et sous-sites pays. La preuve est enfermée dans des PDF, ce qui est difficile sur mobile.
@@ -75,7 +75,7 @@ Grille utilisée : première impression (2 s), usabilité, hiérarchie visuelle,
 ### 2.5 Augury (États-Unis / Israël), Machine Health : référence internationale
 - **URL** : https://www.augury.com/ ; https://www.augury.com/machine-health/
 - **Positionnement** : l'IA industrielle pour la disponibilité et la productivité.
-- **Première impression** : d'après le titre de la home (« Industrial AI for Uptime & Productivity »), une promesse claire mais très orientée IA.
+- **Première impression** : vue le 2026-11-12. « Industrial AI for Uptime & Productivity » n'est que le titre d'onglet ; le hero affiche « Industrial AI Agents That Work for You. From Uptime to Unstoppable. », encore plus orienté IA.
 - **Usabilité** : 2 produits (Machine Health, Process Health), des landing pages publicitaires et un gros blog SEO.
 - **Hiérarchie** : la preuve chiffrée est mise en avant (−75 % de fausses alertes ; ROI de 310 % selon une étude Forrester TEI commandée).
 - **Accessibilité** : non observée.
@@ -89,14 +89,14 @@ Grille utilisée : première impression (2 s), usabilité, hiérarchie visuelle,
 - **Positionnement** : un capteur multisignal (Smart Trac) et une GMAO, avec une installation rapide.
 - **Première impression** : non observée.
 - **Usabilité** : pages solutions, fiches capteur et comparatifs de blog.
-- **Hiérarchie** : spécifications de terrain en avant (IP69K, zones dangereuses, batterie de 3 à 5 ans, passerelle 4G indépendante du Wi-Fi de l'usine, rapport initial en 5 jours).
+- **Hiérarchie** : spécifications de terrain en avant (IP69K, zones dangereuses, batterie de 3 à 5 ans, capteur en 4G/LTE sans Wi-Fi de l'usine). Vu le 2026-11-12 : la page ne mentionne ni passerelle ni « rapport initial en 5 jours », et la fiche technique est derrière un formulaire de 5 champs.
 - **Accessibilité** : non observée.
 - **Ce qui marche** :
   - Lever l'objection de la DSI (pas de réseau usine).
   - Une promesse de délai.
 - **Recommandations pour notre usage** : éviter les comparatifs « Top 5 » où l'auteur se classe premier. C'est efficace en SEO mais cela abîme la confiance.
 
-Consulté en surface : Sereact (Allemagne, https://sereact.ai/product/pick-and-place), qui affiche ses chiffres de performance en tête de page produit.
+Consulté en surface : Sereact (Allemagne, https://sereact.ai/product/pick-and-place), qui affiche ses chiffres de performance dans la 2e section de la page produit (8,000+ prises par jour, 600+ unités par heure en pointe, > 99 % de réussite).
 
 ## 3. Thèmes clés
 
@@ -119,11 +119,11 @@ Consulté en surface : Sereact (Allemagne, https://sereact.ai/product/pick-and-p
 - **Interprétation** : un directeur d'usine de PME y lit du buzzword. Un ton factuel est un différenciant à coût nul.
 
 ### T5 : Aucun canal téléphone ni essai sur machine mis en avant
-- **Prévalence** : 0 sur 6 (d'après les pages indexées). Le CTA dominant semble être « démo » ou un contact. Non vérifié visuellement.
+- **Prévalence** : 0 sur 6. Vérifié le 2026-11-12 sur mobile pour Tractian, Wormsensing et I-care : aucun lien `tel:`, le CTA dominant est « démo » ou un contact.
 - **Interprétation** : c'est l'opportunité la plus nette pour une PME qui vend à des PME.
 
 ### T6 : Lever l'objection informatique
-- **Prévalence** : 1 sur 6 explicitement (Tractian avec la passerelle 4G).
+- **Prévalence** : 1 sur 6 explicitement (Tractian, avec des capteurs en 4G/LTE qui n'utilisent pas le Wi-Fi de l'usine).
 - **Interprétation** : les DSI bloquent souvent ces projets. Un encart d'architecture et d'hébergement UE est peu coûteux et lève le frein.
 
 ## 4. Insights → Opportunités
