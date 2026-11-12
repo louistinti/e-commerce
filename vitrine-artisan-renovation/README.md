@@ -37,6 +37,6 @@ Des artisans et petites entreprises du bâtiment (2 à 20 salariés), RGE, qui v
 
 - [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : les références (sites réels, Dribbble, Awwwards, One Page Love, pages officielles France Rénov'), les directions de moodboard, les design tokens, les composants
+- [Bench](BENCH.md) : les références (sites réels, Dribbble, Awwwards, One Page Love, pages officielles France Rénov'), triées bloc par bloc selon le brief en inspirations et références à côté, les directions de moodboard, les design tokens, les composants
 
-Les références du bench ont été ouvertes et capturées le 2026-11-12 (dossier [`captures/`](captures/)), sauf Behance (erreur 400), Lapa Ninja (Cloudflare) et Pinterest (mur de connexion) : la section « Limites » du bench détaille ce qui reste non vérifié. Point à reporter dans le brief : le bandeau France Rénov' est obligatoire sur les supports de promotion depuis le 1er octobre 2026 (voir le bench, n° 23).
+Les références du bench ont été ouvertes et capturées le 2026-11-12 (dossier [`captures/`](captures/), trié en [`inspis/`](captures/inspis/) et [`a-cote/`](captures/a-cote/)), sauf Behance (erreur 400), Lapa Ninja (Cloudflare) et Pinterest (mur de connexion) : la section « Limites » du bench détaille ce qui reste non vérifié. Point à remonter au client (le brief n'est pas modifié) : le bandeau France Rénov' est obligatoire sur les supports de promotion depuis le 1er octobre 2026 (voir le bench, n° 23).
