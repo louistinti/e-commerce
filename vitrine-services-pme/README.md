@@ -1,6 +1,6 @@
 # Vitrine services aux entreprises (PME)
 
-Site de démonstration pour la catégorie « services aux entreprises », premier moteur des créations d'entreprises en 2026 selon l'INSEE (nettoyage, maintenance, conseil).
+Site de démonstration pour la catégorie « services aux entreprises », l'un des secteurs les plus dynamiques en créations d'entreprises en 2026 selon l'INSEE (nettoyage, maintenance, conseil).
 
 ## Entreprise fictive
 
@@ -34,3 +34,11 @@ C'est la cible la plus volumineuse et la plus facile à démarcher (petit budget
 ## Mobile
 
 Barre fixe en bas avec « Appeler » et « Devis ». Formulaire de devis en 3 étapes courtes.
+
+## Dossier
+
+- [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
+- [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
+- [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
+
+Les visuels des références n'ont pas pu être ouverts depuis la session : les descriptions viennent des résultats de recherche. Ouvre chaque lien et fais des captures avant de présenter le moodboard.
