@@ -40,4 +40,4 @@ Timeline verticale, visuels allégés (pas de 3D), données en tableaux simples.
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
 - [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
 
-Les références du bench ont été ouvertes et capturées le 2026-11-12 (dossier [`captures/`](captures/)). Les quelques pages bloquées (Behance, Pinterest, Lapa Ninja, Land-book) sont signalées dans le bench, avec la page vue à la place quand il y en a une.
+Les références du bench ont été ouvertes et capturées le 2026-11-12. Les captures sont triées en [`captures/inspis/`](captures/inspis/) (inspirations qui servent le brief) et [`captures/a-cote/`](captures/a-cote/) (contre-exemples, URL morte, hors marque). Les quelques pages bloquées (Behance, Pinterest, Lapa Ninja, Land-book) sont signalées dans le bench, avec la page vue à la place quand il y en a une.
