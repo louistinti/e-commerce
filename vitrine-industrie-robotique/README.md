@@ -38,6 +38,6 @@ Bouton d'appel direct (les clients téléphonent), fiche technique accessible en
 
 - [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : les références (sites réels, Dribbble, Awwwards, One Page Love) avec captures, les directions de moodboard, les design tokens, les composants
+- [Bench](BENCH.md) : la couverture du brief bloc par bloc, les inspirations et les références à côté avec captures, les directions, les design tokens, les composants
 
-Les références ont été ouvertes et capturées le 2026-11-12 (dossier [captures](captures/)). Behance, Pinterest et Lapa Ninja restent inaccessibles : voir les limites du bench.
+Les références ont été ouvertes et capturées le 2026-11-12, puis triées selon le brief : [inspirations](captures/inspis/) et [références à côté](captures/a-cote/). Behance, Pinterest et Lapa Ninja restent inaccessibles : voir les limites du bench.
