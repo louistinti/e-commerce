@@ -14,7 +14,7 @@ Références réelles à prospecter : Implicity, Incepto, Rivercell, Biolevate.
 
 ## Sections du one-page
 
-1. Hero : bénéfice soignant (« Moins de réhospitalisations, plus de sorties le jour même ») + deux CTA, « Je suis un établissement » et « Je suis un patient »
+1. Hero : titre recommandé par le brief (« Sécuriser le retour à domicile après une chirurgie ambulatoire »), deux CTA, « Je suis un établissement » et « Je suis un patient ». L'accroche « Moins de réhospitalisations, plus de sorties le jour même » attend une étude publiée.
 2. Le parcours patient en 4 étapes (illustrations simples)
 3. Le tableau de bord soignant (capture)
 4. Preuves : étude clinique, chiffres, établissements partenaires
