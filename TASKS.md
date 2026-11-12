@@ -1,14 +1,10 @@
 # Tasks
 
 ## Active
-- [ ] **Études de cas, briefs clients et benchs des 10 catégories** - une branche `vitrine-*` par catégorie, 3 fichiers : ETUDE-DE-CAS.md, BRIEF-CLIENT.md, BENCH.md
-  - IA B2B, fintech/SaaS
-  - santé/medtech, silver économie
-  - climat/énergie, artisan rénovation
-  - deeptech/spatial, industrie/robotique
-  - cybersécurité, services PME
-- [ ] **Relire et pousser chaque dossier dans sa branche** - vérifier que les liens viennent de vraies sources
-- [ ] **Compléter les benchs avec des captures** - quand Behance, Pinterest, Dribbble et Awwwards seront accessibles depuis la session
+- [ ] **Compléter les benchs avec des captures** - ouvrir chaque lien, faire les captures, remplacer les « d'après la description »
+  - priorité : `vitrine-cybersecurite` et `vitrine-services-pme`, qui n'ont encore aucune référence Behance, Dribbble, Pinterest ni Awwwards
+  - Godly : rien de pertinent trouvé, quelle que soit la catégorie
+- [ ] **Faire valider les points réglementaires** - NIS2 (cyber), dispositif médical et publicité ANSM (santé), information sur les prix et crédit d'impôt (silver), aides et allégations environnementales (rénovation)
 
 ## Waiting On
 - [ ] **Accès réseau aux sites d'inspiration** - environnement « e-commerce » créé, en attente de prise en compte par le proxy, since 2026-11-12
@@ -21,3 +17,4 @@
 ## Done
 - [x] ~~Recherche startups / scale-ups / PME qui se lancent le plus~~ (2026-10-31)
 - [x] ~~Créer une branche par grande catégorie avec son brief~~ (2026-11-12)
+- [x] ~~Études de cas, briefs clients et benchs des 10 catégories, poussés dans chaque branche `vitrine-*`~~ (2026-11-12)
