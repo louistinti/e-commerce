@@ -38,6 +38,6 @@ Captures de l'app mobile en premier, inscription en un champ (email).
 
 - [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
+- [Bench](BENCH.md) : les références classées bloc par bloc selon le brief, les directions de moodboard, les design tokens, les composants, et les références mises à côté avec leur raison
 
-Les références du bench ont été ouvertes le 2026-11-12 avec un vrai navigateur, et capturées dans [`captures/`](captures/). Quelques sources restent bloquées (Behance, Abby, Godly, Lapa Ninja, Land-book, Pinterest) : elles sont marquées « non vérifié » dans le bench, avec une référence de remplacement vue. Voir la section « Limites, à lire en premier » du [bench](BENCH.md).
+Les références du bench ont été ouvertes le 2026-11-12 avec un vrai navigateur. Les captures sont triées dans [`captures/inspis/`](captures/inspis/) (inspirations) et [`captures/a-cote/`](captures/a-cote/) (contre-exemples, hors marque, non vérifiées). Quelques sources restent bloquées (Behance, Abby, Godly, Lapa Ninja, Land-book, Pinterest) : elles sont marquées « non vérifié » dans le bench, avec une référence de remplacement vue. Voir la section « Limites, à lire en premier » du [bench](BENCH.md).
