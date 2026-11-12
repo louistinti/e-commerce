@@ -1,6 +1,6 @@
 # Vitrine santé / medtech
 
-Site de démonstration pour la catégorie « santé, medtech et biotech + IA », 2e secteur le plus financé en France en 2026.
+Site de démonstration pour la catégorie « santé, medtech et biotech + IA », parmi les secteurs les plus financés en France en 2026.
 
 ## Entreprise fictive
 
@@ -33,3 +33,11 @@ Références réelles à prospecter : Implicity, Incepto, Rivercell, Biolevate.
 ## Mobile
 
 Le chemin « Je suis un patient » passe en premier, avec des boutons larges et un texte à 18 px minimum.
+
+## Dossier
+
+- [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
+- [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
+- [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
+
+Les visuels des références n'ont pas pu être ouverts depuis la session : les descriptions viennent des résultats de recherche. Ouvre chaque lien et fais des captures avant de présenter le moodboard.
