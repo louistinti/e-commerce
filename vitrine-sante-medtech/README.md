@@ -40,4 +40,4 @@ Le chemin « Je suis un patient » passe en premier, avec des boutons larges et 
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
 - [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
 
-Les visuels des références n'ont pas pu être ouverts depuis la session : les descriptions viennent des résultats de recherche. Ouvre chaque lien et fais des captures avant de présenter le moodboard.
+Les références du bench ont été ouvertes et capturées le 2026-11-12 avec un vrai navigateur (captures dans [`captures/`](captures/)). Six restent non vérifiées (Cloudflare, erreur Behance, mur de connexion Pinterest) : le détail est en tête du [bench](BENCH.md), section « Limites, à lire en premier ».
