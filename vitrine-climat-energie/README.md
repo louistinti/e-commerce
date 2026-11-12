@@ -38,6 +38,6 @@ Le simulateur en premier écran après le hero. Les chiffres d'impact s'empilent
 
 - [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
 - [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), les directions de moodboard, les design tokens, les composants
+- [Bench](BENCH.md) : les références (sites réels, Behance, Dribbble, Pinterest, Awwwards, Land-book…), triées en inspirations par bloc du brief et références à côté, les directions de moodboard, les design tokens, les composants
 
-Les références du bench ont été ouvertes et capturées le 2026-11-12 (dossier [`captures/`](captures/)) : 17 des 22 références d'origine sont vues, 3 ont été ajoutées. Land-book, Lapa Ninja, Behance et Pinterest restent bloqués (protection anti-robots ou connexion) : voir « Limites, à lire en premier » dans le [bench](BENCH.md).
+Les références du bench ont été ouvertes et capturées le 2026-11-12 : 17 des 22 références d'origine sont vues, 3 ont été ajoutées. Le bench suit le brief bloc par bloc. Les captures sont triées en [`captures/inspis/`](captures/inspis/) (10 inspirations) et [`captures/a-cote/`](captures/a-cote/) (15 références gardées à côté, avec leur raison). Land-book, Lapa Ninja, Behance et Pinterest restent bloqués (protection anti-robots ou connexion) : voir « Limites, à lire en premier » dans le [bench](BENCH.md).
