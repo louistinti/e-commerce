@@ -39,13 +39,22 @@ Les meilleures cibles :
 
 ## 4. Proposition d'organisation dans le repo
 
-- Un dossier et une branche par client ou maquette : `site/<slug>` (ex. `site/carbonfarm-demo`).
-- Ou d'abord une branche par **secteur-template**, réutilisable ensuite :
-  - `template/startup-ia-b2b` (hero + démo produit + logos clients + recrutement)
-  - `template/medtech` (confiance, conformité, publications)
-  - `template/greentech-energie` (impact chiffré, carte, certifications)
-  - `template/services-pme` (devis, zone d'intervention, avis Google)
-  - `template/artisan-renovation` (RGE, aides, réalisations avant/après)
+Une branche par grande catégorie, créée à partir de `main`. Chaque branche a un dossier du même nom, avec un `README.md` qui sert de brief (entreprise fictive, cible, sections, direction artistique) :
+
+| Branche | Entreprise fictive |
+|---|---|
+| `vitrine-ia-b2b` | Ordo, agents IA pour la compta fournisseurs |
+| `vitrine-sante-medtech` | Veilla, suivi post-opératoire à distance |
+| `vitrine-climat-energie` | Sobra, pilotage énergétique tertiaire |
+| `vitrine-deeptech-spatial` | Strate Orbital, nanosatellites d'humidité des sols |
+| `vitrine-industrie-robotique` | Vibra, maintenance prédictive |
+| `vitrine-cybersecurite` | Rempart, SOC managé NIS2 pour PME |
+| `vitrine-fintech-saas` | Liasse, facturation électronique TPE |
+| `vitrine-services-pme` | Brillance Pro, nettoyage de bureaux à Bordeaux |
+| `vitrine-artisan-renovation` | Arotz Rénovation, rénovation énergétique au Pays basque |
+| `vitrine-silver-eco` | Les Jours Tranquilles, aide à domicile |
+
+Ensuite, une branche par vrai client, déclinée du modèle de sa catégorie.
 
 ## Sources
 
