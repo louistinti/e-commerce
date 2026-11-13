@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sobra, pilotage énergétique des bâtiments tertiaires</title>
+<meta name="description" content="Capteurs, plateforme et un ingénieur référent pour tenir l'objectif 2030 du décret tertiaire. Site de démonstration : Sobra est une entreprise fictive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0E3B2E;
+  --primary-hover:#155240;
+  --ink:#0A2A21;
+  --sand:#EFE6D2;
+  --sand-light:#F8F4EA;
+  --accent:#F2C230;
+  --success:#276B43;
+  --error:#B3261E;
+  --warning:#8F5600;
+  --info:#2E5B4B;
+  --n900:#1A1F1C;
+  --n700:#3F4A44;
+  --n500:#7C8F86;
+  --n300:#C9CFC6;
+  --n100:#EEF0EB;
+  --n0:#FFFFFF;
+  --alert:#B8452F;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Inter",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --r-sm:4px;--r-md:8px;--r-lg:16px;--r-full:999px;
+  --sh-sm:0 1px 2px rgba(10,42,33,.08);
+  --sh-md:0 4px 16px rgba(10,42,33,.10);
+  --focus:0 0 0 2px #F8F4EA,0 0 0 4px #0E3B2E;
+  --focus-dark:0 0 0 3px #F2C230;
+  --ease:cubic-bezier(.2,0,0,1);
+  --gutter:24px;
+  --wrap:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:var(--primary);text-underline-offset:3px}
+a:hover{color:var(--primary-hover)}
+:focus{outline:none}
+:focus-visible{box-shadow:var(--focus);border-radius:var(--r-sm)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:16px;top:-60px;background:var(--primary);color:var(--sand-light);padding:10px 16px;border-radius:var(--r-md);z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:var(--sand-light)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+h1,h2,h3{font-family:var(--f-display);color:var(--primary);margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(32px,3.3vw,46px);font-weight:700;font-stretch:112%;line-height:1.06}
+h2{font-size:clamp(28px,2.9vw,40px);font-weight:700;font-stretch:110%;line-height:1.1}
+h3{font-size:clamp(19px,1.6vw,22px);font-weight:600;line-height:1.25}
+p{margin:0}
+.lead{font-size:clamp(18px,1.4vw,20px);line-height:1.55;color:var(--n900);max-width:60ch}
+.mono{font-family:var(--f-mono);font-size:13px;line-height:1.5;font-weight:500}
+.small{font-size:14px;line-height:1.5;color:var(--n700)}
+.src{font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--n700)}
+.src a{color:var(--n700)}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:12px;line-height:1;padding:6px 8px;border-radius:var(--r-sm);background:var(--n100);color:var(--n700);border:1px solid var(--n300)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--r-md);font-family:var(--f-body);font-weight:600;font-size:16px;line-height:1.2;text-decoration:none;cursor:pointer;border:1.5px solid transparent;white-space:nowrap;transition:background-color .12s var(--ease),transform .12s var(--ease),color .12s var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--primary);color:var(--sand-light)}
+.btn-primary:hover{background:var(--primary-hover);color:var(--sand-light)}
+.btn-secondary{background:transparent;color:var(--primary);border-color:var(--primary)}
+.btn-secondary:hover{background:var(--n100);color:var(--primary)}
+.btn-accent{background:var(--accent);color:var(--primary)}
+.btn-accent:hover{background:#F5CE55;color:var(--primary)}
+.on-dark :focus-visible{box-shadow:var(--focus-dark)}
+.btn svg{flex:none}
+.btn[aria-busy="true"]{pointer-events:none}
+.linkbtn{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--primary);text-decoration:underline;text-underline-offset:3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:44px}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(239,230,210,.94);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(14,59,46,.12)}
+.nav{display:flex;align-items:center;gap:28px;height:68px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--primary)}
+.brand-word{font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:21px;letter-spacing:-.01em}
+.nav-links{display:flex;gap:26px;list-style:none;margin:0 0 0 auto;padding:0}
+.nav-links a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:500;padding:6px 0}
+.nav-links a:hover{color:var(--primary);text-decoration:underline}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15px}
+
+/* Hero */
+.hero{padding:40px 0 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,1fr);gap:56px;align-items:start}
+.stat-hero{display:inline-block;background:var(--accent);color:var(--primary);font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:clamp(76px,8.4vw,124px);line-height:.92;letter-spacing:-.03em;padding:14px 22px 10px 16px;border-radius:var(--r-sm);animation:rise .6s var(--ease) both}
+.stat-hero .pct{font-size:.62em;margin-left:.06em}
+.hero-src{margin-top:14px;max-width:62ch}
+.hero h1{margin-top:28px;max-width:none}
+.hero .lead{margin-top:18px;max-width:48ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.traj-card{background:var(--sand-light);border:1px solid var(--n300);border-radius:var(--r-lg);padding:24px 24px 18px;box-shadow:var(--sh-sm);margin-top:6px}
+.traj-card h2{font-size:20px;font-stretch:105%;line-height:1.3}
+.traj-card .small{margin-top:4px}
+.traj-svg{margin-top:14px;width:100%;height:auto}
+.traj-line-done{stroke-dasharray:240;stroke-dashoffset:0;animation:draw 1.1s .2s var(--ease) both}
+@keyframes draw{from{stroke-dashoffset:240}to{stroke-dashoffset:0}}
+@keyframes rise{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}
+.traj-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:13px;color:var(--n700)}
+.traj-legend span{display:inline-flex;align-items:center;gap:8px}
+.key{width:22px;height:0;border-top:3px solid var(--primary);display:inline-block}
+.key.dash{border-top-style:dashed;border-top-width:2px}
+.key.band{height:12px;border:0;background:var(--accent);border-radius:2px}
+
+/* Sections */
+section{scroll-margin-top:72px}
+.section{padding:112px 0}
+.section-head{max-width:780px}
+.section-head .lead{max-width:60ch}
+.section-head .lead{margin-top:16px}
+.eyebrow{font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--n700);margin-bottom:14px;display:block}
+
+/* Problem */
+.problem{background:var(--sand-light);border-top:1px solid var(--n300);border-bottom:1px solid var(--n300)}
+.prob-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:auto auto;gap:20px;margin-top:48px}
+.prob-card{background:var(--sand);border-radius:var(--r-lg);padding:28px 28px 24px;display:flex;flex-direction:column;gap:10px;border:1px solid rgba(14,59,46,.10)}
+.prob-card.big{grid-row:1 / span 2;padding:36px;justify-content:space-between;background:var(--primary);color:var(--sand-light);border:0}
+.prob-card.big h3,.prob-card.big .stat{color:var(--sand-light)}
+.prob-card.big .src,.prob-card.big .src a{color:#D9D2BF}
+.stat{font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:clamp(46px,4.6vw,64px);line-height:1;letter-spacing:-.02em;color:var(--primary)}
+.stat small{font-size:.42em;font-weight:700;letter-spacing:0;margin-left:.15em}
+.prob-card.big .stat{font-size:clamp(64px,7.4vw,112px)}
+.prob-card p{max-width:46ch}
+.prob-card.big p{color:#EDE7D6;font-size:18px}
+.prob-card.big p.src{font-size:12.5px;color:#D9D2BF}
+.prob-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:28px 0 8px;border-top:1px solid rgba(248,244,234,.25)}
+.prob-steps div{padding:12px 10px 0 0}
+.prob-steps b{display:block;font-family:var(--f-display);font-stretch:125%;font-size:24px;color:var(--accent)}
+.prob-steps span{font-family:var(--f-mono);font-size:12.5px;color:#D9D2BF}
+
+/* Solution */
+.sol-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:56px}
+.sol-col{display:flex;flex-direction:column}
+.sol-vis{background:var(--sand-light);border:1px solid var(--n300);border-radius:var(--r-lg);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:18px;overflow:hidden}
+.sol-vis svg{width:100%;height:100%}
+.sol-col figcaption{margin-top:8px}
+.sol-col h3{margin-top:22px}
+.sol-col p{margin-top:8px;color:var(--n900)}
+.sol-col ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.sol-col li{font-size:15px;color:var(--n700);padding-left:18px;position:relative}
+.sol-col li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1.5px;background:var(--primary)}
+.install{margin-top:64px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;border-top:1px solid rgba(14,59,46,.18);padding-top:32px}
+.install h3{max-width:14ch}
+.install ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+.install li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.install li::before{content:counter(s);width:40px;height:40px;border-radius:var(--r-full);border:1.5px solid var(--primary);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;color:var(--primary)}
+.install li b{display:block;color:var(--primary);font-weight:600}
+.install li span{font-size:15px;color:var(--n700)}
+
+/* Simulator */
+.sim{background:var(--primary);color:var(--sand-light)}
+.sim .section-head h2{color:var(--sand-light)}
+.sim .section-head .lead{color:#E6DFCC}
+.sim-card{margin-top:44px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--sand-light);color:var(--ink);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 18px 50px rgba(5,22,17,.35)}
+.sim-in{padding:36px;display:flex;flex-direction:column;gap:24px}
+.sim-out{padding:36px;background:var(--sand);border-left:1px solid var(--n300);display:flex;flex-direction:column}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label,.field legend,.label{font-weight:600;font-size:15px;color:var(--ink)}
+.field .hint{font-size:14px;color:var(--n700);line-height:1.45}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0;margin-bottom:8px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg label{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1.5px solid var(--n300);border-radius:var(--r-md);background:var(--n0);font-weight:500;font-size:15px;cursor:pointer;transition:background-color .12s var(--ease),border-color .12s var(--ease)}
+.seg label:hover{border-color:var(--primary)}
+.seg input:checked+label{background:var(--primary);border-color:var(--primary);color:var(--sand-light)}
+.seg input:focus-visible+label{box-shadow:var(--focus)}
+.input,.textarea{width:100%;min-height:48px;padding:10px 14px;border:1.5px solid var(--n500);border-radius:var(--r-sm);background:var(--n0);color:var(--ink);font:inherit;font-size:16px}
+.input:hover{border-color:var(--n700)}
+.input:focus-visible,.textarea:focus-visible{border-color:var(--primary);box-shadow:var(--focus);border-radius:var(--r-sm)}
+.input[aria-invalid="true"]{border-color:var(--error)}
+.unit-wrap{position:relative}
+.unit-wrap .input{padding-right:64px}
+.unit-wrap .u{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:var(--f-mono);font-size:13px;color:var(--n700);pointer-events:none}
+.range-row{display:grid;grid-template-columns:1fr 150px;gap:16px;align-items:center}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:4px;background:var(--n300);border-radius:2px}
+input[type=range]::-moz-range-track{height:4px;background:var(--n300);border-radius:2px}
+input[type=range]::-moz-range-progress{height:4px;background:var(--primary);border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--primary);border:3px solid var(--sand-light);box-shadow:0 0 0 1.5px var(--primary);margin-top:-10px}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--primary);border:3px solid var(--sand-light);box-shadow:0 0 0 1.5px var(--primary)}
+input[type=range]:focus-visible{box-shadow:none}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:var(--focus)}
+input[type=range]:focus-visible::-moz-range-thumb{box-shadow:var(--focus)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.err{display:none;gap:8px;align-items:flex-start;color:var(--error);font-size:14px;line-height:1.45;font-weight:500}
+.err.show{display:flex}
+.err svg{flex:none;margin-top:2px}
+.out-empty{margin:auto 0;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.out-empty .ghost{width:100%;display:grid;gap:10px}
+.out-empty .ghost i{display:block;height:14px;border-radius:3px;background:rgba(14,59,46,.08)}
+.out-empty .ghost i:nth-child(1){height:56px;width:78%}
+.out-empty .ghost i:nth-child(2){width:52%}
+.out-empty .ghost i:nth-child(3){height:44px;width:100%;margin-top:10px}
+.res{display:none;flex-direction:column;gap:18px}
+.res.show{display:flex;animation:rise .4s var(--ease) both}
+.res-title{font-family:var(--f-mono);font-size:13px;color:var(--n700)}
+.res-main{background:var(--accent);border-radius:var(--r-md);padding:18px 20px}
+.res-main .big{font-family:var(--f-display);font-weight:800;font-stretch:118%;font-size:clamp(28px,2.6vw,38px);line-height:1.05;color:var(--primary);letter-spacing:-.01em}
+.res-main .big small{font-family:var(--f-mono);font-size:14px;font-weight:500;letter-spacing:0}
+.res-main .sub{margin-top:6px;font-size:15px;color:var(--primary)}
+.res-rows{display:grid;gap:0}
+.res-rows div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--n300);font-size:15px}
+.res-rows div:last-child{border-bottom:0}
+.res-rows dt{color:var(--n700)}
+.res-rows dd{margin:0;font-weight:600;color:var(--ink);text-align:right;white-space:nowrap}
+.gauge{margin-top:2px}
+.gauge svg{width:100%;height:auto}
+.out-note{font-size:14px;color:var(--n700);line-height:1.5}
+.out-note a{color:var(--n700)}
+.scope-msg{display:none;padding:16px 18px;border-radius:var(--r-md);border:1.5px solid var(--warning);background:var(--sand-light);color:var(--warning);font-weight:500;font-size:15px}
+.scope-msg.show{display:block}
+details.data{font-size:14px;color:var(--n700)}
+details.data summary{cursor:pointer;font-weight:600;color:var(--primary);min-height:32px;display:flex;align-items:center}
+details.data summary:focus-visible{box-shadow:var(--focus)}
+table{border-collapse:collapse;width:100%;margin-top:8px;font-size:14px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--n300)}
+th{font-weight:600;color:var(--ink)}
+.hyp{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px;color:var(--n700)}
+
+/* Cases */
+.cases-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;margin-top:52px;align-items:start}
+.map-card{background:var(--sand-light);border:1px solid var(--n300);border-radius:var(--r-lg);padding:24px;position:sticky;top:92px}
+.map-card svg{width:100%;height:auto}
+.map-legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-size:14px;color:var(--n700)}
+.map-legend span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.case-list{display:grid;gap:0;border-top:1px solid rgba(14,59,46,.2)}
+.case{padding:28px 0;border-bottom:1px solid rgba(14,59,46,.2);display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:24px;align-items:start}
+.case-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.case h3{font-size:21px}
+.case dl{margin:12px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:15px}
+.case dt{color:var(--n700)}
+.case dd{margin:0;color:var(--ink)}
+.case-curve{background:var(--sand-light);border:1px solid var(--n300);border-radius:var(--r-md);padding:10px 10px 6px}
+.case-curve figcaption{font-family:var(--f-mono);font-size:11.5px;color:var(--n700);margin-top:4px}
+.case-more{grid-column:1 / -1;display:none;background:var(--sand-light);border:1px solid var(--n300);border-radius:var(--r-md);padding:20px}
+.case-more.show{display:block;animation:rise .3s var(--ease) both}
+.case-more svg{width:100%;height:auto}
+.case-more p{margin-top:10px;font-size:14px;color:var(--n700)}
+
+/* Impact */
+.impact{background:var(--ink);color:var(--sand-light)}
+.impact h2{color:var(--sand-light)}
+.impact .lead{color:#E3DCC8}
+.imp-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:56px;border-top:1px solid rgba(248,244,234,.22)}
+.imp{padding:36px 40px 8px 0}
+.imp + .imp{padding-left:40px;border-left:1px solid rgba(248,244,234,.22)}
+.imp .val{font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:clamp(56px,6.4vw,96px);line-height:1;color:var(--accent);letter-spacing:-.02em}
+.imp .val .unit{font-size:.5em}
+.imp .pending{display:inline-block;margin-top:14px;font-family:var(--f-mono);font-size:13px;color:#D9D2BF;border:1px dashed rgba(248,244,234,.4);border-radius:var(--r-sm);padding:6px 10px}
+.imp h3{color:var(--sand-light);margin-top:22px;font-size:20px}
+.imp p{margin-top:8px;color:#E3DCC8;max-width:46ch;font-size:16px}
+.imp-calc{margin-top:40px}
+.imp-calc .linkbtn{color:var(--accent)}
+.calc-panel{display:none;margin-top:16px;border:1px solid rgba(248,244,234,.22);border-radius:var(--r-lg);padding:28px;max-width:880px}
+.calc-panel.show{display:block;animation:rise .3s var(--ease) both}
+.calc-panel ol{margin:0;padding-left:20px;display:grid;gap:12px;color:#E3DCC8;font-size:16px}
+.calc-panel b{color:var(--sand-light)}
+.calc-panel .src,.calc-panel .src a{color:#D9D2BF}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:72px;margin-top:8px}
+.about-logo{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.about-logo .brand-word{font-size:34px}
+.about p.lead{max-width:44ch}
+.about p.lead + p.lead{margin-top:14px}
+.frames{margin:0;padding:0;list-style:none;border-top:1px solid rgba(14,59,46,.2)}
+.frames li{padding:22px 0;border-bottom:1px solid rgba(14,59,46,.2);display:grid;grid-template-columns:150px 1fr;gap:20px}
+.frames .k{font-family:var(--f-display);font-weight:700;font-stretch:115%;color:var(--primary);font-size:18px;line-height:1.3}
+.frames p{font-size:16px;color:var(--n900)}
+.frames .src{margin-top:6px}
+
+/* Contact */
+.contact{background:var(--sand-light);border-top:1px solid var(--n300)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:start}
+.contact-aside .lead{margin-top:16px}
+.contact-aside ul{margin:28px 0 0;padding:0;list-style:none;display:grid;gap:14px}
+.contact-aside li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:16px;color:var(--n900)}
+.contact-aside li svg{margin-top:3px}
+.form{background:var(--n0);border:1px solid var(--n300);border-radius:var(--r-lg);padding:36px;box-shadow:var(--sh-md);display:grid;gap:20px}
+.form .textarea{min-height:110px;resize:vertical;line-height:1.5;font-size:15px;background:var(--n100);border-color:var(--n300)}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.check{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;font-size:14px;color:var(--n900);line-height:1.5}
+.check input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--primary)}
+.check input:focus-visible{box-shadow:var(--focus)}
+.send-err{display:none;padding:14px 16px;border:1.5px solid var(--error);border-radius:var(--r-md);color:var(--error);font-size:15px;font-weight:500}
+.send-err.show{display:block}
+.success{display:none;background:var(--n0);border:1px solid var(--n300);border-radius:var(--r-lg);padding:40px;box-shadow:var(--sh-md)}
+.success.show{display:block;animation:rise .4s var(--ease) both}
+.success h3{color:var(--success);display:flex;gap:12px;align-items:center}
+.success p{margin-top:12px;color:var(--n900)}
+.spin{width:16px;height:16px;border:2px solid rgba(248,244,234,.4);border-top-color:var(--sand-light);border-radius:50%;animation:sp .8s linear infinite;display:none}
+.btn[aria-busy="true"] .spin{display:inline-block}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* Footer */
+.site-footer{background:var(--primary);color:#E3DCC8;padding:56px 0 40px}
+.foot{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start}
+.site-footer .brand{color:var(--sand-light)}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 24px;list-style:none;margin:0;padding:0}
+.foot-links a{color:#F8F4EA;font-size:15px}
+.foot-links a:hover{color:var(--accent)}
+.demo{margin-top:36px;padding-top:20px;border-top:1px solid rgba(248,244,234,.2);font-size:14px;color:#D9D2BF;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+
+/* Responsive */
+@media (max-width:1100px){
+  .nav-links{gap:18px}
+  .nav-links a{font-size:14px}
+}
+@media (max-width:980px){
+  .nav-links{display:none}
+  .nav .btn{margin-left:auto}
+  .hero-grid,.sim-card,.cases-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-grid{gap:36px}
+  .sim-out{border-left:0;border-top:1px solid var(--n300)}
+  .map-card{position:static}
+  .sol-grid{grid-template-columns:1fr;gap:44px}
+  .sol-vis{aspect-ratio:16/9}
+  .install{grid-template-columns:1fr}
+  .about-grid{gap:44px}
+  .contact-grid{gap:40px}
+}
+@media (max-width:767px){
+  :root{--gutter:16px}
+  body{font-size:16px}
+  .section{padding:64px 0}
+  .hero{padding:24px 0 56px}
+  .stat-hero{font-size:72px;padding:10px 16px 8px 12px}
+  .hero h1{margin-top:22px;font-size:31px}
+  .hero-ctas .btn{width:100%}
+  .traj-card{padding:18px 14px 14px}
+  .traj-svg .ax,.gauge .ax{font-size:16px}
+  .traj-svg .lb{font-size:17px}
+  .gauge .lb{font-size:15px}
+  .prob-grid{grid-template-columns:1fr;margin-top:32px;gap:14px}
+  .prob-card.big{grid-row:auto;padding:26px 22px}
+  .prob-card{padding:22px}
+  .install ol{grid-template-columns:1fr;gap:18px}
+  .sim-card{margin-top:32px}
+  .sim-in,.sim-out{padding:22px 18px}
+  .range-row{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr;gap:16px}
+  .case-curve{max-width:320px}
+  .imp-grid{grid-template-columns:1fr}
+  .imp,.imp + .imp{padding:28px 0 8px;border-left:0}
+  .imp + .imp{border-top:1px solid rgba(248,244,234,.22)}
+  .calc-panel{padding:20px}
+  .frames li{grid-template-columns:1fr;gap:6px}
+  .form{padding:22px 18px}
+  .success{padding:26px 20px}
+  .foot{grid-template-columns:1fr}
+  .nav{gap:12px}
+  .nav .btn{padding:0 14px;font-size:14px}
+}
+@media (max-width:380px){
+  .brand-word{font-size:18px}
+  .nav .btn{padding:0 12px;font-size:13.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-delay:0s !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .spin{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo" viewBox="0 0 32 32">
+      <rect width="32" height="32" rx="7" fill="#0E3B2E"/>
+      <path d="M7 9h6v6h6v6h6" fill="none" stroke="#F2C230" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 16 16">
+      <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M8 4.5v4.2M8 11v.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Sobra, retour en haut de page">
+      <svg width="30" height="30" aria-hidden="true"><use href="#logo"/></svg>
+      <span class="brand-word">Sobra</span>
+    </a>
+    <nav aria-label="Navigation principale" style="margin-left:auto">
+      <ul class="nav-links">
+        <li><a href="#probleme">L'échéance</a></li>
+        <li><a href="#solution">La solution</a></li>
+        <li><a href="#simulateur">Simulateur</a></li>
+        <li><a href="#cas">Cas clients</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#equipe">Qui sommes-nous</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="#contact">Demander mon audit gratuit</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 1. HERO -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="stat-hero">&minus;26<span class="pct">&#8239;%</span></p>
+      <p class="src hero-src">Consommation du parc tertiaire déclaré sur OPERAT, corrigée du climat, par rapport à l'année de référence. Bilan OPERAT 2024-2025, ADEME et ministère de la Transition écologique, 20/07/2026. Objectif 2030 : &minus;40&#8239;%. <a href="https://www.economiematin.fr/batiments-tertiaires-a-26-le-parc-francais-a-fait-la-moitie-du-chemin-vers-2030" rel="noopener">Source : economiematin.fr</a>, vu le 13/11/2026.</p>
+      <h1 id="hero-title">Vous avez fait la moitié du chemin vers 2030. On vous aide à faire l'autre.</h1>
+      <p class="lead">Capteurs, plateforme et un ingénieur référent pour tenir l'objectif 2030 du décret tertiaire.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Demander mon audit gratuit</a>
+        <a class="btn btn-secondary" href="#simulateur">Estimer mes économies</a>
+      </div>
+    </div>
+
+    <figure class="traj-card" style="margin-left:0;margin-right:0;margin-bottom:0">
+      <h2>Trajectoire du décret tertiaire</h2>
+      <p class="small">Consommation d'énergie finale, base 100 à l'année de référence.</p>
+      <svg class="traj-svg" viewBox="0 0 560 360" role="img" aria-labelledby="traj-t traj-d">
+        <title id="traj-t">Trajectoire du parc tertiaire déclaré</title>
+        <desc id="traj-d">Base 100 à l'année de référence. Parc déclaré au bilan 2024-2025 : 74, soit moins 26 pour cent. Objectifs : 60 en 2030, 50 en 2040, 40 en 2050. Il reste 14 points entre le bilan et l'objectif 2030.</desc>
+        <g class="ax" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#3F4A44">
+          <line x1="60" y1="300" x2="540" y2="300" stroke="#7C8F86" stroke-width="1"/>
+          <line x1="60" y1="30" x2="60" y2="300" stroke="#7C8F86" stroke-width="1"/>
+          <g stroke="#C9CFC6" stroke-width="1" stroke-dasharray="2 4">
+            <line x1="60" y1="40" x2="540" y2="40"/><line x1="60" y1="151" x2="540" y2="151"/><line x1="60" y1="211" x2="540" y2="211"/><line x1="60" y1="254" x2="540" y2="254"/>
+          </g>
+          <text x="50" y="44" text-anchor="end">100</text>
+          <text x="50" y="155" text-anchor="end">74</text>
+          <text x="50" y="215" text-anchor="end">60</text>
+          <text x="50" y="258" text-anchor="end">50</text>
+          <text x="50" y="301" text-anchor="end">40</text>
+          <text x="96" y="322" text-anchor="middle">Réf.</text>
+          <text x="236" y="322" text-anchor="middle">2024-25</text>
+          <text x="306" y="322" text-anchor="middle">2030</text>
+          <text x="416" y="322" text-anchor="middle">2040</text>
+          <text x="520" y="322" text-anchor="middle">2050</text>
+          <path d="M150 296 l6 8 M158 296 l6 8" stroke="#7C8F86" stroke-width="1.2"/>
+        </g>
+        <path d="M236 151 L306 211 L416 254 L520 297" fill="none" stroke="#0E3B2E" stroke-width="2" stroke-dasharray="6 6"/>
+        <rect x="236" y="151" width="70" height="60" fill="#F2C230"/>
+        <text x="271" y="186" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="17" fill="#0E3B2E">14 pts</text>
+        <path class="traj-line-done" d="M96 40 L236 151" fill="none" stroke="#0E3B2E" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="96" cy="40" r="6" fill="#0E3B2E"/>
+        <circle cx="236" cy="151" r="7" fill="#0E3B2E" stroke="#F8F4EA" stroke-width="3"/>
+        <circle cx="306" cy="211" r="5.5" fill="#F8F4EA" stroke="#0E3B2E" stroke-width="2"/>
+        <circle cx="416" cy="254" r="5.5" fill="#F8F4EA" stroke="#0E3B2E" stroke-width="2"/>
+        <circle cx="520" cy="297" r="5.5" fill="#F8F4EA" stroke="#0E3B2E" stroke-width="2"/>
+        <g class="lb" font-family="Inter, Arial, sans-serif" font-size="13" fill="#0A2A21">
+          <text x="226" y="178" text-anchor="end" font-weight="600">&#8722;26 % : parc déclaré</text>
+          <text x="318" y="204" font-weight="600">&#8722;40 %</text>
+          <text x="428" y="246">&#8722;50 %</text>
+          <text x="498" y="270" text-anchor="end">&#8722;60 %</text>
+        </g>
+      </svg>
+      <figcaption class="traj-legend">
+        <span><i class="key"></i>Bilan OPERAT 2024-2025</span>
+        <span><i class="key dash"></i>Objectifs du décret n° 2019-771</span>
+        <span><i class="key band"></i>Reste à faire d'ici 2030</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 2. LE PROBLEME -->
+<section class="section problem" id="probleme" aria-labelledby="prob-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="prob-title">Trois chiffres fixent votre calendrier</h2>
+      <p class="lead">Ils viennent des textes et du bilan public, pas de nous. Chacun porte sa source et sa date.</p>
+    </div>
+    <div class="prob-grid">
+      <article class="prob-card big">
+        <div>
+          <p class="stat">&minus;40<small>&#8239;%</small></p>
+          <h3 style="margin-top:14px">d'énergie finale en 2030</h3>
+          <p style="margin-top:10px">Pour les bâtiments tertiaires de 1&#8239;000&#8239;m² ou plus, par rapport à l'année de référence. La trajectoire continue après 2030.</p>
+          <div class="prob-steps" aria-label="Objectifs successifs">
+            <div><b>&minus;40&#8239;%</b><span>2030</span></div>
+            <div><b>&minus;50&#8239;%</b><span>2040</span></div>
+            <div><b>&minus;60&#8239;%</b><span>2050</span></div>
+          </div>
+        </div>
+        <p class="src">Décret n° 2019-771 du 23/07/2019, article R174-22 du code de la construction et de l'habitation. <a href="https://www.economiematin.fr/batiments-tertiaires-a-26-le-parc-francais-a-fait-la-moitie-du-chemin-vers-2030" rel="noopener">Source : economiematin.fr</a>, vu le 13/11/2026.</p>
+      </article>
+      <article class="prob-card">
+        <p class="stat">14<small>points</small></p>
+        <h3>restent à gagner d'ici 2030</h3>
+        <p>Le parc déclaré est à &minus;26&#8239;%, l'objectif à &minus;40&#8239;%. Les premiers gains sont faits. Les suivants demandent du pilotage.</p>
+        <p class="src">Bilan OPERAT 2024-2025, ADEME et ministère de la Transition écologique, communiqué du 20/07/2026. <a href="https://www.economiematin.fr/batiments-tertiaires-a-26-le-parc-francais-a-fait-la-moitie-du-chemin-vers-2030" rel="noopener">Source : economiematin.fr</a>, vu le 13/11/2026.</p>
+      </article>
+      <article class="prob-card">
+        <p class="stat" style="font-size:clamp(34px,3.3vw,46px)">1<sup style="font-size:.5em">er</sup>&nbsp;janv.&nbsp;2030</p>
+        <h3>pour l'automatisation (BACS) des systèmes de 70 à 290&#8239;kW</h3>
+        <p>L'échéance n'est plus 2027 : elle est reportée pour les bâtiments existants.</p>
+        <p class="src">Décret n° 2025-1343 du 26/12/2025. <a href="https://projetcelsius.com/en/blog/france-tertiary-decree-bacs-obligations/" rel="noopener">Source : projetcelsius.com</a>, vu le 13/11/2026.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3. LA SOLUTION -->
+<section class="section" id="solution" aria-labelledby="sol-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="sol-title">Mesurer, corriger, suivre. Un seul service.</h2>
+      <p class="lead">Les capteurs donnent la donnée, la plateforme repère les dérives, l'ingénieur décide des réglages avec vous.</p>
+    </div>
+
+    <div class="sol-grid">
+      <figure class="sol-col" style="margin:0">
+        <div class="sol-vis">
+          <svg viewBox="0 0 320 240" role="img" aria-label="Illustration : un capteur sans fil posé sur un tableau électrique, avec trois sous-compteurs par usage.">
+            <rect x="40" y="26" width="150" height="190" rx="6" fill="#EEF0EB" stroke="#0E3B2E" stroke-width="1.5"/>
+            <g stroke="#0E3B2E" stroke-width="1.5" fill="#F8F4EA">
+              <rect x="56" y="46" width="118" height="36" rx="3"/>
+              <rect x="56" y="94" width="118" height="36" rx="3"/>
+              <rect x="56" y="142" width="118" height="36" rx="3"/>
+            </g>
+            <g fill="#0E3B2E">
+              <rect x="66" y="56" width="10" height="16" rx="1.5"/><rect x="82" y="56" width="10" height="16" rx="1.5"/><rect x="98" y="56" width="10" height="16" rx="1.5"/>
+              <rect x="66" y="104" width="10" height="16" rx="1.5"/><rect x="82" y="104" width="10" height="16" rx="1.5"/>
+              <rect x="66" y="152" width="10" height="16" rx="1.5"/><rect x="82" y="152" width="10" height="16" rx="1.5"/><rect x="98" y="152" width="10" height="16" rx="1.5"/><rect x="114" y="152" width="10" height="16" rx="1.5"/>
+            </g>
+            <g font-family="JetBrains Mono, monospace" font-size="10" fill="#3F4A44">
+              <text x="132" y="68">CVC</text><text x="132" y="116">ÉCL.</text><text x="132" y="164">PRISES</text>
+            </g>
+            <rect x="214" y="92" width="62" height="78" rx="10" fill="#0E3B2E"/>
+            <circle cx="245" cy="118" r="10" fill="none" stroke="#F2C230" stroke-width="2"/>
+            <rect x="228" y="140" width="34" height="5" rx="2.5" fill="#F8F4EA" opacity=".6"/>
+            <rect x="228" y="150" width="22" height="5" rx="2.5" fill="#F8F4EA" opacity=".6"/>
+            <g fill="none" stroke="#0E3B2E" stroke-width="1.5" stroke-linecap="round">
+              <path d="M286 104c8 6 8 22 0 28"/><path d="M294 96c13 10 13 34 0 44"/>
+            </g>
+            <path d="M174 64 C196 64 196 110 214 116" fill="none" stroke="#7C8F86" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <path d="M174 112 L214 124" fill="none" stroke="#7C8F86" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <path d="M174 160 C196 160 196 136 214 132" fill="none" stroke="#7C8F86" stroke-width="1.5" stroke-dasharray="3 4"/>
+          </svg>
+        </div>
+        <figcaption class="src">Illustration</figcaption>
+        <h3>Capteurs sans fil</h3>
+        <p>Posés sans travaux, sur le tableau et dans les locaux.</p>
+        <ul>
+          <li>Sous-comptage par usage</li>
+          <li>Températures et CO₂ par zone</li>
+          <li>Compatibles avec la GTB en place</li>
+        </ul>
+      </figure>
+
+      <figure class="sol-col" style="margin:0">
+        <div class="sol-vis">
+          <svg viewBox="0 0 320 240" role="img" aria-label="Illustration : écran de la plateforme, une courbe de consommation avec une dérive signalée la nuit, et la répartition par usage, sans valeurs.">
+            <rect x="12" y="14" width="296" height="212" rx="10" fill="#FFFFFF" stroke="#C9CFC6"/>
+            <rect x="12" y="14" width="296" height="28" rx="10" fill="#EEF0EB"/>
+            <rect x="12" y="32" width="296" height="10" fill="#EEF0EB"/>
+            <circle cx="28" cy="28" r="4" fill="#C9CFC6"/><circle cx="42" cy="28" r="4" fill="#C9CFC6"/><circle cx="56" cy="28" r="4" fill="#C9CFC6"/>
+            <text x="28" y="66" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0A2A21">Consommation corrigée du climat</text>
+            <line x1="28" y1="150" x2="200" y2="150" stroke="#C9CFC6"/>
+            <line x1="28" y1="78" x2="28" y2="150" stroke="#C9CFC6"/>
+            <rect x="128" y="76" width="34" height="74" fill="#B8452F" opacity=".12"/>
+            <path d="M30 128 C46 112 58 134 72 118 S98 104 112 120 S130 92 146 90 S168 126 182 118 S194 112 198 116" fill="none" stroke="#0E3B2E" stroke-width="2"/>
+            <circle cx="146" cy="90" r="4" fill="#B8452F"/>
+            <text x="134" y="166" font-family="JetBrains Mono, monospace" font-size="9" fill="#8F5600">dérive : nuit</text>
+            <text x="216" y="66" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#0A2A21">Par usage</text>
+            <g font-family="JetBrains Mono, monospace" font-size="9" fill="#3F4A44">
+              <text x="216" y="88">CVC</text><text x="216" y="114">Éclairage</text><text x="216" y="140">Prises</text>
+            </g>
+            <rect x="216" y="92" width="74" height="7" rx="2" fill="#0E3B2E"/>
+            <rect x="216" y="118" width="44" height="7" rx="2" fill="#0E3B2E" opacity=".7"/>
+            <rect x="216" y="144" width="28" height="7" rx="2" fill="#0E3B2E" opacity=".45"/>
+            <rect x="28" y="184" width="262" height="26" rx="5" fill="#EFE6D2"/>
+            <circle cx="42" cy="197" r="5" fill="#B8452F"/>
+            <text x="54" y="201" font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#0A2A21">Chauffage actif la nuit : réglage proposé</text>
+          </svg>
+        </div>
+        <figcaption class="src">Illustration, sans valeurs</figcaption>
+        <h3>Plateforme</h3>
+        <p>Croise vos données avec les factures et la météo, et prépare la déclaration OPERAT.</p>
+        <ul>
+          <li>Détection des dérives</li>
+          <li>Données hébergées dans l'UE</li>
+          <li>Export pour le reporting CSRD</li>
+        </ul>
+      </figure>
+
+      <figure class="sol-col" style="margin:0">
+        <div class="sol-vis">
+          <svg viewBox="0 0 320 240" role="img" aria-label="Illustration : le bilan mensuel de l'ingénieur référent, une liste de réglages CVC à valider et un calendrier de suivi.">
+            <rect x="26" y="20" width="168" height="200" rx="8" fill="#FFFFFF" stroke="#C9CFC6"/>
+            <text x="44" y="48" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#0A2A21">Bilan du mois</text>
+            <line x1="44" y1="58" x2="176" y2="58" stroke="#C9CFC6"/>
+            <g font-family="Inter, Arial, sans-serif" font-size="10.5" fill="#0A2A21">
+              <rect x="44" y="72" width="14" height="14" rx="3" fill="#0E3B2E"/><path d="M47 79l3 3 5-6" stroke="#F8F4EA" stroke-width="1.8" fill="none"/>
+              <text x="66" y="83">Horaires CVC recalés</text>
+              <rect x="44" y="100" width="14" height="14" rx="3" fill="#0E3B2E"/><path d="M47 107l3 3 5-6" stroke="#F8F4EA" stroke-width="1.8" fill="none"/>
+              <text x="66" y="111">Consigne d'été revue</text>
+              <rect x="44" y="128" width="14" height="14" rx="3" fill="none" stroke="#0E3B2E" stroke-width="1.5"/>
+              <text x="66" y="139">Courbe de chauffe</text>
+              <rect x="44" y="156" width="14" height="14" rx="3" fill="none" stroke="#0E3B2E" stroke-width="1.5"/>
+              <text x="66" y="167">Dossier CEE à étudier</text>
+            </g>
+            <rect x="44" y="186" width="96" height="20" rx="4" fill="#F2C230"/>
+            <text x="54" y="200" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#0E3B2E">À valider ensemble</text>
+            <rect x="210" y="56" width="94" height="104" rx="8" fill="#0E3B2E"/>
+            <g fill="#F8F4EA" opacity=".35">
+              <rect x="222" y="86" width="14" height="12" rx="2"/><rect x="242" y="86" width="14" height="12" rx="2"/><rect x="262" y="86" width="14" height="12" rx="2"/><rect x="282" y="86" width="12" height="12" rx="2"/>
+              <rect x="222" y="104" width="14" height="12" rx="2"/><rect x="242" y="104" width="14" height="12" rx="2"/><rect x="282" y="104" width="12" height="12" rx="2"/>
+              <rect x="222" y="122" width="14" height="12" rx="2"/><rect x="242" y="122" width="14" height="12" rx="2"/><rect x="262" y="122" width="14" height="12" rx="2"/><rect x="282" y="122" width="12" height="12" rx="2"/>
+            </g>
+            <rect x="262" y="104" width="14" height="12" rx="2" fill="#F2C230"/>
+            <text x="222" y="76" font-family="JetBrains Mono, monospace" font-size="9" fill="#F8F4EA">SUIVI MENSUEL</text>
+          </svg>
+        </div>
+        <figcaption class="src">Illustration</figcaption>
+        <h3>Un ingénieur référent</h3>
+        <p>Il lit les données, propose les réglages et fait le bilan avec vous chaque mois.</p>
+        <ul>
+          <li>Plan d'action par bâtiment</li>
+          <li>Réglages CVC avec vos exploitants</li>
+          <li>Pistes de financement CEE, sous réserve d'éligibilité</li>
+        </ul>
+      </figure>
+    </div>
+
+    <div class="install">
+      <h3>Installé sans travaux</h3>
+      <ol>
+        <li><div><b>Pose des capteurs</b><span>Sur le tableau et dans les zones, sans couper l'activité.</span></div></li>
+        <li><div><b>Raccordement</b><span>Factures, météo et GTB existante reliées à la plateforme.</span></div></li>
+        <li><div><b>Premier bilan</b><span>L'ingénieur présente les dérives et le plan d'action.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SIMULATEUR -->
+<section class="section sim on-dark" id="simulateur" aria-labelledby="sim-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="sim-title">Combien reste-t-il à économiser&nbsp;?</h2>
+      <p class="lead">Trois informations suffisent pour situer votre bâtiment sur la trajectoire 2030. Rien n'est conservé sans envoi du formulaire.</p>
+    </div>
+
+    <div class="sim-card">
+      <form class="sim-in" id="sim-form" novalidate aria-label="Simulateur d'économies">
+        <fieldset class="field">
+          <legend>Type de bâtiment</legend>
+          <div class="seg">
+            <input type="radio" name="type" id="t-bur" value="Bureaux" checked><label for="t-bur">Bureaux</label>
+            <input type="radio" name="type" id="t-ens" value="Enseignement"><label for="t-ens">Enseignement</label>
+            <input type="radio" name="type" id="t-com" value="Commerce"><label for="t-com">Commerce</label>
+            <input type="radio" name="type" id="t-san" value="Santé"><label for="t-san">Santé</label>
+            <input type="radio" name="type" id="t-log" value="Logistique"><label for="t-log">Logistique</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="s-surface">Surface du bâtiment</label>
+          <div class="range-row">
+            <input type="range" id="s-range" min="200" max="30000" step="100" value="2400" aria-label="Surface en m², curseur" aria-controls="s-surface">
+            <div class="unit-wrap">
+              <input class="input" type="text" inputmode="numeric" id="s-surface" value="2400" aria-describedby="s-hint s-err" autocomplete="off">
+              <span class="u">m²</span>
+            </div>
+          </div>
+          <p class="hint" id="s-hint">Surface de plancher. Le décret s'applique à partir de 1&#8239;000&#8239;m².</p>
+          <p class="err" id="s-err" role="alert"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label for="s-kwh">Consommation annuelle <span style="font-weight:400;color:var(--n700)">(option)</span></label>
+            <div class="unit-wrap">
+              <input class="input" type="text" inputmode="numeric" id="s-kwh" aria-describedby="k-hint k-err" autocomplete="off">
+              <span class="u">kWh/an</span>
+            </div>
+            <p class="hint" id="k-hint">Sur vos factures ou dans OPERAT.</p>
+            <p class="err" id="k-err" role="alert"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+          </div>
+          <div class="field">
+            <label for="s-eur">Facture annuelle <span style="font-weight:400;color:var(--n700)">(option)</span></label>
+            <div class="unit-wrap">
+              <input class="input" type="text" inputmode="numeric" id="s-eur" aria-describedby="e-hint e-err" autocomplete="off">
+              <span class="u">€ HT/an</span>
+            </div>
+            <p class="hint" id="e-hint">Toutes énergies confondues.</p>
+            <p class="err" id="e-err" role="alert"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn btn-primary" type="submit" style="width:100%">Calculer l'économie de mon bâtiment</button>
+        </div>
+      </form>
+
+      <div class="sim-out" aria-live="polite" id="sim-out">
+        <div class="out-empty" id="out-empty">
+          <div class="ghost" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="out-note">Le résultat s'affiche ici : la fourchette à économiser en kWh/an et en €/an, et la position de votre bâtiment sur la trajectoire 2030.</p>
+        </div>
+
+        <div class="scope-msg" id="scope-msg">
+          <p>Moins de 1&#8239;000&#8239;m² : votre bâtiment n'est pas soumis au décret tertiaire. Sobra peut quand même réduire sa consommation. Laissez-nous vos coordonnées pour une estimation.</p>
+          <p style="margin-top:12px"><a class="btn btn-secondary" href="#contact" id="scope-cta" style="border-color:var(--primary)">Recevoir l'analyse détaillée</a></p>
+        </div>
+
+        <div class="res" id="res">
+          <p class="res-title" id="res-title">Économie à réaliser d'ici 2030</p>
+          <div class="res-main">
+            <p class="big" id="res-big"></p>
+            <p class="sub" id="res-sub"></p>
+          </div>
+          <dl class="res-rows" id="res-rows"></dl>
+          <div class="gauge">
+            <svg viewBox="0 0 440 118" role="img" aria-labelledby="g-t g-d">
+              <title id="g-t">Position du bâtiment sur la trajectoire 2030</title>
+              <desc id="g-d">Échelle de 100, année de référence, à 40. Votre bâtiment se situe entre 100, sans baisse, et 74, au niveau du parc déclaré. L'objectif 2030 est à 60.</desc>
+              <g class="ax" font-family="JetBrains Mono, monospace" font-size="11" fill="#3F4A44">
+                <line x1="20" y1="58" x2="420" y2="58" stroke="#7C8F86" stroke-width="1.5"/>
+                <g stroke="#7C8F86"><line x1="20" y1="52" x2="20" y2="64"/><line x1="420" y1="52" x2="420" y2="64"/></g>
+                <text x="20" y="84" text-anchor="middle">100</text>
+                <text x="193" y="84" text-anchor="middle">74</text>
+                <text x="287" y="84" text-anchor="middle">60</text>
+                <text x="420" y="84" text-anchor="middle">40</text>
+                <text x="20" y="102" text-anchor="start">Réf.</text>
+                <text x="287" y="102" text-anchor="middle">Objectif 2030</text>
+              </g>
+              <rect x="20" y="44" width="173" height="28" rx="3" fill="#0E3B2E" opacity=".14"/>
+              <rect x="193" y="44" width="94" height="28" fill="#F2C230"/>
+              <line x1="287" y1="34" x2="287" y2="76" stroke="#0E3B2E" stroke-width="2.5"/>
+              <text class="lb" x="106" y="28" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#0A2A21">Votre bâtiment, ici</text>
+              <path d="M40 36 H172" stroke="#0E3B2E" stroke-width="1.2"/>
+              <path d="M40 32 v8 M172 32 v8" stroke="#0E3B2E" stroke-width="1.2"/>
+              <text class="lb" x="240" y="28" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#0A2A21">À gagner</text>
+            </svg>
+          </div>
+          <details class="data">
+            <summary>Données du graphique et hypothèses</summary>
+            <table>
+              <caption class="sr-only">Repères de la trajectoire, base 100 à l'année de référence</caption>
+              <thead><tr><th scope="col">Repère</th><th scope="col">Indice</th><th scope="col">Source</th></tr></thead>
+              <tbody>
+                <tr><td>Année de référence</td><td>100</td><td>Décret n° 2019-771</td></tr>
+                <tr><td>Parc déclaré, bilan 2024-2025</td><td>74</td><td>Bilan OPERAT, 20/07/2026</td></tr>
+                <tr><td>Objectif 2030</td><td>60</td><td>Décret n° 2019-771</td></tr>
+              </tbody>
+            </table>
+            <ul class="hyp" style="margin-top:12px">
+              <li>Borne basse : votre bâtiment a déjà baissé autant que le parc déclaré (&minus;26&#8239;%). Il reste 1 &minus; 60/74, soit 18,9&#8239;% de la consommation actuelle.</li>
+              <li>Borne haute : aucune baisse depuis l'année de référence. Il reste 40&#8239;%.</li>
+              <li>Les euros suivent les kWh, à prix de l'énergie constant.</li>
+            </ul>
+          </details>
+          <p class="out-note">Estimation indicative, calculée à partir des seuls chiffres publics ci-dessus : ce n'est pas une promesse d'économie. L'audit mesure la position réelle de votre bâtiment. <a href="#">Voir la méthode</a></p>
+          <p><a class="btn btn-primary" href="#contact" id="res-cta">Recevoir l'analyse détaillée</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CAS CLIENTS -->
+<section class="section" id="cas" aria-labelledby="cas-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="cas-title">Trois bâtiments, trois façons de reprendre la main</h2>
+      <p class="lead">Des fiches de démonstration : les leviers et l'indicateur suivi, sans gain chiffré.</p>
+    </div>
+
+    <div class="cases-grid">
+      <figure class="map-card" style="margin:0">
+        <svg viewBox="0 0 460 440" role="img" aria-labelledby="map-t map-d">
+          <title id="map-t">Carte d'exemple des bâtiments suivis</title>
+          <desc id="map-d">Carte stylisée de la France avec des points d'exemple placés à l'échelle des villes, colorés selon la trajectoire 2030. Aucune adresse, aucun total.</desc>
+          <path d="M230 18 L254 31 L283 63 L301 56 L329 82 L346 86 L381 102 L399 107 L386 134 L381 163 L361 172 L338 205 L339 224 L358 214 L358 235 L367 260 L352 268 L364 304 L383 323 L364 334 L352 350 L332 352 L306 342 L294 340 L275 336 L256 346 L249 361 L252 380 L233 384 L210 378 L181 365 L152 365 L120 346 L109 341 L119 323 L126 289 L125 247 L127 222 L109 210 L98 189 L88 176 L74 166 L35 155 L23 147 L23 128 L39 119 L74 113 L103 121 L114 119 L116 96 L107 75 L125 77 L129 90 L164 88 L167 75 L201 60 L207 46 L207 25Z" fill="#EEF0EB" stroke="#7C8F86" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M433 357 L438 373 L438 394 L429 424 L416 415 L410 394 L413 373Z" fill="#EEF0EB" stroke="#7C8F86" stroke-width="1.5" stroke-linejoin="round"/>
+          <g stroke="#F8F4EA" stroke-width="2">
+            <circle cx="229" cy="110" r="7" fill="#0E3B2E"/><circle cx="238" cy="118" r="7" fill="#B8452F"/><circle cx="220" cy="120" r="7" fill="#0E3B2E"/><circle cx="244" cy="104" r="7" fill="#7C8F86"/>
+            <circle cx="301" cy="241" r="9" fill="#0E3B2E"/><circle cx="311" cy="232" r="7" fill="#0E3B2E"/><circle cx="292" cy="250" r="7" fill="#B8452F"/>
+            <circle cx="317" cy="344" r="9" fill="#B8452F"/><circle cx="327" cy="336" r="7" fill="#0E3B2E"/>
+            <circle cx="250" cy="36" r="7" fill="#0E3B2E"/><circle cx="116" cy="179" r="7" fill="#7C8F86"/><circle cx="144" cy="279" r="7" fill="#0E3B2E"/>
+            <circle cx="203" cy="331" r="7" fill="#B8452F"/><circle cx="386" cy="122" r="7" fill="#0E3B2E"/><circle cx="327" cy="265" r="9" fill="#0E3B2E"/>
+            <circle cx="112" cy="142" r="7" fill="#0E3B2E"/><circle cx="273" cy="331" r="7" fill="#7C8F86"/><circle cx="307" cy="175" r="7" fill="#B8452F"/>
+            <circle cx="250" cy="240" r="7" fill="#0E3B2E"/><circle cx="181" cy="172" r="7" fill="#7C8F86"/><circle cx="371" cy="327" r="7" fill="#0E3B2E"/>
+            <circle cx="193" cy="86" r="7" fill="#B8452F"/><circle cx="339" cy="235" r="7" fill="#0E3B2E"/><circle cx="340" cy="100" r="7" fill="#7C8F86"/>
+          </g>
+          <g font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#0A2A21">
+            <text x="262" y="226">Lyon</text>
+            <text x="338" y="282">Grenoble</text>
+            <text x="300" y="370">Marseille</text>
+          </g>
+        </svg>
+        <figcaption>
+          <div class="map-legend">
+            <span><i class="dot" style="background:#0E3B2E"></i>Sur la trajectoire</span>
+            <span><i class="dot" style="background:#B8452F"></i>Hors trajectoire</span>
+            <span><i class="dot" style="background:#7C8F86"></i>Sans plan d'action</span>
+          </div>
+          <p class="src" style="margin-top:10px">Exemple : points placés à l'échelle de la ville, sans adresse ni total.</p>
+        </figcaption>
+      </figure>
+
+      <div class="case-list">
+        <article class="case">
+          <div>
+            <div class="case-meta"><span class="tag">Exemple</span><span class="tag">Foncière</span></div>
+            <h3>Immeuble de bureaux, Lyon</h3>
+            <dl>
+              <dt>Leviers</dt><dd>Horaires CVC recalés sur l'occupation, alertes de dérive la nuit, sous-comptage par étage.</dd>
+              <dt>Indicateur</dt><dd>Consommation corrigée du climat sur 12 mois.</dd>
+            </dl>
+            <button class="linkbtn" type="button" aria-expanded="false" aria-controls="more-1">Voir la courbe complète</button>
+          </div>
+          <figure class="case-curve" style="margin:0">
+            <svg viewBox="0 0 180 80" aria-hidden="true"><path d="M4 26 C30 18 46 30 70 24 L70 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M70 24 C96 40 120 44 176 46" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="70" y1="8" x2="70" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
+            <figcaption>Illustration : avant / après, sans valeurs</figcaption>
+          </figure>
+          <div class="case-more" id="more-1">
+            <svg viewBox="0 0 640 200" role="img" aria-label="Illustration : courbe de consommation sur 24 mois, stable avant la pose des capteurs puis en baisse après les premiers réglages. Sans valeurs."><line x1="20" y1="180" x2="620" y2="180" stroke="#C9CFC6"/><line x1="20" y1="20" x2="20" y2="180" stroke="#C9CFC6"/><line x1="320" y1="20" x2="320" y2="180" stroke="#0E3B2E" stroke-dasharray="4 4"/><text x="328" y="34" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">pose des capteurs</text><path d="M20 70 C60 52 90 88 130 66 S200 52 240 74 S300 60 320 64" fill="none" stroke="#7C8F86" stroke-width="2.5"/><path d="M320 64 C360 92 390 86 430 104 S500 112 540 118 S600 116 620 120" fill="none" stroke="#0E3B2E" stroke-width="3"/><text x="40" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">12 mois avant</text><text x="500" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">12 mois après</text></svg>
+            <p>Illustration : la forme seule, sans valeurs. Les courbes réelles d'un bâtiment sont présentées pendant l'audit, avec la période de référence et la correction climatique.</p>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <div class="case-meta"><span class="tag">Exemple</span><span class="tag">Collectivité</span></div>
+            <h3>Groupe scolaire, Grenoble</h3>
+            <dl>
+              <dt>Leviers</dt><dd>Réduit de chauffage pendant les vacances, courbes de chauffe revues, dossier CEE préparé sous réserve d'éligibilité.</dd>
+              <dt>Indicateur</dt><dd>Consommation corrigée du climat sur 12 mois.</dd>
+            </dl>
+            <button class="linkbtn" type="button" aria-expanded="false" aria-controls="more-2">Voir la courbe complète</button>
+          </div>
+          <figure class="case-curve" style="margin:0">
+            <svg viewBox="0 0 180 80" aria-hidden="true"><path d="M4 20 C24 30 40 16 60 28 L60 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M60 28 C80 30 92 52 120 50 S160 54 176 56" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="60" y1="8" x2="60" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
+            <figcaption>Illustration : avant / après, sans valeurs</figcaption>
+          </figure>
+          <div class="case-more" id="more-2">
+            <svg viewBox="0 0 640 200" role="img" aria-label="Illustration : courbe de consommation d'un groupe scolaire, avec des creux pendant les vacances plus marqués après les réglages. Sans valeurs."><line x1="20" y1="180" x2="620" y2="180" stroke="#C9CFC6"/><line x1="20" y1="20" x2="20" y2="180" stroke="#C9CFC6"/><line x1="320" y1="20" x2="320" y2="180" stroke="#0E3B2E" stroke-dasharray="4 4"/><text x="328" y="34" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">premiers réglages</text><path d="M20 60 L80 62 L100 80 L120 62 L200 58 L220 74 L240 60 L320 62" fill="none" stroke="#7C8F86" stroke-width="2.5"/><path d="M320 62 L380 84 L400 130 L420 88 L500 92 L520 136 L540 94 L620 96" fill="none" stroke="#0E3B2E" stroke-width="3"/><text x="40" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">12 mois avant</text><text x="500" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">12 mois après</text></svg>
+            <p>Illustration : la forme seule, sans valeurs. Les creux correspondent aux périodes de vacances, où le chauffage passe en réduit.</p>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <div class="case-meta"><span class="tag">Exemple</span><span class="tag">Enseigne</span></div>
+            <h3>Magasin de centre-ville, Marseille</h3>
+            <dl>
+              <dt>Leviers</dt><dd>Alerte quand la clim tourne en hiver ou le chauffage la nuit, éclairage piloté sur les horaires d'ouverture.</dd>
+              <dt>Indicateur</dt><dd>Consommation corrigée du climat sur 12 mois.</dd>
+            </dl>
+            <button class="linkbtn" type="button" aria-expanded="false" aria-controls="more-3">Voir la courbe complète</button>
+          </div>
+          <figure class="case-curve" style="margin:0">
+            <svg viewBox="0 0 180 80" aria-hidden="true"><path d="M4 30 C20 22 36 36 52 26 S74 22 84 28 L84 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M84 28 C100 44 116 40 136 46 S166 48 176 50" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="84" y1="8" x2="84" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
+            <figcaption>Illustration : avant / après, sans valeurs</figcaption>
+          </figure>
+          <div class="case-more" id="more-3">
+            <svg viewBox="0 0 640 200" role="img" aria-label="Illustration : consommation de nuit d'un magasin, qui disparaît presque après la mise en place des alertes. Sans valeurs."><line x1="20" y1="180" x2="620" y2="180" stroke="#C9CFC6"/><line x1="20" y1="20" x2="20" y2="180" stroke="#C9CFC6"/><line x1="320" y1="20" x2="320" y2="180" stroke="#0E3B2E" stroke-dasharray="4 4"/><text x="328" y="34" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">alertes actives</text><path d="M20 110 L50 110 L60 60 L110 60 L120 110 L150 110 L160 60 L210 60 L220 110 L250 110 L260 60 L310 60 L320 110" fill="none" stroke="#7C8F86" stroke-width="2.5"/><path d="M320 110 L350 160 L360 70 L410 70 L420 160 L450 160 L460 70 L510 70 L520 160 L550 160 L560 70 L610 70 L620 160" fill="none" stroke="#0E3B2E" stroke-width="3"/><text x="40" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">nuits avant</text><text x="520" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">nuits après</text></svg>
+            <p>Illustration : la forme seule, sans valeurs. Les paliers bas sont les nuits, magasin fermé.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. IMPACT CUMULE -->
+<section class="section impact on-dark" id="impact" aria-labelledby="imp-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="imp-title">L'impact, avec sa méthode</h2>
+      <p class="lead">Deux indicateurs, calculés de la même façon pour chaque bâtiment suivi. Le cumul n'est publié qu'avec sa date de mise à jour.</p>
+    </div>
+    <div class="imp-grid">
+      <div class="imp">
+        <p class="val"><span class="unit">MWh</span></p>
+        <span class="pending">Démo : aucune valeur affichée</span>
+        <h3>Énergie évitée</h3>
+        <p>Écart entre la consommation de référence, ajustée du climat et de l'occupation, et la consommation mesurée. Protocole IPMVP.</p>
+      </div>
+      <div class="imp">
+        <p class="val"><span class="unit">tCO₂</span></p>
+        <span class="pending">Démo : aucune valeur affichée</span>
+        <h3>Émissions évitées</h3>
+        <p>Énergie évitée, énergie par énergie, multipliée par le facteur d'émission de la Base Empreinte de l'ADEME.</p>
+      </div>
+    </div>
+    <div class="imp-calc">
+      <button class="linkbtn" type="button" aria-expanded="false" aria-controls="calc-panel">Comprendre le calcul
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+      <div class="calc-panel" id="calc-panel">
+        <ol>
+          <li><b>Période de référence.</b> 12 mois mesurés avant les premiers réglages, par usage et par énergie.</li>
+          <li><b>Ajustement.</b> La référence est corrigée du climat (degrés-jours) et des changements d'occupation, pour comparer à conditions égales.</li>
+          <li><b>Énergie évitée (MWh).</b> Référence ajustée moins consommation mesurée, sur la même période. Méthode IPMVP.</li>
+          <li><b>Émissions évitées (tCO₂).</b> Énergie évitée de chaque énergie multipliée par son facteur d'émission dans la Base Empreinte de l'ADEME. Le facteur et son année sont cités à côté du résultat.</li>
+          <li><b>Publication.</b> Le cumul porte sa date de mise à jour et le nombre de bâtiments pris en compte.</li>
+        </ol>
+        <p class="src" style="margin-top:18px">Détail des formules sur la <a href="#">page Méthode</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. QUI SOMMES-NOUS ET CADRES SUIVIS -->
+<section class="section about" id="equipe" aria-labelledby="about-title">
+  <div class="wrap about-grid">
+    <div>
+      <div class="about-logo">
+        <svg width="48" height="48" aria-hidden="true"><use href="#logo"/></svg>
+        <span class="brand-word" style="color:var(--primary)">Sobra</span>
+      </div>
+      <h2 id="about-title">Qui sommes-nous</h2>
+      <p class="lead" style="margin-top:20px">Sobra est une équipe d'ingénieurs énergie basée à Lyon. Chaque bâtiment suivi a un ingénieur référent, qui lit les données, propose les réglages et fait le bilan avec vous chaque mois.</p>
+      <p class="lead">Les capteurs, la plateforme et l'ingénieur forment un seul service.</p>
+    </div>
+    <div>
+      <h3 style="margin-bottom:18px">Les textes que nous suivons</h3>
+      <ul class="frames">
+        <li>
+          <span class="k">Décret tertiaire</span>
+          <div>
+            <p>Décret n° 2019-771 du 23/07/2019 : &minus;40&#8239;% en 2030, &minus;50&#8239;% en 2040, &minus;60&#8239;% en 2050, pour les bâtiments tertiaires de 1&#8239;000&#8239;m² ou plus. Déclaration annuelle sur OPERAT.</p>
+            <p class="src"><a href="https://www.economiematin.fr/batiments-tertiaires-a-26-le-parc-francais-a-fait-la-moitie-du-chemin-vers-2030" rel="noopener">Source : economiematin.fr</a>, vu le 13/11/2026.</p>
+          </div>
+        </li>
+        <li>
+          <span class="k">Décret BACS</span>
+          <div>
+            <p>Automatisation et contrôle des bâtiments. Le décret n° 2025-1343 du 26/12/2025 reporte au 1er janvier 2030 l'échéance des systèmes de 70 à 290&#8239;kW.</p>
+            <p class="src"><a href="https://projetcelsius.com/en/blog/france-tertiary-decree-bacs-obligations/" rel="noopener">Source : projetcelsius.com</a>, vu le 13/11/2026.</p>
+          </div>
+        </li>
+        <li>
+          <span class="k">CEE</span>
+          <div>
+            <p>Les certificats d'économies d'énergie peuvent réduire le reste à charge des opérations de pilotage, sous réserve d'éligibilité. Aucun montant n'est promis avant étude du dossier.</p>
+            <p class="src"><a href="https://opera-energie.com/pilotage-energetique-batiments/" rel="noopener">Source : opera-energie.com</a>, consulté en novembre 2026.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CONTACT -->
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact-grid">
+    <div class="contact-aside">
+      <h2 id="contact-title">Demander un audit gratuit</h2>
+      <p class="lead">Un ingénieur relit votre demande, vous rappelle et fixe l'audit avec vous.</p>
+      <ul>
+        <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="#0E3B2E" stroke-width="1.6"/><path d="M7 11l3 3 5-6" fill="none" stroke="#0E3B2E" stroke-width="1.8"/></svg><span>Le résultat de votre simulation est repris dans la demande.</span></li>
+        <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="#0E3B2E" stroke-width="1.6"/><path d="M7 11l3 3 5-6" fill="none" stroke="#0E3B2E" stroke-width="1.8"/></svg><span>Vos données servent uniquement à vous recontacter.</span></li>
+        <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="#0E3B2E" stroke-width="1.6"/><path d="M7 11l3 3 5-6" fill="none" stroke="#0E3B2E" stroke-width="1.8"/></svg><span>Collectivités : nous indiquons les modalités d'achat public au premier échange.</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <form class="form" id="audit-form" novalidate aria-labelledby="contact-title">
+        <div class="two">
+          <div class="field">
+            <label for="f-name">Nom</label>
+            <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="f-name-err">
+            <p class="err" id="f-name-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+          </div>
+          <div class="field">
+            <label for="f-org">Organisation</label>
+            <input class="input" id="f-org" name="org" autocomplete="organization" aria-describedby="f-org-err">
+            <p class="err" id="f-org-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-mail">E-mail professionnel</label>
+          <input class="input" id="f-mail" name="email" type="email" autocomplete="email" aria-describedby="f-mail-err">
+          <p class="err" id="f-mail-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+        </div>
+        <div class="two">
+          <div class="field">
+            <label for="f-surf">Surface totale</label>
+            <div class="unit-wrap">
+              <input class="input" id="f-surf" name="surface" inputmode="numeric" autocomplete="off" aria-describedby="f-surf-err">
+              <span class="u">m²</span>
+            </div>
+            <p class="err" id="f-surf-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+          </div>
+          <div class="field">
+            <label for="f-sites">Nombre de sites</label>
+            <input class="input" id="f-sites" name="sites" inputmode="numeric" autocomplete="off" aria-describedby="f-sites-err">
+            <p class="err" id="f-sites-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-sim">Résultat du simulateur</label>
+          <textarea class="textarea" id="f-sim" name="simulation" readonly aria-describedby="f-sim-hint"></textarea>
+          <p class="hint" id="f-sim-hint">Rempli automatiquement après un calcul. <a href="#simulateur">Lancer une simulation</a></p>
+        </div>
+        <fieldset class="field">
+          <legend>Rendez-vous de rappel</legend>
+          <div class="seg slots">
+            <input type="radio" name="slot" id="sl-1" value="Matin" checked><label for="sl-1">Matin</label>
+            <input type="radio" name="slot" id="sl-2" value="Midi"><label for="sl-2">Midi</label>
+            <input type="radio" name="slot" id="sl-3" value="Après-midi"><label for="sl-3">Après-midi</label>
+          </div>
+          <p class="hint">L'ingénieur propose ensuite une date précise par e-mail.</p>
+        </fieldset>
+        <div class="field">
+          <label class="check" for="f-consent">
+            <input type="checkbox" id="f-consent" name="consent" aria-describedby="f-consent-err">
+            <span>J'accepte que Sobra utilise ces informations pour me recontacter au sujet de l'audit. <a href="#">Politique de confidentialité</a></span>
+          </label>
+          <p class="err" id="f-consent-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+        </div>
+        <p class="send-err" id="send-err" role="alert">Votre demande n'est pas partie : la connexion a été interrompue. Vos informations sont conservées. Réessayez, ou écrivez-nous à contact@sobra.example.</p>
+        <div>
+          <button class="btn btn-primary" type="submit" id="f-submit"><span class="spin" aria-hidden="true"></span><span class="lbl">Envoyer ma demande d'audit</span></button>
+        </div>
+      </form>
+
+      <div class="success" id="success" role="status" tabindex="-1">
+        <h3><svg width="26" height="26" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#276B43"/><path d="M6.5 11.2l3 3 6-6.5" fill="none" stroke="#F8F4EA" stroke-width="2"/></svg>Demande envoyée.</h3>
+        <p>Un ingénieur Sobra vous rappelle pour fixer l'audit. Le résumé de votre simulation vous a été envoyé par e-mail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer on-dark">
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="#top" aria-label="Sobra, retour en haut de page">
+        <svg width="30" height="30" aria-hidden="true"><use href="#logo"/></svg>
+        <span class="brand-word">Sobra</span>
+      </a>
+      <ul class="foot-links">
+        <li><a href="#">Méthode</a></li>
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+        <li><a href="#">Gestion des cookies</a></li>
+        <li><a href="#">Accessibilité</a></li>
+      </ul>
+    </div>
+    <div class="demo">
+      <p>Site de démonstration. Sobra est une entreprise fictive.</p>
+      <p>Chiffres publics vus le 13/11/2026, sources citées à côté de chaque chiffre.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nf = new Intl.NumberFormat('fr-FR');
+  function parseNum(v){
+    if(v==null) return NaN;
+    var s = String(v).replace(/[\s  ]/g,'').replace(',', '.');
+    if(s==='') return NaN;
+    if(!/^\d+(\.\d+)?$/.test(s)) return NaN;
+    return parseFloat(s);
+  }
+  function round(n, step){ return Math.round(n/step)*step; }
+  function showErr(input, errEl, msg){
+    var span = errEl.querySelector('span');
+    if(msg){ span.textContent = msg; errEl.classList.add('show'); input.setAttribute('aria-invalid','true'); }
+    else { span.textContent=''; errEl.classList.remove('show'); input.removeAttribute('aria-invalid'); }
+  }
+
+  /* Simulator */
+  var range = document.getElementById('s-range');
+  var surf = document.getElementById('s-surface');
+  var kwh = document.getElementById('s-kwh');
+  var eur = document.getElementById('s-eur');
+  var sErr = document.getElementById('s-err'), kErr = document.getElementById('k-err'), eErr = document.getElementById('e-err');
+  range.addEventListener('input', function(){ surf.value = nf.format(range.value); showErr(surf, sErr, ''); });
+  surf.addEventListener('input', function(){
+    var n = parseNum(surf.value);
+    if(!isNaN(n)) range.value = Math.max(200, Math.min(30000, n));
+  });
+
+  var LOW = 1 - 60/74;   /* parc au niveau du bilan OPERAT 2024-2025 (-26 %) */
+  var HIGH = 0.40;       /* aucune baisse depuis l'année de référence */
+  var lastSummary = '';
+
+  document.getElementById('sim-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    var s = parseNum(surf.value);
+    if(isNaN(s) || s <= 0){ showErr(surf, sErr, 'Surface non reconnue : le champ attend un nombre en m². Saisissez par exemple 2400.'); ok = false; }
+    else showErr(surf, sErr, '');
+    var k = kwh.value.trim()==='' ? null : parseNum(kwh.value);
+    if(k!==null && (isNaN(k) || k<=0)){ showErr(kwh, kErr, 'Consommation non reconnue : le champ attend un nombre en kWh par an. Saisissez par exemple 350000.'); ok=false; }
+    else showErr(kwh, kErr, '');
+    var m = eur.value.trim()==='' ? null : parseNum(eur.value);
+    if(m!==null && (isNaN(m) || m<=0)){ showErr(eur, eErr, 'Facture non reconnue : le champ attend un montant en euros par an. Saisissez par exemple 60000.'); ok=false; }
+    else showErr(eur, eErr, '');
+    if(!ok){
+      var first = document.querySelector('#sim-form [aria-invalid="true"]');
+      if(first) first.focus();
+      return;
+    }
+    var type = document.querySelector('input[name="type"]:checked').value;
+    var empty = document.getElementById('out-empty'), scope = document.getElementById('scope-msg'), res = document.getElementById('res');
+    empty.style.display = 'none';
+    if(s < 1000){
+      res.classList.remove('show'); scope.classList.add('show');
+      lastSummary = type + ', ' + nf.format(s) + ' m² : sous le seuil de 1 000 m² du décret tertiaire. Estimation à faire en audit.';
+      return;
+    }
+    scope.classList.remove('show');
+    var big = document.getElementById('res-big'), sub = document.getElementById('res-sub'), rows = document.getElementById('res-rows');
+    var pLow = Math.round(LOW*1000)/10, pHigh = 40;
+    var parts = [];
+    rows.innerHTML = '';
+    function row(label, val){ var d=document.createElement('div'); var dt=document.createElement('dt'); dt.textContent=label; var dd=document.createElement('dd'); dd.textContent=val; d.appendChild(dt); d.appendChild(dd); rows.appendChild(d); }
+    if(k!==null){
+      var a = round(k*LOW, 100), b = round(k*HIGH, 100);
+      big.innerHTML = nf.format(a) + ' à ' + nf.format(b) + ' <small>kWh/an</small>';
+      parts.push(nf.format(a) + ' à ' + nf.format(b) + ' kWh/an');
+    } else if(m!==null){
+      var c = round(m*LOW, 10), d2 = round(m*HIGH, 10);
+      big.innerHTML = nf.format(c) + ' à ' + nf.format(d2) + ' <small>€ HT/an</small>';
+    } else {
+      big.innerHTML = '18,9 à 40 %';
+    }
+    sub.textContent = (k===null && m===null) ? 'de votre consommation actuelle. Ajoutez votre consommation ou votre facture pour obtenir la fourchette en kWh/an et en €/an.' : 'À économiser chaque année, par rapport à aujourd’hui, pour atteindre −40 % en 2030.';
+    if(k!==null || m!==null) row('Part de la consommation', '18,9 à 40 %');
+    if(k!==null && m!==null){
+      var c2 = round(m*LOW, 10), d3 = round(m*HIGH, 10);
+      row('En euros', nf.format(c2) + ' à ' + nf.format(d3) + ' € HT/an');
+      parts.push(nf.format(c2) + ' à ' + nf.format(d3) + ' € HT/an');
+    } else if(m!==null){
+      parts.push(big.textContent);
+    }
+    if(k!==null){ row('Intensité actuelle', nf.format(Math.round(k/s)) + ' kWh/m²/an'); }
+    row('Type et surface', type + ', ' + nf.format(s) + ' m²');
+    res.classList.remove('show'); void res.offsetWidth; res.classList.add('show');
+    lastSummary = type + ', ' + nf.format(s) + ' m². Économie à réaliser d’ici 2030 : ' + (parts.length ? parts.join(' ; ') + ' (' : '') + '18,9 à 40 % de la consommation actuelle' + (parts.length ? ')' : '') + '. Estimation indicative, base bilan OPERAT 2024-2025 et décret n° 2019-771.';
+  });
+
+  function toForm(e){
+    e.preventDefault();
+    document.getElementById('f-sim').value = lastSummary;
+    var s = parseNum(surf.value);
+    var fs = document.getElementById('f-surf');
+    if(!isNaN(s) && !fs.value) fs.value = s;
+    document.getElementById('contact').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto':'smooth'});
+    setTimeout(function(){ document.getElementById('f-name').focus({preventScroll:true}); }, 450);
+  }
+  document.getElementById('res-cta').addEventListener('click', toForm);
+  /* Premier calcul avec la surface d'exemple du brief (2 400 m²), pour que le résultat soit visible au repos */
+  document.getElementById('sim-form').dispatchEvent(new Event('submit', {cancelable:true}));
+  document.getElementById('scope-cta').addEventListener('click', toForm);
+
+  /* Disclosures */
+  document.querySelectorAll('[aria-controls][aria-expanded]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var p = document.getElementById(btn.getAttribute('aria-controls'));
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      p.classList.toggle('show', !open);
+      if(btn.classList.contains('linkbtn') && btn.closest('.case')) btn.firstChild.textContent = open ? 'Voir la courbe complète' : 'Masquer la courbe';
+    });
+  });
+
+  /* Audit form */
+  var form = document.getElementById('audit-form');
+  var fields = {
+    name:{el:'f-name', test:function(v){return v.trim().length>1;}, msg:'Nom manquant : il sert à l’ingénieur qui vous rappelle. Saisissez votre nom.'},
+    org:{el:'f-org', test:function(v){return v.trim().length>1;}, msg:'Organisation manquante : elle nous aide à préparer l’audit. Saisissez le nom de votre organisation.'},
+    mail:{el:'f-mail', test:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());}, msg:'E-mail non reconnu : il manque le @ ou le domaine. Saisissez par exemple prenom.nom@organisation.fr.'},
+    surf:{el:'f-surf', test:function(v){var n=parseNum(v);return !isNaN(n)&&n>0;}, msg:'Surface non reconnue : le champ attend un nombre en m². Saisissez par exemple 2400.'},
+    sites:{el:'f-sites', test:function(v){return /^\s*\d{1,5}\s*$/.test(v)&&parseInt(v,10)>0;}, msg:'Nombre de sites non reconnu : le champ attend un nombre entier. Saisissez par exemple 3.'}
+  };
+  function check(key){
+    var f = fields[key], el = document.getElementById(f.el);
+    var good = f.test(el.value);
+    showErr(el, document.getElementById(f.el+'-err'), good ? '' : f.msg);
+    return good;
+  }
+  Object.keys(fields).forEach(function(k){
+    var el = document.getElementById(fields[k].el);
+    el.addEventListener('blur', function(){ if(el.value.trim()!=='' || el.getAttribute('aria-invalid')) check(k); });
+  });
+  var consent = document.getElementById('f-consent');
+  consent.addEventListener('change', function(){ if(consent.checked) showErr(consent, document.getElementById('f-consent-err'), ''); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    Object.keys(fields).forEach(function(k){ if(!check(k)) ok=false; });
+    if(!consent.checked){ showErr(consent, document.getElementById('f-consent-err'), 'Consentement manquant : sans lui, nous ne pouvons pas vous rappeler. Cochez la case.'); ok=false; }
+    var sendErr = document.getElementById('send-err');
+    sendErr.classList.remove('show');
+    if(!ok){ var first = form.querySelector('[aria-invalid="true"]'); if(first) first.focus(); return; }
+    var btn = document.getElementById('f-submit'), lbl = btn.querySelector('.lbl');
+    btn.setAttribute('aria-busy','true'); lbl.textContent = 'Envoi…';
+    setTimeout(function(){
+      btn.removeAttribute('aria-busy'); lbl.textContent = 'Envoyer ma demande d’audit';
+      if(navigator.onLine === false){ sendErr.classList.add('show'); return; }
+      form.style.display = 'none';
+      var ok2 = document.getElementById('success');
+      ok2.classList.add('show'); ok2.focus();
+    }, 700);
+  });
+})();
+</script>
+</body>
+</html>
