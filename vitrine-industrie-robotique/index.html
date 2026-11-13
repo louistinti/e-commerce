@@ -471,9 +471,9 @@ section{position:relative}
         <li><a href="#fiche">Fiche technique</a></li>
       </ul>
     </nav>
-    <a class="header-phone" href="tel:+33477000000">
+    <a class="header-phone" href="tel:04XXXXXXXX">
       <svg width="22" height="22" aria-hidden="true"><use href="#i-phone"/></svg>
-      <span><small>Technicien, ligne directe</small>04 77 00 00 00</span>
+      <span><small>Technicien, ligne directe</small>04 XX XX XX XX</span>
     </a>
     <a class="btn btn-dark header-cta" href="#pilote">Tester sur une machine</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
@@ -506,7 +506,7 @@ section{position:relative}
       <p class="lead">Des capteurs de vibration sans fil qui vous alertent avant la panne. Posés sans câble, sans arrêter la ligne.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#pilote">Tester sur une machine</a>
-        <a class="btn btn-secondary" href="tel:+33477000000">
+        <a class="btn btn-secondary" href="tel:04XXXXXXXX">
           <svg width="20" height="20" aria-hidden="true"><use href="#i-phone"/></svg>
           Appeler un technicien
         </a>
@@ -957,10 +957,10 @@ section{position:relative}
         <p>Vibra conçoit à Saint-Étienne des capteurs de vibration sans fil et le logiciel qui les lit. Nos techniciens posent les capteurs chez vous et restent vos interlocuteurs. Vous parlez à quelqu'un qui connaît vos machines.</p>
         <div class="direct">
           <p class="small muted">Numéro direct, un technicien répond</p>
-          <a class="num tnum" href="tel:+33477000000"><svg width="34" height="34" aria-hidden="true"><use href="#i-phone"/></svg>04 77 00 00 00</a>
+          <a class="num tnum" href="tel:04XXXXXXXX"><svg width="34" height="34" aria-hidden="true"><use href="#i-phone"/></svg>04 XX XX XX XX</a>
           <ul class="techs">
-            <li><span class="region">Auvergne-Rhône-Alpes</span><span class="name">Mathieu Granjon</span><a href="tel:+33477000001">04 77 00 00 01</a></li>
-            <li><span class="region">Grand Est</span><span class="name">Claire Weisbecker</span><a href="tel:+33387000000">03 87 00 00 00</a></li>
+            <li><span class="region">Auvergne-Rhône-Alpes</span><span class="name">Mathieu Granjon</span><a href="tel:04XXXXXXXX">04 XX XX XX XX</a></li>
+            <li><span class="region">Grand Est</span><span class="name">Claire Weisbecker</span><a href="tel:03XXXXXXXX">03 XX XX XX XX</a></li>
           </ul>
         </div>
       </div>
@@ -1044,15 +1044,15 @@ section{position:relative}
     </div>
     <div class="foot-legal">
       <p><strong>Site de démonstration. Vibra est une entreprise fictive.</strong></p>
-      <p>Ligne directe : <a href="tel:+33477000000">04 77 00 00 00</a></p>
+      <p>Ligne directe : <a href="tel:04XXXXXXXX">04 XX XX XX XX</a></p>
     </div>
   </div>
 </footer>
 
 <div class="callbar on-dark" role="region" aria-label="Actions rapides">
-  <a class="btn btn-primary" href="tel:+33477000000">
+  <a class="btn btn-primary" href="tel:04XXXXXXXX">
     <svg width="22" height="22" aria-hidden="true"><use href="#i-phone"/></svg>
-    <span>Appeler un technicien<small class="tnum">04 77 00 00 00</small></span>
+    <span>Appeler un technicien<small class="tnum">04 XX XX XX XX</small></span>
   </a>
   <a class="btn btn-ghost" href="#fiche" aria-label="Fiche technique">
     <svg width="22" height="22" aria-hidden="true"><use href="#i-doc"/></svg>
@@ -1254,7 +1254,7 @@ section{position:relative}
       var tech = grandEst.test(document.getElementById('f-site').value) ? 'Claire Weisbecker, technicienne Grand Est,' : 'Mathieu Granjon, technicien Auvergne-Rhône-Alpes,';
       var p = document.getElementById('f-success-text');
       p.textContent = 'Merci, ' + prenom + '. ' + tech + ' vous rappelle pour choisir la machine à équiper. Besoin plus urgent ? Appelez le ';
-      var a = document.createElement('a'); a.href = 'tel:+33477000000'; a.textContent = '04 77 00 00 00'; p.appendChild(a); p.appendChild(document.createTextNode('.'));
+      var a = document.createElement('a'); a.href = 'tel:04XXXXXXXX'; a.textContent = '04 XX XX XX XX'; p.appendChild(a); p.appendChild(document.createTextNode('.'));
       form.hidden = true;
       var s = document.getElementById('f-success'); s.classList.add('show'); s.focus();
     }, reduce ? 200 : 900);
