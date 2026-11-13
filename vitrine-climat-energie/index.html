@@ -111,7 +111,7 @@ p{margin:0}
 .key.band{height:12px;border:0;background:var(--accent);border-radius:2px}
 
 /* Sections */
-section{scroll-margin-top:72px}
+section{scroll-margin-top:69px}
 .section{padding:112px 0}
 .section-head{max-width:780px}
 .section-head .lead{max-width:60ch}
@@ -129,6 +129,7 @@ section{scroll-margin-top:72px}
 .stat small{font-size:.42em;font-weight:700;letter-spacing:0;margin-left:.15em}
 .prob-card.big .stat{font-size:clamp(64px,7.4vw,112px)}
 .prob-card p{max-width:46ch}
+.prob-card p.src{max-width:none}
 .prob-card.big p{color:#EDE7D6;font-size:18px}
 .prob-card.big p.src{font-size:12.5px;color:#D9D2BF}
 .prob-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:28px 0 8px;border-top:1px solid rgba(248,244,234,.25)}
@@ -153,7 +154,8 @@ section{scroll-margin-top:72px}
 .install li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
 .install li::before{content:counter(s);width:40px;height:40px;border-radius:var(--r-full);border:1.5px solid var(--primary);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;color:var(--primary)}
 .install li b{display:block;color:var(--primary);font-weight:600}
-.install li span{font-size:15px;color:var(--n700)}
+.install li span{display:block;font-size:15px;line-height:1.45;color:var(--n700)}
+.install li b{line-height:1.3}
 
 /* Simulator */
 .sim{background:var(--primary);color:var(--sand-light)}
@@ -191,6 +193,7 @@ input[type=range]:focus-visible{box-shadow:none}
 input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:var(--focus)}
 input[type=range]:focus-visible::-moz-range-thumb{box-shadow:var(--focus)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px}
 .err{display:none;gap:8px;align-items:flex-start;color:var(--error);font-size:14px;line-height:1.45;font-weight:500}
 .err.show{display:flex}
 .err svg{flex:none;margin-top:2px}
@@ -210,6 +213,7 @@ input[type=range]:focus-visible::-moz-range-thumb{box-shadow:var(--focus)}
 .res-rows{display:grid;gap:0}
 .res-rows div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--n300);font-size:15px}
 .res-rows div:last-child{border-bottom:0}
+.res-rows div:only-child{grid-column:1 / -1}
 .res-rows dt{color:var(--n700)}
 .res-rows dd{margin:0;font-weight:600;color:var(--ink);text-align:right;white-space:nowrap}
 .gauge{margin-top:2px}
@@ -233,8 +237,17 @@ th{font-weight:600;color:var(--ink)}
 .map-legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-size:14px;color:var(--n700)}
 .map-legend span{display:inline-flex;align-items:center;gap:8px}
 .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
-.case-list{display:grid;gap:0;border-top:1px solid rgba(14,59,46,.2)}
-.case{padding:28px 0;border-bottom:1px solid rgba(14,59,46,.2);display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:24px;align-items:start}
+.case-list{display:block}
+.case-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.case-tabs [role=tab]{min-height:44px;padding:0 16px;border:1.5px solid var(--n300);border-radius:var(--r-md);background:var(--sand-light);color:var(--ink);font:inherit;font-size:15px;font-weight:500;cursor:pointer}
+.case-tabs [role=tab]:hover{border-color:var(--primary)}
+.case-tabs [role=tab][aria-selected=true]{background:var(--primary);border-color:var(--primary);color:var(--sand-light)}
+.case[hidden]{display:none}
+.case{padding:24px 0;border-bottom:1px solid rgba(14,59,46,.2);display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+.case-curve{margin-top:16px !important}
+.case-curve svg{width:100%;height:170px}
+.case-curve svg *{vector-effect:non-scaling-stroke}
+.case.expanded .case-curve{display:none}
 .case-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
 .case h3{font-size:21px}
 .case dl{margin:12px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:15px}
@@ -256,11 +269,14 @@ th{font-weight:600;color:var(--ink)}
 .imp + .imp{padding-left:40px;border-left:1px solid rgba(248,244,234,.22)}
 .imp .val{font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:clamp(56px,6.4vw,96px);line-height:1;color:var(--accent);letter-spacing:-.02em}
 .imp .val .unit{font-size:.5em}
-.imp .pending{display:inline-block;margin-top:14px;font-family:var(--f-mono);font-size:13px;color:#D9D2BF;border:1px dashed rgba(248,244,234,.4);border-radius:var(--r-sm);padding:6px 10px}
+.imp .pending{display:inline-block;margin-top:14px;font-family:var(--f-mono);font-size:12px;white-space:nowrap;color:#D9D2BF;border:1px dashed rgba(248,244,234,.4);border-radius:var(--r-sm);padding:6px 10px}
 .imp h3{color:var(--sand-light);margin-top:22px;font-size:20px}
 .imp p{margin-top:8px;color:#E3DCC8;max-width:46ch;font-size:16px}
 .imp-calc{margin-top:40px}
 .imp-calc .linkbtn{color:var(--accent)}
+.calc-intro{color:#E3DCC8;font-size:16px}
+.field:has(.err.show) .hint{display:none}
+.form-end{display:grid;gap:14px}
 .calc-panel{display:none;margin-top:16px;border:1px solid rgba(248,244,234,.22);border-radius:var(--r-lg);padding:28px;max-width:880px}
 .calc-panel.show{display:block;animation:rise .3s var(--ease) both}
 .calc-panel ol{margin:0;padding-left:20px;display:grid;gap:12px;color:#E3DCC8;font-size:16px}
@@ -312,6 +328,65 @@ th{font-weight:600;color:var(--ink)}
 .demo{margin-top:36px;padding-top:20px;border-top:1px solid rgba(248,244,234,.2);font-size:14px;color:#D9D2BF;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
 
 /* Responsive */
+/* Desktop fit: every anchored section fits in the viewport under the header */
+@media (min-width:981px){
+  .section{padding:48px 0}
+  .section-head .lead{margin-top:10px}
+  .prob-grid{margin-top:28px;gap:16px}
+  .prob-card{padding:22px 24px 20px;gap:8px}
+  .prob-card.big{padding:30px 32px}
+  .prob-card.big .stat{font-size:clamp(64px,6vw,96px)}
+  .stat{font-size:clamp(40px,3.8vw,56px)}
+  .prob-steps{margin:20px 0 4px}
+  .sol-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:end}
+  .sol-top .install{margin-top:0;padding-top:0;border-top:0;grid-template-columns:1fr;gap:14px}
+  .sol-top .install h3{max-width:none;font-size:18px}
+  .sol-top .install ol{gap:18px}
+  .sol-grid{margin-top:32px}
+  .sol-vis{aspect-ratio:2/1;padding:12px}
+  .sol-col h3{margin-top:14px}
+  .sol-col ul{margin-top:10px;gap:4px}
+  .sim-card{margin-top:0;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;background:none;box-shadow:none;overflow:visible;border-radius:0;align-items:stretch}
+  .sim-left{display:flex;flex-direction:column;gap:24px}
+  .sim-in{background:var(--sand-light);border-radius:var(--r-lg);padding:26px 28px;gap:16px;box-shadow:0 18px 50px rgba(5,22,17,.35);flex:1}
+  .sim-out{border-left:0;border-radius:var(--r-lg);padding:26px 28px;color:var(--ink);box-shadow:0 18px 50px rgba(5,22,17,.35)}
+  .res{gap:12px}
+  .res-main{padding:14px 18px}
+  .res-rows{grid-template-columns:1fr 1fr;column-gap:24px}
+  .res-rows div{padding:7px 0;font-size:14px}
+  .res-rows div:last-child{border-bottom:1px solid var(--n300)}
+  .seg label{padding:0 13px;font-size:14.5px}
+  .cases-grid{margin-top:0;gap:48px;align-items:stretch}
+  .cases-left{display:flex;flex-direction:column;gap:24px}
+  .map-card{position:static;padding:18px 20px;display:flex;flex-direction:column;align-items:center}
+  .map-card svg{max-height:360px;width:auto}
+  .map-card figcaption{align-self:stretch}
+  .case-list{padding-top:4px}
+  .imp-grid{margin-top:36px}
+  .imp{padding-top:28px}
+  .impact .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:56px;grid-template-areas:"head ." "grid calc";align-items:start}
+  .impact .section-head{grid-area:head}
+  .impact .imp-grid{grid-area:grid;margin-top:28px}
+  .imp-calc{grid-area:calc;margin-top:28px;border:1px solid rgba(248,244,234,.22);border-radius:var(--r-lg);padding:26px 28px}
+  .imp .val{font-size:clamp(52px,4.6vw,76px)}
+  .imp:first-child{padding-right:28px}
+  .imp + .imp{padding-left:28px}
+  .calc-panel{border:0;padding:0;margin-top:8px}
+  .calc-panel ol{gap:8px;font-size:15px}
+  .calc-panel .src{margin-top:12px !important}
+  .sim{padding:40px 0}
+  .contact-grid{grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:48px}
+  .form-end{grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:start}
+  .form .textarea{min-height:56px}
+  .prob-card.big .stat{font-size:clamp(60px,5.4vw,88px)}
+  .form{padding:26px 28px;gap:14px}
+  .form .textarea{min-height:68px}
+  .contact-aside ul{margin-top:22px}
+}
+@media (min-width:981px) and (max-width:1200px){
+  .three{grid-template-columns:1fr 1fr}
+  .three .field:first-child{grid-column:1 / -1}
+}
 @media (max-width:1100px){
   .nav-links{gap:18px}
   .nav-links a{font-size:14px}
@@ -347,10 +422,11 @@ th{font-weight:600;color:var(--ink)}
   .install ol{grid-template-columns:1fr;gap:18px}
   .sim-card{margin-top:32px}
   .sim-in,.sim-out{padding:22px 18px}
+  .sim-left .section-head{margin-bottom:24px}
   .range-row{grid-template-columns:1fr}
-  .two{grid-template-columns:1fr}
+  .two,.three{grid-template-columns:1fr}
   .case{grid-template-columns:1fr;gap:16px}
-  .case-curve{max-width:320px}
+  .case-curve svg{height:130px}
   .imp-grid{grid-template-columns:1fr}
   .imp,.imp + .imp{padding:28px 0 8px;border-left:0}
   .imp + .imp{border-top:1px solid rgba(248,244,234,.22)}
@@ -479,7 +555,7 @@ th{font-weight:600;color:var(--ink)}
   <div class="wrap">
     <div class="section-head">
       <h2 id="prob-title">Trois chiffres fixent votre calendrier</h2>
-      <p class="lead">Ils viennent des textes et du bilan public, pas de nous. Chacun porte sa source et sa date.</p>
+      <p class="lead">Ils viennent des textes et du bilan public. Chacun porte sa source et sa date.</p>
     </div>
     <div class="prob-grid">
       <article class="prob-card big">
@@ -514,9 +590,19 @@ th{font-weight:600;color:var(--ink)}
 <!-- 3. LA SOLUTION -->
 <section class="section" id="solution" aria-labelledby="sol-title">
   <div class="wrap">
-    <div class="section-head">
-      <h2 id="sol-title">Mesurer, corriger, suivre. Un seul service.</h2>
-      <p class="lead">Les capteurs donnent la donnée, la plateforme repère les dérives, l'ingénieur décide des réglages avec vous.</p>
+    <div class="sol-top">
+      <div class="section-head">
+        <h2 id="sol-title">Mesurer, corriger, suivre. Un seul service.</h2>
+        <p class="lead">Les capteurs donnent la donnée, la plateforme repère les dérives, l'ingénieur décide des réglages avec vous.</p>
+      </div>
+    <div class="install">
+        <h3>Installé sans travaux</h3>
+        <ol>
+          <li><div><b>Pose des capteurs</b><span>Sur le tableau et dans les zones, sans couper l'activité.</span></div></li>
+          <li><div><b>Raccordement</b><span>Factures, météo et GTB existante reliées à la plateforme.</span></div></li>
+          <li><div><b>Premier bilan</b><span>L'ingénieur présente les dérives et le plan d'action.</span></div></li>
+        </ol>
+      </div>
     </div>
 
     <div class="sol-grid">
@@ -633,27 +719,18 @@ th{font-weight:600;color:var(--ink)}
         </ul>
       </figure>
     </div>
-
-    <div class="install">
-      <h3>Installé sans travaux</h3>
-      <ol>
-        <li><div><b>Pose des capteurs</b><span>Sur le tableau et dans les zones, sans couper l'activité.</span></div></li>
-        <li><div><b>Raccordement</b><span>Factures, météo et GTB existante reliées à la plateforme.</span></div></li>
-        <li><div><b>Premier bilan</b><span>L'ingénieur présente les dérives et le plan d'action.</span></div></li>
-      </ol>
-    </div>
   </div>
 </section>
 
 <!-- 4. SIMULATEUR -->
 <section class="section sim on-dark" id="simulateur" aria-labelledby="sim-title">
   <div class="wrap">
-    <div class="section-head">
-      <h2 id="sim-title">Combien reste-t-il à économiser&nbsp;?</h2>
-      <p class="lead">Trois informations suffisent pour situer votre bâtiment sur la trajectoire 2030. Rien n'est conservé sans envoi du formulaire.</p>
-    </div>
-
     <div class="sim-card">
+      <div class="sim-left">
+      <div class="section-head">
+        <h2 id="sim-title">Combien reste-t-il à économiser&nbsp;?</h2>
+        <p class="lead">Situez votre bâtiment sur la trajectoire 2030. Rien n'est conservé sans envoi du formulaire.</p>
+      </div>
       <form class="sim-in" id="sim-form" novalidate aria-label="Simulateur d'économies">
         <fieldset class="field">
           <legend>Type de bâtiment</legend>
@@ -675,7 +752,7 @@ th{font-weight:600;color:var(--ink)}
               <span class="u">m²</span>
             </div>
           </div>
-          <p class="hint" id="s-hint">Surface de plancher. Le décret s'applique à partir de 1&#8239;000&#8239;m².</p>
+          <p class="hint" id="s-hint">Le décret s'applique à partir de 1&#8239;000&#8239;m².</p>
           <p class="err" id="s-err" role="alert"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
         </div>
 
@@ -704,6 +781,7 @@ th{font-weight:600;color:var(--ink)}
           <button class="btn btn-primary" type="submit" style="width:100%">Calculer l'économie de mon bâtiment</button>
         </div>
       </form>
+      </div>
 
       <div class="sim-out" aria-live="polite" id="sim-out">
         <div class="out-empty" id="out-empty">
@@ -763,7 +841,7 @@ th{font-weight:600;color:var(--ink)}
               <li>Les euros suivent les kWh, à prix de l'énergie constant.</li>
             </ul>
           </details>
-          <p class="out-note">Estimation indicative, calculée à partir des seuls chiffres publics ci-dessus : ce n'est pas une promesse d'économie. L'audit mesure la position réelle de votre bâtiment. <a href="#">Voir la méthode</a></p>
+          <p class="out-note">Estimation indicative, tirée des seuls chiffres publics ci-dessus : pas une promesse d'économie. L'audit mesure la position réelle. <a href="#">Voir la méthode</a></p>
           <p><a class="btn btn-primary" href="#contact" id="res-cta">Recevoir l'analyse détaillée</a></p>
         </div>
       </div>
@@ -774,12 +852,12 @@ th{font-weight:600;color:var(--ink)}
 <!-- 5. CAS CLIENTS -->
 <section class="section" id="cas" aria-labelledby="cas-title">
   <div class="wrap">
-    <div class="section-head">
-      <h2 id="cas-title">Trois bâtiments, trois façons de reprendre la main</h2>
-      <p class="lead">Des fiches de démonstration : les leviers et l'indicateur suivi, sans gain chiffré.</p>
-    </div>
-
     <div class="cases-grid">
+      <div class="cases-left">
+      <div class="section-head">
+        <h2 id="cas-title">Trois bâtiments, trois façons de reprendre la main</h2>
+        <p class="lead">Des fiches de démonstration : les leviers et l'indicateur suivi, sans gain chiffré.</p>
+      </div>
       <figure class="map-card" style="margin:0">
         <svg viewBox="0 0 460 440" role="img" aria-labelledby="map-t map-d">
           <title id="map-t">Carte d'exemple des bâtiments suivis</title>
@@ -811,9 +889,15 @@ th{font-weight:600;color:var(--ink)}
           <p class="src" style="margin-top:10px">Exemple : points placés à l'échelle de la ville, sans adresse ni total.</p>
         </figcaption>
       </figure>
+      </div>
 
       <div class="case-list">
-        <article class="case">
+        <div class="case-tabs" role="tablist" aria-label="Fiches de démonstration">
+          <button type="button" role="tab" id="tab-1" aria-selected="true" aria-controls="case-1" tabindex="0">Bureaux, Lyon</button>
+          <button type="button" role="tab" id="tab-2" aria-selected="false" aria-controls="case-2" tabindex="-1">Groupe scolaire, Grenoble</button>
+          <button type="button" role="tab" id="tab-3" aria-selected="false" aria-controls="case-3" tabindex="-1">Magasin, Marseille</button>
+        </div>
+        <article class="case" id="case-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
           <div>
             <div class="case-meta"><span class="tag">Exemple</span><span class="tag">Foncière</span></div>
             <h3>Immeuble de bureaux, Lyon</h3>
@@ -821,19 +905,19 @@ th{font-weight:600;color:var(--ink)}
               <dt>Leviers</dt><dd>Horaires CVC recalés sur l'occupation, alertes de dérive la nuit, sous-comptage par étage.</dd>
               <dt>Indicateur</dt><dd>Consommation corrigée du climat sur 12 mois.</dd>
             </dl>
+            <figure class="case-curve" style="margin:0">
+              <svg viewBox="0 0 180 80" preserveAspectRatio="none" aria-hidden="true"><path d="M4 26 C30 18 46 30 70 24 L70 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M70 24 C96 40 120 44 176 46" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="70" y1="8" x2="70" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
+              <figcaption>Illustration : avant / après, sans valeurs</figcaption>
+            </figure>
             <button class="linkbtn" type="button" aria-expanded="false" aria-controls="more-1">Voir la courbe complète</button>
           </div>
-          <figure class="case-curve" style="margin:0">
-            <svg viewBox="0 0 180 80" aria-hidden="true"><path d="M4 26 C30 18 46 30 70 24 L70 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M70 24 C96 40 120 44 176 46" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="70" y1="8" x2="70" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
-            <figcaption>Illustration : avant / après, sans valeurs</figcaption>
-          </figure>
           <div class="case-more" id="more-1">
             <svg viewBox="0 0 640 200" role="img" aria-label="Illustration : courbe de consommation sur 24 mois, stable avant la pose des capteurs puis en baisse après les premiers réglages. Sans valeurs."><line x1="20" y1="180" x2="620" y2="180" stroke="#C9CFC6"/><line x1="20" y1="20" x2="20" y2="180" stroke="#C9CFC6"/><line x1="320" y1="20" x2="320" y2="180" stroke="#0E3B2E" stroke-dasharray="4 4"/><text x="328" y="34" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">pose des capteurs</text><path d="M20 70 C60 52 90 88 130 66 S200 52 240 74 S300 60 320 64" fill="none" stroke="#7C8F86" stroke-width="2.5"/><path d="M320 64 C360 92 390 86 430 104 S500 112 540 118 S600 116 620 120" fill="none" stroke="#0E3B2E" stroke-width="3"/><text x="40" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">12 mois avant</text><text x="500" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">12 mois après</text></svg>
             <p>Illustration : la forme seule, sans valeurs. Les courbes réelles d'un bâtiment sont présentées pendant l'audit, avec la période de référence et la correction climatique.</p>
           </div>
         </article>
 
-        <article class="case">
+        <article class="case" id="case-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden>
           <div>
             <div class="case-meta"><span class="tag">Exemple</span><span class="tag">Collectivité</span></div>
             <h3>Groupe scolaire, Grenoble</h3>
@@ -841,19 +925,19 @@ th{font-weight:600;color:var(--ink)}
               <dt>Leviers</dt><dd>Réduit de chauffage pendant les vacances, courbes de chauffe revues, dossier CEE préparé sous réserve d'éligibilité.</dd>
               <dt>Indicateur</dt><dd>Consommation corrigée du climat sur 12 mois.</dd>
             </dl>
+            <figure class="case-curve" style="margin:0">
+              <svg viewBox="0 0 180 80" preserveAspectRatio="none" aria-hidden="true"><path d="M4 20 C24 30 40 16 60 28 L60 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M60 28 C80 30 92 52 120 50 S160 54 176 56" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="60" y1="8" x2="60" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
+              <figcaption>Illustration : avant / après, sans valeurs</figcaption>
+            </figure>
             <button class="linkbtn" type="button" aria-expanded="false" aria-controls="more-2">Voir la courbe complète</button>
           </div>
-          <figure class="case-curve" style="margin:0">
-            <svg viewBox="0 0 180 80" aria-hidden="true"><path d="M4 20 C24 30 40 16 60 28 L60 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M60 28 C80 30 92 52 120 50 S160 54 176 56" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="60" y1="8" x2="60" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
-            <figcaption>Illustration : avant / après, sans valeurs</figcaption>
-          </figure>
           <div class="case-more" id="more-2">
             <svg viewBox="0 0 640 200" role="img" aria-label="Illustration : courbe de consommation d'un groupe scolaire, avec des creux pendant les vacances plus marqués après les réglages. Sans valeurs."><line x1="20" y1="180" x2="620" y2="180" stroke="#C9CFC6"/><line x1="20" y1="20" x2="20" y2="180" stroke="#C9CFC6"/><line x1="320" y1="20" x2="320" y2="180" stroke="#0E3B2E" stroke-dasharray="4 4"/><text x="328" y="34" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">premiers réglages</text><path d="M20 60 L80 62 L100 80 L120 62 L200 58 L220 74 L240 60 L320 62" fill="none" stroke="#7C8F86" stroke-width="2.5"/><path d="M320 62 L380 84 L400 130 L420 88 L500 92 L520 136 L540 94 L620 96" fill="none" stroke="#0E3B2E" stroke-width="3"/><text x="40" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">12 mois avant</text><text x="500" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">12 mois après</text></svg>
             <p>Illustration : la forme seule, sans valeurs. Les creux correspondent aux périodes de vacances, où le chauffage passe en réduit.</p>
           </div>
         </article>
 
-        <article class="case">
+        <article class="case" id="case-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden>
           <div>
             <div class="case-meta"><span class="tag">Exemple</span><span class="tag">Enseigne</span></div>
             <h3>Magasin de centre-ville, Marseille</h3>
@@ -861,12 +945,12 @@ th{font-weight:600;color:var(--ink)}
               <dt>Leviers</dt><dd>Alerte quand la clim tourne en hiver ou le chauffage la nuit, éclairage piloté sur les horaires d'ouverture.</dd>
               <dt>Indicateur</dt><dd>Consommation corrigée du climat sur 12 mois.</dd>
             </dl>
+            <figure class="case-curve" style="margin:0">
+              <svg viewBox="0 0 180 80" preserveAspectRatio="none" aria-hidden="true"><path d="M4 30 C20 22 36 36 52 26 S74 22 84 28 L84 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M84 28 C100 44 116 40 136 46 S166 48 176 50" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="84" y1="8" x2="84" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
+              <figcaption>Illustration : avant / après, sans valeurs</figcaption>
+            </figure>
             <button class="linkbtn" type="button" aria-expanded="false" aria-controls="more-3">Voir la courbe complète</button>
           </div>
-          <figure class="case-curve" style="margin:0">
-            <svg viewBox="0 0 180 80" aria-hidden="true"><path d="M4 30 C20 22 36 36 52 26 S74 22 84 28 L84 70" fill="none" stroke="#7C8F86" stroke-width="2"/><path d="M84 28 C100 44 116 40 136 46 S166 48 176 50" fill="none" stroke="#0E3B2E" stroke-width="2.5"/><line x1="84" y1="8" x2="84" y2="74" stroke="#C9CFC6" stroke-dasharray="2 3"/><line x1="4" y1="74" x2="176" y2="74" stroke="#C9CFC6"/></svg>
-            <figcaption>Illustration : avant / après, sans valeurs</figcaption>
-          </figure>
           <div class="case-more" id="more-3">
             <svg viewBox="0 0 640 200" role="img" aria-label="Illustration : consommation de nuit d'un magasin, qui disparaît presque après la mise en place des alertes. Sans valeurs."><line x1="20" y1="180" x2="620" y2="180" stroke="#C9CFC6"/><line x1="20" y1="20" x2="20" y2="180" stroke="#C9CFC6"/><line x1="320" y1="20" x2="320" y2="180" stroke="#0E3B2E" stroke-dasharray="4 4"/><text x="328" y="34" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">alertes actives</text><path d="M20 110 L50 110 L60 60 L110 60 L120 110 L150 110 L160 60 L210 60 L220 110 L250 110 L260 60 L310 60 L320 110" fill="none" stroke="#7C8F86" stroke-width="2.5"/><path d="M320 110 L350 160 L360 70 L410 70 L420 160 L450 160 L460 70 L510 70 L520 160 L550 160 L560 70 L610 70 L620 160" fill="none" stroke="#0E3B2E" stroke-width="3"/><text x="40" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">nuits avant</text><text x="520" y="198" font-family="JetBrains Mono, monospace" font-size="12" fill="#3F4A44">nuits après</text></svg>
             <p>Illustration : la forme seule, sans valeurs. Les paliers bas sont les nuits, magasin fermé.</p>
@@ -899,6 +983,7 @@ th{font-weight:600;color:var(--ink)}
       </div>
     </div>
     <div class="imp-calc">
+      <p class="calc-intro">Une seule méthode pour les deux indicateurs, en cinq étapes.</p>
       <button class="linkbtn" type="button" aria-expanded="false" aria-controls="calc-panel">Comprendre le calcul
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
       </button>
@@ -984,12 +1069,12 @@ th{font-weight:600;color:var(--ink)}
             <p class="err" id="f-org-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
           </div>
         </div>
+        <div class="three">
         <div class="field">
           <label for="f-mail">E-mail professionnel</label>
           <input class="input" id="f-mail" name="email" type="email" autocomplete="email" aria-describedby="f-mail-err">
           <p class="err" id="f-mail-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
         </div>
-        <div class="two">
           <div class="field">
             <label for="f-surf">Surface totale</label>
             <div class="unit-wrap">
@@ -1009,6 +1094,7 @@ th{font-weight:600;color:var(--ink)}
           <textarea class="textarea" id="f-sim" name="simulation" readonly aria-describedby="f-sim-hint"></textarea>
           <p class="hint" id="f-sim-hint">Rempli automatiquement après un calcul. <a href="#simulateur">Lancer une simulation</a></p>
         </div>
+        <div class="form-end">
         <fieldset class="field">
           <legend>Rendez-vous de rappel</legend>
           <div class="seg slots">
@@ -1016,7 +1102,7 @@ th{font-weight:600;color:var(--ink)}
             <input type="radio" name="slot" id="sl-2" value="Midi"><label for="sl-2">Midi</label>
             <input type="radio" name="slot" id="sl-3" value="Après-midi"><label for="sl-3">Après-midi</label>
           </div>
-          <p class="hint">L'ingénieur propose ensuite une date précise par e-mail.</p>
+          <p class="hint">L'ingénieur confirme ensuite une date par e-mail.</p>
         </fieldset>
         <div class="field">
           <label class="check" for="f-consent">
@@ -1024,6 +1110,7 @@ th{font-weight:600;color:var(--ink)}
             <span>J'accepte que Sobra utilise ces informations pour me recontacter au sujet de l'audit. <a href="#">Politique de confidentialité</a></span>
           </label>
           <p class="err" id="f-consent-err"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+        </div>
         </div>
         <p class="send-err" id="send-err" role="alert">Votre demande n'est pas partie : la connexion a été interrompue. Vos informations sont conservées. Réessayez, ou écrivez-nous à contact@sobra.example.</p>
         <div>
@@ -1173,7 +1260,27 @@ th{font-weight:600;color:var(--ink)}
       var open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));
       p.classList.toggle('show', !open);
-      if(btn.classList.contains('linkbtn') && btn.closest('.case')) btn.firstChild.textContent = open ? 'Voir la courbe complète' : 'Masquer la courbe';
+      var cs = btn.closest('.case');
+      if(cs){ btn.firstChild.textContent = open ? 'Voir la courbe complète' : 'Masquer la courbe'; cs.classList.toggle('expanded', !open); }
+    });
+  });
+
+  /* Case tabs */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.case-tabs [role="tab"]'));
+  function selectTab(t, focus){
+    tabs.forEach(function(x){
+      var on = x===t;
+      x.setAttribute('aria-selected', String(on)); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+    if(focus) t.focus();
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ selectTab(t); });
+    t.addEventListener('keydown', function(e){
+      var j = null;
+      if(e.key==='ArrowRight') j=(i+1)%tabs.length; else if(e.key==='ArrowLeft') j=(i-1+tabs.length)%tabs.length; else if(e.key==='Home') j=0; else if(e.key==='End') j=tabs.length-1;
+      if(j!==null){ e.preventDefault(); selectTab(tabs[j], true); }
     });
   });
 
@@ -1194,7 +1301,9 @@ th{font-weight:600;color:var(--ink)}
   }
   Object.keys(fields).forEach(function(k){
     var el = document.getElementById(fields[k].el);
-    el.addEventListener('blur', function(){ if(el.value.trim()!=='' || el.getAttribute('aria-invalid')) check(k); });
+    /* Errors clear while typing, so no layout shift happens when focus leaves the field */
+    el.addEventListener('input', function(){ if(el.getAttribute('aria-invalid') && fields[k].test(el.value)) check(k); });
+    el.addEventListener('blur', function(){ if(el.value.trim()!=='' && !fields[k].test(el.value)) check(k); });
   });
   var consent = document.getElementById('f-consent');
   consent.addEventListener('change', function(){ if(consent.checked) showErr(consent, document.getElementById('f-consent-err'), ''); });
