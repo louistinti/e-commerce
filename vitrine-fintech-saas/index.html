@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Liasse</title>
 <meta name="description" content="Liasse : devis, factures électroniques, relances et trésorerie à 90 jours, depuis votre téléphone. Pour les artisans et les TPE. Site de démonstration, entreprise fictive.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%272%27 y=%272%27 width=%2728%27 height=%2728%27 rx=%279%27 fill=%27%232E1A5C%27/%3E%3Cpath d=%27M10 9.5h8.5l3.5 3.5v9.5H10z%27 fill=%27%23FBF6EE%27/%3E%3Ccircle cx=%2722.5%27 cy=%2722%27 r=%273.6%27 fill=%27%23FF6F59%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Outfit:wght@500;600;700&display=swap">
@@ -34,513 +35,465 @@
 :root{
   --cream:#FBF6EE;
   --cream-deep:#F3EADB;
+  --paper:#FFFDF9;
   --violet:#2E1A5C;
   --violet-hover:#432A80;
   --violet-soft:#ECE4FA;
+  --violet-night:#1E1236;
   --coral:#FF6F59;
-  --coral-text:#B8412E;
   --ink:#1F1A2B;
   --n700:#544B63;
   --n500:#7A7186;
   --n200:#E3D8C6;
-  --white:#FFFFFF;
   --success-text:#17704A;
   --success-bg:#E5F4EC;
   --error-text:#B42318;
   --error-bg:#FDECEA;
-  --warning-text:#9A5B00;
+  --warning-text:#8A5200;
   --warning-bg:#FFF3DC;
-
-  --font-sans:"DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-num:"Outfit", "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-
-  --r-sm:8px; --r-md:14px; --r-lg:24px; --r-full:999px;
-  --shadow-sm:0 1px 3px rgba(46,26,92,.08);
-  --shadow-md:0 10px 30px rgba(46,26,92,.10);
-  --shadow-device:0 30px 60px -20px rgba(46,26,92,.25);
-  --shadow-focus:0 0 0 2px #FBF6EE, 0 0 0 4px #2E1A5C;
+  --sans:"DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --round:"Outfit", "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --nav:56px;
+  --g:16px;
   --ease:cubic-bezier(.2,0,0,1);
-  --ease-soft:cubic-bezier(.16,1,.3,1);
-  --gutter:24px;
-  --section-y:56px;
-  --nav-h:68px;
+  --soft:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav-h) + 1px)}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img,svg{display:block;max-width:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:var(--nav)}
+body{margin:0;padding-top:var(--nav);background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+svg{display:block}
 a{color:var(--violet)}
-h1,h2,h3,h4{font-family:var(--font-sans);color:var(--violet);margin:0;font-weight:700;letter-spacing:-.02em}
-p{margin:0}
+h1,h2,h3{margin:0;font-family:var(--round);color:var(--violet);font-weight:600;letter-spacing:-.025em}
+p,ol,ul,figure{margin:0}
+ol,ul{padding:0;list-style:none}
 button,input{font:inherit;color:inherit}
 :focus{outline:none}
-:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--r-sm)}
-.num{font-family:var(--font-num);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-sup{font-size:.62em;line-height:0;vertical-align:.5em;margin-left:.02em}
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:6px}
+.num{font-family:var(--round);font-variant-numeric:tabular-nums;font-weight:600}
+sup{font-size:.62em;line-height:0;vertical-align:.5em}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.wrap{max-width:calc(1160px + 2*var(--gutter));margin:0 auto;padding:0 var(--gutter)}
-section{padding:var(--section-y) 0}
-.h2{font-size:38px;line-height:1.15}
-.lead{font-size:18px;color:var(--n700);max-width:62ch;margin-top:10px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--violet);background:var(--violet-soft);padding:6px 12px;border-radius:var(--r-full);margin-bottom:16px}
-.caption{font-size:14px;line-height:1.45;color:var(--n700);font-weight:500}
-.caption a{color:var(--violet)}
-.skip{position:absolute;left:16px;top:-60px;background:var(--violet);color:#fff;padding:10px 14px;border-radius:var(--r-sm);z-index:100;text-decoration:none}
-.skip:focus{top:12px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--violet);color:var(--cream);padding:10px 14px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:8px}
+.ico{width:1em;height:1em;flex:none}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--r-md);font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:background-color .12s var(--ease),transform .12s var(--ease),box-shadow .12s var(--ease)}
-.btn-primary{background:var(--violet);color:#fff}
-.btn-primary:hover{background:var(--violet-hover)}
-.btn-primary:active{transform:translateY(1px);background:#24134a}
-.btn-primary[disabled]{background:var(--n200);color:var(--n700);cursor:progress}
-.btn-secondary{background:transparent;color:var(--violet);box-shadow:inset 0 0 0 1.5px var(--violet)}
-.btn-secondary:hover{background:var(--violet-soft)}
-.btn-secondary:focus-visible{box-shadow:inset 0 0 0 1.5px var(--violet),var(--shadow-focus)}
+/* Buttons and fields */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;border:0;background:var(--violet);color:var(--cream);font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color .15s var(--ease),transform .15s var(--ease)}
+.btn:hover{background:var(--violet-hover)}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{background:var(--n200);color:var(--n700);cursor:progress}
+.btn-line{background:transparent;color:var(--violet);box-shadow:inset 0 0 0 1.5px var(--violet)}
+.btn-line:hover{background:var(--violet-soft)}
 .btn-sm{min-height:44px;padding:0 18px;font-size:15px}
-.btn:focus-visible{border-radius:var(--r-md)}
-
-/* Nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.94);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--n200)}
-.nav .wrap{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--violet);font-weight:700;font-size:22px;letter-spacing:-.03em;min-height:44px}
-.logo svg{width:32px;height:32px;flex:none}
-.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
-.nav ul a{display:inline-flex;align-items:center;min-height:44px;padding:0 11px;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-radius:var(--r-sm)}
-.nav ul a:hover{background:var(--cream-deep)}
-
-/* Hero */
-.hero{padding:56px 0 72px;position:relative;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:48px;align-items:center}
-.hero h1{font-size:56px;line-height:1.08;letter-spacing:-.035em}
-.hero .sub{font-size:20px;line-height:1.5;color:var(--n700);margin-top:22px;max-width:34em}
-.signup{margin-top:32px;max-width:560px}
-.signup label{display:block;font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px}
-.signup-row{display:flex;gap:10px}
-.input{flex:1;min-width:0;height:56px;padding:0 18px;background:var(--white);border:1.5px solid var(--n500);border-radius:var(--r-md);font-size:17px;color:var(--ink);transition:border-color .12s var(--ease),box-shadow .12s var(--ease)}
+.btn .ico{width:18px;height:18px}
+label{font-weight:500}
+.input{width:100%;min-width:0;height:54px;padding:0 20px;background:#fff;border:1.5px solid var(--n500);border-radius:999px;font-size:17px;color:var(--ink);transition:border-color .15s var(--ease)}
 .input::placeholder{color:var(--n500)}
-.input:hover{border-color:var(--n700)}
-.input:focus-visible{border-color:var(--violet);box-shadow:0 0 0 3px var(--violet-soft);border-radius:var(--r-md)}
+.input:focus-visible{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px var(--violet-soft)}
 .input[aria-invalid="true"]{border-color:var(--error-text)}
-.signup .btn{height:56px}
-.conditions{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:14px;font-weight:500;color:var(--n700)}
-.conditions span{display:inline-flex;align-items:center;gap:6px}
-.conditions svg{width:16px;height:16px;color:var(--success-text);flex:none}
-.field-error{display:none;align-items:flex-start;gap:8px;margin-top:10px;padding:10px 12px;background:var(--error-bg);color:var(--error-text);border-radius:var(--r-sm);font-size:15px;line-height:1.45}
+.field-error{display:none;gap:8px;align-items:flex-start;margin-top:10px;padding:10px 14px;background:var(--error-bg);color:var(--error-text);border-radius:14px;font-size:15px;line-height:1.45;text-align:left}
 .field-error.show{display:flex}
-.field-error svg{width:18px;height:18px;flex:none;margin-top:1px}
-.form-note{display:none;margin-top:10px;padding:12px 14px;background:var(--warning-bg);color:var(--ink);border-radius:var(--r-sm);font-size:15px;line-height:1.45}
+.field-error .ico{width:18px;height:18px;margin-top:2px}
+.form-note{display:none;margin-top:10px;padding:12px 16px;background:var(--warning-bg);border-radius:14px;font-size:15px;line-height:1.45;text-align:left}
 .form-note.show{display:block}
 .form-note .btn{margin-top:10px}
-.success{padding:20px 22px;background:var(--success-bg);border-radius:var(--r-md);color:var(--ink);font-size:16px;line-height:1.55}
-.success strong{color:var(--success-text);display:flex;align-items:center;gap:8px;font-size:18px;margin-bottom:6px}
-.success svg{width:22px;height:22px}
-.success:focus-visible{box-shadow:var(--shadow-focus)}
+.success{padding:18px 20px;background:var(--success-bg);border-radius:18px;font-size:16px;line-height:1.5;text-align:left}
+.success strong{display:flex;align-items:center;gap:8px;color:var(--success-text);font-size:18px;margin-bottom:4px}
+.success .ico{width:22px;height:22px}
+.conditions{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;margin-top:12px;font-size:14px;font-weight:500;color:var(--n700)}
+.conditions span{display:inline-flex;align-items:center;gap:6px}
+.conditions .ico{width:16px;height:16px;color:var(--success-text)}
+.signup-row{display:flex;gap:8px}
+.caption{font-size:13.5px;line-height:1.45;color:var(--n700)}
+.kicker{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--n700);margin-bottom:14px}
+.kicker b{font-family:var(--round);font-size:15px;letter-spacing:0;color:var(--violet);background:var(--violet-soft);border-radius:999px;padding:2px 10px}
+.h2{font-size:clamp(30px,4.2vw,44px);line-height:1.08}
 
-/* Hero visual */
-.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:660px;padding-bottom:36px}
-.sheet{position:absolute;width:300px;height:400px;border-radius:18px;background:
-  repeating-linear-gradient(to bottom,transparent 0 27px,rgba(46,26,92,.07) 27px 28px),var(--white);
-  box-shadow:var(--shadow-md);border:1px solid var(--n200)}
-.sheet--a{transform:translate(-118px,26px) rotate(-9deg);background-color:var(--cream-deep)}
-.sheet--b{transform:translate(104px,-20px) rotate(7deg)}
-.sheet::before{content:"";position:absolute;left:26px;top:28px;width:96px;height:10px;border-radius:5px;background:rgba(46,26,92,.14)}
-.phone{position:relative;width:286px;height:592px;border-radius:46px;background:var(--ink);padding:10px;box-shadow:var(--shadow-device),0 0 0 1px rgba(31,26,43,.6) inset;flex:none}
-.phone::before{content:"";position:absolute;top:20px;left:50%;width:82px;height:22px;transform:translateX(-50%);border-radius:12px;background:var(--ink);z-index:3}
-.screen{position:relative;height:100%;border-radius:36px;background:var(--white);overflow:hidden;display:flex;flex-direction:column;font-size:13px;line-height:1.4;color:var(--ink)}
-.status{display:flex;justify-content:space-between;padding:14px 24px 0;height:44px;font-family:var(--font-num);font-weight:600;font-size:13px}
-.status i{display:inline-block;width:22px;height:10px;border-radius:3px;border:1.5px solid var(--ink);position:relative}
-.status i::after{content:"";position:absolute;inset:1.5px;right:5px;background:var(--ink);border-radius:1px}
-.app-top{display:flex;align-items:center;justify-content:space-between;padding:6px 18px 10px}
-.app-top b{font-size:15px;color:var(--violet)}
-.app-top .back{font-size:12px;color:var(--n700);font-weight:500}
-.inv-head{margin:0 14px;padding:16px;border-radius:18px;background:var(--cream)}
-.inv-head small{display:block;font-size:11.5px;color:var(--n700);font-weight:500}
-.inv-head .who{font-weight:700;color:var(--ink);font-size:14px;margin-top:2px}
-.inv-amount{font-size:31px;color:var(--violet);margin-top:10px;line-height:1}
-.inv-meta{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
-.pill{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:var(--r-full);font-size:11.5px;font-weight:700;white-space:nowrap}
-.pill svg{width:12px;height:12px}
-.pill--paid{background:var(--coral);color:var(--violet)}
-.pill--wait{background:var(--cream-deep);color:var(--n700)}
-.pill--relance{background:var(--violet-soft);color:var(--violet)}
-.pill--ok{background:var(--success-bg);color:var(--success-text)}
-.lines{list-style:none;margin:12px 14px 0;padding:0}
-.lines li{display:flex;justify-content:space-between;gap:10px;padding:9px 4px;border-bottom:1px solid var(--cream-deep)}
-.lines li span:first-child{color:var(--n700)}
-.lines li .num{font-size:13px}
-.lines li.total{border-bottom:0;font-weight:700}
-.lines li.total span:first-child{color:var(--ink)}
-.app-foot{margin-top:auto;padding:12px 14px 18px}
-.app-btn{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:12px;background:var(--violet);color:#fff;font-weight:700;font-size:13.5px}
-.app-btn--ghost{background:var(--violet-soft);color:var(--violet)}
-.einv{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--success-text);font-weight:500;margin-bottom:10px;padding:0 4px}
-.einv svg{width:14px;height:14px}
-.float-card{position:absolute;background:var(--white);border-radius:18px;box-shadow:var(--shadow-md);border:1px solid var(--n200);padding:14px 16px;font-size:13px;line-height:1.35;z-index:4}
-.float-card small{display:block;color:var(--n700);font-weight:500;font-size:12px}
-.float-cash{left:-36px;bottom:44px;width:196px}
-.float-cash .num{font-size:22px;color:var(--violet);display:block;margin-top:2px}
-.float-cash svg{margin-top:8px;width:100%;height:46px}
-.float-relance{right:-28px;top:0;width:212px;display:flex;gap:10px;align-items:flex-start}
-.float-relance .ico{width:32px;height:32px;border-radius:10px;background:var(--violet-soft);color:var(--violet);display:grid;place-items:center;flex:none}
-.float-relance .ico svg{width:18px;height:18px}
-.float-relance b{display:block;color:var(--ink);font-size:13px}
-.hero-caption{position:absolute;bottom:0;left:0;right:0;text-align:center}
-@media (prefers-reduced-motion:no-preference){
-  .phone--hero{animation:rise .9s var(--ease-soft) both}
-  .float-cash{animation:rise 1s .15s var(--ease-soft) both}
-  .float-relance{animation:rise 1s .3s var(--ease-soft) both}
-}
-@keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+/* Nav: logo and one button */
+.nav{position:fixed;inset:0 0 auto 0;height:var(--nav);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 var(--g);background:rgba(251,246,238,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.logo{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--violet);text-decoration:none;font-family:var(--round);font-weight:700;font-size:23px;letter-spacing:-.03em}
+.logo svg{width:30px;height:30px}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 
-/* Échéancier */
-.reforme{background:var(--white);border-top:1px solid var(--n200);border-bottom:1px solid var(--n200)}
-.timeline{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
-.timeline::before{content:"";position:absolute;top:21px;left:calc(16.66% );right:calc(16.66% + 0px);height:3px;background:linear-gradient(to right,var(--violet) 0 50%,transparent 50%) ,repeating-linear-gradient(to right,var(--n500) 0 8px,transparent 8px 16px);background-size:100% 100%;}
-.timeline li{position:relative;text-align:center;padding:0 8px}
-.node{position:relative;z-index:1;width:44px;height:44px;margin:0 auto;border-radius:50%;display:grid;place-items:center;background:var(--white);box-shadow:0 0 0 6px var(--white)}
-.node svg{width:22px;height:22px}
-.node--done{background:var(--violet);color:#fff}
-.node--now{background:var(--coral);color:var(--violet);box-shadow:0 0 0 6px var(--white),0 0 0 8px var(--coral-text)}
-.node--next{background:var(--white);color:var(--violet);border:2px dashed var(--violet)}
-.t-tag{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--n700);text-transform:none}
-.t-date{display:block;font-size:22px;font-weight:700;color:var(--violet);margin-top:2px;letter-spacing:-.02em}
-.t-text{font-size:15.5px;color:var(--n700);margin:6px auto 0;max-width:30ch;line-height:1.5}
-.source{margin-top:16px;text-align:center}
-.profile{margin-top:24px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:32px;align-items:start;background:var(--cream);border-radius:var(--r-lg);padding:22px 24px;border:1px solid var(--n200)}
-fieldset{border:0;margin:0;padding:0;min-width:0}
-legend{font-size:20px;font-weight:700;color:var(--violet);padding:0;margin-bottom:14px}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chip input{position:absolute;opacity:0;width:1px;height:1px}
-.chip span{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:var(--r-full);background:var(--white);border:1.5px solid var(--n500);font-weight:500;font-size:16px;cursor:pointer;transition:background-color .22s var(--ease),border-color .22s var(--ease),color .22s var(--ease)}
-.chip span svg{width:16px;height:16px;display:none}
-.chip input:checked + span{background:var(--violet);border-color:var(--violet);color:#fff}
-.chip input:checked + span svg{display:block}
-.chip input:focus-visible + span{box-shadow:var(--shadow-focus)}
-.chip span:hover{border-color:var(--violet)}
-.profile .btn{margin-top:22px}
-.todo{background:var(--white);border-radius:var(--r-md);padding:18px 22px;box-shadow:var(--shadow-sm);min-height:100%}
-.todo h3{font-size:20px;line-height:1.3}
-.todo h3 em{font-style:normal;color:var(--coral-text)}
-.todo ol{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
-.todo li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;font-size:15px;line-height:1.45;color:var(--ink)}
-.todo li b{display:block;color:var(--violet);font-size:14px}
-.todo .ic{width:28px;height:28px;border-radius:8px;background:var(--violet-soft);color:var(--violet);display:grid;place-items:center}
-.todo .ic svg{width:16px;height:16px}
-.todo:focus-visible{box-shadow:var(--shadow-focus)}
+/* The phone (one frame, many screens) */
+.phone{position:relative;background:#1B1130;border-radius:13% / 6.1%;padding:3.4%;box-shadow:0 46px 70px -34px rgba(46,26,92,.55),inset 0 0 0 2px #3B2C5C}
+.scr{position:relative;height:100%;overflow:hidden;background:var(--cream);border-radius:10.5% / 4.9%;container-type:inline-size}
+.sc{position:absolute;inset:0;text-align:left;display:flex;flex-direction:column;font-size:5.3cqw;line-height:1.35;color:var(--ink);opacity:0;visibility:hidden;transform:translateY(3%);transition:opacity .35s var(--soft),transform .45s var(--soft),visibility 0s .45s}
+.sc.on{opacity:1;visibility:visible;transform:none;transition:opacity .35s var(--soft),transform .45s var(--soft),visibility 0s}
+.sb{display:flex;justify-content:space-between;align-items:center;height:2.9em;padding:0 1.9em;font-size:.82em;font-weight:700;flex:none}
+.sb i{position:absolute;left:50%;top:.75em;width:27%;height:1.6em;transform:translateX(-50%);background:#1B1130;border-radius:1em}
+.sb em{font-style:normal;letter-spacing:.1em}
+.ah{padding:.2em 1.25em .7em;flex:none}
+.ah b{display:block;font-family:var(--round);font-weight:600;font-size:1.45em;color:var(--violet);letter-spacing:-.02em;line-height:1.15}
+.ah small{display:block;font-size:.82em;color:var(--n700)}
+.bd{flex:1;min-height:0;display:flex;flex-direction:column;gap:.65em;padding:0 1em .8em}
+.card{background:#fff;border-radius:1em;padding:.8em .95em;box-shadow:0 1px 0 rgba(46,26,92,.06)}
+.card.dk{background:var(--violet);color:var(--cream)}
+.card.dk .lbl{color:#D9CFF0}
+.lbl{display:block;font-size:.76em;font-weight:500;color:var(--n700)}
+.big{display:block;font-family:var(--round);font-weight:600;font-size:2.35em;line-height:1.05;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.mid{display:block;font-family:var(--round);font-weight:600;font-size:1.25em;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.6em}
+.pill{display:inline-flex;align-items:center;gap:.3em;font-size:.74em;font-weight:700;padding:.2em .65em;border-radius:99px;white-space:nowrap}
+.pill .ico{width:1.1em;height:1.1em}
+.pill.ok{background:var(--success-bg);color:var(--success-text)}
+.pill.wait{background:var(--warning-bg);color:var(--warning-text)}
+.pill.vi{background:var(--violet-soft);color:var(--violet)}
+.lines{font-size:.86em}
+.lines li{display:flex;justify-content:space-between;gap:.6em;padding:.42em 0;border-bottom:1px dashed var(--n200)}
+.lines li:last-child{border:0}
+.lines li span:last-child{font-family:var(--round);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.lines .tot{font-weight:700;color:var(--violet)}
+.abtn{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:.4em;background:var(--violet);color:var(--cream);border-radius:.95em;padding:.8em;font-weight:700;font-size:.95em}
+.abtn.co{background:var(--coral);color:var(--violet)}
+.abtn.gh{background:transparent;color:var(--violet);box-shadow:inset 0 0 0 1.5px var(--violet)}
+.abtn .ico{width:1.2em;height:1.2em}
+.tl li{position:relative;display:grid;grid-template-columns:1.6em 1fr;gap:.55em;padding-bottom:.6em}
+.tl li::before{content:"";position:absolute;left:.75em;top:1.6em;bottom:0;width:2px;background:var(--n200)}
+.tl li:last-child::before{display:none}
+.tl .mk{width:1.6em;height:1.6em;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--n500);box-shadow:inset 0 0 0 2px var(--n200)}
+.tl .mk .ico{width:.95em;height:.95em}
+.tl .mk.done{background:var(--violet);color:var(--cream);box-shadow:none}
+.tl .mk.now{background:var(--coral);color:var(--violet);box-shadow:none}
+.tl b{display:block;font-size:.9em}
+.tl small{display:block;font-size:.76em;color:var(--n700);line-height:1.3}
+.bubble{background:#fff;border-radius:1em 1em 1em .3em;padding:.7em .85em;font-size:.82em;line-height:1.4}
+.bubble small{display:block;color:var(--n700);font-size:.9em;margin-bottom:.2em}
+.paylink{display:inline-flex;align-items:center;gap:.3em;margin-top:.5em;background:var(--violet);color:var(--cream);border-radius:99px;padding:.3em .8em;font-weight:700;font-size:.92em}
+.paylink .ico{width:1em;height:1em}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:.6em;font-size:.86em;font-weight:600}
+.toggle i{width:2.4em;height:1.4em;border-radius:1em;background:var(--violet);position:relative;flex:none}
+.toggle i::after{content:"";position:absolute;right:.2em;top:.2em;width:1em;height:1em;border-radius:50%;background:var(--cream)}
+.file{display:flex;align-items:center;gap:.7em}
+.file .ext{width:2.7em;height:3.2em;border-radius:.4em;background:var(--cream-deep);color:var(--violet);display:grid;place-items:center;font-family:var(--round);font-weight:700;font-size:.8em;flex:none;box-shadow:inset 0 0 0 1.5px var(--n200)}
+.file b{display:block;font-size:.9em}
+.file small{display:block;font-size:.76em;color:var(--n700);line-height:1.3}
+.chart{width:100%;height:auto}
+.seg{display:inline-flex;background:var(--cream-deep);border-radius:99px;padding:.15em;font-size:.72em;font-weight:700}
+.seg span{padding:.15em .6em;border-radius:99px;color:var(--n700)}
+.seg .on{background:var(--violet);color:var(--cream)}
+.tb{flex:none;display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-top:1px solid var(--n200);padding:.55em .3em 1.5em}
+.tb span{display:flex;flex-direction:column;align-items:center;gap:.15em;font-size:.6em;font-weight:700;color:var(--n500)}
+.tb span .ico{width:2em;height:2em}
+.tb span.on{color:var(--violet)}
 
-/* Features bento */
-.bento{margin-top:22px;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.card{border-radius:var(--r-lg);padding:20px 24px;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.card h3{font-size:22px;line-height:1.3}
-.card p{font-size:15.5px;color:var(--n700);margin-top:6px;max-width:46ch;line-height:1.5}
-.c-facture{grid-column:span 5;background:var(--white);border:1px solid var(--n200)}
-.c-relance{grid-column:span 7;background:var(--violet-soft)}
-.c-relance p{color:var(--ink);max-width:none}
-.relance-body{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:16px;margin-top:12px;align-items:start}
-.c-treso{grid-column:span 7;background:var(--violet);color:#fff}
-.c-treso h3{color:#fff}
-.c-treso p{color:#E4DCF5;max-width:60ch}
-.c-export{grid-column:span 5;background:var(--cream-deep)}
-.c-export p{color:var(--n700)}
-.flow{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:18px}
-.doc{flex:1;background:var(--cream);border-radius:14px;padding:14px;border:1px solid var(--n200);font-size:13px;line-height:1.35}
-.doc small{display:block;color:var(--n700);font-weight:500}
-.doc b{display:block;color:var(--violet);font-size:14px;margin-top:2px}
-.doc .num{display:block;margin-top:10px;font-size:18px;color:var(--ink)}
-.doc .pill{margin-top:10px}
-.doc--inv{background:var(--white);box-shadow:var(--shadow-md);border-color:var(--violet)}
-.arrow{width:32px;height:32px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;flex:none}
-.arrow svg{width:16px;height:16px}
-.seq{list-style:none;margin:0;padding:0;display:grid;gap:5px}
-.seq li{display:grid;grid-template-columns:28px 1fr;column-gap:10px;font-size:13.5px;line-height:1.35;color:var(--ink)}
-.seq .dot{grid-row:span 2;width:28px;height:28px;border-radius:50%;background:var(--white);border:2px solid var(--violet);display:grid;place-items:center;color:var(--violet)}
-.seq .dot svg{width:14px;height:14px}
-.seq li b{display:block;color:var(--violet);font-size:14px}
-.mail{margin:0;background:var(--white);border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5;box-shadow:var(--shadow-sm)}
-.mail small{color:var(--n700);font-weight:500;display:block;font-size:12.5px}
-.mail .paylink{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-weight:700;color:var(--violet);font-size:13.5px}
-.mail .paylink svg{width:14px;height:14px}
-.treso-chart{margin-top:auto;padding-top:14px}
-.treso-chart svg{width:100%;height:auto;overflow:visible}
-.treso-legend{display:flex;justify-content:space-between;font-size:12.5px;color:#D8CEEE;margin-top:6px}
-.treso-note{display:flex;gap:10px;align-items:flex-start;margin-top:10px;font-size:14.5px;color:#fff;background:rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;line-height:1.45}
-.treso-note .num{color:var(--coral)}
-.treso-note small{display:block;color:#D8CEEE;font-size:12.5px;margin-top:2px}
-.export-files{display:flex;gap:12px;margin-top:auto;padding-top:18px}
-.file{flex:1;background:var(--white);border-radius:14px;padding:16px 14px;border:1px solid var(--n200);display:flex;flex-direction:column;gap:8px}
-.file .ext{font-family:var(--font-num);font-weight:700;font-size:24px;color:var(--violet);letter-spacing:.02em}
-.file span:last-child{font-size:13px;color:var(--n700);line-height:1.35}
-.export-access{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14px;font-weight:500;color:var(--ink);background:var(--white);border-radius:14px;padding:12px 14px;border:1px solid var(--n200)}
-.export-access svg{width:20px;height:20px;color:var(--success-text);flex:none}
-.card-foot{margin-top:10px;font-size:12.5px;color:var(--n700);font-weight:500}
-.c-treso .card-foot{color:#D8CEEE}
+/* Hero */
+.hero{padding:20px var(--g) 40px;text-align:center}
+.poster{font-family:var(--round);font-weight:700;color:var(--violet);font-size:clamp(38px,11vw,90px);line-height:.92;letter-spacing:-.045em}
+.pl{display:block}
+.pl .a,.pl .b{display:inline}
+.pl .sp{white-space:pre}
+.sub{font-size:18px;color:var(--n700);max-width:34ch;margin:18px auto 0;line-height:1.5}
+.hero-cap{display:none}
+.hero-form{max-width:560px;margin:24px auto 0}
+.hero-form label,.final label{display:block;font-size:15px;margin-bottom:8px}
 
-/* Aperçu */
-.apercu{background:var(--cream-deep)}
-.apercu-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.play-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.stage{margin-top:24px;position:relative;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0;align-items:center}
-.browser{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--shadow-device);border:1px solid var(--n200);overflow:hidden;margin-right:-60px}
-.b-bar{height:38px;display:flex;align-items:center;gap:7px;padding:0 16px;background:var(--cream);border-bottom:1px solid var(--n200)}
+/* Mobile slots: each chapter carries its own screen */
+.slot{display:flex;flex-direction:column;align-items:center;gap:10px;margin:28px auto 0}
+.slot .phone{width:min(258px,70vw);aspect-ratio:47/100}
+.stage{display:none}
+
+/* Chapters */
+.chapter{padding:56px var(--g);border-top:1px solid var(--n200)}
+.ch-l,.ch-r{max-width:560px;margin:0 auto}
+.ch-l p.lead{font-size:18px;color:var(--n700);margin-top:14px;line-height:1.55}
+.ch-r{margin-top:28px}
+.ch-r h3{font-size:19px;margin-bottom:12px}
+.notes li{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--n200);font-size:16px;line-height:1.5}
+.notes li:last-child{border-bottom:1px solid var(--n200)}
+.notes .n{font-family:var(--round);font-weight:600;color:var(--violet);font-size:13px;min-width:30px;height:30px;padding:0 6px;justify-self:start;border-radius:999px;display:grid;place-items:center;background:var(--violet-soft)}
+.notes .n .ico{width:16px;height:16px}
+.notes b{color:var(--violet)}
+.play-m{margin-top:22px}
+
+/* Réforme */
+.frise{margin-top:24px;position:relative}
+.frise li{position:relative;display:grid;grid-template-columns:40px 1fr;gap:14px;padding-bottom:18px}
+.frise li::before{content:"";position:absolute;left:19px;top:40px;bottom:2px;border-left:2px dashed var(--n500)}
+.frise li:last-child::before{display:none}
+.frise .mk{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--violet);box-shadow:inset 0 0 0 2px var(--violet)}
+.frise .mk .ico{width:20px;height:20px}
+.frise .mk.done{background:var(--violet);color:var(--cream)}
+.frise .mk.now{background:var(--coral);color:var(--violet);box-shadow:none}
+.frise .date{display:block;font-family:var(--round);font-weight:600;font-size:21px;color:var(--violet);line-height:1.2}
+.frise .tag{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--n700);margin-left:8px}
+.frise p{font-size:15.5px;line-height:1.45;margin-top:2px}
+fieldset{border:0;padding:0;margin:0}
+legend{font-family:var(--round);font-weight:600;font-size:19px;color:var(--violet);margin-bottom:10px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--n200);font-weight:600;font-size:15.5px;cursor:pointer;transition:background-color .15s var(--ease)}
+.chip span .ico{width:16px;height:16px;display:none}
+.chip input:checked+span{background:var(--violet);color:var(--cream);box-shadow:none}
+.chip input:checked+span .ico{display:block}
+.chip input:focus-visible+span{outline:2px solid var(--violet);outline-offset:3px}
+#see-todo{margin-top:14px}
+.todo{margin-top:18px;padding-top:4px}
+.todo:focus-visible{outline-offset:6px}
+.todo h3{font-size:18px;margin-bottom:6px}
+.todo h3 em{font-style:normal;background:var(--violet-soft);padding:0 6px;border-radius:6px}
+.todo li{font-size:15px;line-height:1.45;padding:9px 0;border-top:1px solid var(--n200)}
+.todo li b{display:block;color:var(--violet)}
+
+/* Ticks under the phone */
+.stage-bar{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:18px;text-align:center}
+.ticks{display:flex;gap:4px}
+.ticks a{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:44px;min-height:44px;padding:4px 4px 0;font-size:12px;font-weight:700;color:var(--n700);text-decoration:none}
+.ticks a::before{content:"";width:100%;min-width:36px;height:4px;border-radius:4px;background:var(--n200);transition:background-color .2s var(--ease)}
+.ticks a.on{color:var(--violet)}
+.ticks a.on::before{background:var(--violet)}
+.ticks a:focus-visible{outline:none;color:var(--violet);text-decoration:underline}
+
+/* Aperçu desktop */
+.apercu{padding:64px var(--g);background:var(--cream-deep)}
+.apercu-in{max-width:1240px;margin:0 auto}
+.apercu .lead{font-size:18px;color:var(--n700);margin-top:14px;max-width:40ch}
+.desk{position:relative;margin-top:32px}
+.browser{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(46,26,92,.35);border:1px solid var(--n200)}
+.b-bar{display:flex;align-items:center;gap:6px;height:34px;padding:0 14px;background:var(--cream);border-bottom:1px solid var(--n200)}
 .b-bar i{width:10px;height:10px;border-radius:50%;background:var(--n200)}
-.b-bar span{margin-left:14px;font-size:12px;color:var(--n700);background:var(--white);border-radius:6px;padding:2px 12px;border:1px solid var(--n200)}
-.dash{display:grid;grid-template-columns:168px 1fr}
-.side{background:var(--cream);border-right:1px solid var(--n200);padding:16px 12px;font-size:13px}
-.side .logo{font-size:17px;min-height:0;gap:8px;margin:0 6px 16px}
-.side .logo svg{width:24px;height:24px}
-.side ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-.side li{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:9px;color:var(--n700);font-weight:500}
-.side li svg{width:16px;height:16px}
-.side li.on{background:var(--violet-soft);color:var(--violet);font-weight:700}
-.main{padding:20px 22px 22px 22px;padding-right:84px;min-width:0}
-.main h3{font-size:19px}
-.main .hello small{display:block;font-size:13px;color:var(--n700);font-weight:400;letter-spacing:0;margin-top:2px}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-.kpi{border:1px solid var(--n200);border-radius:14px;padding:12px 14px}
-.kpi small{display:block;font-size:12px;color:var(--n700);font-weight:500}
-.kpi .num{font-size:20px;color:var(--violet);display:block;margin-top:2px}
-.kpi--dark{background:var(--violet);border-color:var(--violet)}
-.kpi--dark small{color:#D8CEEE}
-.kpi--dark .num{color:#fff}
-.chart-box{margin-top:12px;border:1px solid var(--n200);border-radius:14px;padding:12px 14px 10px}
-.chart-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--ink)}
-.seg{display:flex;background:var(--cream);border-radius:8px;padding:2px;font-size:11.5px;font-weight:500;color:var(--n700)}
-.seg span{padding:3px 9px;border-radius:6px}
-.seg span.on{background:var(--white);color:var(--violet);font-weight:700;box-shadow:var(--shadow-sm)}
-.chart-box svg{width:100%;height:auto;margin-top:6px;overflow:visible}
-.chart-x{display:flex;justify-content:space-between;font-size:11px;color:var(--n700);margin-top:2px}
-.lowpoint{font-size:12.5px;color:var(--ink);margin-top:6px}
-.lowpoint b{color:var(--violet)}
-.rows{margin-top:10px;display:grid;gap:5px}
-.row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;font-size:13px;padding:5px 10px;border-radius:10px;background:var(--cream)}
-.row b{color:var(--ink);font-weight:700;display:block}
-.row small{color:var(--n700);font-size:11.5px}
-.row .num{font-size:13.5px;text-align:right;min-width:78px}
-.player{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
-.player .phone{width:254px;height:520px}
-.steps{display:flex;gap:6px;background:var(--white);border-radius:var(--r-full);padding:4px;box-shadow:var(--shadow-sm)}
-.steps button{border:0;background:transparent;min-height:40px;padding:0 13px;border-radius:var(--r-full);font-size:13.5px;font-weight:700;color:var(--n700);cursor:pointer;position:relative;overflow:hidden}
-.steps button[aria-selected="true"]{background:var(--violet);color:#fff}
-.steps button:focus-visible{border-radius:var(--r-full)}
-.steps .bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--coral);transform-origin:left;transform:scaleX(0)}
-.phone-screens{position:relative;flex:1}
-.pscreen{position:absolute;inset:0;display:flex;flex-direction:column;visibility:hidden;opacity:0;transform:translateX(14px);transition:opacity .22s var(--ease),transform .22s var(--ease),visibility 0s .22s}
-.pscreen.on{visibility:visible;opacity:1;transform:none;transition:opacity .22s var(--ease),transform .22s var(--ease),visibility 0s}
-.send-opts{list-style:none;margin:12px 14px 0;padding:0;display:grid;gap:8px}
-.send-opts li{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;border:1.5px solid var(--cream-deep);font-size:12.5px;line-height:1.35}
-.send-opts li b{display:block;font-size:13px;color:var(--ink)}
-.send-opts li small{color:var(--n700)}
-.send-opts li.sel{border-color:var(--violet);background:var(--violet-soft)}
-.tick{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--n500);flex:none;display:grid;place-items:center;background:var(--white)}
-.sel .tick{background:var(--violet);border-color:var(--violet);color:#fff}
-.tick svg{width:12px;height:12px}
-.paid-big{margin:18px 14px 0;text-align:center;padding:26px 14px;border-radius:20px;background:var(--cream)}
-.paid-badge{width:64px;height:64px;border-radius:50%;background:var(--coral);color:var(--violet);display:grid;place-items:center;margin:0 auto}
-.paid-badge svg{width:30px;height:30px}
-.paid-big .num{display:block;font-size:30px;color:var(--violet);margin-top:14px}
-.paid-big p{color:var(--n700);font-size:12.5px;margin-top:4px}
-@media (prefers-reduced-motion:no-preference){
-  .pscreen.on .paid-badge{animation:pop .5s var(--ease-soft) both}
-}
-@keyframes pop{0%{transform:scale(.6)}100%{transform:scale(1)}}
-.apercu-foot{margin-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.b-bar span{margin-left:12px;font-size:12px;color:var(--n700);background:#fff;border-radius:6px;padding:2px 12px}
+.dash{display:grid;grid-template-columns:1fr;font-size:14px}
+.side{display:none}
+.dmain{padding:18px}
+.hello{font-family:var(--round);font-size:20px;color:var(--violet);font-weight:600}
+.hello small{display:block;font-family:var(--sans);font-size:13px;color:var(--n700);font-weight:500}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.kpi{background:var(--cream);border-radius:12px;padding:10px 12px}
+.kpi small{display:block;font-size:12px;color:var(--n700)}
+.kpi .num{font-size:17px;color:var(--violet)}
+.kpi.dk{background:var(--violet)}
+.kpi.dk small{color:#D9CFF0}
+.kpi.dk .num{color:var(--cream)}
+.cbox{margin-top:12px;border:1px solid var(--n200);border-radius:12px;padding:12px 14px}
+.ctop{display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--violet);font-size:13px}
+.cx{display:flex;justify-content:space-between;font-size:11.5px;color:var(--n700);margin-top:4px}
+.lowp{font-size:13px;margin-top:6px}
+.rows{margin-top:10px}
+.rows div{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:8px 0;border-top:1px solid var(--n200);font-size:13px}
+.rows small{display:block;color:var(--n700);font-size:11.5px}
+.rows .num{color:var(--violet)}
+.desk .slot{display:none}
 
-/* Experts */
-.experts .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
-.benefits{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px}
-.benefits li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:16.5px;line-height:1.5}
-.benefits li b{color:var(--violet)}
-.benefits .ic{width:28px;height:28px;border-radius:8px;background:var(--violet);color:#fff;display:grid;place-items:center;margin-top:1px}
-.benefits .ic svg{width:15px;height:15px}
-.partner{margin-top:28px;padding-top:24px;border-top:1px solid var(--n200)}
-.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.partner label{display:block;font-size:15px;font-weight:500;margin-bottom:6px}
-.partner .input{height:52px;width:100%}
+/* Experts: the notebook */
+.experts{padding:64px var(--g)}
+.experts-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+.carnet{position:relative;background-color:var(--paper);background-image:linear-gradient(to bottom,#F0E9F8 1px,transparent 1px),linear-gradient(to right,#F0E9F8 1px,transparent 1px);background-size:22px 22px;border-radius:6px 18px 18px 6px;padding:28px 22px 28px 44px;box-shadow:0 20px 40px -26px rgba(46,26,92,.35)}
+.carnet::before{content:"";position:absolute;left:28px;top:0;bottom:0;width:2px;background:var(--coral);opacity:.75}
+.carnet .h2{font-size:clamp(28px,3.4vw,38px)}
+.benefits{margin-top:18px}
+.benefits li{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:5px 0;font-size:16px;line-height:1.5}
+.benefits .ico{width:22px;height:22px;color:var(--violet);margin-top:1px}
+.partner{margin-top:20px}
+.pgrid{display:grid;gap:10px}
+.pgrid label{display:block;font-size:14.5px;margin-bottom:6px}
 .partner .btn{margin-top:14px}
-.cabinet{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--shadow-device);border:1px solid var(--n200);padding:22px}
-.cab-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.cab-head b{font-size:17px;color:var(--violet);display:block}
-.cab-head small{font-size:13px;color:var(--n700)}
-.cab-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
-.cab-list li{display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:14px;background:var(--cream);font-size:14px}
-.avatar{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:13px;background:var(--violet-soft);color:var(--violet)}
-.cab-list li b{display:block;color:var(--ink)}
-.cab-list li small{color:var(--n700);font-size:12.5px}
-.cab-export{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px;border-radius:14px;border:1.5px dashed var(--n500);font-size:14px}
-.cab-export .fmt{display:flex;gap:8px}
-.cab-export .fmt span{font-family:var(--font-num);font-weight:700;color:var(--violet);background:var(--violet-soft);border-radius:8px;padding:4px 10px;font-size:14px}
+.cabinet{background:#fff;border-radius:18px;padding:18px;border:1px solid var(--n200);align-self:center}
+.cab-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.cab-head b{font-family:var(--round);font-size:18px;color:var(--violet);display:block}
+.cab-head small{color:var(--n700);font-size:13px}
+.cab-head .fake{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--violet);box-shadow:inset 0 0 0 1.5px var(--violet);border-radius:99px;padding:6px 12px}
+.cab-head .fake .ico{width:14px;height:14px}
+.cab-list{margin-top:12px}
+.cab-list li{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--n200);font-size:14.5px}
+.cab-list small{display:block;color:var(--n700);font-size:12.5px}
+.av{width:36px;height:36px;border-radius:50%;background:var(--violet-soft);color:var(--violet);display:grid;place-items:center;font-family:var(--round);font-weight:600;font-size:13px}
+.cab-export{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;padding:12px 14px;background:var(--cream);border-radius:12px;font-size:14px;font-weight:600;flex-wrap:wrap}
+.cab-export span.f{display:flex;gap:6px}
+.cab-export span.f span{background:var(--violet);color:var(--cream);font-family:var(--round);font-size:12px;border-radius:6px;padding:2px 8px}
+.cabinet .caption{margin-top:10px}
 
 /* Sécurité */
-.securite{background:var(--white);border-top:1px solid var(--n200);border-bottom:1px solid var(--n200)}
-.sec-grid{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
-.sec-item{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--n200)}
-.sec-item .ic{width:52px;height:52px;border-radius:16px;background:var(--cream);border:1px solid var(--n200);display:grid;place-items:center;color:var(--violet)}
-.sec-item .ic svg{width:26px;height:26px}
-.sec-item h3{font-size:20px;line-height:1.3}
-.sec-item p{font-size:15.5px;color:var(--n700);margin-top:6px;line-height:1.55}
-.notbank{margin-top:8px;display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:var(--r-md);background:var(--violet);color:#fff;font-size:16px}
-.notbank svg{width:22px;height:22px;flex:none;color:var(--coral)}
-.notbank b{color:#fff}
+.securite{padding:64px var(--g);background:var(--violet-night);color:#EFE8FB}
+.sec-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+.securite .h2{color:var(--cream)}
+.securite .lead{font-size:18px;margin-top:12px;color:#D9CFF0}
+.notbank{margin-top:26px;display:flex;gap:16px;align-items:center}
+.notbank .lock{width:64px;height:64px;flex:none;color:var(--coral)}
+.notbank b{display:block;font-family:var(--round);font-size:24px;color:var(--cream);font-weight:600}
+.notbank span{font-size:16px;color:#D9CFF0}
+.sec-list li{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:16px 0;border-top:1px solid rgba(239,232,251,.18)}
+.sec-list li:last-child{border-bottom:1px solid rgba(239,232,251,.18)}
+.sec-list .ico{width:26px;height:26px;color:var(--coral)}
+.sec-list h3{color:var(--cream);font-size:19px}
+.sec-list p{font-size:15.5px;line-height:1.5;margin-top:4px;color:#E2DAF3}
+.sec-list a{color:var(--cream)}
 
-/* Tarifs */
-.pricing{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px;margin-top:28px;align-items:start}
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.plan{background:var(--white);border-radius:var(--r-md);padding:22px;border:1px solid var(--n200);display:flex;flex-direction:column;position:relative}
-.plan--pick{border:2px solid var(--violet);box-shadow:var(--shadow-md)}
-.plan h3{font-size:22px}
-.plan .for{font-size:14.5px;color:var(--n700);margin-top:4px;min-height:42px;line-height:1.45}
-.badge{position:absolute;top:-13px;left:22px;background:var(--violet-soft);color:var(--violet);font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:var(--r-full);border:1px solid var(--violet)}
-.demo-tag{display:inline-block;align-self:flex-start;margin-top:12px;font-size:12px;font-weight:700;color:var(--warning-text);background:var(--warning-bg);border-radius:6px;padding:2px 8px}
-.price{display:flex;align-items:baseline;gap:6px;margin-top:8px}
-.price .num{font-size:42px;line-height:1;color:var(--violet)}
-.price span:last-child{font-size:15px;color:var(--n700);font-weight:500}
-.ttc{font-size:14.5px;color:var(--n700);margin-top:6px}
-.ttc .num{font-size:15px;color:var(--ink)}
-.plan ul{list-style:none;margin:14px 0 18px;padding:0;display:grid;gap:7px;font-size:14px;line-height:1.38}
-.plan li{display:grid;grid-template-columns:18px 1fr;gap:8px}
-.plan li svg{width:18px;height:18px;color:var(--success-text);margin-top:1px}
-.plan .btn{margin-top:auto;width:100%}
-.price-note{margin-top:16px}
-.compare-wrap{background:var(--white);border-radius:var(--r-md);border:1px solid var(--n200);padding:20px 22px 10px;min-width:0}
-.compare-wrap h3{font-size:20px}
-.table-scroll{overflow-x:auto;margin-top:12px;-webkit-overflow-scrolling:touch}
-table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.35}
-th,td{padding:11px 8px;text-align:left;vertical-align:middle}
-thead th{font-size:13px;color:var(--n700);font-weight:700;border-bottom:1px solid var(--n200)}
-thead th.us{color:var(--violet);font-size:14.5px}
-tbody th{font-weight:500;color:var(--ink);padding-left:0;width:30%}
-tbody tr+tr th,tbody tr+tr td{border-top:1px solid var(--cream-deep)}
-td{color:var(--n700)}
-td.us{background:var(--violet-soft);color:var(--violet);font-weight:700}
-thead th.us{background:var(--violet-soft);border-radius:10px 10px 0 0}
-tbody tr:last-child td.us{border-radius:0 0 10px 10px}
-.cell{display:inline-flex;align-items:center;gap:6px}
-.cell svg{width:15px;height:15px;flex:none}
-.yes svg{color:var(--success-text)}
-.no svg{color:var(--n500)}
-.maybe svg{color:var(--warning-text)}
+/* Tarifs: two receipts */
+.tarifs{padding:64px var(--g)}
+.tarifs-in{max-width:1240px;margin:0 auto}
+.tarifs .lead{font-size:18px;color:var(--n700);margin-top:10px}
+.pricing{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;margin-top:30px}
+.tickets{display:grid;grid-template-columns:minmax(0,300px);gap:34px;justify-content:center}
+.ticket-wrap{filter:drop-shadow(0 14px 18px rgba(46,26,92,.14))}
+.ticket{position:relative;width:min(300px,100%);margin:0 auto;background:#fff;padding:22px 22px 24px;font-size:14.5px}
+.ticket::before,.ticket::after{content:"";position:absolute;left:0;right:0;height:9px}
+.ticket::before{top:-9px;background:conic-gradient(from -45deg at bottom,#fff 90deg,#0000 0) 0 0/18px 100%}
+.ticket::after{bottom:-9px;background:conic-gradient(from 135deg at top,#fff 90deg,#0000 0) 0 0/18px 100%}
+.t-head{text-align:center;padding-bottom:12px;border-bottom:1.5px dashed var(--n500)}
+.t-head .logo{font-size:17px;min-height:0;gap:6px}
+.t-head .logo svg{width:20px;height:20px}
+.t-head small{display:block;font-size:12px;color:var(--n700);letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+.t-head h3{font-size:34px;line-height:1.05;margin-top:2px}
+.t-head p{font-size:13.5px;color:var(--n700);margin-top:4px;line-height:1.4}
+.t-items{padding:10px 0;border-bottom:1.5px dashed var(--n500)}
+.t-items li{display:flex;justify-content:space-between;gap:10px;padding:3px 0;line-height:1.35}
+.t-items li span:last-child{color:var(--n700);font-size:13px;white-space:nowrap}
+.t-sum{padding:10px 0 4px}
+.t-sum li{display:flex;justify-content:space-between;padding:2px 0}
+.t-sum li .num{font-weight:600}
+.t-sum li.ttc{font-weight:700;color:var(--violet);font-size:17px;border-top:1.5px solid var(--violet);margin-top:6px;padding-top:6px}
+.t-sum li.ttc .num{font-size:20px}
+.stamp{display:block;width:max-content;margin:12px auto 0;padding:3px 10px;border:1.5px solid var(--violet);border-radius:6px;color:var(--violet);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-2.5deg)}
+.ticket .btn{width:100%;margin-top:14px}
+.price-note{margin-top:18px;max-width:72ch}
+.compare h3{font-size:22px;margin-bottom:10px}
+.tscroll{overflow-x:auto;border-radius:14px;border:1px solid var(--n200);background:#fff}
+.tscroll:focus-visible{outline-offset:2px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--n200);vertical-align:middle}
+tr:last-child th,tr:last-child td{border-bottom:0}
+thead th{font-size:13px;color:var(--n700);font-weight:700;background:var(--cream)}
+thead th.us{color:var(--violet)}
+tbody th{font-weight:600;color:var(--ink)}
+td.us{background:#F6F1FD;font-weight:700;color:var(--violet)}
+.cell{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.cell .ico{width:16px;height:16px}
+.cell.yes .ico{color:var(--success-text)}
+.cell.no .ico,.cell.maybe .ico{color:var(--n500)}
 
-/* FAQ */
-.faq .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:start}
-.faq-list{margin-top:28px;border-top:1px solid var(--n200)}
-details{border-bottom:1px solid var(--n200)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:48px;padding:8px 4px;font-weight:700;font-size:16.5px;color:var(--ink);line-height:1.4}
-summary::-webkit-details-marker{display:none}
-summary svg{width:20px;height:20px;flex:none;color:var(--violet);transition:transform .22s var(--ease)}
-details[open] summary svg{transform:rotate(45deg)}
-summary:hover{color:var(--violet)}
-summary:focus-visible{border-radius:var(--r-sm)}
-.answer{padding:0 4px 18px;font-size:16px;color:var(--n700);max-width:68ch;line-height:1.6}
-.answer a{font-weight:500}
-.final{position:sticky;top:calc(var(--nav-h) + 24px);background:var(--violet);color:#fff;border-radius:var(--r-lg);padding:30px;box-shadow:var(--shadow-device)}
-.final h2{color:#fff;font-size:28px;line-height:1.2}
-.final p{color:#E4DCF5;font-size:16px;margin-top:10px}
-.final .signup{margin-top:22px}
-.final .signup label{color:#fff}
-.final .signup-row{flex-direction:column}
-.final .signup-row .input{flex:none}
-.final .input{border-color:var(--white)}
-.final .input:focus-visible{box-shadow:0 0 0 3px var(--coral)}
-.final .btn-primary{background:var(--coral);color:var(--violet)}
-.final .btn-primary:hover{background:#ff8572}
-.final .btn-primary:focus-visible{box-shadow:0 0 0 2px var(--violet),0 0 0 4px #fff}
-.final .conditions{color:#E4DCF5}
-.final .conditions svg{color:var(--coral)}
-.final .plan-chosen{display:none;margin-top:12px;font-size:14px;font-weight:500;color:#fff;background:rgba(255,255,255,.1);padding:8px 12px;border-radius:var(--r-sm)}
-.final .plan-chosen.show{display:block}
+/* FAQ as a conversation */
+.faq{padding:64px var(--g);background:var(--cream-deep)}
+.faq-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:36px}
+.thread{margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.thread details{display:flex;flex-direction:column}
+.thread summary{list-style:none;align-self:flex-end;max-width:92%;display:flex;align-items:center;gap:10px;min-height:44px;padding:9px 16px;background:var(--violet);color:var(--cream);border-radius:20px 20px 6px 20px;font-weight:600;font-size:15.5px;line-height:1.35;cursor:pointer;text-align:left}
+.thread summary::-webkit-details-marker{display:none}
+.thread summary .ico{width:16px;height:16px;flex:none;opacity:.7;transition:transform .2s var(--ease)}
+.thread details[open] summary .ico{transform:rotate(45deg);opacity:1}
+.thread summary:focus-visible{outline-offset:3px}
+.thread .ans{align-self:flex-start;max-width:88%;margin-top:6px;padding:11px 16px;background:#fff;border-radius:20px 20px 20px 6px;font-size:15.5px;line-height:1.5}
+.final{background:var(--paper);border-radius:28px;padding:26px 22px;box-shadow:0 24px 50px -30px rgba(46,26,92,.35);align-self:center}
+.final h2{font-size:clamp(26px,3vw,34px);line-height:1.1}
+.final > p{color:var(--n700);margin-top:8px}
+.final form{margin-top:18px}
+.final .signup-row{background:#fff;border:1.5px solid var(--n500);border-radius:28px;padding:5px;flex-direction:column}
+.final .signup-row .btn{width:100%}
+.final .signup-row .input{border:0;height:46px}
+.final .signup-row .input:focus-visible{box-shadow:none}
+.final .signup-row:focus-within{border-color:var(--violet);box-shadow:0 0 0 3px var(--violet-soft)}
+.final .conditions{justify-content:flex-start}
+.plan-chosen{display:none;margin-top:10px;font-size:15px;font-weight:600;color:var(--violet)}
+.plan-chosen.show{display:block}
 
 /* Footer */
-footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-inset-bottom));border-top:1px solid var(--n200)}
-.foot-top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.foot-top p{font-size:16px;color:var(--n700);max-width:52ch;margin-top:10px}
-.foot-links{display:flex;flex-wrap:wrap;gap:4px 8px;list-style:none;margin:32px 0 0;padding:20px 0 0;border-top:1px solid var(--n200)}
-.foot-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;font-size:15px;color:var(--ink);text-decoration:none;border-radius:var(--r-sm)}
+footer{padding:44px var(--g) 30px;background:var(--violet);color:#E2DAF3}
+.foot-in{max-width:1240px;margin:0 auto}
+.foot-top{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center}
+footer .logo{color:var(--cream)}
+.foot-top p{max-width:56ch;margin-top:8px;font-size:15.5px}
+footer .btn{background:var(--cream);color:var(--violet)}
+footer .btn:hover{background:#fff}
+.foot-links{display:flex;flex-wrap:wrap;gap:4px 20px;margin-top:26px;padding-top:18px;border-top:1px solid rgba(239,232,251,.2)}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px;color:#E2DAF3;font-size:14.5px;text-decoration:none}
 .foot-links a:hover{text-decoration:underline}
-.fiction{margin-top:14px;font-size:15px;font-weight:700;color:var(--violet)}
+.fiction{margin-top:12px;font-size:14px;color:#CFC4E8}
 
-/* Responsive */
-@media (max-width:1180px){
-  .nav ul{display:none}
-}
-@media (max-width:1080px){
-  .hero .wrap{grid-template-columns:1fr;gap:28px}
-  .hero-visual{min-height:600px}
-  .stage{grid-template-columns:1fr;gap:28px}
-  .browser{margin-right:0;order:2}
-  .player{order:1}
-  .main{padding-right:22px}
-  .experts .wrap{grid-template-columns:1fr;gap:40px}
-  .pricing{grid-template-columns:1fr}
-  .faq .wrap{grid-template-columns:1fr}
-  .final{position:static}
-}
-@media (max-width:860px){
-  :root{--section-y:56px}
-  .h2{font-size:30px}
-  .timeline{grid-template-columns:1fr;gap:0}
-  .timeline::before{top:22px;bottom:22px;left:21px;right:auto;width:3px;height:auto;background:linear-gradient(to bottom,var(--violet) 0 50%,transparent 50%),repeating-linear-gradient(to bottom,var(--n500) 0 8px,transparent 8px 16px)}
-  .timeline li{display:grid;grid-template-columns:44px 1fr;gap:16px;text-align:left;padding:0 0 22px}
-  .timeline li:last-child{padding-bottom:0}
-  .node{margin:0}
-  .t-tag{margin-top:0}
-  .t-text{margin-left:0}
-  .source{text-align:left}
-  .profile{grid-template-columns:1fr;padding:20px}
-  .bento{grid-template-columns:1fr}
-  .c-facture,.c-relance,.c-treso,.c-export{grid-column:auto}
-  .relance-body{grid-template-columns:1fr}
-  .sec-grid{grid-template-columns:1fr}
-  .plans{grid-template-columns:1fr}
-  .dash{grid-template-columns:1fr}
-  .side{display:none}
-  .apercu-head{align-items:flex-start}
-}
-@media (max-width:560px){
-  :root{--gutter:16px}
-  body{font-size:16px}
-  .nav .btn{padding:0 14px}
-  .hero{padding:32px 0 48px}
-  .hero h1{font-size:38px}
-  .hero .sub{font-size:18px;margin-top:16px}
-  .signup{margin-top:24px}
+/* Small screens */
+@media (max-width:520px){
   .signup-row{flex-direction:column}
-  .signup-row .input{flex:none}
-  .signup .btn{width:100%;border-radius:var(--r-full)}
-  .input{height:52px}
-  .hero-visual{min-height:560px;margin:0 -16px}
-  .phone{transform:scale(.9);transform-origin:top center;margin-bottom:-52px}
-  .sheet--a{transform:translate(-92px,20px) rotate(-9deg)}
-  .sheet--b{transform:translate(84px,-20px) rotate(7deg)}
-  .float-cash{left:12px;bottom:56px;width:196px}
-  .float-relance{right:8px;top:-8px;width:180px}
-  .float-relance .ico{display:none}
-  .h2{font-size:28px}
-  .lead{font-size:17px}
-  .card{padding:22px}
-  .flow{flex-direction:column;align-items:stretch}
-  .arrow{transform:rotate(90deg);align-self:center}
-  .kpis{grid-template-columns:1fr}
-  .kpi{display:flex;justify-content:space-between;align-items:baseline}
-  .main{padding:16px}
-  .row{grid-template-columns:1fr auto}
-  .row .pill{grid-column:1;justify-self:start}
-  .row .num{grid-row:1 / span 2;grid-column:2}
-  .steps button{padding:0 10px;font-size:13px}
-  .partner-grid{grid-template-columns:1fr}
-  .cab-head{flex-wrap:wrap}
-  .cabinet{padding:16px}
-  .sec-item{grid-template-columns:44px 1fr;gap:14px}
-  .sec-item .ic{width:44px;height:44px}
-  .final{padding:24px 20px}
-  .export-files{flex-direction:column}
-  .play-wrap{align-items:stretch;width:100%}
-  .play-wrap .btn,.experts .btn,.profile .btn{width:100%}
-  table{min-width:520px}
+  .signup-row .btn{width:100%}
+  .final .signup-row{border-radius:26px}
 }
+@media (min-width:521px){
+  .hero-form .signup-row .btn{flex:none}
+}
+@media (min-width:700px){
+  :root{--g:32px}
+  .tickets{grid-template-columns:repeat(2,300px)}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .dash{grid-template-columns:150px 1fr}
+  .side{display:block;background:var(--cream);border-right:1px solid var(--n200);padding:16px 12px}
+  .side .logo{font-size:17px;min-height:0;gap:6px}
+  .side .logo svg{width:20px;height:20px}
+  .side ul{margin-top:16px}
+  .side li{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;font-size:13px;color:var(--n700);font-weight:600}
+  .side li .ico{width:16px;height:16px}
+  .side li.on{background:#fff;color:var(--violet)}
+  .chapter{display:grid;grid-template-columns:auto 1fr;column-gap:40px;align-items:center;max-width:1000px;margin:0 auto}
+  .chapter .slot{grid-column:1;grid-row:1 / span 2;margin:0}
+  .chapter .ch-l{grid-column:2;margin:0}
+  .chapter .ch-r{grid-column:2;margin:22px 0 0}
+}
+
+/* Desktop: the phone stays, the chapters scroll around it */
+@media (min-width:1100px) and (min-height:620px){
+  :root{
+    --nav:64px;
+    --pad:48px;
+    --cg:40px;
+    --ph:min(600px, calc(100vh - var(--nav) - 210px));
+    --pw:calc(var(--ph) * .47);
+    --F:min(13vh, calc((100vw - 2 * var(--pad) - var(--pw) - 2 * var(--cg)) / 2 / 4.2));
+  }
+  .nav{padding:0 var(--pad)}
+  .story{display:grid;grid-template-columns:1fr var(--pw) 1fr;column-gap:var(--cg);padding:0 var(--pad)}
+  .story .slot{display:none}
+  .stage{display:flex;flex-direction:column;align-items:center;grid-column:2;grid-row:1 / 8;align-self:start;position:sticky;top:calc(var(--nav) + 12px);margin-top:12px;z-index:5}
+  .stage .phone{width:var(--pw);height:var(--ph)}
+  .stage .phone.ping{animation:ping 1s var(--soft)}
+  @keyframes ping{0%{box-shadow:0 46px 70px -34px rgba(46,26,92,.55),inset 0 0 0 2px #3B2C5C,0 0 0 0 rgba(255,111,89,.7)}100%{box-shadow:0 46px 70px -34px rgba(46,26,92,.55),inset 0 0 0 2px #3B2C5C,0 0 0 26px rgba(255,111,89,0)}}
+  .stage-bar{opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility 0s .3s}
+  .stage.is-story .stage-bar{opacity:1;visibility:visible;transition:opacity .3s var(--ease),visibility 0s}
+
+  .hero,.chapter{grid-column:1 / -1;display:grid;grid-template-columns:subgrid;height:calc(100vh - var(--nav));min-height:0}
+  .hero{grid-row:1;grid-template-rows:12px var(--ph) auto;padding:0;text-align:left;position:relative;z-index:1}
+  .poster{grid-column:1 / -1;grid-row:2;align-self:start;margin-top:calc(var(--ph) * .05);display:grid;grid-template-columns:subgrid;font-size:var(--F);line-height:.9;row-gap:0}
+  .pl{display:contents}
+  .pl .a{grid-column:1;justify-self:end;margin-right:calc(-1 * var(--cg) - 4px)}
+  .pl .b{grid-column:3;justify-self:start;margin-left:calc(-1 * var(--cg) - 4px)}
+  .pl .a,.pl .b{display:block;white-space:nowrap}
+  .pl .sp{display:none}
+  .hero-text{grid-column:1 / -1;grid-row:2;display:grid;grid-template-columns:subgrid;align-self:end;padding-bottom:calc(var(--ph) * .05)}
+  .sub{grid-column:1;justify-self:end;text-align:right;margin:0;max-width:38ch;font-size:17px}
+  .hero-cap{display:block;grid-column:3;align-self:end;max-width:24ch}
+  .hero-form{grid-column:1 / -1;grid-row:3;justify-self:center;width:min(680px,100%);max-width:none;margin:22px 0 0;text-align:center}
+  .hero-form label{text-align:center}
+
+  .chapter{grid-row:var(--r);grid-template-rows:12px var(--ph);padding:0;border:0;max-width:none;margin:0;column-gap:var(--cg);align-items:stretch}
+  .chapter .ch-l{grid-column:1;grid-row:2;align-self:center;justify-self:end;width:100%;max-width:470px;margin:0}
+  .chapter .ch-r{grid-column:3;grid-row:2;align-self:center;justify-self:start;width:100%;max-width:450px;margin:0}
+  .play-m{display:none}
+
+  .apercu{height:calc(100vh - var(--nav));display:flex;align-items:center;padding:0 var(--pad)}
+  .apercu-in{width:100%;display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:56px;align-items:center}
+  .desk{margin:0;padding-left:150px}
+  .desk .slot{display:flex;position:absolute;left:0;bottom:-18px;margin:0;z-index:2}
+  .desk .slot .phone{width:190px}
+  .dmain{padding:20px 24px}
+
+  .experts,.securite,.tarifs,.faq{min-height:calc(100vh - var(--nav));display:flex;align-items:center;padding:40px var(--pad)}
+  .experts-in,.sec-in,.tarifs-in,.faq-in{width:100%}
+  .experts-in{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+  .carnet{padding:34px 40px 34px 72px}
+  .carnet::before{left:46px}
+  .sec-in{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:center}
+  .pricing{grid-template-columns:auto minmax(0,1fr);align-items:start;gap:56px;margin-top:26px}
+  .tickets{justify-content:start}
+  .faq-in{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:64px;align-items:center}
+  .faq{padding-top:20px;padding-bottom:20px}
+  .thread{gap:6px;margin-top:16px}
+  .thread summary{padding:8px 16px}
+  .thread .ans{margin-top:4px;padding:9px 16px}
+}
+@media (min-width:1100px) and (min-height:620px) and (max-width:1500px){
+  .tickets{grid-template-columns:repeat(2,280px);gap:26px}
+  .ticket{width:280px}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .sc{transform:none}
 }
 </style>
 </head>
@@ -553,7 +506,7 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
     <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 12.3l2.7 2.7L16.2 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5v5.5M12 16.5v.01" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
     <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
     <symbol id="i-tilde" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 12h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l1.5 2h-15L6 16zM10 20.5a2.2 2.2 0 004 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
@@ -561,12 +514,10 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0113 0c0 4.8-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></symbol>
     <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 13l2.5-7.5h11L20 13v5.5H4V13zM4 13h4.5l1.5 2.5h4l1.5-2.5H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
     <symbol id="i-send" viewBox="0 0 24 24"><path d="M20.5 3.5L3.5 10.5l7 2.5 2.5 7 7.5-16.5zM10.5 13l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.3-7.5 9.5-4.3-1.2-7.5-4.9-7.5-9.5V6L12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.8 12l2.3 2.3 4.3-4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4" y="13" width="16" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 7.5h.01M8 16.5h.01" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
     <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 10.5V8a3.5 3.5 0 017 0v2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
     <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3.5 9.5L12 4l8.5 5.5M5.5 10v7.5M10 10v7.5M14 10v7.5M18.5 10v7.5M3.5 20h17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
     <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 19.5c.6-3.2 3-5 6-5s5.4 1.8 6 5M15.5 5.6a3.2 3.2 0 010 5.8M17.5 14.8c1.8.6 3 2.2 3.5 4.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3.5h8l4 4v13H6v-17zM14 3.5v4h4M9 12h6M9 15.5h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
     <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19.5h16M5 15l4.5-4.5 3.5 3 6-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -576,481 +527,525 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
     <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-sign" viewBox="0 0 24 24"><path d="M3.5 17.5c2.5-3 4.5-8 6.5-8 1.6 0-.8 6.5 1 6.5s2.4-3 4-3c1.2 0 1 2 2.5 2s1.5-1 3-1M3.5 21h17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="logo-mark" viewBox="0 0 32 32"><rect x="2" y="2" width="28" height="28" rx="9" fill="#2E1A5C"/><path d="M10 9.5h8.5l3.5 3.5v9.5H10z" fill="#FBF6EE"/><path d="M18.5 9.5V13H22" fill="none" stroke="#2E1A5C" stroke-width="1.4" stroke-linejoin="round"/><path d="M12.8 16.2h6.4M12.8 19h4" stroke="#2E1A5C" stroke-width="1.5" stroke-linecap="round"/><circle cx="22.5" cy="22" r="3.6" fill="#FF6F59"/></symbol>
   </defs>
 </svg>
 
 <header class="nav">
-  <div class="wrap">
-    <a class="logo" href="#top" aria-label="Liasse, retour en haut de page"><svg aria-hidden="true"><use href="#logo-mark"/></svg>Liasse</a>
-    <nav aria-label="Navigation principale">
-      <ul>
-        <li><a href="#reforme">Réforme</a></li>
-        <li><a href="#fonctionnalites">Fonctionnalités</a></li>
-        <li><a href="#apercu">Application</a></li>
-        <li><a href="#experts">Experts-comptables</a></li>
-        <li><a href="#securite">Sécurité</a></li>
-        <li><a href="#tarifs">Tarifs</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </nav>
-    <a class="btn btn-primary btn-sm" href="#inscription">Essai gratuit</a>
-  </div>
+  <a class="logo" href="#top" aria-label="Liasse, retour en haut de page"><svg aria-hidden="true"><use href="#logo-mark"/></svg>Liasse</a>
+  <a class="btn" href="#inscription">Essai gratuit 30 jours</a>
 </header>
 
 <main id="contenu">
 
-<!-- 1. HERO -->
-<section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="wrap">
-    <div>
-      <h1 id="hero-title">Vos factures électroniques, faites depuis votre téléphone.</h1>
-      <p class="sub">Devis, facture, relance et trésorerie à 90 jours, depuis votre téléphone. Recevez dès aujourd'hui, émettez sereinement avant septembre 2027.</p>
+<div class="story">
 
+  <!-- The phone: it stays in the middle on desktop, its screen follows the chapters -->
+  <div class="stage">
+    <div class="phone" aria-hidden="true">
+      <div class="scr">
+
+        <!-- Écran : accueil -->
+        <div class="sc on" data-screen="home">
+          <div class="sb"><span>9:41</span><i></i><em>●●●</em></div>
+          <div class="ah"><b>Bonjour Mehdi</b><small>Plomberie Haddad</small></div>
+          <div class="bd">
+            <div class="card dk"><span class="lbl">Sur le compte</span><span class="big" data-amount="6214.50" data-count>6 214,50 €</span></div>
+            <div class="two">
+              <div class="card"><span class="lbl">À encaisser</span><span class="mid" data-amount="3380.40">3 380,40 €</span></div>
+              <div class="card"><span class="lbl">À payer</span><span class="mid" data-amount="2165.20">2 165,20 €</span></div>
+            </div>
+            <div class="card"><span class="lbl">Prévu dans 90 jours</span><span class="mid" data-amount="8430">8 430,00 €</span>
+              <svg class="chart" viewBox="0 0 240 46" preserveAspectRatio="none"><path data-line fill="none" stroke="#2E1A5C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d=""/></svg>
+            </div>
+            <ul class="card lines">
+              <li><span>Boulangerie Rocher</span><span class="pill ok">Payée</span></li>
+              <li><span>SCI Les Tilleuls</span><span class="pill vi">Relancée</span></li>
+              <li><span>Atelier Morel</span><span class="pill wait">En attente</span></li>
+            </ul>
+            <div class="abtn co"><svg class="ico"><use href="#i-plus"/></svg>Nouveau devis</div>
+          </div>
+          <div class="tb"><span class="on"><svg class="ico"><use href="#i-home"/></svg>Accueil</span><span><svg class="ico"><use href="#i-file"/></svg>Devis</span><span><svg class="ico"><use href="#i-send"/></svg>Factures</span><span><svg class="ico"><use href="#i-chart"/></svg>Tréso</span><span><svg class="ico"><use href="#i-users"/></svg>Compta</span></div>
+        </div>
+
+        <!-- Écran : réforme -->
+        <div class="sc" data-screen="reforme">
+          <div class="sb"><span>9:41</span><i></i><em>●●●</em></div>
+          <div class="ah"><b>Réforme</b><small>Profil&nbsp;: <span data-p="who">Artisan</span></small></div>
+          <div class="bd">
+            <div class="card">
+              <ol class="tl">
+                <li><span class="mk done"><svg class="ico"><use href="#i-check"/></svg></span><span><b>Recevoir</b><small>En vigueur depuis le 1<sup>er</sup>&nbsp;sept. 2026</small></span></li>
+                <li><span class="mk now"><svg class="ico"><use href="#i-pin"/></svg></span><span><b>Choisir sa plateforme</b><small>Aujourd'hui, sans urgence</small></span></li>
+                <li><span class="mk"><svg class="ico"><use href="#i-calendar"/></svg></span><span><b>Émettre</b><small>À partir du 1<sup>er</sup>&nbsp;sept. 2027</small></span></li>
+              </ol>
+            </div>
+            <div class="card dk"><span class="lbl">Pour vous</span><span class="mid" data-p="short">Devis et acomptes compris</span></div>
+            <div class="card"><div class="toggle">Réception des e-factures<i></i></div></div>
+            <div class="abtn">Voir ce que je dois faire</div>
+          </div>
+          <div class="tb"><span class="on"><svg class="ico"><use href="#i-home"/></svg>Accueil</span><span><svg class="ico"><use href="#i-file"/></svg>Devis</span><span><svg class="ico"><use href="#i-send"/></svg>Factures</span><span><svg class="ico"><use href="#i-chart"/></svg>Tréso</span><span><svg class="ico"><use href="#i-users"/></svg>Compta</span></div>
+        </div>
+
+        <!-- Écran : devis -->
+        <div class="sc" data-screen="devis">
+          <div class="sb"><span>9:41</span><i></i><em>●●●</em></div>
+          <div class="ah"><b>Devis D-0118</b><small>Boulangerie Rocher</small></div>
+          <div class="bd">
+            <div class="card"><span class="lbl">Total TTC</span><span class="big" data-amount="1846.80" data-count>1 846,80 €</span>
+              <span class="pill ok" style="margin-top:.5em"><svg class="ico"><use href="#i-sign"/></svg>Signé sur place</span></div>
+            <ul class="card lines">
+              <li><span>Chauffe-eau thermodynamique</span><span data-amount="1120">1 120,00 €</span></li>
+              <li><span>Pose et mise en service</span><span data-amount="360">360,00 €</span></li>
+              <li><span>Déplacement</span><span data-amount="59">59,00 €</span></li>
+              <li><span>TVA 20 %</span><span data-amount="307.80">307,80 €</span></li>
+              <li class="tot"><span>Acompte demandé</span><span data-amount="500">500,00 €</span></li>
+            </ul>
+            <div class="card"><span class="lbl">Signature du client</span><svg viewBox="0 0 200 40" style="width:70%;height:auto;margin-top:.2em" fill="none" stroke="#2E1A5C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30c10-14 18-24 24-22 5 2-6 22 1 22 6 0 9-14 15-14 4 0 2 10 7 10s8-9 13-9 3 8 9 8c8 0 12-12 20-12 6 0 4 9 10 9 9 0 14-6 22-6 6 0 12 3 20 3"/></svg></div>
+            <div class="abtn">Transformer en facture</div>
+          </div>
+          <div class="tb"><span><svg class="ico"><use href="#i-home"/></svg>Accueil</span><span class="on"><svg class="ico"><use href="#i-file"/></svg>Devis</span><span><svg class="ico"><use href="#i-send"/></svg>Factures</span><span><svg class="ico"><use href="#i-chart"/></svg>Tréso</span><span><svg class="ico"><use href="#i-users"/></svg>Compta</span></div>
+        </div>
+
+        <!-- Écran : facture électronique -->
+        <div class="sc" data-screen="facture">
+          <div class="sb"><span>9:41</span><i></i><em>●●●</em></div>
+          <div class="ah"><b>Facture F-2026-0142</b><small>Boulangerie Rocher</small></div>
+          <div class="bd">
+            <div class="card"><span class="lbl">Reste à payer</span><span class="big" data-amount="1346.80" data-count>1 346,80 €</span>
+              <ul class="lines" style="margin-top:.4em">
+                <li><span>Total TTC</span><span data-amount="1846.80">1 846,80 €</span></li>
+                <li><span>Acompte déjà versé</span><span data-amount="-500">-500,00 €</span></li>
+              </ul>
+            </div>
+            <div class="card">
+              <ol class="tl">
+                <li><span class="mk done"><svg class="ico"><use href="#i-check"/></svg></span><span><b>Créée depuis le devis</b><small>Acompte déduit</small></span></li>
+                <li><span class="mk done"><svg class="ico"><use href="#i-check"/></svg></span><span><b>Transmise</b><small>Au format électronique, par la plateforme agréée</small></span></li>
+                <li><span class="mk now"><svg class="ico"><use href="#i-mail"/></svg></span><span><b>E-mail parti</b><small>Avec le lien de paiement</small></span></li>
+              </ol>
+            </div>
+            <div class="abtn gh">Voir la facture</div>
+          </div>
+          <div class="tb"><span><svg class="ico"><use href="#i-home"/></svg>Accueil</span><span><svg class="ico"><use href="#i-file"/></svg>Devis</span><span class="on"><svg class="ico"><use href="#i-send"/></svg>Factures</span><span><svg class="ico"><use href="#i-chart"/></svg>Tréso</span><span><svg class="ico"><use href="#i-users"/></svg>Compta</span></div>
+        </div>
+
+        <!-- Écran : relances -->
+        <div class="sc" data-screen="relance">
+          <div class="sb"><span>9:41</span><i></i><em>●●●</em></div>
+          <div class="ah"><b>Relances</b><small>F-2026-0141 · SCI Les Tilleuls</small></div>
+          <div class="bd">
+            <div class="card"><span class="lbl">En attente</span><span class="big" data-amount="2412" data-count>2 412,00 €</span></div>
+            <div class="card">
+              <ol class="tl">
+                <li><span class="mk done"><svg class="ico"><use href="#i-check"/></svg></span><span><b>3 jours avant</b><small>Rappel courtois, envoyé</small></span></li>
+                <li><span class="mk done"><svg class="ico"><use href="#i-check"/></svg></span><span><b>Le jour même</b><small>Lien de paiement, envoyé</small></span></li>
+                <li><span class="mk"><svg class="ico"><use href="#i-bell"/></svg></span><span><b>7 jours après</b><small>Relance aimable, prévue</small></span></li>
+                <li><span class="mk"><svg class="ico"><use href="#i-send"/></svg></span><span><b>15 jours après</b><small>Dernière relance, prévue</small></span></li>
+              </ol>
+            </div>
+            <div class="bubble"><small>Aperçu du message</small>Bonjour, petit rappel&nbsp;: la facture de la cage d'escalier arrive à échéance vendredi.<br><span class="paylink"><svg class="ico"><use href="#i-link"/></svg>Payer la facture</span></div>
+            <div class="card"><div class="toggle">Relances automatiques<i></i></div></div>
+          </div>
+          <div class="tb"><span><svg class="ico"><use href="#i-home"/></svg>Accueil</span><span><svg class="ico"><use href="#i-file"/></svg>Devis</span><span class="on"><svg class="ico"><use href="#i-send"/></svg>Factures</span><span><svg class="ico"><use href="#i-chart"/></svg>Tréso</span><span><svg class="ico"><use href="#i-users"/></svg>Compta</span></div>
+        </div>
+
+        <!-- Écran : trésorerie -->
+        <div class="sc" data-screen="tresorerie">
+          <div class="sb"><span>9:41</span><i></i><em>●●●</em></div>
+          <div class="ah"><b>Trésorerie</b><small>90 prochains jours</small></div>
+          <div class="bd">
+            <div class="card"><span class="lbl">Solde prévu le 11 février</span><span class="big" data-amount="8430" data-count>8 430,00 €</span></div>
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center"><span class="lbl">Seuil&nbsp;: 2 000 €</span><span class="seg"><span>30 j</span><span class="on">90 j</span></span></div>
+              <svg class="chart" viewBox="0 0 240 120" style="margin-top:.4em">
+                <line data-thr x1="0" x2="240" y1="0" y2="0" stroke="#7A7186" stroke-width="1.2" stroke-dasharray="4 4"/>
+                <path data-area fill="rgba(255,111,89,.18)" d=""/>
+                <path data-line fill="none" stroke="#2E1A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""/>
+                <circle data-low r="5.5" fill="#FF6F59" stroke="#2E1A5C" stroke-width="2.5" cx="-20" cy="-20"/>
+              </svg>
+              <div style="display:flex;justify-content:space-between;font-size:.66em;color:#544B63"><span>13 nov.</span><span>28 déc.</span><span>11 févr.</span></div>
+            </div>
+            <div class="card dk"><span class="lbl">Point bas le 28 décembre</span><span class="mid" data-amount="3120">3 120,00 €</span><span class="lbl">Au-dessus de votre seuil</span></div>
+          </div>
+          <div class="tb"><span><svg class="ico"><use href="#i-home"/></svg>Accueil</span><span><svg class="ico"><use href="#i-file"/></svg>Devis</span><span><svg class="ico"><use href="#i-send"/></svg>Factures</span><span class="on"><svg class="ico"><use href="#i-chart"/></svg>Tréso</span><span><svg class="ico"><use href="#i-users"/></svg>Compta</span></div>
+        </div>
+
+        <!-- Écran : export comptable -->
+        <div class="sc" data-screen="export">
+          <div class="sb"><span>9:41</span><i></i><em>●●●</em></div>
+          <div class="ah"><b>Comptable</b><small>Cabinet Lefèvre</small></div>
+          <div class="bd">
+            <div class="card dk"><span class="lbl">Facturé en novembre</span><span class="big" data-amount="12480" data-count>12 480,00 €</span></div>
+            <div class="card"><div class="toggle">Accès direct du cabinet<i></i></div></div>
+            <div class="card"><span class="lbl">Export de novembre</span><span class="mid">Prêt</span>
+              <div class="file" style="margin-top:.6em"><span class="ext">FEC</span><span><b>Écritures comptables</b><small>Fichier des écritures comptables</small></span></div>
+              <div class="file" style="margin-top:.5em"><span class="ext">CSV</span><span><b>Factures et règlements</b><small>Pour un tableur</small></span></div>
+            </div>
+            <div class="abtn"><svg class="ico"><use href="#i-send"/></svg>Envoyer au cabinet</div>
+          </div>
+          <div class="tb"><span><svg class="ico"><use href="#i-home"/></svg>Accueil</span><span><svg class="ico"><use href="#i-file"/></svg>Devis</span><span><svg class="ico"><use href="#i-send"/></svg>Factures</span><span><svg class="ico"><use href="#i-chart"/></svg>Tréso</span><span class="on"><svg class="ico"><use href="#i-users"/></svg>Compta</span></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="stage-bar">
+      <nav class="ticks" aria-label="Chapitres de l'application">
+        <a href="#reforme" data-to="reforme">Réforme</a>
+        <a href="#devis" data-to="devis">Devis</a>
+        <a href="#facture" data-to="facture">Facture</a>
+        <a href="#relance" data-to="relance">Relance</a>
+        <a href="#tresorerie" data-to="tresorerie">Trésorerie</a>
+        <a href="#export" data-to="export">Export</a>
+      </nav>
+      <button class="btn btn-sm" type="button" data-tour aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg><span>Voir l'application en 30 secondes</span></button>
+      <p class="caption">Maquette de l'application. Noms et montants d'exemple.</p>
+    </div>
+  </div>
+
+  <!-- 1. HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-title" data-screen-for="home">
+    <h1 class="poster" id="hero-title">
+      <span class="sr-only">Vos factures électroniques, faites depuis votre téléphone.</span>
+      <span class="pl"><span class="a" aria-hidden="true">Vos fac</span><span class="b" aria-hidden="true">tures</span></span>
+      <span class="pl"><span class="a" aria-hidden="true">électro</span><span class="b" aria-hidden="true">niques,</span></span>
+      <span class="pl"><span class="a" aria-hidden="true">faites<span class="sp"> </span></span><span class="b" aria-hidden="true">depuis</span></span>
+      <span class="pl"><span class="a" aria-hidden="true">votre té</span><span class="b" aria-hidden="true">léphone.</span></span>
+    </h1>
+    <div class="hero-text">
+      <p class="sub">Devis, facture, relance et trésorerie à 90 jours, depuis votre téléphone. Recevez dès aujourd'hui, émettez sereinement avant septembre 2027.</p>
+      <p class="caption hero-cap">Maquette de l'application, données d'exemple.</p>
+    </div>
+    <div class="slot" data-slot="home"></div>
+    <div class="hero-form">
       <form class="signup" data-signup novalidate>
         <label for="email-hero">Votre e-mail professionnel</label>
         <div class="signup-row">
           <input class="input" id="email-hero" name="email" type="email" inputmode="email" autocomplete="email" placeholder="vous@entreprise.fr" aria-describedby="email-hero-err">
-          <button class="btn btn-primary" type="submit" data-label="Essayer gratuitement 30 jours">Essayer gratuitement 30 jours</button>
+          <button class="btn" type="submit" data-label="Essayer gratuitement 30 jours">Essayer gratuitement 30 jours</button>
         </div>
-        <p class="field-error" id="email-hero-err" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+        <p class="field-error" id="email-hero-err" role="alert"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
         <div class="form-note" role="status"></div>
         <p class="conditions">
-          <span><svg aria-hidden="true"><use href="#i-check"/></svg>Sans carte bancaire.</span>
-          <span><svg aria-hidden="true"><use href="#i-check"/></svg>Sans engagement.</span>
-          <span><svg aria-hidden="true"><use href="#i-check"/></svg>Aucun passage automatique en payant.</span>
+          <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sans carte bancaire.</span>
+          <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sans engagement.</span>
+          <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Aucun passage automatique en payant.</span>
         </p>
       </form>
     </div>
+  </section>
 
-    <div class="hero-visual">
-      <div class="sheet sheet--a" aria-hidden="true"></div>
-      <div class="sheet sheet--b" aria-hidden="true"></div>
-      <figure class="phone phone--hero" style="margin:0" aria-label="Maquette de l'application Liasse&nbsp;: une facture payée">
-        <div class="screen">
-          <div class="status" aria-hidden="true"><span>9:41</span><i></i></div>
-          <div class="app-top"><span class="back">Factures</span><b>F-2026-0142</b><span class="back">Partager</span></div>
-          <div class="inv-head">
-            <small>Facture électronique</small>
-            <div class="who">Boulangerie Rocher</div>
-            <div class="inv-amount num" data-amount="1846.80" data-count="load">1 846,80 €</div>
-            <div class="inv-meta">
-              <span class="pill pill--paid"><svg aria-hidden="true"><use href="#i-check"/></svg>Payée</span>
-              <small>par lien de paiement</small>
-            </div>
-          </div>
-          <ul class="lines">
-            <li><span>Chauffe-eau thermodynamique</span><span class="num" data-amount="1120">1 120,00 €</span></li>
-            <li><span>Pose et mise en service</span><span class="num" data-amount="360">360,00 €</span></li>
-            <li><span>Déplacement</span><span class="num" data-amount="59">59,00 €</span></li>
-            <li><span>TVA 20 %</span><span class="num" data-amount="307.80">307,80 €</span></li>
-            <li class="total"><span>Total TTC</span><span class="num" data-amount="1846.80">1 846,80 €</span></li>
-          </ul>
-          <div class="app-foot">
-            <p class="einv"><svg aria-hidden="true"><use href="#i-check-circle"/></svg>Transmise au format électronique</p>
-            <div class="app-btn app-btn--ghost">Voir l'export comptable</div>
-          </div>
-        </div>
-      </figure>
-      <div class="float-card float-relance" aria-hidden="true">
-        <span class="ico"><svg><use href="#i-bell"/></svg></span>
-        <span><b>Relance partie</b>SCI Les Tilleuls, avec le lien de paiement</span>
-      </div>
-      <div class="float-card float-cash" aria-hidden="true">
-        <small>Solde prévu le 11 février</small>
-        <span class="num" data-amount="8430" data-count="load">8 430,00 €</span>
-        <svg viewBox="0 0 200 46" preserveAspectRatio="none"><path data-spark fill="none" stroke="#2E1A5C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d=""/></svg>
-      </div>
-      <p class="caption hero-caption">Maquette de l'application, données d'exemple.</p>
+  <!-- 2. ÉCHÉANCIER DE LA RÉFORME -->
+  <section class="chapter" id="reforme" style="--r:2" aria-labelledby="reforme-title" data-screen-for="reforme">
+    <div class="ch-l">
+      <p class="kicker">Avant tout, la réforme</p>
+      <h2 class="h2" id="reforme-title">Ce que vous devez faire, et quand.</h2>
+      <ol class="frise">
+        <li><span class="mk done" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg></span><div><span class="date">1<sup>er</sup>&nbsp;septembre 2026<span class="tag">En vigueur</span></span><p><strong>Recevoir.</strong> Toutes les entreprises assujetties à la TVA doivent pouvoir recevoir des factures électroniques.</p></div></li>
+        <li><span class="mk now" aria-hidden="true"><svg class="ico"><use href="#i-pin"/></svg></span><div><span class="date">Aujourd'hui<span class="tag">Vous êtes ici</span></span><p><strong>Choisir.</strong> Recevez vos factures sur une plateforme agréée et prenez vos marques, sans urgence.</p></div></li>
+        <li><span class="mk" aria-hidden="true"><svg class="ico"><use href="#i-calendar"/></svg></span><div><span class="date">1<sup>er</sup>&nbsp;septembre 2027<span class="tag">À venir</span></span><p><strong>Émettre.</strong> Les PME, TPE et micro-entreprises émettent leurs factures au format électronique.</p></div></li>
+      </ol>
+      <p class="caption">Source&nbsp;: <a href="https://www.moneyvox.fr/actu/110141/facturation-electronique-ce-qui-change-vraiment-a-partir-du-1er-septembre-2026" rel="noopener">Moneyvox, article du 28 août 2026</a>, vu le 13 novembre 2026. Contenu mis à jour le 13 novembre 2026.</p>
     </div>
-  </div>
-</section>
-
-<!-- 2. ÉCHÉANCIER -->
-<section class="reforme" id="reforme" aria-labelledby="reforme-title">
-  <div class="wrap">
-    <span class="eyebrow">Réforme de la facturation électronique</span>
-    <h2 class="h2" id="reforme-title">Ce que vous devez faire, et quand.</h2>
-
-    <ol class="timeline">
-      <li>
-        <span class="node node--done" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
-        <div>
-          <span class="t-tag">En vigueur</span>
-          <span class="t-date">1<sup>er</sup>&nbsp;septembre 2026</span>
-          <p class="t-text"><strong>Recevoir.</strong> Toutes les entreprises assujetties à la TVA doivent pouvoir recevoir des factures électroniques.</p>
+    <div class="slot" data-slot="reforme"></div>
+    <div class="ch-r">
+      <fieldset>
+        <legend>Je suis&nbsp;:</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="profil" value="artisan" checked><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Artisan</span></label>
+          <label class="chip"><input type="radio" name="profil" value="commercant"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Commerçant</span></label>
+          <label class="chip"><input type="radio" name="profil" value="liberal"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Profession libérale</span></label>
+          <label class="chip"><input type="radio" name="profil" value="societe"><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Société</span></label>
         </div>
-      </li>
-      <li>
-        <span class="node node--now" aria-hidden="true"><svg><use href="#i-pin"/></svg></span>
-        <div>
-          <span class="t-tag">Vous êtes ici</span>
-          <span class="t-date">Dès aujourd'hui</span>
-          <p class="t-text"><strong>Choisir.</strong> Recevez vos factures sur une plateforme agréée et prenez vos marques, sans urgence.</p>
-        </div>
-      </li>
-      <li>
-        <span class="node node--next" aria-hidden="true"><svg><use href="#i-calendar"/></svg></span>
-        <div>
-          <span class="t-tag">À venir</span>
-          <span class="t-date">1<sup>er</sup>&nbsp;septembre 2027</span>
-          <p class="t-text"><strong>Émettre.</strong> Les PME, TPE et micro-entreprises émettent leurs factures au format électronique.</p>
-        </div>
-      </li>
-    </ol>
-    <p class="caption source">Source&nbsp;: <a href="https://www.moneyvox.fr/actu/110141/facturation-electronique-ce-qui-change-vraiment-a-partir-du-1er-septembre-2026" rel="noopener">Moneyvox, article du 28 août 2026</a>, vu le 13 novembre 2026. Contenu mis à jour le 13 novembre 2026.</p>
-
-    <div class="profile">
-      <div>
-        <fieldset>
-          <legend>Je suis&nbsp;:</legend>
-          <div class="chips">
-            <label class="chip"><input type="radio" name="profil" value="artisan" checked><span><svg aria-hidden="true"><use href="#i-check"/></svg>Artisan</span></label>
-            <label class="chip"><input type="radio" name="profil" value="commercant"><span><svg aria-hidden="true"><use href="#i-check"/></svg>Commerçant</span></label>
-            <label class="chip"><input type="radio" name="profil" value="liberal"><span><svg aria-hidden="true"><use href="#i-check"/></svg>Profession libérale</span></label>
-            <label class="chip"><input type="radio" name="profil" value="societe"><span><svg aria-hidden="true"><use href="#i-check"/></svg>Société</span></label>
-          </div>
-        </fieldset>
-        <button class="btn btn-secondary" type="button" id="see-todo">Voir ce que je dois faire<svg aria-hidden="true" width="18" height="18"><use href="#i-arrow"/></svg></button>
-      </div>
+      </fieldset>
+      <button class="btn btn-line" type="button" id="see-todo">Voir ce que je dois faire<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       <div class="todo" id="todo" tabindex="-1" aria-live="polite">
         <h3>Ce que vous devez faire, <em id="todo-who">artisan</em></h3>
         <ol>
-          <li><span class="ic" aria-hidden="true"><svg><use href="#i-inbox"/></svg></span><span><b>Maintenant</b><span id="todo-now"></span></span></li>
-          <li><span class="ic" aria-hidden="true"><svg><use href="#i-calendar"/></svg></span><span><b>Avant le 1<sup>er</sup>&nbsp;septembre 2027</b><span id="todo-next"></span></span></li>
-          <li><span class="ic" aria-hidden="true"><svg><use href="#i-check"/></svg></span><span><b>Avec Liasse</b><span id="todo-liasse"></span></span></li>
+          <li><b>Maintenant</b><span id="todo-now"></span></li>
+          <li><b>Avant le 1<sup>er</sup>&nbsp;septembre 2027</b><span id="todo-next"></span></li>
+          <li><b>Avec Liasse</b><span id="todo-liasse"></span></li>
         </ol>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 3. FONCTIONNALITÉS -->
-<section class="features" id="fonctionnalites" aria-labelledby="features-title">
-  <div class="wrap">
-    <h2 class="h2" id="features-title">Facturer, relancer, voir venir, transmettre.</h2>
-
-    <div class="bento">
-      <article class="card c-facture">
-        <h3>Facturer</h3>
-        <p>Le devis accepté devient une facture conforme en un geste, acompte déduit. Envoyée depuis le téléphone, sans repasser au bureau.</p>
-        <div class="flow" aria-hidden="true">
-          <div class="doc"><small>Devis, exemple</small><b>D-0118</b><span class="num" data-amount="1846.80">1 846,80 €</span><span class="pill pill--ok">Accepté</span></div>
-          <span class="arrow"><svg><use href="#i-arrow"/></svg></span>
-          <div class="doc doc--inv"><small>Facture, exemple</small><b>F-2026-0142</b><span class="num" data-amount="1846.80">1 846,80 €</span><span class="pill pill--relance">Envoyée</span></div>
-        </div>
-      </article>
-
-      <article class="card c-relance">
-        <h3>Relancer</h3>
-        <p>Elles partent toutes seules, polies, avec un lien de paiement. Vous gardez la main.</p>
-        <div class="relance-body">
-        <ol class="seq">
-          <li><span class="dot" aria-hidden="true"><svg><use href="#i-mail"/></svg></span><b>3 jours avant</b>Rappel courtois de l'échéance</li>
-          <li><span class="dot" aria-hidden="true"><svg><use href="#i-link"/></svg></span><b>Le jour même</b>Lien de paiement en un tap</li>
-          <li><span class="dot" aria-hidden="true"><svg><use href="#i-bell"/></svg></span><b>7 jours après</b>Relance aimable</li>
-          <li><span class="dot" aria-hidden="true"><svg><use href="#i-send"/></svg></span><b>15 jours après</b>Dernière relance, ton ferme</li>
-        </ol>
-        <div class="mail" aria-label="Exemple de relance">
-          <small>Objet&nbsp;: Votre facture F-2026-0141 arrive à échéance dans 3 jours</small>
-          Bonjour, petit rappel&nbsp;: la facture de la rénovation de la cage d'escalier arrive à échéance vendredi. Vous pouvez la régler en ligne.
-          <span class="paylink"><svg aria-hidden="true"><use href="#i-link"/></svg>Payer la facture</span>
-          <small style="margin-top:8px">Séquence proposée par défaut, modifiable. Texte d'exemple.</small>
-        </div>
-        </div>
-      </article>
-
-      <article class="card c-treso">
-        <h3>Voir venir</h3>
-        <p>Votre trésorerie projetée à 90 jours, calculée à partir des factures émises, des factures reçues et de votre compte bancaire.</p>
-        <div class="treso-chart">
-          <svg viewBox="0 0 600 72" role="img" aria-label="Exemple de courbe de trésorerie sur 90 jours, point bas à 3 120 euros fin décembre">
-            <line x1="0" x2="600" y1="57" y2="57" stroke="#D8CEEE" stroke-width="1.5" stroke-dasharray="6 6"/>
-            <path data-chart-area fill="rgba(255,111,89,.16)" d=""/>
-            <path data-chart-line class="draw" fill="none" stroke="#FF6F59" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d=""/>
-            <circle data-low r="6" fill="#2E1A5C" stroke="#FF6F59" stroke-width="3" cx="-20" cy="-20"/>
-          </svg>
-          <div class="treso-legend"><span>13 nov.</span><span>13 déc.</span><span>12 janv.</span><span>11 févr.</span></div>
-          <p class="treso-note"><span>Point bas le 28 décembre&nbsp;: <span class="num" data-amount="3120" data-count="view">3 120,00 €</span>, au-dessus de votre seuil de <span class="num">2 000 €</span> (pointillés). <small style="display:inline;margin:0">Exemple.</small></span></p>
-        </div>
-      </article>
-
-      <article class="card c-export">
-        <h3>Transmettre</h3>
-        <p>Votre expert-comptable reçoit des données propres, sans relance de votre part.</p>
-        <div class="export-files" aria-hidden="true">
-          <div class="file"><span class="ext">FEC</span><span>Fichier des écritures comptables</span></div>
-          <div class="file"><span class="ext">CSV</span><span>Factures et règlements, pour un tableur</span></div>
-        </div>
-        <p class="export-access"><svg aria-hidden="true"><use href="#i-users"/></svg>Accès direct pour votre expert-comptable</p>
-      </article>
+  <!-- 3. FONCTIONNALITÉS, racontées chapitre par chapitre -->
+  <section class="chapter" id="devis" style="--r:3" aria-labelledby="devis-title" data-screen-for="devis">
+    <div class="ch-l">
+      <p class="kicker"><b>1/5</b>Facturer</p>
+      <h2 class="h2" id="devis-title">Le devis, signé sur le chantier.</h2>
+      <p class="lead">Vous le préparez sur le téléphone, le client signe, l'acompte est demandé. Pas de papier carbone, pas de ressaisie le soir.</p>
+      <button class="btn btn-sm play-m" type="button" data-tour aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg><span>Voir l'application en 30 secondes</span></button>
     </div>
-  </div>
-</section>
+    <div class="slot" data-slot="devis"></div>
+    <div class="ch-r">
+      <h3>Sur l'écran</h3>
+      <ul class="notes">
+        <li><span class="n">1</span><span>Les lignes, la TVA et le total se calculent pendant que vous tapez.</span></li>
+        <li><span class="n">2</span><span>L'acompte est demandé à la signature.</span></li>
+        <li><span class="n">3</span><span>Le devis accepté devient une facture <b>en un geste</b>, acompte déduit.</span></li>
+      </ul>
+    </div>
+  </section>
 
-<!-- 4. APERÇU DE L'APPLICATION -->
+  <section class="chapter" id="facture" style="--r:4" aria-labelledby="facture-title" data-screen-for="facture">
+    <div class="ch-l">
+      <p class="kicker"><b>2/5</b>Facturer</p>
+      <h2 class="h2" id="facture-title">La facture électronique part d'ici.</h2>
+      <p class="lead">Une facture conforme, envoyée depuis le téléphone, sans repasser au bureau.</p>
+    </div>
+    <div class="slot" data-slot="facture"></div>
+    <div class="ch-r">
+      <h3>Elle part de trois façons</h3>
+      <ul class="notes">
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></span><span><b>Par la plateforme agréée</b>, au format électronique.</span></li>
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span><b>Par e-mail</b>, avec un lien de paiement.</span></li>
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><span><b>Par SMS</b>, pratique pour les particuliers.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chapter" id="relance" style="--r:5" aria-labelledby="relance-title" data-screen-for="relance">
+    <div class="ch-l">
+      <p class="kicker"><b>3/5</b>Relancer</p>
+      <h2 class="h2" id="relance-title">Les relances partent toutes seules.</h2>
+      <p class="lead">Polies, avec un lien de paiement. Vous changez les dates et le texte, ou vous les coupez pour un client.</p>
+    </div>
+    <div class="slot" data-slot="relance"></div>
+    <div class="ch-r">
+      <h3>La séquence, telle qu'elle part</h3>
+      <ul class="notes">
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span><b>3 jours avant</b> l'échéance&nbsp;: rappel courtois.</span></li>
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg></span><span><b>Le jour même</b>&nbsp;: lien de paiement en un tap.</span></li>
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></span><span><b>7 jours après</b>&nbsp;: relance aimable.</span></li>
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-send"/></svg></span><span><b>15 jours après</b>&nbsp;: dernière relance, ton ferme.</span></li>
+      </ul>
+      <p class="caption" style="margin-top:10px">Séquence proposée par défaut, modifiable. Texte d'exemple.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="tresorerie" style="--r:6" aria-labelledby="treso-title" data-screen-for="tresorerie">
+    <div class="ch-l">
+      <p class="kicker"><b>4/5</b>Voir venir</p>
+      <h2 class="h2" id="treso-title">Votre trésorerie à 90&nbsp;jours, en un coup d'œil.</h2>
+      <p class="lead">Avant d'acheter un véhicule ou d'embaucher, regardez le point bas&nbsp;: vous savez si le compte suit.</p>
+    </div>
+    <div class="slot" data-slot="tresorerie"></div>
+    <div class="ch-r">
+      <h3>La courbe est calculée avec</h3>
+      <ul class="notes">
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-send"/></svg></span><span><b>Vos factures émises</b>&nbsp;: ce qui doit rentrer.</span></li>
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-inbox"/></svg></span><span><b>Vos factures reçues</b>&nbsp;: ce qui doit sortir.</span></li>
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-bank"/></svg></span><span><b>Votre compte bancaire</b>, en lecture seule (voir <a href="#securite">Sécurité</a>).</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chapter" id="export" style="--r:7" aria-labelledby="export-title" data-screen-for="export">
+    <div class="ch-l">
+      <p class="kicker"><b>5/5</b>Transmettre</p>
+      <h2 class="h2" id="export-title">Votre expert-comptable, branché directement.</h2>
+      <p class="lead">Il reçoit des données propres, sans relance de votre part.</p>
+    </div>
+    <div class="slot" data-slot="export"></div>
+    <div class="ch-r">
+      <h3>Ce qu'il reçoit</h3>
+      <ul class="notes">
+        <li><span class="n">FEC</span><span><b>Le fichier des écritures comptables</b>, à importer dans son logiciel.</span></li>
+        <li><span class="n">CSV</span><span><b>Les factures et les règlements</b>, pour un tableur.</span></li>
+        <li><span class="n"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><span><b>Un accès direct</b> à vos factures, quand il en a besoin.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<!-- 4. APERÇU : le même compte sur l'ordinateur -->
 <section class="apercu" id="apercu" aria-labelledby="apercu-title">
-  <div class="wrap">
-    <div class="apercu-head">
-      <div>
-        <h2 class="h2" id="apercu-title">Sur le chantier comme au bureau.</h2>
-        <p class="lead" style="max-width:none">Le téléphone pour facturer, l'ordinateur pour voir plus loin. Mêmes montants, à jour.</p>
-      </div>
-      <div class="play-wrap"><button class="btn btn-primary" type="button" id="play"><svg aria-hidden="true" width="16" height="16"><use href="#i-play"/></svg><span>Voir l'application en 30 secondes</span></button><p class="caption">Maquettes de l'application Liasse. Noms et montants d'exemple.</p></div>
+  <div class="apercu-in">
+    <div>
+      <p class="kicker">Aperçu de l'application</p>
+      <h2 class="h2" id="apercu-title">Le soir, sur l'ordinateur.</h2>
+      <p class="lead">Le téléphone pour facturer, l'ordinateur pour voir plus loin. Mêmes montants, à jour.</p>
+      <p class="caption" style="margin-top:14px">Maquettes de l'application Liasse. Noms et montants d'exemple.</p>
     </div>
-
-    <div class="stage">
-      <figure class="browser" style="margin:0" aria-label="Maquette du tableau de bord Liasse sur ordinateur">
+    <div class="desk">
+      <figure class="browser" aria-label="Maquette du tableau de bord Liasse sur ordinateur">
         <div class="b-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.liasse.fr</span></div>
         <div class="dash">
           <aside class="side" aria-hidden="true">
             <span class="logo"><svg><use href="#logo-mark"/></svg>Liasse</span>
             <ul>
-              <li class="on"><svg><use href="#i-home"/></svg>Accueil</li>
-              <li><svg><use href="#i-file"/></svg>Factures</li>
-              <li><svg><use href="#i-inbox"/></svg>Reçues</li>
-              <li><svg><use href="#i-chart"/></svg>Trésorerie</li>
-              <li><svg><use href="#i-users"/></svg>Clients</li>
-              <li><svg><use href="#i-download"/></svg>Comptable</li>
+              <li class="on"><svg class="ico"><use href="#i-home"/></svg>Accueil</li>
+              <li><svg class="ico"><use href="#i-file"/></svg>Factures</li>
+              <li><svg class="ico"><use href="#i-inbox"/></svg>Reçues</li>
+              <li><svg class="ico"><use href="#i-chart"/></svg>Trésorerie</li>
+              <li><svg class="ico"><use href="#i-users"/></svg>Clients</li>
+              <li><svg class="ico"><use href="#i-download"/></svg>Comptable</li>
             </ul>
           </aside>
-          <div class="main">
-            <h3 class="hello">Bonjour Mehdi<small>Plomberie Haddad</small></h3>
+          <div class="dmain">
+            <p class="hello">Bonjour Mehdi<small>Plomberie Haddad</small></p>
             <div class="kpis">
-              <div class="kpi kpi--dark"><small>Sur le compte</small><span class="num" data-amount="6214.50" data-count="view">6 214,50 €</span></div>
-              <div class="kpi"><small>À encaisser</small><span class="num" data-amount="3380.40" data-count="view">3 380,40 €</span></div>
-              <div class="kpi"><small>À payer</small><span class="num" data-amount="2165.20" data-count="view">2 165,20 €</span></div>
+              <div class="kpi dk"><small>Sur le compte</small><span class="num" data-amount="6214.50">6 214,50 €</span></div>
+              <div class="kpi"><small>À encaisser</small><span class="num" data-amount="3380.40">3 380,40 €</span></div>
+              <div class="kpi"><small>À payer</small><span class="num" data-amount="2165.20">2 165,20 €</span></div>
             </div>
-            <div class="chart-box">
-              <div class="chart-top"><span>Trésorerie, 90 prochains jours</span><span class="seg" aria-hidden="true"><span>30 j</span><span class="on">90 j</span></span></div>
-              <svg viewBox="0 0 600 60" aria-hidden="true">
-                <line x1="0" x2="600" y1="48" y2="48" stroke="#7A7186" stroke-width="1.2" stroke-dasharray="5 5"/>
-                <path data-chart-area fill="rgba(46,26,92,.08)" d=""/>
-                <path data-chart-line class="draw" fill="none" stroke="#2E1A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""/>
+            <div class="cbox">
+              <div class="ctop"><span>Trésorerie, 90 prochains jours</span><span class="seg" aria-hidden="true"><span>30 j</span><span class="on">90 j</span></span></div>
+              <svg class="chart" viewBox="0 0 600 90" aria-hidden="true" preserveAspectRatio="none" style="height:90px;margin-top:6px">
+                <line data-thr x1="0" x2="600" y1="0" y2="0" stroke="#7A7186" stroke-width="1.2" stroke-dasharray="5 5"/>
+                <path data-area fill="rgba(46,26,92,.08)" d=""/>
+                <path data-line fill="none" stroke="#2E1A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""/>
                 <circle data-low r="6" fill="#FF6F59" stroke="#2E1A5C" stroke-width="2.5" cx="-20" cy="-20"/>
               </svg>
-              <div class="chart-x" aria-hidden="true"><span>13 nov.</span><span>13 déc.</span><span>12 janv.</span><span>11 févr.</span></div>
-              <p class="lowpoint"><b>Point bas le 28 décembre&nbsp;: <span class="num">3 120 €</span>.</b> Vous restez au-dessus de votre seuil de 2 000 €.</p>
+              <div class="cx" aria-hidden="true"><span>13 nov.</span><span>13 déc.</span><span>12 janv.</span><span>11 févr.</span></div>
+              <p class="lowp"><b>Point bas le 28 décembre&nbsp;: <span class="num">3 120 €</span>.</b> Vous restez au-dessus de votre seuil de 2 000 €.</p>
             </div>
             <div class="rows">
-              <div class="row"><span><b>Boulangerie Rocher</b><small>F-2026-0142</small></span><span class="pill pill--paid"><svg aria-hidden="true"><use href="#i-check"/></svg>Payée</span><span class="num" data-amount="1846.80">1 846,80 €</span></div>
-              <div class="row"><span><b>SCI Les Tilleuls</b><small>F-2026-0141</small></span><span class="pill pill--relance"><svg aria-hidden="true"><use href="#i-bell"/></svg>Relancée</span><span class="num" data-amount="2412">2 412,00 €</span></div>
-              <div class="row"><span><b>Atelier Morel</b><small>F-2026-0140</small></span><span class="pill pill--wait"><svg aria-hidden="true"><use href="#i-calendar"/></svg>En attente</span><span class="num" data-amount="968.40">968,40 €</span></div>
+              <div><span><b>Boulangerie Rocher</b><small>F-2026-0142</small></span><span class="pill ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Payée</span><span class="num" data-amount="1846.80">1 846,80 €</span></div>
+              <div><span><b>SCI Les Tilleuls</b><small>F-2026-0141</small></span><span class="pill vi"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg>Relancée</span><span class="num" data-amount="2412">2 412,00 €</span></div>
+              <div><span><b>Atelier Morel</b><small>F-2026-0140</small></span><span class="pill wait"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg>En attente</span><span class="num" data-amount="968.40">968,40 €</span></div>
             </div>
           </div>
         </div>
       </figure>
-
-      <div class="player">
-        <div class="steps" role="tablist" aria-label="Étapes du parcours dans l'application">
-          <button role="tab" id="tab-0" aria-controls="ps-0" aria-selected="true">Devis<span class="bar"></span></button>
-          <button role="tab" id="tab-1" aria-controls="ps-1" aria-selected="false" tabindex="-1">Facture<span class="bar"></span></button>
-          <button role="tab" id="tab-2" aria-controls="ps-2" aria-selected="false" tabindex="-1">Envoi<span class="bar"></span></button>
-          <button role="tab" id="tab-3" aria-controls="ps-3" aria-selected="false" tabindex="-1">Payée<span class="bar"></span></button>
-        </div>
-        <div class="phone">
-          <div class="screen">
-            <div class="status" aria-hidden="true"><span>9:41</span><i></i></div>
-            <div class="phone-screens">
-              <div class="pscreen on" id="ps-0" role="tabpanel" aria-labelledby="tab-0">
-                <div class="app-top"><span class="back">Devis</span><b>D-0118</b><span class="back">Modifier</span></div>
-                <div class="inv-head"><small>Devis accepté</small><div class="who">Boulangerie Rocher</div><div class="inv-amount num" data-amount="1846.80">1 846,80 €</div><div class="inv-meta"><span class="pill pill--ok"><svg aria-hidden="true"><use href="#i-check"/></svg>Signé</span><small>acompte reçu</small></div></div>
-                <ul class="lines">
-                  <li><span>Chauffe-eau thermodynamique</span><span class="num" data-amount="1120">1 120,00 €</span></li>
-                  <li><span>Pose et mise en service</span><span class="num" data-amount="360">360,00 €</span></li>
-                  <li><span>Déplacement</span><span class="num" data-amount="59">59,00 €</span></li>
-                  <li class="total"><span>Total TTC</span><span class="num" data-amount="1846.80">1 846,80 €</span></li>
-                </ul>
-                <div class="app-foot"><div class="app-btn">Transformer en facture</div></div>
-              </div>
-              <div class="pscreen" id="ps-1" role="tabpanel" aria-labelledby="tab-1">
-                <div class="app-top"><span class="back">Factures</span><b>F-2026-0142</b><span class="back">Aperçu</span></div>
-                <div class="inv-head"><small>Facture prête</small><div class="who">Boulangerie Rocher</div><div class="inv-amount num" data-amount="1846.80">1 846,80 €</div><div class="inv-meta"><span class="pill pill--wait">Brouillon</span><small>échéance à 30 jours</small></div></div>
-                <ul class="lines">
-                  <li><span>Total HT</span><span class="num" data-amount="1539">1 539,00 €</span></li>
-                  <li><span>TVA 20 %</span><span class="num" data-amount="307.80">307,80 €</span></li>
-                  <li><span>Acompte déjà versé</span><span class="num" data-amount="-500">-500,00 €</span></li>
-                  <li class="total"><span>Reste à payer</span><span class="num" data-amount="1346.80">1 346,80 €</span></li>
-                </ul>
-                <div class="app-foot"><div class="app-btn">Envoyer la facture</div></div>
-              </div>
-              <div class="pscreen" id="ps-2" role="tabpanel" aria-labelledby="tab-2">
-                <div class="app-top"><span class="back">Retour</span><b>Envoyer</b><span class="back"></span></div>
-                <ul class="send-opts">
-                  <li class="sel"><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span><b>Facture électronique</b><small>Par la plateforme agréée</small></span></li>
-                  <li class="sel"><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span><b>E-mail avec lien de paiement</b><small>compta@boulangerie-rocher.fr</small></span></li>
-                  <li><span class="tick"></span><span><b>SMS</b><small>Pratique pour les particuliers</small></span></li>
-                  <li class="sel"><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span><b>Relances automatiques</b><small>Séquence par défaut</small></span></li>
-                </ul>
-                <div class="app-foot"><div class="app-btn"><svg aria-hidden="true" width="16" height="16"><use href="#i-send"/></svg>Envoyer</div></div>
-              </div>
-              <div class="pscreen" id="ps-3" role="tabpanel" aria-labelledby="tab-3">
-                <div class="app-top"><span class="back">Factures</span><b>F-2026-0142</b><span class="back"></span></div>
-                <div class="paid-big">
-                  <div class="paid-badge"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
-                  <span class="num" data-amount="1346.80" data-count="tab">1 346,80 €</span>
-                  <span class="pill pill--paid" style="margin-top:10px"><svg aria-hidden="true"><use href="#i-check"/></svg>Payée</span>
-                  <p>Solde réglé par lien de paiement. Facture soldée, trésorerie à jour.</p>
-                </div>
-                <div class="app-foot"><div class="app-btn app-btn--ghost">Envoyer le reçu</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="slot" data-slot="home"></div>
     </div>
   </div>
 </section>
 
 <!-- 5. EXPERTS-COMPTABLES -->
 <section class="experts" id="experts" aria-labelledby="experts-title">
-  <div class="wrap">
-    <div>
-      <span class="eyebrow">Pour les experts-comptables</span>
+  <div class="experts-in">
+    <div class="carnet">
+      <p class="kicker">Pour les experts-comptables</p>
       <h2 class="h2" id="experts-title">Vos clients passent à l'e-facture. Vous recevez des données propres.</h2>
       <ul class="benefits">
-        <li><span class="ic" aria-hidden="true"><svg><use href="#i-download"/></svg></span><span><b>Export FEC et CSV</b>, à importer dans votre logiciel de production.</span></li>
-        <li><span class="ic" aria-hidden="true"><svg><use href="#i-users"/></svg></span><span><b>Un accès multi-clients</b>&nbsp;: tous vos dossiers Liasse depuis un seul compte.</span></li>
-        <li><span class="ic" aria-hidden="true"><svg><use href="#i-mail"/></svg></span><span><b>Invitez vos clients par e-mail</b>. Ils créent leur compte, vous restez leur interlocuteur.</span></li>
-        <li><span class="ic" aria-hidden="true"><svg><use href="#i-check"/></svg></span><span><b>Un accompagnement</b> pour passer vos clients à la facture électronique, sans tout faire à la main.</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span><b>Export FEC et CSV</b>, à importer dans votre logiciel de production.</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span><b>Un accès multi-clients</b>&nbsp;: tous vos dossiers Liasse depuis un seul compte.</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span><b>Invitez vos clients par e-mail.</b> Ils créent leur compte, vous restez leur interlocuteur.</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><b>Un accompagnement</b> pour passer vos clients à la facture électronique, sans tout faire à la main.</span></li>
       </ul>
       <form class="partner" data-partner novalidate>
-        <div class="partner-grid">
-          <div>
-            <label for="cab-name">Nom du cabinet</label>
-            <input class="input" id="cab-name" name="cabinet" type="text" autocomplete="organization" aria-describedby="cab-name-err">
-          </div>
-          <div>
-            <label for="cab-email">E-mail professionnel</label>
-            <input class="input" id="cab-email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="cab-email-err">
-          </div>
+        <div class="pgrid">
+          <div><label for="cab-name">Nom du cabinet</label><input class="input" id="cab-name" name="cabinet" type="text" autocomplete="organization" aria-describedby="cab-name-err"></div>
+          <div><label for="cab-email">E-mail professionnel</label><input class="input" id="cab-email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="cab-email-err"></div>
         </div>
-        <p class="field-error" id="cab-name-err" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
-        <p class="field-error" id="cab-email-err" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
-        <button class="btn btn-primary" type="submit" data-label="Devenir cabinet partenaire">Devenir cabinet partenaire</button>
+        <p class="field-error" id="cab-name-err" role="alert"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+        <p class="field-error" id="cab-email-err" role="alert"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+        <button class="btn" type="submit" data-label="Devenir cabinet partenaire">Devenir cabinet partenaire</button>
       </form>
     </div>
-
-    <figure class="cabinet" style="margin:0" aria-label="Maquette de l'espace cabinet de Liasse">
+    <figure class="cabinet" aria-label="Maquette de l'espace cabinet de Liasse">
       <div class="cab-head">
         <span><b>Cabinet Lefèvre</b><small>Espace expert-comptable</small></span>
-        <span class="btn btn-secondary btn-sm" aria-hidden="true"><svg width="16" height="16"><use href="#i-plus"/></svg>Inviter un client</span>
+        <span class="fake" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg>Inviter un client</span>
       </div>
       <ul class="cab-list">
-        <li><span class="avatar" aria-hidden="true">PH</span><span><b>Plomberie Haddad</b><small>Factures et banque à jour</small></span><span class="pill pill--ok"><svg aria-hidden="true"><use href="#i-check"/></svg>Export prêt</span></li>
-        <li><span class="avatar" aria-hidden="true">SN</span><span><b>Salon Nathalie</b><small>Factures reçues centralisées</small></span><span class="pill pill--ok"><svg aria-hidden="true"><use href="#i-check"/></svg>Export prêt</span></li>
-        <li><span class="avatar" aria-hidden="true">AM</span><span><b>Atelier Morel</b><small>Pièces à compléter</small></span><span class="pill pill--wait">À revoir</span></li>
-        <li><span class="avatar" aria-hidden="true">EB</span><span><b>Électricité Benali</b><small>Invitation envoyée</small></span><span class="pill pill--relance">Invité</span></li>
+        <li><span class="av" aria-hidden="true">PH</span><span><b>Plomberie Haddad</b><small>Factures et banque à jour</small></span><span class="pill ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Export prêt</span></li>
+        <li><span class="av" aria-hidden="true">SN</span><span><b>Salon Nathalie</b><small>Factures reçues centralisées</small></span><span class="pill ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Export prêt</span></li>
+        <li><span class="av" aria-hidden="true">AM</span><span><b>Atelier Morel</b><small>Pièces à compléter</small></span><span class="pill wait">À revoir</span></li>
+        <li><span class="av" aria-hidden="true">EB</span><span><b>Électricité Benali</b><small>Invitation envoyée</small></span><span class="pill vi">Invité</span></li>
       </ul>
-      <div class="cab-export">
-        <span>Exporter le mois pour tous les dossiers</span>
-        <span class="fmt" aria-hidden="true"><span>FEC</span><span>CSV</span></span>
-      </div>
-      <figcaption class="caption" style="margin-top:12px">Maquette, noms d'exemple.</figcaption>
+      <div class="cab-export"><span>Exporter le mois pour tous les dossiers</span><span class="f" aria-hidden="true"><span>FEC</span><span>CSV</span></span></div>
+      <figcaption class="caption">Maquette, noms d'exemple.</figcaption>
     </figure>
   </div>
 </section>
 
 <!-- 6. SÉCURITÉ -->
 <section class="securite" id="securite" aria-labelledby="securite-title">
-  <div class="wrap">
-    <h2 class="h2" id="securite-title">Vos données sont protégées. Voici comment.</h2>
-    <p class="lead">Des réponses écrites en clair, sans jargon.</p>
-    <div class="sec-grid">
-      <div class="sec-item">
-        <span class="ic" aria-hidden="true"><svg><use href="#i-shield"/></svg></span>
-        <div>
-          <h3>Plateforme agréée</h3>
-          <p>Liasse émet et reçoit vos factures électroniques en tant que plateforme agréée. Ce site est une démonstration et Liasse n'existe pas&nbsp;: elle n'a donc pas de numéro d'immatriculation. Avant de choisir une plateforme, vérifiez-la sur la <a href="https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees" rel="noopener">liste officielle d'impots.gouv.fr</a>.</p>
-        </div>
-      </div>
-      <div class="sec-item">
-        <span class="ic" aria-hidden="true"><svg><use href="#i-server"/></svg></span>
-        <div>
-          <h3>Hébergement en France</h3>
-          <p>Vos factures et vos données sont hébergées en France, dans l'Union européenne, et traitées selon le RGPD. Vous pouvez les exporter ou les supprimer à tout moment.</p>
-        </div>
-      </div>
-      <div class="sec-item">
-        <span class="ic" aria-hidden="true"><svg><use href="#i-lock"/></svg></span>
-        <div>
-          <h3>Chiffrement</h3>
-          <p>Les données sont chiffrées pendant leur transfert et sur nos serveurs. La connexion se fait par lien magique envoyé par e-mail&nbsp;: pas de mot de passe à retenir ni à se faire voler.</p>
-        </div>
-      </div>
-      <div class="sec-item">
-        <span class="ic" aria-hidden="true"><svg><use href="#i-bank"/></svg></span>
-        <div>
-          <h3>Données bancaires</h3>
-          <p>La connexion à votre banque passe par un prestataire de services d'information sur les comptes, enregistré auprès de l'ACPR (Banque de France). L'accès est en lecture seule&nbsp;: Liasse voit vos opérations et ne peut faire aucun virement.</p>
-        </div>
-      </div>
+  <div class="sec-in">
+    <div>
+      <h2 class="h2" id="securite-title">Vos données sont protégées. Voici comment.</h2>
+      <p class="lead">Des réponses écrites en clair, sans jargon.</p>
+      <p class="notbank"><svg class="lock" aria-hidden="true" viewBox="0 0 64 64"><rect x="14" y="4" width="36" height="56" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><rect x="24" y="30" width="16" height="13" rx="3" fill="currentColor"/><path d="M27 30v-4a5 5 0 0110 0v4" fill="none" stroke="currentColor" stroke-width="3"/></svg><span><b>Liasse n'est pas une banque.</b>Elle ne détient pas votre argent et ne remplace pas votre compte professionnel.</span></p>
     </div>
-    <p class="notbank"><svg aria-hidden="true"><use href="#i-eye"/></svg><span><b>Liasse n'est pas une banque.</b> Elle ne détient pas votre argent et ne remplace pas votre compte professionnel.</span></p>
+    <ul class="sec-list">
+      <li><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><div><h3>Plateforme agréée</h3><p>Liasse émet et reçoit vos factures électroniques en tant que plateforme agréée. Ce site est une démonstration et Liasse n'existe pas&nbsp;: elle n'a donc pas de numéro d'immatriculation. Avant de choisir une plateforme, vérifiez-la sur la <a href="https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees" rel="noopener">liste officielle d'impots.gouv.fr</a>.</p></div></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-server"/></svg><div><h3>Hébergement en France</h3><p>Vos factures et vos données sont hébergées en France, dans l'Union européenne, et traitées selon le RGPD. Vous pouvez les exporter ou les supprimer à tout moment.</p></div></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><div><h3>Chiffrement</h3><p>Les données sont chiffrées pendant leur transfert et sur nos serveurs. La connexion se fait par lien magique envoyé par e-mail&nbsp;: pas de mot de passe à retenir ni à se faire voler.</p></div></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-bank"/></svg><div><h3>Données bancaires</h3><p>La connexion à votre banque passe par un prestataire de services d'information sur les comptes, enregistré auprès de l'ACPR (Banque de France). L'accès est en lecture seule&nbsp;: Liasse voit vos opérations et ne peut faire aucun virement.</p></div></li>
+    </ul>
   </div>
 </section>
 
-<!-- 7. TARIFS -->
+<!-- 7. TARIFS : deux tickets de caisse -->
 <section class="tarifs" id="tarifs" aria-labelledby="tarifs-title">
-  <div class="wrap">
+  <div class="tarifs-in">
     <h2 class="h2" id="tarifs-title">Deux formules, un prix clair.</h2>
     <p class="lead">Prix en HT et en TTC, essai de 30 jours sans carte bancaire.</p>
-
     <div class="pricing">
-      <div>
-        <div class="plans">
-          <article class="plan">
-            <h3>Solo</h3>
-            <p class="for">Pour l'artisan ou l'indépendant qui facture seul.</p>
-            <span class="demo-tag">Prix de démonstration</span>
-            <p class="price"><span class="num">7&nbsp;€</span><span>HT / mois</span></p>
-            <p class="ttc">soit <span class="num">8,40&nbsp;€</span> TTC par mois</p>
-            <ul>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Devis, acomptes et factures électroniques</li>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Réception des factures fournisseurs</li>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Relances automatiques</li>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Trésorerie à 90 jours</li>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Export FEC et CSV</li>
+      <div class="tickets">
+        <div class="ticket-wrap">
+          <article class="ticket" aria-labelledby="solo-title">
+            <div class="t-head">
+              <span class="logo" aria-hidden="true"><svg><use href="#logo-mark"/></svg>Liasse</span>
+              <small>Formule</small>
+              <h3 id="solo-title">Solo</h3>
+              <p>Pour l'artisan ou l'indépendant qui facture seul.</p>
+            </div>
+            <ul class="t-items">
+              <li><span>Devis, acomptes, factures électroniques</span><span>inclus</span></li>
+              <li><span>Réception des factures fournisseurs</span><span>inclus</span></li>
+              <li><span>Relances automatiques</span><span>inclus</span></li>
+              <li><span>Trésorerie à 90 jours</span><span>inclus</span></li>
+              <li><span>Export FEC et CSV</span><span>inclus</span></li>
             </ul>
-            <a class="btn btn-secondary" href="#inscription" data-plan="Solo">Essayer Solo</a>
-          </article>
-          <article class="plan plan--pick">
-            <span class="badge">Pour les équipes</span>
-            <h3>Équipe</h3>
-            <p class="for">Pour la TPE avec des salariés et un expert-comptable.</p>
-            <span class="demo-tag">Prix de démonstration</span>
-            <p class="price"><span class="num">14&nbsp;€</span><span>HT / mois</span></p>
-            <p class="ttc">soit <span class="num">16,80&nbsp;€</span> TTC par mois</p>
-            <ul>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Tout Solo</li>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Plusieurs utilisateurs, avec des droits</li>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Accès direct de l'expert-comptable</li>
-              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Validation des factures reçues</li>
+            <ul class="t-sum">
+              <li><span>Total HT par mois</span><span class="num">7,00&nbsp;€</span></li>
+              <li><span>TVA 20 %</span><span class="num">1,40&nbsp;€</span></li>
+              <li class="ttc"><span>Total TTC par mois</span><span class="num">8,40&nbsp;€</span></li>
             </ul>
-            <a class="btn btn-primary" href="#inscription" data-plan="Équipe">Essayer Équipe</a>
+            <span class="stamp">Prix de démonstration</span>
+            <a class="btn btn-line" href="#inscription" data-plan="Solo">Essayer Solo</a>
           </article>
         </div>
-        <p class="caption price-note">Prix de démonstration calés sur les deux premières formules publiques de Pennylane (7 et 14 € HT par mois, <a href="https://www.pennylane.com/fr/logiciel-facturation-electronique?so=1" rel="noopener">page facturation électronique</a>), essai de 30 jours calé sur celui de Qonto (<a href="https://qonto.com/fr/pricing" rel="noopener">qonto.com/fr/pricing</a>), vus le 13 novembre 2026. TTC avec une TVA à 20 %.</p>
+        <div class="ticket-wrap">
+          <article class="ticket" aria-labelledby="equipe-title">
+            <div class="t-head">
+              <span class="logo" aria-hidden="true"><svg><use href="#logo-mark"/></svg>Liasse</span>
+              <small>Formule</small>
+              <h3 id="equipe-title">Équipe</h3>
+              <p>Pour la TPE avec des salariés et un expert-comptable.</p>
+            </div>
+            <ul class="t-items">
+              <li><span>Tout Solo</span><span>inclus</span></li>
+              <li><span>Plusieurs utilisateurs, avec des droits</span><span>inclus</span></li>
+              <li><span>Accès direct de l'expert-comptable</span><span>inclus</span></li>
+              <li><span>Validation des factures reçues</span><span>inclus</span></li>
+            </ul>
+            <ul class="t-sum">
+              <li><span>Total HT par mois</span><span class="num">14,00&nbsp;€</span></li>
+              <li><span>TVA 20 %</span><span class="num">2,80&nbsp;€</span></li>
+              <li class="ttc"><span>Total TTC par mois</span><span class="num">16,80&nbsp;€</span></li>
+            </ul>
+            <span class="stamp">Prix de démonstration</span>
+            <a class="btn" href="#inscription" data-plan="Équipe">Essayer Équipe</a>
+          </article>
+        </div>
       </div>
-
-      <div class="compare-wrap">
+      <div class="compare">
         <h3>Liasse et les autres</h3>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Comparatif entre Liasse, un logiciel gratuit, un tableur et le papier">
+        <div class="tscroll" tabindex="0" role="region" aria-label="Comparatif entre Liasse, un logiciel gratuit, un tableur et le papier">
           <table>
-            <thead>
-              <tr><th scope="col"><span class="sr-only">Critère</span></th><th scope="col" class="us">Liasse</th><th scope="col">Logiciel gratuit</th><th scope="col">Tableur</th><th scope="col">Papier</th></tr>
-            </thead>
+            <thead><tr><th scope="col"><span class="sr-only">Critère</span></th><th scope="col" class="us">Liasse</th><th scope="col">Logiciel gratuit</th><th scope="col">Tableur</th><th scope="col">Papier</th></tr></thead>
             <tbody>
-              <tr><th scope="row">Facture électronique conforme</th><td class="us"><span class="cell yes"><svg aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell yes"><svg aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Non</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Non</span></td></tr>
-              <tr><th scope="row">Facture depuis le téléphone</th><td class="us"><span class="cell yes"><svg aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell maybe"><svg aria-hidden="true"><use href="#i-tilde"/></svg>Selon l'outil</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Peu pratique</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Non</span></td></tr>
-              <tr><th scope="row">Relances automatiques</th><td class="us"><span class="cell yes"><svg aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell maybe"><svg aria-hidden="true"><use href="#i-tilde"/></svg>Selon l'outil</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>À la main</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>À la main</span></td></tr>
-              <tr><th scope="row">Trésorerie à 90 jours</th><td class="us"><span class="cell yes"><svg aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell maybe"><svg aria-hidden="true"><use href="#i-tilde"/></svg>Selon l'outil</span></td><td><span class="cell maybe"><svg aria-hidden="true"><use href="#i-tilde"/></svg>À construire</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Non</span></td></tr>
-              <tr><th scope="row">Accès expert-comptable</th><td class="us"><span class="cell yes"><svg aria-hidden="true"><use href="#i-check-circle"/></svg>Direct</span></td><td><span class="cell maybe"><svg aria-hidden="true"><use href="#i-tilde"/></svg>Selon l'outil</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Par e-mail</span></td><td><span class="cell no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Classeur</span></td></tr>
+              <tr><th scope="row">Facture électronique conforme</th><td class="us"><span class="cell yes"><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell yes"><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Non</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Non</span></td></tr>
+              <tr><th scope="row">Facture depuis le téléphone</th><td class="us"><span class="cell yes"><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell maybe"><svg class="ico" aria-hidden="true"><use href="#i-tilde"/></svg>Selon l'outil</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Peu pratique</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Non</span></td></tr>
+              <tr><th scope="row">Relances automatiques</th><td class="us"><span class="cell yes"><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell maybe"><svg class="ico" aria-hidden="true"><use href="#i-tilde"/></svg>Selon l'outil</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>À la main</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>À la main</span></td></tr>
+              <tr><th scope="row">Trésorerie à 90 jours</th><td class="us"><span class="cell yes"><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg>Oui</span></td><td><span class="cell maybe"><svg class="ico" aria-hidden="true"><use href="#i-tilde"/></svg>Selon l'outil</span></td><td><span class="cell maybe"><svg class="ico" aria-hidden="true"><use href="#i-tilde"/></svg>À construire</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Non</span></td></tr>
+              <tr><th scope="row">Accès expert-comptable</th><td class="us"><span class="cell yes"><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg>Direct</span></td><td><span class="cell maybe"><svg class="ico" aria-hidden="true"><use href="#i-tilde"/></svg>Selon l'outil</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Par e-mail</span></td><td><span class="cell no"><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Classeur</span></td></tr>
               <tr><th scope="row">Prix</th><td class="us">Abonnement</td><td>Gratuit</td><td>Gratuit</td><td>Carnets</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="caption" style="margin:10px 0 8px">Catégories d'outils, pas de marques. « Selon l'outil »&nbsp;: la fonction existe chez certains, pas chez tous.</p>
+        <p class="caption" style="margin-top:10px">Catégories d'outils, pas de marques. «&nbsp;Selon l'outil&nbsp;»&nbsp;: la fonction existe chez certains, pas chez tous.</p>
+        <p class="caption price-note">Prix de démonstration calés sur les deux premières formules publiques de Pennylane (7 et 14&nbsp;€ HT par mois, <a href="https://www.pennylane.com/fr/logiciel-facturation-electronique?so=1" rel="noopener">page facturation électronique</a>), essai de 30 jours calé sur celui de Qonto (<a href="https://qonto.com/fr/pricing" rel="noopener">qonto.com/fr/pricing</a>), vus le 13 novembre 2026. TTC avec une TVA à 20&nbsp;%.</p>
       </div>
     </div>
   </div>
@@ -1058,49 +1053,49 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
 
 <!-- 8. FAQ ET INSCRIPTION -->
 <section class="faq" id="faq" aria-labelledby="faq-title">
-  <div class="wrap">
+  <div class="faq-in">
     <div>
       <h2 class="h2" id="faq-title">Vos questions, nos réponses.</h2>
-      <div class="faq-list">
+      <div class="thread">
         <details name="faq" open>
-          <summary>Qu'est-ce que je dois faire pour la réforme, et quand&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Depuis le 1<sup>er</sup>&nbsp;septembre 2026, toutes les entreprises assujetties à la TVA doivent pouvoir recevoir des factures électroniques. Les PME, TPE et micro-entreprises doivent les émettre à partir du 1<sup>er</sup>&nbsp;septembre 2027 (<a href="https://www.moneyvox.fr/actu/110141/facturation-electronique-ce-qui-change-vraiment-a-partir-du-1er-septembre-2026" rel="noopener">Moneyvox, 28 août 2026</a>). Pour votre cas précis, votre expert-comptable reste la meilleure référence.</p>
+          <summary>Qu'est-ce que je dois faire pour la réforme, et quand&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Depuis le 1<sup>er</sup>&nbsp;septembre 2026, toutes les entreprises assujetties à la TVA doivent pouvoir recevoir des factures électroniques. Les PME, TPE et micro-entreprises doivent les émettre à partir du 1<sup>er</sup>&nbsp;septembre 2027 (<a href="https://www.moneyvox.fr/actu/110141/facturation-electronique-ce-qui-change-vraiment-a-partir-du-1er-septembre-2026" rel="noopener">Moneyvox, 28 août 2026</a>). Pour votre cas précis, votre expert-comptable reste la meilleure référence.</p>
         </details>
         <details name="faq">
-          <summary>Liasse est-elle une plateforme agréée&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Dans cette démonstration, oui. Mais Liasse est une entreprise fictive&nbsp;: elle n'a pas de numéro d'immatriculation et ne figure pas sur la <a href="https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees" rel="noopener">liste officielle des plateformes agréées</a>. Vérifiez toujours une plateforme sur cette liste avant de la choisir.</p>
+          <summary>Liasse est-elle une plateforme agréée&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Dans cette démonstration, oui. Mais Liasse est une entreprise fictive&nbsp;: elle n'a pas de numéro d'immatriculation et ne figure pas sur la <a href="https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees" rel="noopener">liste officielle des plateformes agréées</a>. Vérifiez toujours une plateforme sur cette liste avant de la choisir.</p>
         </details>
         <details name="faq">
-          <summary>Comment se passe l'essai gratuit de 30 jours&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Vous donnez votre e-mail, vous recevez un lien de connexion, et c'est tout. Pas de carte bancaire, pas d'engagement. À la fin de l'essai, rien n'est prélevé&nbsp;: vous choisissez une formule, ou vous gardez l'accès à vos factures en lecture.</p>
+          <summary>Comment se passe l'essai gratuit de 30 jours&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Vous donnez votre e-mail, vous recevez un lien de connexion, et c'est tout. Pas de carte bancaire, pas d'engagement. À la fin de l'essai, rien n'est prélevé&nbsp;: vous choisissez une formule, ou vous gardez l'accès à vos factures en lecture.</p>
         </details>
         <details name="faq">
-          <summary>Est-ce que je dois tout ressaisir&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Non. Vos clients et vos articles s'importent depuis un fichier de tableur, et vos factures reçues arrivent directement dans Liasse par la plateforme.</p>
+          <summary>Est-ce que je dois tout ressaisir&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Non. Vos clients et vos articles s'importent depuis un fichier de tableur, et vos factures reçues arrivent directement dans Liasse par la plateforme.</p>
         </details>
         <details name="faq">
-          <summary>Puis-je facturer depuis le chantier&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Oui, c'est fait pour ça. Le devis accepté devient une facture en un geste, et elle part par la plateforme, par e-mail ou par SMS avec un lien de paiement.</p>
+          <summary>Puis-je facturer depuis le chantier&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Oui, c'est fait pour ça. Le devis accepté devient une facture en un geste, et elle part par la plateforme, par e-mail ou par SMS avec un lien de paiement.</p>
         </details>
         <details name="faq">
-          <summary>Comment partent les relances&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Une séquence est proposée par défaut&nbsp;: un rappel avant l'échéance, le lien de paiement le jour même, puis deux relances. Vous changez les dates et le texte, ou vous coupez les relances pour un client.</p>
+          <summary>Comment partent les relances&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Une séquence est proposée par défaut&nbsp;: un rappel avant l'échéance, le lien de paiement le jour même, puis deux relances. Vous changez les dates et le texte, ou vous coupez les relances pour un client.</p>
         </details>
         <details name="faq">
-          <summary>Mes données bancaires sont-elles en sécurité&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">La connexion passe par un prestataire de services d'information sur les comptes, enregistré auprès de l'ACPR. L'accès est en lecture seule&nbsp;: Liasse ne peut faire aucun virement. Liasse n'est pas une banque.</p>
+          <summary>Mes données bancaires sont-elles en sécurité&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">La connexion passe par un prestataire de services d'information sur les comptes, enregistré auprès de l'ACPR. L'accès est en lecture seule&nbsp;: Liasse ne peut faire aucun virement. Liasse n'est pas une banque.</p>
         </details>
         <details name="faq">
-          <summary>Mon expert-comptable peut-il accéder à mes factures&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Oui. Invitez-le depuis l'application&nbsp;: il accède à vos factures et télécharge les exports FEC et CSV quand il en a besoin.</p>
+          <summary>Mon expert-comptable peut-il accéder à mes factures&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Oui. Invitez-le depuis l'application&nbsp;: il accède à vos factures et télécharge les exports FEC et CSV quand il en a besoin.</p>
         </details>
         <details name="faq">
-          <summary>Les prix affichés sont-ils réels&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Ce sont des prix de démonstration, calés sur une grille publique du marché (voir la note sous les tarifs). Liasse étant fictive, aucun abonnement n'est vendu sur ce site.</p>
+          <summary>Les prix affichés sont-ils réels&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Ce sont des prix de démonstration, calés sur une grille publique du marché (voir la note sous les tarifs). Liasse étant fictive, aucun abonnement n'est vendu sur ce site.</p>
         </details>
         <details name="faq">
-          <summary>Puis-je arrêter quand je veux&nbsp;?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p class="answer">Oui, sans engagement. Avant de partir, vous exportez toutes vos factures et vos données.</p>
+          <summary>Puis-je arrêter quand je veux&nbsp;?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p class="ans">Oui, sans engagement. Avant de partir, vous exportez toutes vos factures et vos données.</p>
         </details>
       </div>
     </div>
@@ -1112,14 +1107,14 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
         <label for="email-final">Votre e-mail professionnel</label>
         <div class="signup-row">
           <input class="input" id="email-final" name="email" type="email" inputmode="email" autocomplete="email" placeholder="vous@entreprise.fr" aria-describedby="email-final-err">
-          <button class="btn btn-primary" type="submit" data-label="Essayer gratuitement 30 jours">Essayer gratuitement 30 jours</button>
+          <button class="btn" type="submit" data-label="Essayer gratuitement 30 jours">Essayer gratuitement 30 jours</button>
         </div>
-        <p class="field-error" id="email-final-err" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
+        <p class="field-error" id="email-final-err" role="alert"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg><span></span></p>
         <div class="form-note" role="status"></div>
         <p class="plan-chosen" aria-live="polite"></p>
         <p class="conditions">
-          <span><svg aria-hidden="true"><use href="#i-check"/></svg>Sans carte bancaire.</span>
-          <span><svg aria-hidden="true"><use href="#i-check"/></svg>Sans engagement.</span>
+          <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sans carte bancaire.</span>
+          <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Sans engagement.</span>
         </p>
       </form>
     </aside>
@@ -1128,13 +1123,13 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="foot-in">
     <div class="foot-top">
       <div>
         <a class="logo" href="#top" aria-label="Liasse, retour en haut de page"><svg aria-hidden="true"><use href="#logo-mark"/></svg>Liasse</a>
         <p>Liasse est l'application de facturation électronique et de trésorerie des artisans et des TPE, faite par une petite équipe à Nantes.</p>
       </div>
-      <a class="btn btn-primary" href="#inscription">Créer mon compte</a>
+      <a class="btn" href="#inscription">Créer mon compte</a>
     </div>
     <ul class="foot-links">
       <li><a href="#">Mentions légales</a></li>
@@ -1151,170 +1146,181 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fmt = new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'});
+  var desk = window.matchMedia('(min-width:1100px) and (min-height:620px)');
+  var fmt = new Intl.NumberFormat('fr-FR', {style:'currency', currency:'EUR'});
+  var stageScr = document.querySelector('.stage .scr');
+  var stagePhone = document.querySelector('.stage .phone');
 
-  /* Amounts: format once, then count up (600 ms, once) */
-  var amounts = document.querySelectorAll('[data-amount]');
-  amounts.forEach(function(el){ el.textContent = fmt.format(parseFloat(el.dataset.amount)); });
+  /* 1. Each chapter gets its own copy of the screen (shown on small screens) */
+  document.querySelectorAll('[data-slot]').forEach(function(slot){
+    var src = stageScr.querySelector('[data-screen="' + slot.dataset.slot + '"]');
+    if (!src) return;
+    var phone = document.createElement('div'); phone.className = 'phone'; phone.setAttribute('aria-hidden', 'true');
+    var scr = document.createElement('div'); scr.className = 'scr';
+    var copy = src.cloneNode(true); copy.classList.add('on');
+    scr.appendChild(copy); phone.appendChild(scr); slot.appendChild(phone);
+  });
+
+  /* 2. Amounts */
+  document.querySelectorAll('[data-amount]').forEach(function(el){ el.textContent = fmt.format(parseFloat(el.dataset.amount)); });
   function easeOut(t){ return 1 - Math.pow(1 - t, 4); }
   function countUp(el){
     if (reduce) return;
-    var end = parseFloat(el.dataset.amount), t0 = null, d = 600;
+    var end = parseFloat(el.dataset.amount), t0 = null;
     function step(ts){
       if (!t0) t0 = ts;
-      var p = Math.min(1, (ts - t0) / d);
-      el.textContent = fmt.format(end * (0.8 + 0.2 * easeOut(p)));
+      var p = Math.min(1, (ts - t0) / 650);
+      el.textContent = fmt.format(end * (0.82 + 0.18 * easeOut(p)));
       if (p < 1) requestAnimationFrame(step); else el.textContent = fmt.format(end);
     }
     requestAnimationFrame(step);
   }
-  document.querySelectorAll('[data-count="load"]').forEach(countUp);
 
-  /* Cash-flow curves (same example data everywhere) */
+  /* 3. Cash-flow curves (same example data everywhere: 13 Nov to 11 Feb, low point 28 Dec) */
   var data = [6214,7100,6400,5200,4300,3900,3120,3600,4800,5900,6800,7600,8430];
-  function pts(w,h,pad){
-    var max = 10000;
-    return data.map(function(v,i){ return [i*(w/(data.length-1)), pad + (h-2*pad)*(1 - v/max)]; });
-  }
+  function pts(w, h, pad){ return data.map(function(v, i){ return [i * (w / (data.length - 1)), pad + (h - 2 * pad) * (1 - v / 10000)]; }); }
   function smooth(p){
     var d = 'M' + p[0][0].toFixed(1) + ',' + p[0][1].toFixed(1);
-    for (var i=0;i<p.length-1;i++){
-      var p0 = p[i-1]||p[i], p1 = p[i], p2 = p[i+1], p3 = p[i+2]||p2;
-      var c1x = p1[0] + (p2[0]-p0[0])/6, c1y = p1[1] + (p2[1]-p0[1])/6;
-      var c2x = p2[0] - (p3[0]-p1[0])/6, c2y = p2[1] - (p3[1]-p1[1])/6;
-      d += ' C' + c1x.toFixed(1)+','+c1y.toFixed(1)+' '+c2x.toFixed(1)+','+c2y.toFixed(1)+' '+p2[0].toFixed(1)+','+p2[1].toFixed(1);
+    for (var i = 0; i < p.length - 1; i++){
+      var p0 = p[i - 1] || p[i], p1 = p[i], p2 = p[i + 1], p3 = p[i + 2] || p2;
+      d += ' C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ',' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ',' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ',' + p2[1].toFixed(1);
     }
     return d;
   }
-  document.querySelectorAll('svg').forEach(function(svg){
-    var line = svg.querySelector('[data-chart-line]');
-    if (!line) return;
-    var vb = svg.viewBox.baseVal, p = pts(vb.width, vb.height, 8), d = smooth(p);
-    line.setAttribute('d', d);
-    var area = svg.querySelector('[data-chart-area]');
-    if (area) area.setAttribute('d', d + ' L' + vb.width + ',' + vb.height + ' L0,' + vb.height + ' Z');
-    var low = svg.querySelector('[data-low]');
-    if (low){ low.setAttribute('cx', p[6][0]); low.setAttribute('cy', p[6][1]); }
-    var len = line.getTotalLength();
-    line.style.setProperty('--len', len);
-  });
-  document.querySelectorAll('[data-spark]').forEach(function(path){
-    path.setAttribute('d', smooth(pts(200,46,5)));
+  document.querySelectorAll('svg.chart').forEach(function(svg){
+    var vb = svg.viewBox.baseVal, pad = 6, p = pts(vb.width, vb.height, pad), d = smooth(p);
+    var line = svg.querySelector('[data-line]'); if (line) line.setAttribute('d', d);
+    var area = svg.querySelector('[data-area]'); if (area) area.setAttribute('d', d + ' L' + vb.width + ',' + vb.height + ' L0,' + vb.height + ' Z');
+    var low = svg.querySelector('[data-low]'); if (low){ low.setAttribute('cx', p[6][0]); low.setAttribute('cy', p[6][1]); }
+    var thr = svg.querySelector('[data-thr]'); if (thr){ var y = pad + (vb.height - 2 * pad) * (1 - 2000 / 10000); thr.setAttribute('y1', y); thr.setAttribute('y2', y); }
   });
 
-  /* Draw curves and count amounts once when they enter the screen */
-  if (!reduce && 'IntersectionObserver' in window){
+  /* 4. The screen follows the chapter in the middle of the window */
+  var stage = document.querySelector('.stage');
+  var screens = stageScr.querySelectorAll('.sc');
+  var ticks = document.querySelectorAll('.ticks a');
+  var current = 'home';
+  function activate(name){
+    if (name === current) return;
+    current = name;
+    screens.forEach(function(s){ s.classList.toggle('on', s.dataset.screen === name); });
+    stage.classList.toggle('is-story', name !== 'home');
+    ticks.forEach(function(t){
+      var on = t.dataset.to === name;
+      t.classList.toggle('on', on);
+      if (on) t.setAttribute('aria-current', 'step'); else t.removeAttribute('aria-current');
+    });
+    var active = stageScr.querySelector('.sc.on');
+    if (active && desk.matches) active.querySelectorAll('[data-count]').forEach(countUp);
+  }
+  if ('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (!e.isIntersecting) return;
-        var el = e.target;
-        if (el.matches('.draw')){
-          var len = el.getTotalLength();
-          el.animate([{strokeDasharray: len, strokeDashoffset: len},{strokeDasharray: len, strokeDashoffset: 0}], {duration: 900, easing: 'cubic-bezier(.16,1,.3,1)'});
-        } else { countUp(el); }
-        io.unobserve(el);
-      });
-    }, {threshold: .4});
-    document.querySelectorAll('.draw, [data-count="view"]').forEach(function(el){ io.observe(el); });
+      entries.forEach(function(e){ if (e.isIntersecting) activate(e.target.dataset.screenFor); });
+    }, {rootMargin: '-49% 0px -50% 0px'});
+    document.querySelectorAll('[data-screen-for]').forEach(function(el){ io.observe(el); });
   }
 
-  /* Profile selector (échéancier) */
+  /* The hero form slides away behind the phone */
+  var heroForm = document.querySelector('.hero-form');
+  function onScroll(){
+    if (!desk.matches){ heroForm.style.opacity = ''; heroForm.style.visibility = ''; return; }
+    var o = Math.max(0, 1 - window.scrollY / 240);
+    heroForm.style.opacity = o;
+    heroForm.style.visibility = o < 0.02 ? 'hidden' : '';
+  }
+  window.addEventListener('scroll', onScroll, {passive: true});
+  onScroll();
+
+  /* 5. Guided tour: five chapters, 6 s each = 30 s */
+  var tourIds = ['devis', 'facture', 'relance', 'tresorerie', 'export'];
+  var tourT = null, tourI = 0;
+  var tourBtns = document.querySelectorAll('[data-tour]');
+  var LABEL_PLAY = 'Voir l’application en 30 secondes', LABEL_STOP = 'Arrêter la visite';
+  function setBtns(on){
+    tourBtns.forEach(function(b){
+      b.querySelector('span').textContent = on ? LABEL_STOP : LABEL_PLAY;
+      b.querySelector('use').setAttribute('href', on ? '#i-pause' : '#i-play');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  var EVTS = ['wheel', 'touchstart', 'keydown'];
+  function interrupt(e){
+    if (e.target && e.target.closest && e.target.closest('[data-tour]')) return;
+    if (e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift')) return;
+    stopTour();
+  }
+  function stopTour(){
+    if (tourT){ clearTimeout(tourT); tourT = null; }
+    setBtns(false);
+    EVTS.forEach(function(ev){ window.removeEventListener(ev, interrupt, true); });
+  }
+  function tourStep(){
+    if (tourI >= tourIds.length){ stopTour(); return; }
+    document.getElementById(tourIds[tourI]).scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+    tourI++;
+    tourT = setTimeout(tourStep, 6000);
+  }
+  tourBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      if (tourT){ stopTour(); return; }
+      tourI = 0; setBtns(true); tourStep();
+      EVTS.forEach(function(ev){ window.addEventListener(ev, interrupt, {capture: true, passive: true}); });
+    });
+  });
+
+  /* 6. Échéancier: profile selector */
   var profiles = {
-    artisan: {who:'artisan',
+    artisan: {who:'artisan', label:'Artisan', short:'Devis et acomptes compris',
       now:'Vos fournisseurs, grossistes et négoces, peuvent déjà vous envoyer des factures électroniques. Choisissez la plateforme agréée qui les reçoit.',
       next:'Émettez vos devis, acomptes et factures au format électronique, depuis une plateforme agréée.',
       liasse:'Le devis devient une facture conforme en un geste, depuis la camionnette, et les relances partent seules.'},
-    commercant: {who:'commerçant',
+    commercant: {who:'commerçant', label:'Commerçant', short:'Factures fournisseurs centralisées',
       now:'Centralisez la réception des factures de vos fournisseurs sur une plateforme agréée, au lieu de les chercher dans vos e-mails.',
       next:'Émettez vos factures au format électronique, depuis une plateforme agréée.',
       liasse:'Vos factures reçues alimentent votre trésorerie à 90 jours : vous voyez si vous pourrez payer vos fournisseurs et vos salaires.'},
-    liberal: {who:'profession libérale',
+    liberal: {who:'profession libérale', label:'Profession libérale', short:'Factures d’honoraires comprises',
       now:'Recevez les factures de vos fournisseurs et de vos prestataires sur une plateforme agréée.',
       next:'Émettez vos factures d’honoraires au format électronique, depuis une plateforme agréée.',
       liasse:'Vos factures partent depuis votre téléphone, et les relances polies avec un lien de paiement vous évitent de courir après vos règlements.'},
-    societe: {who:'société',
+    societe: {who:'société', label:'Société', short:'Validation par l’équipe',
       now:'Organisez la réception : qui reçoit les factures électroniques, qui les valide, qui les paie.',
       next:'Émettez vos factures au format électronique, depuis une plateforme agréée, et donnez un accès direct à votre expert-comptable.',
       liasse:'La formule Équipe donne un accès à chaque salarié et à votre expert-comptable, avec la validation des factures reçues.'}
   };
-  var todo = document.getElementById('todo');
   function renderProfile(key){
     var p = profiles[key];
     document.getElementById('todo-who').textContent = p.who;
     document.getElementById('todo-now').textContent = ' ' + p.now;
     document.getElementById('todo-next').textContent = ' ' + p.next;
     document.getElementById('todo-liasse').textContent = ' ' + p.liasse;
+    document.querySelectorAll('[data-p="who"]').forEach(function(el){ el.textContent = p.label; });
+    document.querySelectorAll('[data-p="short"]').forEach(function(el){ el.textContent = p.short; });
   }
   document.querySelectorAll('input[name="profil"]').forEach(function(r){
     r.addEventListener('change', function(){ renderProfile(r.value); });
   });
   renderProfile('artisan');
+  var todo = document.getElementById('todo');
   document.getElementById('see-todo').addEventListener('click', function(){
-    var checked = document.querySelector('input[name="profil"]:checked');
-    renderProfile(checked.value);
-    todo.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'});
-    todo.focus({preventScroll:true});
+    renderProfile(document.querySelector('input[name="profil"]:checked').value);
+    if (!desk.matches) todo.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'});
+    todo.focus({preventScroll: true});
+    if (!reduce){ stagePhone.classList.remove('ping'); void stagePhone.offsetWidth; stagePhone.classList.add('ping'); }
   });
 
-  /* App player: 4 steps, 7.5 s each = 30 s */
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.steps [role="tab"]'));
-  var panels = tabs.map(function(t){ return document.getElementById(t.getAttribute('aria-controls')); });
-  var playBtn = document.getElementById('play');
-  var timer = null, current = 0, barAnim = null;
-  function show(i, fromUser){
-    current = i;
-    tabs.forEach(function(t,k){
-      var on = k === i;
-      t.setAttribute('aria-selected', on);
-      t.tabIndex = on ? 0 : -1;
-      panels[k].classList.toggle('on', on);
-      t.querySelector('.bar').style.transform = 'scaleX(0)';
-    });
-    if (i === 3) panels[3].querySelectorAll('[data-count="tab"]').forEach(countUp);
-    if (fromUser) stop();
-  }
-  function stop(){
-    if (timer){ clearTimeout(timer); timer = null; }
-    if (barAnim){ barAnim.cancel(); barAnim = null; }
-    playBtn.querySelector('span').textContent = 'Voir l’application en 30 secondes';
-    playBtn.querySelector('use').setAttribute('href', '#i-play');
-  }
-  function run(i){
-    show(i);
-    var bar = tabs[i].querySelector('.bar');
-    if (!reduce && bar.animate) barAnim = bar.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}], {duration:7500, easing:'linear', fill:'forwards'});
-    timer = setTimeout(function(){
-      if (i < tabs.length - 1) run(i + 1); else stop();
-    }, 7500);
-  }
-  playBtn.addEventListener('click', function(){
-    if (timer){ stop(); return; }
-    playBtn.querySelector('span').textContent = 'Arrêter la démo';
-    playBtn.querySelector('use').setAttribute('href', '#i-pause');
-    run(0);
-  });
-  tabs.forEach(function(t,i){
-    t.addEventListener('click', function(){ show(i, true); });
-    t.addEventListener('keydown', function(e){
-      var k = null;
-      if (e.key === 'ArrowRight') k = (i + 1) % tabs.length;
-      if (e.key === 'ArrowLeft') k = (i - 1 + tabs.length) % tabs.length;
-      if (k !== null){ e.preventDefault(); show(k, true); tabs[k].focus(); }
-    });
-  });
-
-  /* Signup forms (preventDefault, no network call) */
+  /* 7. Signup forms (preventDefault, no network call) */
   var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var MSG = {
     invalid: 'Cette adresse ne semble pas complète. Il manque le "@" ou la fin (par exemple : .fr). Corrigez-la puis réessayez.',
     send: 'L’inscription n’est pas passée. La connexion a été coupée. Votre adresse est gardée : appuyez à nouveau sur "Essayer gratuitement 30 jours".',
     exists: 'Vous avez déjà un compte avec cette adresse. Pas besoin d’en créer un deuxième : recevez un lien de connexion.'
   };
-  function showError(form, input, msg){
+  function esc(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function showError(input, msg){
     var err = document.getElementById(input.getAttribute('aria-describedby'));
     err.querySelector('span').textContent = msg;
     err.classList.add('show');
-    input.setAttribute('aria-invalid','true');
+    input.setAttribute('aria-invalid', 'true');
   }
   function clearError(input){
     var err = document.getElementById(input.getAttribute('aria-describedby'));
@@ -1323,16 +1329,13 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
   }
   function success(form, html){
     var box = document.createElement('div');
-    box.className = 'success';
-    box.setAttribute('role','status');
-    box.tabIndex = -1;
+    box.className = 'success'; box.setAttribute('role', 'status'); box.tabIndex = -1;
     box.innerHTML = html;
     form.replaceWith(box);
     box.focus();
   }
   function signupSuccess(form, email){
-    var safe = email.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; });
-    success(form, '<strong><svg aria-hidden="true"><use href="#i-check-circle"/></svg>C’est parti !</strong>Nous venons d’envoyer un lien de connexion à <b>' + safe + '</b>. Ouvrez-le sur ce téléphone pour créer votre première facture. Rien reçu dans 2 minutes ? Regardez dans vos indésirables.');
+    success(form, '<strong><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg>C’est parti !</strong>Nous venons d’envoyer un lien de connexion à <b>' + esc(email) + '</b>. Ouvrez-le sur ce téléphone pour créer votre première facture. Rien reçu dans 2 minutes ? Regardez dans vos indésirables.');
   }
   document.querySelectorAll('[data-signup]').forEach(function(form){
     var input = form.querySelector('input[type="email"]');
@@ -1343,19 +1346,17 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
       e.preventDefault();
       var email = input.value.trim();
       note.classList.remove('show');
-      if (!emailRe.test(email)){ showError(form, input, MSG.invalid); input.focus(); return; }
+      if (!emailRe.test(email)){ showError(input, MSG.invalid); input.focus(); return; }
       clearError(input);
-      if (!navigator.onLine){ showError(form, input, MSG.send); return; }
-      btn.disabled = true;
-      btn.textContent = 'Création du compte…';
+      if (!navigator.onLine){ showError(input, MSG.send); return; }
+      btn.disabled = true; btn.textContent = 'Création du compte…';
       setTimeout(function(){
-        btn.disabled = false;
-        btn.textContent = btn.dataset.label;
+        btn.disabled = false; btn.textContent = btn.dataset.label;
         /* Demo only: an address starting with "deja@" plays the "account already exists" case */
         if (/^deja@/i.test(email)){
           note.innerHTML = '';
           var p = document.createElement('p'); p.textContent = MSG.exists;
-          var b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-primary btn-sm'; b.textContent = 'Recevoir mon lien';
+          var b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-sm'; b.textContent = 'Recevoir mon lien';
           b.addEventListener('click', function(){ signupSuccess(form, email); });
           note.appendChild(p); note.appendChild(b); note.classList.add('show');
           b.focus();
@@ -1372,7 +1373,7 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
       var chosen = document.querySelector('.final .plan-chosen');
       if (chosen){ chosen.textContent = 'Formule choisie pour l’essai : ' + a.dataset.plan + '. Vous pourrez en changer à tout moment.'; chosen.classList.add('show'); }
       var input = document.getElementById('email-final');
-      if (input) setTimeout(function(){ input.focus({preventScroll:true}); }, reduce ? 0 : 500);
+      if (input) setTimeout(function(){ input.focus({preventScroll: true}); }, reduce ? 0 : 600);
     });
   });
 
@@ -1384,14 +1385,13 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
     partner.addEventListener('submit', function(e){
       e.preventDefault();
       var ok = true;
-      if (!cab.value.trim()){ showError(partner, cab, 'Indiquez le nom de votre cabinet.'); ok = false; } else clearError(cab);
-      if (!emailRe.test(cem.value.trim())){ showError(partner, cem, MSG.invalid); ok = false; } else clearError(cem);
+      if (!cab.value.trim()){ showError(cab, 'Indiquez le nom de votre cabinet.'); ok = false; } else clearError(cab);
+      if (!emailRe.test(cem.value.trim())){ showError(cem, MSG.invalid); ok = false; } else clearError(cem);
       if (!ok){ (cab.getAttribute('aria-invalid') ? cab : cem).focus(); return; }
       pbtn.disabled = true; pbtn.textContent = 'Envoi…';
       var email = cem.value.trim(), name = cab.value.trim();
       setTimeout(function(){
-        var esc = function(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
-        success(partner, '<strong><svg aria-hidden="true"><use href="#i-check-circle"/></svg>Merci, demande bien reçue.</strong>Nous écrivons à <b>' + esc(email) + '</b> pour présenter le partenariat au cabinet ' + esc(name) + '.');
+        success(partner, '<strong><svg class="ico" aria-hidden="true"><use href="#i-check-circle"/></svg>Merci, demande bien reçue.</strong>Nous écrivons à <b>' + esc(email) + '</b> pour présenter le partenariat au cabinet ' + esc(name) + '.');
       }, 900);
     });
   }
