@@ -1,0 +1,1261 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vibra · Capteurs de vibration sans fil pour la maintenance prédictive</title>
+<meta name="description" content="Vibra (entreprise fictive, site de démonstration) : capteurs de vibration sans fil, passerelle 4G et logiciel d'alerte pour la maintenance prédictive des PME industrielles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Vibra (entreprise fictive)","description":"Site de démonstration. Capteurs de vibration sans fil et logiciel de maintenance prédictive pour PME industrielles.","address":{"@type":"PostalAddress","addressLocality":"Saint-Étienne","addressCountry":"FR"}}
+</script>
+<style>
+:root{
+  --yellow:#FFC20E;
+  --yellow-hover:#E5AC00;
+  --ink:#111418;
+  --steel-900:#2B3036;
+  --steel-700:#4A525B;
+  --steel-400:#8A939C;
+  --steel-200:#D5D9DD;
+  --steel-100:#ECEEF0;
+  --white:#FFFFFF;
+  --ok:#1E7F4F;
+  --warn:#B45309;
+  --err:#C62828;
+  --focus:#1F6FEB;
+  --focus-inverse:#FFFFFF;
+
+  --font-title:"Barlow Condensed","Roboto Condensed","Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif;
+  --font-text:"Barlow","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+  --radius-sm:2px;
+  --radius-md:4px;
+  --shadow-sm:0 1px 2px rgba(17,20,24,.08);
+  --shadow-sticky:0 -2px 8px rgba(17,20,24,.12);
+  --ease:cubic-bezier(.2,0,0,1);
+  --fast:120ms;
+  --base:200ms;
+
+  --header-h:72px;
+  --callbar-h:0px;
+  --section-y:96px;
+}
+@media (max-width:767px){
+  :root{--header-h:60px;--callbar-h:76px;--section-y:64px}
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px);scroll-padding-bottom:calc(var(--callbar-h) + 16px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--steel-900);font-family:var(--font-text);font-size:18px;line-height:1.55;font-weight:400;overflow-x:hidden}
+@media (max-width:767px){body{font-size:17px;padding-bottom:var(--callbar-h)}}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-title);color:var(--ink);margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,1.6vw + 18px,40px);font-weight:600;line-height:1.1}
+h3{font-size:24px;font-weight:600;line-height:1.2}
+@media (max-width:767px){h3{font-size:22px}}
+p{margin:0}
+.tnum{font-variant-numeric:tabular-nums}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.on-dark :focus-visible,.on-dark:focus-visible{outline-color:var(--focus-inverse)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:16px;top:-80px;background:var(--ink);color:var(--white);padding:12px 16px;z-index:100;text-decoration:none;font-weight:600}
+.skip:focus{top:12px}
+
+.wrap{max-width:1280px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px)}
+@media (min-width:1100px){
+  .rails{border-left:1px solid var(--steel-200);border-right:1px solid var(--steel-200)}
+}
+.label{font-family:var(--font-title);font-weight:600;font-size:14px;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;color:var(--steel-700)}
+.lead{font-size:20px;color:var(--steel-700);max-width:60ch}
+@media (max-width:767px){.lead{font-size:18px}}
+.small{font-size:15px;font-weight:500;line-height:1.45}
+.muted{color:var(--steel-700)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:var(--radius-sm);font-family:var(--font-text);font-weight:600;font-size:17px;line-height:1.2;text-decoration:none;cursor:pointer;border:2px solid transparent;white-space:nowrap;transition:background-color var(--fast) var(--ease),border-color var(--fast) var(--ease),transform var(--fast) var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn svg{flex:none}
+.btn-primary{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.btn-primary:hover{background:var(--yellow-hover);border-color:var(--yellow-hover)}
+.btn-secondary{background:transparent;color:var(--steel-900);border-color:var(--steel-900)}
+.btn-secondary:hover{background:var(--steel-100)}
+.btn-dark{background:var(--steel-900);color:var(--white);border-color:var(--steel-900)}
+.btn-dark:hover{background:var(--ink);border-color:var(--ink)}
+.btn[aria-disabled="true"]{background:var(--steel-100);color:var(--steel-400);border-color:var(--steel-100);cursor:progress}
+.link{font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:var(--steel-400)}
+.link:hover{text-decoration-color:var(--ink)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--steel-200)}
+.site-header .wrap{display:flex;align-items:center;gap:16px;height:var(--header-h)}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-height:48px}
+.brand-word{font-family:var(--font-title);font-weight:700;font-size:26px;letter-spacing:.06em;line-height:1}
+.main-nav{margin-left:auto}
+.main-nav ul{display:flex;gap:0;list-style:none;margin:0;padding:0}
+.main-nav a{display:inline-flex;align-items:center;min-height:48px;padding:0 9px;font-size:16px;font-weight:500;color:var(--steel-700);text-decoration:none;white-space:nowrap}
+.main-nav a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
+.header-phone{display:inline-flex;align-items:center;gap:8px;min-height:48px;font-family:var(--font-title);font-weight:700;font-size:22px;letter-spacing:.01em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.header-phone small{font-family:var(--font-text);font-weight:500;font-size:13px;color:var(--steel-700);display:block;line-height:1;letter-spacing:0}
+.header-phone svg,.brand svg{flex:none}
+.header-phone span{display:flex;flex-direction:column;line-height:1.05}
+.header-cta{padding:10px 18px;font-size:16px}
+.menu-btn{display:none;margin-left:auto;align-items:center;gap:8px;min-height:48px;min-width:48px;padding:0 12px;border:2px solid var(--steel-900);border-radius:var(--radius-sm);background:var(--white);font:600 16px var(--font-text);color:var(--steel-900);cursor:pointer}
+.mobile-menu{display:none}
+@media (max-width:1339px){
+  .main-nav{display:none}
+  .header-phone{margin-left:auto}
+}
+@media (max-width:767px){
+  .header-phone,.header-cta{display:none}
+  .menu-btn{display:inline-flex}
+  .brand-word{font-size:24px}
+  .mobile-menu{position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1px solid var(--steel-200);box-shadow:0 8px 16px rgba(17,20,24,.08)}
+  .mobile-menu.open{display:block}
+  .mobile-menu ul{list-style:none;margin:0;padding:8px 16px 16px}
+  .mobile-menu li a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid var(--steel-100);text-decoration:none;font-weight:500;font-size:18px}
+  .mobile-menu .btn{width:100%;margin-top:12px}
+}
+@media (min-width:768px) and (max-width:1339px){
+  .menu-btn{display:inline-flex;margin-left:0}
+  .mobile-menu{position:absolute;right:clamp(16px,4vw,48px);top:100%;width:320px;background:var(--white);border:1px solid var(--steel-200);box-shadow:0 8px 16px rgba(17,20,24,.08)}
+  .mobile-menu.open{display:block}
+  .mobile-menu ul{list-style:none;margin:0;padding:8px 16px 16px}
+  .mobile-menu li a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid var(--steel-100);text-decoration:none;font-weight:500}
+  .mobile-menu .btn{width:100%;margin-top:12px}
+}
+
+/* Hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,7fr);min-height:min(calc(100dvh - var(--header-h)),760px)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;gap:24px;padding:64px 40px 64px 0}
+.hero h1{font-size:clamp(48px,4.4vw + 16px,84px);font-weight:700;line-height:.98;letter-spacing:-.005em}
+.hero h1 mark{background:linear-gradient(transparent 62%,var(--yellow) 62%,var(--yellow) 92%,transparent 92%);color:inherit;padding:0 .04em}
+.hero .lead{max-width:34ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.hero-visual{position:relative;border-left:1px solid var(--steel-200);background:var(--steel-100);overflow:hidden}
+.hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-visual figcaption{position:absolute;left:16px;top:12px;font-size:13px;color:var(--steel-700);font-weight:500}
+@media (max-width:1023px){
+  .hero .wrap{grid-template-columns:1fr;min-height:0}
+  .hero-copy{padding:40px 0 48px;order:2}
+  .hero-visual{order:1;aspect-ratio:16/10;border-left:0;margin-inline:calc(-1 * clamp(16px,4vw,48px))}
+}
+@media (max-width:767px){
+  .hero-visual{aspect-ratio:4/3}
+  .hero .callout,.hero .readout{display:none}
+  .hero-copy{padding:28px 0 40px;gap:18px}
+  .hero-ctas .btn{width:100%}
+}
+@keyframes wave{to{transform:translateX(-162px)}}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
+.wave-track{animation:wave 2.4s linear infinite}
+.radio-arc{animation:pulse 2.4s var(--ease) infinite}
+.radio-arc:nth-child(2){animation-delay:.3s}
+.radio-arc:nth-child(3){animation-delay:.6s}
+
+/* Sections */
+section{position:relative}
+.section{padding-block:var(--section-y)}
+.section + .section,.band{border-top:1px solid var(--steel-200)}
+.tinted{background:var(--steel-100)}
+.section-head{display:flex;flex-direction:column;gap:14px;max-width:760px;margin-bottom:48px}
+@media (max-width:767px){.section-head{margin-bottom:32px}}
+
+/* Cost */
+.cost-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:start}
+.stat{border-top:3px solid var(--ink);padding-top:20px}
+.stat-num{font-family:var(--font-title);font-weight:700;font-size:clamp(84px,9vw,148px);line-height:.9;color:var(--ink);letter-spacing:-.01em;margin:14px 0 18px;white-space:nowrap}
+.stat-scope{font-size:20px;max-width:34ch;color:var(--steel-900)}
+.stat-source{margin-top:20px;padding-top:14px;border-top:1px solid var(--steel-200);font-size:15px;color:var(--steel-700);max-width:58ch}
+.stat-source a{color:var(--steel-900)}
+.stat-note{margin-top:28px;font-size:17px;color:var(--steel-700);max-width:48ch}
+.calc{background:var(--white);border:1px solid var(--steel-200);border-radius:var(--radius-md);padding:32px}
+.calc h3{margin-bottom:6px}
+.calc .formula{font-size:15px;color:var(--steel-700);margin-bottom:24px}
+@media (max-width:1023px){.cost-grid{grid-template-columns:1fr;gap:40px}}
+@media (max-width:767px){.calc{padding:20px}}
+
+/* Forms */
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.field label{font-weight:600;font-size:16px;color:var(--ink)}
+.field .hint{font-size:14px;color:var(--steel-700);font-weight:500}
+.field input,.field select{width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--steel-400);border-radius:var(--radius-sm);background:var(--white);font:500 17px var(--font-text);color:var(--ink);font-variant-numeric:tabular-nums}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%232B3036' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px}
+.field input::placeholder{color:var(--steel-700)}
+.field input:hover,.field select:hover{border-color:var(--steel-700)}
+.field input:focus-visible,.field select:focus-visible{border-color:var(--steel-900)}
+.field input[aria-invalid="true"],.field select[aria-invalid="true"]{border-color:var(--err)}
+.error{display:none;gap:8px;align-items:flex-start;font-size:15px;font-weight:500;color:var(--err);line-height:1.4}
+.error.show{display:flex}
+.error svg{flex:none;margin-top:2px}
+.calc-result{margin-top:24px;padding:20px;border-radius:var(--radius-md);background:var(--steel-100);min-height:120px}
+.calc-result .empty{color:var(--steel-700);font-size:16px}
+.calc-result .big{font-family:var(--font-title);font-weight:700;font-size:48px;line-height:1;color:var(--ink);margin:6px 0 8px}
+.calc-result p.small{color:var(--steel-700)}
+.calc .btn{width:100%}
+
+/* Install */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--steel-200);border-bottom:1px solid var(--steel-200);list-style:none;margin:0;padding:0}
+.step{padding:28px 28px 32px;border-left:1px solid var(--steel-200)}
+.step:first-child{border-left:0;padding-left:0}
+.step:last-child{padding-right:0}
+.step svg{width:100%;height:auto;aspect-ratio:4/3;margin-bottom:20px}
+.step-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.marker{display:inline-grid;place-items:center;width:36px;height:36px;background:var(--yellow);color:var(--ink);font-family:var(--font-title);font-weight:700;font-size:22px;border-radius:var(--radius-sm);flex:none}
+.step p{color:var(--steel-700);max-width:36ch}
+@media (max-width:899px){
+  .steps{grid-template-columns:1fr}
+  .step,.step:first-child,.step:last-child{border-left:0;border-top:1px solid var(--steel-200);padding:28px 0}
+  .step:first-child{border-top:0}
+  .step svg{max-width:360px}
+}
+
+.chain-block{margin-top:64px}
+.chain-block h3{margin-bottom:8px}
+.chain-block > p{color:var(--steel-700);max-width:62ch;margin-bottom:28px}
+.chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;list-style:none;margin:0;padding:0;position:relative}
+.chain li{position:relative;padding:20px 28px 20px 20px;background:var(--white);border:1px solid var(--steel-200);border-right:0}
+.chain li:last-child{border-right:1px solid var(--steel-200)}
+.chain li:not(:last-child)::after{content:"";position:absolute;right:-11px;top:50%;width:20px;height:20px;background:var(--white);border-top:1px solid var(--steel-400);border-right:1px solid var(--steel-400);transform:translateY(-50%) rotate(45deg);z-index:1}
+.chain .node-icon{width:40px;height:40px;margin-bottom:12px;color:var(--steel-900)}
+.chain strong{display:block;font-family:var(--font-title);font-weight:600;font-size:22px;line-height:1.15;color:var(--ink)}
+.chain span{display:block;font-size:15px;color:var(--steel-700);margin-top:4px;font-weight:500}
+.no-net{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:16px 20px;border:2px dashed var(--steel-400);border-radius:var(--radius-md)}
+.no-net p{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--ink)}
+.no-net a{margin-left:auto}
+@media (max-width:899px){
+  .chain{grid-template-columns:1fr}
+  .chain li{border-right:1px solid var(--steel-200);border-bottom:0;padding:18px 18px 22px}
+  .chain li:last-child{border-bottom:1px solid var(--steel-200)}
+  .chain li:not(:last-child)::after{right:auto;left:28px;top:auto;bottom:-11px;transform:rotate(135deg)}
+  .no-net a{margin-left:0}
+}
+
+/* Dashboard */
+.dash-layout{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,3fr);gap:40px;align-items:start}
+.app{background:var(--white);border:1px solid var(--steel-400);border-radius:var(--radius-md);overflow:hidden;box-shadow:0 24px 48px -24px rgba(43,48,54,.35)}
+.app-top{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--steel-900);color:var(--white);font-size:14px}
+.app-top .brand-word{font-size:18px}
+.app-top .site{color:#C9CED3;font-weight:500}
+.app-top .demo-tag{margin-left:auto;font-family:var(--font-title);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:13px;background:var(--steel-700);padding:3px 8px;border-radius:var(--radius-sm)}
+.app-body{display:grid;grid-template-columns:220px minmax(0,1fr)}
+.machine-list{border-right:1px solid var(--steel-200);background:#F6F7F8;padding:12px;display:flex;flex-direction:column;gap:8px}
+.machine-list .list-title{font-family:var(--font-title);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--steel-700);padding:4px 6px}
+.machine-tab{display:flex;flex-direction:column;align-items:flex-start;gap:6px;width:100%;text-align:left;min-height:48px;padding:10px 12px;border:1px solid var(--steel-200);border-radius:var(--radius-md);background:var(--white);font:inherit;color:var(--ink);cursor:pointer;transition:border-color var(--fast) var(--ease)}
+.machine-tab:hover{border-color:var(--steel-400)}
+.machine-tab[aria-selected="true"]{border-color:var(--steel-900);box-shadow:inset 3px 0 0 var(--steel-900)}
+.machine-tab .m-name{font-weight:600;font-size:15px;line-height:1.25}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;line-height:1}
+.status svg{flex:none}
+.status.ok{color:var(--ok)}
+.status.warn{color:var(--warn)}
+.status.alert{color:var(--err)}
+.panel{padding:20px 22px 22px;display:grid;grid-template-columns:minmax(0,1fr) 168px;grid-template-areas:"head head" "chart score" "alert alert";gap:16px 20px}
+.panel-head{grid-area:head;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px}
+.panel-head h3{font-size:24px}
+.panel-head .upd{margin-left:auto;font-size:13px;color:var(--steel-700);font-weight:500}
+.box{position:relative;border:1px solid var(--steel-200);border-radius:var(--radius-md);padding:14px}
+.box-title{font-family:var(--font-title);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--steel-700);margin-bottom:6px}
+.chart-box{grid-area:chart}
+.chart-box svg{width:100%;height:auto}
+.score-box{grid-area:score;display:flex;flex-direction:column;justify-content:space-between}
+.score-num{font-family:var(--font-title);font-weight:700;font-size:64px;line-height:1;color:var(--ink)}
+.score-num small{font-size:24px;color:var(--steel-700);font-weight:600}
+.score-scale{position:relative;height:10px;margin:14px 0 6px;background:linear-gradient(90deg,var(--err) 0 40%,var(--warn) 40% 70%,var(--ok) 70% 100%);border-radius:1px}
+.score-scale i{position:absolute;top:-5px;width:4px;height:20px;background:var(--ink);transform:translateX(-50%);transition:left var(--base) var(--ease)}
+.score-legend{display:flex;justify-content:space-between;font-size:12px;color:var(--steel-700);font-weight:500}
+.alert-box{grid-area:alert;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:16px;align-items:center;border-left-width:4px}
+.alert-box.alert{border-left-color:var(--err)}
+.alert-box.warn{border-left-color:var(--warn)}
+.alert-box.ok{border-left-color:var(--ok)}
+.alert-box dt{font-family:var(--font-title);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--steel-700)}
+.alert-box dd{margin:2px 0 0;font-weight:600;font-size:15px;line-height:1.35;color:var(--ink)}
+.alert-box .fake-btn{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;background:var(--steel-900);color:var(--white);font-weight:600;font-size:14px;border-radius:var(--radius-sm);white-space:nowrap}
+.pin{position:absolute;top:-13px;left:-13px;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--yellow);color:var(--ink);font-family:var(--font-title);font-weight:700;font-size:16px;box-shadow:0 0 0 3px var(--white);z-index:2}
+.annos{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.annos li{display:grid;grid-template-columns:36px 1fr;gap:14px;padding:20px 0;border-top:1px solid var(--steel-200)}
+.annos li:first-child{border-top:3px solid var(--ink)}
+.annos h3{font-size:22px;margin-bottom:4px}
+.annos p{font-size:16px;color:var(--steel-700)}
+.dash-foot{margin-top:20px;font-size:15px;color:var(--steel-700)}
+@media (max-width:1100px){
+  .dash-layout{grid-template-columns:1fr}
+  .annos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .annos li:first-child{border-top:1px solid var(--steel-200)}
+}
+@media (max-width:767px){
+  .app-body{grid-template-columns:1fr}
+  .machine-list{border-right:0;border-bottom:1px solid var(--steel-200)}
+  .panel{grid-template-columns:1fr;grid-template-areas:"head" "score" "chart" "alert";padding:16px}
+  .panel-head .upd{margin-left:0;width:100%}
+  .alert-box{grid-template-columns:1fr}
+  .annos{grid-template-columns:1fr;gap:0}
+  .app-top .site{display:none}
+}
+
+/* Sectors */
+.sector-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}
+.sector-grid .section-head{margin-bottom:0}
+.acc{border-top:3px solid var(--ink)}
+.acc details{border-bottom:1px solid var(--steel-400)}
+.acc summary{display:flex;align-items:center;gap:20px;min-height:84px;padding:14px 0;cursor:pointer;list-style:none}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .pic{width:56px;height:56px;flex:none;color:var(--steel-900)}
+.acc summary h3{font-size:clamp(26px,1.4vw + 16px,34px);font-weight:700;text-transform:uppercase;letter-spacing:.01em;flex:1}
+.acc summary .plus{width:44px;height:44px;flex:none;display:grid;place-items:center;border:2px solid var(--steel-900);border-radius:var(--radius-sm);transition:transform var(--base) var(--ease),background-color var(--fast)}
+.acc details[open] summary .plus{transform:rotate(45deg);background:var(--yellow);border-color:var(--yellow)}
+.acc summary:hover .plus{background:var(--steel-100)}
+.acc details[open] summary:hover .plus{background:var(--yellow-hover)}
+.acc-body{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:4px 0 28px 76px}
+.acc-body dt{margin-bottom:6px}
+.acc-body dd{margin:0;color:var(--steel-900)}
+.acc-body ul{margin:0;padding-left:18px}
+@media (max-width:1023px){.sector-grid{grid-template-columns:1fr;gap:32px}}
+@media (max-width:767px){
+  .acc summary{gap:14px;min-height:72px}
+  .acc summary .pic{width:44px;height:44px}
+  .acc-body{grid-template-columns:1fr;padding-left:0;gap:18px}
+}
+
+/* Testimonials */
+.quotes{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:auto auto;gap:24px}
+.quote{display:flex;flex-direction:column;gap:16px;padding:28px;background:var(--white);border:1px solid var(--steel-200);border-radius:var(--radius-md);transition:box-shadow var(--fast) var(--ease)}
+.quote:hover{box-shadow:var(--shadow-sm)}
+.quote.feature{grid-row:span 2;background:var(--steel-100);border-color:var(--steel-100);padding:40px;justify-content:space-between}
+.quote .q-machine{font-family:var(--font-title);font-weight:600;font-size:clamp(26px,1.4vw + 14px,34px);line-height:1.1;color:var(--ink)}
+.quote .q-machine span{display:block;font-size:.7em;color:var(--steel-700);font-weight:600;margin-top:4px}
+.quote.feature .q-machine{font-size:clamp(32px,2.6vw + 12px,56px)}
+.quote blockquote{margin:0;font-weight:500;font-size:18px;line-height:1.5;color:var(--steel-900);max-width:52ch}
+.quote.feature blockquote{font-size:clamp(20px,1vw + 12px,26px);line-height:1.45}
+.quote .who{font-size:15px;font-weight:500;color:var(--steel-700);line-height:1.45}
+.quote .who strong{color:var(--ink);font-weight:600}
+.quote .q-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--steel-200);margin-top:auto}
+.quote.feature .q-foot{border-top-color:var(--steel-200)}
+.quote .q-foot .label{font-size:13px}
+.quote .q-foot a{display:inline-flex;align-items:center;min-height:48px}
+@media (max-width:899px){
+  .quotes{grid-template-columns:1fr}
+  .quote.feature{grid-row:auto;padding:28px}
+}
+@media (max-width:767px){.quote{padding:22px}.quote.feature{padding:24px}}
+
+/* Datasheet */
+.sheet-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}
+.sheet{position:relative;aspect-ratio:210/297;background:var(--white);border:1px solid var(--steel-400);box-shadow:12px 12px 0 var(--steel-200);padding:7% 8%;display:flex;flex-direction:column;gap:5%;max-width:420px}
+.sheet-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:4%}
+.sheet-head b{font-family:var(--font-title);font-weight:700;font-size:clamp(16px,1.4vw,22px);line-height:1.05;color:var(--ink)}
+.sheet-head span{font-family:var(--font-title);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--steel-700)}
+.sheet svg{width:70%;margin:0 auto}
+.sheet-rows{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+.sheet-rows i{display:block;height:7px;background:var(--steel-100);border-radius:1px}
+.sheet-rows i:nth-child(odd){background:var(--steel-200);width:80%}
+.sheet-page{position:absolute;right:8%;bottom:4%;font-size:11px;color:var(--steel-700);font-weight:500}
+.specs-head{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 28px;padding:0}
+.spec{border:1px solid var(--steel-200);border-radius:var(--radius-md);padding:18px 18px 16px;background:var(--white)}
+.spec dt{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.spec dt b{font-family:var(--font-title);font-weight:600;font-size:22px;line-height:1.15;color:var(--ink)}
+.spec dt .unit{font-family:var(--font-title);font-weight:600;font-size:15px;color:var(--steel-700);white-space:nowrap}
+.spec dd{margin:8px 0 0;font-size:15px;color:var(--steel-700);font-weight:500}
+.spec.known{background:var(--steel-100);border-color:var(--steel-100)}
+.spec.known dd{color:var(--steel-900)}
+.dl-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.dl-row p{font-size:15px;color:var(--steel-700)}
+@media (max-width:1023px){.sheet-grid{grid-template-columns:1fr;gap:40px}.sheet{max-width:300px}}
+@media (max-width:599px){.sheet{max-width:210px}.specs{grid-template-columns:1fr}.dl-row .btn{width:100%;white-space:normal}}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:start}
+.about{display:flex;flex-direction:column;gap:20px}
+.about .logo-big{display:flex;align-items:center;gap:12px}
+.about .logo-big .brand-word{font-size:34px}
+.about > p{font-size:19px;max-width:44ch;color:var(--steel-900)}
+.direct{border-top:3px solid var(--ink);padding-top:18px;margin-top:12px}
+.direct a.num{display:inline-flex;align-items:center;gap:12px;min-height:56px;font-family:var(--font-title);font-weight:700;font-size:clamp(36px,3vw + 10px,52px);color:var(--ink);text-decoration:none;line-height:1}
+.direct a.num:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.techs{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:0}
+.techs li{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"r a" "n a";gap:2px 16px;padding:14px 0;border-bottom:1px solid var(--steel-200)}
+.techs .region{grid-area:r;font-size:15px;color:var(--steel-700);font-weight:500}
+.techs .name{grid-area:n;font-weight:600;color:var(--ink)}
+.techs a{grid-area:a;align-self:center;display:inline-flex;align-items:center;min-height:48px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pilot{background:var(--white);border:1px solid var(--steel-200);border-radius:var(--radius-md);padding:36px}
+.pilot h2{margin-bottom:8px}
+.pilot .intro{color:var(--steel-700);margin-bottom:28px;font-size:17px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.req{color:var(--steel-700);font-weight:500;font-size:14px}
+.pilot .btn-primary{width:100%;margin-top:4px}
+.form-note{margin-top:14px;font-size:14px;color:var(--steel-700)}
+.success{display:none;padding:24px;border:2px solid var(--ok);border-radius:var(--radius-md);background:#F1F8F4}
+.success.show{display:block}
+.success h3{display:flex;align-items:center;gap:10px;color:var(--ok);margin-bottom:8px}
+.success p{font-size:17px}
+.success a{font-weight:600}
+.spinner{width:18px;height:18px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:1023px){.contact-grid{grid-template-columns:1fr;gap:48px}}
+@media (max-width:599px){.form-row{grid-template-columns:1fr}.pilot{padding:22px}}
+
+/* Footer */
+.site-footer{background:var(--steel-900);color:#E3E6E9;padding:56px 0 40px}
+.site-footer a{color:var(--white)}
+.foot-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,3fr) minmax(0,5fr);gap:40px}
+.foot-grid .brand{color:var(--white)}
+.foot-grid h2{font-size:18px;color:var(--white);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+.foot-grid ul{list-style:none;margin:0;padding:0}
+.foot-grid li a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.foot-grid li a:hover{text-decoration:underline}
+.foot-grid p{font-size:15px;line-height:1.5;color:#C9CED3}
+.foot-legal{margin-top:40px;padding-top:20px;border-top:1px solid #4A525B;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:15px;color:#C9CED3}
+.foot-legal strong{color:var(--white);font-weight:600}
+@media (max-width:899px){.foot-grid{grid-template-columns:1fr;gap:28px}}
+
+/* Mobile call bar */
+.callbar{display:none}
+@media (max-width:767px){
+  .callbar{display:grid;grid-template-columns:1fr auto;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--steel-900);box-shadow:var(--shadow-sticky)}
+  .callbar .btn{min-height:56px;font-size:17px;padding:10px 14px}
+  .callbar .btn-ghost{background:transparent;color:var(--white);border-color:var(--white)}
+  .callbar .btn-ghost:hover{background:var(--steel-700)}
+  .callbar .btn-primary span small{display:block;font-weight:500;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:0s!important;animation-iteration-count:1!important;transition-duration:0s!important}
+  .wave-track{animation:none}
+  .radio-arc{animation:none;opacity:.8}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo-mark" viewBox="0 0 36 36">
+      <rect width="36" height="36" rx="3" fill="#2B3036"/>
+      <path d="M5 19h6l3-8 4 16 4-13 3 5h6" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="26" y="26" width="5" height="5" fill="#FFC20E"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.8l1.4 4.2-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4.2 1.4v2.8a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2.8h8l4 4v14.4H6z M14 2.8v4h4 M12 10.5v6.5 M9 14l3 3 3-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-err" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 5.5v5.5M10 13.6v1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="s-ok" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="s-warn" viewBox="0 0 16 16"><path d="M8 1.2l7 13H1z" fill="currentColor"/><path d="M8 6v3.8M8 11.6v.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="s-alert" viewBox="0 0 16 16"><path d="M5.1 1h5.8L15 5.1v5.8L10.9 15H5.1L1 10.9V5.1z" fill="currentColor"/><path d="M8 4.4v4.6M8 11.2v.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wrap rails">
+    <a class="brand" href="#top" aria-label="Vibra, retour en haut de page">
+      <svg width="36" height="36" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span class="brand-word">VIBRA</span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#cout">Coût d'un arrêt</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#logiciel">Logiciel</a></li>
+        <li><a href="#secteurs">Secteurs</a></li>
+        <li><a href="#retours">Retours d'usine</a></li>
+        <li><a href="#fiche">Fiche technique</a></li>
+      </ul>
+    </nav>
+    <a class="header-phone" href="tel:+33477000000">
+      <svg width="22" height="22" aria-hidden="true"><use href="#i-phone"/></svg>
+      <span><small>Technicien, ligne directe</small>04 77 00 00 00</span>
+    </a>
+    <a class="btn btn-dark header-cta" href="#pilote">Tester sur une machine</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="2"/></svg>
+      Menu
+    </button>
+    <div class="mobile-menu" id="menu">
+      <ul>
+        <li><a href="#cout">Coût d'un arrêt</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#logiciel">Logiciel</a></li>
+        <li><a href="#secteurs">Secteurs</a></li>
+        <li><a href="#retours">Retours d'usine</a></li>
+        <li><a href="#fiche">Fiche technique</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div style="padding:0 16px 16px"><a class="btn btn-primary" href="#pilote">Tester sur une machine</a></div>
+    </div>
+  </div>
+</header>
+
+<main id="contenu">
+
+<!-- 1. Hero -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap rails">
+    <div class="hero-copy">
+      <p class="label">Maintenance prédictive pour PME industrielles</p>
+      <h1 id="hero-title">Zéro arrêt <mark>surprise.</mark></h1>
+      <p class="lead">Des capteurs de vibration sans fil qui vous alertent avant la panne. Posés sans câble, sans arrêter la ligne.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#pilote">Tester sur une machine</a>
+        <a class="btn btn-secondary" href="tel:+33477000000">
+          <svg width="20" height="20" aria-hidden="true"><use href="#i-phone"/></svg>
+          Appeler un technicien
+        </a>
+      </div>
+    </div>
+
+    <figure class="hero-visual" style="margin:0">
+      <svg id="heroSvg" viewBox="0 0 640 560" preserveAspectRatio="xMidYMax meet" role="img" aria-labelledby="hero-svg-t">
+        <title id="hero-svg-t">Dessin : un capteur Vibra posé par aimant sur le palier d'un moteur de pompe, avec une lecture de vibration de démonstration.</title>
+        <defs>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#DADEE2" stroke-width="1"/></pattern>
+          <linearGradient id="steelV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7EAED"/><stop offset=".45" stop-color="#C6CCD2"/><stop offset="1" stop-color="#939CA5"/></linearGradient>
+          <linearGradient id="shaft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#AEB5BC"/><stop offset=".45" stop-color="#F3F4F6"/><stop offset="1" stop-color="#8A939C"/></linearGradient>
+          <linearGradient id="sensorG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#363C43"/><stop offset=".32" stop-color="#626B74"/><stop offset=".55" stop-color="#4A525B"/><stop offset="1" stop-color="#23272C"/></linearGradient>
+          <clipPath id="waveClip"><rect x="446" y="62" width="162" height="46"/></clipPath>
+        </defs>
+        <rect x="-400" y="-600" width="1440" height="1760" fill="#ECEEF0"/>
+        <rect x="-400" y="-600" width="1440" height="1760" fill="url(#grid)"/>
+
+        <!-- base plate -->
+        <rect x="-400" y="505" width="1440" height="600" fill="#C3C9CF" stroke="#2B3036" stroke-width="2"/>
+        <line x1="-400" y1="515" x2="1040" y2="515" stroke="#8A939C"/>
+        <!-- driven side (pump), cropped -->
+        <rect x="-20" y="296" width="62" height="98" fill="#A9B1B9" stroke="#2B3036" stroke-width="2"/>
+        <line x1="-20" y1="318" x2="42" y2="318" stroke="#7C858E"/>
+        <line x1="-20" y1="372" x2="42" y2="372" stroke="#7C858E"/>
+        <!-- coupling -->
+        <rect x="42" y="286" width="92" height="118" rx="6" fill="url(#steelV)" stroke="#2B3036" stroke-width="2"/>
+        <line x1="74" y1="286" x2="74" y2="404" stroke="#2B3036" stroke-width="1.5"/>
+        <line x1="102" y1="286" x2="102" y2="404" stroke="#2B3036" stroke-width="1.5"/>
+        <rect x="80" y="300" width="16" height="90" fill="#8A939C" opacity=".45"/>
+        <!-- shaft -->
+        <rect x="132" y="324" width="136" height="42" fill="url(#shaft)" stroke="#2B3036" stroke-width="2"/>
+        <line x1="150" y1="334" x2="210" y2="334" stroke="#7C858E" stroke-width="1.5"/>
+        <!-- motor feet -->
+        <rect x="430" y="466" width="70" height="40" fill="#AAB2BA" stroke="#2B3036" stroke-width="2"/>
+        <rect x="586" y="466" width="70" height="40" fill="#AAB2BA" stroke="#2B3036" stroke-width="2"/>
+        <circle cx="465" cy="486" r="8" fill="#D5D9DD" stroke="#2B3036" stroke-width="1.5"/>
+        <circle cx="621" cy="486" r="8" fill="#D5D9DD" stroke="#2B3036" stroke-width="1.5"/>
+        <!-- motor body with fins -->
+        <rect x="400" y="178" width="260" height="292" fill="url(#steelV)" stroke="#2B3036" stroke-width="2"/>
+        <g fill="#8A939C" opacity=".5">
+          <rect x="400" y="194" width="260" height="8"/><rect x="400" y="214" width="260" height="8"/><rect x="400" y="234" width="260" height="8"/><rect x="400" y="254" width="260" height="8"/><rect x="400" y="274" width="260" height="8"/><rect x="400" y="294" width="260" height="8"/><rect x="400" y="314" width="260" height="8"/><rect x="400" y="334" width="260" height="8"/><rect x="400" y="354" width="260" height="8"/><rect x="400" y="374" width="260" height="8"/><rect x="400" y="394" width="260" height="8"/><rect x="400" y="414" width="260" height="8"/><rect x="400" y="434" width="260" height="8"/><rect x="400" y="454" width="260" height="8"/>
+        </g>
+        <!-- terminal box -->
+        <rect x="474" y="140" width="112" height="40" rx="3" fill="url(#steelV)" stroke="#2B3036" stroke-width="2"/>
+        <circle cx="486" cy="152" r="3" fill="#2B3036"/><circle cx="574" cy="152" r="3" fill="#2B3036"/>
+        <!-- end shield / bearing housing -->
+        <rect x="298" y="220" width="114" height="252" rx="22" fill="url(#steelV)" stroke="#2B3036" stroke-width="2"/>
+        <rect x="262" y="290" width="46" height="110" rx="10" fill="url(#steelV)" stroke="#2B3036" stroke-width="2"/>
+        <g fill="#8A939C" stroke="#2B3036" stroke-width="1.5">
+          <circle cx="322" cy="246" r="6"/><circle cx="390" cy="246" r="6"/><circle cx="322" cy="446" r="6"/><circle cx="390" cy="446" r="6"/>
+        </g>
+        <!-- sensor -->
+        <rect x="314" y="203" width="82" height="18" rx="2" fill="#2B3036"/>
+        <rect x="322" y="88" width="66" height="116" rx="8" fill="url(#sensorG)" stroke="#111418" stroke-width="1.5"/>
+        <line x1="324" y1="108" x2="386" y2="108" stroke="#7D868F" stroke-width="1.2"/>
+        <line x1="324" y1="186" x2="386" y2="186" stroke="#7D868F" stroke-width="1.2"/>
+        <rect x="328" y="70" width="54" height="22" rx="10" fill="#2B3036" stroke="#111418" stroke-width="1.5"/>
+        <circle cx="355" cy="128" r="6" fill="#1E7F4F" stroke="#ECEEF0" stroke-width="1.5"/>
+        <path d="M339 158h6l3-7 4 14 4-11 3 4h6" fill="none" stroke="#ECEEF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="355" y="180" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="11" letter-spacing="1.5" fill="#ECEEF0">VIBRA</text>
+        <!-- radio arcs -->
+        <g fill="none" stroke="#4A525B" stroke-width="2.2" stroke-linecap="round">
+          <path class="radio-arc" d="M340 58a20 20 0 0 1 30 0"/>
+          <path class="radio-arc" d="M330 46a34 34 0 0 1 50 0"/>
+          <path class="radio-arc" d="M320 34a48 48 0 0 1 70 0"/>
+        </g>
+
+        <!-- callouts -->
+        <g class="callout" font-family="Barlow, Segoe UI, sans-serif" fill="#2B3036">
+          <circle cx="322" cy="140" r="4" fill="#2B3036"/>
+          <polyline points="322,140 236,140" fill="none" stroke="#2B3036" stroke-width="1.5"/>
+          <text x="228" y="136" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="20">Capteur Vibra</text>
+          <text x="228" y="156" text-anchor="end" font-size="14" fill="#4A525B">vibration et température</text>
+          <circle cx="314" cy="212" r="4"/>
+          <polyline points="314,212 236,212" fill="none" stroke="#2B3036" stroke-width="1.5"/>
+          <text x="228" y="208" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="20">Fixation magnétique</text>
+          <text x="228" y="228" text-anchor="end" font-size="14" fill="#4A525B">sans perçage, sans câble</text>
+          <circle cx="285" cy="398" r="4"/>
+          <polyline points="285,398 285,440 236,440" fill="none" stroke="#2B3036" stroke-width="1.5"/>
+          <text x="228" y="446" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="20">Palier côté accouplement</text>
+        </g>
+
+        <!-- readout -->
+        <g class="readout">
+          <line x1="430" y1="86" x2="390" y2="110" stroke="#2B3036" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <rect x="430" y="22" width="194" height="100" rx="4" fill="#FFFFFF" stroke="#8A939C"/>
+          <text x="446" y="44" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="600" font-size="13" letter-spacing=".6" fill="#4A525B">VIBRATION DU PALIER</text>
+          <text x="608" y="44" text-anchor="end" font-family="Barlow, sans-serif" font-weight="500" font-size="11" fill="#4A525B">démo</text>
+          <line x1="446" y1="85" x2="608" y2="85" stroke="#ECEEF0"/>
+          <g clip-path="url(#waveClip)"><path id="heroWave" class="wave-track" d="" fill="none" stroke="#2B3036" stroke-width="1.6" stroke-linejoin="round"/></g>
+        </g>
+      </svg>
+      <figcaption>Dessin de démonstration</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 2. Coût d'un arrêt -->
+<section class="section tinted band" id="cout" aria-labelledby="cout-title">
+  <div class="wrap">
+    <div class="cost-grid">
+      <div>
+        <h2 id="cout-title">Une heure d'arrêt a un coût. Calculez le vôtre.</h2>
+        <div class="stat" style="margin-top:40px">
+          <p class="label">Repère sourcé, grandes usines</p>
+          <p class="stat-num tnum">36&#8239;000&nbsp;$</p>
+          <p class="stat-scope">pour une heure d'arrêt non planifié dans une grande usine de biens de grande consommation.</p>
+          <p class="stat-source">Source : Siemens, <a href="https://assets.new.siemens.com/siemens/assets/api/uuid:1b43afb5-2d07-47f7-9eb7-893fe7d0bc59/TCOD-2024_original.pdf" rel="noopener" target="_blank"><cite>The True Cost of Downtime 2024</cite> (PDF)</a>, consulté le 13 novembre 2026. Périmètre : grandes usines, secteur des biens de grande consommation.</p>
+        </div>
+        <p class="stat-note">Ce repère vaut pour les grandes usines. Le calculateur le ramène à l'échelle de votre ligne.</p>
+      </div>
+
+      <form class="calc" id="calc" novalidate aria-labelledby="calc-title">
+        <h3 id="calc-title">Votre coût d'arrêt annuel</h3>
+        <p class="formula">Chiffre d'affaires horaire × heures d'arrêt non planifié par an</p>
+        <div class="field">
+          <label for="ca">Chiffre d'affaires horaire de la ligne</label>
+          <span class="hint" id="ca-hint">En euros hors taxes, par heure de production</span>
+          <input id="ca" name="ca" type="text" inputmode="decimal" autocomplete="off" aria-describedby="ca-hint ca-err">
+          <p class="error" id="ca-err"><svg width="18" height="18" aria-hidden="true"><use href="#i-err"/></svg><span></span></p>
+        </div>
+        <div class="field">
+          <label for="heures">Heures d'arrêt non planifié par an</label>
+          <span class="hint" id="h-hint">Votre estimation sur les douze derniers mois</span>
+          <input id="heures" name="heures" type="text" inputmode="decimal" autocomplete="off" aria-describedby="h-hint h-err">
+          <p class="error" id="h-err"><svg width="18" height="18" aria-hidden="true"><use href="#i-err"/></svg><span></span></p>
+        </div>
+        <button class="btn btn-primary" type="submit">Calculer mon coût d'arrêt</button>
+        <div class="calc-result" id="calc-result" aria-live="polite">
+          <p class="empty">Renseignez vos deux valeurs : le résultat s'affiche ici. Rien n'est envoyé, le calcul se fait dans votre navigateur.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Installation -->
+<section class="section" id="installation" aria-labelledby="install-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="install-title">Installé sans câble, sans arrêter la ligne.</h2>
+      <p class="lead">Le technicien pose les capteurs pendant que la machine tourne. Rien à brancher sur votre réseau.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <svg viewBox="0 0 320 240" role="img" aria-label="Dessin : le capteur descend vers le carter du moteur et s'y fixe par aimant.">
+          <g fill="none" stroke="#2B3036" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M160 132 L244 174 L160 216 L76 174 Z" fill="#FFFFFF"/>
+            <path d="M76 174 L160 216 L160 236 L76 194 Z" fill="#ECEEF0"/>
+            <path d="M160 216 L244 174 L244 194 L160 236 Z" fill="#D5D9DD"/>
+            <path d="M118 153 L202 195 M202 153 L118 195" stroke="#C7CCD1" stroke-width="1.2"/>
+            <ellipse cx="160" cy="174" rx="32" ry="16" stroke-dasharray="5 5"/>
+            <path d="M130 40 V92 A30 15 0 0 0 190 92 V40" fill="#FFC20E"/>
+            <path d="M130 84 V92 A30 15 0 0 0 190 92 V84 A30 15 0 0 1 130 84 Z" fill="#2B3036"/>
+            <ellipse cx="160" cy="40" rx="30" ry="15" fill="#FFFFFF"/>
+            <path d="M104 64 V118 M96 108 L104 120 L112 108"/>
+            <path d="M216 64 V118 M208 108 L216 120 L224 108"/>
+            <path d="M146 126 q14 8 28 0 M140 136 q20 11 40 0" stroke="#8A939C"/>
+          </g>
+        </svg>
+        <div class="step-head"><span class="marker" aria-hidden="true">1</span><h3>Poser le capteur</h3></div>
+        <p>Il se fixe par aimant sur le palier de la machine. Pas de perçage, pas de câble, pas d'arrêt.</p>
+      </li>
+      <li class="step">
+        <svg viewBox="0 0 320 240" role="img" aria-label="Dessin : la passerelle 4G est activée en appuyant sur son bouton.">
+          <g fill="none" stroke="#2B3036" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M150 220 L115 200 L115 90 L150 110 Z" fill="#ECEEF0"/>
+            <path d="M150 220 L219 180 L219 70 L150 110 Z" fill="#FFFFFF"/>
+            <path d="M150 110 L219 70 L184 50 L115 90 Z" fill="#D5D9DD"/>
+            <path d="M196 62 V20"/>
+            <circle cx="196" cy="17" r="3.5" fill="#2B3036"/>
+            <path d="M182 8 a18 18 0 0 0 0 20 M210 8 a18 18 0 0 1 0 20" stroke="#4A525B"/>
+            <path d="M172 0 a32 32 0 0 0 0 34 M220 0 a32 32 0 0 1 0 34" stroke="#8A939C"/>
+            <circle cx="166" cy="128" r="3" fill="#2B3036"/>
+            <circle cx="177" cy="122" r="3" fill="#2B3036"/>
+            <circle cx="188" cy="116" r="3" fill="#1E7F4F" stroke="#1E7F4F"/>
+            <ellipse cx="186" cy="158" rx="11" ry="12" fill="#FFC20E"/>
+            <path d="M264 186 L206 166 M214 158 L204 166 L216 173"/>
+            <path d="M160 196 L208 168" stroke="#C7CCD1" stroke-width="1.2"/>
+          </g>
+          <text x="226" y="40" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="18" fill="#2B3036">4G</text>
+        </svg>
+        <div class="step-head"><span class="marker" aria-hidden="true">2</span><h3>Activer la passerelle</h3></div>
+        <p>La passerelle 4G est autonome. Elle ne se connecte pas au réseau informatique de l'usine.</p>
+      </li>
+      <li class="step">
+        <svg viewBox="0 0 320 240" role="img" aria-label="Dessin : un téléphone scanne le code du capteur pour l'appairer à la machine.">
+          <g fill="none" stroke="#2B3036" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+            <rect x="40" y="34" width="98" height="180" rx="14" fill="#FFFFFF"/>
+            <rect x="49" y="52" width="80" height="144" rx="4" fill="#ECEEF0"/>
+            <circle cx="89" cy="108" r="20" fill="#FFC20E"/>
+            <path d="M79 108 l7 7 l13 -14"/>
+            <path d="M64 144 H114 M70 158 H108" stroke="#8A939C" stroke-width="5"/>
+            <path d="M138 92 L222 104 M138 150 L222 140" stroke-dasharray="5 6" stroke="#4A525B"/>
+            <path d="M214 62 V176 A32 16 0 0 0 278 176 V62" fill="#FFFFFF"/>
+            <path d="M214 168 V176 A32 16 0 0 0 278 176 V168 A32 16 0 0 1 214 168 Z" fill="#2B3036"/>
+            <ellipse cx="246" cy="62" rx="32" ry="16" fill="#D5D9DD"/>
+            <rect x="226" y="98" width="40" height="46" fill="#FFFFFF"/>
+            <path d="M232 104 h10 v10 h-10 z M250 104 h10 v10 h-10 z M232 128 h10 v10 h-10 z" fill="#2B3036"/>
+            <path d="M252 124 h4 M258 130 h2 M250 136 h6" stroke-width="3"/>
+            <path d="M180 208 H310" stroke="#8A939C"/>
+          </g>
+        </svg>
+        <div class="step-head"><span class="marker" aria-hidden="true">3</span><h3>Appairer avec la machine</h3></div>
+        <p>On scanne le code du capteur et on choisit la machine. Les premières mesures arrivent dans le logiciel.</p>
+      </li>
+    </ol>
+
+    <div class="chain-block">
+      <h3>Le trajet des données</h3>
+      <p>Pour le responsable informatique : chaque maillon, et ce qui ne passe jamais par votre réseau.</p>
+      <ol class="chain">
+        <li>
+          <svg class="node-icon" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="12" y="10" width="16" height="22" rx="2"/><path d="M9 32h22"/><path d="M15 6a8 8 0 0 1 10 0"/></g></svg>
+          <strong>Capteur</strong>
+          <span>Mesure vibration et température sur la machine</span>
+        </li>
+        <li>
+          <svg class="node-icon" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="8" y="16" width="24" height="18" rx="2"/><path d="M26 16V6"/><path d="M13 25h4"/></g></svg>
+          <strong>Passerelle 4G autonome</strong>
+          <span>Réseau mobile, aucun câble vers l'usine</span>
+        </li>
+        <li>
+          <svg class="node-icon" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="8" y="8" width="24" height="8" rx="1"/><rect x="8" y="18" width="24" height="8" rx="1"/><path d="M12 32h16M20 26v6"/><path d="M12 12h2M12 22h2"/></g></svg>
+          <strong>Hébergement dans l'UE</strong>
+          <span>Données stockées et traitées dans l'Union européenne</span>
+        </li>
+        <li>
+          <svg class="node-icon" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="6" y="8" width="28" height="20" rx="2"/><path d="M14 34h12M20 28v6"/><path d="M20 13v7M20 23v1" stroke-linecap="round"/></g></svg>
+          <strong>Alerte et export GMAO</strong>
+          <span>Dans le navigateur du responsable maintenance</span>
+        </li>
+      </ol>
+      <div class="no-net">
+        <p>
+          <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><g fill="none" stroke="#2B3036" stroke-width="2"><rect x="4" y="8" width="20" height="13" rx="1"/><path d="M10 25h8"/><path d="M3 3l22 22" stroke="#C62828" stroke-width="2.4"/></g></svg>
+          Réseau informatique de l'usine : aucune connexion.
+        </p>
+        <a class="link" href="#">Fiche sécurité (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Ce que voit le responsable maintenance -->
+<section class="section tinted band" id="logiciel" aria-labelledby="logiciel-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label">Ce que voit le responsable maintenance</p>
+      <h2 id="logiciel-title">Une alerte = une machine, un défaut, une action.</h2>
+    </div>
+    <div class="dash-layout">
+      <div class="app" role="group" aria-label="Aperçu du logiciel Vibra avec des données de démonstration">
+        <div class="app-top">
+          <svg width="22" height="22" aria-hidden="true"><use href="#logo-mark"/></svg>
+          <span class="brand-word">VIBRA</span>
+          <span class="site">Usine de démonstration, atelier conditionnement</span>
+          <span class="demo-tag">Données de démonstration</span>
+        </div>
+        <div class="app-body">
+          <div class="machine-list">
+            <p class="list-title" id="ml-title">Machines suivies</p>
+            <div role="tablist" aria-labelledby="ml-title" aria-orientation="vertical" style="display:flex;flex-direction:column;gap:8px">
+              <button class="machine-tab" role="tab" id="tab-p04" aria-selected="true" aria-controls="dash-panel" data-m="p04">
+                <span class="m-name">Pompe de lavage <span style="white-space:nowrap">P-04</span></span>
+                <span class="status alert"><svg width="14" height="14" aria-hidden="true"><use href="#s-alert"/></svg>Alerte</span>
+              </button>
+              <button class="machine-tab" role="tab" id="tab-c02" aria-selected="false" aria-controls="dash-panel" data-m="c02" tabindex="-1">
+                <span class="m-name">Compresseur froid <span style="white-space:nowrap">C-02</span></span>
+                <span class="status warn"><svg width="14" height="14" aria-hidden="true"><use href="#s-warn"/></svg>À surveiller</span>
+              </button>
+              <button class="machine-tab" role="tab" id="tab-m11" aria-selected="false" aria-controls="dash-panel" data-m="m11" tabindex="-1">
+                <span class="m-name">Convoyeur sortie four <span style="white-space:nowrap">M-11</span></span>
+                <span class="status ok"><svg width="14" height="14" aria-hidden="true"><use href="#s-ok"/></svg>Normal</span>
+              </button>
+            </div>
+          </div>
+          <div class="panel" id="dash-panel" role="tabpanel" aria-labelledby="tab-p04">
+            <div class="panel-head">
+              <h3 id="d-name">Pompe de lavage P-04</h3>
+              <span class="status alert" id="d-status"><svg width="14" height="14" aria-hidden="true"><use href="#s-alert"/></svg>Alerte</span>
+              <span class="upd">Mesure continue, palier côté accouplement</span>
+            </div>
+            <div class="box chart-box">
+              <span class="pin" aria-hidden="true">2</span>
+              <p class="box-title">Tendance : vitesse vibratoire (mm/s)</p>
+              <svg id="d-chart" viewBox="0 0 440 236" role="img" aria-labelledby="d-chart-t">
+                <title id="d-chart-t">Courbe de tendance de démonstration</title>
+              </svg>
+            </div>
+            <div class="box score-box">
+              <span class="pin" aria-hidden="true">1</span>
+              <div>
+                <p class="box-title">Score de santé</p>
+                <p class="score-num tnum"><span id="d-score">41</span><small>/100</small></p>
+              </div>
+              <div>
+                <div class="score-scale" aria-hidden="true"><i id="d-mark" style="left:41%"></i></div>
+                <div class="score-legend" aria-hidden="true"><span>Alerte</span><span>Surveiller</span><span>Normal</span></div>
+              </div>
+            </div>
+            <div class="box alert-box alert" id="d-alert">
+              <span class="pin" aria-hidden="true">3</span>
+              <dl style="display:contents">
+                <div><dt>Défaut</dt><dd id="d-defect">Roulement côté accouplement dégradé</dd></div>
+                <div><dt>Urgence</dt><dd id="d-urgency">Intervenir au prochain arrêt prévu</dd></div>
+                <div><dt>Action</dt><dd id="d-action">Remplacer le roulement, commander la pièce</dd></div>
+              </dl>
+              <span class="fake-btn" id="d-btn" aria-hidden="true">Planifier l'intervention</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ol class="annos">
+        <li><span class="marker" aria-hidden="true">1</span><div><h3>Score de santé</h3><p>Un chiffre par machine, doublé d'une icône et d'un libellé. On voit d'un coup d'œil où aller.</p></div></li>
+        <li><span class="marker" aria-hidden="true">2</span><div><h3>Tendance</h3><p>La courbe monte avant la panne. Les seuils « à surveiller » et « alerte » sont tracés dessus.</p></div></li>
+        <li><span class="marker" aria-hidden="true">3</span><div><h3>Alerte avec action</h3><p>Quel défaut, quelle urgence, quoi faire. L'intervention se planifie sur un arrêt prévu et part vers votre GMAO.</p></div></li>
+      </ol>
+    </div>
+    <p class="dash-foot">Cliquez sur une machine pour changer de vue. Machines, valeurs et seuils sont des données de démonstration, pas des mesures réelles.</p>
+  </div>
+</section>
+
+<!-- 5. Secteurs -->
+<section class="section" id="secteurs" aria-labelledby="secteurs-title">
+  <div class="wrap">
+    <div class="sector-grid">
+      <div class="section-head">
+        <h2 id="secteurs-title">Agroalimentaire, plasturgie, métallurgie.</h2>
+        <p class="lead">Pour chaque secteur, les machines que l'on équipe en premier et le défaut qu'on y rencontre le plus.</p>
+      </div>
+      <div class="acc">
+        <details open>
+          <summary>
+            <svg class="pic" viewBox="0 0 56 56" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><circle cx="22" cy="30" r="12"/><circle cx="22" cy="30" r="4"/><path d="M34 30h14v-8h-6M22 18V8h10"/><path d="M10 46h28"/></g></svg>
+            <h3>Agroalimentaire</h3>
+            <span class="plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1v14M1 8h14" stroke="#111418" stroke-width="2.4"/></svg></span>
+          </summary>
+          <dl class="acc-body">
+            <div><dt class="label">Machines typiques</dt><dd><ul><li>Pompes de process et de lavage</li><li>Compresseurs frigorifiques</li><li>Convoyeurs et mélangeurs</li></ul></dd></div>
+            <div><dt class="label">Défaut typique</dt><dd>Roulements abîmés par l'humidité et les lavages répétés. Cavitation sur les pompes.</dd></div>
+          </dl>
+        </details>
+        <details>
+          <summary>
+            <svg class="pic" viewBox="0 0 56 56" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="6" y="24" width="34" height="12" rx="1"/><path d="M14 24V12h12v12"/><path d="M40 27h8v6h-8"/><path d="M12 30h22" stroke-dasharray="3 3"/><path d="M10 36v8M36 36v8"/></g></svg>
+            <h3>Plasturgie</h3>
+            <span class="plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1v14M1 8h14" stroke="#111418" stroke-width="2.4"/></svg></span>
+          </summary>
+          <dl class="acc-body">
+            <div><dt class="label">Machines typiques</dt><dd><ul><li>Extrudeuses et leurs réducteurs</li><li>Groupes hydrauliques des presses à injecter</li><li>Broyeurs et refroidisseurs</li></ul></dd></div>
+            <div><dt class="label">Défaut typique</dt><dd>Usure des engrenages du réducteur. Désalignement entre moteur et réducteur.</dd></div>
+          </dl>
+        </details>
+        <details>
+          <summary>
+            <svg class="pic" viewBox="0 0 56 56" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><circle cx="28" cy="26" r="18"/><path d="M28 26c0-8 4-14 10-14-1 8-5 12-10 14zM28 26c-8 0-14 4-14 10 8-1 12-5 14-10zM28 26c4 7 10 9 15 6-4-5-9-7-15-6z"/><circle cx="28" cy="26" r="3" fill="currentColor"/><path d="M18 50h20"/></g></svg>
+            <h3>Métallurgie</h3>
+            <span class="plus" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1v14M1 8h14" stroke="#111418" stroke-width="2.4"/></svg></span>
+          </summary>
+          <dl class="acc-body">
+            <div><dt class="label">Machines typiques</dt><dd><ul><li>Ventilateurs d'extraction</li><li>Compresseurs d'air</li><li>Laminoirs et presses</li></ul></dd></div>
+            <div><dt class="label">Défaut typique</dt><dd>Balourd sur les ventilateurs encrassés. Roulements usés par les fortes charges.</dd></div>
+          </dl>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Retours d'usine -->
+<section class="section tinted band" id="retours" aria-labelledby="retours-title" style="background:#F6F7F8">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="retours-title">Retours d'usine</h2>
+      <p class="lead">Trois sites, trois machines. Témoignages fictifs rédigés pour cette démonstration.</p>
+    </div>
+    <div class="quotes">
+      <article class="quote feature">
+        <p class="q-machine">Pompe de lavage<span>Roulement usé, détecté avant la casse</span></p>
+        <blockquote>« L'alerte est arrivée en semaine. On a changé le roulement pendant l'arrêt du week-end, sans toucher à la production. Avant, je l'aurais appris à trois heures du matin. »</blockquote>
+        <p class="who"><strong>Hervé Fayolle</strong>, responsable maintenance<br>Conserverie Morand, site de Feurs (Loire)</p>
+        <div class="q-foot"><span class="label">Témoignage fictif (démonstration)</span><a class="link" href="#">Lire le retour complet</a></div>
+      </article>
+      <article class="quote">
+        <p class="q-machine">Extrudeuse<span>Désalignement moteur-réducteur</span></p>
+        <blockquote>« Il me fallait une usine comparable pour défendre le pilote. Une machine équipée, des alertes que l'équipe comprend : le comité a validé la suite. »</blockquote>
+        <p class="who"><strong>Nadia Rachedi</strong>, directrice d'usine<br>Plastiques Jouvenel, site d'Oyonnax (Ain)</p>
+        <div class="q-foot"><span class="label">Témoignage fictif (démonstration)</span><a class="link" href="#">Lire le retour complet</a></div>
+      </article>
+      <article class="quote">
+        <p class="q-machine">Ventilateur d'extraction<span>Balourd par encrassement</span></p>
+        <blockquote>« La passerelle ne touche pas notre réseau. Avec le schéma et la fiche sécurité, j'ai validé l'architecture en une réunion. »</blockquote>
+        <p class="who"><strong>Julien Peyrache</strong>, responsable informatique industrielle<br>Fonderie Haldenwang, site de Hayange (Moselle)</p>
+        <div class="q-foot"><span class="label">Témoignage fictif (démonstration)</span><a class="link" href="#">Lire le retour complet</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Fiche technique -->
+<section class="section" id="fiche" aria-labelledby="fiche-title">
+  <div class="wrap">
+    <div class="sheet-grid">
+      <div class="sheet" aria-hidden="true">
+        <div class="sheet-head"><b>Capteur Vibra<br>Fiche technique</b><span>FR · EN</span></div>
+        <svg viewBox="0 0 200 120"><g fill="none" stroke="#2B3036" stroke-width="2" stroke-linejoin="round"><path d="M70 22 V82 A30 15 0 0 0 130 82 V22" fill="#ECEEF0"/><ellipse cx="100" cy="22" rx="30" ry="15" fill="#FFFFFF"/><path d="M70 74 V82 A30 15 0 0 0 130 82 V74 A30 15 0 0 1 70 74Z" fill="#2B3036"/><path d="M140 22 H176 M140 88 H176 M170 22 V88" stroke="#8A939C" stroke-width="1.4"/><path d="M70 108 H130 M70 102 V114 M130 102 V114" stroke="#8A939C" stroke-width="1.4"/></g></svg>
+        <div class="sheet-rows"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="sheet-rows"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="sheet-page">1 / 2</span>
+      </div>
+      <div>
+        <div class="specs-head">
+          <h2 id="fiche-title">La fiche technique, sans formulaire.</h2>
+          <p class="lead">Le résumé ci-dessous, puis le PDF complet en un clic. Pas d'adresse e-mail à donner.</p>
+        </div>
+        <dl class="specs">
+          <div class="spec"><dt><b>Indice de protection</b><span class="unit">IP</span></dt><dd>Valeur non publiée : capteur de démonstration.</dd></div>
+          <div class="spec"><dt><b>Autonomie de la pile</b><span class="unit">années</span></dt><dd>Valeur non publiée : capteur de démonstration.</dd></div>
+          <div class="spec"><dt><b>Plage de fréquence</b><span class="unit">Hz</span></dt><dd>Valeur non publiée : capteur de démonstration.</dd></div>
+          <div class="spec"><dt><b>Température de fonctionnement</b><span class="unit">°C</span></dt><dd>Valeur non publiée : capteur de démonstration.</dd></div>
+          <div class="spec"><dt><b>Certification</b><span class="unit">référence</span></dt><dd>Aucune affichée : le produit n'existe pas, il n'a donc aucune certification.</dd></div>
+          <div class="spec known"><dt><b>Fixation et liaison</b></dt><dd>Aimant sur le palier. Radio vers la passerelle 4G, sans réseau usine.</dd></div>
+        </dl>
+        <div class="dl-row">
+          <a class="btn btn-secondary" href="#">
+            <svg width="22" height="22" aria-hidden="true"><use href="#i-doc"/></svg>
+            Télécharger la fiche technique (PDF, 2 pages)
+          </a>
+          <p><a class="link" href="#" hreflang="en">Technical datasheet (EN)</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Qui sommes-nous, contact et pilote -->
+<section class="section tinted band" id="contact" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="about">
+        <h2 class="label" id="about-title">Qui sommes-nous</h2>
+        <div class="logo-big">
+          <svg width="48" height="48" aria-hidden="true"><use href="#logo-mark"/></svg>
+          <span class="brand-word">VIBRA</span>
+        </div>
+        <p>Vibra conçoit à Saint-Étienne des capteurs de vibration sans fil et le logiciel qui les lit. Nos techniciens posent les capteurs chez vous et restent vos interlocuteurs. Vous parlez à quelqu'un qui connaît vos machines.</p>
+        <div class="direct">
+          <p class="small muted">Numéro direct, un technicien répond</p>
+          <a class="num tnum" href="tel:+33477000000"><svg width="34" height="34" aria-hidden="true"><use href="#i-phone"/></svg>04 77 00 00 00</a>
+          <ul class="techs">
+            <li><span class="region">Auvergne-Rhône-Alpes</span><span class="name">Mathieu Granjon</span><a href="tel:+33477000001">04 77 00 00 01</a></li>
+            <li><span class="region">Grand Est</span><span class="name">Claire Weisbecker</span><a href="tel:+33387000000">03 87 00 00 00</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pilot" id="pilote">
+        <h2 id="pilote-title">Tester sur une machine</h2>
+        <p class="intro">Le pilote porte sur une machine. Laissez vos coordonnées : le technicien de votre région vous rappelle pour choisir laquelle.</p>
+        <form id="pilot-form" novalidate aria-labelledby="pilote-title">
+          <div class="form-row">
+            <div class="field">
+              <label for="f-nom">Nom et prénom <span class="req">(obligatoire)</span></label>
+              <input id="f-nom" name="nom" type="text" autocomplete="name" required aria-describedby="f-nom-err">
+              <p class="error" id="f-nom-err"><svg width="18" height="18" aria-hidden="true"><use href="#i-err"/></svg><span></span></p>
+            </div>
+            <div class="field">
+              <label for="f-soc">Société <span class="req">(obligatoire)</span></label>
+              <input id="f-soc" name="societe" type="text" autocomplete="organization" required aria-describedby="f-soc-err">
+              <p class="error" id="f-soc-err"><svg width="18" height="18" aria-hidden="true"><use href="#i-err"/></svg><span></span></p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-site">Site <span class="req">(obligatoire)</span></label>
+              <span class="hint" id="f-site-hint">Ville ou département de l'usine</span>
+              <input id="f-site" name="site" type="text" autocomplete="address-level2" required aria-describedby="f-site-hint f-site-err">
+              <p class="error" id="f-site-err"><svg width="18" height="18" aria-hidden="true"><use href="#i-err"/></svg><span></span></p>
+            </div>
+            <div class="field">
+              <label for="f-nb">Nombre de machines <span class="req">(obligatoire)</span></label>
+              <span class="hint" id="f-nb-hint">Machines tournantes à surveiller</span>
+              <select id="f-nb" name="machines" required aria-describedby="f-nb-hint f-nb-err">
+                <option value="">Choisir</option>
+                <option>1 à 5</option>
+                <option>6 à 20</option>
+                <option>Plus de 20</option>
+              </select>
+              <p class="error" id="f-nb-err"><svg width="18" height="18" aria-hidden="true"><use href="#i-err"/></svg><span></span></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-tel">Téléphone <span class="req">(obligatoire)</span></label>
+            <input id="f-tel" name="telephone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="f-tel-err">
+            <p class="error" id="f-tel-err"><svg width="18" height="18" aria-hidden="true"><use href="#i-err"/></svg><span></span></p>
+          </div>
+          <button class="btn btn-primary" type="submit" id="f-submit">Demander mon pilote</button>
+          <p class="form-note">Démonstration : le formulaire n'envoie rien. Vos informations restent dans cette page.</p>
+        </form>
+        <div class="success" id="f-success" role="status" tabindex="-1">
+          <h3><svg width="22" height="22" style="color:var(--ok)" aria-hidden="true"><use href="#s-ok"/></svg>Demande de pilote reçue.</h3>
+          <p id="f-success-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer on-dark">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="Vibra, retour en haut de page">
+          <svg width="36" height="36" aria-hidden="true"><use href="#logo-mark"/></svg>
+          <span class="brand-word">VIBRA</span>
+        </a>
+        <p style="margin-top:12px;max-width:34ch">Capteurs de vibration sans fil et logiciel d'alerte pour la maintenance prédictive des PME industrielles. Saint-Étienne.</p>
+      </div>
+      <nav aria-label="Pages annexes">
+        <h2>Documents</h2>
+        <ul>
+          <li><a href="#">Fiche technique (PDF)</a></li>
+          <li><a href="#">Fiche sécurité (PDF)</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Sources</h2>
+        <p>Coût d'une heure d'arrêt : Siemens, <a href="https://assets.new.siemens.com/siemens/assets/api/uuid:1b43afb5-2d07-47f7-9eb7-893fe7d0bc59/TCOD-2024_original.pdf" rel="noopener" target="_blank"><cite>The True Cost of Downtime 2024</cite></a>, consulté le 13 novembre 2026. Les données du logiciel, les noms de personnes et de sites sont fictifs.</p>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p><strong>Site de démonstration. Vibra est une entreprise fictive.</strong></p>
+      <p>Ligne directe : <a href="tel:+33477000000">04 77 00 00 00</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar on-dark" role="region" aria-label="Actions rapides">
+  <a class="btn btn-primary" href="tel:+33477000000">
+    <svg width="22" height="22" aria-hidden="true"><use href="#i-phone"/></svg>
+    <span>Appeler un technicien<small class="tnum">04 77 00 00 00</small></span>
+  </a>
+  <a class="btn btn-ghost" href="#fiche" aria-label="Fiche technique">
+    <svg width="22" height="22" aria-hidden="true"><use href="#i-doc"/></svg>
+    Fiche PDF
+  </a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Menu */
+  var mbtn = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
+  mbtn.addEventListener('click', function(){
+    var open = mbtn.getAttribute('aria-expanded') === 'true';
+    mbtn.setAttribute('aria-expanded', String(!open));
+    menu.classList.toggle('open', !open);
+  });
+  menu.addEventListener('click', function(e){
+    if (e.target.closest('a')) { mbtn.setAttribute('aria-expanded','false'); menu.classList.remove('open'); }
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && menu.classList.contains('open')) { mbtn.setAttribute('aria-expanded','false'); menu.classList.remove('open'); mbtn.focus(); }
+  });
+
+  /* Hero waveform: seamless loop over L = 162 px */
+  var L = 162, d = '', mid = 86;
+  for (var x = 0; x <= 2 * L; x += 1.5) {
+    var t = x / L * Math.PI * 2;
+    var burst = 0.55 + 0.45 * Math.pow(Math.sin(t * 1), 2);
+    var y = mid + burst * (9 * Math.sin(t * 6) + 5 * Math.sin(t * 13 + 1) + 3 * Math.sin(t * 29));
+    d += (x === 0 ? 'M' : 'L') + (446 + x).toFixed(1) + ' ' + y.toFixed(1);
+  }
+  document.getElementById('heroWave').setAttribute('d', d);
+  var heroSvg = document.getElementById('heroSvg'), mqHero = window.matchMedia('(max-width:1023px)');
+  function heroFit(){ heroSvg.setAttribute('preserveAspectRatio', mqHero.matches ? 'xMidYMin slice' : 'xMidYMax meet'); }
+  heroFit(); if (mqHero.addEventListener) mqHero.addEventListener('change', heroFit);
+
+  /* Helpers */
+  function parseNum(v){ v = String(v).replace(/[\s  €$]/g,'').replace(',', '.'); return v === '' ? NaN : Number(v); }
+  function setErr(input, errEl, msg){
+    if (msg) { input.setAttribute('aria-invalid','true'); errEl.querySelector('span').textContent = msg; errEl.classList.add('show'); }
+    else { input.removeAttribute('aria-invalid'); errEl.querySelector('span').textContent = ''; errEl.classList.remove('show'); }
+  }
+  var euro = new Intl.NumberFormat('fr-FR', {style:'currency', currency:'EUR', maximumFractionDigits:0});
+
+  /* Calculator */
+  var calc = document.getElementById('calc');
+  calc.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ca = document.getElementById('ca'), h = document.getElementById('heures');
+    var vca = parseNum(ca.value), vh = parseNum(h.value), first = null;
+    if (isNaN(vca) || vca <= 0) { setErr(ca, document.getElementById('ca-err'), "Montant manquant ou illisible. Le calcul a besoin d'un chiffre d'affaires horaire positif. Saisissez un nombre, sans lettres."); first = first || ca; }
+    else setErr(ca, document.getElementById('ca-err'));
+    if (isNaN(vh) || vh <= 0) { setErr(h, document.getElementById('h-err'), "Nombre d'heures manquant ou illisible. Le calcul a besoin d'une durée positive. Saisissez un nombre d'heures."); first = first || h; }
+    else if (vh > 8760) { setErr(h, document.getElementById('h-err'), "Plus d'heures qu'une année n'en compte. Une année fait 8 760 heures. Vérifiez la valeur saisie."); first = first || h; }
+    else setErr(h, document.getElementById('h-err'));
+    var out = document.getElementById('calc-result');
+    if (first) { first.focus(); return; }
+    var total = vca * vh;
+    out.innerHTML = '<p class="label">Chiffre d’affaires non réalisé par an</p><p class="big tnum"></p><p class="small"></p>';
+    out.querySelector('.big').textContent = euro.format(total);
+    out.querySelector('.small').textContent = euro.format(vca) + ' par heure × ' + String(vh).replace('.', ',') + ' h. Ordre de grandeur, hors pièces, réparation et heures supplémentaires.';
+  });
+
+  /* Dashboard */
+  var machines = {
+    p04: {name:'Pompe de lavage P-04', st:'alert', stLabel:'Alerte', score:41,
+      data:[1.1,1.2,1.1,1.3,1.4,1.8,2.4,3.1,3.8], plan:true,
+      defect:'Roulement côté accouplement dégradé', urgency:'Intervenir au prochain arrêt prévu', action:'Remplacer le roulement, commander la pièce', btn:"Planifier l'intervention"},
+    c02: {name:'Compresseur froid C-02', st:'warn', stLabel:'À surveiller', score:68,
+      data:[1.4,1.5,1.5,1.6,1.8,1.9,2.2,2.4,2.5], plan:false,
+      defect:'Désalignement probable moteur-compresseur', urgency:'Pas d’urgence, à contrôler', action:'Vérifier l’alignement à la prochaine ronde', btn:'Ajouter à la ronde'},
+    m11: {name:'Convoyeur sortie four M-11', st:'ok', stLabel:'Normal', score:92,
+      data:[1.0,1.1,0.9,1.0,1.1,1.0,1.0,1.1,1.0], plan:false,
+      defect:'Aucun défaut détecté', urgency:'Aucune', action:'Aucune action, surveillance continue', btn:'Voir l’historique'}
+  };
+  var colors = {ok:'#1E7F4F', warn:'#B45309', alert:'#C62828'};
+  var icons = {ok:'#s-ok', warn:'#s-warn', alert:'#s-alert'};
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, text){ var n = document.createElementNS(NS, tag); for (var k in attrs) n.setAttribute(k, attrs[k]); if (text != null) n.textContent = text; return n; }
+
+  function drawChart(m){
+    var svg = document.getElementById('d-chart');
+    var title = svg.querySelector('title');
+    while (svg.lastChild && svg.lastChild !== title) svg.removeChild(svg.lastChild);
+    var x0 = 30, x1 = 404, y0 = 196, y1 = 14, max = 4.5, n = 11;
+    function X(i){ return x0 + i * (x1 - x0) / (n - 1); }
+    function Y(v){ return y0 - v / max * (y0 - y1); }
+    var g = el('g', {'font-family':'Barlow, Segoe UI, sans-serif', 'font-size':'13', fill:'#4A525B'});
+    for (var v = 0; v <= 4; v++) {
+      g.appendChild(el('line', {x1:x0, x2:x1, y1:Y(v), y2:Y(v), stroke:'#ECEEF0'}));
+      g.appendChild(el('text', {x:x0 - 10, y:Y(v) + 4, 'text-anchor':'end'}, String(v)));
+    }
+    for (var i = 0; i < n; i += 2) g.appendChild(el('text', {x:X(i), y:220, 'text-anchor':'middle'}, 'sem. ' + (38 + i)));
+    svg.appendChild(g);
+    // thresholds
+    [[2.3,'#B45309','À surveiller'],[3.5,'#C62828','Alerte']].forEach(function(t){
+      svg.appendChild(el('line', {x1:x0, x2:x1, y1:Y(t[0]), y2:Y(t[0]), stroke:t[1], 'stroke-width':'1.5', 'stroke-dasharray':'6 5'}));
+      svg.appendChild(el('text', {x:x0 + 6, y:Y(t[0]) - 6, 'text-anchor':'start', 'font-family':'Barlow, sans-serif', 'font-size':'13', 'font-weight':'600', fill:t[1]}, t[2] + ' ' + String(t[0]).replace('.', ',')));
+    });
+    // planned stop
+    if (m.plan) {
+      var px = X(10);
+      svg.appendChild(el('rect', {x:px - 14, y:y1, width:28, height:y0 - y1, fill:'#ECEEF0'}));
+      svg.appendChild(el('line', {x1:px, x2:px, y1:y1, y2:y0, stroke:'#2B3036', 'stroke-width':'1.5'}));
+      svg.appendChild(el('text', {x:px - 20, y:y0 - 10, 'text-anchor':'end', 'font-family':'Barlow, sans-serif', 'font-size':'13', 'font-weight':'600', fill:'#2B3036'}, 'Arrêt prévu : intervention'));
+    }
+    // area + line
+    var pts = m.data.map(function(v, i){ return X(i).toFixed(1) + ' ' + Y(v).toFixed(1); });
+    var area = 'M' + X(0) + ' ' + y0 + ' L' + pts.join(' L') + ' L' + X(m.data.length - 1) + ' ' + y0 + ' Z';
+    svg.appendChild(el('path', {d:area, fill:'#2B3036', opacity:'.06'}));
+    var line = el('path', {d:'M' + pts.join(' L'), fill:'none', stroke:'#2B3036', 'stroke-width':'2.5', 'stroke-linejoin':'round', 'stroke-linecap':'round'});
+    svg.appendChild(line);
+    var li = m.data.length - 1;
+    svg.appendChild(el('circle', {cx:X(li), cy:Y(m.data[li]), r:6, fill:colors[m.st], stroke:'#FFFFFF', 'stroke-width':'2'}));
+    svg.appendChild(el('text', {x:X(li) + 10, y:Y(m.data[li]) + 4, 'font-family':'Barlow, sans-serif', 'font-size':'14', 'font-weight':'600', fill:'#111418'}, String(m.data[li]).replace('.', ',')));
+    if (!reduce && line.getTotalLength) {
+      var len = line.getTotalLength();
+      line.style.strokeDasharray = len; line.style.strokeDashoffset = len;
+      line.getBoundingClientRect();
+      line.style.transition = 'stroke-dashoffset 600ms cubic-bezier(.2,0,0,1)';
+      line.style.strokeDashoffset = '0';
+    }
+    title.textContent = 'Tendance de démonstration pour ' + m.name + ' : dernière valeur ' + String(m.data[li]).replace('.', ',') + ' mm/s, statut ' + m.stLabel + '.';
+  }
+
+  function setStatus(node, st, label){
+    node.className = 'status ' + st;
+    node.innerHTML = '<svg width="14" height="14" aria-hidden="true"><use href="' + icons[st] + '"/></svg>';
+    node.appendChild(document.createTextNode(label));
+  }
+
+  function show(key){
+    var m = machines[key];
+    document.getElementById('d-name').textContent = m.name;
+    setStatus(document.getElementById('d-status'), m.st, m.stLabel);
+    document.getElementById('d-score').textContent = m.score;
+    document.getElementById('d-mark').style.left = m.score + '%';
+    document.getElementById('d-defect').textContent = m.defect;
+    document.getElementById('d-urgency').textContent = m.urgency;
+    document.getElementById('d-action').textContent = m.action;
+    document.getElementById('d-btn').textContent = m.btn;
+    document.getElementById('d-alert').className = 'box alert-box ' + m.st;
+    document.getElementById('dash-panel').setAttribute('aria-labelledby', 'tab-' + key);
+    drawChart(m);
+  }
+
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.machine-tab'));
+  function select(tab, focus){
+    tabs.forEach(function(t){ var on = t === tab; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
+    if (focus) tab.focus();
+    show(tab.dataset.m);
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){
+      var k = e.key, j = null;
+      if (k === 'ArrowDown' || k === 'ArrowRight') j = (i + 1) % tabs.length;
+      if (k === 'ArrowUp' || k === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      if (k === 'Home') j = 0; if (k === 'End') j = tabs.length - 1;
+      if (j !== null) { e.preventDefault(); select(tabs[j], true); }
+    });
+  });
+  show('p04');
+
+  /* Pilot form */
+  var form = document.getElementById('pilot-form');
+  var grandEst = /(grand[\s-]?est|alsace|lorraine|champagne|ardenne|strasbourg|mulhouse|colmar|metz|nancy|reims|troyes|epinal|épinal|thionville|hayange|charleville|chaumont|bar-le-duc|moselle|meurthe|vosges|marne|aube|meuse|bas-rhin|haut-rhin|\b(08|10|51|52|54|55|57|67|68|88)\b)/i;
+  function digits(v){ v = v.replace(/[^\d+]/g, ''); if (v.indexOf('+33') === 0) v = '0' + v.slice(3); else if (v.indexOf('0033') === 0) v = '0' + v.slice(4); return v.replace(/\D/g, ''); }
+  var rules = [
+    ['f-nom', function(v){ return v.trim().length < 2 ? "Nom manquant. Le technicien doit savoir qui demander en rappelant. Saisissez votre nom et votre prénom." : ''; }],
+    ['f-soc', function(v){ return v.trim().length < 2 ? "Société manquante. Elle sert à préparer le rappel. Saisissez le nom de votre entreprise." : ''; }],
+    ['f-site', function(v){ return v.trim().length < 2 ? "Site manquant. Il désigne le technicien de votre région. Saisissez la ville ou le département de l'usine." : ''; }],
+    ['f-nb', function(v){ return v === '' ? "Nombre de machines non choisi. Il aide à préparer le pilote. Choisissez une tranche dans la liste." : ''; }],
+    ['f-tel', function(v){ var d = digits(v); return (d.length !== 10 || d.charAt(0) !== '0') ? "Numéro de téléphone incomplet. Il faut 10 chiffres pour que le technicien puisse vous rappeler. Vérifiez le numéro (exemple : 04 77 00 00 00)." : ''; }]
+  ];
+  function check(id){
+    var r = rules.filter(function(x){ return x[0] === id; })[0];
+    var input = document.getElementById(id), msg = r[1](input.value);
+    setErr(input, document.getElementById(id + '-err'), msg);
+    return !msg;
+  }
+  rules.forEach(function(r){
+    var input = document.getElementById(r[0]);
+    input.addEventListener('blur', function(){ if (input.value !== '' || input.hasAttribute('aria-invalid')) check(r[0]); });
+    input.addEventListener('input', function(){ if (input.hasAttribute('aria-invalid')) check(r[0]); });
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var firstBad = null;
+    rules.forEach(function(r){ if (!check(r[0]) && !firstBad) firstBad = document.getElementById(r[0]); });
+    if (firstBad) { firstBad.focus(); return; }
+    var btn = document.getElementById('f-submit');
+    btn.setAttribute('aria-disabled', 'true');
+    btn.innerHTML = '<span class="spinner" aria-hidden="true"></span>Envoi…';
+    setTimeout(function(){
+      var prenom = document.getElementById('f-nom').value.trim().split(/\s+/)[0];
+      var tech = grandEst.test(document.getElementById('f-site').value) ? 'Claire Weisbecker, technicienne Grand Est,' : 'Mathieu Granjon, technicien Auvergne-Rhône-Alpes,';
+      var p = document.getElementById('f-success-text');
+      p.textContent = 'Merci, ' + prenom + '. ' + tech + ' vous rappelle pour choisir la machine à équiper. Besoin plus urgent ? Appelez le ';
+      var a = document.createElement('a'); a.href = 'tel:+33477000000'; a.textContent = '04 77 00 00 00'; p.appendChild(a); p.appendChild(document.createTextNode('.'));
+      form.hidden = true;
+      var s = document.getElementById('f-success'); s.classList.add('show'); s.focus();
+    }, reduce ? 200 : 900);
+  });
+})();
+</script>
+</body>
+</html>
