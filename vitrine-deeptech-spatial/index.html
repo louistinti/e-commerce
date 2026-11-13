@@ -5,309 +5,382 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Strate Orbital</title>
 <meta name="description" content="Strate Orbital mesure l'humidité des sols depuis l'espace avec une constellation de nanosatellites. Site de démonstration, entreprise fictive.">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0D'/%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%23F4F4F1' stroke-width='2'/%3E%3Ccircle cx='25' cy='7' r='3' fill='%23FF5A1F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0A0B0D;
-  --surface:#14171B;
-  --rule:#2A2F36;
+  --deck:#0E1013;
+  --surface:#121519;
+  --rule:#252A31;
+  --rule2:#3A4048;
   --text:#F4F4F1;
   --muted:#9AA0A6;
+  --dim:#6E747B;
   --accent:#FF5A1F;
   --accent-hover:#FF7440;
   --on-accent:#0A0B0D;
   --success:#3FB950;
-  --warning:#D4A72C;
   --error:#F85149;
   --focus:#7AB8FF;
   --m1:#6B5A3E; --m2:#8C8A5A; --m3:#4F8F86; --m4:#3C7FB0; --m5:#9CCBEB;
-  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --ease:cubic-bezier(.2,0,0,1);
-  --gutter:clamp(16px, 4vw, 56px);
-  --maxw:1320px;
-  --section:56px;
-  --header:64px;
+  --bar:48px;
+  --gut:clamp(16px,2.2vw,40px);
+  --frise:92px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 1px);-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:var(--bar);-webkit-text-size-adjust:100%}
+body{margin:0;background-color:var(--bg);background-image:linear-gradient(rgba(244,244,241,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(244,244,241,.022) 1px,transparent 1px);background-size:48px 48px;color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
 p{margin:0}
 h1,h2,h3{margin:0;font-weight:600}
+ul,ol{margin:0;padding:0;list-style:none}
 button,input,textarea,select{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--text);color:var(--bg);padding:10px 14px;border-radius:2px;text-decoration:none;font-weight:500}
-.skip:focus{top:12px}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--text);color:var(--bg);padding:10px 14px;text-decoration:none;font-weight:500}
+.skip:focus{top:60px}
 .mono{font-family:var(--mono)}
-.overline{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1.2}
-.h2{font-size:34px;line-height:1.15;letter-spacing:-.01em;max-width:40ch}
-.lead{color:var(--muted);max-width:74ch;margin-top:12px}
-.small{font-size:14px;line-height:1.5}
+.lbl{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1.3}
 .note{font-size:13px;line-height:1.5;color:var(--muted)}
-.note a,.lead a{color:var(--text);text-underline-offset:3px}
-section{padding:var(--section) 0;border-top:1px solid var(--rule)}
-
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:2px;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;transition:background-color 120ms var(--ease),border-color 120ms var(--ease),transform 120ms var(--ease)}
-.btn:active{transform:translateY(1px);filter:brightness(.92)}
-.btn-primary{background:var(--accent);color:var(--on-accent)}
-.btn-primary:hover{background:var(--accent-hover)}
-.btn-secondary{border-color:var(--text);color:var(--text);background:transparent}
-.btn-secondary:hover{background:var(--surface)}
-.btn-ghost{border-color:var(--rule);color:var(--text);background:transparent}
-.btn-ghost:hover{border-color:var(--muted)}
-.btn[aria-disabled="true"],.btn:disabled{background:var(--rule);color:var(--muted);cursor:not-allowed}
-.btn svg{flex:none}
-.icon-btn,.menu-toggle{width:44px;height:44px;display:inline-grid;place-items:center;border:0;background:none;padding:0;cursor:pointer;color:var(--muted);transition:color 120ms var(--ease)}
-.icon-btn:hover,.menu-toggle:hover{color:var(--text)}
-.icon-btn:focus,.menu-toggle:focus,.icon-btn:focus-visible,.menu-toggle:focus-visible{outline:none}
-.icon-btn:focus-visible,.menu-toggle:focus-visible{color:var(--focus)}
-.textlink{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--muted);font-weight:500}
+.note a{color:var(--text);text-underline-offset:3px}
+.textlink{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--dim);font-weight:500}
 .textlink:hover{text-decoration-color:var(--text)}
 
-/* Header */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(10,11,13,.94);border-bottom:1px solid var(--rule)}
-.header-in{height:var(--header);display:flex;align-items:center;gap:28px}
-.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.005em;flex:none}
-.brand svg{width:28px;height:28px}
-.nav{display:flex;gap:24px;margin-left:auto}
-.nav a{font-size:15px;color:var(--muted);text-decoration:none;transition:color 120ms var(--ease)}
-.nav a:hover{color:var(--text)}
-.lang{display:flex;gap:2px;font-family:var(--mono);font-size:13px}
-.lang a{padding:4px 6px;text-decoration:none;color:var(--muted)}
-.lang a[aria-current]{color:var(--text);border-bottom:1px solid var(--text)}
-.header-cta{min-height:40px;padding:0 16px;font-size:15px}
-.menu-toggle{display:none;margin-left:auto;color:var(--text)}
-.mobile-nav{display:none}
+/* corner brackets (crochets de cadrage) */
+.brk{--bc:rgba(244,244,241,.6);--bl:12px;
+  background-image:linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc));
+  background-size:var(--bl) 1px,1px var(--bl),var(--bl) 1px,1px var(--bl),var(--bl) 1px,1px var(--bl),var(--bl) 1px,1px var(--bl);
+  background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%;
+  background-repeat:no-repeat}
 
-/* Hero */
-.hero{padding:0;border-top:0;position:relative}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:48px;align-items:center;min-height:calc(100dvh - var(--header) - 112px);padding-top:56px;padding-bottom:40px}
-.hero-copy .overline{display:flex;align-items:center;gap:10px;color:var(--text)}
-.status-live{width:8px;height:8px;border-radius:50%;background:var(--success);flex:none}
-.hero h1{font-size:clamp(44px,4.6vw,66px);line-height:1.04;letter-spacing:-.025em;margin-top:22px;max-width:17ch}
-.hero-sub{font-size:20px;line-height:1.55;color:var(--muted);max-width:44ch;margin-top:24px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
-.hero-visual{position:relative}
-.orbit-svg{width:100%;height:auto;aspect-ratio:1/1;max-height:calc(100dvh - 220px);margin-left:auto}
-.visual-meta{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:8px}
-.visual-meta .note{max-width:34ch}
-.facts{border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.fact{padding:20px 24px 22px;border-left:1px solid var(--rule)}
-.fact:first-child{border-left:0;padding-left:0}
-.fact dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.fact dd{margin:6px 0 0;font-size:16px;font-weight:500;line-height:1.4}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:0;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;background:none;transition:background-color 120ms var(--ease),border-color 120ms var(--ease),color 120ms var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-line{border-color:rgba(244,244,241,.7);color:var(--text)}
+.btn-line:hover{border-color:var(--text);background:rgba(244,244,241,.08)}
+.btn-quiet{border-color:var(--rule2);color:var(--text)}
+.btn-quiet:hover{border-color:var(--muted)}
+.btn:disabled,.btn[aria-disabled="true"]{background:var(--rule);color:var(--muted);cursor:not-allowed}
+.btn svg{flex:none}
+/* icon buttons: no background, no border, no focus ring */
+.ib{width:40px;height:40px;display:inline-grid;place-items:center;border:0;background:none;padding:0;cursor:pointer;color:var(--muted);transition:color 120ms var(--ease);flex:none}
+.ib:hover{color:var(--text)}
+.ib:focus,.ib:focus-visible{outline:none}
+.ib:focus-visible{color:var(--focus)}
 
-/* orbit animation */
-.constellation{transform-origin:300px 900px;transform-box:view-box;animation:pan 80s ease-in-out infinite alternate}
-@keyframes pan{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
-.pulse{animation:dash 3.2s linear infinite}
-@keyframes dash{to{stroke-dashoffset:-28}}
-.paused .constellation,.paused .pulse{animation-play-state:paused}
+/* ============ COMMAND BAR ============ */
+.cmd{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--bar);display:flex;align-items:center;gap:18px;padding:0 var(--gut);background:rgba(10,11,13,.74);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid rgba(244,244,241,.1);font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:13px;letter-spacing:.1em;flex:none;color:var(--text)}
+.brand svg{width:24px;height:24px}
+.cmd-sep{width:1px;height:20px;background:var(--rule2);flex:none}
+.cmd-stat{color:var(--muted);white-space:nowrap;flex:none}
+.cmd-stat b{color:var(--text);font-weight:500}
+.cmd-nav{display:flex;align-items:center;gap:2px;margin-left:auto}
+.cmd-nav a{display:inline-flex;align-items:center;gap:7px;padding:8px 9px;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color 120ms var(--ease)}
+.cmd-nav a::before{content:"";width:6px;height:6px;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1px var(--rule2);flex:none}
+.cmd-nav a:hover{color:var(--text)}
+.cmd-nav a[aria-current="true"]{color:var(--text)}
+.cmd-nav a[aria-current="true"]::before{background:var(--accent);box-shadow:none}
+.cmd-nav .n{color:var(--dim)}
+.cmd-lang{display:flex;gap:2px;flex:none}
+.cmd-lang a{padding:6px 5px;color:var(--muted);text-decoration:none}
+.cmd-lang a[aria-current]{color:var(--text);box-shadow:inset 0 -1px 0 var(--text)}
+.cmd-cta{min-height:34px;padding:0 14px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.cmd-menu{display:none;margin-left:auto;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;width:auto;padding:0 4px;gap:8px;grid-auto-flow:column;color:var(--text)}
+.mnav{display:none}
 
-/* Tech */
-.tech-head{display:flex;flex-direction:column;gap:0}
-.tabs{display:flex;gap:0;margin-top:24px;border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{background:none;border:0;border-bottom:2px solid transparent;padding:14px 22px 12px;font-size:16px;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap;margin-bottom:-1px;transition:color 120ms var(--ease),border-color 240ms var(--ease)}
-.tab:first-child{padding-left:0}
-.tab:hover{color:var(--text)}
-.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--text)}
-.tab .mono{font-size:12px;color:var(--muted);margin-left:8px}
-.panel{padding-top:28px}
-.panel[hidden]{display:none}
-.panel{animation:fade 240ms var(--ease)}
-@keyframes fade{from{opacity:.4}to{opacity:1}}
-.brief-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
-.brief-list{list-style:none;margin:0;padding:0;display:grid;gap:22px;counter-reset:b}
-.brief-list li{display:grid;grid-template-columns:36px 1fr;gap:8px;font-size:18px}
-.brief-list li::before{counter-increment:b;content:counter(b,decimal-leading-zero);font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:5px}
-.schema{background:var(--surface);border:1px solid var(--rule);padding:24px}
-.schema figcaption{margin-top:14px}
-.eng-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.85fr);gap:44px}
-.eng-grid h3{font-size:22px;line-height:1.3;font-weight:500}
-.eng-grid p{color:var(--muted);margin-top:10px;font-size:16px;line-height:1.55}
-.chain{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:0;border-left:1px solid var(--rule)}
-.chain li{position:relative;padding:5px 0 5px 22px;font-size:15px}
-.chain li::before{content:"";position:absolute;left:-4px;top:13px;width:7px;height:7px;background:var(--bg);border:1px solid var(--muted);border-radius:50%}
+/* ============ HERO : salle de contrôle ============ */
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;background:#0A0B0D;border:0}
+.stage{position:absolute;inset:0;outline:none}
+.stage:focus-visible{outline:2px solid var(--focus);outline-offset:-4px}
+#map-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated;image-rendering:crisp-edges}
+#map-ovl{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:manipulation}
+.shade{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(to top,rgba(10,11,13,.94) 0,rgba(10,11,13,.6) 16%,rgba(10,11,13,0) 40%),
+  linear-gradient(to bottom,rgba(10,11,13,.72) 0,rgba(10,11,13,0) 20%),
+  linear-gradient(to right,rgba(10,11,13,.5) 0,rgba(10,11,13,0) 42%)}
+.hframe{position:absolute;left:10px;right:10px;top:calc(var(--bar) + 10px);bottom:calc(var(--frise) + 10px);pointer-events:none;--bc:rgba(244,244,241,.7);--bl:22px}
+.hud{position:absolute;z-index:3}
+.glass{background:rgba(10,11,13,.68);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);--bc:rgba(244,244,241,.55)}
+.hud-cap{left:calc(var(--gut) + 14px);top:calc(var(--bar) + 26px);max-width:500px;pointer-events:none}
+.hud-cap .lbl{color:var(--text)}
+.hud-cap p.note{margin-top:6px;font-size:12px;pointer-events:auto}
+.tele{right:calc(var(--gut) + 14px);top:calc(var(--bar) + 26px);width:300px;padding:12px 14px 12px}
+.tele-head{display:flex;align-items:center;justify-content:space-between;margin:-8px -8px 4px 0}
+.tele svg.track{width:100%;height:auto;margin:2px 0 8px}
+.tele dl{margin:0;display:grid;grid-template-columns:88px 1fr;gap:5px 10px;font-family:var(--mono);font-size:12px;line-height:1.35}
+.tele dt{color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.tele dd{margin:0;color:var(--text)}
+.tele dd .o{color:var(--accent)}
+.panel{left:var(--gut);bottom:calc(var(--frise) + 22px);width:min(640px,calc(100% - 2 * var(--gut)));padding:26px 28px 26px}
+.panel .lbl{display:flex;align-items:center;gap:10px;color:var(--text)}
+.panel .lbl i{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.hero h1{font-size:clamp(36px,3.5vw,58px);line-height:1.04;letter-spacing:-.025em;margin-top:16px;max-width:17ch}
+.hero-sub{font-size:18px;line-height:1.5;color:#C9CDD1;max-width:46ch;margin-top:16px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.explore{display:none}
+.hero.exploring .panel-main{display:none}
+.hero.exploring .explore{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero.exploring .panel{width:auto;max-width:calc(100% - 2 * var(--gut));padding:14px 18px}
+.explore p{font-size:15px;color:#C9CDD1}
+.explore b{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text);font-weight:500;display:block}
+.legend-hud{right:calc(var(--gut) + 14px);bottom:calc(var(--frise) + 22px);width:300px;padding:12px 14px 14px}
+.legend-hud ol{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-top:9px}
+.legend-hud li{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.25}
+.legend-hud li span{display:block;height:10px;margin-bottom:5px}
+.legend-hud .ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px}
+
+/* frise de temps */
+.frise{position:absolute;left:0;right:0;bottom:0;height:var(--frise);z-index:4;display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:6px 18px;padding:0 var(--gut) 0 calc(var(--gut) - 8px);background:rgba(10,11,13,.9);border-top:1px solid rgba(244,244,241,.12)}
+.frise-read{font-family:var(--mono);line-height:1.15;min-width:92px}
+.frise-read .lbl{font-size:11px}
+.frise-read output{display:block;font-size:24px;font-weight:500;letter-spacing:-.01em;margin-top:2px}
+.frise-read output small{font-size:13px;color:var(--muted);font-weight:400}
+.ftrack{position:relative;height:62px}
+.ftrack .spark,.ftrack .ticks,.ftrack .flabels{position:absolute;left:9px;right:9px}
+.ftrack .spark{top:2px;height:30px;width:calc(100% - 18px)}
+.ftrack .ticks{top:34px;height:8px;background:repeating-linear-gradient(90deg,rgba(244,244,241,.35) 0 1px,transparent 1px calc(100% / 29));background-size:calc(100% + 1px) 100%}
+.ftrack .flabels{top:44px;height:16px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.flabels > span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.flabels > span:first-child{transform:none}
+.flabels > span:last-child{transform:translateX(-100%)}
+.range{position:absolute;inset:0;width:100%;height:100%;margin:0;-webkit-appearance:none;appearance:none;background:transparent;cursor:ew-resize}
+.range:focus{outline:none}
+.range::-webkit-slider-runnable-track{height:100%;background:transparent}
+.range::-moz-range-track{height:100%;background:transparent}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:62px;border:0;background:linear-gradient(var(--accent),var(--accent)) center/2px 100% no-repeat,linear-gradient(var(--accent),var(--accent)) center 0/12px 8px no-repeat;cursor:ew-resize}
+.range::-moz-range-thumb{width:18px;height:62px;border:0;border-radius:0;background:linear-gradient(var(--accent),var(--accent)) center/2px 100% no-repeat,linear-gradient(var(--accent),var(--accent)) center 0/12px 8px no-repeat;cursor:ew-resize}
+.range:focus-visible::-webkit-slider-thumb{background:linear-gradient(var(--focus),var(--focus)) center/2px 100% no-repeat,linear-gradient(var(--focus),var(--focus)) center 0/12px 8px no-repeat}
+.range:focus-visible::-moz-range-thumb{background:linear-gradient(var(--focus),var(--focus)) center/2px 100% no-repeat,linear-gradient(var(--focus),var(--focus)) center 0/12px 8px no-repeat}
+
+/* ============ SECTIONS : écrans de console ============ */
+.sec{position:relative;padding:30px var(--gut) 34px;border-top:1px solid var(--rule)}
+.sec-in{max-width:1720px;margin:0 auto;width:100%;position:relative}
+.sec::before{content:"";position:absolute;inset:12px;pointer-events:none;--bc:rgba(244,244,241,.28);--bl:22px;background-image:linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc)),linear-gradient(var(--bc),var(--bc));background-size:var(--bl) 1px,1px var(--bl),var(--bl) 1px,1px var(--bl),var(--bl) 1px,1px var(--bl),var(--bl) 1px,1px var(--bl);background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%;background-repeat:no-repeat}
+.strip{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.strip .id{color:var(--text);font-weight:500}
+.strip .rl{flex:1;height:1px;background:var(--rule)}
+.h2{font-size:clamp(28px,2.3vw,38px);line-height:1.12;letter-spacing:-.015em;margin-top:14px;max-width:34ch}
+.lead{color:var(--muted);max-width:72ch;margin-top:8px}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.pnl{position:relative;background-color:rgba(18,21,25,.72);padding:20px 22px}
+
+/* données */
+.console{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px;margin-top:22px;align-items:start}
+.zones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.zc{padding:14px 14px 10px;border:1px solid var(--rule);background:rgba(18,21,25,.6)}
+.zc-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.zc-top .lbl{color:var(--text)}
+.zc-val{font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px;white-space:nowrap}
+.zc-val i{width:10px;height:10px;display:inline-block}
+.zc svg{width:100%;height:auto;margin-top:8px}
+.zc-foot{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:2px}
+.ctl{display:grid;gap:16px}
+.dayctl{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px;border-bottom:1px solid var(--rule);padding-bottom:12px}
+.dayctl output{font-family:var(--mono);font-size:22px;font-weight:500;text-align:center}
+.dayctl output small{font-size:13px;color:var(--muted);font-weight:400}
+.range2{width:100%;-webkit-appearance:none;appearance:none;background:transparent;height:36px;cursor:pointer;margin:0}
+.range2::-webkit-slider-runnable-track{height:2px;background:var(--rule2)}
+.range2::-moz-range-track{height:2px;background:var(--rule2)}
+.range2::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:22px;margin-top:-10px;border:0;border-radius:0;background:var(--accent)}
+.range2::-moz-range-thumb{width:14px;height:22px;border:0;border-radius:0;background:var(--accent)}
+.legend{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:8px}
+.legend li{font-size:13px;line-height:1.3;color:var(--muted)}
+.legend .sw{display:block;height:10px;margin-bottom:5px}
+.readout{font-size:15px;line-height:1.5;color:var(--muted)}
+.readout strong{color:var(--text);font-weight:500}
+table{border-collapse:collapse;width:100%;font-size:14px}
+caption{text-align:left;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+th,td{text-align:left;padding:5px 8px 5px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
+thead th{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+tbody th{font-family:var(--mono);font-weight:500;font-size:13px}
+td .sw{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:-1px}
+td.trend{color:var(--muted)}
+.formats{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font-family:var(--mono);font-size:12px;letter-spacing:.06em;border:1px solid var(--rule2);padding:4px 9px;color:var(--text)}
+
+/* technologie */
+.seg{display:inline-flex;border:1px solid var(--rule2);margin-top:20px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg button{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:11px 18px;background:none;border:0;border-left:1px solid var(--rule2);color:var(--muted);cursor:pointer;white-space:nowrap}
+.seg button:first-child{border-left:0}
+.seg button:hover{color:var(--text)}
+.seg button[aria-selected="true"]{background:var(--text);color:var(--bg)}
+.seg button:focus-visible{outline-offset:-3px}
+.tpanel{margin-top:22px}
+.tpanel[hidden]{display:none}
+.brief{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:44px;align-items:center}
+.brief ol{display:grid;gap:18px;counter-reset:b}
+.brief li{display:grid;grid-template-columns:44px 1fr;gap:6px;font-size:18px;line-height:1.5}
+.brief li::before{counter-increment:b;content:counter(b,decimal-leading-zero);font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:5px;border-top:1px solid var(--rule2);margin-top:2px}
+.schema figcaption{margin-top:12px}
+.eng{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.85fr);gap:36px}
+.eng h3{font-size:20px;line-height:1.3;font-weight:500}
+.eng p{color:var(--muted);margin-top:8px;font-size:15px;line-height:1.55}
+.chain{margin-top:14px;border-left:1px solid var(--rule2)}
+.chain li{position:relative;padding:4px 0 4px 20px;font-size:15px;font-family:var(--sans)}
+.chain li::before{content:"";position:absolute;left:-4px;top:12px;width:7px;height:7px;background:var(--bg);border:1px solid var(--muted)}
 .chain li:last-child::before{background:var(--text);border-color:var(--text)}
-.spec{margin-top:16px;display:grid;gap:16px}
-.spec-group{border-top:1px solid var(--rule);padding-top:12px}
-.spec-group .overline{margin-bottom:8px}
-.spec dl{margin:0;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:6px 16px}
-.spec dt{color:var(--muted);font-size:15px}
-.spec dd{margin:0;font-family:var(--mono);font-size:15px;font-weight:500;line-height:1.4}
-.precision{border:1px solid var(--rule);padding:20px;display:grid;gap:14px;align-content:start}
-.precision svg{max-width:200px}
-.pubs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
-.pubs li{padding:18px 0;border-top:1px solid var(--rule)}
-.pubs .year{font-family:var(--mono);font-size:13px;color:var(--muted)}
-.pubs h3{font-size:19px;line-height:1.35;font-weight:500;margin-top:6px}
-.pubs .src{font-size:15px;color:var(--muted);margin-top:6px}
-.pubs a.doi{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:14px}
-.export{margin-top:20px}
+.spec{margin-top:12px;display:grid;gap:12px}
+.spec-g{border-top:1px solid var(--rule);padding-top:10px}
+.spec dl{margin:6px 0 0;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:4px 14px}
+.spec dt{color:var(--muted);font-size:14px}
+.spec dd{margin:0;font-family:var(--mono);font-size:14px;font-weight:500}
+.prec svg{max-width:220px}
+.pubs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px}
+.pubs li{padding:16px 0;border-top:1px solid var(--rule)}
+.pubs .yr{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.pubs h3{font-size:18px;line-height:1.35;font-weight:500;margin-top:4px}
+.pubs .src{font-size:14px;color:var(--muted);margin-top:4px}
+.pubs a{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:13px}
+.export{margin-top:18px}
 
-/* Applications matrix */
-.matrix{margin-top:28px;display:grid;grid-template-columns:180px repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
-.matrix > *{padding:16px 24px 18px;border-bottom:1px solid var(--rule)}
-.matrix .corner{padding-left:0}
-.matrix .col-head{border-left:1px solid var(--rule)}
-.col-head svg{width:100%;max-width:170px;height:64px;margin-bottom:12px}
-.col-head h3{font-size:22px;line-height:1.3;font-weight:500}
-.col-head .who{font-size:14px;color:var(--muted);margin-top:4px}
-.row-label{padding-left:0;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:20px}
-.cell{border-left:1px solid var(--rule);font-size:16px;line-height:1.55}
-.cell.decision{font-weight:500;font-size:17px;color:var(--text)}
-.cell .m-label{display:none}
+/* applications */
+.matrix{margin-top:24px;display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));border-top:1px solid var(--rule2)}
+.matrix > *{padding:14px 22px 16px;border-bottom:1px solid var(--rule)}
+.matrix .corner,.matrix .rowl{padding-left:0}
+.matrix .ch{border-left:1px solid var(--rule)}
+.ch svg{width:100%;max-width:180px;height:60px;margin-bottom:10px}
+.ch h3{font-size:22px;line-height:1.25;font-weight:500;margin-top:4px}
+.ch .who{font-size:14px;color:var(--muted);margin-top:2px}
+.rowl{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:18px;display:flex;gap:10px}
+.rowl span{color:var(--dim)}
+.cell{border-left:1px solid var(--rule);font-size:16px;line-height:1.5}
+.cell.dec{font-weight:500;font-size:17px}
+.cell .ml{display:none}
 
-/* Roadmap */
-.road-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.road-controls{display:flex;gap:8px}
-.track-wrap{margin-top:28px;position:relative}
-.track{display:grid;grid-auto-flow:column;grid-auto-columns:300px;gap:0;overflow-x:auto;padding-bottom:20px;scrollbar-width:thin;scrollbar-color:var(--rule) transparent;list-style:none;margin:0;padding-left:0}
-.track::-webkit-scrollbar{height:6px}
-.track::-webkit-scrollbar-thumb{background:var(--rule)}
-.step{position:relative;padding:0 24px 0 0;display:flex;flex-direction:column}
-.step .step-card{flex:1}
-.step-axis{position:relative;height:40px;display:flex;align-items:center;margin-right:-24px}
-.step-axis::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule)}
-.step.done .step-axis::before,.step.part .step-axis::before{background:var(--text)}
-.step.part .step-axis::before{background:linear-gradient(90deg,var(--text) 0 40%,var(--rule) 40%)}
-.node{position:relative;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--bg)}
-.done .node{background:var(--success);color:var(--bg)}
-.part .node{border:2px solid var(--accent);background:var(--bg)}
-.part .node::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
-.next .node{border:1px dashed var(--muted)}
-.step-card{margin-top:18px;background:var(--surface);border:1px solid var(--rule);padding:20px;margin-right:0;min-height:236px;display:flex;flex-direction:column}
-.step-card .overline{color:var(--muted)}
-.step-card h3{font-size:20px;line-height:1.3;font-weight:500;margin-top:10px}
-.step-card p{font-size:15px;line-height:1.55;color:var(--muted);margin-top:8px}
-.pill{display:inline-flex;align-items:center;gap:6px;margin-top:auto;align-self:flex-start;padding:4px 10px 4px 8px;border-radius:999px;font-family:var(--mono);font-size:12px;font-weight:500;border:1px solid}
-.pill svg{width:12px;height:12px}
-.done .pill{color:var(--success);border-color:rgba(63,185,80,.5)}
-.part .pill{color:var(--warning);border-color:rgba(212,167,44,.5)}
-.next .pill{color:var(--muted);border-color:var(--rule)}
-.step-card .pill{margin-top:auto}
-.step-card .spacer{flex:1;min-height:16px}
-.newsletter{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;border-top:1px solid var(--rule);padding-top:28px}
-.newsletter form{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
-.newsletter .field{min-width:300px}
+/* feuille de route : frise */
+.fz-ctl{display:flex;align-items:center;gap:4px}
+.fz-pos{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:10px;white-space:nowrap}
+.frieze{--sw:400px;margin-top:22px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;outline:none}
+.frieze::-webkit-scrollbar{display:none}
+@media (min-width:768px){.frieze{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent)}}
+.frieze:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
+.frieze.drag{cursor:grabbing;user-select:none}
+.fz-in{width:calc(var(--sw) * 7)}
+.phases{display:flex;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.phases span{border-left:1px solid var(--rule2);padding:2px 12px 8px;flex:none}
+.phases span b{color:var(--text);font-weight:500;margin-right:8px}
+.fz-steps{display:flex}
+.fz{width:var(--sw);flex:none;padding-right:28px}
+.fz-axis{position:relative;height:56px;display:flex;align-items:center;margin-right:-28px}
+.fz-axis::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule2)}
+.fz-axis::after{content:"";position:absolute;left:0;right:0;top:calc(50% + 4px);height:6px;background:repeating-linear-gradient(90deg,rgba(244,244,241,.18) 0 1px,transparent 1px 17px)}
+.fz.done .fz-axis::before{background:var(--text)}
+.fz.part .fz-axis::before{background:linear-gradient(90deg,var(--text) 0 45%,var(--rule2) 45%)}
+.fz.next .fz-axis::before{background:repeating-linear-gradient(90deg,var(--rule2) 0 6px,transparent 6px 11px)}
+.node{position:relative;z-index:1;width:18px;height:18px;display:grid;place-items:center;background:var(--bg);border:1px solid var(--muted)}
+.done .node{background:var(--text);border-color:var(--text);color:var(--bg)}
+.part .node{border:2px solid var(--accent)}
+.part .node::after{content:"";width:6px;height:6px;background:var(--accent)}
+.part .node::before{content:"";position:absolute;inset:-8px;border:1px solid rgba(255,90,31,.5);animation:ping 2.4s var(--ease) infinite}
+@keyframes ping{0%{opacity:1;transform:scale(.7)}100%{opacity:0;transform:scale(1.4)}}
+.next .node{border-style:dashed}
+.fz-body{padding-top:14px}
+.fz-id{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+.fz-body h3{font-size:22px;line-height:1.28;font-weight:500;margin-top:6px}
+.fz-body p.d{font-size:15px;line-height:1.5;color:var(--muted);margin-top:6px}
+.st{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule2)}
+.done .st{color:var(--text);border-color:rgba(244,244,241,.5)}
+.part .st{color:var(--accent);border-color:rgba(255,90,31,.6)}
+.next .st{color:var(--muted)}
+.st i{width:7px;height:7px;flex:none}
+.done .st i{background:var(--text)}
+.part .st i{background:var(--accent)}
+.next .st i{border:1px dashed var(--muted)}
+.fz-ph{display:none}
+.scrub{position:relative;height:3px;background:var(--rule);margin-top:20px;cursor:pointer}
+.scrub span{position:absolute;top:-1px;height:5px;background:var(--text);left:0;width:30%}
+.nl{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;border-top:1px solid var(--rule);padding-top:20px}
+.nl h3{font-size:20px;font-weight:500}
+.nl form{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.nl .field{min-width:300px}
 .nl-msg{grid-column:1/-1;font-size:15px}
+.nl-msg:empty,.nl .err[hidden]{display:none}
 
-/* Form fields */
-.field{display:grid;gap:8px}
-.field label,.legend-title{font-size:15px;font-weight:500}
+/* fields */
+.field{display:grid;gap:6px}
+.field label,.ftitle{font-size:15px;font-weight:500}
 .field .opt{color:var(--muted);font-weight:400}
-.input{width:100%;min-height:48px;padding:10px 14px;background:var(--bg);border:1px solid #4A515A;border-radius:2px;font-size:16px;transition:border-color 120ms var(--ease)}
+.input{width:100%;min-height:46px;padding:10px 14px;background:var(--bg);border:1px solid #4A515A;border-radius:0;font-size:16px;transition:border-color 120ms var(--ease)}
 .input::placeholder{color:#80868C}
 .input:hover{border-color:var(--muted)}
 .input:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-color:var(--text)}
 .input[aria-invalid="true"]{border-color:var(--error)}
-textarea.input{min-height:100px;resize:vertical;line-height:1.5}
+textarea.input{min-height:88px;resize:vertical;line-height:1.5}
 .err{display:flex;gap:8px;align-items:flex-start;color:var(--error);font-size:14px;line-height:1.45}
 .err[hidden]{display:none}
 .err svg{flex:none;margin-top:2px}
 
-/* Data */
-.data-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:40px;margin-top:24px;align-items:start}
-.map-frame{position:relative;background:var(--surface);border:1px solid var(--rule);padding:14px}
-.map-top,.map-bottom{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.4}
-.map-top{margin-bottom:10px}
-.map-bottom{margin-top:10px}
-.map-svg{width:100%;height:auto;cursor:crosshair;touch-action:manipulation}
-.map-svg rect.c{shape-rendering:crispEdges;transition:fill 240ms var(--ease)}
-.map-src{margin-top:12px}
-.ctrl{display:grid;gap:16px}
-.day-read{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:14px}
-.day-read output{font-family:var(--mono);font-size:28px;font-weight:500;letter-spacing:-.01em}
-.day-read output small{font-size:15px;color:var(--muted);font-weight:400}
-.range{width:100%;-webkit-appearance:none;appearance:none;background:transparent;height:44px;cursor:pointer;margin:0}
-.range::-webkit-slider-runnable-track{height:2px;background:var(--rule)}
-.range::-moz-range-track{height:2px;background:var(--rule)}
-.range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-10px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);box-shadow:0 0 0 1px var(--accent)}
-.range::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
-.range-ends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:-6px}
-.legend{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
-.legend li{font-size:13px;line-height:1.3;color:var(--muted)}
-.legend .sw{display:block;height:12px;margin-bottom:6px}
-.readout{font-size:15px;line-height:1.5;color:var(--muted);min-height:45px}
-.readout strong{color:var(--text);font-weight:500}
-table{border-collapse:collapse;width:100%;font-size:14px}
-caption{text-align:left;font-size:15px;font-weight:500;margin-bottom:8px}
-th,td{text-align:left;padding:5px 8px 5px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
-thead th{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-td .sw{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:-1px}
-td.trend{color:var(--muted)}
+/* partenaires */
+.reg-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:36px;margin-top:24px;align-items:start}
+.reg{border-top:1px solid var(--rule2)}
+.reg li{display:grid;grid-template-columns:44px 250px minmax(0,1fr);gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--rule)}
+.reg .k{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.reg svg{height:30px;width:auto;max-width:100%;color:var(--text);opacity:.85;transition:opacity 120ms var(--ease)}
+.reg li:hover svg,.reg li:focus-within svg{opacity:1}
+.reg p{font-size:15px;line-height:1.5;color:var(--muted)}
+.reg p strong{color:var(--text);font-weight:500;display:block;font-size:16px}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:16px 0}
+.fig{font-family:var(--mono);font-size:30px;font-weight:500;letter-spacing:-.02em;line-height:1.1}
+.fig-l{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.4}
 
-/* Partners */
-.partners-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;margin-top:28px;align-items:start}
-.logos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-.logo-cell{position:relative;padding:26px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-height:150px;display:flex;flex-direction:column;gap:14px;outline:none}
-.logo-cell svg{height:34px;width:auto;max-width:100%;align-self:flex-start;color:var(--text);opacity:.9;transition:opacity 120ms var(--ease)}
-.logo-cell:hover svg,.logo-cell:focus-within svg{opacity:1}
-.logo-cell p{font-size:15px;line-height:1.5;color:var(--muted)}
-.logo-cell p strong{color:var(--text);font-weight:500}
-.market{background:var(--surface);border:1px solid var(--rule);padding:28px}
-.market .figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0 18px}
-.market .fig{font-family:var(--mono);font-size:30px;font-weight:500;letter-spacing:-.02em;line-height:1.1}
-.market .fig-l{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
-.market .btn{margin-top:22px}
+/* équipe */
+.team{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:start;margin-top:22px}
+.about p.body{max-width:48ch;font-size:18px}
+.about figure{margin:22px 0 0}
+.jobs{border-top:1px solid var(--rule2)}
+.job{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:6px 20px;padding:16px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.job .k{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.job h3{font-size:20px;line-height:1.3;font-weight:500}
+.job .meta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.job .pb{grid-column:2/4;font-size:15px;color:var(--muted);max-width:68ch}
+.job .pb b{color:var(--text);font-weight:500}
+.job a{grid-column:2/4;font-size:15px;justify-self:start}
+.jobs-foot{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:20px}
 
-/* Team */
-.team-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:start}
-.about-art{margin-top:24px;border:1px solid var(--rule);background:var(--surface);padding:20px}
-.about p.body{margin-top:18px;max-width:46ch}
-.jobs{list-style:none;margin:0;padding:0}
-.job{border-top:1px solid var(--rule);padding:18px 0}
-.job:last-child{border-bottom:1px solid var(--rule)}
-.job-top{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
-.job h3{font-size:22px;line-height:1.3;font-weight:500}
-.job .meta{font-family:var(--mono);font-size:13px;color:var(--muted)}
-.job .problem{margin-top:10px;font-size:16px;color:var(--muted);max-width:60ch}
-.job .problem b{color:var(--text);font-weight:500}
-.job a{margin-top:12px;display:inline-block;font-size:15px}
-.jobs-foot{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:28px}
-
-/* Contact */
-.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}
-.press{list-style:none;margin:14px 0 0;padding:0}
-.press li{border-top:1px solid var(--rule);padding:12px 0;display:grid;grid-template-columns:96px 1fr;gap:16px}
-.press li:last-child{border-bottom:1px solid var(--rule)}
-.press .tag{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;padding-top:4px}
-.press p{font-size:16px;line-height:1.45}
-.kit{margin-top:20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-.where{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
-.where address{font-style:normal;font-size:16px;line-height:1.55}
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:start;margin-top:22px}
+.press li{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.press{border-top:1px solid var(--rule2);margin-top:8px}
+.press .tag{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;padding-top:3px}
+.press p{font-size:15px;line-height:1.45}
+.kit{margin-top:16px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.where{margin-top:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.where address{font-style:normal;font-size:15px;line-height:1.55}
 .where svg{border:1px solid var(--rule);background:var(--surface);width:100%;height:auto}
-.form-card{background:var(--surface);border:1px solid var(--rule);padding:28px}
-.field-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
 .form-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
-.form-head h3{font-size:22px;font-weight:500}
-.steps{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.form-head h3{font-size:20px;font-weight:500}
+.steps{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
 .steps b{color:var(--text);font-weight:500}
-fieldset{border:0;margin:24px 0 0;padding:0;min-width:0}
-legend{padding:0;margin-bottom:12px}
-.who-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.who-opt{position:relative}
-.who-opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-.who-opt label{display:flex;flex-direction:column;gap:2px;min-height:76px;justify-content:center;padding:14px 16px;border:1px solid #4A515A;border-radius:2px;cursor:pointer;transition:border-color 120ms var(--ease),background-color 120ms var(--ease)}
-.who-opt label span{font-size:14px;color:var(--muted);line-height:1.35}
-.who-opt label strong{font-weight:500;font-size:16px}
-.who-opt input:hover + label{border-color:var(--muted)}
-.who-opt input:checked + label{border-color:var(--text);background:var(--bg);box-shadow:inset 3px 0 0 var(--text)}
-.who-opt input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
-.form-step[hidden]{display:none}
-.form-step .field{margin-top:18px}
-.form-actions{display:flex;gap:12px;align-items:center;margin-top:24px;flex-wrap:wrap}
+fieldset{border:0;margin:18px 0 0;padding:0;min-width:0}
+legend{padding:0;margin-bottom:10px}
+.who{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.who-o{position:relative}
+.who-o input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.who-o label{display:flex;flex-direction:column;gap:2px;min-height:72px;justify-content:center;padding:12px 16px;border:1px solid #4A515A;cursor:pointer;transition:border-color 120ms var(--ease),background-color 120ms var(--ease)}
+.who-o label strong{font-weight:500;font-size:16px}
+.who-o label span{font-size:14px;color:var(--muted);line-height:1.35}
+.who-o input:hover + label{border-color:var(--muted)}
+.who-o input:checked + label{border-color:var(--text);background:var(--bg);box-shadow:inset 3px 0 0 var(--accent)}
+.who-o input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
+.fstep[hidden]{display:none}
+.fstep .field{margin-top:14px}
+.frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.factions{display:flex;gap:12px;align-items:center;margin-top:20px;flex-wrap:wrap}
 .backlink{background:none;border:0;color:var(--muted);text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:12px 4px;font-size:15px}
 .backlink:hover{color:var(--text)}
-.chosen{margin-top:14px;font-size:15px;color:var(--muted)}
+.chosen{margin-top:12px;font-size:15px;color:var(--muted)}
 .chosen strong{color:var(--text);font-weight:500}
 .success{border-left:3px solid var(--success);padding:4px 0 4px 18px}
 .success h3{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:500}
@@ -317,104 +390,126 @@ legend{padding:0;margin-bottom:12px}
 .spinner{width:16px;height:16px;border:2px solid rgba(10,11,13,.35);border-top-color:var(--on-accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* Footer */
-.site-footer{border-top:1px solid var(--rule);padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
-.foot-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:start}
-.foot-nav{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:15px}
-.foot-nav a{color:var(--muted);text-decoration:none}
-.foot-nav a:hover{color:var(--text)}
-.demo-line{margin-top:28px;padding-top:20px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
-.demo-line strong{color:var(--text);font-weight:500}
+/* footer */
+.foot{border-top:1px solid var(--rule);padding:32px var(--gut) calc(30px + env(safe-area-inset-bottom));font-size:14px}
+.foot-in{max-width:1720px;margin:0 auto;display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px 40px;align-items:center}
+.foot nav{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:flex-end;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.foot nav a{color:var(--muted);text-decoration:none}
+.foot nav a:hover{color:var(--text)}
+.demo{grid-column:1/-1;border-top:1px solid var(--rule);padding-top:16px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted)}
+.demo strong{color:var(--text);font-weight:500}
 
-/* Responsive */
+/* ============ RESPONSIVE ============ */
+@media (min-width:1024px){
+  .sec{min-height:calc(100vh - var(--bar));min-height:calc(100svh - var(--bar));display:flex;flex-direction:column;justify-content:center}
+}
+@media (max-width:1699px){ .cmd-nav .n{display:none} }
+@media (max-width:1599px){ .cmd-stat{display:none} .cmd-sep.s1{display:none} }
+@media (max-width:1365px){
+  .cmd-nav,.cmd-lang,.cmd-sep{display:none}
+  .cmd-menu{display:inline-grid}
+  .cmd-cta{margin-left:auto}
+  .cmd-cta + .cmd-menu{margin-left:0}
+  .mnav{position:fixed;inset:var(--bar) 0 0 0;z-index:59;background:var(--bg);padding:16px var(--gut) 40px;overflow-y:auto;font-family:var(--mono)}
+  .mnav.open{display:block}
+  .mnav a.m{display:flex;gap:14px;font-size:18px;letter-spacing:.06em;text-transform:uppercase;padding:14px 0;border-bottom:1px solid var(--rule);text-decoration:none}
+  .mnav a.m span{color:var(--dim)}
+  .mnav .btn{width:100%;margin-top:24px;font-family:var(--sans)}
+  .mnav .cmd-lang{display:flex;margin-top:16px;font-size:14px}
+}
 @media (max-width:1180px){
-  .nav{gap:18px}
-  .header-cta{display:none}
+  .eng{grid-template-columns:1fr 1fr}
+  .eng .prec{grid-column:1/-1}
 }
 @media (max-width:1023px){
-  :root{--section:80px}
-  .nav,.lang.desktop{display:none}
-  .menu-toggle{display:grid}
-  .mobile-nav{position:fixed;inset:var(--header) 0 0 0;background:var(--bg);z-index:49;padding:24px var(--gutter) 40px;overflow-y:auto}
-  .mobile-nav.open{display:block}
-  .mobile-nav a.m-link{display:block;font-size:22px;font-weight:500;padding:14px 0;border-bottom:1px solid var(--rule);text-decoration:none}
-  .mobile-nav .btn{width:100%;margin-top:28px}
-  .mobile-nav .lang{margin-top:20px}
-  .hero-grid{grid-template-columns:1fr;min-height:0;gap:8px;padding-top:24px}
-  .hero-visual{order:-1}
-  .orbit-svg{aspect-ratio:auto;height:240px;max-height:none;width:100%}
-  .visual-meta{display:none}
-  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .fact:nth-child(3){border-left:0;padding-left:0}
-  .fact:nth-child(n+3){border-top:1px solid var(--rule)}
-  .eng-grid{grid-template-columns:1fr 1fr}
-  .eng-grid .precision{grid-column:1/-1}
-  .brief-grid,.data-grid,.partners-grid,.team-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .tele{width:270px}
+  .legend-hud{display:none}
+  .console,.brief,.reg-grid,.team,.contact{grid-template-columns:1fr;gap:28px}
   .matrix{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .matrix .corner,.matrix .row-label{display:none}
-  .matrix .col-head:nth-child(2){border-left:0}
+  .matrix .corner,.matrix .rowl{display:none}
+  .matrix .ch:nth-child(2){border-left:0}
   .matrix > :nth-child(4n+2){border-left:0}
-  .cell .m-label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500}
+  .cell .ml{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500}
+  .sec{padding:56px var(--gut)}
 }
 @media (max-width:767px){
+  :root{--frise:84px}
   body{font-size:16px}
-  :root{--section:72px}
-  .h2{font-size:26px}
-  .hero h1{font-size:40px;line-height:1.04;margin-top:14px}
-  .hero-sub{font-size:17px;margin-top:16px}
-  .hero-ctas{flex-direction:column;margin-top:24px;gap:10px}
+  .cmd{gap:12px}
+  .cmd-cta{display:none}
+  .hud-cap{left:var(--gut);right:var(--gut);top:calc(var(--bar) + 14px);max-width:none}
+  .hud-cap p.note{font-size:11px}
+  .hud-cap .long{display:none}
+  .tele{display:none}
+  .hframe{display:none}
+  .sec::before{display:none}
+  .panel{left:12px;right:12px;width:auto;bottom:calc(var(--frise) + 12px);padding:18px 18px 18px}
+  .hero h1{font-size:34px;margin-top:10px}
+  .hero-sub{font-size:16px;margin-top:10px}
+  .hero-ctas{flex-direction:column;gap:10px;margin-top:18px}
   .hero-ctas .btn{width:100%}
-  .orbit-svg{height:230px}
-  .fact{padding:16px 12px 16px 16px}
-  .fact dd{font-size:15px}
-  .tab{padding:12px 14px 10px;font-size:15px}
-  .tab .mono{display:none}
-  .brief-list li{font-size:16px}
-  .eng-grid{grid-template-columns:1fr}
-  .eng-grid .precision{grid-column:auto}
+  .frise{gap:4px 10px;padding:0 14px 0 6px}
+  .frise-read{min-width:70px}
+  .frise-read output{font-size:20px}
+  .ftrack .flabels .xs,.flabels .lg{display:none}
+  .strip .meta{display:none}
+  .shade{background:linear-gradient(to top,rgba(10,11,13,.95) 0,rgba(10,11,13,.5) 45%,rgba(10,11,13,0) 70%),linear-gradient(to bottom,rgba(10,11,13,.8) 0,rgba(10,11,13,0) 22%)}
+  .h2{font-size:27px}
+  .zones{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .zc{padding:10px 10px 6px}
+  .zc-top{flex-direction:column;gap:2px}
+  .legend li{font-size:12px}
+  .seg button{padding:10px 12px;font-size:11px}
+  .brief li{font-size:16px;grid-template-columns:36px 1fr}
+  .eng{grid-template-columns:1fr;gap:28px}
+  .eng .prec{grid-column:auto}
   .pubs{grid-template-columns:1fr}
-  /* applications become stacked blocks */
   .matrix{grid-template-columns:1fr;border-top:0}
   .matrix > *{padding:0;border:0}
   .matrix > :nth-child(2){order:1}.matrix > :nth-child(6){order:2}.matrix > :nth-child(10){order:3}.matrix > :nth-child(14){order:4}
   .matrix > :nth-child(3){order:5}.matrix > :nth-child(7){order:6}.matrix > :nth-child(11){order:7}.matrix > :nth-child(15){order:8}
   .matrix > :nth-child(4){order:9}.matrix > :nth-child(8){order:10}.matrix > :nth-child(12){order:11}.matrix > :nth-child(16){order:12}
-  .matrix > :nth-child(14),.matrix > :nth-child(15),.matrix > :nth-child(16){padding-bottom:28px}
-  .matrix .col-head{border-left:0;padding-top:24px;border-top:1px solid var(--rule)}
-  .matrix .cell{border-left:0;padding:14px 0 0}
-  .col-head svg{height:72px;max-width:170px}
-  /* vertical timeline */
-  .road-controls{display:none}
-  .track{grid-auto-flow:row;grid-auto-columns:auto;overflow:visible;padding-bottom:0}
-  .step{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:0}
-  .step-axis{height:auto;flex-direction:column;justify-content:flex-start;padding-top:20px;margin-right:0}
-  .step-axis::before{left:50%;right:auto;top:0;bottom:0;width:1px;height:auto}
-  .step.part .step-axis::before{background:linear-gradient(180deg,var(--text) 0 40%,var(--rule) 40%)}
-  .step:last-child .step-axis::before{bottom:auto;height:30px}
-  .step-card{margin:0 0 14px;min-height:0}
-  .newsletter{grid-template-columns:1fr}
-  .newsletter form{flex-direction:column;align-items:stretch}
-  .newsletter .field{min-width:0}
-  .map-frame{padding:10px}
-  .map-top,.map-bottom{font-size:11px}
-  .legend li{font-size:12px}
-  .logos{grid-template-columns:1fr}
-  .market .figs{grid-template-columns:1fr 1fr}
-  .market .fig{font-size:26px}
-  .market .btn{width:100%;white-space:normal;text-align:center}
-  .where{grid-template-columns:1fr}
-  .form-card{padding:22px 18px}
-  .field-row{grid-template-columns:1fr;gap:0}
-  .who-grid{grid-template-columns:1fr}
-  .form-actions .btn{width:100%}
-  .press li{grid-template-columns:1fr;gap:4px}
-  .foot-grid{grid-template-columns:1fr}
+  .matrix > :nth-child(14),.matrix > :nth-child(15),.matrix > :nth-child(16){padding-bottom:26px}
+  .matrix .ch{border-left:0;padding-top:22px;border-top:1px solid var(--rule2)}
+  .matrix .cell{border-left:0;padding:12px 0 0}
+  /* frise verticale sur mobile */
+  .fz-ctl{display:none}
+  .frieze{overflow:visible;cursor:auto}
+  .fz-in{width:auto}
+  .phases,.scrub{display:none}
+  .fz-steps{flex-direction:column}
+  .fz{width:auto;display:grid;grid-template-columns:24px 1fr;gap:14px;padding:0}
+  .fz-axis{height:auto;margin:0;flex-direction:column;justify-content:flex-start;padding-top:18px}
+  .fz-axis::after{display:none}
+  .fz-axis::before{left:50%;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .fz.part .fz-axis::before{background:linear-gradient(180deg,var(--text) 0 30%,var(--rule2) 30%)}
+  .fz.next .fz-axis::before{background:repeating-linear-gradient(180deg,var(--rule2) 0 6px,transparent 6px 11px)}
+  .fz-body{padding:14px 0 22px;border-bottom:1px solid var(--rule)}
+  .fz-ph{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+  .nl{grid-template-columns:1fr}
+  .nl form{flex-direction:column;align-items:stretch}
+  .nl .field{min-width:0}
+  .reg li{grid-template-columns:1fr;gap:8px}
+  .reg .k{display:none}
+  .figs{grid-template-columns:1fr 1fr}
+  .fig{font-size:26px}
+  .pnl{padding:18px 16px}
+  .pnl .btn{width:100%;white-space:normal;text-align:center}
+  .job{grid-template-columns:1fr;gap:6px}
+  .job .pb,.job a{grid-column:auto}
   .jobs-foot .btn{width:100%}
+  .press li{grid-template-columns:1fr;gap:2px}
+  .where{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr;gap:0}
+  .who{grid-template-columns:1fr}
+  .factions .btn{width:100%}
+  .foot-in{grid-template-columns:1fr}
+  .foot nav{justify-content:flex-start}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .constellation,.pulse,.spinner{animation:none!important}
-  .panel{animation:none}
+  .part .node::before{animation:none;opacity:.6;transform:none}
+  .spinner{animation:none}
   *{transition-duration:0ms!important}
 }
 </style>
@@ -422,194 +517,240 @@ legend{padding:0;margin-bottom:12px}
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 
-<header class="site-header">
-  <div class="wrap header-in">
-    <a class="brand" href="#top" aria-label="Strate Orbital, retour en haut de page">
-      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M5 19h22M6.5 23h19M9.5 27h13" stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="25.2" cy="6.8" r="2.6" fill="#FF5A1F"/>
-      </svg>
-      Strate Orbital
-    </a>
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="#technologie">Technologie</a>
-      <a href="#applications">Applications</a>
-      <a href="#feuille-de-route">Feuille de route</a>
-      <a href="#donnees">Données</a>
-      <a href="#equipe">Équipe</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="lang desktop" aria-label="Langue">
-      <a href="#" aria-current="true" lang="fr">FR</a>
-      <a href="#" lang="en" hreflang="en">EN</a>
-    </div>
-    <a class="btn btn-primary header-cta" href="#contact">Contacter l'équipe partenariats</a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Ouvrir le menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="i-open" d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6"/><path class="i-close" d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" style="display:none"/></svg>
-    </button>
+<!-- ============ BARRE DE COMMANDES ============ -->
+<header class="cmd" id="cmd">
+  <a class="brand" href="#top" aria-label="Strate Orbital, retour à la carte">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.5"/><path d="M5 19h22M6.5 23h19M9.5 27h13" stroke="currentColor" stroke-width="1.5"/><circle cx="25.2" cy="6.8" r="2.6" fill="#FF5A1F"/></svg>
+    Strate Orbital
+  </a>
+  <span class="cmd-sep s1" aria-hidden="true"></span>
+  <span class="cmd-stat"><b>SO-1</b> en orbite</span>
+  <span class="cmd-stat" aria-hidden="true">UTC <b id="clock">--:--:--</b></span>
+  <nav class="cmd-nav" aria-label="Navigation principale">
+    <a href="#donnees"><span class="n">01</span>Données</a>
+    <a href="#technologie"><span class="n">02</span>Technologie</a>
+    <a href="#applications"><span class="n">03</span>Applications</a>
+    <a href="#feuille-de-route"><span class="n">04</span>Feuille de route</a>
+    <a href="#partenaires"><span class="n">05</span>Soutiens</a>
+    <a href="#equipe"><span class="n">06</span>Équipe</a>
+    <a href="#contact"><span class="n">07</span>Contact</a>
+  </nav>
+  <span class="cmd-sep" aria-hidden="true"></span>
+  <div class="cmd-lang" aria-label="Langue">
+    <a href="#" aria-current="true" lang="fr">FR</a>
+    <a href="#" lang="en" hreflang="en">EN</a>
   </div>
-  <div class="mobile-nav" id="mobile-nav">
-    <a class="m-link" href="#technologie">Technologie</a>
-    <a class="m-link" href="#applications">Applications</a>
-    <a class="m-link" href="#feuille-de-route">Feuille de route</a>
-    <a class="m-link" href="#donnees">Données</a>
-    <a class="m-link" href="#equipe">Équipe</a>
-    <a class="m-link" href="#contact">Contact</a>
-    <a class="btn btn-primary" href="#contact">Contacter l'équipe partenariats</a>
-    <div class="lang" aria-label="Langue">
-      <a href="#" aria-current="true" lang="fr">FR</a>
-      <a href="#" lang="en" hreflang="en">EN</a>
-    </div>
-  </div>
+  <a class="btn btn-primary cmd-cta" href="#contact">Contacter l'équipe partenariats</a>
+  <button class="ib cmd-menu" type="button" aria-expanded="false" aria-controls="mnav" id="menu-btn"><span id="menu-txt">Menu</span>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path class="i-open" d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.5"/><path class="i-close" d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.5" style="display:none"/></svg>
+  </button>
 </header>
+<nav class="mnav" id="mnav" aria-label="Navigation principale (mobile)">
+  <a class="m" href="#donnees"><span>01</span>Données</a>
+  <a class="m" href="#technologie"><span>02</span>Technologie</a>
+  <a class="m" href="#applications"><span>03</span>Applications</a>
+  <a class="m" href="#feuille-de-route"><span>04</span>Feuille de route</a>
+  <a class="m" href="#partenaires"><span>05</span>Soutiens</a>
+  <a class="m" href="#equipe"><span>06</span>Équipe</a>
+  <a class="m" href="#contact"><span>07</span>Contact</a>
+  <a class="btn btn-primary" href="#contact">Contacter l'équipe partenariats</a>
+  <div class="cmd-lang" aria-label="Langue">
+    <a href="#" aria-current="true" lang="fr">FR</a>
+    <a href="#" lang="en" hreflang="en">EN</a>
+  </div>
+</nav>
 
 <main id="contenu">
 
-<!-- 1. HERO -->
+<!-- ============ HERO : la carte plein écran ============ -->
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="overline"><span class="status-live" aria-hidden="true"></span>Démonstrateur SO-1 en orbite</p>
-        <h1 id="hero-title">L'humidité des sols, mesurée depuis l'espace, chaque jour.</h1>
-        <p class="hero-sub">Une constellation de nanosatellites pour piloter l'irrigation, anticiper la sécheresse et assurer le risque climatique.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#contact">Contacter l'équipe partenariats</a>
-          <a class="btn btn-secondary" href="#donnees">Explorer la carte d'exemple</a>
-        </div>
-      </div>
-      <figure class="hero-visual" id="orbit" style="margin:0">
-        <svg class="orbit-svg" viewBox="0 0 600 600" id="orbit-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="orbit-title orbit-desc">
-          <title id="orbit-title">Schéma de la mesure GNSS-R</title>
-          <desc id="orbit-desc">Un satellite de navigation émet un signal en bande L. Le signal se réfléchit sur le sol, et un nanosatellite 6U de Strate Orbital le reçoit. Vue schématique, pas à l'échelle.</desc>
-          <defs>
-            <clipPath id="earth-clip"><circle cx="300" cy="900" r="520"/></clipPath>
-            <radialGradient id="limb" cx="300" cy="900" r="560" gradientUnits="userSpaceOnUse">
-              <stop offset=".86" stop-color="#14171B"/>
-              <stop offset="1" stop-color="#1B2026"/>
-            </radialGradient>
-          </defs>
-          <!-- framing brackets -->
-          <g stroke="#FF5A1F" stroke-width="1.5" fill="none">
-            <path d="M24 70V24h46"/><path d="M530 24h46v46"/><path d="M576 530v46h-46"/><path d="M70 576H24v-46"/>
-          </g>
-          <g font-family="IBM Plex Mono, monospace" font-size="12" fill="#9AA0A6" letter-spacing=".08em">
-            <text x="560" y="52" text-anchor="end">VUE SCHÉMATIQUE</text>
-          </g>
-          <!-- orbits -->
-          <circle cx="300" cy="900" r="640" stroke="#2A2F36" fill="none"/>
-          <circle cx="300" cy="900" r="860" stroke="#2A2F36" fill="none" stroke-dasharray="2 6"/>
-          <!-- earth -->
-          <circle cx="300" cy="900" r="520" fill="url(#limb)" stroke="#9AA0A6" stroke-width="1"/>
-          <g clip-path="url(#earth-clip)" stroke="#2A2F36" fill="none">
-            <ellipse cx="300" cy="900" rx="520" ry="470"/>
-            <ellipse cx="300" cy="900" rx="520" ry="410"/>
-            <ellipse cx="300" cy="900" rx="520" ry="340"/>
-            <ellipse cx="300" cy="900" rx="420" ry="520"/>
-            <ellipse cx="300" cy="900" rx="260" ry="520"/>
-            <ellipse cx="300" cy="900" rx="90" ry="520"/>
-          </g>
-          <g class="constellation">
-            <!-- moisture pixels near specular point -->
-            <g clip-path="url(#earth-clip)">
-              <rect x="300" y="384" width="14" height="10" fill="#4F8F86"/><rect x="314" y="384" width="14" height="10" fill="#3C7FB0"/><rect x="328" y="384" width="14" height="10" fill="#8C8A5A"/><rect x="342" y="386" width="14" height="10" fill="#4F8F86"/>
-              <rect x="300" y="394" width="14" height="10" fill="#3C7FB0"/><rect x="314" y="394" width="14" height="10" fill="#9CCBEB"/><rect x="328" y="394" width="14" height="10" fill="#4F8F86"/><rect x="342" y="396" width="14" height="10" fill="#6B5A3E"/>
-              <rect x="300" y="404" width="14" height="10" fill="#8C8A5A"/><rect x="314" y="404" width="14" height="10" fill="#4F8F86"/><rect x="328" y="404" width="14" height="10" fill="#3C7FB0"/><rect x="342" y="406" width="14" height="10" fill="#8C8A5A"/>
-            </g>
-            <!-- signal paths -->
-            <path d="M172 90L327 381" stroke="#F4F4F1" stroke-width="1" opacity=".7"/>
-            <path class="pulse" d="M327 381L411 270" stroke="#F4F4F1" stroke-width="1.5" stroke-dasharray="6 8"/>
-            <path d="M172 90L411 270" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="2 5" opacity=".7"/>
-            <!-- specular point reticle -->
-            <g stroke="#FF5A1F" stroke-width="1.5">
-              <path d="M327 362v12M327 388v12M308 381h12M334 381h12"/>
-              <circle cx="327" cy="381" r="4" fill="none"/>
-            </g>
-            <!-- GNSS satellite -->
-            <g transform="translate(172 90) rotate(-9)" stroke="#9AA0A6" fill="#0A0B0D">
-              <rect x="-7" y="-7" width="14" height="14"/>
-              <rect x="-31" y="-4" width="20" height="8"/><rect x="11" y="-4" width="20" height="8"/>
-              <path d="M-11 0h4M7 0h4"/>
-            </g>
-            <!-- 6U nanosatellite -->
-            <g transform="translate(411 270) rotate(10)">
-              <rect x="-9" y="-14" width="18" height="28" fill="#0A0B0D" stroke="#F4F4F1" stroke-width="1.5"/>
-              <path d="M-9 -4.7h18M-9 4.7h18M0 -14v28" stroke="#F4F4F1" stroke-width="1"/>
-              <g stroke="#F4F4F1" stroke-width="1" fill="#14171B">
-                <rect x="-45" y="-10" width="34" height="20"/><rect x="11" y="-10" width="34" height="20"/>
-                <path d="M-34 -10v20M-23 -10v20M22 -10v20M33 -10v20" stroke="#2A2F36"/>
-              </g>
-              <rect x="-4" y="14" width="8" height="4" fill="#FF5A1F"/>
-            </g>
-            <g font-family="IBM Plex Mono, monospace" font-size="12" fill="#9AA0A6" letter-spacing=".06em">
-              <text x="172" y="66" text-anchor="middle">GNSS, BANDE L</text>
-              <text x="462" y="262">SO-1, 6U</text>
-              <text x="356" y="372" fill="#F4F4F1">POINT DE RÉFLEXION</text>
-            </g>
-          </g>
-        </svg>
-        <figcaption class="visual-meta">
-          <span class="note">Vue schématique, pas à l'échelle. Le signal GNSS réfléchi par le sol est reçu par le nanosatellite.</span>
-          <button class="icon-btn" type="button" id="orbit-toggle" aria-pressed="false" aria-label="Mettre en pause l'animation">
-            <svg class="i-pause" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>
-            <svg class="i-play" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="display:none"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg>
-          </button>
-        </figcaption>
-      </figure>
+  <div class="stage" id="stage" tabindex="0" role="group" aria-roledescription="carte" aria-label="Carte d'illustration de l'humidité des sols. Flèches du clavier pour déplacer le réticule. Les valeurs sont reprises dans le tableau de la section Données." >
+    <canvas id="map-canvas" width="160" height="90" aria-hidden="true"></canvas>
+    <svg id="map-ovl" viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g id="grat" stroke="rgba(10,11,13,.38)" stroke-width="1"></g>
+      <g id="zones" fill="none" stroke="rgba(244,244,241,.5)" stroke-width="1" stroke-dasharray="5 5"></g>
+      <g id="zlab"></g>
+      <g id="hover" style="display:none">
+        <line id="hx" x1="0" x2="160" stroke="rgba(244,244,241,.32)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        <line id="hy" y1="0" y2="90" stroke="rgba(244,244,241,.32)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        <rect id="hc" width="1" height="1" fill="none" stroke="#F4F4F1" stroke-width="1" vector-effect="non-scaling-stroke"/>
+      </g>
+      <g id="ret" stroke="#FF5A1F" stroke-width="2" fill="none">
+        <path d="M-1.6 -.4V-1.6H-.4M1.4 -1.6H2.6V-.4M2.6 1.4V2.6H1.4M-.4 2.6H-1.6V1.4" vector-effect="non-scaling-stroke"/>
+        <path d="M.5 -4.6V-2.6M.5 3.6V5.6M-4.6 .5H-2.6M3.6 .5H5.6" vector-effect="non-scaling-stroke"/>
+        <rect x="0" y="0" width="1" height="1" stroke-width="1" vector-effect="non-scaling-stroke"/>
+      </g>
+    </svg>
+  </div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="hframe brk" aria-hidden="true"></div>
+
+  <div class="hud hud-cap">
+    <p class="lbl">Humidité des sols · tuile d'illustration · <span id="cap-day">jour 30 / 30</span></p>
+    <p class="note">Générée pour la maquette, aucune valeur mesurée : ce n'est pas une mesure de Strate Orbital. <span class="long">Le site livré affiche le produit Surface Soil Moisture du Copernicus Land Monitoring Service (résolution 1 km en Europe, à partir de Sentinel-1), un repère public.</span> Source : <a href="https://land.copernicus.eu/en/products/soil-moisture">CLMS, Soil Moisture</a>, vu le 13/11/2026.</p>
+  </div>
+
+  <aside class="hud tele glass brk" aria-label="Télémesures">
+    <div class="tele-head">
+      <p class="lbl">Télémesures</p>
+      <button class="ib" type="button" id="orbit-btn" aria-pressed="false" aria-label="Mettre en pause la trace d'orbite">
+        <svg class="i-pause" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>
+        <svg class="i-play" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style="display:none"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg>
+      </button>
     </div>
-    <dl class="facts">
-      <div class="fact"><dt>Preuve</dt><dd>Démonstrateur SO-1 en orbite</dd></div>
-      <div class="fact"><dt>Mesure</dt><dd>Réflectométrie GNSS en bande L</dd></div>
-      <div class="fact"><dt>Plateforme</dt><dd>Nanosatellites au format 6U</dd></div>
-      <div class="fact"><dt>Origine</dt><dd>Laboratoire public, Toulouse</dd></div>
+    <svg class="track" viewBox="0 0 272 84" role="img" aria-label="Trace au sol schématique du démonstrateur SO-1, pas à l'échelle">
+      <rect x=".5" y=".5" width="271" height="83" fill="none" stroke="#252A31"/>
+      <g stroke="#252A31"><path d="M68 0v84M136 0v84M204 0v84M0 21h272M0 42h272M0 63h272"/></g>
+      <path id="gt" fill="none" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="3 4"/>
+      <circle id="sat" r="4" fill="#FF5A1F"/>
+      <circle id="sat-ring" r="9" fill="none" stroke="#FF5A1F" stroke-opacity=".45"/>
+      <text x="6" y="78" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9AA0A6" letter-spacing=".06em">TRACE AU SOL · SCHÉMA</text>
+    </svg>
+    <dl>
+      <dt>Orbite</dt><dd>Terrestre basse</dd>
+      <dt>Passage</dt><dd id="t-pass">Tuile du jour 30 / 30</dd>
+      <dt>Mode</dt><dd>GNSS-R, bande L</dd>
+      <dt>Plateforme</dt><dd>SO-1, nanosatellite 6U</dd>
+      <dt>Réticule</dt><dd id="t-cur" aria-live="polite">—</dd>
     </dl>
+  </aside>
+
+  <div class="hud panel glass brk">
+    <div class="panel-main">
+      <p class="lbl"><i aria-hidden="true"></i>SO-1 · démonstrateur en orbite</p>
+      <h1 id="hero-title">L'humidité des sols, mesurée depuis l'espace, chaque jour.</h1>
+      <p class="hero-sub">Une constellation de nanosatellites pour piloter l'irrigation, anticiper la sécheresse et assurer le risque climatique.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Contacter l'équipe partenariats</a>
+        <button class="btn btn-line" type="button" id="explore-btn" aria-controls="stage">Explorer la carte d'exemple</button>
+      </div>
+    </div>
+    <div class="explore" id="explore-box">
+      <p><b>Mode exploration</b>Cliquez une parcelle ou utilisez les flèches. La frise du bas change le jour.</p>
+      <button class="btn btn-quiet" type="button" id="explore-close">Revenir au titre</button>
+    </div>
+  </div>
+
+  <div class="hud legend-hud glass brk" aria-hidden="true">
+    <p class="lbl">Paliers d'humidité</p>
+    <ol>
+      <li><span style="background:var(--m1)"></span>1</li>
+      <li><span style="background:var(--m2)"></span>2</li>
+      <li><span style="background:var(--m3)"></span>3</li>
+      <li><span style="background:var(--m4)"></span>4</li>
+      <li><span style="background:var(--m5)"></span>5</li>
+    </ol>
+    <p class="ends"><span>Très sec</span><span>Très humide</span></p>
+  </div>
+
+  <div class="frise" role="group" aria-label="Frise de temps sur 30 jours">
+    <button class="ib" type="button" id="play" aria-pressed="false" aria-label="Lire les 30 jours">
+      <svg class="i-play" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg>
+      <svg class="i-pause" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="display:none"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>
+    </button>
+    <div class="frise-read">
+      <label class="lbl" for="day">Jour</label>
+      <output id="day-out" for="day">30 <small>/ 30</small></output>
+    </div>
+    <div class="ftrack">
+      <svg class="spark" id="spark" viewBox="0 0 290 30" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div class="ticks" aria-hidden="true"></div>
+      <div class="flabels" aria-hidden="true">
+        <span style="left:0">J1</span>
+        <span class="xs" style="left:13.79%">J5</span>
+        <span style="left:31.03%">J10</span>
+        <span class="xs" style="left:48.28%">J15</span>
+        <span style="left:65.52%">J20<span class="lg"> · pluie (illustration)</span></span>
+        <span class="xs" style="left:82.76%">J25</span>
+        <span style="left:100%">J30</span>
+      </div>
+      <input class="range" id="day" type="range" min="1" max="30" step="1" value="30" aria-valuetext="Jour 30 sur 30">
+    </div>
   </div>
 </section>
 
-<!-- 2. TECHNOLOGIE -->
-<section id="technologie" aria-labelledby="tech-title">
-  <div class="wrap">
+<!-- ============ 01 DONNÉES ============ -->
+<section class="sec" id="donnees" aria-labelledby="data-title">
+  <div class="sec-in">
+    <p class="strip"><span class="id">01</span><span>Données</span><span class="rl"></span><span class="meta">Console · série d'illustration</span></p>
+    <div class="head-row">
+      <div>
+        <h2 class="h2" id="data-title">À quoi ressemble la donnée, jour après jour</h2>
+        <p class="lead">Trente jours sur six zones : une période sèche, un épisode de pluie au jour 20, puis le ressuyage. Le jour choisi ici pilote aussi la carte du haut de page.</p>
+      </div>
+      <a class="textlink" href="#top" data-explore>Revenir à la carte</a>
+    </div>
+    <div class="console">
+      <div>
+        <ul class="zones" id="zones-list" aria-label="Évolution sur 30 jours par zone"></ul>
+        <p class="note" style="margin-top:12px">Courbes tirées de la tuile générée pour la maquette : aucune valeur mesurée. Dans le site livré, la série vient du produit Surface Soil Moisture du Copernicus Land Monitoring Service (1 km en Europe, Sentinel-1). Source : <a href="https://land.copernicus.eu/en/products/soil-moisture">CLMS, Soil Moisture</a>, vu le 13 novembre 2026.</p>
+      </div>
+      <div class="ctl pnl brk">
+        <div>
+          <label class="lbl" for="day2">Jour affiché</label>
+          <div class="dayctl">
+            <button class="ib" type="button" id="d-prev" aria-label="Jour précédent"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6"/></svg></button>
+            <input class="range2" id="day2" type="range" min="1" max="30" step="1" value="30">
+            <button class="ib" type="button" id="d-next" aria-label="Jour suivant"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></button>
+          </div>
+        </div>
+        <div>
+          <p class="lbl" id="legend-t">Légende</p>
+          <ul class="legend" aria-labelledby="legend-t">
+            <li><span class="sw" style="background:var(--m1)"></span>1. Très sec</li>
+            <li><span class="sw" style="background:var(--m2)"></span>2. Sec</li>
+            <li><span class="sw" style="background:var(--m3)"></span>3. Moyen</li>
+            <li><span class="sw" style="background:var(--m4)"></span>4. Humide</li>
+            <li><span class="sw" style="background:var(--m5)"></span>5. Très humide</li>
+          </ul>
+        </div>
+        <p class="readout" id="readout"></p>
+        <table>
+          <caption>Palier dominant par zone, jour <span id="tbl-day">30</span></caption>
+          <thead><tr><th scope="col">Zone</th><th scope="col">Palier</th><th scope="col">Sur la veille</th></tr></thead>
+          <tbody id="tbl-body"></tbody>
+        </table>
+        <div class="formats"><span class="lbl">Livraison</span><span class="chip">GeoTIFF</span><span class="chip">API</span><span class="chip">WMS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 TECHNOLOGIE ============ -->
+<section class="sec" id="technologie" aria-labelledby="tech-title">
+  <div class="sec-in">
+    <p class="strip"><span class="id">02</span><span>Technologie</span><span class="rl"></span><span class="meta">Trois niveaux de lecture</span></p>
     <h2 class="h2" id="tech-title">La technologie, à trois niveaux de lecture</h2>
-    <p class="lead">L'essentiel en trois phrases, le détail pour les ingénieurs, ou les publications de référence.</p>
-    <div class="tabs" role="tablist" aria-label="Niveaux de lecture">
-      <button class="tab" role="tab" id="tab-bref" aria-controls="panel-bref" aria-selected="true">En bref</button>
-      <button class="tab" role="tab" id="tab-ing" aria-controls="panel-ing" aria-selected="false" tabindex="-1">Pour les ingénieurs</button>
-      <button class="tab" role="tab" id="tab-pub" aria-controls="panel-pub" aria-selected="false" tabindex="-1">Publications<span class="mono">DOI</span></button>
+    <div class="seg" role="tablist" aria-label="Niveaux de lecture">
+      <button role="tab" id="tab-bref" aria-controls="p-bref" aria-selected="true">En bref</button>
+      <button role="tab" id="tab-ing" aria-controls="p-ing" aria-selected="false" tabindex="-1">Pour les ingénieurs</button>
+      <button role="tab" id="tab-pub" aria-controls="p-pub" aria-selected="false" tabindex="-1">Publications · DOI</button>
     </div>
 
-    <div class="panel" role="tabpanel" id="panel-bref" aria-labelledby="tab-bref" tabindex="0">
-      <div class="brief-grid">
+    <div class="tpanel" role="tabpanel" id="p-bref" aria-labelledby="tab-bref" tabindex="0">
+      <div class="brief">
         <div>
-          <ol class="brief-list">
+          <ol>
             <li><span>Les satellites de navigation (GPS, Galileo) émettent en continu des signaux qui se réfléchissent sur le sol.</span></li>
             <li><span>Un sol humide renvoie un signal plus fort qu'un sol sec : nos nanosatellites captent ce reflet et en déduisent l'humidité.</span></li>
             <li><span>Les mesures sont calibrées sur des sondes au sol et fusionnées avec des modèles hydrologiques, puis livrées sous forme de carte.</span></li>
           </ol>
-          <p style="margin-top:32px"><button class="btn btn-ghost" type="button" data-goto="tab-pub">Lire les publications</button></p>
+          <p style="margin-top:26px"><button class="btn btn-quiet" type="button" data-goto="tab-pub">Lire les publications</button></p>
         </div>
-        <figure class="schema" style="margin:0">
+        <figure class="schema pnl brk" style="margin:0">
           <svg viewBox="0 0 640 250" role="img" aria-labelledby="schema-t">
             <title id="schema-t">Chaîne de mesure : satellites GNSS, réflexion sur le sol, nanosatellite 6U, station sol, carte d'humidité</title>
-            <g fill="none" stroke="#2A2F36"><path d="M0 200h640"/></g>
-            <!-- ground pattern -->
-            <g>
-              <rect x="150" y="200" width="22" height="10" fill="#6B5A3E"/><rect x="172" y="200" width="22" height="10" fill="#8C8A5A"/><rect x="194" y="200" width="22" height="10" fill="#4F8F86"/><rect x="216" y="200" width="22" height="10" fill="#3C7FB0"/><rect x="238" y="200" width="22" height="10" fill="#9CCBEB"/>
-            </g>
-            <!-- GNSS -->
+            <path d="M0 200h640" stroke="#3A4048"/>
+            <rect x="150" y="200" width="22" height="10" fill="#6B5A3E"/><rect x="172" y="200" width="22" height="10" fill="#8C8A5A"/><rect x="194" y="200" width="22" height="10" fill="#4F8F86"/><rect x="216" y="200" width="22" height="10" fill="#3C7FB0"/><rect x="238" y="200" width="22" height="10" fill="#9CCBEB"/>
             <g stroke="#9AA0A6" fill="#0A0B0D"><rect x="40" y="30" width="14" height="14"/><rect x="18" y="33" width="18" height="8"/><rect x="58" y="33" width="18" height="8"/></g>
             <path d="M54 46L205 198" stroke="#F4F4F1"/>
             <path d="M205 198L330 62" stroke="#F4F4F1" stroke-dasharray="5 6"/>
             <g stroke="#FF5A1F" stroke-width="1.5"><path d="M205 180v10M193 198h7M210 198h7"/></g>
-            <!-- nanosat -->
-            <g stroke="#F4F4F1" fill="#0A0B0D"><rect x="322" y="44" width="16" height="24"/><rect x="298" y="50" width="20" height="12" fill="#14171B"/><rect x="342" y="50" width="20" height="12" fill="#14171B"/></g>
-            <!-- downlink -->
+            <g stroke="#F4F4F1" fill="#0A0B0D"><rect x="322" y="44" width="16" height="24"/><rect x="298" y="50" width="20" height="12" fill="#121519"/><rect x="342" y="50" width="20" height="12" fill="#121519"/></g>
             <path d="M338 70L470 178" stroke="#9AA0A6" stroke-dasharray="2 5"/>
-            <!-- ground station -->
-            <g stroke="#F4F4F1" fill="none"><path d="M462 200l10-22 10 22"/><path d="M458 172a16 16 0 0 1 28 0" /></g>
-            <!-- map -->
+            <g stroke="#F4F4F1" fill="none"><path d="M462 200l10-22 10 22"/><path d="M458 172a16 16 0 0 1 28 0"/></g>
             <g transform="translate(540 128)">
-              <rect width="76" height="60" fill="#14171B" stroke="#9AA0A6"/>
+              <rect width="76" height="60" fill="#121519" stroke="#9AA0A6"/>
               <rect x="6" y="6" width="16" height="12" fill="#4F8F86"/><rect x="22" y="6" width="16" height="12" fill="#3C7FB0"/><rect x="38" y="6" width="16" height="12" fill="#8C8A5A"/><rect x="54" y="6" width="16" height="12" fill="#4F8F86"/>
               <rect x="6" y="18" width="16" height="12" fill="#8C8A5A"/><rect x="22" y="18" width="16" height="12" fill="#9CCBEB"/><rect x="38" y="18" width="16" height="12" fill="#4F8F86"/><rect x="54" y="18" width="16" height="12" fill="#6B5A3E"/>
               <rect x="6" y="30" width="16" height="12" fill="#3C7FB0"/><rect x="22" y="30" width="16" height="12" fill="#4F8F86"/><rect x="38" y="30" width="16" height="12" fill="#3C7FB0"/><rect x="54" y="30" width="16" height="12" fill="#8C8A5A"/>
@@ -617,20 +758,16 @@ legend{padding:0;margin-bottom:12px}
             </g>
             <path d="M490 190h40" stroke="#9AA0A6"/><path d="M524 185l6 5-6 5" stroke="#9AA0A6" fill="none"/>
             <g font-family="IBM Plex Mono, monospace" font-size="12" fill="#9AA0A6" letter-spacing=".04em">
-              <text x="12" y="20">1. GNSS</text>
-              <text x="150" y="232">2. RÉFLEXION SUR LE SOL</text>
-              <text x="296" y="30">3. NANOSATELLITE 6U</text>
-              <text x="420" y="232">4. STATION SOL</text>
-              <text x="540" y="116">5. CARTE</text>
+              <text x="12" y="20">1. GNSS</text><text x="150" y="232">2. RÉFLEXION SUR LE SOL</text><text x="296" y="30">3. NANOSATELLITE 6U</text><text x="420" y="232">4. STATION SOL</text><text x="540" y="116">5. CARTE</text>
             </g>
           </svg>
-          <figcaption class="note">Schéma de principe, tel que publié dans la littérature sur la GNSS-R, pas à l'échelle : 1. satellites GNSS, 2. réflexion sur le sol, 3. nanosatellite 6U, 4. station sol, 5. carte d'humidité.</figcaption>
+          <figcaption class="note">Schéma de principe, tel que publié dans la littérature sur la GNSS-R, pas à l'échelle.</figcaption>
         </figure>
       </div>
     </div>
 
-    <div class="panel" role="tabpanel" id="panel-ing" aria-labelledby="tab-ing" tabindex="0" hidden>
-      <div class="eng-grid">
+    <div class="tpanel" role="tabpanel" id="p-ing" aria-labelledby="tab-ing" tabindex="0" hidden>
+      <div class="eng">
         <div>
           <h3>Principe GNSS-R</h3>
           <p>Le récepteur compare le signal direct d'un satellite de navigation et son reflet au point de réflexion spéculaire. En bande L, la réflectivité du sol suit sa constante diélectrique, donc sa teneur en eau. La chaîne de traitement corrige l'effet de la végétation et de la rugosité.</p>
@@ -646,203 +783,174 @@ legend{padding:0;margin-bottom:12px}
         <div>
           <h3>Fiche technique</h3>
           <div class="spec">
-            <div class="spec-group">
-              <p class="overline">Mesure</p>
-              <dl>
-                <dt>Principe</dt><dd>GNSS-R, bande L</dd>
-                <dt>Calibration</dt><dd>Sondes au sol</dd>
-                <dt>Fusion</dt><dd>Modèles hydrologiques</dd>
-              </dl>
-            </div>
-            <div class="spec-group">
-              <p class="overline">Livraison</p>
-              <dl>
-                <dt>Résolution visée</dt><dd>La parcelle</dd>
-                <dt>Revisite visée</dt><dd>Quotidienne</dd>
-                <dt>Formats</dt><dd>GeoTIFF, API, WMS</dd>
-              </dl>
-            </div>
-            <div class="spec-group">
-              <p class="overline">Statut</p>
-              <dl>
-                <dt>En orbite</dt><dd>Démonstrateur SO-1</dd>
-                <dt>À venir</dt><dd>Constellation complète</dd>
-              </dl>
-            </div>
+            <div class="spec-g"><p class="lbl">Mesure</p><dl><dt>Principe</dt><dd>GNSS-R, bande L</dd><dt>Calibration</dt><dd>Sondes au sol</dd><dt>Fusion</dt><dd>Modèles hydrologiques</dd></dl></div>
+            <div class="spec-g"><p class="lbl">Livraison</p><dl><dt>Résolution visée</dt><dd>La parcelle</dd><dt>Revisite visée</dt><dd>Quotidienne</dd><dt>Formats</dt><dd>GeoTIFF, API, WMS</dd></dl></div>
+            <div class="spec-g"><p class="lbl">Statut</p><dl><dt>En orbite</dt><dd>Démonstrateur SO-1</dd><dt>À venir</dt><dd>Constellation complète</dd></dl></div>
           </div>
         </div>
-      <div class="precision">
-        <svg viewBox="0 0 220 180" role="img" aria-labelledby="prec-t">
-          <title id="prec-t">Format de la courbe de comparaison avec les sondes au sol, sans valeurs</title>
-          <path d="M36 10v140h174" stroke="#9AA0A6" fill="none"/>
-          <path d="M36 150L206 14" stroke="#2A2F36" stroke-dasharray="4 5"/>
-          <g stroke="#2A2F36"><path d="M36 115h174M36 80h174M36 45h174"/></g>
-          <text x="200" y="28" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="end">1:1</text>
-          <text x="123" y="172" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="middle">SONDES AU SOL</text>
-          <text x="16" y="80" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="middle" transform="rotate(-90 16 80)">GNSS-R</text>
-        </svg>
-        <div>
-          <h3>Bilan de précision</h3>
-          <p class="small" style="color:var(--muted);margin-top:8px">Ce graphique compare l'humidité mesurée depuis l'orbite à celle des sondes au sol. Il n'affiche aucune valeur tant que la comparaison n'est pas publiée : les points seront tracés sur une paire de données publiques, légendée comme telle.</p>
+        <div class="prec pnl brk">
+          <svg viewBox="0 0 220 180" role="img" aria-labelledby="prec-t">
+            <title id="prec-t">Format de la courbe de comparaison avec les sondes au sol, sans valeurs</title>
+            <path d="M36 10v140h174" stroke="#9AA0A6" fill="none"/>
+            <path d="M36 150L206 14" stroke="#3A4048" stroke-dasharray="4 5"/>
+            <g stroke="#252A31"><path d="M36 115h174M36 80h174M36 45h174"/></g>
+            <text x="200" y="28" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="end">1:1</text>
+            <text x="123" y="172" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="middle">SONDES AU SOL</text>
+            <text x="16" y="80" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="middle" transform="rotate(-90 16 80)">GNSS-R</text>
+          </svg>
+          <h3 style="margin-top:12px">Bilan de précision</h3>
+          <p>Ce graphique compare l'humidité mesurée depuis l'orbite à celle des sondes au sol. Il n'affiche aucune valeur tant que la comparaison n'est pas publiée : les points seront tracés sur une paire de données publiques, légendée comme telle.</p>
         </div>
-      </div>
       </div>
     </div>
 
-    <div class="panel" role="tabpanel" id="panel-pub" aria-labelledby="tab-pub" tabindex="0" hidden>
-      <p class="note" style="margin-bottom:12px">Lectures de référence du domaine GNSS-R, publiées par d'autres équipes de recherche. Ce ne sont pas des travaux de Strate Orbital. DOI vérifiés sur Crossref le 13 novembre 2026.</p>
+    <div class="tpanel" role="tabpanel" id="p-pub" aria-labelledby="tab-pub" tabindex="0" hidden>
+      <p class="note" style="margin-bottom:10px">Lectures de référence du domaine GNSS-R, publiées par d'autres équipes de recherche. Ce ne sont pas des travaux de Strate Orbital. DOI vérifiés sur Crossref le 13 novembre 2026.</p>
       <ul class="pubs">
-        <li>
-          <span class="year">2000</span>
-          <h3>Scattering of GPS signals from the ocean with wind remote sensing application</h3>
-          <p class="src">Zavorotny, V. U., Voronovich, A. G. IEEE Transactions on Geoscience and Remote Sensing.</p>
-          <a class="doi textlink" href="https://doi.org/10.1109/36.841977">doi:10.1109/36.841977</a>
-        </li>
-        <li>
-          <span class="year">2014</span>
-          <h3>Tutorial on Remote Sensing Using GNSS Bistatic Radar of Opportunity</h3>
-          <p class="src">Zavorotny, V. U., Gleason, S., Cardellach, E., Camps, A. IEEE Geoscience and Remote Sensing Magazine.</p>
-          <a class="doi textlink" href="https://doi.org/10.1109/MGRS.2014.2374220">doi:10.1109/MGRS.2014.2374220</a>
-        </li>
-        <li>
-          <span class="year">2016</span>
-          <h3>Sensitivity of GNSS-R Spaceborne Observations to Soil Moisture and Vegetation</h3>
-          <p class="src">Camps, A., Park, H., Pablos, M., Foti, G., et al. IEEE JSTARS.</p>
-          <a class="doi textlink" href="https://doi.org/10.1109/JSTARS.2016.2588467">doi:10.1109/JSTARS.2016.2588467</a>
-        </li>
-        <li>
-          <span class="year">2018</span>
-          <h3>Soil Moisture Sensing Using Spaceborne GNSS Reflections: Comparison of CYGNSS Reflectivity to SMAP Soil Moisture</h3>
-          <p class="src">Chew, C. C., Small, E. E. Geophysical Research Letters.</p>
-          <a class="doi textlink" href="https://doi.org/10.1029/2018GL077905">doi:10.1029/2018GL077905</a>
-        </li>
+        <li><span class="yr">2000</span><h3>Scattering of GPS signals from the ocean with wind remote sensing application</h3><p class="src">Zavorotny, V. U., Voronovich, A. G. IEEE Transactions on Geoscience and Remote Sensing.</p><a class="textlink" href="https://doi.org/10.1109/36.841977">doi:10.1109/36.841977</a></li>
+        <li><span class="yr">2014</span><h3>Tutorial on Remote Sensing Using GNSS Bistatic Radar of Opportunity</h3><p class="src">Zavorotny, V. U., Gleason, S., Cardellach, E., Camps, A. IEEE Geoscience and Remote Sensing Magazine.</p><a class="textlink" href="https://doi.org/10.1109/MGRS.2014.2374220">doi:10.1109/MGRS.2014.2374220</a></li>
+        <li><span class="yr">2016</span><h3>Sensitivity of GNSS-R Spaceborne Observations to Soil Moisture and Vegetation</h3><p class="src">Camps, A., Park, H., Pablos, M., Foti, G., et al. IEEE JSTARS.</p><a class="textlink" href="https://doi.org/10.1109/JSTARS.2016.2588467">doi:10.1109/JSTARS.2016.2588467</a></li>
+        <li><span class="yr">2018</span><h3>Soil Moisture Sensing Using Spaceborne GNSS Reflections: Comparison of CYGNSS Reflectivity to SMAP Soil Moisture</h3><p class="src">Chew, C. C., Small, E. E. Geophysical Research Letters.</p><a class="textlink" href="https://doi.org/10.1029/2018GL077905">doi:10.1029/2018GL077905</a></li>
       </ul>
     </div>
     <p class="note export">La technologie est décrite au niveau du principe publié, sans spécification de charge utile, conformément au règlement (UE) 2021/821 sur les biens à double usage.</p>
   </div>
 </section>
 
-<!-- 3. APPLICATIONS -->
-<section id="applications" aria-labelledby="apps-title">
-  <div class="wrap">
+<!-- ============ 03 APPLICATIONS ============ -->
+<section class="sec" id="applications" aria-labelledby="apps-title">
+  <div class="sec-in">
+    <p class="strip"><span class="id">03</span><span>Applications</span><span class="rl"></span><span class="meta">Problème · donnée · décision</span></p>
     <h2 class="h2" id="apps-title">Trois décisions que la donnée rend possibles</h2>
     <p class="lead">Pour chaque usage : le problème, la donnée livrée, et ce qu'elle permet de décider.</p>
     <div class="matrix">
       <div class="corner" aria-hidden="true"></div>
-      <div class="col-head">
+      <div class="ch">
         <svg viewBox="0 0 200 88" aria-hidden="true" fill="none">
-          <path d="M0 87h200" stroke="#2A2F36"/>
+          <path d="M0 87h200" stroke="#252A31"/>
           <circle cx="40" cy="44" r="34" stroke="#9AA0A6"/><path d="M40 44L66 22" stroke="#F4F4F1"/>
           <circle cx="112" cy="44" r="34" stroke="#9AA0A6"/><path d="M112 44l-8 33" stroke="#F4F4F1"/>
           <circle cx="40" cy="44" r="18" fill="#3C7FB0" opacity=".55"/><circle cx="112" cy="44" r="22" fill="#8C8A5A" opacity=".55"/>
           <rect x="156" y="10" width="40" height="68" stroke="#9AA0A6"/><rect x="156" y="44" width="40" height="34" fill="#6B5A3E" opacity=".7"/>
         </svg>
+        <p class="lbl">Usage 1</p>
         <h3>Agriculture</h3>
         <p class="who">Irrigation, exploitations et coopératives</p>
       </div>
-      <div class="col-head">
+      <div class="ch">
         <svg viewBox="0 0 200 88" aria-hidden="true" fill="none">
-          <path d="M0 87h200" stroke="#2A2F36"/>
+          <path d="M0 87h200" stroke="#252A31"/>
           <path d="M4 20c30 10 26 34 60 40s50-30 80-22 40 30 52 40" stroke="#3C7FB0" stroke-width="2"/>
-          <path d="M4 60h192" stroke="#D4A72C" stroke-dasharray="4 5"/>
+          <path d="M4 60h192" stroke="#9AA0A6" stroke-dasharray="4 5"/>
           <path d="M4 70c40-4 60-30 96-28s60 26 96 18" stroke="#F4F4F1"/>
-          <path d="M150 50v20" stroke="#FF5A1F" stroke-width="1.5"/><path d="M144 56l6-6 6 6" stroke="#FF5A1F" stroke-width="1.5"/>
         </svg>
+        <p class="lbl">Usage 2</p>
         <h3>Eau</h3>
         <p class="who">Gestion de la ressource, alerte sécheresse</p>
       </div>
-      <div class="col-head">
+      <div class="ch">
         <svg viewBox="0 0 200 88" aria-hidden="true" fill="none">
-          <path d="M0 87h200" stroke="#2A2F36"/>
+          <path d="M0 87h200" stroke="#252A31"/>
           <path d="M6 24c24 4 34 12 56 16s40 4 58 18 34 18 72 20" stroke="#F4F4F1"/>
           <path d="M6 56h188" stroke="#9AA0A6" stroke-dasharray="4 5"/>
-          <circle cx="114" cy="56" r="5" stroke="#FF5A1F" stroke-width="1.5"/>
-          <path d="M114 61v26" stroke="#FF5A1F" stroke-width="1.5"/>
-          <rect x="128" y="62" width="64" height="24" fill="#14171B" stroke="#2A2F36"/>
-          <path d="M136 74h48" stroke="#9AA0A6"/>
+          <circle cx="114" cy="56" r="5" stroke="#F4F4F1" stroke-width="1.5"/>
+          <path d="M114 61v26" stroke="#F4F4F1" stroke-width="1.5"/>
+          <rect x="128" y="62" width="64" height="24" fill="#121519" stroke="#252A31"/><path d="M136 74h48" stroke="#9AA0A6"/>
         </svg>
+        <p class="lbl">Usage 3</p>
         <h3>Assurance climatique</h3>
         <p class="who">Indice paramétrique, assureurs et réassureurs</p>
       </div>
 
-      <div class="row-label">Le problème</div>
-      <div class="cell"><span class="m-label">Le problème</span>Irriguer au calendrier gaspille l'eau là où le sol est encore humide et arrive trop tard là où il s'assèche.</div>
-      <div class="cell"><span class="m-label">Le problème</span>Les restrictions d'eau se décident souvent sur des relevés ponctuels, sans vue continue du territoire.</div>
-      <div class="cell"><span class="m-label">Le problème</span>Indemniser une sécheresse agricole exige une expertise sur place, lente et contestable.</div>
+      <div class="rowl"><span>A</span>Le problème</div>
+      <div class="cell"><span class="ml">Le problème</span>Irriguer au calendrier gaspille l'eau là où le sol est encore humide et arrive trop tard là où il s'assèche.</div>
+      <div class="cell"><span class="ml">Le problème</span>Les restrictions d'eau se décident souvent sur des relevés ponctuels, sans vue continue du territoire.</div>
+      <div class="cell"><span class="ml">Le problème</span>Indemniser une sécheresse agricole exige une expertise sur place, lente et contestable.</div>
 
-      <div class="row-label">La donnée livrée</div>
-      <div class="cell"><span class="m-label">La donnée livrée</span>L'humidité du sol à la parcelle, chaque jour, dans l'outil de pilotage de l'exploitation.</div>
-      <div class="cell"><span class="m-label">La donnée livrée</span>Des cartes quotidiennes du bassin et leur historique, en GeoTIFF ou en WMS dans le SIG du service.</div>
-      <div class="cell"><span class="m-label">La donnée livrée</span>Une série d'humidité indépendante, documentée et horodatée, par l'API, pour chaque zone assurée.</div>
+      <div class="rowl"><span>B</span>La donnée livrée</div>
+      <div class="cell"><span class="ml">La donnée livrée</span>L'humidité du sol à la parcelle, chaque jour, dans l'outil de pilotage de l'exploitation.</div>
+      <div class="cell"><span class="ml">La donnée livrée</span>Des cartes quotidiennes du bassin et leur historique, en GeoTIFF ou en WMS dans le SIG du service.</div>
+      <div class="cell"><span class="ml">La donnée livrée</span>Une série d'humidité indépendante, documentée et horodatée, par l'API, pour chaque zone assurée.</div>
 
-      <div class="row-label">La décision</div>
-      <div class="cell decision"><span class="m-label">La décision</span>Décider quelle parcelle irriguer aujourd'hui, et laquelle peut attendre.</div>
-      <div class="cell decision"><span class="m-label">La décision</span>Déclencher une alerte sécheresse au bon niveau, sur le bon secteur.</div>
-      <div class="cell decision"><span class="m-label">La décision</span>Déclencher l'indemnisation quand l'indice franchit le seuil prévu au contrat.</div>
+      <div class="rowl"><span>C</span>La décision</div>
+      <div class="cell dec"><span class="ml">La décision</span>Décider quelle parcelle irriguer aujourd'hui, et laquelle peut attendre.</div>
+      <div class="cell dec"><span class="ml">La décision</span>Déclencher une alerte sécheresse au bon niveau, sur le bon secteur.</div>
+      <div class="cell dec"><span class="ml">La décision</span>Déclencher l'indemnisation quand l'indice franchit le seuil prévu au contrat.</div>
     </div>
   </div>
 </section>
 
-<!-- 4. FEUILLE DE ROUTE -->
-<section id="feuille-de-route" aria-labelledby="road-title">
-  <div class="wrap">
-    <div class="road-head">
+<!-- ============ 04 FEUILLE DE ROUTE ============ -->
+<section class="sec" id="feuille-de-route" aria-labelledby="road-title">
+  <div class="sec-in">
+    <p class="strip"><span class="id">04</span><span>Feuille de route</span><span class="rl"></span><span class="meta">Statuts de mission</span></p>
+    <div class="head-row">
       <div>
         <h2 class="h2" id="road-title">Feuille de route</h2>
-        <p class="lead">Chaque jalon porte son ordre et son statut. Aucune date n'est affichée tant qu'elle n'est pas tenue.</p>
+        <p class="lead">Chaque jalon porte son ordre et son statut : réalisé, partiel ou à venir. Aucune date n'est affichée tant qu'elle n'est pas tenue.</p>
       </div>
-      <div class="road-controls">
-        <button class="icon-btn" type="button" id="road-prev" aria-label="Jalons précédents"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6"/></svg></button>
-        <button class="icon-btn" type="button" id="road-next" aria-label="Jalons suivants"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></button>
-        <button class="icon-btn" type="button" id="road-toggle" aria-pressed="false" aria-label="Mettre en pause le défilement">
+      <div class="fz-ctl">
+        <span class="fz-pos" id="fz-pos" aria-live="polite">Étapes 01 à 05 sur 07</span>
+        <button class="ib" type="button" id="fz-prev" aria-label="Jalons précédents"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <button class="ib" type="button" id="fz-next" aria-label="Jalons suivants"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <button class="ib" type="button" id="fz-toggle" aria-pressed="false" aria-label="Mettre en pause le défilement">
           <svg class="i-pause" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>
           <svg class="i-play" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="display:none"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg>
         </button>
       </div>
     </div>
-    <div class="track-wrap">
-      <ol class="track" id="track" tabindex="0" aria-label="Jalons de la feuille de route">
-        <li class="step done">
-          <div class="step-axis"><span class="node"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg></span></div>
-          <div class="step-card"><p class="overline">Étape 01</p><h3>Essaimage du laboratoire</h3><p>La société naît des travaux d'un laboratoire public de géophysique spatiale, à Toulouse.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg>Réalisé</span></div>
-        </li>
-        <li class="step done">
-          <div class="step-axis"><span class="node"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg></span></div>
-          <div class="step-card"><p class="overline">Étape 02</p><h3>Démonstrateur SO-1 en orbite</h3><p>Un nanosatellite 6U valide la mesure GNSS-R en conditions réelles.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg>Réalisé</span></div>
-        </li>
-        <li class="step done">
-          <div class="step-axis"><span class="node"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg></span></div>
-          <div class="step-card"><p class="overline">Étape 03</p><h3>Première carte d'humidité</h3><p>Une première carte produite à partir des signaux reçus par SO-1.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg>Réalisé</span></div>
-        </li>
-        <li class="step part">
-          <div class="step-axis"><span class="node" aria-hidden="true"></span></div>
-          <div class="step-card"><p class="overline">Étape 04</p><h3>Calibration sur sondes au sol</h3><p>Comparaison site par site avec des réseaux de sondes. La campagne se poursuit.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5a4.5 4.5 0 0 1 0 9z" fill="currentColor"/></svg>Partiel</span></div>
-        </li>
-        <li class="step next">
-          <div class="step-axis"><span class="node" aria-hidden="true"></span></div>
-          <div class="step-card"><p class="overline">Étape 05</p><h3>Pilotes avec des utilisateurs</h3><p>Cartes livrées à des services de l'eau et à des exploitations, dans leurs formats.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 2"/></svg>À venir</span></div>
-        </li>
-        <li class="step next">
-          <div class="step-axis"><span class="node" aria-hidden="true"></span></div>
-          <div class="step-card"><p class="overline">Étape 06</p><h3>Constellation complète</h3><p>Assez de satellites pour repasser chaque jour au-dessus de chaque parcelle.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 2"/></svg>À venir</span></div>
-        </li>
-        <li class="step next">
-          <div class="step-axis"><span class="node" aria-hidden="true"></span></div>
-          <div class="step-card"><p class="overline">Étape 07</p><h3>Service opérationnel</h3><p>Données quotidiennes en GeoTIFF, par API et en WMS, avec un engagement de continuité.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 2"/></svg>À venir</span></div>
-        </li>
-      </ol>
+    <div class="frieze" id="frieze" tabindex="0" aria-label="Frise des jalons, défilement horizontal">
+      <div class="fz-in">
+        <div class="phases" aria-hidden="true">
+          <span style="width:var(--sw)"><b>P0</b>Origine</span>
+          <span style="width:calc(var(--sw) * 2)"><b>P1</b>Démonstration</span>
+          <span style="width:calc(var(--sw) * 2)"><b>P2</b>Validation</span>
+          <span style="width:calc(var(--sw) * 2)"><b>P3</b>Déploiement</span>
+        </div>
+        <ol class="fz-steps">
+          <li class="fz done">
+            <div class="fz-axis"><span class="node"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="2"/></svg></span></div>
+            <div class="fz-body"><p class="fz-ph">Phase 0 · Origine</p><p class="fz-id">ÉTAPE 01</p><h3>Essaimage du laboratoire</h3><p class="d">La société naît des travaux d'un laboratoire public de géophysique spatiale, à Toulouse.</p><span class="st"><i aria-hidden="true"></i>Réalisé</span></div>
+          </li>
+          <li class="fz done">
+            <div class="fz-axis"><span class="node"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="2"/></svg></span></div>
+            <div class="fz-body"><p class="fz-ph">Phase 1 · Démonstration</p><p class="fz-id">ÉTAPE 02</p><h3>Démonstrateur SO-1 en orbite</h3><p class="d">Un nanosatellite 6U valide la mesure GNSS-R en conditions réelles.</p><span class="st"><i aria-hidden="true"></i>Réalisé</span></div>
+          </li>
+          <li class="fz done">
+            <div class="fz-axis"><span class="node"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="2"/></svg></span></div>
+            <div class="fz-body"><p class="fz-ph">Phase 1 · Démonstration</p><p class="fz-id">ÉTAPE 03</p><h3>Première carte d'humidité</h3><p class="d">Une première carte produite à partir des signaux reçus par SO-1.</p><span class="st"><i aria-hidden="true"></i>Réalisé</span></div>
+          </li>
+          <li class="fz part" aria-current="step">
+            <div class="fz-axis"><span class="node" aria-hidden="true"></span></div>
+            <div class="fz-body"><p class="fz-ph">Phase 2 · Validation</p><p class="fz-id">ÉTAPE 04 · EN COURS</p><h3>Calibration sur sondes au sol</h3><p class="d">Comparaison site par site avec des réseaux de sondes. La campagne se poursuit.</p><span class="st"><i aria-hidden="true"></i>Partiel</span></div>
+          </li>
+          <li class="fz next">
+            <div class="fz-axis"><span class="node" aria-hidden="true"></span></div>
+            <div class="fz-body"><p class="fz-ph">Phase 2 · Validation</p><p class="fz-id">ÉTAPE 05</p><h3>Pilotes avec des utilisateurs</h3><p class="d">Cartes livrées à des services de l'eau et à des exploitations, dans leurs formats.</p><span class="st"><i aria-hidden="true"></i>À venir</span></div>
+          </li>
+          <li class="fz next">
+            <div class="fz-axis"><span class="node" aria-hidden="true"></span></div>
+            <div class="fz-body"><p class="fz-ph">Phase 3 · Déploiement</p><p class="fz-id">ÉTAPE 06</p><h3>Constellation complète</h3><p class="d">Assez de satellites pour repasser chaque jour au-dessus de chaque parcelle.</p><span class="st"><i aria-hidden="true"></i>À venir</span></div>
+          </li>
+          <li class="fz next">
+            <div class="fz-axis"><span class="node" aria-hidden="true"></span></div>
+            <div class="fz-body"><p class="fz-ph">Phase 3 · Déploiement</p><p class="fz-id">ÉTAPE 07</p><h3>Service opérationnel</h3><p class="d">Données quotidiennes en GeoTIFF, par API et en WMS, avec un engagement de continuité.</p><span class="st"><i aria-hidden="true"></i>À venir</span></div>
+          </li>
+        </ol>
+      </div>
     </div>
-    <div class="newsletter">
+    <div class="scrub" id="scrub" aria-hidden="true"><span id="scrub-t"></span></div>
+    <div class="nl">
       <div>
-        <h3 style="font-size:22px;font-weight:500">Recevoir chaque nouveau jalon</h3>
-        <p class="small" style="color:var(--muted);margin-top:4px">Un e-mail à chaque lancement et à chaque changement de statut. Désinscription en un clic.</p>
+        <h3>Recevoir chaque nouveau jalon</h3>
+        <p class="note" style="font-size:14px;margin-top:2px">Un e-mail à chaque lancement et à chaque changement de statut. Désinscription en un clic.</p>
       </div>
       <form id="nl-form" novalidate>
         <div class="field">
           <label for="nl-email">Adresse e-mail</label>
           <input class="input" id="nl-email" name="email" type="email" autocomplete="email" placeholder="prenom@organisation.fr" aria-describedby="nl-err">
         </div>
-        <button class="btn btn-ghost" type="submit">Suivre nos lancements</button>
+        <button class="btn btn-quiet" type="submit">Suivre nos lancements</button>
       </form>
       <p class="err" id="nl-err" hidden></p>
       <p class="nl-msg" id="nl-msg" role="status" aria-live="polite"></p>
@@ -850,259 +958,199 @@ legend{padding:0;margin-bottom:12px}
   </div>
 </section>
 
-<!-- 5. DONNÉES -->
-<section id="donnees" aria-labelledby="data-title">
-  <div class="wrap">
-    <h2 class="h2" id="data-title">À quoi ressemble la donnée, jour après jour</h2>
-    <p class="lead">Faites glisser le curseur sur trente jours : une période sèche, un épisode de pluie, puis le ressuyage. Touchez une parcelle pour lire son palier.</p>
-    <div class="data-grid">
-      <figure class="map-frame" style="margin:0">
-        <div class="map-top" aria-hidden="true"><span>TUILE D'ILLUSTRATION</span><span id="map-day-label">JOUR 30 / 30</span></div>
-        <svg class="map-svg" id="map" viewBox="0 0 800 500" role="img" aria-labelledby="map-t">
-          <title id="map-t">Carte d'illustration de l'humidité des sols, découpée en six zones. Les valeurs sont reprises dans le tableau à côté.</title>
-          <g id="cells"></g>
-          <g id="zones" fill="none" stroke="#0A0B0D" stroke-width="3"></g>
-          <g id="zone-labels" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="500" fill="#F4F4F1"></g>
-          <g id="reticle" stroke="#FF5A1F" stroke-width="2" fill="none" pointer-events="none">
-            <path d="M-6 4V-6H4M20 -6H30V4M30 20V30H20M4 30H-6V20"/>
-            <path d="M12 -18v8M12 34v8M-18 12h8M34 12h8"/>
-          </g>
-        </svg>
-        <div class="map-bottom" aria-hidden="true"><span>PALIERS 1 À 5, DU PLUS SEC AU PLUS HUMIDE</span><span>N ↑</span></div>
-        <figcaption class="note map-src">Tuile générée pour la maquette : aucune valeur mesurée, ce n'est pas une mesure de Strate Orbital. Dans le site livré, la tuile vient du produit Surface Soil Moisture du Copernicus Land Monitoring Service (1 km de résolution en Europe, à partir de Sentinel-1), un repère public. Source : <a href="https://land.copernicus.eu/en/products/soil-moisture">CLMS, Soil Moisture</a>, vu le 13 novembre 2026.</figcaption>
-      </figure>
-      <div class="ctrl">
-        <div>
-          <div class="day-read">
-            <label for="day" class="legend-title">Jour affiché</label>
-            <output id="day-out" for="day">30 <small>/ 30</small></output>
-          </div>
-          <input class="range" id="day" type="range" min="1" max="30" step="1" value="30" aria-describedby="day-help">
-          <div class="range-ends" aria-hidden="true"><span>Jour 1</span><span>Jour 30</span></div>
-          <p class="sr-only" id="day-help">Les flèches du clavier changent le jour d'une unité.</p>
-        </div>
-        <div>
-          <p class="legend-title" id="legend-t">Légende</p>
-          <ul class="legend" aria-labelledby="legend-t">
-            <li><span class="sw" style="background:var(--m1)"></span>1. Très sec</li>
-            <li><span class="sw" style="background:var(--m2)"></span>2. Sec</li>
-            <li><span class="sw" style="background:var(--m3)"></span>3. Moyen</li>
-            <li><span class="sw" style="background:var(--m4)"></span>4. Humide</li>
-            <li><span class="sw" style="background:var(--m5)"></span>5. Très humide</li>
-          </ul>
-        </div>
-        <p class="readout" id="readout" aria-live="polite">Touchez une parcelle de la carte pour lire son palier.</p>
-        <table>
-          <caption>Palier dominant par zone, jour <span id="tbl-day">30</span></caption>
-          <thead><tr><th scope="col">Zone</th><th scope="col">Palier</th><th scope="col">Sur la veille</th></tr></thead>
-          <tbody id="tbl-body"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 6. PARTENAIRES -->
-<section id="partenaires" aria-labelledby="partners-title">
-  <div class="wrap">
+<!-- ============ 05 PARTENAIRES ============ -->
+<section class="sec" id="partenaires" aria-labelledby="partners-title">
+  <div class="sec-in">
+    <p class="strip"><span class="id">05</span><span>Partenaires et financeurs</span><span class="rl"></span><span class="meta">Registre des soutiens</span></p>
     <h2 class="h2" id="partners-title">Partenaires et financeurs</h2>
     <p class="lead">La nature de chaque soutien est écrite en toutes lettres. Logotypes fictifs : Strate Orbital est une entreprise de démonstration et n'a aucun soutien réel.</p>
-    <div class="partners-grid">
-      <ul class="logos">
-        <li class="logo-cell" title="Incubateur : hébergement et accompagnement depuis l'essaimage">
+    <div class="reg-grid">
+      <ul class="reg">
+        <li title="Incubateur : hébergement et accompagnement depuis l'essaimage"><span class="k">S-01</span>
           <svg viewBox="0 0 190 34" role="img" aria-label="Mirevent (logotype fictif)"><circle cx="17" cy="17" r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21l6-8 5 6 4-4 4 6" fill="none" stroke="currentColor" stroke-width="2"/><text x="40" y="23" font-family="IBM Plex Sans, sans-serif" font-size="19" font-weight="600" fill="currentColor">Mirevent</text></svg>
-          <p><strong>Incubateur.</strong> Hébergement et accompagnement depuis l'essaimage (exemple).</p>
-        </li>
-        <li class="logo-cell" title="Lauréat d'un appel à projets d'innovation">
+          <p><strong>Incubateur</strong>Hébergement et accompagnement depuis l'essaimage (exemple).</p></li>
+        <li title="Lauréat d'un appel à projets d'innovation"><span class="k">S-02</span>
           <svg viewBox="0 0 220 34" role="img" aria-label="Fonds Corbière (logotype fictif)"><rect x="4" y="4" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 30L30 4" stroke="currentColor" stroke-width="2"/><text x="40" y="23" font-family="IBM Plex Sans, sans-serif" font-size="19" font-weight="500" fill="currentColor" letter-spacing=".02em">Fonds Corbière</text></svg>
-          <p><strong>Lauréat d'un appel à projets</strong> d'innovation (exemple).</p>
-        </li>
-        <li class="logo-cell" title="Contrat d'étude sur la mesure de l'humidité des sols">
+          <p><strong>Lauréat d'un appel à projets</strong>Appel à projets d'innovation (exemple).</p></li>
+        <li title="Contrat d'étude sur la mesure de l'humidité des sols"><span class="k">S-03</span>
           <svg viewBox="0 0 220 34" role="img" aria-label="Agence Vellane (logotype fictif)"><path d="M4 28L17 5l13 23z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 22h14" stroke="currentColor" stroke-width="2"/><text x="40" y="23" font-family="IBM Plex Mono, monospace" font-size="17" font-weight="500" fill="currentColor">AGENCE VELLANE</text></svg>
-          <p><strong>Contrat d'étude</strong> sur la mesure de l'humidité des sols (exemple).</p>
-        </li>
-        <li class="logo-cell" title="Prêt d'amorçage remboursable">
+          <p><strong>Contrat d'étude</strong>Sur la mesure de l'humidité des sols (exemple).</p></li>
+        <li title="Prêt d'amorçage remboursable"><span class="k">S-04</span>
           <svg viewBox="0 0 220 34" role="img" aria-label="Programme Talweg (logotype fictif)"><path d="M3 10c6 0 8 14 14 14s8-14 14-14" fill="none" stroke="currentColor" stroke-width="2"/><text x="40" y="23" font-family="IBM Plex Sans, sans-serif" font-size="19" font-weight="400" fill="currentColor"><tspan font-weight="600">Talweg</tspan> programme</text></svg>
-          <p><strong>Prêt d'amorçage</strong> remboursable (exemple).</p>
-        </li>
+          <p><strong>Prêt d'amorçage</strong>Prêt remboursable (exemple).</p></li>
       </ul>
-      <aside class="market" aria-labelledby="market-t">
-        <h3 id="market-t" style="font-size:20px;font-weight:500">Le contexte de financement</h3>
-        <p class="small" style="color:var(--muted);margin-top:6px">Spatial européen, premier semestre 2026. La France est en tête des montants levés.</p>
+      <aside class="pnl brk" aria-labelledby="market-t">
+        <p class="lbl">Contexte de financement</p>
+        <h3 id="market-t" style="font-size:20px;font-weight:500;margin-top:8px">Spatial européen, premier semestre 2026</h3>
+        <p class="note" style="font-size:14px;margin-top:4px">La France est en tête des montants levés.</p>
         <div class="figs">
           <div><p class="fig">30</p><p class="fig-l">entreprises financées</p></div>
           <div><p class="fig">1,6 Md€</p><p class="fig-l">en fonds propres</p></div>
           <div><p class="fig">1,3 Md€</p><p class="fig-l">en dette</p></div>
         </div>
         <p class="note">Source : <a href="https://funding.tech.eu/sectors/space/2026/h1">Tech.eu Funding Explorer, Space H1 2026</a>, données au 12 novembre 2026, vu le 13 novembre 2026.</p>
-        <a class="btn btn-ghost" href="#contact" data-preset="investisseur">Demander le dossier investisseurs</a>
+        <a class="btn btn-quiet" style="margin-top:18px" href="#contact" data-preset="investisseur">Demander le dossier investisseurs</a>
       </aside>
     </div>
   </div>
 </section>
 
-<!-- 7. ÉQUIPE ET RECRUTEMENT -->
-<section id="equipe" aria-labelledby="team-title">
-  <div class="wrap team-grid">
-    <div class="about">
-      <h2 class="h2" id="team-title">Qui sommes-nous</h2>
-      <p class="body">Strate Orbital est née d'un laboratoire public de recherche en géophysique spatiale, à Toulouse. Nous construisons des nanosatellites qui mesurent l'humidité des sols, et nous livrons cette donnée à ceux qui gèrent l'eau et les cultures. L'équipe réunit des ingénieurs système, des spécialistes du signal et des hydrologues.</p>
-      <figure class="about-art" style="margin-left:0;margin-right:0;margin-bottom:0">
-        <svg viewBox="0 0 460 150" role="img" aria-label="Illustration au trait : coupe du sol en strates, survolée par l'orbite d'un nanosatellite">
-          <path d="M0 74h460" stroke="#9AA0A6"/>
-          <path d="M0 92c60 6 120-6 190 0s150 10 270 2" stroke="#2A2F36"/>
-          <path d="M0 112c80 4 150-8 230-2s150 8 230 0" stroke="#2A2F36"/>
-          <path d="M0 132c90-4 170 6 250 2s140-6 210 0" stroke="#2A2F36"/>
-          <g fill="#3C7FB0" opacity=".8"><circle cx="70" cy="100" r="2"/><circle cx="96" cy="118" r="2"/><circle cx="150" cy="104" r="2"/><circle cx="210" cy="124" r="2"/><circle cx="268" cy="98" r="2"/><circle cx="330" cy="120" r="2"/><circle cx="390" cy="104" r="2"/><circle cx="420" cy="128" r="2"/></g>
-          <path d="M20 60C120 6 340 6 440 60" stroke="#9AA0A6" stroke-dasharray="3 6" fill="none"/>
-          <g transform="translate(300 24) rotate(14)"><rect x="-5" y="-8" width="10" height="16" fill="#0A0B0D" stroke="#F4F4F1"/><rect x="-21" y="-5" width="14" height="10" fill="#14171B" stroke="#F4F4F1"/><rect x="7" y="-5" width="14" height="10" fill="#14171B" stroke="#F4F4F1"/></g>
-          <path d="M300 34L272 74" stroke="#FF5A1F" stroke-width="1.5" stroke-dasharray="4 4"/>
-        </svg>
-      </figure>
-    </div>
-    <div>
-      <h3 style="font-size:26px;line-height:1.2">Postes ouverts</h3>
-      <p class="small" style="color:var(--muted);margin-top:6px">Pour chaque offre, le problème que vous aurez à résoudre. Salaire et BSPCE sont indiqués dans chaque fiche de poste.</p>
-      <ul class="jobs" style="margin-top:20px">
-        <li class="job">
-          <div class="job-top"><h3>Ingénieur·e GNC</h3><span class="meta">CDI, Toulouse</span></div>
-          <p class="problem"><b>Le problème :</b> garder l'antenne d'un nanosatellite 6U pointée vers la Terre pendant toute l'acquisition, avec les actionneurs d'une petite plateforme.</p>
-          <a class="textlink" href="#">Lire l'offre</a>
-        </li>
-        <li class="job">
-          <div class="job-top"><h3>Ingénieur·e traitement du signal GNSS-R</h3><span class="meta">CDI, Toulouse</span></div>
-          <p class="problem"><b>Le problème :</b> séparer, dans le signal réfléchi, la part due à l'humidité du sol de celle due à la végétation et à la rugosité.</p>
-          <a class="textlink" href="#">Lire l'offre</a>
-        </li>
-        <li class="job">
-          <div class="job-top"><h3>Ingénieur·e données et hydrologie</h3><span class="meta">CDI, Toulouse</span></div>
-          <p class="problem"><b>Le problème :</b> fusionner les mesures orbitales, les modèles hydrologiques et les sondes au sol pour livrer chaque jour une carte fiable.</p>
-          <a class="textlink" href="#">Lire l'offre</a>
-        </li>
-      </ul>
-      <div class="jobs-foot">
-        <a class="btn btn-secondary" href="#">Voir les postes ouverts (3)</a>
-        <a class="textlink small" href="#">Page carrière</a>
+<!-- ============ 06 ÉQUIPE ============ -->
+<section class="sec" id="equipe" aria-labelledby="team-title">
+  <div class="sec-in">
+    <p class="strip"><span class="id">06</span><span>Équipe et recrutement</span><span class="rl"></span><span class="meta">Toulouse</span></p>
+    <div class="team">
+      <div class="about">
+        <h2 class="h2" id="team-title">Qui sommes-nous</h2>
+        <p class="body" style="margin-top:14px">Strate Orbital est née d'un laboratoire public de recherche en géophysique spatiale, à Toulouse. Nous construisons des nanosatellites qui mesurent l'humidité des sols, et nous livrons cette donnée à ceux qui gèrent l'eau et les cultures. L'équipe réunit des ingénieurs système, des spécialistes du signal et des hydrologues.</p>
+        <figure class="pnl brk">
+          <svg viewBox="0 0 460 150" role="img" aria-label="Illustration au trait : coupe du sol en strates, survolée par l'orbite d'un nanosatellite">
+            <path d="M0 74h460" stroke="#9AA0A6"/>
+            <path d="M0 92c60 6 120-6 190 0s150 10 270 2" stroke="#3A4048" fill="none"/>
+            <path d="M0 112c80 4 150-8 230-2s150 8 230 0" stroke="#3A4048" fill="none"/>
+            <path d="M0 132c90-4 170 6 250 2s140-6 210 0" stroke="#3A4048" fill="none"/>
+            <g fill="#3C7FB0" opacity=".8"><circle cx="70" cy="100" r="2"/><circle cx="96" cy="118" r="2"/><circle cx="150" cy="104" r="2"/><circle cx="210" cy="124" r="2"/><circle cx="268" cy="98" r="2"/><circle cx="330" cy="120" r="2"/><circle cx="390" cy="104" r="2"/><circle cx="420" cy="128" r="2"/></g>
+            <path d="M20 60C120 6 340 6 440 60" stroke="#9AA0A6" stroke-dasharray="3 6" fill="none"/>
+            <g transform="translate(300 24) rotate(14)"><rect x="-5" y="-8" width="10" height="16" fill="#0A0B0D" stroke="#F4F4F1"/><rect x="-21" y="-5" width="14" height="10" fill="#121519" stroke="#F4F4F1"/><rect x="7" y="-5" width="14" height="10" fill="#121519" stroke="#F4F4F1"/></g>
+            <path d="M300 34L272 74" stroke="#F4F4F1" stroke-width="1" stroke-dasharray="4 4"/>
+          </svg>
+        </figure>
+      </div>
+      <div>
+        <h3 style="font-size:24px;line-height:1.2;font-weight:600">Postes ouverts</h3>
+        <p class="note" style="font-size:15px;margin:4px 0 16px">Pour chaque offre, le problème que vous aurez à résoudre. Salaire et BSPCE sont indiqués dans chaque fiche de poste.</p>
+        <ul class="jobs">
+          <li class="job"><span class="k">POSTE 01</span><h3>Ingénieur·e GNC</h3><span class="meta">CDI · Toulouse</span>
+            <p class="pb"><b>Le problème :</b> garder l'antenne d'un nanosatellite 6U pointée vers la Terre pendant toute l'acquisition, avec les actionneurs d'une petite plateforme.</p>
+            <a class="textlink" href="#">Lire l'offre</a></li>
+          <li class="job"><span class="k">POSTE 02</span><h3>Ingénieur·e traitement du signal GNSS-R</h3><span class="meta">CDI · Toulouse</span>
+            <p class="pb"><b>Le problème :</b> séparer, dans le signal réfléchi, la part due à l'humidité du sol de celle due à la végétation et à la rugosité.</p>
+            <a class="textlink" href="#">Lire l'offre</a></li>
+          <li class="job"><span class="k">POSTE 03</span><h3>Ingénieur·e données et hydrologie</h3><span class="meta">CDI · Toulouse</span>
+            <p class="pb"><b>Le problème :</b> fusionner les mesures orbitales, les modèles hydrologiques et les sondes au sol pour livrer chaque jour une carte fiable.</p>
+            <a class="textlink" href="#">Lire l'offre</a></li>
+        </ul>
+        <div class="jobs-foot">
+          <a class="btn btn-line" href="#">Voir les postes ouverts (3)</a>
+          <a class="textlink" style="font-size:15px" href="#">Page carrière</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 8. PRESSE ET CONTACT -->
-<section id="contact" aria-labelledby="contact-title">
-  <div class="wrap contact-grid">
-    <div>
-      <h2 class="h2" id="contact-title">Presse et contact</h2>
-      <h3 style="font-size:19px;font-weight:500;margin-top:20px">Dans la presse</h3>
-      <ul class="press">
-        <li><span class="tag">Exemple</span><p>Titre d'article sur la mesure de l'humidité des sols depuis l'orbite</p></li>
-        <li><span class="tag">Exemple</span><p>Titre d'article sur les nanosatellites issus des laboratoires toulousains</p></li>
-        <li><span class="tag">Exemple</span><p>Titre d'article sur les données satellitaires et la sécheresse agricole</p></li>
-      </ul>
-      <div class="kit">
-        <a class="btn btn-ghost" href="#">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" stroke="currentColor" stroke-width="1.6"/></svg>
-          Télécharger le kit presse (ZIP)
-        </a>
-        <p class="note">Logos, visuels légendés et fiche entreprise. Le poids réel du fichier s'affiche à la mise en ligne.</p>
-      </div>
-      <div class="where">
-        <address>
-          <strong style="font-weight:500">Strate Orbital</strong><br>
-          Toulouse, Haute-Garonne<br>
-          <span class="note">Adresse de démonstration : le site livré affiche l'adresse réelle.</span><br>
-          <a class="textlink small" href="mailto:partenaires@strate-orbital.example">partenaires@strate-orbital.example</a>
-        </address>
-        <svg viewBox="0 0 260 160" role="img" aria-label="Plan schématique : Toulouse, la Garonne et l'emplacement des bureaux">
-          <g stroke="#2A2F36" fill="none"><path d="M0 40h260M0 90h260M0 130h260M60 0v160M140 0v160M210 0v160M0 0l260 160"/></g>
-          <path d="M30 0c30 40 10 70 50 90s70 20 90 70" stroke="#3C7FB0" stroke-width="5" fill="none" opacity=".75"/>
-          <text x="22" y="150" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6">GARONNE</text>
-          <circle cx="170" cy="66" r="18" fill="none" stroke="#FF5A1F" stroke-width="1.5"/>
-          <path d="M170 44v10M170 78v10M148 66h10M182 66h10" stroke="#FF5A1F" stroke-width="1.5"/>
-          <circle cx="170" cy="66" r="3" fill="#FF5A1F"/>
-          <text x="196" y="30" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F4F4F1">TOULOUSE</text>
-        </svg>
-      </div>
-    </div>
-
-    <div class="form-card" id="form-card">
-      <form id="contact-form" novalidate>
-        <div class="form-head">
-          <h3 id="form-title">Votre demande</h3>
-          <p class="steps" id="step-count" aria-live="polite">Étape <b>1</b> sur 2</p>
+<!-- ============ 07 PRESSE ET CONTACT ============ -->
+<section class="sec" id="contact" aria-labelledby="contact-title">
+  <div class="sec-in">
+    <p class="strip"><span class="id">07</span><span>Presse et contact</span><span class="rl"></span><span class="meta">Liaison</span></p>
+    <div class="contact">
+      <div>
+        <h2 class="h2" id="contact-title">Presse et contact</h2>
+        <h3 class="lbl" style="margin-top:18px">Dans la presse</h3>
+        <ul class="press">
+          <li><span class="tag">Exemple</span><p>Titre d'article sur la mesure de l'humidité des sols depuis l'orbite</p></li>
+          <li><span class="tag">Exemple</span><p>Titre d'article sur les nanosatellites issus des laboratoires toulousains</p></li>
+          <li><span class="tag">Exemple</span><p>Titre d'article sur les données satellitaires et la sécheresse agricole</p></li>
+        </ul>
+        <div class="kit">
+          <a class="btn btn-quiet" href="#">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" stroke="currentColor" stroke-width="1.6"/></svg>
+            Télécharger le kit presse (ZIP)
+          </a>
+          <p class="note">Logos, visuels légendés et fiche entreprise. Le poids réel du fichier s'affiche à la mise en ligne.</p>
         </div>
+        <div class="where">
+          <address>
+            <strong style="font-weight:500">Strate Orbital</strong><br>
+            Toulouse, Haute-Garonne<br>
+            <span class="note">Adresse de démonstration : le site livré affiche l'adresse réelle.</span><br>
+            <a class="textlink" href="mailto:partenaires@strate-orbital.example">partenaires@strate-orbital.example</a>
+          </address>
+          <svg viewBox="0 0 260 150" role="img" aria-label="Plan schématique : Toulouse, la Garonne et l'emplacement des bureaux">
+            <g stroke="#252A31" fill="none"><path d="M0 40h260M0 90h260M0 130h260M60 0v150M140 0v150M210 0v150M0 0l260 150"/></g>
+            <path d="M30 0c30 40 10 70 50 90s70 20 90 60" stroke="#3C7FB0" stroke-width="5" fill="none" opacity=".75"/>
+            <text x="22" y="142" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6">GARONNE</text>
+            <g stroke="#FF5A1F" stroke-width="1.5" fill="none"><path d="M158 54v-6h6M176 48h6v6M182 78v6h-6M164 84h-6v-6"/><path d="M170 36v8M170 88v8M140 66h8M192 66h8"/></g>
+            <circle cx="170" cy="66" r="3" fill="#FF5A1F"/>
+            <text x="196" y="30" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F4F4F1">TOULOUSE</text>
+          </svg>
+        </div>
+      </div>
 
-        <div class="form-step" id="step1">
-          <fieldset>
-            <legend class="legend-title">Vous êtes</legend>
-            <div class="who-grid">
-              <div class="who-opt"><input type="radio" name="who" id="who-inv" value="investisseur"><label for="who-inv"><strong>Investisseur</strong><span>Dossier investisseurs, rendez-vous</span></label></div>
-              <div class="who-opt"><input type="radio" name="who" id="who-cli" value="client"><label for="who-cli"><strong>Client ou acheteur public</strong><span>Données, fiche technique, pilote</span></label></div>
-              <div class="who-opt"><input type="radio" name="who" id="who-pre" value="presse"><label for="who-pre"><strong>Presse</strong><span>Interview, visuels, informations</span></label></div>
-              <div class="who-opt"><input type="radio" name="who" id="who-can" value="candidat"><label for="who-can"><strong>Candidat</strong><span>Candidature spontanée ou sur une offre</span></label></div>
+      <div class="pnl brk" id="form-card" style="padding:24px 26px">
+        <form id="contact-form" novalidate>
+          <div class="form-head">
+            <h3 id="form-title">Votre demande</h3>
+            <p class="steps" id="step-count" aria-live="polite">Étape <b>1</b> sur 2</p>
+          </div>
+          <div class="fstep" id="step1">
+            <fieldset>
+              <legend class="ftitle">Vous êtes</legend>
+              <div class="who">
+                <div class="who-o"><input type="radio" name="who" id="who-inv" value="investisseur"><label for="who-inv"><strong>Investisseur</strong><span>Dossier investisseurs, rendez-vous</span></label></div>
+                <div class="who-o"><input type="radio" name="who" id="who-cli" value="client"><label for="who-cli"><strong>Client ou acheteur public</strong><span>Données, fiche technique, pilote</span></label></div>
+                <div class="who-o"><input type="radio" name="who" id="who-pre" value="presse"><label for="who-pre"><strong>Presse</strong><span>Interview, visuels, informations</span></label></div>
+                <div class="who-o"><input type="radio" name="who" id="who-can" value="candidat"><label for="who-can"><strong>Candidat</strong><span>Candidature spontanée ou sur une offre</span></label></div>
+              </div>
+            </fieldset>
+            <p class="err" id="who-err" hidden style="margin-top:10px"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4.5M8 10.8v.7" stroke="currentColor" stroke-width="1.6"/></svg><span>Aucun profil choisi. Nous orientons chaque demande vers la bonne personne : choisissez l'une des quatre options pour continuer.</span></p>
+            <div class="factions"><button class="btn btn-primary" type="button" id="to-step2">Continuer</button></div>
+          </div>
+          <div class="fstep" id="step2" hidden>
+            <p class="chosen">Vous êtes : <strong id="chosen-who"></strong></p>
+            <div class="frow">
+              <div class="field">
+                <label for="f-first">Prénom</label>
+                <input class="input" id="f-first" name="prenom" type="text" autocomplete="given-name" aria-describedby="first-err">
+                <p class="err" id="first-err" hidden></p>
+              </div>
+              <div class="field">
+                <label for="f-email">E-mail</label>
+                <input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="prenom@organisation.fr" aria-describedby="email-err">
+                <p class="err" id="email-err" hidden></p>
+              </div>
             </div>
-          </fieldset>
-          <p class="err" id="who-err" hidden style="margin-top:10px"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4.5M8 10.8v.7" stroke="currentColor" stroke-width="1.6"/></svg><span>Aucun profil choisi. Nous orientons chaque demande vers la bonne personne : choisissez l'une des quatre options pour continuer.</span></p>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="button" id="to-step2">Continuer</button>
+            <div class="field">
+              <label for="f-org"><span id="org-label">Organisation</span> <span class="opt">(facultatif)</span></label>
+              <input class="input" id="f-org" name="organisation" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-msg" id="msg-label">Votre message</label>
+              <textarea class="input" id="f-msg" name="message" aria-describedby="msg-err"></textarea>
+              <p class="err" id="msg-err" hidden></p>
+            </div>
+            <p class="err" id="send-err" hidden style="margin-top:12px"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4.5M8 10.8v.7" stroke="currentColor" stroke-width="1.6"/></svg><span>Votre demande n'a pas pu être envoyée. La connexion avec notre serveur a échoué, et vos informations sont conservées. Réessayez dans un instant ou écrivez directement à partenaires@strate-orbital.example.</span></p>
+            <div class="factions">
+              <button class="btn btn-primary" type="submit" id="submit-btn">Envoyer ma demande</button>
+              <button class="backlink" type="button" id="to-step1">Modifier mon profil</button>
+            </div>
           </div>
+        </form>
+        <div class="success" id="success" hidden tabindex="-1">
+          <h3><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="9.5" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 11.3l3 3 6-6.3" stroke="currentColor" stroke-width="1.8"/></svg>Demande envoyée.</h3>
+          <p>Merci, <span id="success-name"></span>. Votre message est arrivé à l'équipe partenariats, qui vous répond par e-mail. En attendant, vous pouvez <a href="#top" data-explore>explorer la carte d'exemple</a>.</p>
         </div>
-
-        <div class="form-step" id="step2" hidden>
-          <p class="chosen">Vous êtes : <strong id="chosen-who"></strong></p>
-          <div class="field-row">
-          <div class="field">
-            <label for="f-first">Prénom</label>
-            <input class="input" id="f-first" name="prenom" type="text" autocomplete="given-name" aria-describedby="first-err">
-            <p class="err" id="first-err" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-email">E-mail</label>
-            <input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="prenom@organisation.fr" aria-describedby="email-err">
-            <p class="err" id="email-err" hidden></p>
-          </div>
-          </div>
-          <div class="field">
-            <label for="f-org"><span id="org-label">Organisation</span> <span class="opt">(facultatif)</span></label>
-            <input class="input" id="f-org" name="organisation" type="text" autocomplete="organization">
-          </div>
-          <div class="field">
-            <label for="f-msg" id="msg-label">Votre message</label>
-            <textarea class="input" id="f-msg" name="message" aria-describedby="msg-err"></textarea>
-            <p class="err" id="msg-err" hidden></p>
-          </div>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit" id="submit-btn">Envoyer ma demande</button>
-            <button class="backlink" type="button" id="to-step1">Modifier mon profil</button>
-          </div>
-        </div>
-      </form>
-      <div class="success" id="success" hidden tabindex="-1">
-        <h3><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="9.5" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 11.3l3 3 6-6.3" stroke="currentColor" stroke-width="1.8"/></svg>Demande envoyée.</h3>
-        <p>Merci, <span id="success-name"></span>. Votre message est arrivé à l'équipe partenariats, qui vous répond par e-mail. En attendant, vous pouvez <a href="#donnees">explorer la carte d'exemple</a>.</p>
       </div>
     </div>
   </div>
 </section>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-grid">
-      <a class="brand" href="#top" aria-label="Strate Orbital, retour en haut de page">
-        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.5"/><path d="M5 19h22M6.5 23h19M9.5 27h13" stroke="currentColor" stroke-width="1.5"/><circle cx="25.2" cy="6.8" r="2.6" fill="#FF5A1F"/></svg>
-        Strate Orbital
-      </a>
-      <nav class="foot-nav" aria-label="Liens de pied de page">
-        <a href="#technologie">Technologie</a>
-        <a href="#donnees">Données</a>
-        <a href="#equipe">Carrière</a>
-        <a href="#">Mentions légales</a>
-        <a href="#">Confidentialité</a>
-        <a href="#">Déclaration d'accessibilité</a>
-      </nav>
-    </div>
-    <div class="demo-line">
+<footer class="foot">
+  <div class="foot-in">
+    <a class="brand" href="#top" aria-label="Strate Orbital, retour à la carte">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.5"/><path d="M5 19h22M6.5 23h19M9.5 27h13" stroke="currentColor" stroke-width="1.5"/><circle cx="25.2" cy="6.8" r="2.6" fill="#FF5A1F"/></svg>
+      Strate Orbital
+    </a>
+    <nav aria-label="Liens de pied de page">
+      <a href="#donnees">Données</a>
+      <a href="#technologie">Technologie</a>
+      <a href="#equipe">Carrière</a>
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+      <a href="#">Déclaration d'accessibilité</a>
+    </nav>
+    <div class="demo">
       <p><strong>Site de démonstration.</strong> Strate Orbital est une entreprise fictive.</p>
       <p>Chaque chiffre affiché porte sa source. Les cartes et schémas sont des illustrations légendées.</p>
     </div>
@@ -1111,48 +1159,236 @@ legend{padding:0;margin-bottom:12px}
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ns = 'http://www.w3.org/2000/svg';
+  function $(id){ return document.getElementById(id); }
+  function swapIcon(btn, playing){ var p = btn.querySelector('.i-pause'), q = btn.querySelector('.i-play'); if (p) p.style.display = playing ? '' : 'none'; if (q) q.style.display = playing ? 'none' : ''; }
 
-  /* Mobile menu */
-  var toggle = document.querySelector('.menu-toggle');
-  var mnav = document.getElementById('mobile-nav');
+  /* ---------- clock (UTC) ---------- */
+  var clock = $('clock');
+  function tick(){ clock.textContent = new Date().toISOString().slice(11, 19); }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- mobile menu ---------- */
+  var mb = $('menu-btn'), mnav = $('mnav');
   function setMenu(open){
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    mb.setAttribute('aria-expanded', String(open));
+    $('menu-txt').textContent = open ? 'Fermer' : 'Menu';
     mnav.classList.toggle('open', open);
-    toggle.querySelector('.i-open').style.display = open ? 'none' : '';
-    toggle.querySelector('.i-close').style.display = open ? '' : 'none';
+    mb.querySelector('.i-open').style.display = open ? 'none' : '';
+    mb.querySelector('.i-close').style.display = open ? '' : 'none';
     document.body.style.overflow = open ? 'hidden' : '';
   }
-  toggle.addEventListener('click', function(){ setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+  mb.addEventListener('click', function(){ setMenu(mb.getAttribute('aria-expanded') !== 'true'); });
   mnav.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && mnav.classList.contains('open')) { setMenu(false); toggle.focus(); } });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && mnav.classList.contains('open')) { setMenu(false); mb.focus(); } });
 
-  /* Orbit pause */
-  var orbit = document.getElementById('orbit');
-  var ot = document.getElementById('orbit-toggle');
-  function setOrbit(paused){
-    orbit.classList.toggle('paused', paused);
-    ot.setAttribute('aria-pressed', String(paused));
-    ot.setAttribute('aria-label', paused ? "Relancer l'animation" : "Mettre en pause l'animation");
-    ot.querySelector('.i-pause').style.display = paused ? 'none' : '';
-    ot.querySelector('.i-play').style.display = paused ? '' : 'none';
+  /* ---------- active channel in the command bar ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.cmd-nav a'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var id = en.target.id;
+        navLinks.forEach(function(a){ if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      });
+    }, {rootMargin: '-40% 0px -55% 0px'});
+    document.querySelectorAll('main > section').forEach(function(s){ io.observe(s); });
   }
-  ot.addEventListener('click', function(){ setOrbit(!orbit.classList.contains('paused')); });
-  if (reduce.matches) setOrbit(true);
-  var osvg = document.getElementById('orbit-svg'), narrow = window.matchMedia('(max-width: 1023px)');
-  function frame(){ osvg.setAttribute('viewBox', narrow.matches ? '30 40 540 390' : '0 0 600 600'); }
-  frame(); if (narrow.addEventListener) narrow.addEventListener('change', frame);
 
-  /* Tabs */
+  /* ---------- illustration tile (generated, no measured value) ---------- */
+  var COLS = 160, ROWS = 90, N = COLS * ROWS;
+  var PAL = [[107,90,62],[140,138,90],[79,143,134],[60,127,176],[156,203,235]];
+  var HEX = ['#6B5A3E','#8C8A5A','#4F8F86','#3C7FB0','#9CCBEB'];
+  var NAMES = ['Très sec','Sec','Moyen','Humide','Très humide'];
+  function rnd(i, j, s){ var h = (i * 73856093) ^ (j * 19349663) ^ (s * 83492791); h = Math.imul(h ^ (h >>> 13), 1274126177); h ^= h >>> 16; return (h >>> 0) / 4294967296; }
+  function vn(x, y, s){ var i = Math.floor(x), j = Math.floor(y), fx = x - i, fy = y - j, u = fx*fx*(3-2*fx), v = fy*fy*(3-2*fy);
+    var a = rnd(i,j,s), b = rnd(i+1,j,s), c = rnd(i,j+1,s), d = rnd(i+1,j+1,s); return a + (b-a)*u + (c-a)*v + (a-b-c+d)*u*v; }
+  var base = new Float32Array(N), kk = new Float32Array(N);
+  for (var y = 0; y < ROWS; y++) for (var x = 0; x < COLS; x++) {
+    var i0 = y * COLS + x;
+    var b = 0.6 * vn(x/20, y/20, 1) + 0.4 * vn(x/8, y/8, 2);
+    var parcel = (rnd(Math.floor(x/5), Math.floor(y/4), 5) - 0.5) * 0.12;
+    var yr = 50 + 16 * Math.sin(x/24) + 5 * Math.sin(x/9);
+    var wet = 0.40 * Math.exp(-Math.pow(y - yr, 2) / 30);
+    var lake = 0.34 * Math.exp(-(Math.pow(x - 122, 2) + Math.pow(y - 20, 2)) / 72);
+    base[i0] = b * 0.6 + parcel + wet + lake + 0.14;
+    kk[i0] = 0.6 + 0.8 * vn(x/14, y/14, 3);
+  }
+  function dry(t){ return t < 20 ? 0.017 * (t - 1) : -0.08 + 0.017 * (t - 20); }
+  function val(i, t){ return base[i] - kk[i] * dry(t); }
+  function cls(m){ return Math.max(1, Math.min(5, 1 + Math.floor(m * 5))); }
+
+  var ZC = [[0,53],[53,107],[107,160]], ZR = [[0,45],[45,90]], zones = [], L = 'ABCDEF', q = 0;
+  ZR.forEach(function(r){ ZC.forEach(function(c){ zones.push({id: L[q++], c: c, r: r}); }); });
+  function zoneMean(z, t){ var s = 0, n = 0; for (var y = z.r[0]; y < z.r[1]; y++) for (var x = z.c[0]; x < z.c[1]; x++) { s += val(y*COLS + x, t); n++; } return s / n; }
+  var series = zones.map(function(z){ var a = []; for (var t = 1; t <= 30; t++) a.push(zoneMean(z, t)); return a; });
+  var global = []; for (var t = 1; t <= 30; t++) { var s = 0; for (var zi = 0; zi < 6; zi++) s += series[zi][t-1]; global.push(s / 6); }
+  function zoneOf(i){ var x = i % COLS, y = Math.floor(i / COLS); for (var k = 0; k < zones.length; k++) { var z = zones[k]; if (x >= z.c[0] && x < z.c[1] && y >= z.r[0] && y < z.r[1]) return z.id; } return ''; }
+
+  /* map canvas + overlay */
+  var cv = $('map-canvas'), ctx = cv.getContext('2d'), img = ctx.createImageData(COLS, ROWS);
+  var ovl = $('map-ovl');
+  (function overlay(){
+    var g = $('grat'), d = '';
+    for (var x = 10; x < COLS; x += 10) d += 'M' + x + ' 0V' + ROWS;
+    for (var y = 10; y < ROWS; y += 10) d += 'M0 ' + y + 'H' + COLS;
+    var p = document.createElementNS(ns, 'path'); p.setAttribute('d', d); p.setAttribute('vector-effect', 'non-scaling-stroke'); g.appendChild(p);
+    var gz = $('zones'), gl = $('zlab');
+    zones.forEach(function(z){
+      var r = document.createElementNS(ns, 'rect');
+      r.setAttribute('x', z.c[0]); r.setAttribute('y', z.r[0]); r.setAttribute('width', z.c[1] - z.c[0]); r.setAttribute('height', z.r[1] - z.r[0]);
+      r.setAttribute('vector-effect', 'non-scaling-stroke'); gz.appendChild(r);
+      var cx = (z.c[0] + z.c[1]) / 2, cy = z.r[0] ? z.r[0] + 5 : (z.r[0] + z.r[1]) / 2;
+      var bg = document.createElementNS(ns, 'rect');
+      bg.setAttribute('x', cx - 4.4); bg.setAttribute('y', cy - 1.5); bg.setAttribute('width', 8.8); bg.setAttribute('height', 3); bg.setAttribute('fill', 'rgba(10,11,13,.78)');
+      gl.appendChild(bg);
+      var tx = document.createElementNS(ns, 'text');
+      tx.setAttribute('x', cx); tx.setAttribute('y', cy + 0.5); tx.setAttribute('text-anchor', 'middle'); tx.setAttribute('font-family', 'IBM Plex Mono, monospace'); tx.setAttribute('font-size', '1.4'); tx.setAttribute('font-weight', '500'); tx.setAttribute('letter-spacing', '.1'); tx.setAttribute('fill', '#F4F4F1');
+      tx.textContent = 'ZONE ' + z.id; gl.appendChild(tx);
+    });
+  })();
+
+  var day = 30, selected = 60 * COLS + 92;
+  function drawMap(){
+    var dt = img.data;
+    for (var i = 0; i < N; i++) { var c = PAL[cls(val(i, day)) - 1], o = i * 4; dt[o] = c[0]; dt[o+1] = c[1]; dt[o+2] = c[2]; dt[o+3] = 255; }
+    ctx.putImageData(img, 0, 0);
+  }
+  function placeReticle(){ $('ret').setAttribute('transform', 'translate(' + (selected % COLS) + ' ' + Math.floor(selected / COLS) + ')'); }
+  function pad(n){ return (n < 10 ? '00' : n < 100 ? '0' : '') + n; }
+  function cellText(i){ var c = cls(val(i, day)); return {c: c, x: i % COLS + 1, y: Math.floor(i / COLS) + 1, z: zoneOf(i)}; }
+  function updateReadouts(){
+    var r = cellText(selected);
+    $('t-cur').innerHTML = 'C' + pad(r.x) + ' L' + pad(r.y) + ' · <span class="o">palier ' + r.c + '</span>';
+    $('readout').innerHTML = 'Parcelle sous le réticule, zone ' + r.z + ' (colonne ' + r.x + ', ligne ' + r.y + ') : <strong>' + NAMES[r.c-1] + '</strong>, palier ' + r.c + ' sur 5. Cliquez la carte du haut de page pour déplacer le réticule.';
+  }
+
+  /* sparkline in the time frieze */
+  (function spark(){
+    var sv = $('spark'), min = Math.min.apply(null, global), max = Math.max.apply(null, global), pts = [];
+    for (var t = 0; t < 30; t++) pts.push((t / 29 * 290).toFixed(1) + ',' + (27 - (global[t] - min) / (max - min) * 24).toFixed(1));
+    sv.innerHTML = '<line x1="' + (19/29*290).toFixed(1) + '" x2="' + (19/29*290).toFixed(1) + '" y1="0" y2="30" stroke="#9AA0A6" stroke-dasharray="2 3" vector-effect="non-scaling-stroke"/>' +
+      '<polyline points="' + pts.join(' ') + '" fill="none" stroke="#F4F4F1" stroke-width="1.5" vector-effect="non-scaling-stroke"/>';
+  })();
+
+  /* zone small multiples (console) */
+  var zl = $('zones-list'), zcur = [];
+  zones.forEach(function(z, k){
+    var li = document.createElement('li'); li.className = 'zc';
+    var pts = series[k].map(function(v, t){ return (t / 29 * 280 + 10).toFixed(1) + ',' + (114 - Math.max(0, Math.min(1, v)) * 110).toFixed(1); }).join(' ');
+    var bands = '';
+    for (var p = 1; p < 5; p++) bands += '<line x1="10" x2="290" y1="' + (114 - p * 22) + '" y2="' + (114 - p * 22) + '" stroke="#252A31"/>';
+    li.innerHTML = '<div class="zc-top"><span class="lbl">Zone ' + z.id + '</span><span class="zc-val"><i></i><span></span></span></div>' +
+      '<svg viewBox="0 0 300 118" aria-hidden="true">' + bands +
+      '<rect x="10" y="4" width="280" height="110" fill="none" stroke="#252A31"/>' +
+      '<polyline points="' + pts + '" fill="none" stroke="#F4F4F1" stroke-width="1.5"/>' +
+      '<line class="cur" y1="4" y2="114" stroke="#FF5A1F" stroke-width="1.5"/><circle class="dot" r="3.5" fill="#FF5A1F"/></svg>' +
+      '<div class="zc-foot"><span>J1</span><span>J30</span></div>';
+    zl.appendChild(li);
+    zcur.push(li);
+  });
+
+  /* shared day state */
+  var r1 = $('day'), r2 = $('day2');
+  function setDay(d){
+    day = Math.max(1, Math.min(30, d));
+    r1.value = day; r2.value = day;
+    r1.setAttribute('aria-valuetext', 'Jour ' + day + ' sur 30'); r2.setAttribute('aria-valuetext', 'Jour ' + day + ' sur 30');
+    drawMap();
+    $('day-out').innerHTML = day + ' <small>/ 30</small>';
+    $('cap-day').textContent = 'jour ' + day + ' / 30';
+    $('t-pass').textContent = 'Tuile du jour ' + day + ' / 30';
+    $('tbl-day').textContent = day;
+    var rows = '';
+    zones.forEach(function(z, k){
+      var m = series[k][day-1], c = cls(m), trend = 'Premier jour';
+      if (day > 1) { var dlt = m - series[k][day-2]; trend = dlt > 0.004 ? 'Plus humide' : (dlt < -0.004 ? 'Plus sec' : 'Stable'); }
+      rows += '<tr><th scope="row">Zone ' + z.id + '</th><td><span class="sw" style="background:' + HEX[c-1] + '"></span>' + c + '. ' + NAMES[c-1] + '</td><td class="trend">' + trend + '</td></tr>';
+      var li = zcur[k], x = ((day - 1) / 29 * 280 + 10).toFixed(1), yv = (114 - Math.max(0, Math.min(1, m)) * 110).toFixed(1);
+      var cur = li.querySelector('.cur'); cur.setAttribute('x1', x); cur.setAttribute('x2', x);
+      var dot = li.querySelector('.dot'); dot.setAttribute('cx', x); dot.setAttribute('cy', yv);
+      li.querySelector('.zc-val i').style.background = HEX[c-1];
+      li.querySelector('.zc-val span').textContent = c + ' · ' + NAMES[c-1];
+    });
+    $('tbl-body').innerHTML = rows;
+    updateReadouts();
+  }
+  r1.addEventListener('input', function(){ stopPlay(); setDay(+r1.value); });
+  r2.addEventListener('input', function(){ stopPlay(); setDay(+r2.value); });
+  $('d-prev').addEventListener('click', function(){ stopPlay(); setDay(day - 1); });
+  $('d-next').addEventListener('click', function(){ stopPlay(); setDay(day + 1); });
+
+  /* play through 30 days */
+  var playBtn = $('play'), timer = null;
+  function stopPlay(){ if (!timer) return; clearInterval(timer); timer = null; playBtn.setAttribute('aria-pressed', 'false'); playBtn.setAttribute('aria-label', 'Lire les 30 jours'); swapIcon(playBtn, false); }
+  playBtn.addEventListener('click', function(){
+    if (timer) { stopPlay(); return; }
+    if (day >= 30) setDay(1);
+    playBtn.setAttribute('aria-pressed', 'true'); playBtn.setAttribute('aria-label', 'Arrêter la lecture'); swapIcon(playBtn, true);
+    timer = setInterval(function(){ if (day >= 30) { stopPlay(); return; } setDay(day + 1); }, 380);
+  });
+
+  /* pointer + keyboard on the map */
+  var stage = $('stage'), hov = $('hover');
+  function toCell(e){
+    var pt = ovl.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+    var m = ovl.getScreenCTM(); if (!m) return -1;
+    var p = pt.matrixTransform(m.inverse()), x = Math.floor(p.x), y = Math.floor(p.y);
+    if (x < 0 || y < 0 || x >= COLS || y >= ROWS) return -1;
+    return y * COLS + x;
+  }
+  ovl.addEventListener('pointermove', function(e){
+    if (e.pointerType !== 'mouse') return;
+    var i = toCell(e); if (i < 0) { hov.style.display = 'none'; return; }
+    var x = i % COLS, y = Math.floor(i / COLS);
+    hov.style.display = '';
+    $('hx').setAttribute('y1', y + .5); $('hx').setAttribute('y2', y + .5);
+    $('hy').setAttribute('x1', x + .5); $('hy').setAttribute('x2', x + .5);
+    $('hc').setAttribute('x', x); $('hc').setAttribute('y', y);
+  });
+  ovl.addEventListener('pointerleave', function(){ hov.style.display = 'none'; });
+  ovl.addEventListener('click', function(e){ var i = toCell(e); if (i < 0) return; selected = i; placeReticle(); updateReadouts(); });
+  stage.addEventListener('keydown', function(e){
+    var x = selected % COLS, y = Math.floor(selected / COLS), st = e.shiftKey ? 10 : 1;
+    if (e.key === 'ArrowLeft') x -= st; else if (e.key === 'ArrowRight') x += st; else if (e.key === 'ArrowUp') y -= st; else if (e.key === 'ArrowDown') y += st; else return;
+    e.preventDefault();
+    x = Math.max(0, Math.min(COLS - 1, x)); y = Math.max(0, Math.min(ROWS - 1, y));
+    selected = y * COLS + x; placeReticle(); updateReadouts();
+  });
+
+  /* exploration mode */
+  var hero = $('top');
+  function explore(on){
+    hero.classList.toggle('exploring', on);
+    if (on) { stage.focus({preventScroll: true}); }
+    else { $('explore-btn').focus({preventScroll: true}); }
+  }
+  $('explore-btn').addEventListener('click', function(){ explore(true); });
+  $('explore-close').addEventListener('click', function(){ explore(false); });
+  document.querySelectorAll('[data-explore]').forEach(function(a){ a.addEventListener('click', function(){ hero.classList.add('exploring'); setTimeout(function(){ stage.focus({preventScroll: true}); }, reduce ? 0 : 600); }); });
+
+  placeReticle(); setDay(30);
+
+  /* ---------- orbit ground track (schematic) ---------- */
+  var gt = $('gt'), sat = $('sat'), ring = $('sat-ring'), oBtn = $('orbit-btn'), oPaused = reduce, sPos = 0.62, oLast = 0;
+  function gy(x){ return 40 - 26 * Math.sin((x / 272) * Math.PI * 2 * 1.5 + 0.6); }
+  (function(){ var d = ''; for (var x = 0; x <= 272; x += 4) d += (x ? 'L' : 'M') + x + ' ' + gy(x).toFixed(1); gt.setAttribute('d', d); })();
+  function placeSat(){ var x = sPos * 272, y = gy(x); sat.setAttribute('cx', x.toFixed(1)); sat.setAttribute('cy', y.toFixed(1)); ring.setAttribute('cx', x.toFixed(1)); ring.setAttribute('cy', y.toFixed(1)); }
+  function setOrbit(p){ oPaused = p; oBtn.setAttribute('aria-pressed', String(p)); oBtn.setAttribute('aria-label', p ? "Relancer la trace d'orbite" : "Mettre en pause la trace d'orbite"); swapIcon(oBtn, !p); }
+  oBtn.addEventListener('click', function(){ setOrbit(!oPaused); });
+  setOrbit(oPaused); placeSat();
+  function orbitLoop(ts){
+    var dt = oLast ? Math.min(ts - oLast, 50) : 16; oLast = ts;
+    if (!oPaused && !document.hidden) { sPos = (sPos + dt / 48000) % 1; placeSat(); }
+    requestAnimationFrame(orbitLoop);
+  }
+  requestAnimationFrame(orbitLoop);
+
+  /* ---------- tabs ---------- */
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
   function selectTab(tab, focus){
-    tabs.forEach(function(t){
-      var on = t === tab;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
+    tabs.forEach(function(t){ var on = t === tab; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; $(t.getAttribute('aria-controls')).hidden = !on; });
     if (focus) tab.focus();
   }
   tabs.forEach(function(t, i){
@@ -1166,48 +1402,54 @@ legend{padding:0;margin-bottom:12px}
       if (n) { e.preventDefault(); selectTab(n, true); }
     });
   });
-  document.querySelectorAll('[data-goto]').forEach(function(b){
-    b.addEventListener('click', function(){ selectTab(document.getElementById(b.getAttribute('data-goto')), true); });
-  });
+  document.querySelectorAll('[data-goto]').forEach(function(b){ b.addEventListener('click', function(){ selectTab($(b.getAttribute('data-goto')), true); }); });
 
-  /* Roadmap: slow horizontal drift on desktop */
-  var track = document.getElementById('track');
-  var rt = document.getElementById('road-toggle');
-  var userPaused = false, hover = false, visible = false, pos = 0, holdUntil = 0, dir = 1;
-  function setRoad(paused){
-    userPaused = paused;
-    rt.setAttribute('aria-pressed', String(paused));
-    rt.setAttribute('aria-label', paused ? 'Relancer le défilement' : 'Mettre en pause le défilement');
-    rt.querySelector('.i-pause').style.display = paused ? 'none' : '';
-    rt.querySelector('.i-play').style.display = paused ? '' : 'none';
+  /* ---------- roadmap frieze ---------- */
+  var fz = $('frieze'), fzT = $('fz-toggle'), steps = fz.querySelectorAll('.fz');
+  var userPaused = reduce, hover = false, visible = false, pos = 0, holdUntil = 0, dir = 1;
+  function setFz(p){ userPaused = p; fzT.setAttribute('aria-pressed', String(p)); fzT.setAttribute('aria-label', p ? 'Relancer le défilement' : 'Mettre en pause le défilement'); swapIcon(fzT, !p); }
+  setFz(userPaused);
+  fzT.addEventListener('click', function(){ setFz(!userPaused); pos = fz.scrollLeft; });
+  function horizontal(){ return window.innerWidth >= 768 && fz.scrollWidth - fz.clientWidth > 4; }
+  function updScrub(){
+    var sw = fz.scrollWidth, cw = fz.clientWidth, t = $('scrub-t');
+    if (!horizontal()) return;
+    t.style.width = (cw / sw * 100) + '%'; t.style.left = (fz.scrollLeft / sw * 100) + '%';
+    var w = steps[0].getBoundingClientRect().width || 340;
+    var a = Math.floor(fz.scrollLeft / w + 0.35) + 1, b = Math.min(7, Math.floor((fz.scrollLeft + cw) / w + 0.35));
+    $('fz-pos').textContent = 'Étapes 0' + a + ' à 0' + b + ' sur 07';
   }
-  if (reduce.matches) setRoad(true);
-  rt.addEventListener('click', function(){ setRoad(!userPaused); pos = track.scrollLeft; });
-  ['pointerenter','focusin','touchstart'].forEach(function(ev){ track.addEventListener(ev, function(){ hover = true; }, {passive:true}); });
-  ['pointerleave','focusout'].forEach(function(ev){ track.addEventListener(ev, function(){ hover = false; pos = track.scrollLeft; }); });
-  track.addEventListener('wheel', function(){ pos = track.scrollLeft; holdUntil = performance.now() + 4000; }, {passive:true});
-  function nudge(d){ setRoad(true); track.scrollBy({left: d * 300, behavior: reduce.matches ? 'auto' : 'smooth'}); }
-  document.getElementById('road-prev').addEventListener('click', function(){ nudge(-1); });
-  document.getElementById('road-next').addEventListener('click', function(){ nudge(1); });
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(entries){ visible = entries[0].isIntersecting; }, {threshold: .35}).observe(track);
-  }
+  fz.addEventListener('scroll', updScrub, {passive: true});
+  window.addEventListener('resize', updScrub);
+  ['pointerenter','focusin','touchstart'].forEach(function(ev){ fz.addEventListener(ev, function(){ hover = true; }, {passive: true}); });
+  ['pointerleave','focusout'].forEach(function(ev){ fz.addEventListener(ev, function(){ hover = false; pos = fz.scrollLeft; }); });
+  fz.addEventListener('wheel', function(){ pos = fz.scrollLeft; holdUntil = performance.now() + 4000; }, {passive: true});
+  function nudge(d){ setFz(true); var w = steps[0].getBoundingClientRect().width || 340; fz.scrollBy({left: d * w, behavior: reduce ? 'auto' : 'smooth'}); }
+  $('fz-prev').addEventListener('click', function(){ nudge(-1); });
+  $('fz-next').addEventListener('click', function(){ nudge(1); });
+  fz.addEventListener('keydown', function(e){ if (e.target !== fz) return; if (e.key === 'ArrowRight') { e.preventDefault(); nudge(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); nudge(-1); } });
+  $('scrub').addEventListener('click', function(e){ var r = this.getBoundingClientRect(); setFz(true); fz.scrollTo({left: (e.clientX - r.left) / r.width * fz.scrollWidth - fz.clientWidth / 2, behavior: reduce ? 'auto' : 'smooth'}); });
+  var drag = null;
+  fz.addEventListener('pointerdown', function(e){ if (e.pointerType !== 'mouse' || !horizontal() || e.button !== 0) return; drag = {x: e.clientX, s: fz.scrollLeft, moved: false}; });
+  window.addEventListener('pointermove', function(e){ if (!drag) return; var dx = e.clientX - drag.x; if (Math.abs(dx) > 3) { drag.moved = true; fz.classList.add('drag'); } fz.scrollLeft = drag.s - dx; });
+  window.addEventListener('pointerup', function(){ if (!drag) return; if (drag.moved) { setFz(true); } fz.classList.remove('drag'); pos = fz.scrollLeft; drag = null; });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, {threshold: .35}).observe(fz);
   var last = 0;
   function drift(ts){
     var dt = last ? Math.min(ts - last, 50) : 16; last = ts;
-    var max = track.scrollWidth - track.clientWidth;
-    var horizontal = window.innerWidth >= 768 && max > 4;
-    if (horizontal && visible && !hover && !userPaused && ts > holdUntil) {
-      pos += dir * dt * 0.018;
+    var max = fz.scrollWidth - fz.clientWidth;
+    if (horizontal() && visible && !hover && !userPaused && !drag && ts > holdUntil) {
+      pos += dir * dt * 0.016;
       if (pos >= max) { pos = max; dir = -1; holdUntil = ts + 2500; }
       if (pos <= 0) { pos = 0; dir = 1; holdUntil = ts + 2500; }
-      track.scrollLeft = Math.round(pos);
+      fz.scrollLeft = Math.round(pos);
     }
     requestAnimationFrame(drift);
   }
   requestAnimationFrame(drift);
+  updScrub();
 
-  /* Newsletter */
+  /* ---------- newsletter ---------- */
   var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   function emailError(v){
     if (!v) return "Adresse e-mail manquante. Nous en avons besoin pour vous répondre : saisissez-la (exemple : prenom@organisation.fr).";
@@ -1217,126 +1459,44 @@ legend{padding:0;margin-bottom:12px}
   }
   var errIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4.5M8 10.8v.7" stroke="currentColor" stroke-width="1.6"/></svg>';
   function showErr(input, el, msg){
-    if (msg) { el.innerHTML = errIcon + '<span></span>'; el.querySelector('span').textContent = msg; el.hidden = false; input.setAttribute('aria-invalid','true'); }
+    if (msg) { el.innerHTML = errIcon + '<span></span>'; el.querySelector('span').textContent = msg; el.hidden = false; input.setAttribute('aria-invalid', 'true'); }
     else { el.hidden = true; input.removeAttribute('aria-invalid'); }
     return !msg;
   }
-  var nl = document.getElementById('nl-form');
+  var nl = $('nl-form');
   nl.addEventListener('submit', function(e){
     e.preventDefault();
-    var inp = document.getElementById('nl-email');
-    var ok = showErr(inp, document.getElementById('nl-err'), emailError(inp.value.trim()));
-    var msg = document.getElementById('nl-msg');
+    var inp = $('nl-email'), ok = showErr(inp, $('nl-err'), emailError(inp.value.trim())), msg = $('nl-msg');
     if (!ok) { msg.textContent = ''; inp.focus(); return; }
     msg.innerHTML = '<span style="color:var(--success)">Inscription enregistrée.</span> Vous recevrez un e-mail au prochain jalon. Rien n\'a été envoyé : ce site est une démonstration.';
     nl.reset();
   });
 
-  /* Map (illustration tile, generated) */
-  var COLS = 32, ROWS = 20, S = 25;
-  var palette = ['#6B5A3E','#8C8A5A','#4F8F86','#3C7FB0','#9CCBEB'];
-  var names = ['Très sec','Sec','Moyen','Humide','Très humide'];
-  function rnd(i, j, s){ var h = (i * 73856093) ^ (j * 19349663) ^ (s * 83492791); h = Math.imul(h ^ (h >>> 13), 1274126177); h ^= h >>> 16; return (h >>> 0) / 4294967296; }
-  function vn(x, y, s){ var i = Math.floor(x), j = Math.floor(y), fx = x - i, fy = y - j, u = fx*fx*(3-2*fx), v = fy*fy*(3-2*fy);
-    var a = rnd(i,j,s), b = rnd(i+1,j,s), c = rnd(i,j+1,s), d = rnd(i+1,j+1,s); return a + (b-a)*u + (c-a)*v + (a-b-c+d)*u*v; }
-  var base = [], k = [];
-  for (var y = 0; y < ROWS; y++) for (var x = 0; x < COLS; x++) {
-    var b = 0.62 * vn(x/7, y/7, 1) + 0.38 * vn(x/3.2, y/3.2, 2);
-    var yr = 9 + 4.5 * Math.sin(x/5.5) + 1.4 * Math.sin(x/2.3);
-    var wet = 0.42 * Math.exp(-Math.pow(y - yr, 2) / 5);
-    base.push(b * 0.62 + wet + 0.16);
-    k.push(0.6 + 0.8 * vn(x/5, y/5, 3));
-  }
-  function dry(t){ return t < 20 ? 0.017 * (t - 1) : -0.08 + 0.017 * (t - 20); }
-  function val(idx, t){ return base[idx] - k[idx] * dry(t); }
-  function cls(m){ return Math.max(1, Math.min(5, 1 + Math.floor(m * 5))); }
-  var ns = 'http://www.w3.org/2000/svg';
-  var gCells = document.getElementById('cells'), rects = [];
-  for (var yy = 0; yy < ROWS; yy++) for (var xx = 0; xx < COLS; xx++) {
-    var r = document.createElementNS(ns, 'rect');
-    r.setAttribute('x', xx * S); r.setAttribute('y', yy * S); r.setAttribute('width', S - 1); r.setAttribute('height', S - 1);
-    r.setAttribute('class', 'c'); r.dataset.i = yy * COLS + xx;
-    gCells.appendChild(r); rects.push(r);
-  }
-  var zoneCols = [[0,11],[11,22],[22,32]], zoneRows = [[0,10],[10,20]], zones = [];
-  var letters = 'ABCDEF', zi = 0;
-  zoneRows.forEach(function(zr){ zoneCols.forEach(function(zc){ zones.push({id: letters[zi++], c: zc, r: zr}); }); });
-  var gZ = document.getElementById('zones'), gL = document.getElementById('zone-labels');
-  zones.forEach(function(z){
-    var rr = document.createElementNS(ns, 'rect');
-    rr.setAttribute('x', z.c[0]*S - 0.5); rr.setAttribute('y', z.r[0]*S - 0.5);
-    rr.setAttribute('width', (z.c[1]-z.c[0])*S); rr.setAttribute('height', (z.r[1]-z.r[0])*S);
-    gZ.appendChild(rr);
-    var bg = document.createElementNS(ns, 'rect');
-    bg.setAttribute('x', z.c[0]*S + 6); bg.setAttribute('y', z.r[0]*S + 6); bg.setAttribute('width', 26); bg.setAttribute('height', 24); bg.setAttribute('fill', '#0A0B0D');
-    gL.appendChild(bg);
-    var tx = document.createElementNS(ns, 'text');
-    tx.setAttribute('x', z.c[0]*S + 19); tx.setAttribute('y', z.r[0]*S + 23); tx.setAttribute('text-anchor', 'middle'); tx.textContent = z.id;
-    gL.appendChild(tx);
-  });
-  function zoneMean(z, t){ var s = 0, n = 0; for (var y = z.r[0]; y < z.r[1]; y++) for (var x = z.c[0]; x < z.c[1]; x++) { s += val(y*COLS + x, t); n++; } return s / n; }
-  var dayInput = document.getElementById('day'), selected = 12 * COLS + 9, day = 30;
-  var ret = document.getElementById('reticle');
-  function placeReticle(){ var x = selected % COLS, y = Math.floor(selected / COLS); ret.setAttribute('transform', 'translate(' + (x*S) + ' ' + (y*S) + ')'); }
-  function zoneOf(i){ var x = i % COLS, y = Math.floor(i / COLS); for (var q = 0; q < zones.length; q++) { var z = zones[q]; if (x >= z.c[0] && x < z.c[1] && y >= z.r[0] && y < z.r[1]) return z.id; } return ''; }
-  function updateReadout(announce){
-    var c = cls(val(selected, day)), x = selected % COLS + 1, y = Math.floor(selected / COLS) + 1;
-    var el = document.getElementById('readout');
-    el.innerHTML = 'Parcelle sélectionnée, zone ' + zoneOf(selected) + ' (colonne ' + x + ', ligne ' + y + ') : <strong>' + names[c-1] + '</strong>, palier ' + c + ' sur 5.';
-  }
-  function render(){
-    for (var i = 0; i < rects.length; i++) rects[i].setAttribute('fill', palette[cls(val(i, day)) - 1]);
-    document.getElementById('day-out').innerHTML = day + ' <small>/ 30</small>';
-    document.getElementById('map-day-label').textContent = 'JOUR ' + day + ' / 30';
-    document.getElementById('tbl-day').textContent = day;
-    var rows = '';
-    zones.forEach(function(z){
-      var m = zoneMean(z, day), c = cls(m), trend = 'Premier jour';
-      if (day > 1) { var d = m - zoneMean(z, day - 1); trend = d > 0.004 ? 'Plus humide' : (d < -0.004 ? 'Plus sec' : 'Stable'); }
-      rows += '<tr><th scope="row">Zone ' + z.id + '</th><td><span class="sw" style="background:' + palette[c-1] + '"></span>' + c + '. ' + names[c-1] + '</td><td class="trend">' + trend + '</td></tr>';
-    });
-    document.getElementById('tbl-body').innerHTML = rows;
-    updateReadout();
-  }
-  dayInput.addEventListener('input', function(){ day = +dayInput.value; render(); });
-  gCells.addEventListener('click', function(e){ var t = e.target.closest('rect.c'); if (!t) return; selected = +t.dataset.i; placeReticle(); updateReadout(); });
-  placeReticle(); render();
-
-  /* Contact form */
-  var form = document.getElementById('contact-form');
+  /* ---------- contact form ---------- */
+  var form = $('contact-form');
   var whoLabels = {investisseur:'Investisseur', client:'Client ou acheteur public', presse:'Presse', candidat:'Candidat'};
   var orgLabels = {investisseur:'Fonds ou organisation', client:'Organisation', presse:'Média', candidat:'Poste visé'};
   var msgLabels = {investisseur:'Votre message (par exemple, la demande du dossier investisseurs)', client:'Votre besoin (territoire, usage, formats)', presse:'Votre demande (sujet, échéance)', candidat:'Quelques lignes sur votre parcours'};
-  var step1 = document.getElementById('step1'), step2 = document.getElementById('step2'), stepCount = document.getElementById('step-count');
+  var step1 = $('step1'), step2 = $('step2'), stepCount = $('step-count');
   function currentWho(){ var c = form.querySelector('input[name="who"]:checked'); return c ? c.value : ''; }
   function goStep2(){
-    var w = currentWho();
-    var err = document.getElementById('who-err');
+    var w = currentWho(), err = $('who-err');
     if (!w) { err.hidden = false; form.querySelector('input[name="who"]').focus(); return; }
     err.hidden = true;
-    document.getElementById('chosen-who').textContent = whoLabels[w];
-    document.getElementById('org-label').textContent = orgLabels[w];
-    document.getElementById('msg-label').textContent = msgLabels[w];
-    step1.hidden = true; step2.hidden = false;
-    stepCount.innerHTML = 'Étape <b>2</b> sur 2';
-    document.getElementById('f-first').focus();
+    $('chosen-who').textContent = whoLabels[w]; $('org-label').textContent = orgLabels[w]; $('msg-label').textContent = msgLabels[w];
+    step1.hidden = true; step2.hidden = false; stepCount.innerHTML = 'Étape <b>2</b> sur 2';
+    $('f-first').focus({preventScroll: true});
   }
-  document.getElementById('to-step2').addEventListener('click', goStep2);
-  form.querySelectorAll('input[name="who"]').forEach(function(r){ r.addEventListener('change', function(){ document.getElementById('who-err').hidden = true; }); });
-  document.getElementById('to-step1').addEventListener('click', function(){
-    step2.hidden = true; step1.hidden = false; stepCount.innerHTML = 'Étape <b>1</b> sur 2';
-    var c = form.querySelector('input[name="who"]:checked'); if (c) c.focus();
-  });
+  $('to-step2').addEventListener('click', goStep2);
+  form.querySelectorAll('input[name="who"]').forEach(function(r){ r.addEventListener('change', function(){ $('who-err').hidden = true; }); });
+  $('to-step1').addEventListener('click', function(){ step2.hidden = true; step1.hidden = false; stepCount.innerHTML = 'Étape <b>1</b> sur 2'; var c = form.querySelector('input[name="who"]:checked'); if (c) c.focus(); });
   document.querySelectorAll('[data-preset]').forEach(function(a){
-    a.addEventListener('click', function(){
-      var r = form.querySelector('input[value="' + a.getAttribute('data-preset') + '"]');
-      if (r) { r.checked = true; setTimeout(goStep2, reduce.matches ? 0 : 450); }
-    });
+    a.addEventListener('click', function(){ var r = form.querySelector('input[value="' + a.getAttribute('data-preset') + '"]'); if (r) { r.checked = true; setTimeout(goStep2, reduce ? 0 : 500); } });
   });
-  var first = document.getElementById('f-first'), email = document.getElementById('f-email'), msg = document.getElementById('f-msg');
-  function vFirst(){ return showErr(first, document.getElementById('first-err'), first.value.trim() ? '' : "Prénom manquant. Nous l'utilisons pour personnaliser notre réponse : saisissez votre prénom."); }
-  function vEmail(){ return showErr(email, document.getElementById('email-err'), emailError(email.value.trim())); }
-  function vMsg(){ return showErr(msg, document.getElementById('msg-err'), msg.value.trim() ? '' : "Message vide. L'équipe a besoin de quelques mots pour orienter votre demande : décrivez-la en une ou deux phrases."); }
+  var first = $('f-first'), email = $('f-email'), msg = $('f-msg');
+  function vFirst(){ return showErr(first, $('first-err'), first.value.trim() ? '' : "Prénom manquant. Nous l'utilisons pour personnaliser notre réponse : saisissez votre prénom."); }
+  function vEmail(){ return showErr(email, $('email-err'), emailError(email.value.trim())); }
+  function vMsg(){ return showErr(msg, $('msg-err'), msg.value.trim() ? '' : "Message vide. L'équipe a besoin de quelques mots pour orienter votre demande : décrivez-la en une ou deux phrases."); }
   first.addEventListener('blur', function(){ if (first.value) vFirst(); });
   email.addEventListener('blur', function(){ if (email.value) vEmail(); });
   [first, email, msg].forEach(function(f){ f.addEventListener('input', function(){ if (f.getAttribute('aria-invalid')) { if (f === first) vFirst(); else if (f === email) vEmail(); else vMsg(); } }); });
@@ -1344,13 +1504,15 @@ legend{padding:0;margin-bottom:12px}
     e.preventDefault();
     var a = vFirst(), b = vEmail(), c = vMsg();
     if (!(a && b && c)) { (a ? (b ? msg : email) : first).focus(); return; }
-    var btn = document.getElementById('submit-btn');
+    var btn = $('submit-btn'), label = btn.innerHTML, se = $('send-err');
+    se.hidden = true;
     btn.setAttribute('aria-disabled', 'true'); btn.disabled = true;
     btn.innerHTML = '<span class="spinner" aria-hidden="true"></span>Envoi…';
     setTimeout(function(){
-      document.getElementById('success-name').textContent = first.value.trim();
+      if (navigator.onLine === false) { se.hidden = false; btn.disabled = false; btn.removeAttribute('aria-disabled'); btn.innerHTML = label; return; }
+      $('success-name').textContent = first.value.trim();
       form.hidden = true;
-      var s = document.getElementById('success'); s.hidden = false; s.focus();
+      var s = $('success'); s.hidden = false; s.focus();
     }, 900);
   });
 })();
