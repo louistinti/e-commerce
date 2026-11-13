@@ -38,7 +38,7 @@
   --header-h:72px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 8px);-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 1px);-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:17px;line-height:1.6;overflow-x:hidden}
 img,svg{display:block;max-width:100%}
 a{color:var(--cyan-text);text-underline-offset:3px}
@@ -89,7 +89,9 @@ section{padding:96px 0}
 .main-nav a{display:block;padding:8px 12px;border-radius:var(--radius-md);color:var(--text);text-decoration:none;font-weight:600;font-size:15px}
 .main-nav a:hover{background:#0B1F3A0D;color:var(--navy)}
 .header-urgent{min-height:44px;padding:0 16px;font-size:15px}
-.menu-btn{display:none;margin-left:auto;background:none;border:0;width:44px;height:44px;align-items:center;justify-content:center;color:var(--navy);cursor:pointer;border-radius:var(--radius-md)}
+.menu-btn{display:none;margin-left:auto;background:none;border:0;padding:0;width:44px;height:44px;align-items:center;justify-content:center;color:var(--navy);cursor:pointer}
+.menu-btn:focus-visible{outline:none;color:var(--cyan-text)}
+.menu-btn:focus-visible svg{transform:scale(1.15)}
 
 /* Hero */
 .hero{padding:56px 0 104px}
@@ -185,7 +187,7 @@ select.input{appearance:none;-webkit-appearance:none;background-image:url("data:
 .card ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
 .card li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:15px;line-height:1.5}
 .card li svg{margin-top:3px;color:var(--cyan-text)}
-.card-manager{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--navy);color:var(--on-navy);border-radius:var(--radius-lg);padding:24px 28px}
+.card-manager{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--navy);color:var(--on-navy);border-radius:var(--radius-lg);padding:24px 28px}
 .card-manager strong{color:#fff;font-size:18px;display:block}
 .card-manager span{color:var(--on-navy-muted);font-size:15px}
 .card-manager .card-icon{margin:0;background:#ffffff14}
@@ -211,14 +213,14 @@ select.input{appearance:none;-webkit-appearance:none;background-image:url("data:
 .nis2-text p{margin-top:18px;max-width:62ch}
 .nis2-text p:first-of-type{margin-top:20px}
 .stamp{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--border);font-size:14px;font-weight:700;color:var(--navy);background:var(--surface)}
-.figures{margin-top:36px;display:grid;grid-template-columns:1.25fr 1fr;gap:28px;padding-top:28px;border-top:1px solid var(--line)}
-.fig-big{font-size:clamp(30px,3vw,40px);font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.fig-label{font-size:15px;margin-top:6px}
-.bars{margin-top:16px;display:grid;gap:8px}
-.bar{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:center;font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.figures{margin-top:28px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:12px 24px;padding-top:24px;border-top:1px solid var(--line)}
+.fig-big{font-size:clamp(28px,2.4vw,34px);white-space:nowrap;font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.fig-label{font-size:15px;line-height:1.45;margin-top:6px}
+.bars{margin-top:10px;display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:center;font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;height:10px;border-radius:3px;background:var(--navy)}
 .bar.before i{background:var(--border)}
-.fig-pair{display:grid;gap:18px}
+.figures .fig-src{grid-column:1/-1}
 .nis2-tool{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:28px}
 .nis2-tool h3{font-size:22px}
 .nis2-tool > p{margin-top:6px;font-size:15px;color:var(--muted)}
@@ -265,9 +267,10 @@ select.input{appearance:none;-webkit-appearance:none;background-image:url("data:
 /* Pricing */
 .pricing{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .pricing-head{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:flex-end;justify-content:space-between}
-.pricing-head h2{max-width:22ch}
+.pricing-head h2{max-width:none}
 .pricing-head .lead{margin-top:12px}
-.tiers{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.pricing-body{margin-top:36px;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
 .tier{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;display:flex;flex-direction:column}
 .tier.reco{border:2px solid var(--cyan-text);background:var(--surface);box-shadow:var(--shadow-md)}
 .badge{position:absolute;top:-13px;left:28px;background:var(--cyan-text);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px}
@@ -282,7 +285,7 @@ select.input{appearance:none;-webkit-appearance:none;background-image:url("data:
 .tier li svg{margin-top:3px;color:var(--cyan-text)}
 .tier li.inherit{font-weight:700;color:var(--navy)}
 .tier .btn{width:100%}
-.sim{margin-top:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line)}
+.sim{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;gap:0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line)}
 .sim-in{padding:28px;background:var(--bg)}
 .sim-in h3{font-size:20px}
 .sim-row{display:grid;grid-template-columns:1fr 110px;gap:16px;align-items:center;margin-top:16px}
@@ -354,6 +357,69 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
   *,*::before,*::after{animation-duration:0ms !important;transition-duration:0ms !important}
 }
 
+
+/* Desktop: every anchored section fits one screen under the sticky header */
+@media (min-width:1024px){
+  #test,#offre,#attaque,#nis2,#tarifs,#contact{padding:48px 0}
+  .quiz-panel{min-height:430px;padding:24px 28px}
+  .progress-bar{margin:8px 0 20px}
+  .result{grid-template-columns:180px 1fr;gap:24px}
+  .gauge{width:180px}
+  .result-text{font-size:15px;margin-top:6px}
+  .recos{margin-top:12px;gap:6px}
+  .recos li{font-size:14px;line-height:1.45}
+  .report{padding-top:14px;margin-top:0}
+  .check{margin-top:10px}
+  .restart{margin-top:6px}
+  .offer-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.7fr);gap:48px}
+  .offer-head{position:static}
+  .cards{gap:16px}
+  .card{display:grid;grid-template-columns:44px 1fr;column-gap:14px;align-items:center;align-content:start;padding:22px 24px}
+  .card-icon{width:44px;height:44px;margin:0}
+  .card p,.card ul{grid-column:1/-1}
+  .card p{margin-top:12px;font-size:15px}
+  .card ul{margin-top:12px;gap:6px}
+  .card-manager{padding:18px 24px}
+  .card-manager .card-icon{width:44px;height:44px}
+  .timeline{margin-top:44px}
+  .attack-note{margin-top:32px}
+  .nis2-grid{gap:48px}
+  .nis2-text p{font-size:16px;margin-top:12px}
+  .nis2-text p:first-of-type{margin-top:16px}
+  .nis2-text .figures p.fig-label{font-size:14px;margin-top:4px}
+  .nis2-text .figures p.source{font-size:13px;margin-top:4px}
+  .card-manager{grid-template-columns:44px 1fr;gap:16px;align-items:start}
+  .card-manager strong{font-size:16px}
+  .card-manager span{font-size:14px;display:block;margin-top:2px}
+  .stamp{margin-top:18px}
+  .nis2-tool{padding:24px}
+  .yn{margin-top:14px}
+  .yn legend{font-size:15px}
+  .yn-opts{margin-top:8px}
+  .yn-opts span{min-height:40px}
+  .nis2-result{margin-top:16px;padding:12px 16px}
+  .nis2-tool .btn{margin-top:16px}
+  .tier{padding:24px 22px}
+  .tier ul{margin:16px 0 20px}
+  .price b{font-size:32px}
+  .sim-in,.sim-out{padding:22px}
+  .sim-in h3{font-size:18px}
+  .sim-row{grid-template-columns:1fr 84px;gap:12px}
+  .sim-out{justify-content:flex-start}
+  .sim-out .total{font-size:clamp(28px,2.3vw,34px)}
+  .urgent-box,.form-box{padding:26px 28px}
+  .urgent-num{margin-top:8px}
+  .urgent-box .btn{margin-top:14px}
+  .reflexes{margin-top:20px;padding-top:18px}
+  .reflexes ol{gap:10px;margin-top:12px}
+  .reflexes li{grid-template-columns:36px 1fr}
+  .reflexes li > span:first-child{width:36px;height:36px}
+  .avoid{margin-top:12px}
+  .form-grid{gap:14px;margin-top:16px}
+  .contact-grid{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:28px}
+  .form-box .err{font-size:13px}
+  .form-box .field{gap:6px}
+}
 /* Responsive */
 @media (max-width:1100px){
   .main-nav a{padding:8px 8px;font-size:14px}
@@ -369,6 +435,7 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
   .header-in{gap:8px}
   .hero-grid,.quiz-layout,.offer-grid,.nis2-grid,.proof-top,.contact-grid{grid-template-columns:minmax(0,1fr)}
   .offer-head{position:static}
+  .pricing-body{grid-template-columns:minmax(0,1fr)}
   .hero-visual{max-width:620px}
   .notif{left:16px}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -402,6 +469,8 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
   .step-dot{grid-row:span 4}
   .step-n{margin-top:2px}
   .figures{grid-template-columns:1fr}
+  .pricing-body{display:block}
+  .sim{margin-top:28px}
   .about{grid-template-columns:1fr}
   .about-art{width:120px}
   .cert{grid-template-columns:72px 1fr;gap:14px}
@@ -593,6 +662,10 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-x"/></svg>Le conseil juridique et la déclaration à votre assureur&nbsp;: nous vous orientons vers les bons interlocuteurs.</li>
         </ul>
       </div>
+      <div class="card-manager on-navy">
+        <div class="card-icon"><svg width="26" height="26" aria-hidden="true"><use href="#i-headset"/></svg></div>
+        <div><strong>Un SOC Manager attitré, qui connaît votre entreprise</strong><span>Le même interlocuteur pour les alertes, les rapports mensuels et les questions de vos clients sur la sécurité.</span></div>
+      </div>
     </div>
     <div class="cards">
       <article class="card">
@@ -635,10 +708,6 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Les bons réflexes affichés au poste de travail</li>
         </ul>
       </article>
-      <div class="card-manager on-navy">
-        <div class="card-icon"><svg width="26" height="26" aria-hidden="true"><use href="#i-headset"/></svg></div>
-        <div><strong>Un SOC Manager attitré, qui connaît votre entreprise</strong><span>Le même interlocuteur pour les alertes, les rapports mensuels et les questions de vos clients sur la sécurité.</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -710,20 +779,17 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
       <span class="stamp"><svg width="18" height="18" aria-hidden="true"><use href="#i-clock"/></svg>Transposition française en cours, mis à jour le 13 novembre 2026</span>
 
       <div class="figures">
-        <div>
+        <div class="fig fig-wide">
           <div class="fig-big">500 → 15&nbsp;000</div>
           <p class="fig-label">entités régulées en France, environ, avant et après NIS2</p>
           <div class="bars" aria-hidden="true">
             <div class="bar before"><span>Avant</span><i style="width:3.33%;min-width:4px"></i></div>
             <div class="bar"><span>Après</span><i style="width:100%"></i></div>
           </div>
-          <p class="source" style="margin-top:10px">Note explicative du projet de loi, citée par <a href="https://www.kiteworks.com/fr/conformite-reglementaire/france-nis2-report-retard-conformite/" rel="noopener">Kiteworks</a>, mise à jour du 12 octobre 2026.</p>
         </div>
-        <div class="fig-pair">
-          <div><div class="fig-big">80&nbsp;%</div><p class="fig-label">des TPE-PME ne se disent pas préparées</p></div>
-          <div><div class="fig-big">16&nbsp;%</div><p class="fig-label">se déclarent victimes d'au moins un incident</p></div>
-          <p class="source">Enquête OpinionWay pour <a href="https://www.cybermalveillance.gouv.fr/medias/2025/10/250910_InfographieMaturiteCyberTPE-PME_SCREEN.pdf" rel="noopener">Cybermalveillance.gouv.fr</a>, 588 entreprises de moins de 250 salariés, juin et juillet 2025.</p>
-        </div>
+        <div class="fig"><div class="fig-big">80&nbsp;%</div><p class="fig-label">des TPE-PME ne se disent pas préparées</p></div>
+        <div class="fig"><div class="fig-big">16&nbsp;%</div><p class="fig-label">se déclarent victimes d'au moins un incident</p></div>
+        <p class="source fig-src">Sources&nbsp;: note explicative du projet de loi, citée par <a href="https://www.kiteworks.com/fr/conformite-reglementaire/france-nis2-report-retard-conformite/" rel="noopener">Kiteworks</a> (mise à jour du 12 octobre 2026)&nbsp;; enquête OpinionWay pour <a href="https://www.cybermalveillance.gouv.fr/medias/2025/10/250910_InfographieMaturiteCyberTPE-PME_SCREEN.pdf" rel="noopener">Cybermalveillance.gouv.fr</a>, 588 entreprises de moins de 250 salariés, juin et juillet 2025.</p>
       </div>
     </div>
 
@@ -746,7 +812,7 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
         <div class="nis2-result" id="nis2-result" aria-live="polite"><strong>Votre résultat s'affiche ici</strong>Répondez aux 3 questions.</div>
       </form>
       <a class="btn btn-primary" href="#"><svg width="18" height="18" aria-hidden="true"><use href="#i-download"/></svg>Télécharger la checklist NIS2 (PDF, 2 pages)</a>
-      <p class="source">Résultat indicatif, pas un avis juridique. Seuils&nbsp;: <a href="https://www.stoik.com/nis2" rel="noopener">Stoïk</a> et <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32003H0361" rel="noopener">recommandation 2003/361 (EUR-Lex)</a>. Calendrier&nbsp;: <a href="https://www.leto.legal/news/nis2-transposition-septembre-2026" rel="noopener">Leto</a>, mise à jour du 19 octobre 2026. Checklist datée du 13 novembre 2026.</p>
+      <p class="source">Résultat indicatif, pas un avis juridique. Seuils&nbsp;: <a href="https://www.stoik.com/nis2" rel="noopener">Stoïk</a>, <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32003H0361" rel="noopener">EUR-Lex 2003/361</a>. Calendrier&nbsp;: <a href="https://www.leto.legal/news/nis2-transposition-septembre-2026" rel="noopener">Leto</a>, 19 octobre 2026. Checklist datée du 13 novembre 2026.</p>
     </aside>
   </div>
 </section>
@@ -824,6 +890,7 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
       <a class="btn btn-secondary" href="#simulateur"><svg width="18" height="18" aria-hidden="true"><use href="#i-calc"/></svg>Calculer mon prix</a>
     </div>
 
+    <div class="pricing-body">
     <div class="tiers" id="tiers">
       <article class="tier">
         <h3>Essentiel</h3>
@@ -883,6 +950,7 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
         <p class="source">Calcul d'exemple sur un prix public&nbsp;: Huntress Managed EDR, 8,99&nbsp;$ par poste et par mois (<a href="https://www.huntress.com/pricing" rel="noopener">huntress.com/pricing</a>, observé le 12 novembre 2026). Ce n'est pas un prix Rempart&nbsp;: Rempart est une entreprise fictive.</p>
       </div>
     </div>
+    </div>
   </div>
 </section>
 
@@ -907,19 +975,19 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
 
     <div class="form-box">
       <h2 id="diag-title">Demander mon diagnostic gratuit</h2>
-      <p>Un analyste vous rappelle pour faire le point sur vos postes, vos sauvegardes et NIS2.</p>
+      <p>Un analyste vous rappelle pour faire le point sur vos postes et NIS2.</p>
       <span class="picked" id="picked"><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span></span></span>
       <form id="diag-form" novalidate>
         <div class="form-grid">
           <div class="field">
             <label for="f-name">Nom</label>
             <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="e-name">
-            <p class="err" id="e-name"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nom est vide. L'analyste en a besoin pour savoir qui demander au téléphone.</span></p>
+            <p class="err" id="e-name"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nom est vide. Indiquez qui l'analyste doit demander.</span></p>
           </div>
           <div class="field">
             <label for="f-company">Entreprise</label>
             <input class="input" id="f-company" name="company" autocomplete="organization" aria-describedby="e-company">
-            <p class="err" id="e-company"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nom de l'entreprise est vide. Nous en avons besoin pour préparer le diagnostic.</span></p>
+            <p class="err" id="e-company"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nom de l'entreprise est vide.</span></p>
           </div>
           <div class="field">
             <label for="f-seats">Nombre de postes</label>
@@ -941,11 +1009,11 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
               <option>Dans l'après-midi</option>
               <option>En fin de journée</option>
             </select>
-            <p class="err" id="e-slot"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Aucun créneau choisi. Indiquez quand vous êtes joignable pour que l'analyste vous rappelle au bon moment.</span></p>
+            <p class="err" id="e-slot"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Aucun créneau choisi. Indiquez quand vous êtes joignable.</span></p>
           </div>
           <div class="full">
             <button class="btn btn-primary" type="submit" id="diag-submit">Envoyer ma demande de diagnostic</button>
-            <p class="privacy">Vos coordonnées servent uniquement à vous rappeler pour ce diagnostic. Aucun traceur publicitaire sur ce site.</p>
+            <p class="privacy">Vos coordonnées servent uniquement à vous rappeler. Aucun traceur publicitaire.</p>
           </div>
         </div>
       </form>
@@ -1126,9 +1194,9 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
               '<input class="input" id="r-email" type="email" autocomplete="email" aria-describedby="e-email"></div>' +
               '<button class="btn btn-primary" type="submit">Recevoir mon rapport détaillé</button>' +
             '</div>' +
-            '<p class="err" id="e-email" style="margin-top:8px"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Cette adresse ne semble pas complète. Il manque le @ ou le domaine. Exemple : prenom@entreprise.fr.</span></p>' +
-            '<label class="check"><input type="checkbox" id="r-consent" aria-describedby="e-consent"><span>J\'accepte de recevoir le rapport détaillé par e-mail. Rempart ne l\'utilise pour rien d\'autre.</span></label>' +
-            '<p class="err" id="e-consent" style="margin-top:6px"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>La case n\'est pas cochée. Sans votre accord, nous ne pouvons pas envoyer le rapport.</span></p>' +
+            '<p class="err" id="e-email" style="margin-top:8px"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Adresse incomplète, il manque le @ ou le domaine. Exemple : prenom@entreprise.fr.</span></p>' +
+            '<label class="check"><input type="checkbox" id="r-consent" aria-describedby="e-consent"><span>J\'accepte de recevoir le rapport par e-mail, et rien d\'autre.</span></label>' +
+            '<p class="err" id="e-consent" style="margin-top:6px"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Case non cochée. Sans votre accord, pas d\'envoi possible.</span></p>' +
           '</form>' +
           '<button type="button" class="restart" id="restart">Refaire le test</button>' +
         '</div>' +
