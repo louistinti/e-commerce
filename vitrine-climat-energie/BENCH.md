@@ -19,6 +19,7 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
   - Le bench est réorganisé selon l'arborescence du brief (section 6), avec un tableau de couverture.
   - **Aucune nouvelle référence** : la recherche Dribbble renvoie maintenant une page « Let's confirm you are human », non contournée. Une recherche Awwwards n'a rien donné d'utile pour les blocs 7 et 8 (voir « Galeries : requêtes lancées »).
   - **Tokens corrigés** contre l'accessibilité et la marque du brief : `color.semantic.success`, `color.semantic.warning` et l'anneau de focus échouaient aux contrastes WCAG, `color.semantic.info` était un bleu (« bleu tech » proscrit). Détail dans « Palette, polices, design tokens, composants ».
+- **Passe du 2026-11-13** : Sobra est fictive, aucun chiffre ne lui est attribué. Le hero passe sur un chiffre public sourcé (« -26 % », bilan OPERAT 2024-2025), les fiches cas et l'impact cumulé n'ont plus de valeur, et les portraits d'équipe sont remplacés par un « Qui sommes-nous » sans photo : Unsplash (« Access Denied ») et Pexels (vérification Cloudflare) ont bloqué la recherche de photos de banque d'images. Détail dans « Arbitrages ».
 - **Bannières cookies** : refusées partout où un refus existait. **Données personnelles** : sur Dribbble, avatars et noms des designers masqués avant capture.
 
 **Répartition** : 25 références. Sites réels du secteur 5 · Dribbble 10 · Awwwards 3 · Pinterest 3 · Lapa Ninja 2 · Land-book 1 · Behance 1. Energy Park est cité sur Awwwards et sur Lapa Ninja.
@@ -29,25 +30,25 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 
 | Exigence du brief | Inspirations | Manque |
 |---|---|---|
-| 1. Hero : chiffre d'impact en grand, phrase de méthode, CTA « Audit gratuit » et « Estimer mes économies » | 1, 6, 3 | Aucune référence ne met une moyenne mesurée en H1 avec sa note de méthode juste dessous. BrainBox (n° 1) écrit « up to ». |
+| 1. Hero : chiffre public « -26 % » en grand, sa source dessous, CTA « Audit gratuit » et « Estimer mes économies » | 1, 6, 3 | Aucune référence ne pose un chiffre avec sa source juste dessous. BrainBox (n° 1) écrit « up to ». |
 | 2. Le problème en 3 chiffres sourcés | 1, 5, 15 | Aucune référence ne pose une source sous chacun de ses chiffres. Seul Citron (n° 16, à côté) cite une allégation réglementaire chiffrée. |
-| 3. La solution en 3 colonnes, captures réelles de la plateforme | 5, 3, 13 | Pas de mise en page « capteurs / plateforme / accompagnement » en 3 colonnes vue. Pas de portrait d'ingénieur vu (détail du n° 2, à côté). |
+| 3. La solution en 3 colonnes, écrans de la plateforme dessinés sans valeurs | 5, 3, 13 | Pas de mise en page « capteurs / plateforme / accompagnement » en 3 colonnes vue. |
 | 4. Simulateur : type, surface, facture → fourchette kWh/an et €/an, position 2030, hypothèses, envoi au formulaire | 24, 10, 13, 5 | L'envoi du résultat dans un formulaire n'est montré par aucune référence. |
-| 5. Cas clients : carte agrégée et 3 fiches (type, surface, ville, gain 12 mois, courbe avant/après) | 25, 17, 5 | Aucune fiche cas avec courbe avant/après vue. |
-| 6. Impact cumulé : compteur MWh et tCO₂, date de mise à jour, méthode | 6, 25 | Aucun compteur avec date de mise à jour et lien vers le facteur d'émission. |
-| 7. Certifications et partenaires (labels réellement obtenus) | aucune | Aucune référence vue ne montre une section labels ou partenaires. Recherche d'ajout bloquée sur Dribbble. La section se construit à partir des labels réels de Sobra (voir « Points à remonter au client »). |
+| 5. Cas clients : carte à points d'exemple et 3 fiches sans gain chiffré (type, ville, leviers, courbe d'illustration) | 25, 17, 5 | Aucune fiche cas avec courbe avant/après vue. |
+| 6. Impact cumulé : indicateurs MWh et tCO₂, méthode, facteur d'émission, sans valeur | 6, 25 | Aucune référence ne lie un chiffre d'impact à sa méthode ou à son facteur d'émission. |
+| 7. Qui sommes-nous et cadres suivis (pas de logo de label) | aucune | Aucune référence vue ne montre un bloc équipe sans photo ni une liste de textes réglementaires servis. Recherche d'ajout bloquée sur Dribbble. Voir « Arbitrages ». |
 | 8. Contact / demande d'audit : formulaire court, résultat prérempli, prise de rendez-vous | aucune | Aucun formulaire capturé : les références vues s'arrêtent au bouton (« Get a demo », « Get in touch »). Les champs et les messages sont déjà fixés par le brief (sections 6 et 9). |
 | Pied de page : page Méthode | 15 | Une vraie page de méthode (formules, facteur d'émission) n'a pas été vue. |
-| Mobile : CTA, simulateur au clavier et sur mobile, poids < 1,5 Mo, LCP < 2,5 s | 5 (mobile), 3 (mobile) | Aucun simulateur mobile observé sur un site réel. Poids et LCP non mesurés. |
+| Mobile : CTA, simulateur au clavier et sur mobile, poids < 1,5 Mo, LCP ≤ 2,5 s (seuil « bon » des Core Web Vitals) | 5 (mobile), 3 (mobile) | Aucun simulateur mobile observé sur un site réel. Poids et LCP non mesurés. |
 | Marque : vert profond, sable, jaune soleil, un seul accent | 3 | Aucune référence vue en vert profond et sable. Le jaune unique d'ON Energy (n° 3) est le repère le plus proche. |
 | Marque : grotesque large pour les chiffres | 1, 6 | Les chiffres vus sont fins (n° 1) ou en serif (n° 6). Aucune grotesque large vue. |
 | Accessibilité : clavier dans le simulateur, alternative en tableau aux graphiques, contraste du jaune | aucune | Non observable sur des captures. Les contrastes sont calculés dans les tokens. |
-| Preuve « -27 % » : N bâtiments, période, correction climatique, IPMVP | 17, 5 | Le n° 17 donne la période et la correction, le n° 5 le client. Aucune référence ne réunit les quatre éléments. |
-| Preuve « mi-chemin de 2030 » : objectifs et bilan OPERAT datés | 5, 15 | Pas de rappel réglementaire daté vu. |
-| Preuve « Installé en un jour » : photo d'un capteur posé, vidéo de 30 s, 3 étapes | 3 | Photo d'équipement réel vue, mais pas de capteur posé ni de déroulé en étapes. |
-| Preuve « Un ingénieur référent » : portraits, rythme du suivi | aucune | Seul détail : la photo de personnes au travail du n° 2 (à côté). |
+| Preuve « Des économies mesurées, pas promises » : page Méthode (IPMVP, période, correction climatique) | 17, 5 | Le n° 17 donne la période et la correction, le n° 5 le client. Aucune référence ne réunit les trois éléments. |
+| Preuve « mi-chemin de 2030 » : « -26 % » et objectifs datés et sourcés | 5, 15 | Pas de rappel réglementaire daté vu. |
+| Preuve « Installé sans travaux » : déroulé en 3 étapes, photo de capteur posé à produire | 3 | Photo d'équipement réel vue, mais pas de capteur posé ni de déroulé en étapes. |
+| Preuve « Un ingénieur référent » : « Qui sommes-nous » court sans photo, rythme du suivi | aucune | Aucun bloc équipe sans photo vu. |
 | Preuve « Des économies finançables » : CEE sous réserve d'éligibilité | aucune | Aucune mention CEE vue sur les références capturées. |
-| Preuve « Impact mesuré » : compteur et facteur d'émission ADEME | 25 | Unité et période vues, lien vers le facteur non vu. |
+| Preuve « Impact mesuré » : indicateurs et facteur d'émission ADEME | 25 | Unité et période vues, lien vers le facteur non vu. |
 
 ---
 
@@ -57,7 +58,7 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 1 | BrainBox AI : AI Control (site réel, Canada), https://brainboxai.com/en/solutions/ai-control | [capture](captures/inspis/01-brainboxai-ai-control.jpg) · [chiffres](captures/inspis/01-brainboxai-chiffres.jpg) | Le chiffre très grand et fin, l'unité collée (« -40% », « -25% »), une légende courte dessous. Fond blanc, texte `#17171B`, Atlas Grotesk graisse 300. À éviter : le « by up to » de la légende, et le H1 « AI Control » qui relègue le chiffre (il n'est que dans la balise `<title>`). | « Le chiffre d'impact en grand » : pour Sobra, le chiffre passe en H1 et la légende devient la phrase de méthode. |
+| 1 | BrainBox AI : AI Control (site réel, Canada), https://brainboxai.com/en/solutions/ai-control | [capture](captures/inspis/01-brainboxai-ai-control.jpg) · [chiffres](captures/inspis/01-brainboxai-chiffres.jpg) | Le chiffre très grand et fin, l'unité collée (« -40% », « -25% »), une légende courte dessous. Fond blanc, texte `#17171B`, Atlas Grotesk graisse 300. À éviter : le « by up to » de la légende, et le H1 « AI Control » qui relègue le chiffre (il n'est que dans la balise `<title>`). | « Le chiffre en grand » : pour Sobra, c'est le « -26 % » public du bilan OPERAT, et la légende devient sa source. |
 | 6 | Cambium : Impact (Exo Ape, Dribbble), https://dribbble.com/shots/24767351-Cambium-Impact | [capture](captures/inspis/06-dribbble-cambium-impact.jpg) | Un seul chiffre géant sur fond crème, « 3.5 Gigaton CO2e », « / Year » en petit, une phrase de comparaison, un bouton « More impact ». À éviter : le globe 3D (planète proscrite). | Un chiffre, une phrase, un CTA : la structure du hero. |
 | 3 | ON Energy (Awwwards SOTD 09/03/2026, Studio 28K), https://www.on.energy/ | [site](captures/inspis/03-on-energy-site.jpg) · [fiche](captures/inspis/03-on-energy-awwwards.jpg) | Un seul accent jaune `#FFF313`, porté par le logo et le bouton « Get in touch » à texte noir. Photo d'équipement réel en niveaux de gris. Fond noir `#000`, H1 64 px graisse 300. À éviter : le noir intégral et la 3D. | CTA « Demander mon audit gratuit » en accent unique, photo réelle plutôt qu'illustration. |
 
@@ -75,11 +76,11 @@ Détail repris d'une référence à côté : Citron (n° 16) affiche « Citron®
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 5 | Deepki | [capture](captures/inspis/05-deepki.jpg) | Le hero est une vraie capture de la plateforme, pas une maquette. À éviter : le superlatif « Most trusted » du H1. | « Captures réelles de la plateforme (pas de maquette fictive) ». |
-| 3 | ON Energy | [site](captures/inspis/03-on-energy-site.jpg) | Photo d'un équipement réel (une armoire électrique) désaturée, sans décor. | Colonne « capteurs » et preuve « photo réelle d'un capteur posé ». |
+| 5 | Deepki | [capture](captures/inspis/05-deepki.jpg) | Le hero montre l'écran de la plateforme en grand, recadré sur la donnée. À éviter : le superlatif « Most trusted » du H1. | Écrans de la plateforme, dessinés sans valeurs et légendés « illustration ». |
+| 3 | ON Energy | [site](captures/inspis/03-on-energy-site.jpg) | Photo d'un équipement réel (une armoire électrique) désaturée, sans décor. | Colonne « capteurs » et photo de capteur posé (à produire). |
 | 13 | Smart Energy Dashboard Concept (Zajno, Dribbble), https://dribbble.com/shots/25108413-Smart-Energy-Dashboard-Concept | [capture](captures/inspis/13-dribbble-zajno-smart-energy.jpg) | La consommation découpée par usage (éclairage, réfrigérateur, climatisation) en barres. À éviter : le fond noir et le contexte domestique. | Le sous-comptage par usage des capteurs Sobra, montré dans la colonne « plateforme ». |
 
-Détails repris de références à côté : Breakthrough Energy (n° 2) pose un grand titre sur une photo réelle de personnes au travail, un repère pour la colonne « accompagnement » et les portraits d'ingénieurs. BatteryLoop (n° 12) chiffre le gain levier par levier.
+Détails repris de références à côté : Breakthrough Energy (n° 2) pose un grand titre sur une photo réelle de personnes au travail, un repère pour la colonne « accompagnement ». Pas de portrait pour Sobra : le brief retient un « Qui sommes-nous » sans photo (voir « Arbitrages »). BatteryLoop (n° 12) chiffre le gain levier par levier.
 
 ### 4. Simulateur
 
@@ -98,7 +99,7 @@ Détails repris de références à côté : Sunora AI (n° 23) détaille le rés
 |---|---|---|---|---|
 | 25 | MapMortar : Decarbonisation Platform Design (Lumi studio, Dribbble), https://dribbble.com/shots/26536376-MapMortar-Decarbonisation-Platform-Design | [capture](captures/inspis/25-dribbble-mapmortar-decarbonisation.jpg) | Interface claire, carte de quartier en gris, repères colorés par statut de trajectoire : « On track » (noir), « Off track » (orange), « No plan » (gris). | « Carte des bâtiments équipés (points agrégés) » : des points colorés selon la trajectoire 2030, légende chiffrée sous la carte. |
 | 17 | Ubigreen (site réel, FR), https://www.ubigreen.com/en/ | [témoignage](captures/inspis/17-ubigreen-cas.jpg) · [accueil](captures/inspis/17-ubigreen.jpg) (sans mise en forme) | Une citation datée : de 2018 à 2021, gaz corrigé -5,3 % et électricité -13 %, attribuée au responsable énergie du Conseil départemental de la Haute-Garonne, avec les leviers. Design non vu. | Les fiches cas (type, ville, gain, période) et un cas de collectivité pour le persona Marc. |
-| 5 | Deepki | [chiffres](captures/inspis/05-deepki-chiffres.jpg) | 3 cartes chiffres signées chacune d'un logo client : « 6,500+ buildings monitored » (CBRE), « 40% time saved on reporting campaigns » (Icade), « 32% reduction in energy consumption » (Heppner). À éviter : le « 32 % » sans période ni périmètre. | Un gain attribué à un client nommé, pour le persona Claire (références de foncières). |
+| 5 | Deepki | [chiffres](captures/inspis/05-deepki-chiffres.jpg) | 3 cartes chiffres signées chacune d'un logo client : « 6,500+ buildings monitored » (CBRE), « 40% time saved on reporting campaigns » (Icade), « 32% reduction in energy consumption » (Heppner). À éviter : le « 32 % » sans période ni périmètre. | La carte signée d'un nom de client, pour le persona Claire (cas de foncières). Pour Sobra, la carte porte le type de bâtiment et les leviers, sans gain chiffré. |
 
 Détails repris de références à côté : Advizeo (n° 18) titre un replay « Covéa Immobilier : -33 % de consommation sur 1000 bâtiments, la méthode » (chiffre, périmètre et méthode dans la même ligne). BatteryLoop (n° 12) décompose le gain par levier, à transposer en clair (réglages CVC, détection de dérives, suivi).
 
@@ -106,14 +107,16 @@ Détails repris de références à côté : Advizeo (n° 18) titre un replay « 
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 6 | Cambium : Impact | [capture](captures/inspis/06-dribbble-cambium-impact.jpg) | Un chiffre par écran, l'unité en petit, une phrase qui le rend concret. | Le compteur MWh et tCO₂ évités. |
-| 25 | MapMortar | [capture](captures/inspis/25-dribbble-mapmortar-decarbonisation.jpg) | Cartes chiffres avec l'unité et la période : « 876,000 kg per year » de CO₂ scope 1, « 257,200 kWh per year ». | Le compteur avec unité et période. La date de mise à jour et le lien vers la méthode restent à ajouter. |
+| 6 | Cambium : Impact | [capture](captures/inspis/06-dribbble-cambium-impact.jpg) | Un chiffre par écran, l'unité en petit, une phrase qui le rend concret. | La mise en page des indicateurs MWh et tCO₂ évités. |
+| 25 | MapMortar | [capture](captures/inspis/25-dribbble-mapmortar-decarbonisation.jpg) | Cartes chiffres avec l'unité et la période : « 876,000 kg per year » de CO₂ scope 1, « 257,200 kWh per year ». | Les cartes d'indicateurs avec unité et période. Pour Sobra, pas de valeur : l'unité, la période et le lien vers la méthode. |
 
 Détail repris d'une référence à côté : Advizeo (n° 18) date son chiffre cumulé (« 1 TWh d'économies d'énergie réalisées en 2025 »).
 
-### 7. Certifications et partenaires
+### 7. Qui sommes-nous et cadres suivis
 
-Aucune inspiration. Aucune référence vue ne montre une section labels. Ce que le brief impose suffit à cadrer le bloc : uniquement des labels réellement obtenus, pas de logo ADEME sans autorisation, mention CEE seulement si Sobra est partenaire d'un obligé.
+Aucune inspiration. Aucune référence vue ne montre un bloc équipe sans photo ni une liste de textes réglementaires servis. Ce que le brief impose suffit à cadrer le bloc : un « Qui sommes-nous » de 3 phrases avec le logo, les textes servis cités avec leur source (décret tertiaire, BACS, CEE sous réserve d'éligibilité), aucun logo de label, de partenaire ni de l'ADEME.
+
+**Photos d'équipe** : recherche faite le 2026-11-13, sans résultat exploitable. Unsplash (`/s/photos/hvac-engineer`, `/s/photos/engineer-building`) renvoie « Access Denied », Pexels (`/search/hvac engineer/`) une vérification Cloudflare. Aucune des deux n'a été contournée. Pas d'exigence de photo réelle ni de portrait dans ce bench.
 
 ### 8. Contact / demande d'audit
 
@@ -135,14 +138,14 @@ Observé en 390 × 844 px sur 3 sites réels.
 |---|---|---|
 | Deepki (inspiration) | [mobile](captures/inspis/mobile-deepki.jpg) | H1 35 px sur 4 lignes, la preuve « Trusted by 900+ companies », puis le bouton « Get a demo » (51 px de haut). La capture de la plateforme rétrécit au point d'être illisible. Plus bas, les 3 cartes chiffres s'empilent, environ 350 px de haut chacune. Pas de bouton collant. |
 | ON Energy (inspiration) | [mobile](captures/inspis/mobile-on-energy.jpg) | Logo et menu dans une pastille jaune en haut à droite, H1 37 px graisse 300 sur la photo produit, carte jaune « Explore AI UPS » en bas. Le bouton « Get in touch » n'est pas dans le premier écran. |
-| Citron (à côté) | [mobile](captures/a-cote/mobile-citron.jpg) | H1 24 px, bouton « Contacter un expert » de 38 px de haut seulement (sous les 44 px conseillés), logos clients dès le premier écran. Le bouton flottant des cookies recouvre le bas à gauche. |
+| Citron (à côté) | [mobile](captures/a-cote/mobile-citron.jpg) | H1 24 px, bouton « Contacter un expert » de 38 px de haut seulement (sous les 44 px du critère 2.5.5 des WCAG 2.2, niveau AAA), logos clients dès le premier écran. Le bouton flottant des cookies recouvre le bas à gauche. |
 
 Ce qu'on en tire, relié au brief :
-- **Critère « comprendre en 5 secondes » et KPI des demandes d'audit** : le CTA « Demander mon audit gratuit » dans le premier écran, à 48 px de haut, comme Deepki (51 px). Citron (38 px) est trop petit, ON Energy cache le sien.
+- **Critère « comprendre en 5 secondes » et indicateur des demandes d'audit** : le CTA « Demander mon audit gratuit » dans le premier écran, à 48 px de haut, comme Deepki (51 px). Citron (38 px) est trop petit, ON Energy cache le sien.
 - **Captures réelles de la plateforme (bloc 3)** : ne pas réduire une capture entière en mobile, la recadrer sur une seule courbe lisible (Deepki la rend illisible).
 - **Blocs 2 et 6** : les cartes chiffres empilées prennent vite de la place (Deepki : plus de 1 000 px pour 3 cartes). Garder des cartes compactes.
 - **Simulateur au clavier et sur mobile** : non observé, aucun des 3 sites ne propose d'outil juste après le hero. Le brief place le simulateur en bloc 4 et le relie au hero par le CTA « Estimer mes économies ». En mobile, l'ordre est entrées puis résultat (repère du n° 8, à côté), et le résultat reste visible sans défilement après le calcul.
-- **Poids < 1,5 Mo et LCP < 2,5 s** : plusieurs références ouvrent sur une vidéo plein cadre (n° 2, 18, 20, à côté). Pour Sobra, une photo fixe compressée. Le poids des pages vues n'a pas été mesuré.
+- **Poids < 1,5 Mo et LCP ≤ 2,5 s (Core Web Vitals)** : plusieurs références ouvrent sur une vidéo plein cadre (n° 2, 18, 20, à côté). Pour Sobra, une photo fixe compressée. Le poids des pages vues n'a pas été mesuré.
 
 ---
 
@@ -151,13 +154,13 @@ Ce qu'on en tire, relié au brief :
 Le brief demande un moodboard en 3 pistes (section 10). Les trois pistes restent : elles utilisent la palette du brief et n'emploient aucun visuel proscrit. Aucune n'est retirée.
 
 **A. « Relevé de compteur » (recommandée)**
-Fond sable, grands chiffres en Archivo étendu vert profond, une seule courbe avant/après en trait fin. Le jaune marque le delta (« -27 % ») en fond, derrière un chiffre vert profond, jamais en texte sur sable.
-Photos réelles de capteurs et de locaux techniques, en noir et blanc légèrement teinté vert.
+Fond sable, grands chiffres en Archivo étendu vert profond, une seule courbe avant/après en trait fin. Le jaune marque le delta (le « -26 % » du hero, la fourchette du simulateur) en fond, derrière un chiffre vert profond, jamais en texte sur sable.
+Photos de capteurs et de locaux techniques (à produire : banque d'images ou prise de vue), en noir et blanc légèrement teinté vert. Pas de portrait d'équipe.
 Sensation : précision d'ingénieur, rapport technique bien mis en page.
 Inspirations :
 - photo d'équipement désaturée et un seul accent jaune (n° 3) ;
 - un chiffre par écran, unité en petit, une phrase dessous (n° 6, n° 1) ;
-- chiffre signé par un client nommé et daté (n° 5, n° 17) ;
+- fiche signée par un type de client et datée, sans gain chiffré pour Sobra (n° 5, n° 17) ;
 - simulateur entrées à gauche, résultat à droite, phrase « indicatif » (n° 24), résultat en fourchette (n° 13) ;
 - carte à points colorés selon la trajectoire (n° 25).
 
@@ -272,7 +275,7 @@ Motion :
 
 ### Composants clés
 
-- **Bouton primaire** : fond `brand.primary`, texte `sand-light`, `radius.md`, hauteur 48 px (zone tactile d'au moins 44 px).
+- **Bouton primaire** : fond `brand.primary`, texte `sand-light`, `radius.md`, hauteur 48 px (zone tactile d'au moins 44 px, critère 2.5.5 des WCAG 2.2).
   - Survol : `primary-hover`. Focus : `shadow.focus`. Actif : enfoncé de 1 px.
   - Désactivé : fond `neutral.300` et texte `neutral.700`. Ajouter `aria-disabled` et dire pourquoi il est désactivé.
   - Chargement : spinner et libellé « Envoi… », sans changement de largeur.
@@ -280,7 +283,7 @@ Motion :
   - Survol : fond `neutral.100`. Focus, désactivé et chargement comme le primaire.
   - **Sur fond vert** : fond `accent` et texte `brand.primary`, focus `shadow.focus-on-dark`.
 - **Carte chiffre** : fond `sand-light`, chiffre `type.stat`, unité `type.mono`, une ligne de contexte, et le lien « source » avec sa date en `type.small` (blocs 2 et 6).
-- **Carte cas client** : mini-courbe avant/après, type, surface, ville, gain sur 12 mois, et le lien « Voir la courbe complète » (bloc 5).
+- **Carte cas client** : mini-courbe avant/après sans valeurs, légendée « illustration », type de bâtiment, ville, leviers, indicateur suivi, et le lien « Voir la courbe complète » (bloc 5).
 - **Formulaire / simulateur** :
   - libellé toujours visible au-dessus du champ ;
   - aide en `type.small` ;
@@ -311,7 +314,7 @@ Motion :
 | 7 | Green Energy Website Design Inspiration (Pinterest) | aucune | Non vérifié : mur de connexion. Derrière la fenêtre, des gabarits à éoliennes et vert vif (proscrits). |
 | 8 | Savings calculator (Opendoor Design, Dribbble), https://dribbble.com/shots/13944005-Savings-calculator | [capture](captures/a-cote/08-dribbble-opendoor-savings-calculator.jpg) | Projet immobilier, contexte seulement. Le n° 24 montre mieux le simulateur. Détail repris au bloc 4 et en mobile. |
 | 9 | Savings Slider (Dribbble), https://dribbble.com/shots/2635549-Savings-Slider | [capture](captures/a-cote/09-dribbble-savings-slider.jpg) | Projet immobilier, une seule image floue. Le curseur doublé d'un champ est mieux montré par le n° 24. |
-| 11 | Energy Consumption Dashboard UI (Fuselab, Dribbble), https://dribbble.com/shots/25574779-Energy-Consumption-Dashboard-UI | [capture](captures/a-cote/11-dribbble-fuselab-energy-dashboard.jpg) | Ville 3D de nuit en néon bleu et magenta : bleu « tech » proscrit, et dashboard décoratif contraire à « captures réelles (pas de maquette fictive) ». Ne montre qu'un site, pas une carte comparative. |
+| 11 | Energy Consumption Dashboard UI (Fuselab, Dribbble), https://dribbble.com/shots/25574779-Energy-Consumption-Dashboard-UI | [capture](captures/a-cote/11-dribbble-fuselab-energy-dashboard.jpg) | Ville 3D de nuit en néon bleu et magenta : bleu « tech » proscrit, et dashboard décoratif contraire à « pas de widgets inventés » (« à ne pas faire » n° 2). Ne montre qu'un site, pas une carte comparative. |
 | 12 | BatteryLoop dashboard (Dribbble), https://dribbble.com/shots/21454833-Dashboard-for-an-innovative-energy-storage-product | [capture](captures/a-cote/12-dribbble-batteryloop-dashboard.jpg) | Concept sombre vert-noir en SEK, pas une capture réelle, et le gain par levier n'est pas demandé tel quel par le brief. Détail repris aux blocs 3 et 5. |
 | 14 | eTactica (Lapa Ninja), https://www.lapa.ninja/post/etactica/ | aucune | Non vérifié : Lapa Ninja bloqué par Cloudflare, et le site est mort (domaine à vendre). |
 | 16 | Citron (site réel, FR), https://citron.io/ | [capture](captures/a-cote/16-citron.jpg) · [mobile](captures/a-cote/mobile-citron.jpg) | H1 exhortatif avec point d'exclamation (ton « sans superlatif »), dégradé vert et illustration d'une femme à la loupe devant une maquette de tableau de bord (le brief demande des captures réelles), bouton magenta `#E71B6D` hors palette, bouton mobile de 38 px. Détail repris au bloc 2. |
@@ -341,7 +344,10 @@ Motion :
 
 ---
 
-## Points à remonter au client
+## Arbitrages
 
-- **Le hero dépend d'un chiffre encore à prouver.** Le brief veut « -27 % » en H1 et interdit de le publier sans note de méthode (nombre de bâtiments, période, correction climatique, IPMVP). Aucune référence vue ne publie une telle note sous son chiffre principal. Il faut ces données dès la collecte de S1, sinon prévoir un hero de repli (option A ou C de l'UX copy).
-- **Le bloc Certifications et partenaires a besoin d'une liste réelle.** Le brief n'admet que des labels obtenus et exclut le logo ADEME sans autorisation. Sans liste avant les maquettes (S4), le bloc reste vide : demander à Sobra ses labels, ses partenariats et son éventuel partenariat CEE avec un obligé.
+- **Hero.** On ouvre sur le chiffre public « -26 % » (bilan OPERAT 2024-2025), sa source juste dessous, et le titre de l'option A. Sobra n'a pas de résultat mesuré : un « -27 % » serait inventé.
+- **Bloc 7.** Le bloc devient « Qui sommes-nous et cadres suivis », sans logo de label ni de partenaire, parce que Sobra n'en a obtenu aucun. Les textes servis (décret tertiaire, BACS, CEE sous réserve d'éligibilité) sont cités en clair avec leur source.
+- **Photos d'équipe.** On remplace les portraits par un « Qui sommes-nous » de 3 phrases, sans photo, avec le logo. La recherche de photos de banque d'images a été bloquée sur Unsplash et sur Pexels le 2026-11-13, et on ne cherche pas plus loin.
+- **Cas clients et impact cumulé.** Les 3 fiches et les indicateurs d'impact ne portent aucune valeur, parce qu'elle serait inventée. Les fiches montrent le type, la ville, les leviers et l'indicateur suivi, avec une courbe légendée « illustration ».
+- **Écrans de la plateforme.** On les dessine nous-mêmes, sans valeur chiffrée, légendés « illustration », parce qu'il n'existe pas de plateforme à capturer.
