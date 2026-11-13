@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arotz Rénovation</title>
+<meta name="description" content="Arotz Rénovation, artisan RGE à Ustaritz : isolation, pompe à chaleur, menuiseries et rénovation globale au Pays basque. Site de démonstration, entreprise fictive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#9E1B22; --red-hover:#821519;
+  --green:#1F4A37; --green-hover:#173A2B;
+  --wood:#B98A5A; --wood-dark:#7A5534;
+  --lime:#F6F1E7; --lime-light:#FBF8F2;
+  --success:#2E6B3F; --error:#B3261E; --warning:#A15C00; --info:#2D5C7A;
+  --n900:#1E1A17; --n700:#4A433D; --n500:#857A70; --n300:#D8CFC3; --n100:#EFE8DC; --n0:#FFFFFF;
+  --dpe-a:#009C6D; --dpe-b:#52B153; --dpe-c:#A5CC74; --dpe-d:#F4E70F; --dpe-e:#F0B40F; --dpe-f:#EB8235; --dpe-g:#D7221F;
+  --r-sm:4px; --r-md:10px; --r-lg:18px; --r-full:999px;
+  --shadow-sm:0 1px 3px rgba(30,26,23,.10);
+  --shadow-md:0 6px 20px rgba(30,26,23,.12);
+  --focus:0 0 0 3px #1F4A37, 0 0 0 5px #F6F1E7;
+  --ease:cubic-bezier(.2,0,0,1);
+  --serif:"Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans:"Source Sans 3", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --gutter:clamp(16px, 4vw, 48px);
+  --maxw:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--lime);color:var(--n900);font-family:var(--sans);font-size:18px;line-height:1.65;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:var(--green);text-underline-offset:3px}
+a:hover{color:var(--green-hover)}
+h1,h2,h3{font-family:var(--serif);font-variation-settings:"SOFT" 50;color:var(--green);margin:0;letter-spacing:-.01em}
+h2{font-size:38px;line-height:1.15;font-weight:600}
+h3{font-size:24px;line-height:1.25;font-weight:600}
+p{margin:0}
+:focus{outline:none}
+:focus-visible{box-shadow:var(--focus);border-radius:var(--r-sm)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:112px 0}
+.lead{font-size:20px;line-height:1.6;color:var(--n700);max-width:62ch}
+.small{font-size:17px;font-weight:500;line-height:1.5;color:var(--n700)}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.src{font-size:17px;color:var(--n700)}
+.src a{color:var(--n700)}
+.demo-tag{display:inline-block;font-size:15px;font-weight:600;line-height:1.3;color:var(--n700);background:var(--n100);border:1px dashed var(--n500);border-radius:var(--r-full);padding:3px 12px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--r-md);font:600 18px/1.2 var(--sans);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color .12s var(--ease),transform .12s var(--ease),color .12s var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:22px;height:22px;flex:none}
+.btn--primary{background:var(--red);color:#fff}
+.btn--primary:hover{background:var(--red-hover);color:#fff}
+.btn--secondary{background:transparent;color:var(--green);border-color:var(--green)}
+.btn--secondary:hover{background:var(--n100);color:var(--green)}
+.btn--green{background:var(--green);color:var(--lime)}
+.btn--green:hover{background:var(--green-hover);color:var(--lime)}
+.btn--ghost{background:transparent;color:var(--green);padding:0 8px;border:0;text-decoration:underline;text-underline-offset:4px}
+.btn[disabled]{background:var(--n300);color:var(--n700);cursor:not-allowed}
+
+/* Header */
+.header{position:sticky;top:0;z-index:40;background:rgba(246,241,231,.96);border-bottom:1px solid var(--n300)}
+.header__in{display:flex;align-items:center;gap:28px;height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--green);flex:none}
+.brand svg{width:42px;height:42px}
+.brand__name{font-family:var(--serif);font-weight:650;font-size:26px;line-height:1;letter-spacing:-.01em}
+.brand__name small{display:block;font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--n700);margin-top:3px}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{color:var(--n900);text-decoration:none;font-weight:500;font-size:17px;padding:8px 10px;border-radius:var(--r-sm)}
+.nav a:hover{color:var(--green);text-decoration:underline}
+.header__call{display:flex;flex-direction:column;align-items:flex-end;text-decoration:none;color:var(--green);line-height:1.15;flex:none}
+.header__call strong{font-size:21px;font-weight:700;white-space:nowrap}
+.header__call span{font-size:15px;color:var(--n700);font-weight:500}
+.header .btn{min-height:48px;padding:0 18px;font-size:17px}
+
+/* Hero */
+.hero{padding:56px 0 40px}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:56px;align-items:center}
+.hero h1{font-size:54px;line-height:1.08;font-weight:650;color:var(--green)}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--n900);display:block;padding-bottom:4px}
+.hero__sub{font-size:20px;line-height:1.6;color:var(--n700);margin-top:22px;max-width:52ch}
+.hero__ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:30px}
+.hero__phone{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--green)}
+.hero__phone .ico{width:52px;height:52px;border-radius:var(--r-md);border:2px solid var(--green);display:grid;place-items:center}
+.hero__phone .ico svg{width:24px;height:24px}
+.hero__phone strong{display:block;font-size:24px;line-height:1.1;font-weight:700;white-space:nowrap}
+.hero__phone span{display:block;font-size:16px;color:var(--n700);font-weight:500}
+.hero__est{display:inline-block;margin-top:20px;font-weight:600;font-size:18px}
+.hero__art{position:relative;background:var(--n100);border-radius:var(--r-lg);padding:20px 20px 16px}
+.hero__art svg.house{width:100%;height:auto}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;margin:12px 4px 0;padding:0;list-style:none;font-size:17px;font-weight:500;color:var(--n900)}
+.legend li{display:flex;align-items:center;gap:10px;line-height:1.3}
+.legend b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--green);color:var(--lime);display:grid;place-items:center;font-size:15px;font-weight:700}
+.stamp{position:absolute;top:-18px;right:-14px;width:118px;height:118px;border-radius:50%;background:var(--lime-light);border:2px solid var(--green);box-shadow:var(--shadow-sm);display:grid;place-items:center;transform:rotate(-8deg);color:var(--green)}
+.stamp svg{position:absolute;inset:0;width:100%;height:100%}
+.stamp b{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1}
+.art-cap{font-size:15px;color:var(--n700);margin:8px 4px 0}
+
+/* Reassurance band */
+.trust{border-top:1px solid var(--n300);border-bottom:1px solid var(--n300);background:var(--lime-light)}
+.trust__in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.trust__item{display:flex;align-items:center;gap:14px;padding:20px 22px;border-left:1px solid var(--n300)}
+.trust__item:first-child{border-left:0;padding-left:0}
+.trust__item svg{width:30px;height:30px;flex:none;color:var(--green)}
+.trust__item strong{display:block;font-size:18px;line-height:1.25;color:var(--n900)}
+.trust__item span{display:block;font-size:16px;line-height:1.35;color:var(--n700)}
+
+/* Section heads */
+.head{max-width:760px;margin-bottom:48px}
+.head p{margin-top:16px}
+.kicker{display:block;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--wood-dark);margin-bottom:8px}
+
+/* Travaux bento */
+.works{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.work{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.work--a{grid-column:span 7}.work--b{grid-column:span 5}.work--c{grid-column:span 5}.work--d{grid-column:span 7}
+.work__art{background:var(--n100);aspect-ratio:16/8.4;display:grid;place-items:center;padding:18px}
+.work--b .work__art,.work--c .work__art{aspect-ratio:16/10.6}
+.work__art svg{width:100%;height:100%}
+.work__body{padding:26px 28px 28px;display:flex;flex-direction:column;gap:12px}
+.work__body > p{color:var(--n700)}
+.change{margin-top:auto;border-top:2px solid var(--wood);padding-top:14px;display:grid;gap:6px}
+.change h4{margin:0;font-size:17px;font-weight:700;color:var(--green)}
+.change p{font-size:17px;line-height:1.5}
+.change p b{font-weight:600}
+.work--d{background:var(--green);border-color:var(--green)}
+.work--d h3,.work--d .change h4{color:var(--lime)}
+.work--d .work__body > p,.work--d .change p{color:#E7E0D3}
+.work--d .work__art{background:#173A2B}
+.work--d .change{border-top-color:var(--wood)}
+.works-cap{margin-top:18px}
+
+/* Estimateur */
+.est-sec{background:var(--n100)}
+.est-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.est-notes{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px}
+.est-notes li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:17px;line-height:1.5}
+.est-notes svg{width:24px;height:24px;color:var(--info);margin-top:1px}
+.est{background:var(--lime-light);border-radius:var(--r-lg);box-shadow:var(--shadow-md);border:1px solid var(--n300);padding:32px;min-height:560px;display:flex;flex-direction:column;position:relative}
+.est__top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:6px}
+.est__step{font-weight:700;font-size:17px;color:var(--green)}
+.est__close{display:none;background:none;border:0;padding:6px;color:var(--n900);cursor:pointer;line-height:0}
+.est__close svg{width:30px;height:30px}
+.est__close:focus-visible{box-shadow:none;color:var(--red)}
+.est__bar{height:6px;border-radius:var(--r-full);background:var(--n300);overflow:hidden;margin-bottom:26px}
+.est__bar i{display:block;height:100%;width:0;background:var(--green);transition:width .22s var(--ease)}
+.est__panel{display:none;flex-direction:column;flex:1}
+.est__panel.is-on{display:flex;animation:stepIn .22s var(--ease)}
+@keyframes stepIn{from{transform:translateX(12px)}to{transform:none}}
+.est__panel h3{font-size:26px;margin-bottom:8px}
+.est__panel .help{font-size:17px;color:var(--n700);margin-bottom:20px}
+.choices{display:grid;gap:10px;border:0;margin:0;padding:0}
+.choices--2{grid-template-columns:1fr 1fr}
+.choices--5{grid-template-columns:repeat(5,1fr)}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;width:1px;height:1px}
+.choice label{display:flex;align-items:center;gap:14px;min-height:64px;padding:12px 16px;background:var(--n0);border:2px solid var(--n500);border-radius:var(--r-md);cursor:pointer;font-weight:600;font-size:18px;line-height:1.25;transition:border-color .12s var(--ease),background-color .12s var(--ease)}
+.choice label small{display:block;font-weight:500;font-size:16px;color:var(--n700);margin-top:2px}
+.choice label .box{flex:none;width:24px;height:24px;border:2px solid var(--n500);border-radius:var(--r-sm);display:grid;place-items:center;background:var(--n0)}
+.choice input[type=radio] + label .box{border-radius:50%}
+.choice input:checked + label{border-color:var(--green);background:#EEF3EF}
+.choice input:checked + label .box{border-color:var(--green);background:var(--green)}
+.choice input:checked + label .box::after{content:"";width:10px;height:10px;border-radius:2px;background:var(--lime)}
+.choice input[type=radio]:checked + label .box::after{border-radius:50%}
+.choice input:focus-visible + label{box-shadow:var(--focus)}
+.choices--5 .choice label{justify-content:center;font-size:20px;padding:12px 6px;text-align:center}
+.choices--5 .choice label .box{display:none}
+.est__nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:26px}
+.err{display:none;align-items:flex-start;gap:8px;color:var(--error);font-size:17px;font-weight:600;line-height:1.45;margin-top:10px}
+.err.is-on{display:flex}
+.err svg{flex:none;width:22px;height:22px;margin-top:1px}
+.field{display:grid;gap:8px;align-content:start}
+.field label,.field legend{font-weight:600;font-size:17px;line-height:1.3;color:var(--n900)}
+.field .hint{font-size:16px;color:var(--n700);line-height:1.4}
+.input,select.input,textarea.input{width:100%;min-height:52px;padding:12px 14px;font:400 18px/1.4 var(--sans);color:var(--n900);background:var(--n0);border:2px solid var(--n500);border-radius:var(--r-sm)}
+textarea.input{min-height:104px;resize:vertical}
+.input:focus-visible{box-shadow:var(--focus);border-color:var(--green)}
+.input[aria-invalid=true]{border-color:var(--error)}
+.est-intro{display:flex;flex-direction:column;gap:18px;flex:1}
+.est-intro ol{margin:0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:q}
+.est-intro li{counter-increment:q;display:flex;align-items:center;gap:14px;font-size:18px;font-weight:600;background:var(--n0);border:1px solid var(--n300);border-radius:var(--r-md);padding:12px 16px}
+.est-intro li::before{content:counter(q);width:30px;height:30px;flex:none;border-radius:50%;background:var(--n100);color:var(--green);display:grid;place-items:center;font-weight:700}
+.result__amount{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;font-family:var(--serif);font-size:28px;font-weight:600;color:var(--green);line-height:1.2;margin:6px 0 8px}
+.slot{display:inline-block;min-width:118px;border-bottom:3px dashed var(--n500);color:var(--n500);text-align:center;font-family:var(--sans);font-size:22px;font-weight:600;padding:0 6px 2px}
+.result__mention{font-size:17px;font-weight:600;color:var(--n900);margin-bottom:6px}
+.result__demo{font-size:16px;color:var(--n700);margin-bottom:18px}
+.result__profile{font-size:17px;color:var(--n700);margin-bottom:16px}
+.aids{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px}
+.aids li{display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:17px;line-height:1.45}
+.aids svg{width:22px;height:22px;color:var(--success);margin-top:2px}
+.aids li.info svg{color:var(--info)}
+.alert{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:var(--r-md);font-size:17px;line-height:1.5}
+.alert svg{flex:none;width:24px;height:24px;margin-top:1px}
+.alert--warn{background:#F7EBDA;color:#5E3600}
+.alert--warn svg{color:var(--warning)}
+.alert--ok{background:#E3EFE6;color:#1D4628}
+.alert--ok svg{color:var(--success)}
+.alert--err{background:#F8E3E1;color:#7A1A14}
+.alert--err svg{color:var(--error)}
+
+/* France Rénov' banner slot */
+.fr-band{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:20px;border-top:3px solid var(--n900);border-bottom:3px solid var(--n900);background:var(--n0);padding:14px 18px}
+.fr-band__slot{width:210px;min-height:72px;border:2px dashed var(--n500);border-radius:var(--r-sm);display:grid;place-items:center;text-align:center;font-size:14px;font-weight:600;line-height:1.3;color:var(--n700);padding:8px}
+.fr-band p{font-size:17px;line-height:1.45;color:var(--n900)}
+.fr-band a{font-weight:700;color:var(--n900)}
+
+/* Réalisations */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.filter{min-height:48px;padding:0 18px;border-radius:var(--r-full);border:2px solid var(--n500);background:var(--n0);font:600 17px/1 var(--sans);color:var(--n900);cursor:pointer}
+.filter[aria-pressed=true]{background:var(--green);border-color:var(--green);color:var(--lime)}
+.filters-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-bottom:28px}
+.toggle-split{min-height:48px;background:none;border:0;font:600 17px/1.2 var(--sans);color:var(--green);text-decoration:underline;text-underline-offset:4px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:0 4px}
+.toggle-split svg{width:22px;height:22px}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.case{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column}
+.case[hidden]{display:none}
+.ba{position:relative;aspect-ratio:3/2;background:var(--n100);touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%}
+.ba__layer{position:absolute;inset:0}
+.ba__layer svg{width:100%;height:100%}
+.ba__after{clip-path:inset(0 0 0 var(--pos))}
+.ba__tag{position:absolute;top:14px;z-index:2;font-size:15px;font-weight:700;padding:4px 12px;border-radius:var(--r-full);pointer-events:none}
+.ba__tag--before{left:14px;background:rgba(30,26,23,.78);color:#fff}
+.ba__tag--after{right:14px;background:var(--green);color:var(--lime)}
+.ba__line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:var(--lime-light);z-index:2;pointer-events:none}
+.ba__handle{position:absolute;top:50%;left:var(--pos);width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:var(--lime-light);border:2px solid var(--green);color:var(--green);display:grid;place-items:center;z-index:3;cursor:ew-resize;box-shadow:var(--shadow-md)}
+.ba__handle svg{width:26px;height:26px}
+.cases.is-split .ba{display:grid;grid-template-columns:1fr 1fr;gap:4px;cursor:default;background:var(--lime-light)}
+.cases.is-split .ba__layer{position:relative;inset:auto;clip-path:none}
+.cases.is-split .ba__line,.cases.is-split .ba__handle{display:none}
+.case__body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.case__top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+.case__works{color:var(--n700);font-size:17px}
+.case__data{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 0;padding:14px 0;border-top:1px solid var(--n300);border-bottom:1px solid var(--n300)}
+.case__data dt{font-size:15px;font-weight:600;color:var(--n700);line-height:1.3}
+.case__data dd{margin:4px 0 0;display:flex;align-items:center;gap:8px;font-weight:600;font-size:17px}
+.dpe{display:inline-grid;place-items:center;min-width:40px;height:32px;padding:0 10px;border-radius:var(--r-full);border:2px dashed var(--n500);color:var(--n700);font-size:15px;font-weight:700;background:var(--n0)}
+.case__data .empty{color:var(--n700);font-weight:500;font-size:16px}
+.case blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.45;color:var(--n900)}
+.case blockquote footer{font-family:var(--sans);font-style:normal;font-size:16px;color:var(--n700);margin-top:6px}
+.case__link{margin-top:auto;font-weight:600}
+.dpe-scale{display:flex;gap:3px;align-items:center;margin-top:22px;flex-wrap:wrap}
+.dpe-scale span{display:grid;place-items:center;width:34px;height:28px;font-weight:700;font-size:15px;color:#1E1A17;border-radius:4px}
+
+/* Déroulé */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;position:relative;counter-reset:s}
+.steps::before{content:"";position:absolute;left:28px;right:10%;top:27px;border-top:2px dashed var(--wood)}
+.step{position:relative;padding-right:24px;counter-increment:s}
+.step__num{position:relative;width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:26px;font-weight:650;margin-bottom:20px}
+.step__num::before{content:counter(s)}
+.step h3{font-size:22px;margin-bottom:10px}
+.step p{font-size:17px;line-height:1.55;color:var(--n700)}
+.step .who{display:block;margin-top:12px;font-size:16px;font-weight:600;color:var(--green)}
+.referent{margin-top:48px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding:22px 26px;border:2px solid var(--green);border-radius:var(--r-lg);background:var(--lime-light)}
+.referent svg{width:40px;height:40px;color:var(--green);flex:none}
+.referent p{flex:1;min-width:240px;font-size:18px}
+.referent strong{color:var(--green)}
+
+/* Labels */
+.labels-sec{background:var(--n100)}
+.labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.label-card{background:var(--lime-light);border-radius:var(--r-lg);padding:30px;position:relative;border:2px solid var(--green);outline:1px solid var(--green);outline-offset:-10px}
+.label-card__head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.seal{flex:none;width:72px;height:72px;border-radius:50%;border:3px double var(--green);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:22px;color:var(--green);background:var(--n0)}
+.label-card dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0 0 22px}
+.label-card dt{font-weight:600;font-size:17px;color:var(--n700)}
+.label-card dd{margin:0;font-size:17px;font-weight:600}
+.unpub{color:var(--warning)}
+.label-card .btn{width:100%}
+.label-card .note{margin-top:14px}
+.labels-foot{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center}
+
+/* Avis */
+.reviews-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-bottom:40px}
+.gbox{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);padding:20px 24px;display:grid;gap:10px;min-width:330px}
+.gbox__row{display:flex;gap:28px}
+.gbox__row div{display:grid}
+.gbox__row span{font-size:15px;font-weight:600;color:var(--n700)}
+.gbox__row b{font-size:26px;font-family:var(--serif);color:var(--n500);letter-spacing:.1em}
+.reviews{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:24px}
+.review{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:14px}
+.review--big{grid-row:span 2;background:var(--n0);justify-content:center;padding:40px}
+.review h3{font-size:21px}
+.review blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45}
+.review--big blockquote{font-size:27px;line-height:1.4}
+.review figcaption{font-size:17px;color:var(--n700);display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.review figcaption b{color:var(--n900)}
+.quote-mark{font-family:var(--serif);font-size:84px;line-height:.6;color:var(--wood);height:36px}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:start}
+.about{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;padding-bottom:32px;border-bottom:1px solid var(--n300)}
+.about svg.logo{width:76px;height:76px}
+.about h2 span{display:block;font-style:italic;font-weight:400;font-size:22px;color:var(--wood-dark);margin-bottom:4px}
+.about p{margin-top:14px;font-size:19px}
+.promise{margin-top:18px;display:flex;gap:12px;align-items:flex-start;background:var(--lime-light);border-left:4px solid var(--green);padding:14px 16px;border-radius:0 var(--r-md) var(--r-md) 0;font-size:17px}
+.promise svg{flex:none;width:26px;height:26px;color:var(--green)}
+.coords{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:28px 0;border-bottom:1px solid var(--n300)}
+.coords h3{font-family:var(--sans);font-size:17px;font-weight:700;color:var(--n700);margin-bottom:6px;letter-spacing:0}
+.coords .tel{font-size:30px;font-weight:700;color:var(--green);text-decoration:none;white-space:nowrap}
+.coords p{font-size:17px;line-height:1.5}
+.zone{padding-top:28px}
+.zone h3{margin-bottom:14px}
+.map{background:var(--n100);border-radius:var(--r-lg);padding:10px}
+.map svg{width:100%;height:auto}
+.communes{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.communes li{font-size:16px;font-weight:600;padding:5px 12px;border-radius:var(--r-full);background:var(--lime-light);border:1px solid var(--n300)}
+.form-card{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:34px;position:sticky;top:96px}
+.form-card h3{font-size:28px;margin-bottom:6px}
+.form-card > p{color:var(--n700);font-size:17px;margin-bottom:22px}
+.form{display:grid;gap:20px}
+.form .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form fieldset{border:0;margin:0;padding:0}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.slots .choice label{min-height:52px;font-size:17px;justify-content:center;text-align:center;padding:8px}
+.slots .choice label .box{display:none}
+.consent{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:17px;line-height:1.45}
+.consent input{width:24px;height:24px;margin:2px 0 0;accent-color:var(--green)}
+.form .btn{width:100%}
+.form-msg{display:none}
+.form-msg.is-on{display:flex}
+
+/* Footer */
+.footer{background:var(--green);color:#E7E0D3;padding:56px 0 40px;font-size:17px}
+.footer a{color:var(--lime)}
+.footer .fr-band a{color:var(--n900)}
+.footer .fr-band{margin-bottom:44px}
+.footer__grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;gap:36px}
+.footer h3{font-family:var(--sans);font-size:17px;font-weight:700;color:var(--lime);margin-bottom:12px;letter-spacing:0}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.footer .brand{color:var(--lime);margin-bottom:14px}
+.footer .brand__name small{color:#CFC6B5}
+.footer__sources{margin-top:40px;padding-top:24px;border-top:1px solid rgba(246,241,231,.25);font-size:15px;line-height:1.55;color:#D9D1C1}
+.footer__sources a{color:#F6F1E7}
+.footer__demo{margin-top:18px;font-weight:600;color:var(--lime)}
+
+/* Mobile bar */
+.mbar{display:none}
+
+@media (max-width:1180px){
+  .nav{display:none}
+  .header__call{margin-left:auto}
+  .hero h1{font-size:46px}
+}
+@media (max-width:1024px){
+  .hero__grid,.est-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .trust__in{grid-template-columns:1fr 1fr}
+  .trust__item:nth-child(3){border-left:0;padding-left:0}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .steps::before{left:27px;right:auto;top:28px;bottom:28px;border-top:0;border-left:2px dashed var(--wood)}
+  .step{display:grid;grid-template-columns:56px 1fr;gap:0 20px;padding-right:0}
+  .step__num{margin-bottom:0;grid-row:span 3}
+  .form-card{position:static}
+  .footer__grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:767px){
+  body{font-size:17px;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+  h2{font-size:28px}
+  h3{font-size:21px}
+  .section{padding:64px 0}
+  .lead{font-size:19px}
+  .header__in{height:64px;gap:12px}
+  .brand svg{width:36px;height:36px}
+  .brand__name{font-size:22px}
+  .brand__name small{font-size:14px}
+  .header .btn{display:none}
+  .header__call strong{font-size:18px}
+  .header__call span{font-size:14px}
+  .hero{padding:28px 0 32px}
+  .hero h1{font-size:34px;line-height:1.1}
+  .hero__sub{font-size:18px;margin-top:16px}
+  .hero__ctas{margin-top:22px}
+  .hero__ctas .btn--primary{width:100%}
+  .hero__art{padding:14px 12px 12px}
+  .stamp{width:92px;height:92px;top:-14px;right:-6px}
+  .stamp b{font-size:24px}
+  .legend{grid-template-columns:1fr;font-size:16px}
+  .trust__in{grid-template-columns:1fr}
+  .trust__item,.trust__item:nth-child(3){border-left:0;padding:14px 0;border-top:1px solid var(--n300)}
+  .trust__item:first-child{border-top:0}
+  .works{grid-template-columns:1fr;gap:16px}
+  .work--a,.work--b,.work--c,.work--d{grid-column:auto}
+  .work .work__art{aspect-ratio:16/9.5}
+  .work__body{padding:20px}
+  .est{padding:22px 18px;min-height:0}
+  .est.is-full{position:fixed;inset:0;z-index:80;border-radius:0;border:0;overflow-y:auto;padding:16px 16px calc(24px + env(safe-area-inset-bottom))}
+  .est.is-full .est__close{display:block}
+  .choices--2{grid-template-columns:1fr}
+  .choices--5{grid-template-columns:repeat(5,1fr);gap:6px}
+  .result__amount{font-size:24px}
+  html{scroll-padding-top:76px}
+  .fr-band{grid-template-columns:1fr;gap:12px}
+  .fr-band__slot{width:100%}
+  .cases{grid-template-columns:1fr;gap:20px}
+  .case__body{padding:20px}
+  .case__data{grid-template-columns:1fr}
+  .labels{grid-template-columns:1fr;gap:20px}
+  .label-card{padding:22px}
+  .label-card dl{grid-template-columns:1fr;gap:2px}
+  .label-card dd{margin-bottom:8px}
+  .reviews-head{grid-template-columns:1fr;gap:20px}
+  .gbox{min-width:0}
+  .reviews{grid-template-columns:1fr}
+  .review--big{grid-row:auto;padding:28px}
+  .review--big blockquote{font-size:22px}
+  .about{grid-template-columns:1fr}
+  .about svg.logo{width:60px;height:60px}
+  .coords{grid-template-columns:1fr}
+  .form-card{padding:22px 18px}
+  .form .row2{grid-template-columns:1fr}
+  .slots{grid-template-columns:1fr}
+  .footer{padding-bottom:40px}
+  .footer__grid{grid-template-columns:1fr}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--lime-light);box-shadow:0 -4px 16px rgba(30,26,23,.14);padding:8px 10px calc(8px + env(safe-area-inset-bottom));min-height:72px}
+  .mbar .btn{min-height:56px;padding:0 10px;font-size:17px;gap:8px}
+  body.est-open .mbar{display:none}
+  body.est-open{overflow:hidden}
+}
+@media (max-width:380px){
+  .header__call span{display:none}
+  .mbar .btn{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></g></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4.5M12 17.5v.5"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></g></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.5L7 21l5-2.5 5 2.5-1.5-7.5"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-nocall" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/><path d="M15 3l6 6M21 3l-6 6"/></g></symbol>
+    <symbol id="i-arrows" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></symbol>
+    <symbol id="i-columns" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="8" height="14" rx="1.5"/><rect x="13" y="5" width="8" height="14" rx="1.5"/></g></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M8.5 5.5h7"/></g></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="logo" viewBox="0 0 48 48"><rect x="1" y="1" width="46" height="46" rx="10" fill="#1F4A37"/><path d="M8 24L24 10l16 14" fill="none" stroke="#F6F1E7" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M14 22v16M34 22v16M14 29h20" fill="none" stroke="#F6F1E7" stroke-width="3.4" stroke-linecap="round"/><path d="M19 38V29M29 38V29" stroke="#B98A5A" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <pattern id="wool" width="20" height="10" patternUnits="userSpaceOnUse"><rect width="20" height="10" fill="#EBD9BC"/><path d="M0 5c3-4 7-4 10 0s7 4 10 0" fill="none" stroke="#B98A5A" stroke-width="1.6"/></pattern>
+    <pattern id="wool-dark" width="20" height="10" patternUnits="userSpaceOnUse"><rect width="20" height="10" fill="#D9BF96"/><path d="M0 5c3-4 7-4 10 0s7 4 10 0" fill="none" stroke="#7A5534" stroke-width="1.6"/></pattern>
+    <pattern id="brick" width="16" height="10" patternUnits="userSpaceOnUse"><rect width="16" height="10" fill="#D8CFC3"/><path d="M0 0h16M0 5h16M4 0v5M12 5v5" stroke="#857A70" stroke-width="1"/></pattern>
+    <pattern id="tiles" width="14" height="9" patternUnits="userSpaceOnUse"><rect width="14" height="9" fill="#B98A5A"/><path d="M0 8.5h14M7 0v8.5" stroke="#7A5534" stroke-width="1.2"/></pattern>
+  </defs>
+</svg>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="brand" href="#top" aria-label="Arotz Rénovation, retour en haut de page">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <span class="brand__name">Arotz<small>Rénovation, Ustaritz</small></span>
+    </a>
+    <nav class="nav" aria-label="Sections de la page">
+      <a href="#travaux">Travaux</a>
+      <a href="#aides">Aides</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#deroule">Déroulé</a>
+      <a href="#labels">Labels</a>
+      <a href="#avis">Avis</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header__call" href="tel:05XXXXXXXX" aria-label="Appeler l'atelier au 05 XX XX XX XX">
+      <strong>05 XX XX XX XX</strong>
+      <span>Du lundi au vendredi</span>
+    </a>
+    <a class="btn btn--primary" href="#contact">Visite gratuite</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1. HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div>
+      <h1 id="hero-title">Rénovez, payez moins de chauffage. <em>On s'occupe des aides.</em></h1>
+      <p class="hero__sub">Isolation, pompe à chaleur et rénovation globale au Pays basque, par une équipe RGE d'Ustaritz. Visite et conseil gratuits, sans démarchage.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href="#contact">Demander une visite gratuite</a>
+        <a class="hero__phone" href="tel:05XXXXXXXX">
+          <span class="ico" aria-hidden="true"><svg><use href="#i-phone"/></svg></span>
+          <span><strong>05 XX XX XX XX</strong><span>Appeler l'atelier, du lundi au vendredi</span></span>
+        </a>
+      </div>
+      <a class="hero__est" href="#aides">Estimer mes aides en 4 questions</a>
+    </div>
+
+    <figure class="hero__art" style="margin:0">
+      <div class="stamp" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><defs><path id="ring" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><text font-family="Source Sans 3, sans-serif" font-size="11" font-weight="700" fill="#1F4A37"><textPath href="#ring" textLength="272" lengthAdjust="spacing">ATELIER D'USTARITZ · PAYS BASQUE · </textPath></text></svg>
+        <b>RGE</b>
+      </div>
+      <svg class="house" viewBox="0 0 640 500" role="img" aria-labelledby="house-t">
+        <title id="house-t">Coupe d'une maison basque : combles isolés, murs isolés par l'extérieur, fenêtres à double vitrage et pompe à chaleur posée dehors.</title>
+        <rect x="0" y="430" width="640" height="70" fill="#E2D8C8"/>
+        <path d="M0 430h640" stroke="#4A433D" stroke-width="2"/>
+        <!-- sapin -->
+        <path d="M48 430V380" stroke="#7A5534" stroke-width="6"/>
+        <path d="M48 250l34 70H62l28 50H6l28-50H14z" fill="#1F4A37"/>
+        <!-- walls -->
+        <rect x="100" y="232" width="410" height="198" fill="#FBF8F2" stroke="#1E1A17" stroke-width="2.5"/>
+        <!-- cut interior -->
+        <rect x="312" y="246" width="186" height="184" fill="#F3ECE0"/>
+        <path d="M312 246v184" stroke="#1E1A17" stroke-width="2" stroke-dasharray="7 6"/>
+        <!-- right wall section: masonry + ITE -->
+        <rect x="498" y="232" width="14" height="198" fill="url(#brick)" stroke="#1E1A17" stroke-width="1.5"/>
+        <rect x="512" y="226" width="18" height="204" fill="url(#wool)" stroke="#7A5534" stroke-width="1.5"/>
+        <path d="M531 226v204" stroke="#1E1A17" stroke-width="2"/>
+        <!-- attic insulation -->
+        <path d="M312 214h176l26 18H312z" fill="url(#wool)" stroke="#7A5534" stroke-width="1.5"/>
+        <path d="M312 232h200" stroke="#1E1A17" stroke-width="2.5"/>
+        <!-- roof -->
+        <path d="M70 240L304 112l262 128" fill="none" stroke="#1E1A17" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M70 240L304 112l262 128-14 8L304 126 84 248z" fill="url(#tiles)" stroke="#1E1A17" stroke-width="2" stroke-linejoin="round"/>
+        <!-- timbers (colombages) left facade -->
+        <g stroke="#7A5534" stroke-width="7" stroke-linecap="square">
+          <path d="M108 300h196"/>
+          <path d="M150 244v52M210 244v52M262 244v52"/>
+        </g>
+        <path d="M150 244l60 52M262 244l-52 52" stroke="#7A5534" stroke-width="5"/>
+        <!-- gable window -->
+        <rect x="282" y="168" width="44" height="40" fill="#DDE7E1" stroke="#1F4A37" stroke-width="3"/>
+        <path d="M304 168v40" stroke="#1F4A37" stroke-width="2"/>
+        <!-- door -->
+        <path d="M128 430v-64a26 26 0 0 1 52 0v64z" fill="#7A5534" stroke="#1E1A17" stroke-width="2"/>
+        <circle cx="170" cy="400" r="3" fill="#F6F1E7"/>
+        <!-- window double glazed with shutters -->
+        <rect x="200" y="330" width="16" height="64" fill="#1F4A37"/>
+        <rect x="282" y="330" width="16" height="64" fill="#1F4A37"/>
+        <rect x="218" y="330" width="62" height="64" fill="#DDE7E1" stroke="#1E1A17" stroke-width="2.5"/>
+        <path d="M249 330v64M218 362h62" stroke="#1E1A17" stroke-width="2"/>
+        <path d="M224 338l14-6M256 338l14-6" stroke="#FBF8F2" stroke-width="3" stroke-linecap="round"/>
+        <!-- interior: radiator + pipes -->
+        <rect x="400" y="372" width="70" height="40" rx="4" fill="#FBF8F2" stroke="#1E1A17" stroke-width="2"/>
+        <path d="M412 376v32M424 376v32M436 376v32M448 376v32M460 376v32" stroke="#857A70" stroke-width="2"/>
+        <path d="M470 400h28M470 390h28" stroke="#9E1B22" stroke-width="3"/>
+        <path d="M530 400h34M530 390h34" stroke="#9E1B22" stroke-width="3"/>
+        <!-- heat pump outside -->
+        <rect x="560" y="364" width="70" height="66" rx="6" fill="#FBF8F2" stroke="#1E1A17" stroke-width="2.5"/>
+        <circle cx="588" cy="397" r="21" fill="none" stroke="#1E1A17" stroke-width="2"/>
+        <path d="M588 376v42M567 397h42M573 382l30 30M603 382l-30 30" stroke="#857A70" stroke-width="1.5"/>
+        <path d="M616 376v42" stroke="#857A70" stroke-width="2"/>
+        <rect x="566" y="430" width="10" height="6" fill="#1E1A17"/><rect x="614" y="430" width="10" height="6" fill="#1E1A17"/>
+        <!-- interior floor tiles hint -->
+        <path d="M312 424h186" stroke="#B98A5A" stroke-width="2"/>
+        <!-- markers -->
+        <g font-family="Source Sans 3, sans-serif" font-weight="700" font-size="17" text-anchor="middle" fill="#F6F1E7">
+          <circle cx="400" cy="196" r="16" fill="#1F4A37"/><text x="400" y="202">1</text>
+          <circle cx="552" cy="300" r="16" fill="#1F4A37"/><text x="552" y="306">2</text>
+          <circle cx="249" cy="316" r="16" fill="#1F4A37" stroke="#FBF8F2" stroke-width="2"/><text x="249" y="322">3</text>
+          <circle cx="595" cy="342" r="16" fill="#1F4A37"/><text x="595" y="348">4</text>
+        </g>
+      </svg>
+      <ol class="legend" aria-label="Légende de la coupe">
+        <li><b aria-hidden="true">1</b>Combles isolés</li>
+        <li><b aria-hidden="true">2</b>Murs isolés par l'extérieur</li>
+        <li><b aria-hidden="true">3</b>Fenêtres double vitrage</li>
+        <li><b aria-hidden="true">4</b>Pompe à chaleur air/eau</li>
+      </ol>
+    </figure>
+  </div>
+</section>
+
+<div class="trust" role="region" aria-label="Nos garanties">
+  <div class="wrap trust__in">
+    <div class="trust__item"><svg aria-hidden="true"><use href="#i-badge"/></svg><div><strong>Artisan RGE</strong><span>Vérifiable sur l'annuaire officiel</span></div></div>
+    <div class="trust__item"><svg aria-hidden="true"><use href="#i-shield"/></svg><div><strong>Assurance décennale</strong><span>Attestation sur demande</span></div></div>
+    <div class="trust__item"><svg aria-hidden="true"><use href="#i-pin"/></svg><div><strong>Atelier à Ustaritz</strong><span>Une équipe du Pays basque</span></div></div>
+    <div class="trust__item"><svg aria-hidden="true"><use href="#i-nocall"/></svg><div><strong>Jamais de démarchage</strong><span>C'est vous qui nous appelez</span></div></div>
+  </div>
+</div>
+
+<!-- 2. LES TRAVAUX -->
+<section class="section" id="travaux" aria-labelledby="travaux-t">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="travaux-t">Les travaux que nous faisons nous-mêmes</h2>
+      <p class="lead">Quatre métiers, une seule équipe. Pour chacun, ce que vous sentirez dans la maison et sur la facture.</p>
+    </div>
+    <div class="works">
+      <article class="work work--a">
+        <div class="work__art" aria-hidden="true">
+          <svg viewBox="0 0 420 210">
+            <path d="M20 190L210 40l190 150" fill="none" stroke="#1E1A17" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M20 190L210 40l190 150-12 6L210 54 32 196z" fill="url(#tiles)" stroke="#1E1A17" stroke-width="2"/>
+            <path d="M56 190h308" stroke="#1E1A17" stroke-width="3"/>
+            <path d="M74 190V162M128 190V162M182 190V162M236 190V162M290 190V162M344 190V162" stroke="#7A5534" stroke-width="5"/>
+            <path d="M60 162h300l12 28H48z" fill="url(#wool)" stroke="#7A5534" stroke-width="1.5"/>
+            <path d="M60 136h56v26H60zM120 136h56v26h-56z" fill="url(#wool-dark)" stroke="#7A5534" stroke-width="1.5" opacity=".95"/>
+            <path d="M260 120l40 0 0 42h-40z" fill="#FBF8F2" stroke="#1E1A17" stroke-width="2"/>
+            <path d="M268 128h24M268 136h24M268 144h16" stroke="#857A70" stroke-width="2"/>
+            <path d="M210 190v14" stroke="#1E1A17" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="work__body">
+          <h3>Isolation</h3>
+          <p>Combles perdus ou aménagés, murs par l'extérieur ou par l'intérieur. Nous choisissons l'isolant avec vous selon la maison et le budget.</p>
+          <div class="change">
+            <h4>Ce que ça change</h4>
+            <p><b>Confort :</b> moins de parois froides l'hiver, des chambres sous le toit plus supportables l'été.</p>
+            <p><b>Facture :</b> la chaleur produite reste dans la maison, il en faut moins.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="work work--b">
+        <div class="work__art" aria-hidden="true">
+          <svg viewBox="0 0 360 220">
+            <rect x="20" y="196" width="320" height="4" fill="#4A433D"/>
+            <rect x="30" y="92" width="130" height="104" rx="8" fill="#FBF8F2" stroke="#1E1A17" stroke-width="2.5"/>
+            <circle cx="82" cy="144" r="36" fill="none" stroke="#1E1A17" stroke-width="2"/>
+            <path d="M82 108v72M46 144h72M57 119l50 50M107 119l-50 50" stroke="#857A70" stroke-width="1.5"/>
+            <path d="M136 104v80M146 104v80" stroke="#857A70" stroke-width="2"/>
+            <rect x="228" y="30" width="22" height="166" fill="url(#brick)" stroke="#1E1A17" stroke-width="1.5"/>
+            <path d="M160 128h68M160 140h68" stroke="#9E1B22" stroke-width="3"/>
+            <path d="M250 128h30v20M250 140h18v8" fill="none" stroke="#9E1B22" stroke-width="3"/>
+            <rect x="262" y="148" width="72" height="44" rx="4" fill="#FBF8F2" stroke="#1E1A17" stroke-width="2"/>
+            <path d="M274 152v36M286 152v36M298 152v36M310 152v36M322 152v36" stroke="#857A70" stroke-width="2"/>
+            <path d="M286 120c0-8 8-8 8-16M302 120c0-8 8-8 8-16" fill="none" stroke="#B98A5A" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="work__body">
+          <h3>Pompe à chaleur air/eau</h3>
+          <p>Elle remplace une chaudière fioul ou gaz et alimente vos radiateurs ou un plancher chauffant. Nous choisissons l'emplacement avec vous, bruit compris.</p>
+          <div class="change">
+            <h4>Ce que ça change</h4>
+            <p><b>Confort :</b> une chaleur régulière, plus de livraison de fioul ni de cuve.</p>
+            <p><b>Facture :</b> elle puise une partie de la chaleur dans l'air extérieur.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="work work--c">
+        <div class="work__art" aria-hidden="true">
+          <svg viewBox="0 0 360 220">
+            <rect x="40" y="20" width="22" height="180" fill="#1F4A37"/>
+            <rect x="198" y="20" width="22" height="180" fill="#1F4A37"/>
+            <rect x="66" y="20" width="128" height="180" fill="#DDE7E1" stroke="#7A5534" stroke-width="8"/>
+            <path d="M130 20v180M66 110h128" stroke="#7A5534" stroke-width="6"/>
+            <path d="M80 40l24-10M144 40l24-10" stroke="#FBF8F2" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="290" cy="110" r="58" fill="#FBF8F2" stroke="#1E1A17" stroke-width="2"/>
+            <rect x="262" y="70" width="12" height="80" fill="#7A5534"/>
+            <rect x="306" y="70" width="12" height="80" fill="#7A5534"/>
+            <path d="M282 72v76M298 72v76" stroke="#2D5C7A" stroke-width="3"/>
+            <rect x="282" y="72" width="16" height="6" fill="#857A70"/><rect x="282" y="142" width="16" height="6" fill="#857A70"/>
+            <path d="M220 110h12" stroke="#1E1A17" stroke-width="2" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
+        <div class="work__body">
+          <h3>Menuiseries</h3>
+          <p>Fenêtres et portes-fenêtres en bois, PVC ou aluminium, à double vitrage, posées dans les règles pour éviter les fuites d'air.</p>
+          <div class="change">
+            <h4>Ce que ça change</h4>
+            <p><b>Confort :</b> plus de courant d'air près des fenêtres, moins de bruit de la rue.</p>
+            <p><b>Facture :</b> moins de chaleur perdue par les vitres et les joints.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="work work--d">
+        <div class="work__art" aria-hidden="true">
+          <svg viewBox="0 0 420 210">
+            <rect x="0" y="186" width="420" height="24" fill="#24543F"/>
+            <path d="M0 186h420" stroke="#F6F1E7" stroke-width="2"/>
+            <rect x="96" y="98" width="216" height="88" fill="#FBF8F2" stroke="#F6F1E7" stroke-width="2"/>
+            <rect x="312" y="94" width="10" height="92" fill="url(#wool)"/>
+            <path d="M70 104L204 28l136 76" fill="none" stroke="#F6F1E7" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M70 104L204 28l136 76-10 6L204 40 80 110z" fill="url(#tiles)"/>
+            <path d="M118 96h172l-12-8H130z" fill="url(#wool)"/>
+            <path d="M104 132h100" stroke="#7A5534" stroke-width="5"/>
+            <rect x="130" y="144" width="34" height="42" fill="#7A5534"/>
+            <rect x="222" y="140" width="40" height="30" fill="#DDE7E1" stroke="#1F4A37" stroke-width="3"/>
+            <rect x="214" y="140" width="8" height="30" fill="#1F4A37"/><rect x="262" y="140" width="8" height="30" fill="#1F4A37"/>
+            <rect x="338" y="152" width="40" height="34" rx="4" fill="#FBF8F2"/>
+            <circle cx="352" cy="169" r="11" fill="none" stroke="#1E1A17" stroke-width="1.5"/>
+            <g font-family="Source Sans 3, sans-serif" font-weight="700" font-size="13" text-anchor="middle">
+              <circle cx="204" cy="76" r="11" fill="#F6F1E7"/><text x="204" y="81" fill="#1F4A37">1</text>
+              <circle cx="336" cy="80" r="11" fill="#F6F1E7"/><text x="336" y="85" fill="#1F4A37">2</text>
+              <circle cx="242" cy="124" r="11" fill="#F6F1E7"/><text x="242" y="129" fill="#1F4A37">3</text>
+              <circle cx="392" cy="140" r="11" fill="#F6F1E7"/><text x="392" y="145" fill="#1F4A37">4</text>
+            </g>
+          </svg>
+        </div>
+        <div class="work__body">
+          <h3>Rénovation globale</h3>
+          <p>Isolation, chauffage et menuiseries pensés ensemble, dans le bon ordre, après un audit. C'est le parcours qui ouvre droit à l'accompagnement renforcé des aides.</p>
+          <div class="change">
+            <h4>Ce que ça change</h4>
+            <p><b>Confort :</b> une maison chauffée de façon homogène, de la cave au grenier.</p>
+            <p><b>Facture :</b> le gain est estimé par l'audit, en classe DPE et en kWh, avant les travaux.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="src works-cap">Les dessins remplacent les photos de chantier sur cette démo. Sur le site réel : nos chantiers, nos mains, nos matériaux.</p>
+  </div>
+</section>
+
+<!-- 3. ESTIMATION DES AIDES -->
+<section class="section est-sec" id="aides" aria-labelledby="aides-t">
+  <div class="wrap est-grid">
+    <div>
+      <h2 id="aides-t">Estimez vos aides avant de nous appeler</h2>
+      <p class="lead" style="margin-top:16px">Quatre questions, un résultat tout de suite, sans laisser votre numéro. Nous vérifions ensuite l'estimation sur place, gratuitement.</p>
+      <ul class="est-notes">
+        <li><svg aria-hidden="true"><use href="#i-info"/></svg><span>Le résultat est <b>indicatif</b> et <b>sous réserve d'éligibilité</b>. Il repose sur le barème officiel de l'Anah, daté sous le résultat.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-info"/></svg><span>Pour MaPrimeRénov', les travaux doivent être confiés à un professionnel RGE (<a href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">annuaire France Rénov'</a>, vu le 13/11/2026).</span></li>
+        <li><svg aria-hidden="true"><use href="#i-info"/></svg><span>Le conseil public et gratuit : France Rénov', <b style="white-space:nowrap">0 808 800 700</b>, du lundi au vendredi de 9 h à 18 h, service gratuit + prix appel (<a href="https://france-renov.gouv.fr/contact" target="_blank" rel="noopener">page contact</a>, vue le 13/11/2026).</span></li>
+        <li><svg aria-hidden="true"><use href="#i-info"/></svg><span>Vos réponses restent dans votre navigateur. Rien n'est envoyé ni conservé tant que vous ne remplissez pas le formulaire de visite.</span></li>
+      </ul>
+    </div>
+
+    <div class="est" id="est" role="region" aria-label="Estimateur d'aides">
+      <div class="est__top">
+        <span class="est__step" id="est-step" aria-live="polite">Estimation des aides</span>
+        <button class="est__close" type="button" id="est-close" aria-label="Fermer l'estimateur"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="est__bar" aria-hidden="true"><i id="est-bar"></i></div>
+
+      <!-- step 0 -->
+      <div class="est__panel is-on" data-step="0">
+        <div class="est-intro">
+          <h3>Quatre questions, une fourchette</h3>
+          <ol>
+            <li>Vos travaux</li>
+            <li>Votre foyer</li>
+            <li>Vos revenus</li>
+            <li>Votre commune</li>
+          </ol>
+          <p class="small">MaPrimeRénov' et prime CEE, avec la TVA à taux réduit et l'éco-PTZ quand ils s'appliquent.</p>
+          <div class="est__nav" style="padding-top:8px"><button class="btn btn--primary" type="button" id="est-start">Estimer mes aides</button></div>
+        </div>
+      </div>
+
+      <!-- step 1 -->
+      <div class="est__panel" data-step="1">
+        <h3 id="q1">Quels travaux envisagez-vous ?</h3>
+        <p class="help">Plusieurs choix possibles.</p>
+        <div class="choices" role="group" aria-labelledby="q1" aria-describedby="err1">
+          <div class="choice"><input type="checkbox" id="w-combles" name="works" value="combles"><label for="w-combles"><span class="box"></span><span>Isolation des combles</span></label></div>
+          <div class="choice"><input type="checkbox" id="w-murs" name="works" value="murs"><label for="w-murs"><span class="box"></span><span>Isolation des murs</span></label></div>
+          <div class="choice"><input type="checkbox" id="w-pac" name="works" value="pac"><label for="w-pac"><span class="box"></span><span>Pompe à chaleur air/eau</span></label></div>
+          <div class="choice"><input type="checkbox" id="w-menu" name="works" value="menuiseries"><label for="w-menu"><span class="box"></span><span>Fenêtres et portes-fenêtres</span></label></div>
+          <div class="choice"><input type="checkbox" id="w-glob" name="works" value="globale"><label for="w-glob"><span class="box"></span><span>Rénovation globale<small>Plusieurs postes, après un audit</small></span></label></div>
+        </div>
+        <p class="err" id="err1"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Aucun travail choisi : cochez au moins une case pour que l'estimation porte sur votre projet.</span></p>
+      </div>
+
+      <!-- step 2 -->
+      <div class="est__panel" data-step="2">
+        <h3 id="q2">Combien de personnes vivent dans le logement ?</h3>
+        <p class="help">Les plafonds de revenus de l'Anah dépendent de la taille du foyer.</p>
+        <div class="choices choices--5" role="radiogroup" aria-labelledby="q2" aria-describedby="err2">
+          <div class="choice"><input type="radio" id="h1" name="hh" value="1"><label for="h1"><span class="box"></span>1</label></div>
+          <div class="choice"><input type="radio" id="h2" name="hh" value="2"><label for="h2"><span class="box"></span>2</label></div>
+          <div class="choice"><input type="radio" id="h3" name="hh" value="3"><label for="h3"><span class="box"></span>3</label></div>
+          <div class="choice"><input type="radio" id="h4" name="hh" value="4"><label for="h4"><span class="box"></span>4</label></div>
+          <div class="choice"><input type="radio" id="h5" name="hh" value="5"><label for="h5"><span class="box"></span>5 et +</label></div>
+        </div>
+        <p class="err" id="err2"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Taille du foyer manquante : choisissez un nombre de personnes, il sert à trouver votre tranche de revenus.</span></p>
+      </div>
+
+      <!-- step 3 -->
+      <div class="est__panel" data-step="3">
+        <h3 id="q3">Dans quelle tranche de revenus êtes-vous ?</h3>
+        <p class="help" id="q3-help">Les quatre tranches officielles de l'Anah. Le plafond de chaque tranche pour votre foyer vient du barème saisi par l'atelier.</p>
+        <div class="choices" role="radiogroup" aria-labelledby="q3" aria-describedby="q3-help err3">
+          <div class="choice"><input type="radio" id="r1" name="rev" value="tm"><label for="r1"><span class="box"></span><span>Revenus très modestes<small class="ceil">Plafond pour votre foyer : barème Anah non saisi (démo)</small></span></label></div>
+          <div class="choice"><input type="radio" id="r2" name="rev" value="m"><label for="r2"><span class="box"></span><span>Revenus modestes<small class="ceil">Plafond pour votre foyer : barème Anah non saisi (démo)</small></span></label></div>
+          <div class="choice"><input type="radio" id="r3" name="rev" value="i"><label for="r3"><span class="box"></span><span>Revenus intermédiaires<small class="ceil">Plafond pour votre foyer : barème Anah non saisi (démo)</small></span></label></div>
+          <div class="choice"><input type="radio" id="r4" name="rev" value="s"><label for="r4"><span class="box"></span><span>Revenus supérieurs<small class="ceil">Au-dessus du plafond intermédiaire</small></span></label></div>
+        </div>
+        <p class="err" id="err3"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Tranche manquante : choisissez la tranche la plus proche. En cas de doute, France Rénov' vous aide à la trouver.</span></p>
+      </div>
+
+      <!-- step 4 -->
+      <div class="est__panel" data-step="4">
+        <h3><label for="cp">Quel est le code postal du logement ?</label></h3>
+        <p class="help" id="cp-help">Nous intervenons au Pays basque et dans le sud des Landes.</p>
+        <div class="field">
+          <input class="input" id="cp" name="cp" inputmode="numeric" autocomplete="postal-code" maxlength="5" aria-describedby="cp-help err4" style="max-width:220px;font-size:22px;letter-spacing:.08em">
+        </div>
+        <p class="err" id="err4"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Code postal incomplet : il faut 5 chiffres pour vérifier que vous êtes dans notre zone. Exemple : 64480.</span></p>
+      </div>
+
+      <!-- result -->
+      <div class="est__panel" data-step="5" id="est-result" aria-live="polite">
+        <div id="res-in">
+          <h3>Votre estimation indicative</h3>
+          <p class="result__profile" id="res-profile"></p>
+          <p class="small" style="margin-bottom:2px">MaPrimeRénov' + prime CEE</p>
+          <div class="result__amount" aria-label="Fourchette non calculée sur la démo"><span class="slot">montant bas</span><span>à</span><span class="slot">montant haut</span><span>€</span></div>
+          <p class="result__mention">Indicatif, barème du JJ/MM/AAAA, sous réserve d'éligibilité.</p>
+          <p class="result__demo">Démo : le barème Anah n'est pas saisi, aucun montant n'est calculé. Sur le site réel, l'atelier saisit le barème en vigueur et sa date.</p>
+          <ul class="aids" id="res-aids"></ul>
+          <div class="fr-band" style="margin-bottom:18px">
+            <div class="fr-band__slot">Bandeau officiel France Rénov' (kit Anah, image non redessinée)</div>
+            <p>Avant de vous engager, le service public vous informe gratuitement pour préparer et sécuriser votre projet : <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">france-renov.gouv.fr</a></p>
+          </div>
+        </div>
+        <div id="res-out" hidden>
+          <h3>Votre commune est hors zone</h3>
+          <div class="alert alert--warn" style="margin-top:12px"><svg aria-hidden="true"><use href="#i-alert"/></svg><p>Votre commune est hors de notre zone d'intervention (Pays basque et sud des Landes). Vous trouverez un artisan RGE proche de chez vous sur <a href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">l'annuaire France Rénov'</a>.</p></div>
+        </div>
+        <div class="est__nav" style="flex-wrap:wrap">
+          <button class="btn btn--ghost" type="button" id="est-restart">Recommencer</button>
+          <button class="btn btn--primary" type="button" id="est-verify">Faire vérifier mon estimation sur place</button>
+        </div>
+      </div>
+
+      <div class="est__nav" id="est-nav" hidden>
+        <button class="btn btn--ghost" type="button" id="est-prev">Retour</button>
+        <button class="btn btn--green" type="button" id="est-next">Question suivante</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. RÉALISATIONS -->
+<section class="section" id="realisations" aria-labelledby="real-t">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Avant, après</span>
+      <h2 id="real-t">Chaque chantier montre sa classe énergie, estimée par l'audit</h2>
+      <p class="lead">Faites glisser le curseur, à la souris, au doigt ou avec les flèches du clavier. Les avant et après sont pris du même point de vue.</p>
+    </div>
+    <div class="filters-row">
+      <div class="filters" role="group" aria-label="Filtrer les réalisations par travaux">
+        <button class="filter" type="button" aria-pressed="true" data-f="all">Tous</button>
+        <button class="filter" type="button" aria-pressed="false" data-f="isolation">Isolation</button>
+        <button class="filter" type="button" aria-pressed="false" data-f="pac">Pompe à chaleur</button>
+        <button class="filter" type="button" aria-pressed="false" data-f="menuiseries">Menuiseries</button>
+        <button class="filter" type="button" aria-pressed="false" data-f="globale">Rénovation globale</button>
+      </div>
+      <button class="toggle-split" type="button" aria-pressed="false" id="split"><svg aria-hidden="true"><use href="#i-columns"/></svg>Voir avant et après côte à côte</button>
+    </div>
+    <div class="cases" id="cases"></div>
+    <div class="dpe-scale" aria-label="Échelle des classes DPE, de A à G">
+      <span style="background:var(--dpe-a);color:#fff">A</span><span style="background:var(--dpe-b)">B</span><span style="background:var(--dpe-c)">C</span><span style="background:var(--dpe-d)">D</span><span style="background:var(--dpe-e)">E</span><span style="background:var(--dpe-f)">F</span><span style="background:var(--dpe-g);color:#fff">G</span>
+      <span style="width:auto;padding-left:10px;font-weight:500;color:var(--n700)" class="src">Les badges prennent la couleur de la classe une fois l'audit saisi. Sur la démo, classes et gains restent vides : l'entreprise est fictive.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5. DÉROULÉ -->
+<section class="section" id="deroule" aria-labelledby="der-t" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="der-t">Comment se passe un chantier, en 5 étapes</h2>
+      <p class="lead">Du premier rendez-vous à la réception, vous savez toujours où en est votre maison et qui s'en occupe.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="step__num" aria-hidden="true"></span><h3>Visite gratuite</h3><p>Nous venons voir la maison, le chauffage, les factures. Vous posez toutes vos questions, sans engagement.</p><span class="who">Avec Peio, chef de chantier</span></li>
+      <li class="step"><span class="step__num" aria-hidden="true"></span><h3>Audit ou étude</h3><p>Une étude pour un geste simple, un audit pour une rénovation d'ampleur, avec Mon Accompagnateur Rénov' comme le prévoit le Parcours accompagné.</p></li>
+      <li class="step"><span class="step__num" aria-hidden="true"></span><h3>Devis et dossier d'aides</h3><p>Un devis détaillé poste par poste. On monte les dossiers avec vous, avant la signature.</p></li>
+      <li class="step"><span class="step__num" aria-hidden="true"></span><h3>Travaux</h3><p>Nos compagnons posent, Peio suit le chantier chaque jour et vous tient au courant.</p></li>
+      <li class="step"><span class="step__num" aria-hidden="true"></span><h3>Réception et suivi</h3><p>Visite de fin de chantier ensemble, factures et attestations pour vos aides et votre diagnostiqueur.</p></li>
+    </ol>
+    <div class="referent">
+      <svg aria-hidden="true"><use href="#i-person"/></svg>
+      <p><strong>Un seul interlocuteur.</strong> Peio, chef de chantier, vous suit de la visite à la réception. Vous avez son numéro, il connaît votre maison.</p>
+      <a class="btn btn--primary" href="#contact">Demander une visite gratuite</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. LABELS ET ASSURANCES -->
+<section class="section labels-sec" id="labels" aria-labelledby="lab-t">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="lab-t">Certifiés et assurés : vérifiez par vous-même</h2>
+      <p class="lead">Chaque label a son numéro et son lien de vérification. Sur ce site de démonstration, les numéros ne sont pas publiés : l'entreprise est fictive, un faux numéro vous tromperait.</p>
+    </div>
+    <div class="labels">
+      <article class="label-card">
+        <div class="label-card__head"><span class="seal" aria-hidden="true">RGE</span><div><h3>Reconnu garant de l'environnement</h3><p class="small">Qualification exigée pour MaPrimeRénov'</p></div></div>
+        <dl>
+          <dt>Numéro</dt><dd class="unpub">Numéro non publié : entreprise fictive</dd>
+          <dt>Domaines</dt><dd>Isolation, pompe à chaleur, menuiseries</dd>
+          <dt>Organisme</dt><dd class="unpub">Non publié : entreprise fictive</dd>
+          <dt>Validité</dt><dd class="unpub">Non publiée : entreprise fictive</dd>
+        </dl>
+        <a class="btn btn--green" href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">Vérifier notre certification RGE</a>
+        <p class="src note">Le lien ouvre l'annuaire officiel France Rénov'. Recherchez « Arotz Rénovation » dans l'onglet « Rechercher un professionnel ».</p>
+      </article>
+      <article class="label-card">
+        <div class="label-card__head"><span class="seal" aria-hidden="true"><svg width="34" height="34"><use href="#i-shield"/></svg></span><div><h3>Assurance décennale</h3><p class="small">Elle couvre nos ouvrages après la réception</p></div></div>
+        <dl>
+          <dt>Assureur</dt><dd class="unpub">Non publié : entreprise fictive</dd>
+          <dt>Couverture</dt><dd>Indiquée sur l'attestation, sur chaque devis et chaque facture</dd>
+          <dt>Activités</dt><dd>Isolation, pompe à chaleur, menuiseries</dd>
+        </dl>
+        <a class="btn btn--secondary" href="#" aria-disabled="true" onclick="return false">Télécharger l'attestation (PDF)</a>
+        <p class="src note">Démo : aucun fichier n'est joint. Sur le site réel, l'attestation de l'année en cours.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 7. AVIS -->
+<section class="section" id="avis" aria-labelledby="avis-t">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div>
+        <h2 id="avis-t">Ce que disent nos clients</h2>
+        <p class="lead" style="margin-top:14px">Tous les avis de notre fiche Google, les bons comme les moins bons. Nous ne faisons aucun tri.</p>
+      </div>
+      <div class="gbox">
+        <div class="gbox__row">
+          <div><span>Note Google</span><b aria-label="non renseignée">-- / 5</b></div>
+          <div><span>Nombre d'avis</span><b aria-label="non renseigné">--</b></div>
+        </div>
+        <p class="src">Lus sur la fiche Google. Vides sur la démo : l'entreprise est fictive.</p>
+        <a href="#" style="font-weight:600">Lire tous les avis Google</a>
+      </div>
+    </div>
+    <div class="reviews">
+      <figure class="review review--big" style="margin:0">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <h3>Maison de 1975, Anglet</h3>
+        <blockquote>Le même interlocuteur du début à la fin, et les papiers des aides faits avec nous. On n'a jamais eu à courir après personne.</blockquote>
+        <figcaption><b>Maite et Jean-Pierre</b> Pompe à chaleur <span class="demo-tag">Avis de démonstration</span></figcaption>
+      </figure>
+      <figure class="review" style="margin:0">
+        <h3>Maison des années 1950, Hasparren</h3>
+        <blockquote>L'estimation en ligne nous a permis d'arriver au rendez-vous avec nos questions. Le devis était clair, poste par poste.</blockquote>
+        <figcaption><b>Laura et Iban</b> Rénovation globale <span class="demo-tag">Avis de démonstration</span></figcaption>
+      </figure>
+      <figure class="review" style="margin:0">
+        <h3>Maison de ville, Bayonne</h3>
+        <blockquote>Planning tenu, et toutes les attestations remises à la fin pour le diagnostiqueur.</blockquote>
+        <figcaption><b>Philippe</b> Isolation et menuiseries <span class="demo-tag">Avis de démonstration</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 8. QUI SOMMES-NOUS, ZONE, CONTACT -->
+<section class="section" id="contact" aria-labelledby="about-t" style="padding-top:0">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="about">
+        <svg class="logo" aria-hidden="true"><use href="#logo"/></svg>
+        <div>
+          <h2 id="about-t"><span lang="eu">Nor gara</span>Qui sommes-nous</h2>
+          <p>Arotz Rénovation est une entreprise du bâtiment installée à Ustaritz. Nous isolons, posons des pompes à chaleur et des menuiseries, et rénovons des maisons entières au Pays basque. Le même chef de chantier vous suit de la visite à la réception.</p>
+          <div class="promise"><svg aria-hidden="true"><use href="#i-nocall"/></svg><p><b>On ne vous appelle jamais sans demande.</b> Le démarchage pour ces travaux est interdit. Un doute sur un appel reçu ? Le service public <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">France Rénov'</a> vous renseigne.</p></div>
+        </div>
+      </div>
+      <div class="coords">
+        <div>
+          <h3>Téléphone de l'atelier</h3>
+          <a class="tel" href="tel:05XXXXXXXX">05 XX XX XX XX</a>
+          <p>Du lundi au vendredi, en journée. Horaires détaillés sur la fiche Google.</p>
+        </div>
+        <div>
+          <h3>Atelier</h3>
+          <p>Adresse non publiée (démo)<br>64480 Ustaritz<br>Visites sur rendez-vous</p>
+        </div>
+      </div>
+      <div class="zone">
+        <h3>Zone d'intervention : Pays basque et sud des Landes</h3>
+        <div class="map">
+          <svg viewBox="0 0 600 470" role="img" aria-labelledby="map-t" id="map"><title id="map-t">Carte stylisée de la zone d'intervention, de Capbreton à Mauléon, avec l'atelier à Ustaritz.</title></svg>
+        </div>
+        <ul class="communes" id="communes" aria-label="Communes de la zone d'intervention"></ul>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>Demander une visite gratuite</h3>
+      <p>Nous vous rappelons au créneau choisi pour fixer la visite. Ce sera notre seul appel si vous ne donnez pas suite.</p>
+      <form class="form" id="form" novalidate>
+        <div class="field">
+          <label for="f-name">Prénom et nom</label>
+          <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="e-name">
+          <p class="err" id="e-name"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Nom manquant : indiquez-le pour que nous sachions qui demander au téléphone.</span></p>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="f-tel">Téléphone</label>
+            <input class="input" id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="e-tel">
+            <p class="err" id="e-tel"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Numéro incomplet : il faut 10 chiffres, en commençant par 0, pour que nous puissions vous rappeler.</span></p>
+          </div>
+          <div class="field">
+            <label for="f-cp">Code postal du logement</label>
+            <input class="input" id="f-cp" name="cp" inputmode="numeric" autocomplete="postal-code" maxlength="5" aria-describedby="e-cp">
+            <p class="err" id="e-cp"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Code postal incomplet : il faut 5 chiffres pour vérifier que vous êtes dans notre zone. Exemple : 64480.</span></p>
+          </div>
+        </div>
+        <div class="alert alert--warn form-msg" id="m-zone" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><p>Votre commune est hors de notre zone d'intervention (Pays basque et sud des Landes). Vous trouverez un artisan RGE proche de chez vous sur <a href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">l'annuaire France Rénov'</a>.</p></div>
+        <div class="field">
+          <label for="f-works">Travaux envisagés</label>
+          <select class="input" id="f-works" name="works">
+            <option value="">Je ne sais pas encore</option>
+            <option value="combles">Isolation des combles</option>
+            <option value="murs">Isolation des murs</option>
+            <option value="pac">Pompe à chaleur air/eau</option>
+            <option value="menuiseries">Fenêtres et portes-fenêtres</option>
+            <option value="globale">Rénovation globale</option>
+          </select>
+        </div>
+        <fieldset class="field">
+          <legend>Quand pouvons-nous vous rappeler ?</legend>
+          <div class="slots">
+            <div class="choice"><input type="radio" id="s1" name="slot" value="matin" checked><label for="s1"><span class="box"></span>Le matin</label></div>
+            <div class="choice"><input type="radio" id="s2" name="slot" value="midi"><label for="s2"><span class="box"></span>En début d'après-midi</label></div>
+            <div class="choice"><input type="radio" id="s3" name="slot" value="soir"><label for="s3"><span class="box"></span>En fin de journée</label></div>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="f-msg">Votre maison en quelques mots <span style="font-weight:400;color:var(--n700)">(facultatif)</span></label>
+          <textarea class="input" id="f-msg" name="msg" aria-describedby="f-msg-h"></textarea>
+          <p class="hint" id="f-msg-h">Année de construction, chauffage actuel, ce qui vous gêne.</p>
+        </div>
+        <div>
+          <div class="consent">
+            <input type="checkbox" id="f-ok" name="ok" aria-describedby="e-ok">
+            <label for="f-ok">J'accepte qu'Arotz Rénovation utilise ces informations uniquement pour me rappeler au sujet de cette demande.</label>
+          </div>
+          <p class="err" id="e-ok"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Accord manquant : cochez la case, sans elle nous ne pouvons pas vous rappeler.</span></p>
+        </div>
+        <div class="alert alert--err form-msg" id="m-fail" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><p>Votre demande n'a pas pu partir : la connexion a été interrompue. Vos réponses sont conservées. Réessayez, ou appelez-nous au 05 XX XX XX XX.</p></div>
+        <button class="btn btn--primary" type="submit" id="f-submit">Envoyer ma demande de visite</button>
+        <p class="src">Site de démonstration : rien n'est envoyé.</p>
+      </form>
+      <div class="alert alert--ok form-msg" id="m-ok" role="status" tabindex="-1"><svg aria-hidden="true"><use href="#i-check"/></svg><p>Merci, votre demande est bien arrivée. Nous vous rappelons au créneau indiqué pour fixer la visite. Pas de démarchage : ce sera notre seul appel si vous ne donnez pas suite.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="fr-band">
+      <div class="fr-band__slot">Bandeau officiel France Rénov' (kit Anah, image non redessinée)</div>
+      <p>Avant de vous engager, le service public vous informe gratuitement pour préparer et sécuriser votre projet : <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">france-renov.gouv.fr</a></p>
+    </div>
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><span class="brand__name">Arotz<small>Rénovation, Ustaritz</small></span></a>
+        <p>Isolation, pompe à chaleur, menuiseries et rénovation globale au Pays basque et dans le sud des Landes.</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:05XXXXXXXX">05 XX XX XX XX</a></li>
+          <li>64480 Ustaritz</li>
+          <li><a href="#contact">Demander une visite gratuite</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Informations</h3>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Confidentialité</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Déclaration d'accessibilité</a></li>
+          <li><a href="#">Aides : comment on calcule</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Entreprise</h3>
+        <ul>
+          <li>SARL, SIRET et RCS non publiés (entreprise fictive)</li>
+          <li>Assurance décennale : assureur non publié</li>
+          <li>France Rénov' : <span style="white-space:nowrap">0 808 800 700</span>, service gratuit + prix appel</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__sources">
+      Sources, vues le 13/11/2026 : TVA à 5,5 % pour certains travaux de rénovation énergétique, <a href="https://france-renov.gouv.fr/aides/tva-taux-reduit" target="_blank" rel="noopener">France Rénov'</a> ; numéro et horaires de France Rénov', <a href="https://france-renov.gouv.fr/contact" target="_blank" rel="noopener">page contact</a> ; RGE obligatoire pour MaPrimeRénov', <a href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">annuaire France Rénov'</a> ; bandeau France Rénov' obligatoire depuis le 1er octobre 2026, <a href="https://france-renov.gouv.fr/actualites/publicite-pour-la-renovation-energetique-obligation-desormais-de-faire-reference-au" target="_blank" rel="noopener">France Rénov'</a> ; lien vers le service public (loi du 30 juin 2025, art. 14), <a href="https://www.anil.org/aj-loi-lutte-fraude-aides-publiqus-renovation-energetique/" target="_blank" rel="noopener">ANIL</a> ; Mon Accompagnateur Rénov' obligatoire pour le Parcours accompagné, <a href="https://selectra.info/energie/renovation-energetique/aides/ma-prime-renov" target="_blank" rel="noopener">Selectra</a>.
+      <p class="footer__demo">Site de démonstration. Arotz Rénovation est une entreprise fictive.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Actions rapides">
+  <a class="btn btn--green" href="tel:05XXXXXXXX"><svg aria-hidden="true"><use href="#i-phone"/></svg>Appeler l'atelier</a>
+  <a class="btn btn--primary" href="#contact">Visite gratuite</a>
+</nav>
+
+<script>
+(function(){
+  "use strict";
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+  /* ---------- Zone d'intervention ---------- */
+  const ZONE = {
+    "64100":"Bayonne","64600":"Anglet","64200":"Biarritz","64210":"Bidart","64500":"Saint-Jean-de-Luz","64122":"Urrugne",
+    "64700":"Hendaye","64310":"Saint-Pée-sur-Nivelle","64480":"Ustaritz","64250":"Cambo-les-Bains","64240":"Hasparren",
+    "64340":"Boucau","64990":"Mouguerre","64220":"Saint-Jean-Pied-de-Port","64120":"Saint-Palais","64130":"Mauléon-Licharre",
+    "64780":"Ossès","64430":"Saint-Étienne-de-Baïgorry","64640":"Hélette","64520":"Bardos",
+    "40220":"Tarnos","40440":"Ondres","40530":"Labenne","40390":"Saint-Martin-de-Seignanx","40130":"Capbreton"
+  };
+  const inZone = cp => Object.prototype.hasOwnProperty.call(ZONE, cp);
+
+  /* ---------- Carte ---------- */
+  (function buildMap(){
+    const svg = $("#map"); if(!svg) return;
+    const P = (lon, lat) => [((lon + 1.86) * 560).toFixed(1), ((43.68 - lat) * 640).toFixed(1)];
+    const pts = a => a.map(p => P(p[0], p[1]).join(",")).join(" ");
+    const coast = [[-1.42,43.68],[-1.44,43.62],[-1.46,43.57],[-1.49,43.54],[-1.52,43.525],[-1.535,43.505],[-1.555,43.49],[-1.565,43.475],[-1.59,43.45],[-1.61,43.42],[-1.66,43.395],[-1.69,43.39],[-1.73,43.375],[-1.775,43.365],[-1.79,43.345]];
+    const border = [[-1.79,43.345],[-1.74,43.31],[-1.66,43.30],[-1.60,43.28],[-1.52,43.285],[-1.46,43.27],[-1.41,43.24],[-1.42,43.18],[-1.40,43.12],[-1.33,43.09],[-1.26,43.08],[-1.18,43.03],[-1.10,43.01],[-0.98,42.98],[-0.86,42.96],[-0.79,42.97]];
+    const land = coast.concat(border, [[-0.79,43.68]]);
+    const zone = [[-1.43,43.66],[-1.30,43.66],[-1.20,43.58],[-1.05,43.54],[-0.86,43.42],[-0.80,43.20],[-0.82,42.99],[-0.98,42.99],[-1.10,43.02],[-1.26,43.09],[-1.40,43.13],[-1.41,43.24],[-1.46,43.27],[-1.60,43.28],[-1.74,43.31],[-1.79,43.345]].concat(coast.slice().reverse().slice(0,-1));
+    const spain = [[-1.86,43.385],[-1.82,43.375]].concat(border, [[-0.79,42.9],[-1.86,42.9]]);
+    const adour = [[-1.525,43.525],[-1.47,43.505],[-1.40,43.52],[-1.30,43.535],[-1.20,43.53],[-1.08,43.55],[-0.95,43.60],[-0.80,43.64]];
+    const nive = [[-1.475,43.49],[-1.47,43.44],[-1.455,43.40],[-1.42,43.37],[-1.38,43.33],[-1.30,43.26],[-1.24,43.17]];
+    const towns = [
+      ["Capbreton",-1.43,43.645,"r"],["Labenne",-1.425,43.595,"r"],["Tarnos",-1.46,43.54,"r"],["Bayonne",-1.475,43.492,"r"],
+      ["Anglet",-1.515,43.485,"t"],["Biarritz",-1.558,43.47,"l"],["Saint-Jean-de-Luz",-1.66,43.39,"b"],["Hendaye",-1.775,43.36,"b"],
+      ["Ustaritz",-1.457,43.40,"t",1],["Cambo-les-Bains",-1.40,43.358,"r"],["Hasparren",-1.305,43.385,"r"],
+      ["Saint-Palais",-1.033,43.33,"r"],["Saint-Jean-Pied-de-Port",-1.236,43.163,"r"],["Mauléon-Licharre",-0.885,43.225,"l"]
+    ];
+    let h = "";
+    h += `<rect width="600" height="470" fill="#D3E2EA"/>`;
+    h += `<polygon points="${pts(spain)}" fill="#E7E0D3"/>`;
+    h += `<polygon points="${pts(land)}" fill="#FBF8F2" stroke="#857A70" stroke-width="1.5"/>`;
+    h += `<polygon points="${pts(zone)}" fill="#E1EBE3" stroke="#1F4A37" stroke-width="2.5" stroke-dasharray="8 6" stroke-linejoin="round"/>`;
+    h += `<polyline points="${pts(adour)}" fill="none" stroke="#2D5C7A" stroke-width="3" stroke-linecap="round"/>`;
+    h += `<polyline points="${pts(nive)}" fill="none" stroke="#2D5C7A" stroke-width="2" stroke-linecap="round"/>`;
+    h += `<polyline points="${pts(border)}" fill="none" stroke="#857A70" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/>`;
+    h += `<text x="24" y="40" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="22" fill="#2D5C7A">Océan</text><text x="24" y="66" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="22" fill="#2D5C7A">Atlantique</text>`;
+    h += `<text x="120" y="400" font-family="Source Sans 3, sans-serif" font-size="18" font-weight="600" fill="#857A70" letter-spacing="3">ESPAGNE</text>`;
+    h += `<text x="370" y="102" font-family="Source Sans 3, sans-serif" font-size="16" font-style="italic" fill="#2D5C7A">Adour</text>`;
+    towns.forEach(t => {
+      const [x,y] = P(t[1], t[2]).map(Number);
+      const main = t[4];
+      if(main){
+        h += `<circle cx="${x}" cy="${y}" r="13" fill="#1F4A37" opacity=".18"/><circle cx="${x}" cy="${y}" r="7.5" fill="#1F4A37" stroke="#FBF8F2" stroke-width="2.5"/>`;
+      } else {
+        h += `<circle cx="${x}" cy="${y}" r="4.5" fill="#1F4A37"/>`;
+      }
+      const fs = main ? 19 : 15, fw = main ? 700 : 600;
+      let tx = x + 10, ty = y + 5, anchor = "start";
+      if(t[3] === "l"){ tx = x - 10; anchor = "end"; }
+      if(t[3] === "b"){ tx = x + 6; ty = y + 22; anchor = "middle"; }
+      if(t[3] === "t"){ tx = x; ty = y - 18; anchor = "middle"; }
+      const label = main ? "Ustaritz, l'atelier" : t[0];
+      h += `<text x="${tx}" y="${ty}" text-anchor="${anchor}" font-family="Source Sans 3, sans-serif" font-size="${fs}" font-weight="${fw}" fill="#1E1A17" paint-order="stroke" stroke="#FBF8F2" stroke-width="4" stroke-linejoin="round">${label}</text>`;
+    });
+    svg.insertAdjacentHTML("beforeend", h);
+    const ul = $("#communes");
+    const names = ["Bayonne","Anglet","Biarritz","Bidart","Saint-Jean-de-Luz","Urrugne","Hendaye","Saint-Pée-sur-Nivelle","Ustaritz","Cambo-les-Bains","Espelette","Hasparren","Mouguerre","Boucau","Saint-Jean-Pied-de-Port","Saint-Palais","Mauléon-Licharre","Tarnos","Ondres","Labenne","Capbreton"];
+    ul.innerHTML = names.map(n => `<li>${n}</li>`).join("") + `<li>et les communes voisines</li>`;
+  })();
+
+  /* ---------- Scènes avant / après ---------- */
+  function scene(c, after){
+    const W = 600, G = 312;
+    const wall = after ? "#FBF8F2" : "#E4DBCC";
+    const sky = after ? "#EEF2EC" : "#E9E4DA";
+    const x = c.x, w = c.w, top = c.top;
+    let s = `<svg viewBox="0 0 ${W} 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">`;
+    s += `<rect width="${W}" height="400" fill="${sky}"/>`;
+    s += `<rect y="${G}" width="${W}" height="${400-G}" fill="${after ? "#DCD9C4" : "#D9CFBF"}"/><path d="M0 ${G}h${W}" stroke="#4A433D" stroke-width="2"/>`;
+    // tree
+    s += `<path d="M${c.tree} ${G}v-40" stroke="#7A5534" stroke-width="6"/><path d="M${c.tree} ${G-150}l30 60h-18l26 50H${c.tree-38}l26-50h-18z" fill="#1F4A37" opacity=".9"/>`;
+    // chimney
+    if(c.chimney){
+      s += `<rect x="${c.chimney}" y="${c.apex+18}" width="24" height="56" fill="${wall}" stroke="#1E1A17" stroke-width="2"/>`;
+      if(!after && c.fioul) s += `<path d="M${c.chimney+12} ${c.apex+10}c-10-14 12-20 2-36s14-22 6-34" fill="none" stroke="#857A70" stroke-width="5" stroke-linecap="round" opacity=".7"/>`;
+    }
+    // walls
+    const ite = after && c.murs;
+    s += `<rect x="${x}" y="${top}" width="${w}" height="${G-top}" fill="${wall}" stroke="#1E1A17" stroke-width="${ite ? 2.5 : 2}"/>`;
+    if(ite) s += `<rect x="${x-9}" y="${top-4}" width="9" height="${G-top+4}" fill="url(#wool)" stroke="#7A5534" stroke-width="1.2"/><rect x="${x+w}" y="${top-4}" width="9" height="${G-top+4}" fill="url(#wool)" stroke="#7A5534" stroke-width="1.2"/>`;
+    if(!after) s += `<path d="M${x+w*.18} ${top+30}c14 10 4 26 18 36s-2 22 8 32" fill="none" stroke="#A89A86" stroke-width="2"/><ellipse cx="${x+w*.72}" cy="${G-26}" rx="${w*.12}" ry="14" fill="#CFC3B0" opacity=".8"/><ellipse cx="${x+w*.3}" cy="${top+18}" rx="${w*.09}" ry="10" fill="#D3C8B6" opacity=".7"/>`;
+    // timbers for labourdine
+    if(c.timber){
+      s += `<g stroke="#7A5534" stroke-width="6"><path d="M${x+6} ${top+70}h${w-12}"/>${[0.2,0.4,0.6,0.8].map(f=>`<path d="M${x+w*f} ${top+4}v62"/>`).join("")}</g>`;
+    }
+    // roof
+    const ov = 26;
+    if(c.roof === "gable"){
+      s += `<path d="M${x-ov} ${top+6}L${x+w*c.peak} ${c.apex}L${x+w+ov} ${top+6}l-12 7L${x+w*c.peak} ${c.apex+14}L${x-ov+12} ${top+13}z" fill="url(#tiles)" stroke="#1E1A17" stroke-width="2" stroke-linejoin="round"/>`;
+      if(after && c.combles) s += `<path d="M${x+18} ${top-2}L${x+w*c.peak} ${c.apex+30}L${x+w-18} ${top-2}z" fill="url(#wool)" stroke="#7A5534" stroke-width="1.5" opacity=".95"/>`;
+    } else if(c.roof === "hip"){
+      s += `<path d="M${x-ov} ${top+4}L${x+w*.28} ${c.apex}H${x+w*.72}L${x+w+ov} ${top+4}z" fill="url(#tiles)" stroke="#1E1A17" stroke-width="2" stroke-linejoin="round"/>`;
+      if(after && c.combles) s += `<path d="M${x+20} ${top-3}L${x+w*.32} ${c.apex+24}H${x+w*.68}L${x+w-20} ${top-3}z" fill="url(#wool)" stroke="#7A5534" stroke-width="1.5"/>`;
+    } else {
+      s += `<path d="M${x-14} ${top}h${w+28}v-14H${x-14}z" fill="#857A70" stroke="#1E1A17" stroke-width="2"/>`;
+      if(after && c.combles) s += `<rect x="${x}" y="${top-26}" width="${w}" height="12" fill="url(#wool)" stroke="#7A5534" stroke-width="1.2"/>`;
+    }
+    // windows
+    c.win.forEach(o => {
+      const [wx, wy, ww, wh] = o;
+      const nw = after && c.menu;
+      if(nw || (after && c.shutters)){
+        s += `<rect x="${wx-12}" y="${wy}" width="11" height="${wh}" fill="#1F4A37"/><rect x="${wx+ww+1}" y="${wy}" width="11" height="${wh}" fill="#1F4A37"/>`;
+      } else if(!after && c.shutters){
+        s += `<rect x="${wx-12}" y="${wy}" width="11" height="${wh}" fill="#8C9A8F"/><rect x="${wx+ww+1}" y="${wy}" width="11" height="${wh}" fill="#8C9A8F"/>`;
+      }
+      s += `<rect x="${wx}" y="${wy}" width="${ww}" height="${wh}" fill="${nw ? "#DDE7E1" : "#C9C3B6"}" stroke="${nw ? "#7A5534" : "#4A433D"}" stroke-width="${nw ? 4 : 2}"/>`;
+      if(nw){
+        s += `<path d="M${wx+ww/2} ${wy}v${wh}" stroke="#7A5534" stroke-width="3"/><path d="M${wx+6} ${wy+12}l12-6M${wx+ww/2+6} ${wy+12}l12-6" stroke="#FBF8F2" stroke-width="3" stroke-linecap="round"/>`;
+      } else {
+        s += `<path d="M${wx+ww/2} ${wy}v${wh}M${wx} ${wy+wh/3}h${ww}M${wx} ${wy+2*wh/3}h${ww}" stroke="#4A433D" stroke-width="1.5"/>`;
+      }
+    });
+    // door
+    const [dx, dw] = c.door;
+    s += `<rect x="${dx}" y="${G-62}" width="${dw}" height="62" fill="${after ? "#7A5534" : "#8E7A66"}" stroke="#1E1A17" stroke-width="2"/>`;
+    // equipment
+    if(c.pac){
+      if(after){
+        const px = x + w + 22;
+        s += `<rect x="${px}" y="${G-56}" width="66" height="56" rx="5" fill="#FBF8F2" stroke="#1E1A17" stroke-width="2"/><circle cx="${px+26}" cy="${G-28}" r="18" fill="none" stroke="#1E1A17" stroke-width="1.8"/><path d="M${px+26} ${G-46}v36M${px+8} ${G-28}h36" stroke="#857A70" stroke-width="1.4"/><path d="M${px+54} ${G-50}v44" stroke="#857A70" stroke-width="2"/>`;
+      } else if(c.fioul){
+        const px = x + w + 18;
+        s += `<rect x="${px}" y="${G-40}" width="78" height="40" rx="18" fill="#9AA79B" stroke="#1E1A17" stroke-width="2"/><path d="M${px+60} ${G-40}v-10h8" fill="none" stroke="#1E1A17" stroke-width="2"/>`;
+      }
+    }
+    // heat loss marks (before only)
+    if(!after){
+      const wave = (x0, y0, ang) => `<g transform="translate(${x0} ${y0}) rotate(${ang})"><path d="M0 0c6-6 6-12 0-18s-6-12 0-18" fill="none" stroke="#A15C00" stroke-width="3" stroke-linecap="round"/><path d="M-5 -30l5-8 5 8" fill="none" stroke="#A15C00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+      if(c.combles) { s += wave(x + w*.4, c.apex + 10, -8) + wave(x + w*.62, c.apex + 18, 10); }
+      if(c.murs) { s += wave(x - 12, top + 60, -70) + wave(x + w + 12, top + 90, 70); }
+      if(c.menu) { const o = c.win[0]; s += wave(o[0] + o[2] + 18, o[1] + o[3]/2, 60); }
+    }
+    s += `</svg>`;
+    return s;
+  }
+
+  const CASES = [
+    { id:"anglet", title:"Maison de 1975, Anglet", works:"Isolation des combles et pompe à chaleur air/eau, à la place d'une chaudière fioul", f:["isolation","pac"],
+      quote:"Plus de livraison de fioul, et la maison reste tiède même au fond du couloir.", who:"Maite et Jean-Pierre",
+      sc:{x:150,w:260,top:200,roof:"gable",peak:.5,apex:118,chimney:300,fioul:1,combles:1,pac:1,tree:70,win:[[178,236,54,42],[330,236,54,42]],door:[256,46],shutters:1} },
+    { id:"hasparren", title:"Maison des années 1950, Hasparren", works:"Rénovation globale : murs par l'extérieur, menuiseries, pompe à chaleur", f:["globale","isolation","pac","menuiseries"],
+      quote:"L'audit nous a donné l'ordre des travaux. On a tout fait en une fois, avec un seul devis.", who:"Laura et Iban",
+      sc:{x:170,w:230,top:130,roof:"hip",apex:78,chimney:330,fioul:1,murs:1,menu:1,combles:1,pac:1,tree:520,win:[[194,160,46,48],[330,160,46,48],[194,236,46,48],[330,236,46,48]],door:[262,46]} },
+    { id:"bayonne", title:"Maison de ville, Bayonne", works:"Isolation des murs par l'intérieur et menuiseries, logement en location", f:["isolation","menuiseries"],
+      quote:"Toutes les attestations remises à la fin pour le diagnostiqueur.", who:"Philippe, propriétaire bailleur",
+      sc:{x:210,w:170,top:70,roof:"flat",apex:40,menu:1,shutters:1,tree:90,win:[[236,96,40,56],[316,96,40,56],[236,176,40,56],[316,176,40,56]],door:[274,44]} },
+    { id:"ustaritz", title:"Maison labourdine, Ustaritz", works:"Menuiseries bois à double vitrage et isolation des combles", f:["menuiseries","isolation"],
+      quote:"Des fenêtres en bois comme avant, mais sans courant d'air.", who:"Ainhoa",
+      sc:{x:120,w:360,top:170,roof:"gable",peak:.46,apex:84,timber:1,menu:1,combles:1,shutters:1,tree:530,win:[[160,250,44,46],[388,250,44,46],[250,186,40,40]],door:[290,46]} }
+  ];
+
+  const casesEl = $("#cases");
+  casesEl.innerHTML = CASES.map((c, i) => `
+    <article class="case" data-f="${c.f.join(" ")}">
+      <div class="ba" data-i="${i}">
+        <div class="ba__layer ba__before">${scene(c.sc, false)}</div>
+        <div class="ba__layer ba__after">${scene(c.sc, true)}</div>
+        <span class="ba__tag ba__tag--before">Avant</span>
+        <span class="ba__tag ba__tag--after">Après</span>
+        <span class="ba__line" aria-hidden="true"></span>
+        <span class="ba__handle" role="slider" tabindex="0" aria-label="Comparer avant et après, ${c.title}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Moitié avant, moitié après"><svg aria-hidden="true"><use href="#i-arrows"/></svg></span>
+      </div>
+      <div class="case__body">
+        <div class="case__top"><h3>${c.title}</h3><span class="demo-tag">Chantier de démonstration</span></div>
+        <p class="case__works">${c.works}</p>
+        <dl class="case__data">
+          <div><dt>Classe DPE avant, puis après</dt><dd><span class="dpe" aria-label="classe avant non renseignée">?</span><span aria-hidden="true">→</span><span class="dpe" aria-label="classe après non renseignée">?</span></dd></div>
+          <div><dt>Gain estimé par l'audit</dt><dd class="empty">À renseigner depuis l'audit</dd></div>
+        </dl>
+        <blockquote>« ${c.quote} »<footer>${c.who}, avis de démonstration</footer></blockquote>
+        <a class="case__link" href="#">Voir le chantier complet</a>
+      </div>
+    </article>`).join("");
+
+  /* slider */
+  function setPos(ba, v){
+    v = Math.max(0, Math.min(100, Math.round(v)));
+    ba.style.setProperty("--pos", v + "%");
+    const h = $(".ba__handle", ba);
+    h.setAttribute("aria-valuenow", v);
+    h.setAttribute("aria-valuetext", v <= 5 ? "Après en entier" : v >= 95 ? "Avant en entier" : `${v} % avant, ${100 - v} % après`);
+  }
+  $$(".ba").forEach(ba => {
+    let drag = false;
+    const fromEvent = e => { const r = ba.getBoundingClientRect(); setPos(ba, (e.clientX - r.left) / r.width * 100); };
+    ba.addEventListener("pointerdown", e => {
+      if(casesEl.classList.contains("is-split")) return;
+      drag = true; ba.setPointerCapture(e.pointerId); fromEvent(e);
+    });
+    ba.addEventListener("pointermove", e => { if(drag) fromEvent(e); });
+    ["pointerup","pointercancel"].forEach(t => ba.addEventListener(t, () => { drag = false; }));
+    const h = $(".ba__handle", ba);
+    h.addEventListener("keydown", e => {
+      const cur = Number(h.getAttribute("aria-valuenow"));
+      let n = null;
+      if(e.key === "ArrowLeft" || e.key === "ArrowDown") n = cur - 5;
+      if(e.key === "ArrowRight" || e.key === "ArrowUp") n = cur + 5;
+      if(e.key === "PageDown") n = cur - 20;
+      if(e.key === "PageUp") n = cur + 20;
+      if(e.key === "Home") n = 0;
+      if(e.key === "End") n = 100;
+      if(n !== null){ e.preventDefault(); setPos(ba, n); }
+    });
+  });
+  const splitBtn = $("#split");
+  splitBtn.addEventListener("click", () => {
+    const on = !casesEl.classList.contains("is-split");
+    casesEl.classList.toggle("is-split", on);
+    splitBtn.setAttribute("aria-pressed", on);
+    splitBtn.lastChild.textContent = on ? "Revenir au curseur" : "Voir avant et après côte à côte";
+  });
+  $$(".filter").forEach(b => b.addEventListener("click", () => {
+    $$(".filter").forEach(x => x.setAttribute("aria-pressed", x === b));
+    const f = b.dataset.f;
+    $$(".case").forEach(c => { c.hidden = !(f === "all" || c.dataset.f.split(" ").includes(f)); });
+  }));
+
+  /* ---------- Estimateur ---------- */
+  const est = $("#est"), panels = $$(".est__panel", est), stepLbl = $("#est-step"), bar = $("#est-bar");
+  const nav = $("#est-nav"), prev = $("#est-prev"), next = $("#est-next");
+  const NAMES = ["Estimation des aides","1/4 Vos travaux","2/4 Votre foyer","3/4 Vos revenus","4/4 Votre commune","Résultat"];
+  const mobile = () => window.matchMedia("(max-width: 767px)").matches;
+  let step = 0;
+  function show(n, focus){
+    step = n;
+    panels.forEach(p => p.classList.toggle("is-on", Number(p.dataset.step) === n));
+    stepLbl.textContent = NAMES[n];
+    bar.style.width = (n === 0 ? 0 : Math.min(n, 4) / 4 * 100) + "%";
+    nav.hidden = !(n >= 1 && n <= 4);
+    next.textContent = n === 4 ? "Voir mon estimation" : "Question suivante";
+    if(focus){
+      const p = panels.find(p => Number(p.dataset.step) === n);
+      const t = n === 4 ? $("#cp") : $("h3", p);
+      if(t){ if(t.tagName === "H3") t.setAttribute("tabindex","-1"); t.focus({preventScroll:true}); }
+    }
+    if(n >= 1 && est.classList.contains("is-full")) est.scrollTop = 0;
+  }
+  function openFull(){ if(mobile()){ est.classList.add("is-full"); document.body.classList.add("est-open"); } }
+  function closeFull(){ est.classList.remove("is-full"); document.body.classList.remove("est-open"); est.scrollIntoView({block:"start"}); }
+  $("#est-start").addEventListener("click", () => { openFull(); show(1, true); });
+  $("#est-close").addEventListener("click", closeFull);
+  document.addEventListener("keydown", e => { if(e.key === "Escape" && est.classList.contains("is-full")) closeFull(); });
+  const err = (id, on) => { $(id).classList.toggle("is-on", on); };
+  const REV = {tm:"revenus très modestes", m:"revenus modestes", i:"revenus intermédiaires", s:"revenus supérieurs"};
+  function validate(n){
+    if(n === 1){ const ok = $$("input[name=works]:checked").length > 0; err("#err1", !ok); return ok; }
+    if(n === 2){ const ok = !!$("input[name=hh]:checked"); err("#err2", !ok); return ok; }
+    if(n === 3){ const ok = !!$("input[name=rev]:checked"); err("#err3", !ok); return ok; }
+    if(n === 4){ const v = $("#cp").value.trim(); const ok = /^\d{5}$/.test(v); err("#err4", !ok); $("#cp").setAttribute("aria-invalid", !ok); return ok; }
+    return true;
+  }
+  next.addEventListener("click", () => {
+    if(!validate(step)) return;
+    if(step === 2){
+      const hh = $("input[name=hh]:checked").value;
+      const label = hh === "5" ? "5 personnes et plus" : hh + (hh === "1" ? " personne" : " personnes");
+      $$(".ceil").slice(0,3).forEach(el => { el.textContent = `Plafond pour un foyer de ${label} : barème Anah non saisi (démo)`; });
+    }
+    if(step === 4){ result(); show(5, false); const h = $(inZone($("#cp").value.trim()) ? "#res-in h3" : "#res-out h3"); h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); return; }
+    show(step + 1, true);
+  });
+  prev.addEventListener("click", () => show(Math.max(0, step - 1), true));
+  $("#cp").addEventListener("input", e => { e.target.value = e.target.value.replace(/\D/g, "").slice(0,5); });
+  $("#cp").addEventListener("keydown", e => { if(e.key === "Enter"){ e.preventDefault(); next.click(); } });
+  $$("#est input[type=checkbox], #est input[type=radio]").forEach(i => i.addEventListener("change", () => { err("#err1", false); err("#err2", false); err("#err3", false); }));
+
+  function result(){
+    const cp = $("#cp").value.trim();
+    const zoneOk = inZone(cp);
+    $("#res-in").hidden = !zoneOk;
+    $("#res-out").hidden = zoneOk;
+    $("#est-verify").hidden = !zoneOk;
+    if(!zoneOk) return;
+    const works = $$("input[name=works]:checked").map(i => i.value);
+    const hh = $("input[name=hh]:checked").value;
+    const rev = $("input[name=rev]:checked").value;
+    const hhTxt = hh === "5" ? "5 personnes et plus" : hh + (hh === "1" ? " personne" : " personnes");
+    $("#res-profile").textContent = `Foyer de ${hhTxt}, ${REV[rev]}, logement à ${ZONE[cp]} (${cp}).`;
+    const ico = (c) => `<svg aria-hidden="true"><use href="#${c}"/></svg>`;
+    let items = [
+      `<li>${ico("i-check")}<span><b>MaPrimeRénov'</b> : montant selon votre tranche de revenus et les travaux, travaux confiés à un artisan RGE.</span></li>`,
+      `<li>${ico("i-check")}<span><b>Prime CEE</b> (certificats d'économies d'énergie) : versée par les fournisseurs d'énergie, cumulable selon les cas.</span></li>`,
+      `<li>${ico("i-check")}<span><b>TVA à 5,5 %</b> sur les travaux d'amélioration de la performance énergétique éligibles (<a href="https://france-renov.gouv.fr/aides/tva-taux-reduit" target="_blank" rel="noopener">France Rénov'</a>, vu le 13/11/2026).</span></li>`,
+      `<li>${ico("i-check")}<span><b>Éco-PTZ</b> : un prêt sans intérêts pour financer le reste à charge, à voir avec votre banque.</span></li>`
+    ];
+    if(works.includes("globale")){
+      items.push(`<li class="info">${ico("i-info")}<span><b>Rénovation d'ampleur</b> : Mon Accompagnateur Rénov' est obligatoire pour le Parcours accompagné (<a href="https://selectra.info/energie/renovation-energetique/aides/ma-prime-renov" target="_blank" rel="noopener">Selectra</a>, vu le 13/11/2026). Nous vous orientons lors de la visite.</span></li>`);
+    }
+    if(rev === "s"){
+      items.push(`<li class="info">${ico("i-info")}<span>Avec des revenus supérieurs, les aides possibles sont plus limitées : nous vérifions avec vous ce qui reste accessible.</span></li>`);
+    }
+    $("#res-aids").innerHTML = items.join("");
+  }
+  $("#est-restart").addEventListener("click", () => {
+    $$("#est input[type=checkbox], #est input[type=radio]").forEach(i => { i.checked = false; });
+    $("#cp").value = ""; $("#cp").removeAttribute("aria-invalid");
+    show(1, true);
+  });
+  $("#est-verify").addEventListener("click", () => {
+    const cp = $("#cp").value.trim();
+    $("#f-cp").value = cp;
+    const w = $$("input[name=works]:checked").map(i => i.value);
+    const sel = $("#f-works");
+    sel.value = (w.includes("globale") || w.length > 1) ? "globale" : (w[0] || "");
+    if(est.classList.contains("is-full")){ est.classList.remove("is-full"); document.body.classList.remove("est-open"); }
+    $("#contact .form-card").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+    setTimeout(() => $("#f-name").focus({preventScroll:true}), 400);
+  });
+
+  /* ---------- Formulaire ---------- */
+  const form = $("#form");
+  const setErr = (input, box, on) => { input.setAttribute("aria-invalid", on); $(box).classList.toggle("is-on", on); };
+  $("#f-cp").addEventListener("input", e => { e.target.value = e.target.value.replace(/\D/g, "").slice(0,5); $("#m-zone").classList.remove("is-on"); });
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    $("#m-fail").classList.remove("is-on");
+    const name = $("#f-name"), tel = $("#f-tel"), cp = $("#f-cp"), ok = $("#f-ok");
+    const bad = [];
+    const nOk = name.value.trim().length >= 2; setErr(name, "#e-name", !nOk); if(!nOk) bad.push(name);
+    const digits = tel.value.replace(/[\s.\-]/g, "").replace(/^\+33/, "0");
+    const tOk = /^0\d{9}$/.test(digits); setErr(tel, "#e-tel", !tOk); if(!tOk) bad.push(tel);
+    const cOk = /^\d{5}$/.test(cp.value.trim()); setErr(cp, "#e-cp", !cOk); if(!cOk) bad.push(cp);
+    const zOk = cOk && inZone(cp.value.trim()); $("#m-zone").classList.toggle("is-on", cOk && !zOk); if(cOk && !zOk) bad.push(cp);
+    const kOk = ok.checked; setErr(ok, "#e-ok", !kOk); if(!kOk) bad.push(ok);
+    if(bad.length){ bad[0].focus(); return; }
+    const btn = $("#f-submit");
+    btn.disabled = true; btn.textContent = "Envoi…";
+    setTimeout(() => {
+      btn.disabled = false; btn.textContent = "Envoyer ma demande de visite";
+      if(navigator.onLine === false){ $("#m-fail").classList.add("is-on"); return; }
+      form.hidden = true;
+      const m = $("#m-ok"); m.classList.add("is-on"); m.focus();
+    }, 700);
+  });
+  [["#f-name","#e-name"],["#f-tel","#e-tel"],["#f-cp","#e-cp"]].forEach(([i, b]) => $(i).addEventListener("input", () => setErr($(i), b, false)));
+  $("#f-ok").addEventListener("change", () => setErr($("#f-ok"), "#e-ok", false));
+})();
+</script>
+</body>
+</html>
