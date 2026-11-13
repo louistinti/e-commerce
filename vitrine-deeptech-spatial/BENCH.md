@@ -17,11 +17,12 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
   - Kinéis (n° 5) : la phrase « pas de gros flux » n'est pas sur la page. Les chiffres sont confirmés, avec 20 stations sol (et non « environ 20 »).
   - EnduroSat (n° 16) : ce n'est pas un site « sans effets ». La fiche Awwwards porte les tags Parallax, Video, 3D et Transitions.
   - Cowboy Space (n° 4) : la palette n'est pas noire mais brun très sombre, avec un bouton orange. La phrase « Earth's energy grid can't run at the pace of AI » est dans le paragraphe sous le titre, pas dans le hero.
-  - Turion (n° 1) : l'étude de cas ne parle pas de parallaxe. BUCK a fourni l'identité et des rendus 3D, pas des photos.
+  - Turion (n° 1) : l'étude de cas ne parle pas de parallaxe. BUCK a signé l'identité et des rendus 3D, pas des photos.
   - Anduril (n° 15) : la fiche Fonts In Use date d'avril 2020 et montre un site sur fond blanc. Le site de 2026 est sur fond noir.
   - Roobinium (n° 20) : c'est une landing de jeu crypto et NFT, pas un site spatial.
   - Shakuro (n° 2) : le shot est signé Conceptzilla seul.
 - **URL morte** : le site primé NASA Spacecrafts (n° 8) n'existe plus, le domaine redirige vers une page de parking. Toutes les autres URL d'origine répondent.
+- **Passe du 2026-11-13** : aucun chiffre propre à l'entreprise fictive n'est conservé. Les chiffres du bench sont ceux observés sur les pages citées, avec leur URL. Les photos d'équipe ont été cherchées sur Unsplash puis Pexels, sans résultat (bloc 7). Les anciennes questions ouvertes sont devenues des [arbitrages](#arbitrages).
 - **Bannières cookies** : refusées partout où un refus existait. **Données personnelles** : avatars floutés sur les pages Dribbble et Awwwards ; sur le n° 20, l'e-mail et le téléphone affichés ont été masqués.
 
 **Refonte du 2026-11-12** (tri et réorganisation selon le brief) :
@@ -49,12 +50,12 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 | 4. Feuille de route (horizontale sur desktop, verticale sur mobile, statuts) | 9, 22 | Aucune timeline horizontale à défilement lent vue. L'axe vertical des années du n° 8 est utile mais à côté (URL morte), cité avec renvoi. |
 | 5. Données (carte, curseur 30 jours, légende accessible, tableau) | 7, 10, 11, 12, 13 | Aucun tableau de valeurs en alternative à la carte, aucun curseur temporel jour par jour vu en fonctionnement. |
 | 6. Partenaires et financeurs (logos monochromes, nature du soutien) | 21 | Le n° 21 montre l'emplacement et les logos monochromes, mais sans la nature du soutien. Aucune référence n'affiche « lauréat de… » ou « contrat d'étude… » à côté d'un logo. |
-| 7. Équipe et recrutement (6 portraits, 3 offres, page carrière) | 14 | Aucune grille de portraits ni d'offre qui décrit le problème technique à résoudre (attente de P3). |
+| 7. Qui sommes-nous et recrutement (bloc court sans photo, 3 offres, page carrière) | 14 | Aucune offre qui décrit le problème technique à résoudre (attente de P3). Pas de photo d'équipe : Unsplash et Pexels ont bloqué le navigateur le 2026-11-13, le bloc passe à un « Qui sommes-nous » sans photo. |
 | 8. Presse et contact (3 retombées, kit presse, formulaire segmenté, plan) | 23 | Aucun formulaire segmenté par type de demandeur, aucun kit presse, aucune retombée presse, aucun plan vus. Le n° 23 ne couvre que les libellés visibles et le compteur d'étapes. |
 | Mobile (timeline verticale, visuels allégés, données en tableaux, Lighthouse ≥ 90) | 3, 9, 12, 22, mobile Spaceflux, mobile constellr | Aucune carte de données vue sur mobile avec sa légende au bon endroit (le seul cas vu est à côté). |
 | Marque (noir, blanc, orange signal ; IBM Plex Sans et Mono ; sombre par défaut, bascule vers le clair) | 3, 4, 6, 7, 10, 13 | Aucune référence n'utilise Plex Mono. Le noir et l'orange sont déjà pris par d'autres acteurs (n° 4, 7, et le n° 20 à côté). |
 | Accessibilité (WCAG 2.2 AA, `prefers-reduced-motion`, carte doublée d'un tableau, contrastes) | 4, 10, 22, mobile constellr | Aucune bascule « réduire les animations » vue. Aucun tableau alternatif à une carte. |
-| Preuve « chaque jour, à la parcelle » (carte, résolution, revisite) | 3, 10, 11, 16 | Aucune. Les chiffres sont à fournir par le client. |
+| Preuve « chaque jour, à la parcelle » (carte, résolution, revisite) | 3, 10, 11, 16 | Aucune. Dans la démo, la carte s'appuie sur des données publiques Copernicus, citées sur la carte, et aucun chiffre de performance n'est inventé (voir [Arbitrages](#arbitrages)). |
 | Preuve « une mesure, pas une estimation » (courbe contre sondes au sol, DOI) | 10 (en partie) | Le n° 10 montre une courbe 2015 à 2024, pas une comparaison avec des mesures au sol. Aucun lien DOI vu. |
 | Preuve « déjà en orbite » (timeline, première image datée) | 9, 11, 22 | La première image datée n'a pas d'équivalent exact : le n° 11 date une image satellite, pas une première acquisition. |
 | Preuve « soutenus par des acteurs publics » (logos avec la nature du soutien) | 21 (emplacement) | La nature du soutien n'apparaît nulle part (voir bloc 6). |
@@ -74,7 +75,7 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 | 4 | [Cowboy Space](https://www.cowboyspace.com/) (site réel, US ; Lapa Ninja d'origine non vérifié) | [capture](captures/inspis/04-cowboy-space.jpg) | La structure « problème terrestre, puis réponse spatiale », dans le paragraphe sous le titre. Bouton orange `#F47D49` à texte sombre `#17191C` (6,6:1). **À éviter** : la vidéo plein écran et la police Panell Wide. | Sous-titre du brief (« piloter l'irrigation, anticiper la sécheresse… ») ; CTA primaire orange à texte sombre. |
 | 7 | [Artificial Satellite (Hanwha Space Hub, FAVE®)](https://www.awwwards.com/sites/artificial-satellite) (Awwwards, mention honorable du 24 août 2023) | [élément](captures/inspis/07b-awwwards-earth-observation.jpg) | La Terre dans une orbite au trait, un réticule orange fin et des crochets de cadrage orange. Paire `#000000` et `#F77D16` (7,9:1). | Visuel orbital en SVG, en trait fin, qui n'alourdit pas la page. |
 | 13 | [SkyFi](https://skyfi.com/) (site réel, US ; Land-book d'origine non vérifié) | [capture](captures/inspis/13-skyfi.jpg) | Coordonnées et libellés de boutons en DM Mono 13 à 14 px, crochets de cadrage au trait. Un seul accent, réservé au bouton d'action (`#FCC219`, texte noir, 12,9:1). | Un seul accent pour le CTA primaire ; le mono (Plex Mono chez nous) pour les coordonnées. |
-| 16 | [EnduroSat](https://www.awwwards.com/sites/endurosat) (Awwwards, mention honorable du 20 août 2024) | [capture](captures/inspis/16-awwwards-endurosat.jpg) | Une grille de filets verticaux fins avec un chiffre en petites capitales par colonne (450+ années d'expérience cumulée, 230+ clients, 150+ personnes). **À éviter** : parallaxe, vidéo et 3D (tags de la fiche). | Ce que Claire (P1) doit voir en 30 s : la preuve en orbite et le marché, en chiffres datés. |
+| 16 | [EnduroSat](https://www.awwwards.com/sites/endurosat) (Awwwards, mention honorable du 20 août 2024) | [capture](captures/inspis/16-awwwards-endurosat.jpg) | Une grille de filets verticaux fins avec un chiffre en petites capitales par colonne (450+ années d'expérience cumulée, 230+ clients, 150+ personnes). **À éviter** : parallaxe, vidéo et 3D (tags de la fiche). | Ce que Claire (P1) doit voir en 30 s : la preuve en orbite et le marché, en faits datés et sourcés (chiffres de marché publics, aucun chiffre inventé). |
 | 21 | [Starcloud, site orienté investisseurs (Flexy LLC)](https://dribbble.com/shots/27116861-Building-an-Investor-Focused-Website-for-Starcloud) (Dribbble) | [capture](captures/inspis/21-dribbble-starcloud.jpg) | Dès le premier écran, une ligne « Backed by » avec 4 logos blancs. Le shot vise « investisseurs, partenaires et ingénieurs », nos trois personas. **À éviter** : des logos sans la nature du soutien. | Une preuve de soutien visible dès le hero, pour P1. |
 
 ### 2. La technologie à 3 niveaux
@@ -91,7 +92,7 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 10 | [constellr, Dhun Climate Resilience Study](https://urban-resilience.constellr.com/) (microsite de données) | [capture](captures/inspis/10-constellr-dhun.jpg) | Une question, une réponse : le résultat chiffré est dans le titre (« 8°C Temperature Reduction »), puis 3 chiffres, une courbe, une carte et 4 cartes d'explication. | La structure de chaque cas d'usage : problème, donnée fournie, décision rendue possible. |
+| 10 | [constellr, Dhun Climate Resilience Study](https://urban-resilience.constellr.com/) (microsite de données) | [capture](captures/inspis/10-constellr-dhun.jpg) | Une question, une réponse : le résultat chiffré est dans le titre (« 8°C Temperature Reduction »), puis 3 chiffres, une courbe, une carte et 4 cartes d'explication. **À adapter** : chez nous, la décision rendue possible est dans le titre, sans résultat chiffré (l'entreprise est fictive). | La structure de chaque cas d'usage : problème, donnée livrée, décision rendue possible. |
 | 11 | [EarthEye, Agriculture Dashboard (Shakuro)](https://dribbble.com/shots/24596768-EarthEye-Agriculture-Dashboard-Design) (Dribbble) | [capture](captures/inspis/11-dribbble-eartheye.jpg), [tableau de bord](captures/inspis/11b-dribbble-eartheye-dashboard.jpg) | Un widget mobile (« Water, Dangerous Level, 98.4 % »), puis des parcelles détourées avec leurs mesures (sol 16,7 %, eau 92,2 %). **À éviter** : l'état codé seulement par vert, jaune et rouge. | Cas « agriculture » : la donnée à la parcelle, telle qu'un agriculteur la lit. |
 | 12 | [Land Lines (Google Data Arts Team)](https://www.awwwards.com/sites/land-lines) (Awwwards, site du jour du 10 janvier 2017) | [capture](captures/inspis/12-awwwards-land-lines.jpg) | Une image satellite de pivots d'irrigation (cercles verts), lisible sans légende. | Visuel du cas « irrigation ». À légender (source, date), selon la règle du brief. |
 
@@ -118,13 +119,15 @@ Détail utile d'une référence à côté : l'axe vertical des années avec un p
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 21 | Starcloud (voir bloc 1) | [capture](captures/inspis/21-dribbble-starcloud.jpg) | Logos en blanc, monochromes et petits, alignés après une mention « Backed by ». **À éviter** : aucun logo ne dit la nature du soutien, ce que la règle du brief exige (« lauréat de l'appel X », « contrat d'étude ESA »). | Logos sobres en monochrome. La nature du soutien est à ajouter en texte, pas seulement au survol. |
+| 21 | Starcloud (voir bloc 1) | [capture](captures/inspis/21-dribbble-starcloud.jpg) | Logos en blanc, monochromes et petits, alignés après une mention « Backed by ». **À éviter** : aucun logo ne dit la nature du soutien, ce que la règle du brief exige (« lauréat de l'appel X », « contrat d'étude ESA »). | Logos sobres en monochrome, ici des logotypes fictifs. La nature du soutien est écrite en texte, pas seulement au survol. |
 
 ### 7. Équipe et recrutement
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 14 | [Aura Aero, page Carrière](https://www.aura-aero.com/en/carriere) (site réel, FR) | [capture](captures/inspis/14-aura-aero-carriere.jpg), [chiffres](captures/inspis/14b-aura-aero-chiffres.jpg) | Une vraie photo d'équipe (prise par drone, autour de 3 avions). Un bloc de chiffres datés (250+ personnes, index d'égalité 94/100 en 2024) et les 4 implantations. Un processus de recrutement en 3 étapes. **À éviter** : les chiffres bleus `#0167FF` sur marine (3,6:1), valables seulement en grand corps. | Des visages et la séance photo prévue au brief ; ce qu'Inès (P3) cherche : l'équipe et un processus clair. |
+| 14 | [Aura Aero, page Carrière](https://www.aura-aero.com/en/carriere) (site réel, FR) | [capture](captures/inspis/14-aura-aero-carriere.jpg), [chiffres](captures/inspis/14b-aura-aero-chiffres.jpg) | Un bloc de chiffres datés (250+ personnes, index d'égalité 94/100 en 2024) et les 4 implantations. Un processus de recrutement en 3 étapes. La photo d'équipe (prise par drone, autour de 3 avions) n'est pas reprise : pas de photo d'équipe chez nous. **À éviter** : les chiffres bleus `#0167FF` sur marine (3,6:1), valables seulement en grand corps. | Ce qu'Inès (P3) cherche : un processus clair et des faits sur l'entreprise. Chez nous, ces faits sont écrits sans chiffre (entreprise fictive). |
+
+**Photos d'équipe, recherche du 2026-11-13** : Unsplash a renvoyé « Access Denied » dès la première recherche, et Pexels une vérification anti-robots de Cloudflare. Rien n'a été contourné. Décision : pas de photo d'équipe. Le bloc devient un « Qui sommes-nous » court (2 ou 3 phrases : l'origine en laboratoire, le métier, Toulouse), avec le logotype ou une illustration au trait. Aucune photo réelle n'est exigée.
 
 ### 8. Presse et contact
 
@@ -168,10 +171,10 @@ Le brief prévoit 2 pistes de direction artistique, puis 1 (planning, S3-S4). Le
 **Direction B : « Carte d'abord »**
 - Le visuel orbital du hero est la trace au sol du satellite, en SVG, posée sur une tuile de la carte d'humidité qui s'anime lentement (n° 12 pour l'image agricole, n° 7 pour le trait).
 - Plus proche de l'usage client (eau, agriculture), et le CTA secondaire « Explorer la carte d'exemple » prend tout son sens.
-- Récit « une question, une réponse » pour les Applications et la section Données : résultat chiffré dans le titre, légende sous la carte (n° 10), source et date sur la carte (n° 11).
-- Exige l'échantillon de données de carte dès S2. Le brief le liste dans les contenus à fournir.
+- Récit « une question, une réponse » pour les Applications et la section Données : la décision rendue possible dans le titre, sans résultat chiffré, légende sous la carte (n° 10), source et date sur la carte (n° 11).
+- Exige la tuile de carte dès S2 : on la produit à partir du Surface Soil Moisture de Copernicus, cité sur la carte (voir [Arbitrages](#arbitrages)).
 
-**Direction retirée : C « Archive de mission ».** Elle remplaçait le visuel orbital du hero par de grandes photos d'intégration et de lancement. Le brief demande un visuel orbital léger (bloc 1), ne liste pas ces photos parmi les contenus fournis (seulement les photos d'équipe), et des photos d'intégration risquent de montrer la charge utile au-delà du publié (contrainte de confidentialité et de double usage). Son point fort, la photo d'équipe (n° 14), est repris dans le bloc 7 quelle que soit la direction.
+**Direction retirée : C « Archive de mission ».** Elle remplaçait le visuel orbital du hero par de grandes photos d'intégration et de lancement. Le brief demande un visuel orbital léger (bloc 1), ne prévoit aucune photo parmi les contenus à produire, et des photos d'intégration risquent de montrer une charge utile (contrainte de confidentialité et de double usage). Son point fort, la photo d'équipe (n° 14), ne tient plus : le bloc 7 passe à un « Qui sommes-nous » sans photo.
 
 Le traitement en mode clair de constellr (n° 10) sert la bascule vers le mode clair, pas une section claire dans le mode sombre : le brief fixe le sombre par défaut.
 
@@ -192,7 +195,7 @@ Contrastes recalculés le 2026-11-12 (formule WCAG 2.x), puis vérifiés contre 
 | Mode clair : fond | `#F4F4F1` | texte `#0A0B0D` (17,9:1) |
 | Mode clair : accent | `#C2410C` | **corrigé** : fond du CTA (texte `#F4F4F1`, 4,7:1) et éléments graphiques seulement. Le bench annonçait cette valeur « pour le texte », ce que le brief interdit (« l'orange n'est jamais utilisé pour du texte courant sur fond clair »). Les liens en mode clair sont en `#0A0B0D` soulignés. |
 | Mode clair : texte secondaire | `#5C636A` | **ajouté** : `#9AA0A6` ne donnait que 2,4:1 sur `#F4F4F1` ; `#5C636A` donne 5,5:1 |
-| Échelle d'humidité (séquentielle, de sec à humide) | `#6B5A3E` `#8C8A5A` `#4F8F86` `#3C7FB0` `#9CCBEB` | distincte de l'accent ; à valider avec un simulateur de daltonisme |
+| Échelle d'humidité (séquentielle, de sec à humide) | `#6B5A3E` `#8C8A5A` `#4F8F86` `#3C7FB0` `#9CCBEB` | distincte de l'accent ; passée au simulateur de daltonisme en maquette (S3-S4), teinte ajustée si deux paliers se confondent |
 
 Pour comparaison, relevé sur les sites vus : bouton orange de Cowboy Space `#F47D49` à texte `#17191C`, 6,6:1 ; orange `#F77D16` de Hanwha sur noir, 7,9:1 ; bouton vert de Pasqal à texte blanc, 2,2:1 (échec AA).
 
@@ -200,7 +203,7 @@ Pour comparaison, relevé sur les sites vus : bouton orange de Cowboy Space `#F4
 
 - **IBM Plex Sans** : 400 et 500 pour le texte, 600 pour les titres, y compris le titre d'affichage du hero.
 - **IBM Plex Mono** : 400 et 500 pour les chiffres, coordonnées, dates et légendes de la carte.
-- **Corrigé** : l'option IBM Plex Sans Condensed pour les titres est retirée. C'est une famille à part, et le brief impose Plex Sans et Plex Mono. Elle est remontée au client (voir plus bas).
+- **Corrigé** : l'option IBM Plex Sans Condensed pour les titres est retirée. C'est une famille à part, et le brief impose Plex Sans et Plex Mono. Elle n'est pas retenue (voir [Arbitrages](#arbitrages)).
 - Observé : Spaceflux utilise déjà IBM Plex Sans en titre (80 px, graisse 400). Notre titre en graisse 600 et la grille aideront à ne pas lui ressembler.
 
 ## 3 « à ne pas faire »
@@ -298,7 +301,7 @@ Pas d'ombre portée en mode sombre : la profondeur vient des surfaces (`neutral.
   - désactivé : contour `neutral.700`.
 
 **Carte jalon (timeline)**
-- Date en `type.overline`, titre en `type.h3`, une ligne de description (n° 9).
+- Date en `type.overline`, titre en `type.h3`, une ligne de description (n° 9). Dans la démo, le numéro d'étape (« ÉTAPE 01 ») remplace la date (voir [Arbitrages](#arbitrages)).
 - Pastille de statut (`radius.pill`) : réalisé, partiel ou à venir, toujours avec une icône et un libellé texte (n° 22).
 - Surface `neutral.900`, filet `neutral.700`.
 
@@ -350,11 +353,18 @@ Pas d'ombre portée en mode sombre : la profondeur vient des surfaces (`neutral.
 | 2026-11-12 (refonte) | Dribbble | recherche « contact form inquiry type » | Page « Let's confirm you are human » (HTTP 405). Arrêté, sans contourner. |
 | 2026-11-12 (refonte) | Awwwards | recherche « contact form », puis catégorie d'éléments [Forms](https://www.awwwards.com/inspiration/forms) | Vus : « Built By Silo - Contact form » (deux étapes sur noir, mais libellés en placeholder seulement, écarté pour l'accessibilité) et « Contact Form » de fyne digital creative (retenu, n° 23). Aucun formulaire segmenté par type de demandeur trouvé. |
 | 2026-11-12 (refonte) | Awwwards | page [Elements](https://www.awwwards.com/elements/), recherche d'un mur de logos avec la nature du soutien | Rien de pertinent dans les éléments listés. Bloc 6 laissé avec son manque. |
+| 2026-11-13 | Unsplash | recherches « aerospace engineer » et « engineers laboratory » (photos d'équipe) | « Access Denied » dès la première page. Arrêté, sans contourner. |
+| 2026-11-13 | Pexels | recherche « engineers laboratory » (photos d'équipe) | Vérification anti-robots de Cloudflare. Arrêté, sans contourner. Bloc 7 passé à « Qui sommes-nous » sans photo. |
 
 ---
 
-## Points à remonter au client
+## Arbitrages
 
-- **Pause des animations** : le brief demande des animations désactivables par `prefers-reduced-motion`. Ce réglage ne suffit pas pour une orbite en boucle de 60 à 90 s : le critère WCAG 2.2.2 (niveau A) demande un bouton pause visible. Nous l'ajoutons, à valider. Même chose si la timeline défile seule.
-- **Distinction de la marque** : la palette noir et orange est déjà utilisée par Cowboy Space (n° 4), Hanwha Space Hub (n° 7) et des sites crypto (n° 20), et IBM Plex Sans par Spaceflux (n° 3). Nous gardons la marque du brief et faisons porter la différence par la grille, le mono et la carte. Si le client veut aller plus loin, IBM Plex Sans Condensed pour les titres est une option, à son accord seulement : le brief limite les polices à Plex Sans et Plex Mono.
-- **Contenus qui manquent pour les preuves** : la courbe de comparaison avec les sondes au sol, le lien DOI, la date de la première image et la nature exacte de chaque soutien n'ont pas d'équivalent dans le bench. Ils dépendent des contenus à fournir par le client et conditionnent le message « une mesure, pas une estimation ».
+- **Pause des animations** : on ajoute un bouton pause visible près de l'orbite, parce que `prefers-reduced-motion` ne suffit pas. Le critère WCAG 2.2.2 (niveau A) l'exige pour une animation de plus de 5 secondes affichée à côté d'autres contenus. Même règle pour la timeline si elle défile seule.
+- **Distinction de la marque** : on garde le noir, le blanc, l'orange signal et IBM Plex Sans et Mono, et la différence passe par la grille, le mono et la carte, parce que la palette est déjà prise (n° 3, 4, 7 et 20). IBM Plex Sans Condensed n'est pas retenue : le brief s'en tient à Plex Sans et Plex Mono.
+- **Carte de démonstration** : on construit la tuile sur le produit Surface Soil Moisture du Copernicus Land Monitoring Service (1 km de résolution en Europe, à partir de Sentinel-1 ; [CLMS, Soil Moisture](https://land.copernicus.eu/en/products/soil-moisture), vu le 2026-11-13), avec la source et la date écrites sur la carte. Une carte inventée passerait pour une mesure de Strate Orbital.
+- **Courbe « une mesure, pas une estimation »** : on ne la trace que sur des données publiques, légendées comme telles. Sans paire de données publiques satellite et sondes, le bloc montre le format de la courbe, axes et légende, sans valeurs.
+- **Publications** : l'onglet liste des publications réelles sur la GNSS-R, avec DOI, présentées comme lectures de référence du domaine et jamais comme travaux de l'entreprise. À produire en S2.
+- **Jalons sans date** : les jalons de la timeline portent un numéro d'étape et un statut (réalisé, partiel, à venir), pas de date, parce qu'une date inventée se lirait comme un fait.
+- **Soutiens** : des logotypes fictifs, avec la nature du soutien écrite en texte. Aucun logo d'institution réelle (Bpifrance, ESA, France 2030), parce que l'entreprise est fictive et n'a aucun soutien réel.
+- **Photos d'équipe** : un bloc « Qui sommes-nous » court, sans photo, parce qu'Unsplash et Pexels ont bloqué le navigateur le 2026-11-13 (voir bloc 7).
