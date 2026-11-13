@@ -62,11 +62,11 @@
   --ease:cubic-bezier(.2,0,0,1);
   --ease-soft:cubic-bezier(.16,1,.3,1);
   --gutter:24px;
-  --section-y:64px;
+  --section-y:56px;
   --nav-h:68px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:var(--nav-h)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav-h) + 1px)}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,svg{display:block;max-width:100%}
 a{color:var(--violet)}
@@ -237,7 +237,7 @@ legend{font-size:20px;font-weight:700;color:var(--violet);padding:0;margin-botto
 .c-facture{grid-column:span 5;background:var(--white);border:1px solid var(--n200)}
 .c-relance{grid-column:span 7;background:var(--violet-soft)}
 .c-relance p{color:var(--ink);max-width:none}
-.relance-body{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:16px;margin-top:16px;align-items:start}
+.relance-body{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:16px;margin-top:12px;align-items:start}
 .c-treso{grid-column:span 7;background:var(--violet);color:#fff}
 .c-treso h3{color:#fff}
 .c-treso p{color:#E4DCF5;max-width:60ch}
@@ -252,7 +252,7 @@ legend{font-size:20px;font-weight:700;color:var(--violet);padding:0;margin-botto
 .doc--inv{background:var(--white);box-shadow:var(--shadow-md);border-color:var(--violet)}
 .arrow{width:32px;height:32px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;flex:none}
 .arrow svg{width:16px;height:16px}
-.seq{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seq{list-style:none;margin:0;padding:0;display:grid;gap:5px}
 .seq li{display:grid;grid-template-columns:28px 1fr;column-gap:10px;font-size:13.5px;line-height:1.35;color:var(--ink)}
 .seq .dot{grid-row:span 2;width:28px;height:28px;border-radius:50%;background:var(--white);border:2px solid var(--violet);display:grid;place-items:center;color:var(--violet)}
 .seq .dot svg{width:14px;height:14px}
@@ -318,7 +318,7 @@ legend{font-size:20px;font-weight:700;color:var(--violet);padding:0;margin-botto
 .row small{color:var(--n700);font-size:11.5px}
 .row .num{font-size:13.5px;text-align:right;min-width:78px}
 .player{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
-.player .phone{width:270px;height:556px}
+.player .phone{width:254px;height:520px}
 .steps{display:flex;gap:6px;background:var(--white);border-radius:var(--r-full);padding:4px;box-shadow:var(--shadow-sm)}
 .steps button{border:0;background:transparent;min-height:40px;padding:0 13px;border-radius:var(--r-full);font-size:13.5px;font-weight:700;color:var(--n700);cursor:pointer;position:relative;overflow:hidden}
 .steps button[aria-selected="true"]{background:var(--violet);color:#fff}
@@ -735,11 +735,10 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
         <h3>Facturer</h3>
         <p>Le devis accepté devient une facture conforme en un geste, acompte déduit. Envoyée depuis le téléphone, sans repasser au bureau.</p>
         <div class="flow" aria-hidden="true">
-          <div class="doc"><small>Devis</small><b>D-0118</b><span class="num" data-amount="1846.80">1 846,80 €</span><span class="pill pill--ok">Accepté</span></div>
+          <div class="doc"><small>Devis, exemple</small><b>D-0118</b><span class="num" data-amount="1846.80">1 846,80 €</span><span class="pill pill--ok">Accepté</span></div>
           <span class="arrow"><svg><use href="#i-arrow"/></svg></span>
-          <div class="doc doc--inv"><small>Facture</small><b>F-2026-0142</b><span class="num" data-amount="1846.80">1 846,80 €</span><span class="pill pill--relance">Envoyée</span></div>
+          <div class="doc doc--inv"><small>Facture, exemple</small><b>F-2026-0142</b><span class="num" data-amount="1846.80">1 846,80 €</span><span class="pill pill--relance">Envoyée</span></div>
         </div>
-        <p class="card-foot">Exemple de devis et de facture.</p>
       </article>
 
       <article class="card c-relance">
@@ -765,8 +764,8 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
         <h3>Voir venir</h3>
         <p>Votre trésorerie projetée à 90 jours, calculée à partir des factures émises, des factures reçues et de votre compte bancaire.</p>
         <div class="treso-chart">
-          <svg viewBox="0 0 600 92" role="img" aria-label="Exemple de courbe de trésorerie sur 90 jours, point bas à 3 120 euros fin décembre">
-            <line x1="0" x2="600" y1="73" y2="73" stroke="#D8CEEE" stroke-width="1.5" stroke-dasharray="6 6"/>
+          <svg viewBox="0 0 600 72" role="img" aria-label="Exemple de courbe de trésorerie sur 90 jours, point bas à 3 120 euros fin décembre">
+            <line x1="0" x2="600" y1="57" y2="57" stroke="#D8CEEE" stroke-width="1.5" stroke-dasharray="6 6"/>
             <path data-chart-area fill="rgba(255,111,89,.16)" d=""/>
             <path data-chart-line class="draw" fill="none" stroke="#FF6F59" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d=""/>
             <circle data-low r="6" fill="#2E1A5C" stroke="#FF6F59" stroke-width="3" cx="-20" cy="-20"/>
@@ -824,8 +823,8 @@ footer{background:var(--cream-deep);padding:56px 0 calc(32px + env(safe-area-ins
             </div>
             <div class="chart-box">
               <div class="chart-top"><span>Trésorerie, 90 prochains jours</span><span class="seg" aria-hidden="true"><span>30 j</span><span class="on">90 j</span></span></div>
-              <svg viewBox="0 0 600 76" aria-hidden="true">
-                <line x1="0" x2="600" y1="61" y2="61" stroke="#7A7186" stroke-width="1.2" stroke-dasharray="5 5"/>
+              <svg viewBox="0 0 600 60" aria-hidden="true">
+                <line x1="0" x2="600" y1="48" y2="48" stroke="#7A7186" stroke-width="1.2" stroke-dasharray="5 5"/>
                 <path data-chart-area fill="rgba(46,26,92,.08)" d=""/>
                 <path data-chart-line class="draw" fill="none" stroke="#2E1A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""/>
                 <circle data-low r="6" fill="#FF6F59" stroke="#2E1A5C" stroke-width="2.5" cx="-20" cy="-20"/>
