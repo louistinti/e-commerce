@@ -1,38 +1,40 @@
 # Brief client : site vitrine Arotz Rénovation
 
-> Document fictif rédigé comme s'il était remis par le client à l'agence. **Arotz Rénovation** est une entreprise imaginaire (nom provisoire, à vérifier à l'INPI). Ses chiffres internes sont des hypothèses de travail. Les numéros de labels sont à fournir par le client réel : **ne jamais publier de faux numéros**.
+> Document fictif rédigé comme s'il était remis par l'entreprise à l'agence. **Arotz Rénovation** est une entreprise imaginaire : personne ne valide ce brief, l'agence décide de tout. **Aucun chiffre n'est inventé** : toute donnée chiffrée sur le marché, la loi ou un concurrent a sa source à côté (vue le 2026-11-13). Les valeurs de conception (px, contrastes, semaines, nombre de questions) sont des spécifications. L'entreprise n'a ni historique, ni résultats, ni numéros de labels : **aucun faux numéro n'est publié**.
 
 ---
 
 ## 1. Présentation de l'entreprise
 
 - **Arotz Rénovation** : isolation (combles, murs par l'extérieur et par l'intérieur), pompes à chaleur air/eau, menuiseries et rénovation globale de maisons individuelles au Pays basque.
-- **Labels** : RGE. L'entreprise accompagne les aides (MaPrimeRénov', CEE, éco-PTZ, TVA à 5,5 %).
-- **Profil (hypothèse)** : SARL de 9 personnes (2 associés, 6 compagnons, 1 assistante administrative), atelier à Ustaritz, une soixantaine de chantiers par an.
-- **Nom** : « arotz » signifierait « menuisier, charpentier » en basque (à faire confirmer par un bascophone).
+- **Labels** : RGE. L'entreprise accompagne les aides (MaPrimeRénov', CEE, éco-PTZ, TVA à taux réduit de 5,5 % : [France Rénov'](https://france-renov.gouv.fr/aides/tva-taux-reduit), vu le 2026-11-13).
+- **Profil** : SARL, atelier à Ustaritz, des associés, des compagnons et une assistante administrative. Pas d'effectif ni de volume de chantiers affichés : l'entreprise est fictive.
+- **Nom** : selon le [dictionnaire Elhuyar](https://hiztegiak.elhuyar.eus/eu_fr/arotz) (vu le 2026-11-13), « arotz » veut dire « charpentier » en basque du Sud et « forgeron » en basque du Nord (Iparralde). On garde le nom : les deux sens disent l'artisan. Nom fictif, réservé à la démo.
 
 ## 2. Contexte et déclencheur
 
 - **Aujourd'hui** :
-  - pas de site, seulement une fiche Google avec 23 avis et une page Facebook ;
-  - 70 % des chantiers viennent du bouche-à-oreille, le reste des annuaires ;
+  - pas de site, seulement une fiche Google et une page Facebook ;
+  - la plupart des chantiers viennent du bouche-à-oreille, le reste des annuaires ;
   - les annuaires et les plateformes captent les demandes locales et revendent les contacts.
 - **Déclencheurs** :
   1. Des clients ont demandé « vous avez un site ? » après avoir été démarchés par des sociétés douteuses. La confiance se joue en ligne.
-  2. MaPrimeRénov' est devenue plus difficile (guichet suspendu début 2026, accompagnateur obligatoire pour la rénovation d'ampleur). Les gens ont besoin d'explications claires, et Arotz veut être la référence locale qui explique.
+  2. MaPrimeRénov' est devenue plus difficile : guichet suspendu au 1er janvier 2026, rouvert le 23 février, et Mon Accompagnateur Rénov' obligatoire pour le Parcours accompagné ([Selectra](https://selectra.info/energie/renovation-energetique/aides/ma-prime-renov), vu le 2026-11-13). Les gens ont besoin d'explications claires, et Arotz veut être la référence locale qui explique.
   3. Arotz veut des chantiers de rénovation globale, mieux margés et mieux planifiés, plutôt que des interventions isolées.
 
-## 3. Objectifs business et KPIs
+## 3. Objectifs business et indicateurs
 
-| Objectif | KPI | Cible à 6 mois |
-|---|---|---|
-| Générer des demandes de visite qualifiées | Formulaires « Visite gratuite » dans la zone d'intervention | ≥ 15 par mois |
-| Générer des appels | Clics sur « Appeler » (mobile) | ≥ 40 par mois |
-| Faire de l'estimateur un outil de qualification | Estimations terminées, puis passage vers la demande de visite | ≥ 20 % des visites ; ≥ 15 % de passage |
-| Gagner la recherche locale | Top 3 du pack local Google sur « isolation / pompe à chaleur + Bayonne / Anglet / Ustaritz » | 3 requêtes sur 6 |
-| Renforcer la réputation | Avis Google | ≥ 60 avis, note ≥ 4,7 |
-| Réduire les demandes hors cible | Part des demandes hors zone ou hors métier | < 20 % |
-| Performance | LCP mobile, CLS | < 2,5 s ; < 0,1 |
+Pas de cible chiffrée : une entreprise fictive n'a aucun historique pour en fixer une. On suit ces indicateurs dès la mise en ligne.
+
+| Objectif | Indicateur à suivre |
+|---|---|
+| Générer des demandes de visite qualifiées | Formulaires « Visite gratuite » envoyés depuis la zone d'intervention, par mois |
+| Générer des appels | Clics sur « Appeler » (mobile), par mois |
+| Faire de l'estimateur un outil de qualification | Part des visiteurs qui terminent l'estimation, puis part de ceux qui passent à la demande de visite |
+| Gagner la recherche locale | Position dans le pack local Google sur « isolation / pompe à chaleur + Bayonne / Anglet / Ustaritz » |
+| Renforcer la réputation | Nombre et note des avis Google |
+| Réduire les demandes hors cible | Part des demandes hors zone ou hors métier |
+| Performance | LCP et CLS mobiles, sous les seuils « bons » des Core Web Vitals de Google (LCP de 2,5 s au plus, CLS de 0,1 au plus) |
 
 ## 4. Cibles et personas
 
@@ -48,7 +50,7 @@
   - craignent le bruit d'une PAC ;
   - se méfient de la complexité des aides ;
   - à l'aise sur le téléphone, beaucoup moins sur les formulaires.
-- **Ce qu'ils doivent trouver** : le numéro en gros, les visages de l'équipe, les labels vérifiables, les avis de gens du coin, l'engagement de ne pas démarcher.
+- **Ce qu'ils doivent trouver** : le numéro en gros, un « Qui sommes-nous » qui dit qui fait les travaux et d'où, les labels vérifiables, les avis de gens du coin, l'engagement de ne pas démarcher.
 
 ### Persona 2 : Laura et Iban, 34 et 36 ans, maison des années 1950 achetée à Hasparren, DPE F
 - **Job to be done** : « Maintenant qu'on a acheté, on veut savoir quels travaux faire en premier et combien d'aides on peut toucher, pour tout planifier avec notre budget et notre prêt. »
@@ -74,30 +76,30 @@
   - la disponibilité de l'artisan ;
   - la vacance locative pendant les travaux ;
   - l'éligibilité réduite aux aides pour les bailleurs.
-- **Ce qu'il doit trouver** : des cas de passage de classe (G → D, F → C), les délais types, le contact direct.
+- **Ce qu'il doit trouver** : des cas de passage de classe DPE, les étapes du chantier, le contact direct.
 
 ## 5. Messages clés et preuves
 
 | Message | Preuve attendue sur le site |
 |---|---|
 | « Rénovez, payez moins de chauffage, on s'occupe des aides » | Déroulé en 5 étapes, dont « on monte les dossiers avec vous » ; estimateur indicatif |
-| « Des artisans d'ici, pas des démarcheurs » | Photos réelles de l'équipe, adresse de l'atelier, engagement « on ne vous appelle jamais sans demande », lien vers France Rénov' |
-| « Certifiés et assurés, vérifiez par vous-même » | RGE et Qualibat avec numéros et liens vers les annuaires officiels ; assureur décennale et zone couverte |
+| « Des artisans d'ici, pas des démarcheurs » | Bloc « Qui sommes-nous » court, sans photo, adresse de l'atelier, engagement « on ne vous appelle jamais sans demande », lien vers France Rénov' |
+| « Certifiés et assurés, vérifiez par vous-même » | RGE avec numéro et lien vers l'annuaire officiel ; assureur décennale et zone couverte |
 | « Des résultats mesurés » | Avant/après : commune, travaux, classe DPE avant/après, gain estimé (audit), avis du client |
-| « Un seul interlocuteur du premier rendez-vous à la réception » | Portrait du chef de chantier référent |
+| « Un seul interlocuteur du premier rendez-vous à la réception » | Le chef de chantier référent nommé (prénom et fonction) dans le déroulé, sans portrait |
 | « Ce que disent nos clients » | Avis Google intégrés (note, nombre, lien vers la fiche), sans sélection trompeuse |
 
 ## 6. Arborescence et contenus attendus (one-page + pages légales)
 
-1. **Hero** : photo réelle de chantier avec l'équipe, « Rénovez, payez moins de chauffage, on s'occupe des aides », CTA « Visite gratuite » et numéro cliquable. Bandeau de réassurance : RGE (n°), décennale, X chantiers au Pays basque.
+1. **Hero** : photo réelle de chantier (mains, matériaux, maison), « Rénovez, payez moins de chauffage, on s'occupe des aides », CTA « Visite gratuite » et numéro cliquable. Bandeau de réassurance sans chiffre : RGE, décennale, atelier à Ustaritz.
 2. **Les travaux** : isolation, pompe à chaleur, menuiseries, rénovation globale. Pour chacun : 2 lignes, une photo réelle, et « ce que ça change » (confort, facture).
 3. **Estimation des aides** : revenus (tranches officielles de l'Anah par taille de foyer), commune, type de travaux → fourchette indicative MaPrimeRénov' + CEE. Barème daté, mention d'éligibilité, renvoi vers France Rénov'.
-4. **Réalisations avant/après** : 4 à 6 cas avec curseur avant/après, commune, travaux, classe DPE avant → après, gain estimé, extrait d'avis.
+4. **Réalisations avant/après** : 4 à 6 cas avec curseur avant/après, commune, travaux, classe DPE avant → après, gain estimé, extrait d'avis. Sur la démo, les champs chiffrés (classes, gain) restent des emplacements nommés, sans valeur : l'entreprise fictive n'a pas de résultat à montrer.
 5. **Déroulé en 5 étapes** : visite gratuite → audit ou étude (avec Mon Accompagnateur Rénov' si rénovation d'ampleur) → devis et dossier d'aides → travaux → réception et suivi.
-6. **Labels et assurances** : logos avec numéros et liens de vérification, assureur décennale et attestation téléchargeable.
-7. **Avis clients** : note et nombre d'avis Google, 3 à 6 avis récents, lien « Voir tous les avis ».
-8. **Zone d'intervention et contact** : carte (communes listées en texte), formulaire court, téléphone, horaires, adresse de l'atelier.
-- **Pied de page** : mentions légales (SIRET, RCS, assurance), confidentialité, cookies, déclaration d'accessibilité, page « Aides : comment on calcule ».
+6. **Labels et assurances** : logos avec numéros et liens de vérification, assureur décennale et attestation téléchargeable. Sur la démo, le numéro est remplacé par « numéro non publié : entreprise fictive ».
+7. **Avis clients** : note et nombre d'avis lus sur la fiche Google, 3 à 6 avis récents, lien « Voir tous les avis ». Sur la démo, la note et le nombre restent vides et les avis sont marqués « avis de démonstration ».
+8. **Qui sommes-nous, zone d'intervention et contact** : un « Qui sommes-nous » de 2 ou 3 phrases, sans photo, avec le logo (texte en section 9) ; carte (communes listées en texte), formulaire court, téléphone, horaires, adresse de l'atelier.
+- **Pied de page** : bandeau officiel France Rénov' et lien vers france-renov.gouv.fr, mentions légales (SIRET, RCS, assurance), confidentialité, cookies, déclaration d'accessibilité, page « Aides : comment on calcule ».
 - **Mobile** : barre fixe en bas avec « Appeler » et « Visite gratuite » ; estimateur en plein écran, une question par écran.
 
 ## 7. Contraintes
@@ -105,26 +107,26 @@
 ### Marque
 - **Palette** : blanc chaux, rouge basque profond, vert sapin, bois. Ne pas reproduire tel quel le drapeau basque (ikurriña).
 - **Typo** : Fraunces pour les titres, une sans lisible pour le texte.
-- **Photos** : uniquement de vrais chantiers, de l'équipe, des mains et des matériaux. Pas de banque d'images.
+- **Photos** : uniquement de vrais chantiers, des mains et des matériaux. Pas de banque d'images. Pas de photo d'équipe : un bloc « Qui sommes-nous » court, sans photo, la remplace (décision du bench, section « Arbitrages »).
 - **Ton** : honnête, artisanal, local, vouvoiement.
 
 ### Réglementaire
-- **RGE** : n'afficher que les qualifications détenues et en cours de validité, avec numéro et domaine. Rappeler que le RGE est requis pour MaPrimeRénov' et les CEE.
-- **Assurance décennale** : l'assureur et la couverture géographique doivent figurer sur les devis et factures. Sur le site, l'afficher ou proposer l'attestation, ce qui est recommandé.
+- **RGE** : on n'affiche que la mention RGE, avec numéro et domaine (sur la démo : « numéro non publié : entreprise fictive »). On rappelle que le RGE est obligatoire pour bénéficier de MaPrimeRénov' ([annuaire France Rénov'](https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte), vu le 2026-11-13).
+- **Assurance décennale** : l'assureur et la couverture géographique doivent figurer sur les devis et factures. Sur le site, on affiche l'assureur et on propose l'attestation.
 - **Aides** :
   - montants présentés comme indicatifs, « sous réserve d'éligibilité », avec la date du barème ;
-  - renvoi vers France Rénov' (0 808 800 700, service gratuit) ;
+  - renvoi vers France Rénov' : 0 808 800 700, du lundi au vendredi de 9 h à 18 h, « service gratuit + prix appel » ([page contact France Rénov'](https://france-renov.gouv.fr/contact), vu le 2026-11-13) ;
   - pas de « travaux gratuits » ni de « 1 € ».
-  - *Obligation de mention France Rénov' dans les publicités : à confirmer par un juriste.*
+- **Bandeau France Rénov' (obligation légale, appliquée)** : depuis le 1er octobre 2026, tout support de promotion ou de publicité qui propose des travaux de rénovation énergétique doit faire référence au service public France Rénov' avec le bandeau officiel ; amende administrative jusqu'à 15 000 € pour une personne physique et 75 000 € pour une personne morale ([France Rénov'](https://france-renov.gouv.fr/actualites/publicite-pour-la-renovation-energetique-obligation-desormais-de-faire-reference-au), vu le 2026-11-13). La loi du 30 juin 2025 (art. 14, Code de la consommation, art. L.122-26) demande aussi un lien vers le site du service public sur les sites qui proposent ces travaux ([ANIL](https://www.anil.org/aj-loi-lutte-fraude-aides-publiqus-renovation-energetique/), vu le 2026-11-13). On place le bandeau du kit de l'Anah, sans le redessiner, en pied de page et près du résultat de l'estimateur, avec un lien vers france-renov.gouv.fr.
 - **Démarchage** : aucune sollicitation non demandée. Le formulaire sert uniquement à rappeler la personne qui en fait la demande.
-- **Allégations environnementales** : pas de « écologique », « zéro carbone » ou « neutre ». Gains exprimés en classe DPE et en kWh estimés par l'audit (loi Climat et Résilience, directive UE 2024/825 : à valider par un juriste).
+- **Allégations environnementales** : pas de « écologique », « zéro carbone » ou « neutre ». Gains exprimés en classe DPE et en kWh estimés par l'audit. On applique la loi Climat et Résilience et la [directive (UE) 2024/825](https://eur-lex.europa.eu/eli/dir/2024/825/oj?locale=fr) sur l'information des consommateurs pour la transition verte (vue le 2026-11-13).
 - **RGPD** :
   - les données de revenus de l'estimateur ne sont pas conservées sans envoi du formulaire ;
   - consentement explicite ;
   - mesure d'audience exemptée (Matomo selon la CNIL) ou bandeau conforme.
 
 ### Accessibilité
-- WCAG 2.2 AA visé : contrastes (le rouge et le bois sur chaux sont à vérifier), boutons de 48 px, curseur avant/après utilisable au clavier, textes d'au moins 17 px (public senior).
+- WCAG 2.2 AA visé : contrastes (calculés dans le bench : rouge sur chaux 7,1:1, bois réservé au décor à 2,7:1), boutons de 48 px, curseur avant/après utilisable au clavier, textes d'au moins 17 px (public senior).
 
 ### SEO local
 - Google Business Profile complet et cohérent (même nom, adresse et téléphone partout).
@@ -133,7 +135,7 @@
 
 ### Langues
 - Français.
-- Basque (euskara) pour le slogan, les titres secondaires et une page « Nor gara » (qui sommes-nous). Traduction par un bascophone, pas automatique.
+- Basque (euskara) pour le slogan, les titres secondaires et le bloc « Nor gara » (qui sommes-nous). À produire : la traduction, par un bascophone, pas automatique.
 
 ### Technique
 - Site statique ou WordPress léger.
@@ -181,7 +183,10 @@ Sous-titre : « Isolation, pompe à chaleur et rénovation globale au Pays basqu
 |---|---|---|---|
 | A. Proximité | « Vos voisins nous ont fait confiance. Venez voir leurs chantiers. » | Chaleureux, local | Seniors, bouche-à-oreille, flyers |
 | B. Anti-démarchage | « On ne vous appellera jamais. C'est vous qui nous appelez. » | Franc, rassurant, un peu frondeur | Personnes déjà démarchées, posts réseaux sociaux |
-| C. Résultat | « De F à B : une maison plus chaude et une facture divisée. » (à reformuler selon un cas réel prouvé) | Concret, chiffré | Jeunes acheteurs et bailleurs, section Réalisations |
+| C. Résultat | « Avant, après : chaque chantier montre sa classe énergie, estimée par l'audit. » | Concret, vérifiable | Jeunes acheteurs et bailleurs, section Réalisations |
+
+### Bloc « Qui sommes-nous » (sans photo, avec le logo)
+« Arotz Rénovation est une entreprise du bâtiment installée à Ustaritz. Nous isolons, posons des pompes à chaleur et des menuiseries, et rénovons des maisons entières au Pays basque. Le même chef de chantier vous suit de la visite à la réception. »
 
 ### Libellés des CTA
 | Contexte | Libellé |
@@ -196,7 +201,7 @@ Sous-titre : « Isolation, pompe à chaleur et rénovation globale au Pays basqu
 | Formulaire | « Envoyer ma demande de visite » |
 
 ### Messages du formulaire
-- **Succès** : « Merci, votre demande est bien arrivée. Nous vous rappelons sous 48 h ouvrées, au créneau indiqué, pour fixer la visite. Pas de démarchage : ce sera notre seul appel si vous ne donnez pas suite. »
+- **Succès** : « Merci, votre demande est bien arrivée. Nous vous rappelons au créneau indiqué pour fixer la visite. Pas de démarchage : ce sera notre seul appel si vous ne donnez pas suite. »
 - **Erreur de champ** (ce qui s'est passé, pourquoi, comment corriger) : « Code postal incomplet : il faut 5 chiffres pour vérifier que vous êtes dans notre zone. Exemple : 64480. »
 - **Hors zone** : « Votre commune est hors de notre zone d'intervention (Pays basque et sud des Landes). Vous trouverez un artisan RGE proche de chez vous sur l'annuaire France Rénov'. »
 - **Erreur d'envoi** : « Votre demande n'a pas pu partir : la connexion a été interrompue. Vos réponses sont conservées. Réessayez, ou appelez-nous au 05 … »
@@ -204,11 +209,11 @@ Sous-titre : « Isolation, pompe à chaleur et rénovation globale au Pays basqu
 ## 10. Livrables
 
 - Benchmark et moodboard (3 pistes) ; choix d'une piste.
-- Shooting photo réel : une journée sur 2 chantiers et à l'atelier, plus les portraits.
+- À produire : un shooting d'une journée sur 2 chantiers et à l'atelier (chantiers, mains, matériaux, avant et après du même point de vue). Pas de portraits : le bloc « Qui sommes-nous » se lit sans photo.
 - Wireframes et maquettes, mobile d'abord : états de l'estimateur, curseur avant/après, barre mobile.
 - Mini design system (couleurs, typos, boutons, cartes, formulaires).
 - Développement, CMS, formulaire (e-mail et SMS à l'assistante), intégration des avis Google.
-- Estimateur : barèmes saisis dans le CMS avec une date, spécification validée par le client.
+- Estimateur : barèmes officiels de l'Anah saisis dans le CMS avec leur date, spécification écrite par l'agence.
 - Rédaction FR, traduction basque des éléments choisis, optimisation de la fiche Google.
 - Recette, accessibilité, mise en ligne, formation d'une heure.
 
@@ -216,24 +221,18 @@ Sous-titre : « Isolation, pompe à chaleur et rénovation globale au Pays basqu
 
 | Semaine | Étape |
 |---|---|
-| S1 | Atelier de lancement, collecte (labels, chantiers, avis), planification du shooting |
+| S1 | Atelier de lancement, rédaction des contenus de démo (labels sans numéro, chantiers, avis de démonstration), planification du shooting |
 | S2 | Benchmark, moodboard, choix de piste, tests d'entretien |
 | S3 | Wireframes mobile, spécification de l'estimateur, shooting photo |
 | S4 | Tests d'usabilité (5), maquettes UI |
 | S5-S6 | Développement, CMS, estimateur, avis |
 | S7 | Contenus, traduction basque, fiche Google, recette |
-| S8 | Mise en ligne et suivi des KPIs |
+| S8 | Mise en ligne et suivi des indicateurs |
 | Phase 2 (M+2) | Pages par commune ou par travaux, nouveaux cas |
 
-## 12. Budget indicatif (France, HT)
+## 12. Budget
 
-Estimations de marché, non sourcées : à confronter aux devis.
-
-| Prestataire | Fourchette | Commentaire |
-|---|---|---|
-| Freelance (design + intégration WordPress ou statique) | 3 000 à 7 000 € | Estimateur simple, avant/après, avis |
-| Petite agence locale ou studio | 8 000 à 15 000 € | Shooting inclus, rédaction, SEO local, tests utilisateurs |
-| Options | Shooting 800 à 1 500 € par jour ; traduction basque 300 à 800 € ; maintenance 50 à 150 € par mois ; optimisation de la fiche Google 300 à 600 € | |
+Pas de budget chiffré : aucune grille tarifaire publique n'a été ouverte pour ce projet, donc aucun montant n'est avancé. Postes à chiffrer sur devis : design et intégration, estimateur, shooting, traduction basque, optimisation de la fiche Google, maintenance.
 
 ## 13. Critères de réussite
 
@@ -241,6 +240,6 @@ Estimations de marché, non sourcées : à confronter aux devis.
 - Aucun testeur ne compare le site à un site de démarcheur.
 - Le téléphone est trouvé en moins de 3 secondes sur mobile par les seniors.
 - Chaque label affiché est vérifiable en un clic, et aucun montant d'aide n'est présenté comme garanti.
-- Les KPIs à 6 mois sont atteints (section 3).
+- Les indicateurs de la section 3 sont mesurés dès la mise en ligne.
 - Les scores Lighthouse mobile sont d'au moins 90 en performance et en accessibilité.
 - L'assistante met à jour seule les réalisations, les avis et le barème.

@@ -8,20 +8,24 @@ Ce bench suit le brief bloc par bloc : chaque inspiration est rattachée à un b
 - **14 références sur 20 vues et capturées.** Les 2 liens Pinterest (n° 15 et 16) s'ouvrent, mais une fenêtre de connexion recouvre la page : seul le texte a été lu, aucune capture. Les 3 liens Behance (n° 4, 19 et 20) renvoient une **erreur HTTP 400** au navigateur automatisé. Lapa Ninja (n° 18) affiche **« Sorry, you have been blocked »** (Cloudflare). Aucune protection n'a été contournée. Ces références gardent leur texte, marqué **non vérifié**.
 - **Remplacées par des pages ouvertes** : n° 18 par le vrai site de Quilt, n° 19 par l'accueil d'Effy. Le n° 20 (Manatee) n'a pas de remplaçant : la seule trace trouvée est une adresse de préproduction, pas un site public.
 - **6 références ajoutées** (n° 21 à 26) : un shot de PAC en français, la fiche d'un artisan du 64 sur l'annuaire Effy, 2 pages officielles France Rénov', un vrai site d'entreprise de rénovation avec curseur avant/après, et un shot avant/après en même cadrage.
-- **Corrections du premier passage** (les faits sont repris dans les tableaux) : le bandeau France Rénov' est obligatoire depuis le 1er octobre 2026 (n° 23, voir « Points à remonter au client ») ; Final Touch Carpentry (n° 2) a 2 boutons fantômes de même poids et son site renvoie vers une autre activité ; le shot n° 3 n'a ni icônes de services ni curseur ; le shot n° 6 est un seul écran de résultat ; le shot n° 8 n'est pas un avant/après de chantier ; le lien du vrai site du n° 9 est mort ; PRB (n° 14) montre des rendus contemporains ; One Page Love compte 2 exemples de menuisiers et 9 de construction ; le tag « heat-pumps » (n° 17) n'est pas dominé par le bleu.
+- **Corrections du premier passage** (les faits sont repris dans les tableaux) : le bandeau France Rénov' est obligatoire depuis le 1er octobre 2026 (n° 23, voir « Arbitrages ») ; Final Touch Carpentry (n° 2) a 2 boutons fantômes de même poids et son site renvoie vers une autre activité ; le shot n° 3 n'a ni icônes de services ni curseur ; le shot n° 6 est un seul écran de résultat ; le shot n° 8 n'est pas un avant/après de chantier ; le lien du vrai site du n° 9 est mort ; PRB (n° 14) montre des rendus contemporains ; One Page Love compte 2 exemples de menuisiers et 9 de construction ; le tag « heat-pumps » (n° 17) n'est pas dominé par le bleu.
 - Aucun formulaire n'a été rempli ni envoyé. Le parcours Effy (n° 5) n'a pas été avancé au-delà du premier écran, car chaque réponse part vers leur serveur. Sur les captures, les photos de clients (n° 10) et les signatures et avatars de designers (Dribbble, Awwwards) ont été masqués.
 - **Refonte du 2026-11-12** :
   - tri des 26 références : **11 inspirations** et **15 à côté**. Les captures sont rangées dans [`captures/inspis/`](captures/inspis/) et [`captures/a-cote/`](captures/a-cote/), sans renommage : le préfixe reste le numéro de la référence, et les numéros ne changent pas ;
   - le bench est réorganisé selon l'arborescence du brief (section 6), puis le mobile, les directions, les tokens et la liste des références à côté ;
   - **aucune nouvelle référence**. Deux blocs n'ont pas d'inspiration (déroulé en 5 étapes, zone et contact). La recherche de complément n'a rien donné d'exploitable : Dribbble affiche maintenant une vérification anti-robots (« Let's confirm you are human »), non contournée ; les sections « How it works » et « Timeline » de One Page Love ne montrent que des produits numériques ; sur Awwwards, le site de Bam Rénovation déclenche un téléchargement au lieu d'une page et n'a pas été ouvert. Détail dans « Galeries : requêtes lancées » ;
   - **tokens corrigés** pour suivre le brief (textes d'au moins 17 px, boutons de 48 px) et WCAG 2.2 AA : `type.small` passe de 15 à 17 px, `type.label` de 16 à 17 px, la poignée du curseur de 44 à 48 px, les bordures de champs de `neutral.300` (1,4:1) à `neutral.500` (3,7:1), et le bois ne sert plus aux icônes porteuses de sens (2,7:1, sous le seuil de 3:1). La direction B reçoit un garde-fou sur le drapeau basque.
+- **Passe du 2026-11-13** : il n'y a pas de client, l'entreprise est fictive. Les anciens points ouverts deviennent des décisions (« Arbitrages »). Recherche de photos d'équipe : Unsplash répond « Access Denied » et Pexels affiche une vérification Cloudflare au navigateur automatisé, rien n'a été contourné. Aucune photo d'équipe n'est retenue : un bloc « Qui sommes-nous » court, sans photo, la remplace, et les exigences de photo d'équipe sont retirées du bench.
 
 **Répartition** : 26 références. Sites réels du secteur 9 (dont 2 officiels et les 2 remplaçants) · Dribbble 9 · One Page Love 2 · Awwwards 2 · Behance 2 (inaccessibles) · Pinterest 2 (mur de connexion). Les n° 18 (Lapa Ninja, bloqué) et 19 (Behance, inaccessible) sont comptés avec le site réel qui les remplace.
 
-## Points à remonter au client
+## Arbitrages
 
-- **Bandeau France Rénov' obligatoire.** Le brief classe la mention France Rénov' dans les publicités « à confirmer par un juriste ». Or la loi Cazenave l'impose depuis le **1er octobre 2026** sur tout support de promotion de travaux de rénovation énergétique, avec un bandeau officiel, et prévoit une amende jusqu'à 75 000 € pour une société (page officielle, n° 23). Le bench prévoit le composant ; le brief n'est pas modifié. Au client de faire valider l'emplacement par un juriste et de récupérer le kit officiel dans l'espace professionnels de France Rénov'.
-- **Qualibat.** Le brief cite « RGE et Qualibat avec numéros » dans les messages clés (section 5), mais seulement le RGE dans la présentation (section 1). Comme le brief interdit d'afficher une qualification non détenue, le client doit confirmer la liste exacte (organisme, numéro, domaine, validité) avant les maquettes.
+- **Bandeau France Rénov'.** On l'applique : le bandeau officiel du kit de l'Anah, sans le redessiner, en pied de page et près du résultat de l'estimateur, plus un lien vers france-renov.gouv.fr. La loi Cazenave l'impose depuis le 1er octobre 2026 sur tout support de promotion de travaux de rénovation énergétique, avec une amende jusqu'à 75 000 € pour une personne morale ([France Rénov'](https://france-renov.gouv.fr/actualites/publicite-pour-la-renovation-energetique-obligation-desormais-de-faire-reference-au), n° 23, revu le 2026-11-13). Le brief est mis à jour (section 7).
+- **Qualibat.** On n'affiche que la mention RGE, seule qualification de la présentation de l'entreprise (brief, section 1). Afficher Qualibat en plus reviendrait à montrer une qualification que rien ne dit détenue, ce que le brief interdit ; la section 5 du brief est alignée.
+- **Numéros des labels.** Sur la démo, la carte label garde tous ses champs (organisme, domaine, validité, lien de vérification), et le numéro est remplacé par « numéro non publié : entreprise fictive ». Un faux numéro RGE tromperait le visiteur qui clique pour vérifier.
+- **Photos d'équipe.** On met un bloc « Qui sommes-nous » de 2 ou 3 phrases, sans photo, avec le logo (texte dans le brief, section 9). Unsplash et Pexels ont bloqué la recherche, et le brief interdit la banque d'images. Le hero montre un chantier (mains, matériaux), pas l'équipe.
+- **Chiffres de l'entreprise.** Le bandeau de réassurance dit « RGE, décennale, atelier à Ustaritz », sans nombre de chantiers. Sur les cartes réalisations et le bloc avis, les champs chiffrés (classes DPE, gain estimé, note, nombre d'avis) restent des emplacements nommés, sans valeur : une entreprise fictive n'a pas de résultat à montrer.
 
 ---
 
@@ -29,26 +33,26 @@ Ce bench suit le brief bloc par bloc : chaque inspiration est rattachée à un b
 
 | Exigence du brief | Inspirations | Manque |
 |---|---|---|
-| 1. Hero : équipe sur un chantier, CTA « Visite gratuite », numéro cliquable, bandeau de réassurance | 1, 25 | Aucun hero vu avec un bandeau de réassurance chiffré **et numéroté** (Aira aligne des logos sans numéro). Le numéro de téléphone en gros à côté du CTA n'a été vu nulle part. |
+| 1. Hero : photo de chantier, CTA « Visite gratuite », numéro cliquable, bandeau de réassurance | 1, 25 | Aucun hero vu avec un bandeau de réassurance **numéroté** (Aira aligne des logos sans numéro). Le numéro de téléphone en gros à côté du CTA n'a été vu nulle part. |
 | 2. Les travaux : 4 travaux, photo réelle, « ce que ça change » | 18, 10 | Aucune grille de services vue avec photo réelle et bénéfice concret : le seul exemple (n° 3) utilise la banque d'images. À dessiner. |
 | 3. Estimation des aides : questions, fourchette indicative, barème daté, renvoi France Rénov' | 5, 1, 6, 23 | Aucun exemple de tranches de revenus Anah par taille de foyer. Le moment où Effy demande les coordonnées n'est pas vérifié. |
 | 4. Réalisations avant/après : curseur, commune, travaux, DPE avant → après, gain estimé, avis | 25, 26, 7, 10, 11 | Aucune carte vue qui réunit curseur et badges DPE : Hellio met la classe dans le titre, NSH n'a pas de donnée énergétique. |
 | 5. Déroulé en 5 étapes | aucune | Le seul exemple de procédé en étapes (Farbenhaus, n° 13) est hors ligne et connu par le texte de sa fiche. La recherche de complément n'a rien donné. À dessiner, en s'appuyant sur la piste C. |
 | 6. Labels et assurances : numéros, liens de vérification, attestation décennale | 24 | Aucune carte label avec numéro vue en production. L'attestation décennale téléchargeable n'a été vue nulle part. |
 | 7. Avis clients : note, nombre, 3 à 6 avis récents, lien vers tous les avis | 18, 5 | Aucune intégration d'avis Google vue. Le seul carrousel d'avis observé en détail est filtré (Aira, n° 1). |
-| 8. Zone d'intervention et contact : carte, communes en texte, formulaire court, horaires, adresse | aucune | Ni carte avec communes en texte, ni formulaire court vus. Seul détail : les horaires collés au téléphone, chez Wambreck (n° 21, à côté). |
+| 8. Qui sommes-nous, zone d'intervention et contact : « Qui sommes-nous » court sans photo, carte, communes en texte, formulaire court, horaires, adresse | aucune | Ni carte avec communes en texte, ni formulaire court vus. Seul détail : les horaires collés au téléphone, chez Wambreck (n° 21, à côté). |
 | Pied de page : mentions, bandeau réglementaire | 23 | Mentions légales et déclaration d'accessibilité non étudiées. |
 | Mobile : barre fixe « Appeler » et « Visite gratuite » | aucune | Aucun des 3 sites vus en mobile n'a de barre fixe. NSH (n° 25) montre seulement des CTA pleine largeur. |
 | Mobile : estimateur plein écran, une question par écran | 5 | Néant. |
 | Marque : palette chaux, rouge basque, vert sapin, bois | aucune | Aucune référence vue avec cette palette. Le rouge est courant chez les marques de PAC (n° 17, à côté) : il reste réservé aux CTA. |
 | Marque : Fraunces pour les titres | 18, 25 | Néant : Quilt (serif pour les titres) et NSH (seconde ligne en serif italique) confirment le choix. |
-| Marque : photos réelles de chantiers, d'équipe, de mains | 1, 18, 25, 26 | Le shooting reste à faire, avec avant et après du même point de vue (n° 26). |
+| Marque : photos réelles de chantiers, de mains et de matériaux, pas de photo d'équipe | 18, 25, 26 | À produire : le shooting de chantier, avec avant et après du même point de vue (n° 26). |
 | Accessibilité : curseur avant/après au clavier | 25 | Néant. |
 | Accessibilité : boutons de 48 px, textes de 17 px | 5 | Contre-exemple : l'icône téléphone de 31 px d'Aira en mobile (n° 1). |
 | Preuve « Des artisans d'ici, pas des démarcheurs » | 1, 10 | Aucun engagement « on ne vous appelle jamais sans demande » vu. L'adresse de l'atelier n'est mise en avant nulle part. |
 | Preuve « Certifiés et assurés, vérifiez par vous-même » | 24 | Voir le bloc 6. |
 | Preuve « Des résultats mesurés » | 11, 7, 10 | Voir le bloc 4. |
-| Preuve « Un seul interlocuteur » | 10 | Aucun portrait de chef de chantier référent vu : Aira nomme seulement le technicien par son prénom. |
+| Preuve « Un seul interlocuteur » | 10 | Néant : Aira nomme le technicien par son prénom, Arotz nomme de même son chef de chantier référent, sans portrait. |
 | Preuve « Avis sans sélection trompeuse » | aucune | Aucune référence ne prouve l'absence de filtre. Aira annonce même « Showing our 4 & 5 star reviews » (n° 1). |
 | Réglementaire : renvoi et bandeau France Rénov' | 23, 24 | Le kit officiel n'a pas été ouvert. |
 
@@ -60,10 +64,10 @@ Ce bench suit le brief bloc par bloc : chaque inspiration est rattachée à un b
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 1 | Aira : Heat pump installation (site réel, UK), https://www.airahome.com/en-gb/heat-pump-installation-2 | [hero](captures/inspis/01-aira-installation.jpg) | Texte alternatif confirmé : deux installateurs bras croisés devant la camionnette jaune Aira, une pastille ronde « Which? Trusted Trader » posée sur la photo. Fond blanc, H1 en airaText 400, 54 px, `#222226`, CTA « Get a quote » `#222226` sur orange `#FFAF51` (8,7:1). Le téléphone est en texte dans l'en-tête. Version Arotz : l'équipe et la pastille RGE **avec son numéro** dans la même image. | « Photo réelle de chantier avec l'équipe » et bandeau de réassurance « RGE (n°) » |
+| 1 | Aira : Heat pump installation (site réel, UK), https://www.airahome.com/en-gb/heat-pump-installation-2 | [hero](captures/inspis/01-aira-installation.jpg) | Texte alternatif confirmé : deux installateurs bras croisés devant la camionnette jaune Aira, une pastille ronde « Which? Trusted Trader » posée sur la photo. Fond blanc, H1 en airaText 400, 54 px, `#222226`, CTA « Get a quote » `#222226` sur orange `#FFAF51` (8,7:1). Le téléphone est en texte dans l'en-tête. Version Arotz : une photo de chantier (mains, matériaux) et la pastille RGE dans la même image, sans photo d'équipe (voir « Arbitrages »). | « Photo réelle de chantier » et bandeau de réassurance « RGE, décennale, atelier à Ustaritz » |
 | 25 | NSH Renovierung (Vechta), https://nsh-renovierung.de/ | [hero](captures/inspis/25-nsh-renovierung-site-reel.jpg) | H1 en Inter 800, 77 px, puis une seconde ligne en serif italique (« Neues Lebensgefühl. »), pastille « Bauunternehmen & Generalunternehmer in Vechta », un seul bouton bleu « Kostenlose Beratung » (blanc sur `#0B4EEE`, 6,3:1). | Un seul CTA « Visite gratuite », l'ancrage local dès le hero, Fraunces italique pour la seconde ligne |
 
-À éviter : 2 boutons fantômes de même poids (n° 2, à côté) et des chiffres qui se contredisent (« 80+ » projets et « +23 » clients dans le hero de NSH, « über 150 » clients plus bas). Deux détails pris à des références à côté : des chiffres avec leur définition à côté (« <24 Hrs » d'intervention, FTCC, n° 2), pour « X chantiers au Pays basque » ; « Je calcule mes aides » en second bouton du hero (Wambreck, n° 21), pour mener vers l'estimateur.
+À éviter : 2 boutons fantômes de même poids (n° 2, à côté) et des chiffres qui se contredisent (« 80+ » projets et « +23 » clients dans le hero de NSH, « über 150 » clients plus bas). Un détail pris à une référence à côté : « Je calcule mes aides » en second bouton du hero (Wambreck, n° 21), pour mener vers l'estimateur. Les chiffres avec leur définition de FTCC (« <24 Hrs » d'intervention, n° 2) ne sont pas repris : la démo n'affiche aucun chiffre d'entreprise.
 
 ### 2. Les travaux
 
@@ -81,7 +85,7 @@ Ce bench suit le brief bloc par bloc : chaque inspiration est rattachée à un b
 | 5 | Effy : Estimez votre prime énergie (site réel), https://www.effy.fr/parcours/1/accueil | [desktop](captures/inspis/05-effy-parcours.jpg), [mobile](captures/inspis/mobile-effy-parcours.jpg) | L'URL redirige vers `/parcours/1/travaux-aides/logement-type`. Une question, 2 grandes cartes à pictogramme et bouton radio (maison, appartement), barre de progression bleue `#4754FF` en haut, pastille « En 2 minutes ! ». Sur mobile : « 1/4 Votre logement », cartes de 312×64 px. | « Estimateur en plein écran, une question par écran » ; « tranches de revenus » en choix, jamais en champ libre |
 | 1 | Aira : Heat pump installation | [questions](captures/inspis/01-aira-installation-questions.jpg) | « Answer 4 quick questions » avec 5 cartes à pictogramme (type de maison), directement dans la page. | Entrée de l'estimateur depuis le one-page, avec le nombre de questions annoncé |
 | 6 | Mobile Energy Savings Calculator (Dribbble), https://dribbble.com/shots/787436-Mobile-Energy-Savings-Calculator | [capture](captures/inspis/06-dribbble-mobile-energy-calculator.jpg) | Un seul écran de résultat (400×300 px) : « 38 % Saved per year* » en très grand, la note « *based on US national… » collée dessous. Version Arotz : la fourchette d'aides en grand, « indicatif, barème du JJ/MM/AAAA, sous réserve d'éligibilité » juste dessous. | « Fourchette indicative MaPrimeRénov' + CEE », « barème daté, mention d'éligibilité » ; aucun montant présenté comme garanti (critères de réussite) |
-| 23 | Publicité pour la rénovation énergétique : obligation de faire référence à France Rénov' (site officiel), https://france-renov.gouv.fr/actualites/publicite-pour-la-renovation-energetique-obligation-desormais-de-faire-reference-au | [capture](captures/inspis/23-france-renov-bandeau-publicite.jpg) | Le bandeau officiel : Marianne, logo France Rénov' et « Avant de vous engager, le service public vous informe gratuitement… ». À placer près du résultat. | « Renvoi vers France Rénov' » et obligation légale (voir « Points à remonter au client ») |
+| 23 | Publicité pour la rénovation énergétique : obligation de faire référence à France Rénov' (site officiel), https://france-renov.gouv.fr/actualites/publicite-pour-la-renovation-energetique-obligation-desormais-de-faire-reference-au | [capture](captures/inspis/23-france-renov-bandeau-publicite.jpg) | Le bandeau officiel : Marianne, logo France Rénov' et « Avant de vous engager, le service public vous informe gratuitement… ». À placer près du résultat. | « Renvoi vers France Rénov' » et obligation légale (voir « Arbitrages ») |
 
 À éviter : le code « plateforme nationale » d'Effy (mascotte, jaune vif, mensualité, n° 19, à côté). **Non vérifié** : le moment où Effy demande les coordonnées. Chez Arotz, le résultat s'affiche avant toute demande de contact.
 
@@ -118,15 +122,15 @@ Aucune inspiration. Le seul procédé en étapes trouvé est celui de Farbenhaus
 
 À éviter : « Showing our 4 & 5 star reviews » (Aira, n° 1), contraire à « sans sélection trompeuse ».
 
-### 8. Zone d'intervention et contact
+### 8. Qui sommes-nous, zone d'intervention et contact
 
-Aucune inspiration : ni carte avec les communes en texte, ni formulaire court n'ont été vus. Un seul détail, pris à une référence à côté : les horaires écrits à côté du téléphone (« Du lundi au vendredi, 8h à 19h », Wambreck, n° 21). Les messages du formulaire (succès, erreur, hors zone) sont déjà rédigés dans le brief.
+Le « Qui sommes-nous » est un texte de 2 ou 3 phrases avec le logo, sans photo (voir « Arbitrages ») : il n'appelle pas de référence visuelle. Aucune inspiration pour le reste : ni carte avec les communes en texte, ni formulaire court n'ont été vus. Un seul détail, pris à une référence à côté : les horaires écrits à côté du téléphone (« Du lundi au vendredi, 8h à 19h », Wambreck, n° 21). Les messages du formulaire (succès, erreur, hors zone) sont déjà rédigés dans le brief.
 
 ### Pied de page
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 23 | France Rénov' : obligation de faire référence à France Rénov' | [capture](captures/inspis/23-france-renov-bandeau-publicite.jpg) | Le bandeau officiel, tel que fourni dans le kit, sans le redessiner. Amende jusqu'à 15 000 € (personne physique) et 75 000 € (personne morale). | Renvoi vers France Rénov' (0 808 800 700) ; obligation légale à remonter au client |
+| 23 | France Rénov' : obligation de faire référence à France Rénov' | [capture](captures/inspis/23-france-renov-bandeau-publicite.jpg) | Le bandeau officiel, tel que fourni dans le kit, sans le redessiner. Amende jusqu'à 15 000 € (personne physique) et 75 000 € (personne morale). | Renvoi vers France Rénov' (0 808 800 700, [page contact](https://france-renov.gouv.fr/contact), vue le 2026-11-13) ; obligation légale appliquée (voir « Arbitrages ») |
 
 ---
 
@@ -153,7 +157,7 @@ Le brief demande un moodboard en **3 pistes** (section 10). Les 3 directions son
 **A. « Atelier » (recommandée)**
 Fond blanc chaux, titres Fraunces en vert sapin, rouge basque réservé aux CTA, photos réelles chaudes (bois, laine, mains).
 Les avant/après sont la colonne vertébrale de la page, et les labels numérotés apparaissent comme des tampons.
-Inspirations : l'équipe et le label dans la photo (n° 1), la PAC posée dans un vrai intérieur et la serif chaleureuse (n° 18), la carte avant/après en production (n° 25), le même cadrage avant/après (n° 26).
+Inspirations : le label posé dans la photo (n° 1), la PAC posée dans un vrai intérieur et la serif chaleureuse (n° 18), la carte avant/après en production (n° 25), le même cadrage avant/après (n° 26).
 Sensation : un artisan fier de son travail, local et vérifiable.
 
 **B. « Etxe » (maison basque)**
@@ -213,7 +217,7 @@ Les couleurs DPE (étiquette A à G) servent **uniquement** aux badges de classe
 | `color.brand.lime-light` | `#FBF8F2` | Cartes, estimateur |
 | `color.semantic.success` | `#2E6B3F` | Demande envoyée, éligible |
 | `color.semantic.error` | `#B3261E` | Erreur de champ : toujours avec une icône, pour ne pas se confondre avec le rouge de marque |
-| `color.semantic.warning` | `#A15C00` | Hors zone, barème à confirmer |
+| `color.semantic.warning` | `#A15C00` | Hors zone, barème périmé |
 | `color.semantic.info` | `#2D5C7A` | Mentions sur les aides, infobulles |
 | `color.neutral.900` | `#1E1A17` | Texte courant |
 | `color.neutral.700` | `#4A433D` | Texte secondaire, légendes |
@@ -283,8 +287,8 @@ Des angles doux pour un registre artisanal.
   - Photos avant et après du même point de vue (n° 26).
   - Puis badges DPE avant → après, commune, travaux, durée, extrait d'avis en `type.quote` (n° 7), et le bloc « le chantier en bref » d'Aira (n° 10).
   - Filtres par travaux au-dessus de la grille (isolation, PAC, menuiseries, rénovation globale).
-- **Carte label** : logo, nom de la qualification, numéro, domaine, date de validité, lien « Vérifier notre certification RGE » vers l'annuaire France Rénov' (n° 24). Assureur décennale, zone couverte et attestation téléchargeable à côté.
-- **Bandeau France Rénov'** (obligatoire depuis le 1er octobre 2026, n° 23) : le bandeau officiel tel que fourni dans le kit, sans le redessiner, en pied de page et près du résultat de l'estimateur. Emplacement à valider par un juriste.
+- **Carte label** : logo, nom de la qualification, numéro (sur la démo : « numéro non publié : entreprise fictive »), domaine, date de validité, lien « Vérifier notre certification RGE » vers l'annuaire France Rénov' (n° 24). Assureur décennale, zone couverte et attestation téléchargeable à côté.
+- **Bandeau France Rénov'** (obligatoire depuis le 1er octobre 2026, n° 23) : le bandeau officiel tel que fourni dans le kit, sans le redessiner, en pied de page et près du résultat de l'estimateur, avec un lien vers france-renov.gouv.fr (loi du 30 juin 2025, art. 14, [ANIL](https://www.anil.org/aj-loi-lutte-fraude-aides-publiqus-renovation-energetique/), vu le 2026-11-13).
 - **Formulaire / estimateur** :
   - une question par écran sur mobile, avec une barre de progression et l'étape nommée (« 1/4 Votre logement », comme Effy, n° 5) ;
   - libellés visibles et aide en `type.small` (17 px) ;
@@ -304,7 +308,7 @@ Des angles doux pour un registre artisanal.
 | Erreur en texte et icône (ce qui s'est passé, pourquoi, comment corriger), en `semantic.error` distinct du rouge de marque | Erreur signalée uniquement par une bordure rouge |
 | Boutons d'au moins 48 px et texte de 17 px ou plus | Petits liens gris « rappel gratuit », icône téléphone de 31 px |
 | Rouge réservé à l'action principale | Rouge partout (titres, fonds, icônes) |
-| Photos réelles de chantiers et d'équipe, avant et après du même point de vue | Banque d'images, rendus 3D de PAC |
+| Photos réelles de chantiers et de mains, avant et après du même point de vue ; un « Qui sommes-nous » court à la place des portraits | Banque d'images, rendus 3D de PAC |
 
 ---
 
@@ -347,3 +351,5 @@ Références gardées avec leur raison. Quand un détail utile en a été tiré,
 | 2026-11-12 (refonte) | Dribbble | Recherche « how it works steps timeline » | Vérification anti-robots (« Let's confirm you are human »). Arrêt, rien contourné. |
 | 2026-11-12 (refonte) | One Page Love | Sections `how-it-works` (198 exemples) et `timeline` (109) | Premiers exemples : produits numériques et portfolios (Clips, Flashform, Statements, Petrillo…). Rien pour un artisan. |
 | 2026-11-12 (refonte) | Awwwards | Recherche « renovation » | 4 fiches : NYC Renovation (2025), Bam Rénovation (2024, Studio Waaz, maçonnerie), RS.D Agencements & Rénovation (2020), Total Renovation Contractors (2017). Le site de Bam Rénovation déclenche un téléchargement au lieu d'une page : pas ouvert. Les 3 autres n'ont pas été ouverts. |
+| 2026-11-13 | Unsplash | Recherche « insulation worker » (photos d'équipe), puis l'accueil | « Access Denied » sur les deux pages. Arrêt, rien contourné. |
+| 2026-11-13 | Pexels | Recherche « insulation worker » | Vérification Cloudflare (« Performing security verification »). Arrêt, rien contourné. Décision : « Qui sommes-nous » sans photo. |
