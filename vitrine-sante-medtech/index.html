@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Veilla · Télésurveillance après chirurgie ambulatoire</title>
+<meta name="description" content="Veilla sécurise le retour à domicile après une chirurgie ambulatoire : un court questionnaire quotidien pour le patient, une alerte pour l'équipe seulement en cas de signal anormal. Site de démonstration, entreprise fictive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Veilla (entreprise fictive, site de démonstration)","description":"Logiciel de télésurveillance des patients après une chirurgie ambulatoire. Entreprise fictive.","address":{"@type":"PostalAddress","addressLocality":"Lyon","addressCountry":"FR"}}
+</script>
+<style>
+:root{
+  --color-brand-primary:#1F3A5F;
+  --color-brand-primary-hover:#162B47;
+  --color-brand-primary-light:#2D5A8A;
+  --color-brand-secondary:#4E6B57;
+  --color-brand-secondary-strong:#3F5E49;
+  --color-brand-secondary-soft:#7A9A82;
+  --color-brand-secondary-tint:#E3EBE4;
+  --color-success:#2E6B47;
+  --color-alert:#B3261E;
+  --color-warning:#8A5A00;
+  --color-info:#1F5F8B;
+  --color-neutral-0:#FFFFFF;
+  --color-neutral-50:#FAF8F4;
+  --color-neutral-100:#EEEAE3;
+  --color-neutral-300:#D6D0C6;
+  --color-neutral-600:#5A6670;
+  --color-neutral-900:#1E2A33;
+  --alert-bg:#FBEAE8;
+  --warning-bg:#F6ECD8;
+  --success-bg:#E2EFE6;
+  --info-bg:#E4EDF4;
+  --font-body:"Atkinson Hyperlegible",Verdana,"Segoe UI",Tahoma,sans-serif;
+  --font-title:"Source Sans 3","Source Sans Pro","Segoe UI",Helvetica,Arial,sans-serif;
+  --radius-sm:4px;--radius-md:8px;--radius-lg:16px;--radius-full:999px;
+  --shadow-sm:0 1px 2px rgba(30,42,51,.06);
+  --shadow-md:0 4px 16px rgba(30,42,51,.08);
+  --shadow-lg:0 16px 40px rgba(30,42,51,.12);
+  --focus-ring:0 0 0 3px #FAF8F4,0 0 0 6px #2D5A8A;
+  --duration-fast:120ms;--duration-base:200ms;--duration-slow:400ms;
+  --ease-standard:cubic-bezier(.2,0,0,1);
+  --gutter:clamp(16px,4vw,48px);
+  --maxw:1320px;
+  --header-h:72px;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--color-neutral-50);color:var(--color-neutral-900);font-family:var(--font-body);font-size:18px;line-height:1.6;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-title);color:var(--color-brand-primary);margin:0;text-wrap:balance}
+h1{font-size:52px;line-height:1.1;font-weight:700;letter-spacing:-.01em}
+h2{font-size:40px;line-height:1.2;font-weight:700;letter-spacing:-.005em}
+h3{font-size:24px;line-height:1.3;font-weight:600}
+p{margin:0}
+a{color:var(--color-brand-primary-light);text-underline-offset:3px}
+a:hover{color:var(--color-brand-primary)}
+:focus{outline:none}
+:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--color-brand-primary);color:#fff;padding:12px 20px;border-radius:var(--radius-md);font-weight:700;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
+.caption{font-size:18px;line-height:1.5;color:var(--color-neutral-600)}
+.lead{font-size:20px;line-height:1.6;max-width:62ch}
+.ico{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--radius-md);font-family:var(--font-body);font-size:18px;font-weight:700;line-height:1.2;text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color var(--duration-fast) var(--ease-standard),transform var(--duration-fast) var(--ease-standard),color var(--duration-fast)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--color-brand-primary);color:#fff}
+.btn-primary:hover{background:var(--color-brand-primary-hover);color:#fff}
+.btn-patient{background:var(--color-brand-secondary-strong);color:#fff;font-size:20px;min-height:56px}
+.btn-patient:hover{background:#334D3C;color:#fff}
+.btn-secondary{background:transparent;border-color:var(--color-brand-primary);color:var(--color-brand-primary)}
+.btn-secondary:hover{background:var(--color-brand-secondary-tint);color:var(--color-brand-primary)}
+.btn[disabled]{background:var(--color-neutral-300);color:var(--color-neutral-600);cursor:progress}
+.link-arrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;min-height:44px;max-width:100%}
+
+/* Pro mention */
+.pro{display:inline-flex;align-items:center;gap:8px;font-size:18px;line-height:1.4;color:var(--color-info);background:var(--info-bg);border-radius:var(--radius-sm);padding:6px 12px;margin-bottom:20px}
+
+/* Status pills */
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--radius-full);padding:3px 11px 3px 8px;font-weight:700;white-space:nowrap;line-height:1.3}
+.pill .ico{stroke-width:2.4}
+.pill-alert{background:var(--alert-bg);color:var(--color-alert)}
+.pill-warn{background:var(--warning-bg);color:var(--color-warning)}
+.pill-ok{background:var(--success-bg);color:var(--color-success)}
+.pill-none{background:var(--color-neutral-100);color:var(--color-neutral-600)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.94);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--color-neutral-300)}
+.header-row{display:flex;align-items:center;gap:24px;height:var(--header-h)}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--color-brand-primary);font-family:var(--font-title);font-weight:700;font-size:28px;letter-spacing:-.01em;min-height:44px}
+.logo svg{width:34px;height:34px}
+.main-nav{margin-left:auto}
+.main-nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.main-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 9px;white-space:nowrap;color:var(--color-neutral-900);text-decoration:none;border-radius:var(--radius-sm)}
+.main-nav a:hover{color:var(--color-brand-primary);text-decoration:underline}
+.menu-btn{display:none;margin-left:auto;align-items:center;gap:8px;min-height:48px;padding:0 16px;border:2px solid var(--color-brand-primary);background:transparent;color:var(--color-brand-primary);border-radius:var(--radius-md);font:700 18px/1 var(--font-body);cursor:pointer}
+.mobile-nav{display:none}
+
+/* Hero */
+.hero{padding:56px 0 72px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.hero-copy h1{max-width:13.5em}
+.hero-sub{margin-top:24px;font-size:20px;line-height:1.6;max-width:34em}
+.audience{display:flex;flex-wrap:wrap;gap:16px;margin-top:36px}
+.audience .btn{min-height:60px;padding:0 28px;font-size:20px}
+.audience .btn-patient{order:2}
+.audience .btn-primary{order:1}
+.audience-note{margin-top:16px}
+
+.hero-visual{position:relative;padding:0 0 96px 150px}
+.dash-card{background:var(--color-neutral-0);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:1px solid #E6E1D8;overflow:hidden;font-family:var(--font-body)}
+.dash-top{display:flex;align-items:center;gap:10px;white-space:nowrap;padding:14px 18px;border-bottom:1px solid var(--color-neutral-100);font-size:14px;color:var(--color-neutral-600)}
+.dash-top b{color:var(--color-brand-primary);font-family:var(--font-title);font-size:16px}
+.dash-top .who{margin-left:auto;display:flex;align-items:center;gap:8px}
+.avatar-ide{width:26px;height:26px;border-radius:50%;background:var(--color-brand-secondary-tint);color:var(--color-brand-secondary-strong);display:grid;place-items:center;font-weight:700;font-size:12px}
+.dash-filters{display:flex;gap:8px;padding:12px 18px 4px;flex-wrap:wrap}
+.chip-mini{font-size:13px;border:1px solid var(--color-neutral-300);border-radius:var(--radius-full);padding:2px 10px;color:var(--color-neutral-600)}
+.chip-mini.on{background:var(--color-brand-primary);border-color:var(--color-brand-primary);color:#fff}
+.dash-rows{list-style:none;margin:0;padding:6px 10px 12px}
+.dash-rows li{display:grid;grid-template-columns:34px minmax(0,1fr) auto;white-space:nowrap;align-items:center;gap:12px;padding:10px 8px;border-radius:10px;font-size:15px;line-height:1.35}
+.dash-rows li + li{border-top:1px solid var(--color-neutral-100)}
+.dash-rows li.sel{background:#F6F4EF}
+.dash-rows .ini{width:34px;height:34px;border-radius:50%;background:var(--color-neutral-100);display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--color-neutral-900)}
+.dash-rows .meta{display:block;color:var(--color-neutral-600);font-size:13px}
+.dash-rows .pill{font-size:13px}
+.dash-foot{padding:10px 18px;border-top:1px solid var(--color-neutral-100);font-size:13px;color:var(--color-neutral-600);display:flex;justify-content:space-between;gap:8px}
+
+.phone{position:absolute;left:0;bottom:0;width:212px;height:430px;border-radius:34px;background:#1E2A33;padding:9px;box-shadow:var(--shadow-lg)}
+.phone-screen{height:100%;border-radius:26px;background:var(--color-neutral-50);overflow:hidden;display:flex;flex-direction:column;padding:14px 14px 12px;font-size:13px;line-height:1.35}
+.phone-notch{width:70px;height:18px;border-radius:10px;background:#1E2A33;margin:-6px auto 10px}
+.phone-hello{font-size:12px;color:var(--color-neutral-600)}
+.phone-prog{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:8px 0 6px}
+.phone-prog i{height:5px;border-radius:3px;background:var(--color-neutral-300)}
+.phone-prog i.done{background:var(--color-brand-secondary-strong)}
+.phone-prog i.now{background:var(--color-brand-primary)}
+.phone-step{font-size:12px;color:var(--color-neutral-600)}
+.phone-q{font-family:var(--font-title);font-weight:700;color:var(--color-brand-primary);font-size:19px;line-height:1.2;margin:10px 0 12px}
+.phone-opt{display:flex;align-items:center;gap:8px;border:2px solid var(--color-neutral-300);background:#fff;border-radius:12px;padding:9px 10px;margin-bottom:7px;font-weight:700;font-size:14px}
+.phone-opt .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--color-neutral-600);flex:none}
+.phone-opt.on{border-color:var(--color-brand-secondary-strong);background:var(--color-brand-secondary-tint)}
+.phone-opt.on .dot{border:4px solid var(--color-brand-secondary-strong)}
+.phone-next{margin-top:auto;background:var(--color-brand-primary);color:#fff;text-align:center;border-radius:12px;padding:9px;font-weight:700;font-size:14px}
+.phone-sos{margin-top:8px;font-size:11px;color:var(--color-info);text-align:center}
+
+/* Trust band */
+.trust{border-top:1px solid var(--color-neutral-300);border-bottom:1px solid var(--color-neutral-300);background:var(--color-neutral-0)}
+.trust ul{list-style:none;margin:0;padding:18px 0;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;border-radius:var(--radius-sm);padding:6px 12px;background:var(--color-brand-secondary-tint);color:var(--color-brand-secondary-strong);font-weight:700;line-height:1.35}
+.badge-warn{background:var(--warning-bg);color:var(--color-warning)}
+.trust .caption{margin-left:auto}
+
+/* Section base */
+.section{padding:104px 0}
+.section-tint{background:var(--color-brand-secondary-tint)}
+.section-head{max-width:760px;margin-bottom:48px}
+.section-head p{margin-top:16px}
+
+/* Parcours */
+.journey{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.journey-art{background:var(--color-neutral-50);border-radius:var(--radius-lg);aspect-ratio:4/3;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+.journey-art figure{margin:0;position:absolute;inset:0;display:grid;grid-template-rows:1fr auto;padding:28px 28px 22px;opacity:0;visibility:hidden;transition:opacity var(--duration-base) var(--ease-standard),visibility 0s linear var(--duration-base)}
+.journey-art figure.is-on{opacity:1;visibility:visible;transition:opacity var(--duration-base) var(--ease-standard)}
+.journey-art svg{width:100%;height:100%}
+.journey-art figcaption{font-size:18px;color:var(--color-neutral-600);text-align:center}
+.steps{list-style:none;margin:0;padding:0;position:relative}
+.steps::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:var(--color-neutral-300)}
+.step-btn{all:unset;box-sizing:border-box;display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;align-items:start;width:100%;padding:16px 16px 16px 0;cursor:pointer;border-radius:var(--radius-md);position:relative}
+.step-btn:focus-visible{box-shadow:var(--focus-ring)}
+.step-num{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--color-neutral-50);border:2px solid var(--color-neutral-300);font-family:var(--font-title);font-weight:700;font-size:22px;color:var(--color-neutral-600);position:relative;z-index:1;transition:background-color var(--duration-fast),border-color var(--duration-fast),color var(--duration-fast)}
+.step-btn .st{display:block;font-family:var(--font-title);font-weight:600;line-height:1.3;font-size:22px;color:var(--color-neutral-900);margin-top:12px}
+.step-btn .sp{display:block;margin-top:6px;color:var(--color-neutral-900)}
+.step-btn[aria-current="step"] .step-num{background:var(--color-brand-secondary-strong);border-color:var(--color-brand-secondary-strong);color:#fff}
+.step-btn[aria-current="step"] .st{color:var(--color-brand-primary)}
+.step-btn[aria-current="step"]::after{content:"";position:absolute;left:-14px;top:22px;bottom:22px;width:4px;border-radius:2px;background:var(--color-brand-primary)}
+.step-btn:hover .st{text-decoration:underline;text-underline-offset:4px}
+.steps-note{margin-top:20px;padding-left:76px}
+
+/* Dashboard section */
+.dash-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:48px;align-items:start}
+.dash-big{position:relative}
+.dash-big .dash-card{font-size:15px}
+.db-body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);min-height:0}
+.db-list{border-right:1px solid var(--color-neutral-100)}
+.db-table{width:100%;border-collapse:collapse;font-size:14px}
+.db-table th{text-align:left;font-weight:700;color:var(--color-neutral-600);font-size:13px;padding:10px 12px;border-bottom:1px solid var(--color-neutral-100)}
+.db-table td{white-space:nowrap;padding:10px 12px;border-bottom:1px solid var(--color-neutral-100);vertical-align:middle;line-height:1.3}
+.db-table tr.sel td{background:#F6F4EF}
+.db-table tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--color-brand-primary)}
+.db-table .pill{font-size:12.5px}
+.db-table small{display:block;color:var(--color-neutral-600);font-size:12.5px}
+.db-detail{padding:14px 16px}
+.db-detail h4{margin:0;font-family:var(--font-title);color:var(--color-brand-primary);font-size:17px}
+.db-detail .sub{color:var(--color-neutral-600);font-size:13px}
+.hist{width:100%;border-collapse:separate;border-spacing:0 4px;margin-top:10px;font-size:13px}
+.hist th{font-weight:700;color:var(--color-neutral-600);text-align:center;font-size:12px}
+.hist th:first-child,.hist td:first-child{text-align:left}
+.hist td{text-align:center;padding:3px 2px}
+.cell{display:inline-grid;place-items:center;width:26px;height:24px;border-radius:6px}
+.cell .ico{width:15px;height:15px;stroke-width:2.6}
+.c-ok{background:var(--success-bg);color:var(--color-success)}
+.c-warn{background:var(--warning-bg);color:var(--color-warning)}
+.c-alert{background:var(--alert-bg);color:var(--color-alert)}
+.db-action{margin-top:12px;border:1px solid #F0CFCB;background:#FFF8F7;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.4}
+.db-action b{color:var(--color-alert)}
+.db-action .row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.db-action span.fake-btn{border-radius:8px;padding:5px 10px;font-weight:700;font-size:12.5px;background:var(--color-brand-primary);color:#fff}
+.db-action span.fake-btn.ghost{background:#fff;color:var(--color-brand-primary);border:1px solid var(--color-brand-primary)}
+.anno-i{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--color-brand-primary);color:#fff;font-family:var(--font-title);font-weight:700;font-size:14px;line-height:1;vertical-align:middle;margin-left:6px;box-shadow:0 0 0 3px #fff}
+.anno-list{list-style:none;margin:0;padding:0;counter-reset:anno}
+.anno-list li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:16px;padding:14px 0}
+.anno-list li + li{border-top:1px solid var(--color-neutral-300)}
+.anno-list .n{width:34px;height:34px;border-radius:50%;background:var(--color-brand-primary);color:#fff;display:grid;place-items:center;font-family:var(--font-title);font-weight:700}
+.anno-list h3{font-size:20px}
+.anno-list p{margin-top:4px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.legend .pill{font-size:16px}
+
+.route{margin-top:72px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:48px;align-items:start}
+.route h3{font-size:28px}
+.route-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
+.route-steps li{position:relative;padding:0 16px 0 0}
+.route-steps .ri{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--color-neutral-0);border:2px solid var(--color-brand-secondary);color:var(--color-brand-secondary-strong);position:relative;z-index:1}
+.route-steps li:nth-child(3) .ri{border-color:var(--color-alert);color:var(--color-alert)}
+.route-steps li:not(:last-child)::after{content:"";position:absolute;left:52px;right:0;top:25px;height:2px;background:repeating-linear-gradient(90deg,var(--color-brand-secondary-soft) 0 8px,transparent 8px 14px)}
+.route-steps b{display:block;margin-top:14px;font-family:var(--font-title);font-size:20px;color:var(--color-brand-primary);line-height:1.25}
+.route-steps p{margin-top:6px}
+.load{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--color-brand-primary)}
+.load div{padding:20px 24px 0 0}
+.load div + div{padding-left:24px;border-left:1px solid var(--color-neutral-300)}
+.load dt{font-weight:700;color:var(--color-brand-primary)}
+.load dd{margin:6px 0 0}
+.peer{margin:64px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px;align-items:center;background:var(--color-brand-secondary-tint);border-radius:var(--radius-lg);padding:32px 40px}
+.peer .qmark{font-family:var(--font-title);font-weight:700;font-size:72px;line-height:.8;color:var(--color-brand-secondary);align-self:start}
+.peer blockquote{margin:0;font-family:var(--font-title);font-size:26px;line-height:1.35;color:var(--color-brand-primary);font-weight:600;max-width:34em}
+.peer figcaption{margin-top:10px;font-size:18px}
+.peer .tag-ex{justify-self:start}
+.tag-ex{display:inline-block;border:1.5px solid var(--color-neutral-600);color:var(--color-neutral-600);border-radius:var(--radius-sm);padding:0 8px;font-size:16px;font-weight:700;line-height:1.6;vertical-align:middle}
+
+/* Preuves */
+.proof-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:28px;align-items:stretch}
+.study{background:var(--color-neutral-0);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:32px;border:1px solid #ECE7DE}
+.study-type{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--color-brand-secondary-strong)}
+.study h3{margin-top:10px}
+.study dl{margin:24px 0 0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:0}
+.study dt,.study dd{padding:12px 0;border-top:1px solid var(--color-neutral-100)}
+.study dt{font-weight:700;padding-right:24px;color:var(--color-neutral-600)}
+.study dd{margin:0}
+.result-pending{display:flex;gap:12px;align-items:flex-start;margin-top:24px;padding:16px 18px;border-radius:var(--radius-md);background:var(--warning-bg);color:#5E3E00}
+.result-pending b{color:var(--color-warning)}
+.study-small{padding:28px}
+.study-small dl{grid-template-columns:1fr}
+.study-small dt{padding-bottom:0}
+.study-small dd{border-top:0;padding-top:2px}
+.proof-side{display:grid;gap:28px;align-content:start}
+.sites{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.site{display:flex;gap:12px;align-items:center;font-weight:700}
+.site svg{width:40px;height:40px;color:var(--color-brand-secondary)}
+.context{margin-top:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:32px;align-items:start;border-top:2px solid var(--color-brand-primary);padding-top:28px}
+.context h3{font-size:22px}
+.context > .btn{align-self:end}
+.context p{margin-top:8px}
+.src{display:block;margin-top:10px}
+
+/* Conformité */
+.comp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.comp{background:var(--color-neutral-0);border-radius:var(--radius-lg);padding:32px;display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;align-items:start}
+.comp-ico{width:56px;height:56px;border-radius:14px;background:var(--color-brand-secondary-tint);color:var(--color-brand-secondary-strong);display:grid;place-items:center}
+.comp-ico .ico{width:28px;height:28px}
+.comp h3{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.comp p{margin-top:10px}
+.comp .badge{font-size:16px}
+.comp ul{margin:12px 0 0;padding-left:20px}
+.comp li + li{margin-top:4px}
+.comp .doc{margin-top:12px}
+.comp-note{margin-top:28px;display:flex;gap:12px;align-items:flex-start;max-width:70ch}
+
+/* Équipe */
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}
+.about-art{margin-top:36px;width:100%;max-width:420px;color:var(--color-brand-secondary-soft)}
+.about-text{font-size:22px;line-height:1.6;margin-top:24px;max-width:30em}
+.committee h3{font-size:28px}
+.committee .caption{margin-top:6px}
+.members{list-style:none;margin:24px 0 0;padding:0}
+.members li{padding:22px 0;border-top:1px solid var(--color-neutral-300)}
+.members li:last-child{border-bottom:1px solid var(--color-neutral-300)}
+.m-name{font-weight:700;font-size:20px;color:var(--color-neutral-900)}
+.m-role{margin-top:2px}
+.m-coi{margin-top:8px;font-size:18px;color:var(--color-neutral-600)}
+
+/* Publications */
+.pub-tools{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:28px}
+.pub-tools legend{font-weight:700;margin-right:8px;padding:0;float:left;line-height:48px}
+.pub-tools fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.filter{min-height:48px;padding:0 20px;border-radius:var(--radius-full);border:2px solid var(--color-brand-primary);background:transparent;color:var(--color-brand-primary);font:700 18px/1 var(--font-body);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.filter[aria-pressed="true"]{background:var(--color-brand-primary);color:#fff}
+.filter[aria-pressed="true"]::before{content:"";width:8px;height:14px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-2px,-2px)}
+.filter:hover{background:var(--color-brand-secondary-tint)}
+.filter[aria-pressed="true"]:hover{background:var(--color-brand-primary-hover)}
+.pubs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.pub{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:24px 0;border-top:1px solid var(--color-neutral-300)}
+.pub[hidden]{display:none}
+.pub time{font-weight:700;color:var(--color-neutral-900);line-height:1.4}
+.pub .kind{display:inline-block;margin-top:6px;color:var(--color-brand-secondary-strong);font-weight:700}
+.pub h3{font-size:21px;line-height:1.35}
+.pub h3 a{color:var(--color-brand-primary);text-decoration:none}
+.pub h3 a:hover{text-decoration:underline}
+.pub p{margin-top:8px;color:var(--color-neutral-600)}
+.pub .tag-ex{margin-left:6px}
+.pub-empty{padding:32px;border:2px dashed var(--color-neutral-300);border-radius:var(--radius-lg);text-align:center}
+.pub-foot{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:32px;align-items:start}
+.panel{border-radius:var(--radius-lg);padding:40px}
+.panel-form{background:var(--color-neutral-0);box-shadow:var(--shadow-md);border:1px solid #ECE7DE}
+.panel-patient{background:var(--color-brand-secondary-tint);font-size:20px}
+.panel h2{font-size:32px;line-height:1.25}
+.panel-intro{margin-top:12px}
+.form{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:20px 20px}
+.field{display:grid;gap:8px;align-content:start}
+.field.full{grid-column:1/-1}
+.field label{font-weight:700;line-height:1.4}
+.field .opt{font-weight:400;color:var(--color-neutral-600)}
+.field input,.field textarea{width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--color-neutral-600);border-radius:var(--radius-sm);background:#fff;color:var(--color-neutral-900);font:400 18px/1.4 var(--font-body)}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus-visible,.field textarea:focus-visible{box-shadow:var(--focus-ring);border-color:var(--color-brand-primary-light);border-radius:var(--radius-sm)}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:var(--color-alert)}
+.hint{font-size:18px;color:var(--color-neutral-600);line-height:1.45}
+.err{display:flex;gap:8px;align-items:flex-start;color:var(--color-alert);font-size:18px;line-height:1.45}
+.err[hidden]{display:none}
+.err .ico{margin-top:3px}
+.no-health{grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-md);background:var(--info-bg);color:#16466A}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
+.form-foot .caption{flex:1 1 260px}
+.spinner{width:18px;height:18px;border-radius:50%;border:3px solid rgba(90,102,112,.35);border-top-color:var(--color-neutral-600);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-status{grid-column:1/-1}
+.success{margin-top:28px;padding:28px;border-radius:var(--radius-lg);background:var(--success-bg);color:#1F4A31;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px}
+.success .ico{width:32px;height:32px;color:var(--color-success)}
+.success h3{color:var(--color-success);font-size:24px}
+.success p{margin-top:6px}
+.send-fail{display:flex;gap:10px;color:var(--color-alert)}
+
+.patient-lines{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:16px}
+.patient-lines li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;align-items:start}
+.patient-lines .ico{width:32px;height:32px;color:var(--color-brand-secondary-strong);stroke-width:1.8}
+.panel-patient .btn-patient{width:100%;min-height:64px;margin-top:32px;font-size:20px;white-space:normal;text-align:center}
+.panel-patient .link-arrow{margin-top:12px;font-size:20px;color:var(--color-brand-primary)}
+.urgent{margin-top:28px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-md);background:var(--color-neutral-0);border-left:6px solid var(--color-info)}
+.urgent .ico{width:36px;height:36px;color:var(--color-info)}
+.urgent b{font-family:var(--font-title);font-size:26px;color:var(--color-brand-primary);line-height:1.2;display:block}
+.urgent a{font-weight:700;color:var(--color-info)}
+.caregiver{margin-top:24px;font-size:20px}
+
+/* Footer */
+.site-footer{background:var(--color-brand-primary);color:#E9EEF4;padding:64px 0 40px;font-size:18px}
+.site-footer a{color:#fff}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr));gap:40px}
+.site-footer .logo{color:#fff}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.site-footer ul a{display:inline-flex;min-height:36px;align-items:center}
+.site-footer h2{color:#fff;font-size:20px;margin-bottom:10px}
+.foot-reg{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.25);display:grid;gap:8px;color:#D5DEE8}
+.foot-demo{font-weight:700;color:#fff}
+.site-footer :focus-visible{box-shadow:0 0 0 3px #1F3A5F,0 0 0 6px #fff}
+
+/* Responsive */
+@media (max-width:1300px){
+  .main-nav,.header-cta{display:none}
+  .menu-btn{display:inline-flex}
+  .mobile-nav{position:fixed;left:0;right:0;top:var(--header-h);background:var(--color-neutral-50);border-bottom:1px solid var(--color-neutral-300);box-shadow:var(--shadow-md);padding:12px var(--gutter) 24px;max-height:calc(100dvh - var(--header-h));overflow:auto}
+  .mobile-nav.open{display:block}
+  .mobile-nav ul{list-style:none;margin:0;padding:0}
+  .mobile-nav li a{display:flex;align-items:center;min-height:52px;font-size:20px;color:var(--color-neutral-900);text-decoration:none;border-bottom:1px solid var(--color-neutral-100)}
+  .mobile-nav .btn{width:100%;margin-top:16px}
+  .hero-grid{gap:40px}
+  .dash-layout{grid-template-columns:1fr}
+  .anno-list{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+  .anno-list li + li{border-top:0}
+  .anno-list li{border-top:1px solid var(--color-neutral-300)}
+}
+@media (max-width:960px){
+  h1{font-size:44px}
+  .hero-grid,.journey,.about,.contact-grid,.proof-grid,.route{grid-template-columns:1fr}
+  .hero-visual{max-width:620px}
+  .context{grid-template-columns:1fr 1fr}
+  .context .btn{grid-column:1/-1;justify-self:start}
+  .pubs{grid-template-columns:1fr}
+  .comp-grid{grid-template-columns:1fr}
+  .journey-art{max-width:620px}
+}
+@media (max-width:767px){
+  :root{--header-h:64px}
+  body{font-size:18px}
+  h1{font-size:36px;line-height:1.12}
+  h2{font-size:30px}
+  .section{padding:72px 0}
+  .logo{font-size:25px}
+  .hero{padding:28px 0 48px}
+  .hero-sub{font-size:19px;margin-top:16px}
+  .audience{flex-direction:column;gap:12px;margin-top:28px}
+  .audience .btn{width:100%;min-height:64px}
+  .audience .btn-patient{order:1}
+  .audience .btn-primary{order:2}
+  .hero-visual{padding:0 0 196px 0;margin-top:8px}
+  .phone{left:auto;right:4px;bottom:0;transform:scale(.62);transform-origin:bottom right}
+  .dash-rows li{grid-template-columns:30px minmax(0,1fr) auto;gap:10px;padding:9px 4px}
+  .dash-rows .ini{width:30px;height:30px}
+  .dash-rows .meta{display:none}
+  .trust ul{gap:10px}
+  .trust .caption{margin-left:0}
+  .steps-note{padding-left:0}
+  .journey{gap:32px}
+  .journey-art figure{padding:16px 16px 14px}
+  .journey-art figcaption{font-size:16px}
+  .db-body{grid-template-columns:1fr}
+  .dash-big .dash-top{white-space:normal;flex-wrap:wrap}
+  .dash-big .dash-top .who{display:none}
+  .panel-patient{order:-1}
+  .journey-art{position:sticky;top:calc(var(--header-h) + 16px);z-index:2;aspect-ratio:16/11;box-shadow:0 0 0 16px var(--color-brand-secondary-tint),var(--shadow-md)}
+  .db-list{border-right:0;border-bottom:1px solid var(--color-neutral-100)}
+  .db-table .col-int,.db-table .col-last{display:none}
+          .anno-list{grid-template-columns:1fr}
+  .route-steps{grid-template-columns:1fr;gap:24px}
+  .route-steps li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:0 16px;padding:0}
+  .route-steps li b{margin-top:0;grid-column:2}
+  .route-steps li p{grid-column:2}
+  .route-steps .ri{grid-row:1 / span 2}
+  .route-steps li:not(:last-child)::after{left:25px;right:auto;top:52px;bottom:-24px;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--color-brand-secondary-soft) 0 8px,transparent 8px 14px)}
+  .load{grid-template-columns:1fr}
+  .load div,.load div + div{padding:18px 0 0;border-left:0}
+  .peer{grid-template-columns:1fr;padding:28px 22px;gap:14px}
+  .peer blockquote{font-size:22px}
+  .study,.study-small{padding:24px 20px}
+  .study dl{grid-template-columns:1fr}
+  .study dt{padding-bottom:0;padding-right:0}
+  .study dd{border-top:0;padding-top:2px}
+  .context{grid-template-columns:1fr;gap:24px}
+  .btn{white-space:normal;text-align:center;padding:10px 20px}
+  .context > .btn,.pub-foot .btn,.dash-layout .btn{width:100%}
+  .comp{grid-template-columns:1fr;padding:24px 20px;gap:14px}
+  .about{gap:40px}
+  .about-text{font-size:20px}
+  .about-art{max-width:300px}
+  .pub{grid-template-columns:1fr;gap:6px}
+  .panel{padding:28px 20px}
+  .panel h2{font-size:28px}
+  .form{grid-template-columns:1fr}
+  .form-foot .btn{width:100%;min-height:56px}
+  .foot-grid{grid-template-columns:1fr}
+  .peer .qmark{font-size:56px}
+  .sites{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:0ms !important;animation-duration:0ms !important;animation-iteration-count:1 !important}
+  .spinner{border-top-color:rgba(90,102,112,.35)}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19L12 3.5z"/><path d="M12 10v4.5"/><path d="M12 17.4v.1"/></symbol>
+  <symbol id="i-watch" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.4v.1"/></symbol>
+  <symbol id="i-none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><path d="M12 7.6v.1"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4.5-2.2 1.5a11 11 0 0 0 5.7 5.7l1.5-2.2 4.5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M11 14v2a4.5 4.5 0 0 0 9 0v-2"/><circle cx="20" cy="12" r="2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.1M8 16.5h.1"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a4.5 4.5 0 0 1 6.5-4"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M10 7H6a2 2 0 0 0-2 2v4h5v5H4" /><path d="M20 7h-4a2 2 0 0 0-2 2v4h5v5h-5"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M15 10h4a1 1 0 0 1 1 1v10"/><path d="M3 21h18"/><path d="M8 8h3M8 12h3M8 16h3"/><path d="M9.5 2.5v3M8 4h3"/></symbol>
+  <symbol id="i-clinic" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M12 9v6M9 12h6"/></symbol>
+</svg>
+
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="#haut" aria-label="Veilla, retour en haut de page">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
+      Veilla
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#tableau-de-bord">Tableau de bord</a></li>
+        <li><a href="#preuves">Preuves</a></li>
+        <li><a href="#conformite">Conformité</a></li>
+        <li><a href="#equipe">Équipe</a></li>
+        <li><a href="#publications">Publications</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary header-cta" href="#contact">Demander une présentation</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <span>Menu</span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation principale (mobile)">
+    <a class="btn btn-patient" href="#patient">Je suis un patient</a>
+    <ul>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#tableau-de-bord">Tableau de bord</a></li>
+      <li><a href="#preuves">Preuves</a></li>
+      <li><a href="#conformite">Conformité</a></li>
+      <li><a href="#equipe">Équipe</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="contenu">
+
+<!-- 1. HERO -->
+<section class="hero" id="haut" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 id="hero-title">Sécuriser le retour à domicile après une chirurgie ambulatoire</h1>
+      <p class="hero-sub">Chaque jour, votre patient répond à un court questionnaire. Votre équipe n'est alertée qu'en cas de signal anormal.</p>
+      <div class="audience">
+        <a class="btn btn-primary" href="#parcours">Je suis un établissement
+          <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-patient" href="#patient">Je suis un patient
+          <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <div class="hero-visual" role="img" aria-label="Aperçu du produit avec des données fictives : à droite, le tableau de bord de l'infirmière de coordination liste les patients opérés et leur niveau d'alerte ; à gauche, le questionnaire du jour sur téléphone, question 2 sur 5, « Avez-vous de la fièvre aujourd'hui ? ».">
+      <div class="dash-card" aria-hidden="true">
+        <div class="dash-top">
+          <svg width="22" height="22" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
+          <b>Suivi après sortie</b>
+          <span class="who"><span class="avatar-ide">IC</span>IDE de coordination</span>
+        </div>
+        <div class="dash-filters"><span class="chip-mini on">Tous</span><span class="chip-mini">À rappeler</span><span class="chip-mini">À surveiller</span><span class="chip-mini">Sans réponse</span></div>
+        <ul class="dash-rows">
+          <li class="sel"><span class="ini">RB</span><span>M. R. B.<span class="meta">Hernie inguinale, J+2</span></span><span class="pill pill-alert"><svg class="ico"><use href="#i-alert"/></svg>À rappeler</span></li>
+          <li><span class="ini">JL</span><span>Mme J. L.<span class="meta">Cataracte, J+1</span></span><span class="pill pill-warn"><svg class="ico"><use href="#i-watch"/></svg>À surveiller</span></li>
+          <li><span class="ini">AT</span><span>M. A. T.<span class="meta">Cholécystectomie, J+1</span></span><span class="pill pill-none"><svg class="ico"><use href="#i-none"/></svg>Sans réponse</span></li>
+          <li><span class="ini">MD</span><span>Mme M. D.<span class="meta">Arthroscopie du genou, J+3</span></span><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Réponses normales</span></li>
+          <li><span class="ini">SK</span><span>Mme S. K.<span class="meta">Canal carpien, J+2</span></span><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Réponses normales</span></li>
+        </ul>
+        <div class="dash-foot"><span></span><span>Données fictives, mises à jour à chaque réponse</span></div>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-hello">Bonjour Jeanne</div>
+          <div class="phone-prog"><i class="done"></i><i class="now"></i><i></i><i></i><i></i></div>
+          <div class="phone-step">Question 2 sur 5</div>
+          <div class="phone-q">Avez-vous de la fièvre aujourd'hui ?</div>
+          <div class="phone-opt on"><span class="dot"></span>Non</div>
+          <div class="phone-opt"><span class="dot"></span>Oui</div>
+          <div class="phone-opt"><span class="dot"></span>Je ne sais pas</div>
+          <div class="phone-next">Question suivante</div>
+          <div class="phone-sos">En cas d'urgence, appelez le 15</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <ul aria-label="Statut réglementaire et hébergement">
+      <li><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-server"/></svg>Hébergeur certifié HDS</span></li>
+      <li><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>RGPD : DPO désigné</span></li>
+      <li><span class="badge badge-warn"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg>Marquage CE : en cours</span></li>
+      <li class="caption">Ce site ne collecte aucune donnée de santé.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2. PARCOURS -->
+<section class="section section-tint" id="parcours" aria-labelledby="parcours-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="parcours-title">Le parcours patient en 4 étapes</h2>
+      <p class="lead">De la sortie de l'unité au rappel par l'infirmière, chacun sait ce qu'il a à faire.</p>
+    </div>
+    <div class="journey">
+      <div class="journey-art" aria-live="polite">
+        <!-- Étape 1 -->
+        <figure class="is-on" data-step="1">
+          <svg viewBox="0 0 400 260" role="img" aria-labelledby="art1">
+            <title id="art1">Le patient quitte l'unité, son téléphone affiche l'accès activé, un chemin mène jusqu'à sa maison.</title>
+            <g fill="none" stroke="#4E6B57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="38" y="52" width="104" height="168" rx="6" fill="#E3EBE4"/>
+              <path d="M56 220V92a8 8 0 0 1 8-8h52a8 8 0 0 1 8 8v128"/>
+              <path d="M110 156h.1" stroke-width="6"/>
+              <path d="M76 66h28M90 58v16" stroke="#1F3A5F"/>
+              <path d="M150 220c50-6 70-40 120-40 30 0 40 14 64 14" stroke="#7A9A82" stroke-dasharray="2 12" stroke-width="4"/>
+              <path d="M292 140l38-32 38 32" />
+              <path d="M300 134v60h60v-60" fill="#FFFFFF"/>
+              <rect x="320" y="164" width="20" height="30" fill="#E3EBE4"/>
+              <rect x="176" y="62" width="64" height="112" rx="12" fill="#FFFFFF" stroke="#1F3A5F"/>
+              <path d="M198 74h20" stroke="#1F3A5F"/>
+              <circle cx="208" cy="118" r="20" fill="#E3EBE4"/>
+              <path d="M198 118l7 7 13-14" stroke="#3F5E49" stroke-width="4"/>
+              <path d="M192 152h32" stroke="#D6D0C6"/>
+            </g>
+          </svg>
+          <figcaption>Étape 1 : l'unité active l'accès avant la sortie.</figcaption>
+        </figure>
+        <!-- Étape 2 -->
+        <figure data-step="2">
+          <svg viewBox="0 0 400 260" role="img" aria-labelledby="art2">
+            <title id="art2">Un téléphone affiche les cinq questions du jour : douleur, fièvre, saignement, nausées, cicatrice.</title>
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+              <rect x="138" y="16" width="124" height="228" rx="20" fill="#FFFFFF" stroke="#1F3A5F"/>
+              <path d="M184 30h32" stroke="#1F3A5F"/>
+              <g stroke="#4E6B57">
+                <rect x="154" y="52" width="92" height="30" rx="8" fill="#E3EBE4"/>
+                <rect x="154" y="90" width="92" height="30" rx="8" fill="#E3EBE4"/>
+                <rect x="154" y="128" width="92" height="30" rx="8" fill="#FFFFFF" stroke="#1F3A5F"/>
+                <rect x="154" y="166" width="92" height="30" rx="8" fill="#FFFFFF" stroke="#D6D0C6"/>
+                <rect x="154" y="204" width="92" height="30" rx="8" fill="#FFFFFF" stroke="#D6D0C6"/>
+                <path d="M164 67l5 5 9-10M164 105l5 5 9-10" stroke="#3F5E49"/>
+                <path d="M188 67h46M188 105h40" stroke="#4E6B57"/>
+                <path d="M188 143h44" stroke="#1F3A5F"/>
+                <circle cx="171" cy="143" r="6" stroke="#1F3A5F"/>
+                <path d="M188 181h36M188 219h42" stroke="#D6D0C6"/>
+                <circle cx="171" cy="181" r="6" stroke="#D6D0C6"/>
+                <circle cx="171" cy="219" r="6" stroke="#D6D0C6"/>
+              </g>
+              <g stroke="#7A9A82">
+                <path d="M58 70c14-10 30-10 44 0"/><path d="M50 98h60"/><path d="M58 126c14 10 30 10 44 0"/>
+                <path d="M298 86h56M298 116h40M298 146h50"/>
+              </g>
+            </g>
+            <g font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="15" fill="#1E2A33">
+              <text x="66" y="176">Douleur</text><text x="66" y="198">Fièvre</text><text x="66" y="220">Saignement</text>
+              <text x="296" y="186">Nausées</text><text x="296" y="208">Cicatrice</text>
+            </g>
+          </svg>
+          <figcaption>Étape 2 : 5 questions, sur téléphone, tablette ou SMS.</figcaption>
+        </figure>
+        <!-- Étape 3 -->
+        <figure data-step="3">
+          <svg viewBox="0 0 400 260" role="img" aria-labelledby="art3">
+            <title id="art3">Les réponses passent par des règles paramétrées par l'équipe médicale : la plupart sont classées normales, une réponse anormale devient une alerte.</title>
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+              <g stroke="#4E6B57" fill="#E3EBE4">
+                <rect x="26" y="40" width="58" height="26" rx="8"/><rect x="26" y="78" width="58" height="26" rx="8"/><rect x="26" y="116" width="58" height="26" rx="8"/><rect x="26" y="154" width="58" height="26" rx="8"/><rect x="26" y="192" width="58" height="26" rx="8"/>
+              </g>
+              <path d="M84 53c40 0 40 60 70 74M84 91c30 0 40 30 70 38M84 129h70M84 167c30 0 40-30 70-36M84 205c40 0 40-62 70-72" stroke="#7A9A82"/>
+              <rect x="154" y="74" width="104" height="112" rx="14" fill="#FFFFFF" stroke="#1F3A5F"/>
+              <g stroke="#1F3A5F"><path d="M172 104h68M172 130h68M172 156h68"/></g>
+              <g fill="#1F3A5F" stroke="#FFFFFF" stroke-width="3"><circle cx="196" cy="104" r="7"/><circle cx="222" cy="130" r="7"/><circle cx="188" cy="156" r="7"/></g>
+              <path d="M258 110c30 0 34-40 60-40" stroke="#4E6B57"/>
+              <path d="M258 150c30 0 34 40 60 40" stroke="#B3261E"/>
+              <circle cx="342" cy="70" r="24" fill="#E3EBE4" stroke="#3F5E49"/>
+              <path d="M331 70l8 8 14-15" stroke="#3F5E49" stroke-width="4"/>
+              <path d="M342 168l26 44h-52z" fill="#FBEAE8" stroke="#B3261E"/>
+              <path d="M342 184v12M342 203v.1" stroke="#B3261E" stroke-width="4"/>
+            </g>
+          </svg>
+          <figcaption>Étape 3 : les règles de l'équipe médicale classent les réponses.</figcaption>
+        </figure>
+        <!-- Étape 4 -->
+        <figure data-step="4">
+          <svg viewBox="0 0 400 260" role="img" aria-labelledby="art4">
+            <title id="art4">L'infirmière de coordination, casque sur la tête, rappelle le patient chez lui.</title>
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+              <circle cx="96" cy="96" r="30" fill="#E3EBE4" stroke="#4E6B57"/>
+              <path d="M60 96a36 36 0 0 1 72 0" stroke="#1F3A5F"/>
+              <rect x="54" y="92" width="10" height="20" rx="4" fill="#1F3A5F" stroke="#1F3A5F"/>
+              <path d="M64 108c4 14 14 20 26 20" stroke="#1F3A5F"/>
+              <path d="M44 214c0-34 24-56 52-56s52 22 52 56" fill="#FFFFFF" stroke="#4E6B57"/>
+              <path d="M88 164l8 14 8-14" stroke="#4E6B57"/>
+              <path d="M168 96c10-8 10-24 0-32M184 108c18-16 18-48 0-64M200 120c26-24 26-72 0-96" stroke="#7A9A82"/>
+              <path d="M262 112l46-38 46 38" stroke="#4E6B57"/>
+              <path d="M272 104v104h72V104" fill="#FFFFFF" stroke="#4E6B57"/>
+              <rect x="290" y="132" width="36" height="58" rx="8" fill="#FFFFFF" stroke="#1F3A5F"/>
+              <path d="M302 140h12" stroke="#1F3A5F"/>
+              <path d="M300 168l6-8 6 4 8-10" stroke="#3F5E49"/>
+              <rect x="228" y="18" width="166" height="42" rx="12" fill="#FFFFFF" stroke="#1F3A5F"/><path d="M262 60l-4 14 18-14" fill="#FFFFFF" stroke="#1F3A5F"/>
+            </g>
+            <text x="242" y="45" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="15" fill="#1F3A5F" font-weight="700">Comment allez-vous ?</text>
+          </svg>
+          <figcaption>Étape 4 : l'infirmière rappelle si besoin.</figcaption>
+        </figure>
+      </div>
+
+      <div>
+        <ol class="steps">
+          <li><button class="step-btn" type="button" data-step="1" aria-current="step">
+            <span class="step-num" aria-hidden="true">1</span>
+            <span><span class="st">Sortie de l'unité, application activée</span>
+            <span class="sp">Avant le départ, l'équipe active l'accès du patient. Il n'a aucun compte à créer.</span></span>
+          </button></li>
+          <li><button class="step-btn" type="button" data-step="2">
+            <span class="step-num" aria-hidden="true">2</span>
+            <span><span class="st">5 questions chaque jour</span>
+            <span class="sp">Douleur, fièvre, saignement, nausées, cicatrice. Pendant la durée fixée par l'équipe médicale.</span></span>
+          </button></li>
+          <li><button class="step-btn" type="button" data-step="3">
+            <span class="step-num" aria-hidden="true">3</span>
+            <span><span class="st">Analyse des réponses</span>
+            <span class="sp">Des règles paramétrées par l'équipe médicale classent chaque réponse. Un signal anormal déclenche une alerte.</span></span>
+          </button></li>
+          <li><button class="step-btn" type="button" data-step="4">
+            <span class="step-num" aria-hidden="true">4</span>
+            <span><span class="st">L'infirmière rappelle si besoin</span>
+            <span class="sp">L'alerte arrive à l'infirmière de coordination de l'établissement, qui rappelle le patient.</span></span>
+          </button></li>
+        </ol>
+        <p class="caption steps-note">Sélectionnez une étape pour afficher son illustration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. TABLEAU DE BORD -->
+<section class="section" id="tableau-de-bord" aria-labelledby="db-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="pro"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
+      <h2 id="db-title">Le tableau de bord soignant</h2>
+      <p class="lead">Une seule personne reçoit les alertes : l'infirmière de coordination. Elle voit qui rappeler, pourquoi, et l'historique des réponses.</p>
+    </div>
+
+    <div class="dash-layout">
+      <div class="dash-big" role="img" aria-label="Capture annotée du tableau de bord avec des données fictives : liste des patients opérés, niveau d'alerte de chacun, historique des réponses du patient sélectionné et alerte transmise à l'infirmière de coordination.">
+        <div class="dash-card" aria-hidden="true">
+          <div class="dash-top">
+            <svg width="22" height="22" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
+            <b>Suivi après sortie</b><span>Données fictives</span>
+            <span class="who"><span class="avatar-ide">IC</span>IDE de coordination</span>
+          </div>
+          <div class="db-body">
+            <div class="db-list">
+              <table class="db-table">
+                <thead><tr><th>Patient<span class="anno-i">1</span></th><th class="col-int">Intervention</th><th>Niveau<span class="anno-i">2</span></th></tr></thead>
+                <tbody>
+                  <tr class="sel"><td>M. R. B.<small>J+3</small></td><td class="col-int">Hernie inguinale</td><td><span class="pill pill-alert"><svg class="ico"><use href="#i-alert"/></svg>À rappeler</span></td></tr>
+                  <tr><td>Mme J. L.<small>J+1</small></td><td class="col-int">Cataracte</td><td><span class="pill pill-warn"><svg class="ico"><use href="#i-watch"/></svg>À surveiller</span></td></tr>
+                  <tr><td>M. A. T.<small>J+1</small></td><td class="col-int">Cholécystectomie</td><td><span class="pill pill-none"><svg class="ico"><use href="#i-none"/></svg>Sans réponse</span></td></tr>
+                  <tr><td>Mme M. D.<small>J+3</small></td><td class="col-int">Arthroscopie du genou</td><td><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Normal</span></td></tr>
+                  <tr><td>Mme S. K.<small>J+2</small></td><td class="col-int">Canal carpien</td><td><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Normal</span></td></tr>
+                  <tr><td>M. P. G.<small>J+2</small></td><td class="col-int">Varices</td><td><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Normal</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="db-detail">
+              <h4>M. R. B., hernie inguinale</h4>
+              <div class="sub">Historique des réponses<span class="anno-i">3</span></div>
+              <table class="hist">
+                <thead><tr><th></th><th>J+1</th><th>J+2</th><th>J+3</th></tr></thead>
+                <tbody>
+                  <tr><td>Douleur</td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-warn"><svg class="ico"><use href="#i-watch"/></svg></span></td></tr>
+                  <tr><td>Fièvre</td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-alert"><svg class="ico"><use href="#i-alert"/></svg></span></td></tr>
+                  <tr><td>Saignement</td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td></tr>
+                  <tr><td>Nausées</td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td></tr>
+                  <tr><td>Cicatrice</td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-warn"><svg class="ico"><use href="#i-watch"/></svg></span></td><td><span class="cell c-warn"><svg class="ico"><use href="#i-watch"/></svg></span></td></tr>
+                </tbody>
+              </table>
+              <div class="db-action"><span class="anno-i" style="margin:0 6px 0 0">4</span><b>Alerte : fièvre signalée ce matin.</b> Transmise à l'infirmière de coordination.
+                <div class="row"><span class="fake-btn">J'ai rappelé le patient</span><span class="fake-btn ghost">Noter une décision</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <ol class="anno-list">
+          <li><span class="n" aria-hidden="true">1</span><div><h3>La liste des patients</h3><p>Les patients opérés et suivis, avec le jour de suivi.</p></div></li>
+          <li><span class="n" aria-hidden="true">2</span><div><h3>Le niveau d'alerte</h3><p>Toujours une couleur, une icône et un mot.</p>
+            <div class="legend">
+              <span class="pill pill-alert"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>À rappeler</span>
+              <span class="pill pill-warn"><svg class="ico" aria-hidden="true"><use href="#i-watch"/></svg>À surveiller</span>
+              <span class="pill pill-ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Normal</span>
+              <span class="pill pill-none"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg>Sans réponse</span>
+            </div></div></li>
+          <li><span class="n" aria-hidden="true">3</span><div><h3>L'historique</h3><p>Les réponses jour après jour, question par question.</p></div></li>
+          <li><span class="n" aria-hidden="true">4</span><div><h3>L'alerte et sa suite</h3><p>Ce qui a déclenché l'alerte, puis le rappel et la décision notée.</p></div></li>
+        </ol>
+        <a class="btn btn-secondary" href="#" style="margin-top:24px">Voir le tableau de bord en détail</a>
+      </div>
+    </div>
+
+    <div class="route">
+      <div>
+        <h3>Le trajet d'une alerte</h3>
+        <p class="caption" style="margin-top:8px">Qui la reçoit, à quel moment, ce qu'elle déclenche.</p>
+      </div>
+      <ol class="route-steps">
+        <li><span class="ri"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span><b>Le patient répond</b><p>Depuis chez lui, au moment qui lui convient.</p></li>
+        <li><span class="ri"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></span><b>Les règles classent</b><p>Selon les seuils fixés par l'équipe médicale.</p></li>
+        <li><span class="ri"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg></span><b>L'infirmière est alertée</b><p>Seulement si une réponse sort des règles.</p></li>
+        <li><span class="ri"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><b>Elle rappelle</b><p>Puis décide de la suite, avec le médecin si besoin.</p></li>
+      </ol>
+    </div>
+
+    <dl class="load">
+      <div><dt>Qui reçoit l'alerte</dt><dd>L'infirmière de coordination de l'établissement. Pas toute l'équipe.</dd></div>
+      <div><dt>À quel moment</dt><dd>Dès que le questionnaire du jour est classé anormal.</dd></div>
+      <div><dt>Quand tout va bien</dt><dd>Rien à traiter : les réponses normales restent dans l'historique.</dd></div>
+    </dl>
+
+    <figure class="peer">
+      <span class="qmark" aria-hidden="true">«</span>
+      <div>
+        <blockquote>Je sais qui reçoit l'alerte et ce qu'elle déclenche. Le reste du temps, rien ne sonne.</blockquote>
+        <figcaption>Cadre de santé, unité de chirurgie ambulatoire, CHU</figcaption>
+      </div>
+      <span class="tag-ex">Exemple</span>
+    </figure>
+  </div>
+</section>
+
+<!-- 4. PREUVES -->
+<section class="section section-tint" id="preuves" aria-labelledby="preuves-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="pro"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
+      <h2 id="preuves-title">Preuves</h2>
+      <p class="lead">Nous publions ce qui est mesuré, et rien d'autre. Chaque étude suit le même format.</p>
+    </div>
+
+    <div class="proof-grid">
+      <article class="study">
+        <span class="study-type"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Étude observationnelle pilote</span>
+        <h3>Télésurveillance après chirurgie ambulatoire dans un CHU</h3>
+        <dl>
+          <dt>Type</dt><dd>Étude observationnelle, monocentrique</dd>
+          <dt>Établissement</dt><dd>Un CHU, unité de chirurgie ambulatoire</dd>
+          <dt>n</dt><dd>Communiqué à la publication</dd>
+          <dt>Critère</dt><dd>Faisabilité du suivi quotidien et trajet des alertes vers l'infirmière de coordination</dd>
+          <dt>Lien</dt><dd><a href="#">Fiche de l'étude (bientôt)</a></dd>
+        </dl>
+        <p class="result-pending" role="note"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg><span><b>Résultats du pilote : publication à venir.</b> Aucun chiffre n'est affiché avant la publication.</span></p>
+      </article>
+
+      <div class="proof-side">
+        <article class="study study-small">
+          <span class="study-type"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Déploiement pilote</span>
+          <h3>Retour d'expérience en cliniques privées</h3>
+          <dl>
+            <dt>Critère</dt><dd>Prise en main par les équipes soignantes</dd>
+            <dt>Résultat</dt><dd>Non publié à ce jour</dd>
+          </dl>
+        </article>
+        <div>
+          <h3>Établissements pilotes</h3>
+          <div class="sites">
+            <span class="site"><svg class="ico" aria-hidden="true"><use href="#i-building"/></svg>Un CHU</span>
+            <span class="site"><svg class="ico" aria-hidden="true"><use href="#i-clinic"/></svg>Des cliniques privées</span>
+          </div>
+          <p class="caption" style="margin-top:12px">Décrits par leur type, sans logo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="context">
+      <div>
+        <h3>La voie de remboursement</h3>
+        <p>Pas de prise en charge par l'Assurance maladie à ce jour. La voie visée : la PECAN, prise en charge anticipée d'un an, puis la LATM.</p>
+        <span class="caption src">Source : <a href="https://has-sante.fr/upload/docs/application/pdf/2025-09/principes_devaluation_de_la_cnedimts_liste_des_activites_de_telesurveillance_medicale_latm.pdf" rel="noopener">HAS, principes d'évaluation LATM</a>, vu le 13 novembre 2026.</span>
+      </div>
+      <div>
+        <h3>Ce que le remboursement exige</h3>
+        <p>Un dispositif marqué CE, certifié par l'ANS et évalué favorablement par la CNEDiMTS. Le marquage CE de Veilla est en cours.</p>
+        <span class="caption src">Source : <a href="https://www.centreoscarlambret.fr/sites/default/files/2026-05/galienn74.pdf" rel="noopener">Centre Oscar Lambret, GaLIEN n° 74</a>, mai 2026, vu le 13 novembre 2026.</span>
+      </div>
+      <a class="btn btn-primary" href="#"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>Télécharger le dossier de preuves (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CONFORMITÉ -->
+<section class="section" id="conformite" aria-labelledby="conf-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="conf-title">Conformité et sécurité</h2>
+      <p class="lead">Le statut exact de chaque point, et le document qui le prouve.</p>
+    </div>
+    <div class="comp-grid">
+      <article class="comp" style="background:var(--color-brand-secondary-tint)">
+        <span class="comp-ico" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></span>
+        <div>
+          <h3>Dispositif médical <span class="badge badge-warn"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg>Marquage CE : en cours</span></h3>
+          <p>Logiciel dispositif médical, classe IIa visée. La règle 11 de l'annexe VIII du règlement (UE) 2017/745 classe en IIa les logiciels qui fournissent des informations utilisées pour prendre des décisions diagnostiques ou thérapeutiques.</p>
+          <p class="caption">Source : <a href="https://eur-lex.europa.eu/eli/reg/2017/745/oj/fra" rel="noopener">EUR-Lex, règlement (UE) 2017/745</a>, vu le 13 novembre 2026.</p>
+          <a class="link-arrow doc" href="#">Notice réglementaire <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="comp" style="background:var(--color-brand-secondary-tint)">
+        <span class="comp-ico" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-server"/></svg></span>
+        <div>
+          <h3>Hébergement <span class="badge" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hébergeur certifié HDS</span></h3>
+          <p>Les données de l'espace patient sont hébergées en France chez un hébergeur certifié Hébergeur de données de santé.</p>
+          <a class="link-arrow doc" href="https://esante.gouv.fr/offres-services/hds/liste-des-hebergeurs-certifies" rel="noopener">Liste officielle des hébergeurs (ANS) <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </div>
+      </article>
+      <article class="comp" style="background:var(--color-brand-secondary-tint)">
+        <span class="comp-ico" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <div>
+          <h3>RGPD</h3>
+          <ul>
+            <li>Un délégué à la protection des données (DPO) : <a href="mailto:dpo@veilla.example">dpo@veilla.example</a></li>
+            <li>Base légale, finalités et durées de conservation détaillées dans la politique de confidentialité</li>
+          </ul>
+          <a class="link-arrow doc" href="#">Politique de confidentialité <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="comp" style="background:var(--color-brand-secondary-tint)">
+        <span class="comp-ico" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg></span>
+        <div>
+          <h3>Sécurité</h3>
+          <ul>
+            <li>Données chiffrées en transit et au repos</li>
+            <li>Accès au tableau de bord réservé aux soignants désignés par l'établissement</li>
+          </ul>
+          <a class="link-arrow doc" href="#">Note de sécurité <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+    </div>
+    <p class="comp-note caption"><svg class="ico" aria-hidden="true" style="margin-top:4px"><use href="#i-info"/></svg>Ce site vitrine ne collecte aucune donnée de santé. L'espace patient est une application distincte.</p>
+  </div>
+</section>
+
+<!-- 6. QUI SOMMES-NOUS -->
+<section class="section section-tint" id="equipe" aria-labelledby="equipe-title">
+  <div class="wrap about">
+    <div>
+      <h2 id="equipe-title">Qui sommes-nous</h2>
+      <p class="about-text">Veilla est née à Lyon de la rencontre d'une anesthésiste-réanimatrice et d'un ingénieur. Ensemble, ils conçoivent un suivi simple pour les jours qui suivent une chirurgie ambulatoire, avec un comité scientifique de soignants.</p>
+      <svg class="about-art" viewBox="0 0 420 200" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 170h400"/>
+        <path d="M40 170V96l40-28 40 28v74" />
+        <path d="M70 170v-34h20v34"/>
+        <path d="M120 170V60h70v110"/>
+        <path d="M136 82h12M162 82h12M136 108h12M162 108h12M136 134h12M162 134h12"/>
+        <path d="M150 50V38M144 44h12" stroke="#4E6B57"/>
+        <path d="M210 170c30-50 70-74 110-74" stroke-dasharray="2 12"/>
+        <path d="M330 120l34-28 34 28"/>
+        <path d="M338 114v56h52v-56"/>
+        <path d="M356 170v-26h16v26"/>
+        <path d="M300 40c-6 22 6 38 28 40-12 8-30 8-42-4-14-14-12-34 14-36z" stroke="#4E6B57"/>
+        <circle cx="250" cy="44" r="2" fill="currentColor"/><circle cx="380" cy="34" r="2" fill="currentColor"/><circle cx="226" cy="76" r="2" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="committee">
+      <p class="pro"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
+      <h3>Comité scientifique</h3>
+      <p class="caption">En constitution. Composition de démonstration : noms et déclarations sont des exemples.</p>
+      <ul class="members">
+        <li>
+          <div class="m-name">Pr Hélène Marchetti <span class="tag-ex">Exemple</span></div>
+          <div class="m-role">Chirurgienne viscérale, CHU</div>
+          <p class="m-coi">Liens d'intérêts : membre rémunéré du comité scientifique de Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
+        </li>
+        <li>
+          <div class="m-name">Dr Karim Benali <span class="tag-ex">Exemple</span></div>
+          <div class="m-role">Anesthésiste-réanimateur, clinique privée</div>
+          <p class="m-coi">Liens d'intérêts : membre rémunéré du comité scientifique de Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
+        </li>
+        <li>
+          <div class="m-name">Odile Ferrand <span class="tag-ex">Exemple</span></div>
+          <div class="m-role">Infirmière de coordination en chirurgie ambulatoire</div>
+          <p class="m-coi">Liens d'intérêts : aucun lien déclaré avec Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PUBLICATIONS -->
+<section class="section" id="publications" aria-labelledby="pub-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="pub-title">Publications et presse</h2>
+      <p class="lead">Études, congrès et articles, du plus récent au plus ancien. Les entrées ci-dessous sont des exemples.</p>
+    </div>
+    <div class="pub-tools">
+      <fieldset>
+        <legend>Filtrer par type</legend>
+        <button class="filter" type="button" data-filter="tous" aria-pressed="true">Tous</button>
+        <button class="filter" type="button" data-filter="etude" aria-pressed="false">Études</button>
+        <button class="filter" type="button" data-filter="congres" aria-pressed="false">Congrès</button>
+        <button class="filter" type="button" data-filter="presse" aria-pressed="false">Presse</button>
+      </fieldset>
+      <p class="sr-only" id="pub-count" aria-live="polite"></p>
+    </div>
+    <ul class="pubs" id="pubs">
+      <li class="pub" data-type="congres">
+        <div><time datetime="2026-10-08">8 octobre 2026</time><br><span class="kind">Congrès</span></div>
+        <div><h3><a href="#">Poster : organiser le trajet d'une alerte après la sortie en ambulatoire</a> <span class="tag-ex">Exemple</span></h3><p>Congrès national de chirurgie ambulatoire.</p></div>
+      </li>
+      <li class="pub" data-type="etude">
+        <div><time datetime="2026-09-15">15 septembre 2026</time><br><span class="kind">Étude</span></div>
+        <div><h3><a href="#">Protocole de l'étude observationnelle pilote en CHU</a> <span class="tag-ex">Exemple</span></h3><p>Critère, méthode et calendrier de publication.</p></div>
+      </li>
+      <li class="pub" data-type="presse">
+        <div><time datetime="2026-06-02">2 juin 2026</time><br><span class="kind">Presse</span></div>
+        <div><h3><a href="#">Une jeune pousse lyonnaise veut sécuriser le retour à domicile après l'ambulatoire</a> <span class="tag-ex">Exemple</span></h3><p>Presse régionale.</p></div>
+      </li>
+      <li class="pub" data-type="congres">
+        <div><time datetime="2026-03-20">20 mars 2026</time><br><span class="kind">Congrès</span></div>
+        <div><h3><a href="#">Communication : un questionnaire de 5 questions pour le suivi à J+1</a> <span class="tag-ex">Exemple</span></h3><p>Journée régionale d'anesthésie.</p></div>
+      </li>
+    </ul>
+    <div class="pub-empty" id="pub-empty" hidden>
+      <p><b>Aucune publication de ce type pour le moment.</b></p>
+      <p class="caption" style="margin-top:6px">Les nouvelles entrées s'afficheront ici dès leur parution. <button class="filter" type="button" data-filter="tous" style="margin-top:12px">Afficher tout</button></p>
+    </div>
+    <div class="pub-foot">
+      <a class="btn btn-secondary" href="#">Voir toutes les publications</a>
+      <a class="link-arrow" href="#">Kit presse <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CONTACT -->
+<section class="section section-tint" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 id="contact-title" class="sr-only">Contact</h2>
+    <div class="contact-grid">
+      <div class="panel panel-form" id="etablissement">
+        <h2>Vous êtes un établissement</h2>
+        <p class="panel-intro">Présentez-nous votre unité : nous préparons une présentation adaptée à votre équipe.</p>
+        <form class="form" id="demo-form" novalidate>
+          <div class="field">
+            <label for="f-nom">Nom</label>
+            <input id="f-nom" name="nom" type="text" autocomplete="name" required aria-describedby="e-nom">
+            <p class="err" id="e-nom" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-etab">Établissement</label>
+            <input id="f-etab" name="etablissement" type="text" autocomplete="organization" required aria-describedby="e-etab">
+            <p class="err" id="e-etab" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-fonction">Fonction</label>
+            <input id="f-fonction" name="fonction" type="text" autocomplete="organization-title" required aria-describedby="e-fonction">
+            <p class="err" id="e-fonction" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-email">E-mail professionnel</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+            <p class="err" id="e-email" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-tel">Téléphone <span class="opt">(facultatif)</span></label>
+            <input id="f-tel" name="telephone" type="tel" autocomplete="tel" aria-describedby="h-tel">
+            <p class="hint" id="h-tel">Format : 0X XX XX XX XX</p>
+          </div>
+          <div class="field full">
+            <label for="f-msg">Message <span class="opt">(facultatif)</span></label>
+            <textarea id="f-msg" name="message" rows="4"></textarea>
+          </div>
+          <p class="no-health"><svg class="ico" aria-hidden="true" style="margin-top:4px"><use href="#i-info"/></svg><span>Patients : n'indiquez aucune information médicale ici. Utilisez votre espace patient.</span></p>
+          <div class="form-foot">
+            <button class="btn btn-primary" type="submit" id="f-submit">Demander une présentation</button>
+            <p class="caption">Vos coordonnées servent uniquement à vous répondre. <a href="#">Politique de confidentialité</a></p>
+          </div>
+          <div class="form-status" id="form-status" aria-live="polite"></div>
+        </form>
+        <div class="success" id="form-success" tabindex="-1" hidden>
+          <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+          <div>
+            <h3>Demande envoyée</h3>
+            <p>Merci, votre demande est bien envoyée. Nous vous répondons à l'adresse <b id="success-email"></b>. En attendant, vous pouvez consulter <a href="#publications">nos publications</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel panel-patient" id="patient" aria-labelledby="patient-title">
+        <h2 id="patient-title">Vous êtes patient ou proche</h2>
+        <ul class="patient-lines">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg><span>Votre unité de soins active votre accès avant votre sortie. Vous n'avez rien à créer.</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span>Chaque jour, vous répondez à 5 questions courtes, sur téléphone, tablette ou SMS.</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span>Si une réponse le demande, une infirmière de l'établissement vous appelle.</span></li>
+        </ul>
+        <a class="btn btn-patient" href="#">Accéder à mon espace patient</a>
+        <a class="link-arrow" href="#">Lire les questions fréquentes <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p class="caregiver"><b>Vous aidez un proche ?</b> Vous pouvez répondre avec lui, sur son téléphone.</p>
+        <div class="urgent" role="note">
+          <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
+          <div><b>En cas d'urgence : 15</b><span>N'attendez pas le questionnaire. <a href="tel:15">Appeler le 15</a></span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#haut" aria-label="Veilla, retour en haut de page">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#FAF8F4"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#1F3A5F" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#4E6B57"/></svg>
+          Veilla
+        </a>
+        <p style="margin-top:12px;max-width:30em">Télésurveillance des patients après une chirurgie ambulatoire. Lyon.</p>
+      </div>
+      <nav aria-labelledby="f-nav1">
+        <h2 id="f-nav1">Patients</h2>
+        <ul>
+          <li><a href="#">Espace patient</a></li>
+          <li><a href="#">Questions fréquentes</a></li>
+          <li><a href="#">Notice d'utilisation du dispositif</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="f-nav2">
+        <h2 id="f-nav2">Informations</h2>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Déclaration d'accessibilité</a></li>
+          <li><a href="#">Kit presse</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-reg">
+      <p>Veilla est un logiciel dispositif médical en cours de marquage CE (classe IIa visée). Fabricant : Veilla SAS, en création, Lyon. Mise à jour : novembre 2026.</p>
+      <p class="foot-demo">Site de démonstration. Veilla est une entreprise fictive.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Menu mobile */
+  var menuBtn=document.querySelector('.menu-btn'),mnav=document.getElementById('mobile-nav');
+  function closeMenu(){mnav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}
+  menuBtn.addEventListener('click',function(){
+    var open=mnav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  mnav.addEventListener('click',function(e){if(e.target.closest('a'))closeMenu();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mnav.classList.contains('open')){closeMenu();menuBtn.focus();}});
+
+  /* Parcours */
+  var stepBtns=document.querySelectorAll('.step-btn'),figs=document.querySelectorAll('.journey-art figure');
+  stepBtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var s=b.getAttribute('data-step');
+      stepBtns.forEach(function(x){x.removeAttribute('aria-current');});
+      b.setAttribute('aria-current','step');
+      figs.forEach(function(f){f.classList.toggle('is-on',f.getAttribute('data-step')===s);});
+    });
+  });
+
+  /* Publications */
+  var filters=document.querySelectorAll('.filter'),pubs=document.querySelectorAll('.pub'),empty=document.getElementById('pub-empty'),count=document.getElementById('pub-count');
+  var labels={tous:'tous types',etude:'études',congres:'congrès',presse:'presse'};
+  filters.forEach(function(f){
+    f.addEventListener('click',function(){
+      var t=f.getAttribute('data-filter'),n=0;
+      document.querySelectorAll('.pub-tools .filter').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-filter')===t?'true':'false');});
+      pubs.forEach(function(p){var show=t==='tous'||p.getAttribute('data-type')===t;p.hidden=!show;if(show)n++;});
+      empty.hidden=n>0;
+      count.textContent=n+' publication'+(n>1?'s':'')+' affichée'+(n>1?'s':'')+' ('+labels[t]+').';
+    });
+  });
+
+  /* Formulaire établissement */
+  var form=document.getElementById('demo-form'),status=document.getElementById('form-status'),submit=document.getElementById('f-submit'),success=document.getElementById('form-success');
+  var rules=[
+    {id:'f-nom',err:'e-nom',empty:"Votre nom est manquant. Nous en avons besoin pour vous répondre. Indiquez-le pour continuer."},
+    {id:'f-etab',err:'e-etab',empty:"Le nom de l'établissement est manquant. Nous en avons besoin pour préparer la présentation. Indiquez-le pour continuer."},
+    {id:'f-fonction',err:'e-fonction',empty:"Votre fonction est manquante. Elle nous aide à adapter la présentation. Indiquez-la pour continuer."},
+    {id:'f-email',err:'e-email',empty:"L'adresse e-mail est manquante. Nous en avons besoin pour vous répondre. Indiquez-la pour continuer.",
+      invalid:"Cette adresse e-mail n'est pas valide : il manque le @ ou le nom de domaine. Exemple : prenom.nom@clinique-exemple.fr",
+      test:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);}}
+  ];
+  var alertIcon='<svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>';
+  function setErr(r,msg){
+    var input=document.getElementById(r.id),el=document.getElementById(r.err);
+    if(msg){el.innerHTML=alertIcon+'<span>'+msg+'</span>';el.hidden=false;input.setAttribute('aria-invalid','true');}
+    else{el.hidden=true;el.innerHTML='';input.removeAttribute('aria-invalid');}
+  }
+  function check(r){
+    var v=document.getElementById(r.id).value.trim();
+    if(!v){setErr(r,r.empty);return false;}
+    if(r.test&&!r.test(v)){setErr(r,r.invalid);return false;}
+    setErr(r,null);return true;
+  }
+  rules.forEach(function(r){
+    document.getElementById(r.id).addEventListener('blur',function(){if(this.value.trim()||this.hasAttribute('aria-invalid'))check(r);});
+  });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    status.innerHTML='';
+    var first=null;
+    rules.forEach(function(r){if(!check(r)&&!first)first=document.getElementById(r.id);});
+    if(first){first.focus();return;}
+    submit.disabled=true;
+    submit.innerHTML='<span class="spinner" aria-hidden="true"></span>Envoi en cours…';
+    setTimeout(function(){
+      submit.disabled=false;
+      submit.textContent='Demander une présentation';
+      if(!navigator.onLine){
+        status.innerHTML='<p class="send-fail">'+alertIcon+"<span>Votre demande n'a pas pu être envoyée, car la connexion a été interrompue. Vos informations sont conservées : cliquez à nouveau sur « Demander une présentation » ou écrivez-nous à contact@veilla.example.</span></p>";
+        return;
+      }
+      document.getElementById('success-email').textContent=document.getElementById('f-email').value.trim();
+      form.hidden=true;
+      success.hidden=false;
+      success.focus();
+    },700);
+  });
+})();
+</script>
+</body>
+</html>
