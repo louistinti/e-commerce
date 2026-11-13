@@ -31,6 +31,12 @@ Vérification du 2026-11-12, faite avec un vrai navigateur (Chrome piloté par P
   - La direction B « Atelier de nuit » est retirée (raison dans « Directions »). La direction C est gardée avec une correction typographique.
   - Tokens corrigés pour suivre le brief : `type.h3` passe en Barlow Condensed (le brief réserve Barlow Condensed aux titres) ; `type.data` passe d'IBM Plex Mono à Barlow en chiffres tabulaires (le brief fixe deux familles) ; ajout de `color.focus-inverse` `#FFFFFF`, car l'anneau `#1F6FEB` sur le pied de page `#2B3036` ne fait que 2,87:1 (WCAG demande 3:1) ; ajout d'un `scroll-padding-bottom` sous la barre d'appel fixe (WCAG 2.2, critère 2.4.11, focus non masqué). Tous les autres contrastes ont été recalculés et sont conformes.
 
+- **Passe du 2026-11-13 (aucun client, aucun chiffre inventé)** :
+  - Les questions ouvertes de fin de bench deviennent des **Arbitrages** (fin du document) : chaque question reçoit une décision.
+  - Les chiffres propres à Vibra (anticipation « 19 jours », « 34 défauts », « 20 pilotes ») sont retirés. Les chiffres relevés sur les pages du bench restent, avec leur URL.
+  - Le coût d'un arrêt a maintenant sa source ouverte : le rapport Siemens *The True Cost of Downtime 2024* (PDF ouvert le 2026-11-13).
+  - Photos d'équipe : Unsplash (« Access Denied ») et Pexels (vérification Cloudflare) bloquent le navigateur automatisé. On n'a rien contourné : le site aura un « Qui sommes-nous » court, sans photo, et les exigences de photo réelle d'équipe sont retirées du bench.
+
 Répartition : sites réels 10 · Awwwards 1 · Dribbble 6 · One Page Love 2 · Behance 2 (non vérifiés) · Pinterest 2 (non vérifiés) · Lapa Ninja 1 (non vérifié). **Total : 23, dont 18 vus. Inspirations : 10. À côté : 13.**
 
 ---
@@ -40,18 +46,18 @@ Répartition : sites réels 10 · Awwwards 1 · Dribbble 6 · One Page Love 2 ·
 | Exigence du brief | Inspirations | Manque |
 |---|---|---|
 | 1. Hero (photo d'atelier serrée sur le capteur, « Zéro arrêt surprise », 2 CTA) | 6, 4, 20 | Aucun hero vu n'est à la fois clair, cadré sur un capteur posé et doté d'un bouton d'appel. Le n° 6 a le bon cadrage mais un fond `#06060F`. |
-| 2. Le coût d'un arrêt (grand chiffre sourcé, calculateur à 2 champs) | 11, 12 | Aucun calculateur vu. La source citée par le brief (Siemens TCOD 2024, ABB) n'a pas été ouverte dans ce bench. |
-| 3. Installation en 30 minutes (3 étapes illustrées et minutées) | 5, 7 | Aucune référence ne montre 3 étapes avec leur durée. Les photos minutées viendront de la séance photo. |
+| 2. Le coût d'un arrêt (grand chiffre sourcé, calculateur à 2 champs) | 11, 12 | Aucun calculateur vu. La source du chiffre est le rapport Siemens TCOD 2024, ouvert le 2026-11-13 (voir « Arbitrages »). |
+| 3. Installation en 3 étapes (3 dessins au trait, sans durée) | 5, 7 | Aucune référence ne montre 3 étapes de pose d'un capteur. Les dessins sont à produire dans le style du n° 5. |
 | 4. Ce que voit le responsable maintenance (capture annotée : score, tendance, alerte avec action) | 9 | Ni score de santé, ni courbe de tendance, ni annotation en 3 points sur les références vues. La phrase d'Augury (n° 1, à côté) donne le texte de l'alerte. |
 | 5. Secteurs (agroalimentaire, plasturgie, métallurgie : machines et défaut typiques) | 22 | Aucune référence n'associe un secteur, ses machines et son défaut. Le trait épais du n° 8 (à côté) peut servir aux pictos. |
-| 6. Retours d'usine (3 témoignages : photo, nom, site) | 12 | Seulement des études longues : aucune grille de 3 cartes courtes vue. |
+| 6. Retours d'usine (3 témoignages : nom, fonction, site, machine, sans portrait) | 12 | Seulement des études longues : aucune grille de 3 cartes courtes vue. |
 | 7. Fiche technique (PDF sans formulaire, résumé HTML) | 7 | Aucun site vu ne propose le PDF sans formulaire (le n° 7 est le contre-exemple). |
-| 8. Contact et pilote (formulaire court, numéro direct, commercial par région) | 22, 14 | Aucun formulaire court vu. |
+| 8. Qui sommes-nous, contact et pilote (« Qui sommes-nous » sans photo, formulaire court, numéro direct, technicien par région) | 22, 14 | Aucun formulaire court vu. |
 | Mobile : appel fixe en 1 tap, fiche technique en 1 tap | 6 (mobile) | Aucun des 3 sites vus en 390 px n'a de lien `tel:`. |
 | Marque : gris acier, blanc, jaune en accent, Barlow Condensed et Barlow | 20, 4 | Aucune référence en Barlow, aucune en gris acier et jaune. Le n° 20 montre la condensée noire et le jaune, mais en trop grande dose. |
-| Photos réelles, aucune banque d'images (critère de réussite) | 6, 12, 4 | Le n° 10 (à côté) montre le défaut à éviter. |
+| Photos d'atelier, aucune banque d'images (critère de réussite) | 6, 12, 4 | Le n° 10 (à côté) montre le défaut à éviter. |
 | Accessibilité : contrastes AA, cibles de 48 px, statut jamais par la couleur seule | 6 (mobile), 7 | Aucun tableau de bord vu ne double la couleur d'une icône et d'un libellé. |
-| Preuve « Zéro arrêt surprise » : chiffre d'anticipation avec son périmètre | 11 | Aucune référence ne donne un délai d'anticipation avec périmètre. |
+| Preuve « Zéro arrêt surprise » : tendance, alerte et intervention planifiée sur une capture | 9, 11 | Aucune référence ne montre la tendance qui précède l'alerte. Pas de délai d'anticipation chiffré : Vibra n'a pas de mesure. |
 | Preuve « Vos données restent en Europe et hors de votre réseau » (schéma pour P3) | 6, 7 | Aucune référence ne montre l'hébergement UE ni une fiche sécurité téléchargeable. |
 
 Les autres preuves de la section « Messages clés » sont couvertes par leur bloc : installation (bloc 3), alerte (bloc 4), témoignages (bloc 6), coût d'un arrêt (bloc 2).
@@ -68,7 +74,7 @@ Les autres preuves de la section « Messages clés » sont couvertes par leur bl
 | 4 | Path Robotics, https://www.awwwards.com/sites/path-robotics (Awwwards, site du jour le 23 septembre 2021, 7,34/10) | [capture](captures/inspis/04-awwwards-path-robotics.jpg) | Cellule de soudage photographiée seule, titre géant et **grille de colonnes visible** (filets verticaux qui découpent l'en-tête et l'image). On reprend la machine seule et la grille, en version claire. À noter : la fiche montre la version primée (fond `#000`), le site actuel a changé (« Physical AI for Manufacturing », `#151515`). | Hero en photo réelle de machine ; registre « document de travail » pour des acheteurs qui se méfient du marketing. |
 | 20 | Sterial (Pxcraftt), https://dribbble.com/shots/27613985-Worker-in-Hazmat-Suit-Spraying-Disinfectant-Website-Design (Dribbble) | [capture](captures/inspis/20-dribbble-pxcraftt-disinfection.jpg) | Titre en capitales condensées très grasses, noir sur blanc, dernier mot surligné de jaune ; **téléphone et bouton jaune à texte noir dans l'en-tête**. À éviter : la moitié de page en aplat jaune et les hachures noir et jaune (code chantier). | Titre « Zéro arrêt surprise » en Barlow Condensed ; CTA secondaire « Appeler un technicien » visible dès l'arrivée ; jaune en fond de bouton avec texte foncé. |
 
-Renvois à côté : la rangée de logos clients sous le hero du n° 3 peut porter la preuve « Ça marche chez des industriels comme vous », seulement avec l'accord écrit des clients. La formule « en semaines, pas en mois » du n° 2 rejoint l'option B du titre (« 3 semaines avant de casser »).
+Renvois à côté : la rangée de logos clients sous le hero du n° 3 n'est pas reprise, car Vibra est fictive et des logos réels laisseraient croire à des clients. La formule « en semaines, pas en mois » du n° 2 n'est pas reprise non plus : Vibra n'a pas de délai mesuré à promettre.
 
 ### 2. Le coût d'un arrêt
 
@@ -77,12 +83,12 @@ Renvois à côté : la rangée de logos clients sous le hero du n° 3 peut porte
 | 11 | Sereact : Pick and Place, https://sereact.ai/product/pick-and-place (site réel, DE) | [hero](captures/inspis/11-sereact-pick-and-place.jpg), [KPI](captures/inspis/11-sereact-kpis.jpg) | Section « Key Production KPIs » : 8,000+ prises par jour, 600+ unités par heure en pointe, > 99 % de prises réussies. Chaque chiffre a une étiquette en petites capitales (monospace 12 px bleu `#0284C7`), un grand chiffre (Montserrat 300, 60 px) et une phrase de contexte (« When your system can feed fast enough. »). On reprend la structure : étiquette, grand chiffre, phrase de périmètre, filets fins. Étiquette en Barlow Condensed, pas en monospace. | « Un grand chiffre sourcé » ; règle « chaque chiffre a un périmètre ». |
 | 12 | I-care : Barry Callebaut, https://www.icareweb.com/knowledge/predictive-maintenance/success-story-barry-callebaut/ (site réel, BE) | [capture](captures/inspis/12-icare-barry-callebaut.jpg) | Le chiffre d'arrêt évité mis en regard du coût horaire : 30 h d'arrêt évitées sur les broyeurs, 1 h d'arrêt = 5 000 $. C'est exactement le calcul que fait le calculateur. | Calculateur (chiffre d'affaires horaire × heures d'arrêt) ; P2 veut « le chiffre du coût d'arrêt ». |
 
-### 3. Installation en 30 minutes
+### 3. Installation en 3 étapes
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 5 | Sensor installation (Franco Bertoncini Andrade, pour Nordsense), https://dribbble.com/shots/8762795-Sensor-installation (Dribbble) | [capture](captures/inspis/05-dribbble-sensor-installation.jpg) | Illustration de notice d'installation : dessin isométrique au trait noir sur blanc, une pièce, ses vis en vue éclatée, un seul aplat de couleur (vert `#BFDCBF`, à remplacer par le jaune ou le gris acier). Un objet, le geste, aucun décor. | « 3 étapes illustrées » ; à utiliser si les photos minutées ne suffisent pas (voir « Points à remonter au client »). |
-| 7 | Tractian : Condition Monitoring, https://tractian.com/en/solutions/condition-monitoring (site réel, US) | [capture](captures/inspis/07-tractian-condition-monitoring.jpg) | La FAQ « combien de temps pour installer ? » et la promesse « No IT setup, no Wi-Fi needed ». | Message « Installé en 30 minutes, sans câble, sans arrêter la ligne » ; frein de P1 « encore un outil à surveiller ». |
+| 5 | Sensor installation (Franco Bertoncini Andrade, pour Nordsense), https://dribbble.com/shots/8762795-Sensor-installation (Dribbble) | [capture](captures/inspis/05-dribbble-sensor-installation.jpg) | Illustration de notice d'installation : dessin isométrique au trait noir sur blanc, une pièce, ses vis en vue éclatée, un seul aplat de couleur (vert `#BFDCBF`, à remplacer par le jaune ou le gris acier). Un objet, le geste, aucun décor. | « 3 étapes illustrées » ; style retenu pour les 3 dessins (voir « Arbitrages »). |
+| 7 | Tractian : Condition Monitoring, https://tractian.com/en/solutions/condition-monitoring (site réel, US) | [capture](captures/inspis/07-tractian-condition-monitoring.jpg) | La FAQ « combien de temps pour installer ? » et la promesse « No IT setup, no Wi-Fi needed ». | Message « Installé sans câble, sans arrêter la ligne » ; frein de P1 « encore un outil à surveiller ». |
 
 ### 4. Ce que voit le responsable maintenance
 
@@ -104,7 +110,7 @@ Renvoi à côté : le trait épais des icônes du n° 8, lisible en petit, pour 
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 12 | I-care : Barry Callebaut (Louviers), même URL qu'au bloc 2 | [capture](captures/inspis/12-icare-barry-callebaut.jpg) | Photo réelle d'un opérateur sur la ligne, site nommé, secteur et taille en icônes, citation du responsable fiabilité, puis « Challenges », « Solutions », « Benefits ». Faits : site de 350 salariés, environ 4 000 équipements, moteur suivi jusqu'à l'arrêt programmé. À éviter : les chiffres enfouis en fin de page et le bouton orange `#F7941D` à texte blanc (2,3:1). Sur la carte Vibra, le chiffre clé remonte en tête. | « 3 témoignages avec photo, nom et site » ; P2 veut « un témoignage d'une usine comparable avec le nom du site » ; CTA « Lire le retour complet ». |
+| 12 | I-care : Barry Callebaut (Louviers), même URL qu'au bloc 2 | [capture](captures/inspis/12-icare-barry-callebaut.jpg) | Photo réelle d'un opérateur sur la ligne, site nommé, secteur et taille en icônes, citation du responsable fiabilité, puis « Challenges », « Solutions », « Benefits ». Faits : site de 350 salariés, environ 4 000 équipements, moteur suivi jusqu'à l'arrêt programmé. À éviter : les chiffres enfouis en fin de page et le bouton orange `#F7941D` à texte blanc (2,3:1). Sur la carte Vibra, la machine et le défaut détecté remontent en tête, sans portrait et sans chiffre de résultat. | « 3 témoignages avec nom, fonction, site et machine » ; P2 veut « un témoignage d'une usine comparable avec le nom du site » ; CTA « Lire le retour complet ». |
 
 Renvoi à côté : la page Siemens (n° 10) confirme la structure en 3 rubriques (objectifs, solution, bénéfices) et le site nommé, mais sans chiffre et avec une photo d'ambiance.
 
@@ -116,12 +122,12 @@ Renvoi à côté : la page Siemens (n° 10) confirme la structure en 3 rubriques
 
 Renvoi à côté : la description du n° 21 pose le même problème que ce bloc, éviter de faire « soit une fiche technique, soit un site vague ». Le résumé HTML sert la directrice, le PDF sert le maintenancier et l'informaticien.
 
-### 8. Contact et pilote
+### 8. Qui sommes-nous, contact et pilote
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 22 | Plastics Unlimited (même fiche qu'au bloc 5) | [capture](captures/inspis/22-onepagelove-plastics-unlimited.jpg) | Bandeau noir fixe avec **le numéro de téléphone en premier**, et « Sales representatives as well as technical advisors are available ». One Page Love signale une galerie d'équipe avec e-mail et poste téléphonique. | « Numéro direct, nom du commercial par région » ; P1 attend « un interlocuteur technique joignable ». |
-| 14 | Wormsensing : About us, https://www.wormsensing.com/about-us (site réel, FR) | [capture](captures/inspis/14-wormsensing-about.jpg) | L'ancrage territorial en une ligne (« Engineered in Grenoble », fondée en 2020 par deux ingénieurs de recherche du CEA). Pour Vibra : Saint-Étienne et les techniciens par région, en photo réelle. On ne reprend pas la photo aérienne de ville. | Campagne régionale (Auvergne-Rhône-Alpes, Grand Est) et requêtes SEO régionales ; nom du commercial par région. |
+| 22 | Plastics Unlimited (même fiche qu'au bloc 5) | [capture](captures/inspis/22-onepagelove-plastics-unlimited.jpg) | Bandeau noir fixe avec **le numéro de téléphone en premier**, et « Sales representatives as well as technical advisors are available ». One Page Love signale une galerie d'équipe avec e-mail et poste téléphonique ; Vibra garde les noms et les numéros, sans portrait. | « Numéro direct, nom du technicien par région » ; P1 attend « un interlocuteur technique joignable ». |
+| 14 | Wormsensing : About us, https://www.wormsensing.com/about-us (site réel, FR) | [capture](captures/inspis/14-wormsensing-about.jpg) | L'ancrage territorial en une ligne (« Engineered in Grenoble », fondée en 2020 par deux ingénieurs de recherche du CEA). Pour Vibra : Saint-Étienne et les techniciens par région, dans un « Qui sommes-nous » de 3 phrases, sans photo. On ne reprend pas la photo aérienne de ville. | Bloc « Qui sommes-nous » ; campagne régionale (Auvergne-Rhône-Alpes, Grand Est) et requêtes SEO régionales ; nom du technicien par région. |
 
 ### Exigences transverses
 
@@ -129,7 +135,7 @@ Renvoi à côté : la description du n° 21 pose le même problème que ce bloc,
 |---|---|---|---|---|
 | 6 | Wormsensing : Plateforme | [capture](captures/inspis/06-wormsensing-platform.jpg) | La chaîne en 5 verbes (Sense, Connect, Acquire, Interpret, Decide) avec des chiffres d'unité (10 µm, 150 µm, 100 kHz, 1000×). Pour Vibra : capteur, passerelle 4G, hébergement UE, alerte. À éviter : les gains en fourchettes sans périmètre (« Up to 280% », « −50 to −99% »). | Schéma d'architecture pour P3 ; preuve « Vos données restent en Europe et hors de votre réseau ». |
 | 7 | Tractian | [capture](captures/inspis/07-tractian-condition-monitoring.jpg) | « No IT setup, no Wi-Fi needed » : l'argument « rien sur le réseau usine » dit en une ligne. Boutons bleu `#2563EB` à texte blanc (5,2:1), rayon de 2 px. | P3 veut lire « aucune connexion au réseau usine » ; contrastes AA. |
-| 11 | Sereact | [KPI](captures/inspis/11-sereact-kpis.jpg) | La phrase de contexte sous chaque chiffre. | Preuve « Zéro arrêt surprise » : « 19 jours en médiane, 34 défauts détectés » avec son périmètre *(fictif)*. |
+| 11 | Sereact | [KPI](captures/inspis/11-sereact-kpis.jpg) | La phrase de contexte sous chaque chiffre. | Le chiffre de référence du bloc 2 (Siemens TCOD 2024) avec sa phrase de périmètre : « grande usine de biens de grande consommation ». |
 | 20 | Sterial | [capture](captures/inspis/20-dribbble-pxcraftt-disinfection.jpg) | La condensée noire en grand et le jaune en surlignage ou en fond de bouton seulement. | Marque : Barlow Condensed, jaune jamais en texte sur blanc. |
 
 ---
@@ -142,13 +148,13 @@ Trois sites vus en 390 × 844 px le 2026-11-12. Le brief demande un bouton « Ap
 |---|---|---|---|
 | Wormsensing : Plateforme (n° 6, inspiration) | [capture](captures/inspis/mobile-wormsensing.jpg) | La photo est recadrée sur le capteur, qui reste lisible au-dessus du titre. Les 2 boutons passent l'un sous l'autre en pleine largeur, 48 px de haut. En-tête fixe réduit à « Menu ». Aucun lien `tel:`. | Hero cadré sur le capteur posé ; cibles de 48 px. |
 | Tractian : Condition Monitoring (n° 7, à côté en mobile) | [capture](captures/a-cote/mobile-tractian.jpg) | Le texte passe au-dessus de la photo, les 2 boutons « See Pricing » et « Book a Demo » restent côte à côte. Seule la barre de navigation est collante. « Contact us », visible avec une icône de téléphone sur desktop, disparaît dans le menu burger. Aucun lien `tel:`. | Contre-exemple : l'appel ne doit jamais passer dans le menu. |
-| I-care : Barry Callebaut (n° 12, à côté en mobile) | [capture](captures/a-cote/mobile-icare.jpg) | La photo passe au-dessus du titre, puis secteur et taille en icônes. Le seul élément fixe est une bulle de chat orange en bas à droite (plus le bouton de consentement). Aucun lien `tel:` ; les chiffres clés (30 h, 5 000 $ de l'heure) sont tout en bas de la page. | Contre-exemple : le chiffre clé d'un témoignage doit être en tête de carte. |
+| I-care : Barry Callebaut (n° 12, à côté en mobile) | [capture](captures/a-cote/mobile-icare.jpg) | La photo passe au-dessus du titre, puis secteur et taille en icônes. Le seul élément fixe est une bulle de chat orange en bas à droite (plus le bouton de consentement). Aucun lien `tel:` ; les chiffres clés (30 h, 5 000 $ de l'heure) sont tout en bas de la page. | Contre-exemple : l'information clé d'un témoignage (machine, défaut) doit être en tête de carte. |
 
 Ce que ces observations donnent pour Vibra :
 - **aucun des 3 sites ne propose d'appel en 1 tap**. La barre fixe « Appeler un technicien » avec un vrai lien `tel:` est un point de différence. Elle ne se cache jamais dans le menu. Parmi les sites réels vus, seul Plastics Unlimited (n° 22, desktop, 2016) mettait le téléphone en premier ;
 - recadrer la photo du hero sur le capteur posé, comme Wormsensing, pour qu'il reste visible en 390 px ;
 - boutons empilés en pleine largeur, 48 px minimum (Wormsensing est exactement à 48 px) ;
-- le chiffre clé d'un témoignage remonte en tête de carte, au lieu d'être en fin d'article comme chez I-care ;
+- la machine et le défaut d'un témoignage remontent en tête de carte, au lieu d'être en fin d'article comme chez I-care ;
 - la fiche technique en 1 tap, sans formulaire : c'est l'inverse de Tractian (n° 7).
 
 ---
@@ -164,9 +170,9 @@ Constat du panel : les heros du secteur sont sombres (Augury, Intrepid, Path Rob
 - Inspirations : n° 6 (cadrage du hero), n° 4 (grille visible, machine seule), n° 20 (condensée noire, téléphone dans l'en-tête), n° 11 (chiffres et étiquettes), n° 7 (bloc de spécifications), n° 5 (dessin au trait pour les étapes), n° 9 (cartes machine).
 
 **Direction C : « Carnet de terrain »**
-- Photos documentaires des techniciens en intervention, légendes courtes, témoignages en avant.
+- Photos documentaires du capteur et des gestes d'installation, légendes courtes, témoignages en avant.
 - Correction : les légendes sont en Barlow Condensed (`type.label`), pas en écriture manuscrite ni en monospace, car le brief fixe deux familles.
-- Très crédible, mais dépend entièrement de la séance photo (prévue au brief, S3) et des accords écrits des clients.
+- Très crédible, mais dépend entièrement de la séance photo (prévue au brief, S3). Pas de portraits d'équipe : le « Qui sommes-nous » reste sans photo.
 - Inspirations : n° 12 (photo réelle d'opérateur, citation nommée), n° 22 (interlocuteurs nommés), n° 14 (ancrage territorial), n° 6 en mobile (photo recadrée sur le capteur).
 
 **Direction B « Atelier de nuit » : retirée.** Elle mettait un fond graphite et le jaune en bandes de balisage, ce qui sort du trio « gris acier, blanc, jaune » du brief et pousse vers la signalétique de chantier ; elle visait aussi « l'impact au salon », alors que le brief dit que les acheteurs se méfient du marketing.
@@ -280,8 +286,8 @@ Les statuts sont toujours doublés d'une icône et d'un libellé, jamais signal�
 - **Ajouté** : la page reçoit un `scroll-padding-bottom` égal à la hauteur de la barre, pour qu'un élément qui reçoit le focus ne passe jamais dessous (WCAG 2.2, critère 2.4.11).
 
 **Carte témoignage**
-- Photo réelle 4:3 sans rayon, chiffre clé en tête (`type.h2`), citation en Barlow 500 au corps `type.body` (**corrigé** : une citation est du texte, pas un titre), puis nom, fonction, site et ville en `type.small`.
-- Une pastille machine et défaut en `type.label`.
+- Sans portrait. En tête, la machine et le défaut détecté (`type.h2`), puis la citation en Barlow 500 au corps `type.body` (**corrigé** : une citation est du texte, pas un titre), puis nom, fonction, site et ville en `type.small`.
+- Une mention « Témoignage fictif (démonstration) » en `type.label`.
 - Filet `neutral.100` et `radius.md`.
 
 **Formulaire pilote**
@@ -299,7 +305,7 @@ Les statuts sont toujours doublés d'une icône et d'un libellé, jamais signal�
 | Un seul CTA primaire par écran | Trois boutons jaunes côte à côte |
 | Cibles tactiles de 48 px minimum (usage avec des gants) | Liens texte de 14 px comme seul moyen d'action |
 | Fiche technique téléchargeable sans formulaire | Fiche technique bloquée derrière un formulaire (5 champs chez Tractian, n° 7) |
-| Chiffres avec unité et périmètre (« 19 jours, médiane sur 20 pilotes ») | « Jusqu'à 100 % de pannes évitées » |
+| Chiffres avec unité, périmètre et source (« 30 h d'arrêt évitées sur les broyeurs », I-care, n° 12) | « Jusqu'à 100 % de pannes évitées » |
 
 ---
 
@@ -341,8 +347,10 @@ Refonte du 2026-11-12 : aucune nouvelle recherche, car chaque bloc du brief a au
 
 ---
 
-## Points à remonter au client
+## Arbitrages
 
-- **Installation : photos ou dessins ?** La section « Messages clés » parle de « 3 étapes photographiées et minutées », l'arborescence de « 3 étapes illustrées ». Le bench propose les photos de la séance (S3) et garde le dessin au trait (n° 5) en solution de repli. À trancher avant la liste de plans photo.
-- **Source du coût d'un arrêt** : le brief cite « Siemens TCOD 2024, ABB ». Ce rapport n'a pas été ouvert dans ce bench (la page Siemens vue, n° 10, est une autre publication). Le chiffre affiché et son lien sont à fournir par le client et à vérifier avant mise en ligne.
-- **Troisième police** : plusieurs inspirations (n° 11, 20) utilisent une monospace pour les données. Le brief fixe deux familles, donc le bench reste en Barlow. Si le client veut une monospace pour les valeurs de capteurs, c'est à lui de l'ajouter à sa charte.
+- **Installation : photos ou dessins ?** On dessine les 3 étapes au trait, dans le style du n° 5, parce que le capteur est fictif et qu'aucune photo de pose minutée ne peut exister. Le dessin montre le geste sans décor, et la séance photo se concentre sur le hero.
+- **Source du coût d'un arrêt** : on affiche 36 000 $ pour une heure d'arrêt dans une grande usine de biens de grande consommation, avec le lien vers [Siemens, *The True Cost of Downtime 2024*](https://assets.new.siemens.com/siemens/assets/api/uuid:1b43afb5-2d07-47f7-9eb7-893fe7d0bc59/TCOD-2024_original.pdf) (PDF ouvert le 2026-11-13). C'est le secteur du rapport le plus proche de l'agroalimentaire de P1. Pas de chiffre ABB, faute de source ouverte ; le calculateur ramène le repère à l'échelle du visiteur.
+- **Troisième police** : on reste sur Barlow Condensed et Barlow, avec chiffres tabulaires pour les valeurs de capteurs. Le brief fixe deux familles, et les chiffres tabulaires suffisent à aligner les données.
+- **Photos d'équipe** : un « Qui sommes-nous » de 3 phrases, sans photo, avec le logo. Unsplash et Pexels bloquent le navigateur automatisé, et le brief exclut de toute façon la banque d'images.
+- **Témoignages** : 3 cartes sans portrait ni chiffre de résultat, marquées « fictif ». Un visage ou un résultat sur un témoignage inventé le ferait passer pour vrai.

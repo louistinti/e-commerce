@@ -1,11 +1,11 @@
 # Vitrine industrie 4.0 / robotique
 
-Site de démonstration pour la catégorie « industrie et robotique » (réindustrialisation, « physical AI » ; financements robotique +185 % sur un an dans le monde).
+Site de démonstration pour la catégorie « industrie et robotique » (réindustrialisation, « physical AI » ; 27,6 Md$ levés par les startups de la robotique et de la physical AI en 2025, plus du double de 2024, selon PitchBook repris par [AI2Work](https://ai2.work/blog/robotics-startup-funding-doubles-to-27-6b-on-physical-ai-boom), vu le 2026-11-13).
 
 ## Entreprise fictive
 
-**Vibra** : des capteurs vibratoires sans fil et un logiciel de maintenance prédictive pour les PME industrielles. Ils détectent une panne de machine trois semaines avant qu'elle n'arrive.
-Le nom est provisoire : vérifier l'INPI avant de le réutiliser.
+**Vibra** : des capteurs vibratoires sans fil et un logiciel de maintenance prédictive pour les PME industrielles. Ils détectent la dégradation d'une machine avant la panne.
+Aucun chiffre n'est inventé : les seules données chiffrées sont sourcées. Le nom sert uniquement à cette démonstration.
 
 ## Qui achète ce type de site
 
@@ -14,21 +14,21 @@ Références réelles à prospecter : Wormsensing, et les PME industrielles rég
 
 ## Sections du one-page
 
-1. Hero : photo d'atelier réelle + promesse (« Zéro arrêt surprise ») + CTA « Tester sur une machine »
-2. Le coût d'un arrêt non planifié (chiffre)
-3. Installation en 30 minutes : 3 étapes illustrées
+1. Hero : photo d'atelier + promesse (« Zéro arrêt surprise ») + CTA « Tester sur une machine »
+2. Le coût d'un arrêt non planifié (chiffre sourcé : Siemens, *The True Cost of Downtime 2024*) + calculateur
+3. Installation en 3 étapes : dessins au trait
 4. Ce que voit le responsable maintenance (tableau de bord)
 5. Secteurs : agroalimentaire, plasturgie, métallurgie
-6. Retours d'usine : témoignages avec photo et nom du site
+6. Retours d'usine : témoignages fictifs avec nom et site, sans portrait
 7. Fiche technique téléchargeable (PDF)
-8. Contact + demande de pilote
+8. Qui sommes-nous (3 phrases, sans photo) + contact + demande de pilote
 
 ## Direction artistique
 
 - Ton : direct, technique, aucun buzzword.
 - Palette : gris acier, blanc, un accent jaune sécurité industrielle.
 - Typo : une grotesque condensée (Barlow Condensed) pour les titres + Barlow pour le texte.
-- Photos réelles d'ateliers, cadrage serré sur les machines.
+- Photos d'atelier, cadrage serré sur les machines. Pas de photo d'équipe : un « Qui sommes-nous » court la remplace.
 
 ## Mobile
 
@@ -36,8 +36,8 @@ Bouton d'appel direct (les clients téléphonent), fiche technique accessible en
 
 ## Dossier
 
-- [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
-- [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : la couverture du brief bloc par bloc, les inspirations et les références à côté avec captures, les directions, les design tokens, les composants
+- [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions pour la recherche utilisateur
+- [Brief client](BRIEF-CLIENT.md) : objectifs, indicateurs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, postes de budget
+- [Bench](BENCH.md) : la couverture du brief bloc par bloc, les inspirations et les références à côté avec captures, les directions, les design tokens, les composants, les arbitrages
 
 Les références ont été ouvertes et capturées le 2026-11-12, puis triées selon le brief : [inspirations](captures/inspis/) et [références à côté](captures/a-cote/). Behance, Pinterest et Lapa Ninja restent inaccessibles : voir les limites du bench.
