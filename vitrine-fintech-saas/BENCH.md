@@ -4,6 +4,8 @@ Ce bench suit le brief bloc par bloc : chaque référence retenue sert un bloc d
 
 ## Limites, à lire en premier
 
+**Passe du 2026-11-13** : Liasse est fictive et personne ne validera rien. Les anciens points ouverts deviennent des décisions (section **Arbitrages**, en fin de document). Le brief ne contient plus aucun chiffre propre à Liasse : plus de taille d'équipe, d'utilisateurs, de cibles de KPI, de budget, de note d'avis ni de durée promise (« 2 minutes »). Le bloc d'avis est retiré du one-page. Les chiffres observés sur les pages du bench restent, avec leur URL. Le brief ne demande aucune photo d'équipe : rien à chercher en banque d'images.
+
 **Refonte du 2026-11-12 (cette version)** :
 - Les 26 références d'origine ont été triées : **12 inspirations** et **14 à côté**. Avec les 2 ajouts, le bench compte **14 inspirations**. Rien n'a été supprimé : chaque référence à côté garde sa ligne et sa raison, en fin de document.
 - Les captures sont rangées dans [`captures/inspis/`](captures/inspis/) et [`captures/a-cote/`](captures/a-cote/), sans renommage. Le préfixe reste le numéro de la référence. Les numéros n'ont pas changé.
@@ -37,20 +39,20 @@ Ce bench suit le brief bloc par bloc : chaque référence retenue sert un bloc d
 | 2. Échéancier de la réforme : frise 2026-2027, sélecteur « Je suis », « Ce que vous devez faire » | 6, 27, 23 | Aucune référence ne réunit frise et sélecteur de profil. Abby (n° 5), qui le faisait peut-être, n'a pas pu être vu. |
 | 3. Fonctionnalités : facture, relance, trésorerie, export comptable (4 cartes) | 8, 23, 22, 28, 3 | Pas de grille de 4 cartes sur ces 4 sujets précis : chaque carte a son modèle, la grille vient du n° 3. |
 | 4. Aperçu de l'application : captures mobile et desktop, micro-animations sur les montants | 22, 24, 25, 27 | Aucune micro-animation de montant constatée (non vue chez Mercury, captures fixes ailleurs). À prototyper. |
-| 5. Pour les experts-comptables : bénéfices, export, invitation des clients, contact partenaire | 2, 28, 6 | Pas de bande de logos de logiciels de production réellement compatibles. |
+| 5. Pour les experts-comptables : bénéfices, export, invitation des clients, contact partenaire | 2, 28, 6 | Pas de bande de logos : le brief n'en veut pas (compatibilité fictive), les formats d'export suffisent. |
 | 6. Sécurité : plateforme agréée, hébergement, chiffrement, données bancaires | 1, 2, 6 | Aucune référence ne nomme l'hébergeur, la région, le chiffrement ni l'agrégateur bancaire. Le seul exemple vu est vague (n° 27, à éviter). |
-| 7. Tarifs : 2 ou 3 formules HT et TTC, comparatif factuel sans nom de concurrent | 21, 28 | Aucune grille ne montre HT et TTC côte à côte : le n° 21 n'affiche que le HT. |
-| 8. Avis, FAQ et inscription : note moyenne, verbatims avec mode de contrôle, FAQ de 8 à 10 questions, champ e-mail répété | 16, 27, 2 | Aucune référence n'écrit le mode de contrôle des avis. Pas de verbatims observés. |
+| 7. Tarifs : 2 formules HT et TTC, prix de démonstration calés sur une grille publique, comparatif par catégories sans nom de concurrent | 21, 28 | Aucune grille ne montre HT et TTC côte à côte : le n° 21 n'affiche que le HT. |
+| 8. FAQ et inscription : FAQ de 8 à 10 questions, champ e-mail répété | 27 | Le bloc d'avis est retiré du brief (voir Arbitrages). Les n° 16 et 2 restent comme repères de ce que font les concurrents. |
 | Mobile : capture d'app en premier, inscription en un champ et un tap, cibles de 44 px | 16, 1, 6 | Voir bloc 1. Mercury (n° 1) est sous 44 px. |
 | Marque : crème, violet profond, accent corail | 22, 16, 25 | Aucun violet profond sur crème observé (la n° 26, à côté, montre que le violet fintech courant est électrique et sombre). |
 | Marque : grotesque arrondie (DM Sans ou Outfit), chiffres tabulaires | 24 | Les chiffres tabulaires viennent d'un test navigateur, pas d'une référence (voir « Polices »). |
 | Accessibilité : AA, corail jamais en texte sur crème, frise lisible sans couleur | 6, 22 | Plusieurs contre-exemples mesurés (n° 16, 21, 1) cités dans les blocs. |
-| Preuve « Une facture conforme en 2 minutes, depuis votre téléphone » | 8, 27 | Pas de boucle mobile chronométrée observée. Le n° 27 se contredit sur la durée. |
+| Preuve « Une facture conforme depuis votre téléphone, sans repasser au bureau » | 8, 27 | Pas de boucle mobile du parcours observée. Le n° 27 se contredit sur la durée : une raison de plus pour ne promettre aucune durée. |
 | Preuve « Prêt pour l'émission de septembre 2027 » | 6 | Aucun numéro d'immatriculation PA affiché nulle part (n° 2 et 6). |
-| Preuve « Payé plus vite » | 23 | Aucun délai moyen de paiement avant et après relances, avec périmètre et date. |
+| Preuve « Les relances partent toutes seules » | 23 | La séquence de relances du n° 23 suffit : le brief n'affiche aucun délai moyen de paiement, Liasse n'en a pas. |
 | Preuve « Votre trésorerie à 90 jours, en un coup d'œil » | 22, 24, 3 | Animation des montants non observée. |
-| Preuve « Votre expert-comptable branché directement » | 2, 28 | Pas de logos de logiciels compatibles. |
-| Preuve « Vos données sont protégées » | 1, 2 | Hébergeur, région et agrégateur jamais nommés. |
+| Preuve « Votre expert-comptable branché directement » | 2, 28 | Formats d'export écrits en clair (n° 28). Pas de logos de logiciels tiers : une compatibilité affichée par une entreprise fictive serait fausse. |
+| Preuve « Vos données sont protégées » | 1, 2 | Région d'hébergement et statut du prestataire de connexion bancaire jamais écrits. |
 
 ---
 
@@ -107,33 +109,35 @@ Détail d'une référence à côté : l'aperçu mobile de Tara (n° 9) met le ch
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
 | 1 | Mercury (voir bloc 1) | [site](captures/inspis/01-mercury-site.jpg) | « Mercury is a fintech company, not an FDIC-insured bank », épinglé en bas du hero et encore visible en mobile. | « Ne pas laisser entendre que Liasse est une banque » |
-| 2 | Qonto, accueil (voir bloc 5) | [accueil](captures/inspis/02-qonto.jpg) | Pied de page avec les numéros réglementaires écrits : ACPR (CIB 16958), ORIAS, RCS. À éviter : « Certifié Plateforme Agréée » sans numéro d'immatriculation PA (aucun sur les 3 pages ouvertes). | Statut réglementaire du prestataire écrit en clair ; numéro affiché |
-| 6 | Pennylane (voir bloc 2) | [hero](captures/inspis/06-pennylane.jpg) | Le logo officiel « Plateforme agréée · Facturation électronique · République française » dans l'image du hero. À éviter : pas de numéro à côté. | Mention « plateforme agréée », à compléter par le numéro réel |
+| 2 | Qonto, accueil (voir bloc 5) | [accueil](captures/inspis/02-qonto.jpg) | Pied de page avec les numéros réglementaires écrits : ACPR (CIB 16958), ORIAS, RCS. À éviter : « Certifié Plateforme Agréée » sans numéro d'immatriculation PA (aucun sur les 3 pages ouvertes). | Statut réglementaire du prestataire écrit en clair |
+| 6 | Pennylane (voir bloc 2) | [hero](captures/inspis/06-pennylane.jpg) | Le logo officiel « Plateforme agréée · Facturation électronique · République française » dans l'image du hero. À éviter : pas de numéro à côté. | Mention « plateforme agréée ». Liasse l'écrit dans le texte, sans ce logo officiel ni numéro (voir Arbitrages) |
 
-À éviter : à « Is my data secure? », Billow (n° 27) répond seulement « Billow uses encryption and secure cloud infrastructure ». Le brief demande l'hébergeur et la région nommés.
+À éviter : à « Is my data secure? », Billow (n° 27) répond seulement « Billow uses encryption and secure cloud infrastructure ». Le brief demande la région d'hébergement, le chiffrement et le statut du prestataire bancaire écrits en clair.
 
 ### 7. Tarifs
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 21 | [Pennylane, tarifs de la page facturation électronique](https://www.pennylane.com/fr/logiciel-facturation-electronique?so=1) (France) | [capture](captures/inspis/21-pennylane-tarifs.jpg) | 3 cartes « À partir de » 7, 14 et 24 € « /mois HT », celle du milieu en fond sombre. Une ligne par formule, le même bouton « Essayer gratuitement » partout, et sous la grille : « 15 jours d'essai gratuit, sans engagement. ». À éviter : les prix en vert `#00BD57` sur blanc, à 2,5:1. | 2 ou 3 formules ; HT lisible ; conditions de l'essai écrites |
+| 21 | [Pennylane, tarifs de la page facturation électronique](https://www.pennylane.com/fr/logiciel-facturation-electronique?so=1) (France) | [capture](captures/inspis/21-pennylane-tarifs.jpg) | 3 cartes « À partir de » 7, 14 et 24 € « /mois HT », celle du milieu en fond sombre. Une ligne par formule, le même bouton « Essayer gratuitement » partout, et sous la grille : « 15 jours d'essai gratuit, sans engagement. ». À éviter : les prix en vert `#00BD57` sur blanc, à 2,5:1. | 2 formules ; HT lisible ; conditions de l'essai écrites ; grille publique sur laquelle sont calés les prix de démonstration de Liasse (7 et 14 € HT, rouverte le 2026-11-13) |
 | 28 | Statements (voir bloc 3) | [comparatif](captures/inspis/28-statements-comparatif.jpg) | Tableau « How it compares » : colonnes « statements », « AI », « Others », « Manual », 7 lignes de critères, la colonne du produit encadrée. Les autres sont des catégories, jamais des marques. À éviter : des cellules à icône seule (coche ou croix) sans texte accessible, constaté dans le code de la page ; le fond sombre. | Comparatif « Liasse et les autres » factuel, sans nommer de concurrent |
 
 Détail d'une référence à côté : chez Bonsai (n° 15), le badge noir « Most popular » sur la formule mise en avant reste sobre.
 
-### 8. Avis clients, FAQ et inscription
+### 8. FAQ et inscription
+
+Le bloc d'avis est retiré du brief : une entreprise fictive n'a ni note ni verbatims. Les n° 16 et 2 restent comme repères de ce que font les concurrents, pas comme modèles à reproduire.
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 16 | [Indy, page artisans](https://www.indy.fr/artisan/) (France, concurrent direct) | [capture](captures/inspis/16-indy-artisan.jpg) | 3 notes avec leur source et leur volume : Trustpilot 4,8 et +16 000 avis, App Store 4,9, Play Store 4,8. Pastille « + de 10 000 Artisans déjà clients ! ». À éviter : le bouton rose `#FA5D89` à texte blanc (3,0:1) ; « A partir de 12 € /mois » dans le hero puis « Un socle gratuit avec tous les essentiels » plus bas. | Note moyenne avec sa source |
+| 16 | [Indy, page artisans](https://www.indy.fr/artisan/) (France, concurrent direct) | [capture](captures/inspis/16-indy-artisan.jpg) | 3 notes avec leur source et leur volume : Trustpilot 4,8 et +16 000 avis, App Store 4,9, Play Store 4,8. Pastille « + de 10 000 Artisans déjà clients ! ». À éviter : le bouton rose `#FA5D89` à texte blanc (3,0:1) ; « A partir de 12 € /mois » dans le hero puis « Un socle gratuit avec tous les essentiels » plus bas. | Repère concurrent : notes sourcées (pas d'avis chez Liasse) |
 | 27 | Billow (voir bloc 1) | [FAQ](captures/inspis/27-billow-faq.jpg) | FAQ en accordéon de 8 questions, dont « How does the 14-day trial work? » et « Is my data secure? ». Le CTA de fin de page reprend celui du hero avec ses conditions. À éviter : 3 durées pour la même promesse (« in under 5 minutes », « in under 2 minutes », « in under a minute ») ; une FAQ qui parle encore d'« upcoming launch » et de liste d'attente alors que l'essai est ouvert. | FAQ de 8 à 10 questions ; inscription répétée ; dates et chiffres cohérents d'une section à l'autre |
-| 2 | Qonto, accueil (voir bloc 5) | [accueil](captures/inspis/02-qonto.jpg) | « 4,7 sur 5 » Trustpilot près du hero, avec la source nommée. | Note moyenne |
+| 2 | Qonto, accueil (voir bloc 5) | [accueil](captures/inspis/02-qonto.jpg) | « 4,7 sur 5 » Trustpilot près du hero, avec la source nommée. | Repère concurrent (pas d'avis chez Liasse) |
 
 ---
 
 ## Mobile
 
-Captures en 390 × 844 px, le 2026-11-12. Hauteurs mesurées dans la page. Exigences du brief concernées : capture mobile en premier (bloc 1), inscription en un champ et un tap (critères de réussite), 55 % des inscriptions sur mobile (KPI), cibles tactiles de 44 px (accessibilité), LCP mobile sous 2,5 s.
+Captures en 390 × 844 px, le 2026-11-12. Hauteurs mesurées dans la page. Exigences du brief concernées : capture mobile en premier (bloc 1), inscription en un champ et un tap (critères de réussite), part des inscriptions faites sur mobile (indicateur suivi), cibles tactiles de 44 px (accessibilité), LCP mobile sous 2,5 s.
 
 | # | Site | Capture | Ce qu'on observe | Exigence du brief |
 |---|---|---|---|---|
@@ -157,7 +161,7 @@ Le brief ne fixe pas de nombre de pistes. 2 pistes sont gardées, toutes deux su
 
 ### Direction A : « Carnet chaleureux » (recommandée)
 - Fond crème, cartes blanc cassé, violet profond pour le texte et les boutons, corail pour un seul signal (facture payée, jalon atteint), toujours doublé d'un texte.
-- **Garde-fou** : le crème seul ne distingue pas Liasse d'Indy (`#FEF7EC`, très proche de `#FBF6EE`, n° 16). La différence vient du violet profond (absent chez Indy, rose `#FA5D89`), de vraies captures de l'app plutôt qu'une photo d'artisan avec cartes flottantes, et de la trésorerie à 90 jours, qu'Indy ne montre pas.
+- **Garde-fou** : le crème seul ne distingue pas Liasse d'Indy (`#FEF7EC`, très proche de `#FBF6EE`, n° 16). La différence vient du violet profond (absent chez Indy, rose `#FA5D89`), de maquettes de l'app Liasse plutôt qu'une photo d'artisan avec cartes flottantes, et de la trésorerie à 90 jours, qu'Indy ne montre pas.
 - Hero : champ e-mail et conditions de l'essai sous le bouton (n° 1, 3, 13, 27), puis la capture mobile qui dépasse du premier écran.
 - Captures mobiles en grand, légèrement inclinées, ombres douces. Les montants s'animent une fois au passage (n° 22, 24). Démo au scroll pour l'aperçu (n° 25).
 - Échéancier en 3 cartes datées (n° 6) avec le sélecteur de profil en pastilles (n° 27).
@@ -167,7 +171,7 @@ Le brief ne fixe pas de nombre de pistes. 2 pistes sont gardées, toutes deux su
 - Hero sur l'alternative C du brief (« Votre compte dans 90 jours, dès aujourd'hui »), pour les campagnes trésorerie. La courbe à 90 jours vit dans la capture mobile du hero, pas dans un tableau de bord plein écran (n° 22, 3). Une phrase sous la courbe dit ce qu'elle signifie (« Point bas le 1er décembre : vous restez au-dessus de votre seuil »).
 - Widgets arrondis et grands montants en chiffres tabulaires (n° 24).
 - **Correction** : la version précédente disait « moins de crème ». Le crème reste le fond de page, comme le veut la marque ; le violet clair ne sert qu'aux surfaces des cartes.
-- Registre : pilotage, adapté à Nathalie et aux TPE de services. Moins direct pour les artisans du bâtiment (60 % des utilisateurs).
+- Registre : pilotage, adapté à Nathalie et aux TPE de services. Moins direct pour les artisans du bâtiment, cœur de cible.
 - Inspirations : 3, 22, 24, 21, 28.
 
 ### 3 « à ne pas faire »
@@ -294,11 +298,11 @@ Avec `prefers-reduced-motion: reduce`, les montants s'affichent directement à l
 | Montants en chiffres tabulaires (Outfit), animés une fois | Compteurs qui tournent en boucle |
 | Corail pour les bonnes nouvelles (payé, jalon atteint), avec un texte | Corail ou rouge pour faire peur avec la réforme |
 | Cibles tactiles d'au moins 44 px, focus visible | `outline: none` ou liens de 12 px en pied de page |
-| Captures d'application réelles et à jour | Mockups génériques sans lien avec le produit |
+| Maquettes de l'app Liasse, produites pour la démo et cohérentes d'un écran à l'autre | Mockups génériques sans lien avec le produit |
 | Échéancier lisible sans la couleur (texte et icônes) | Frise uniquement codée par couleur |
 | Un même chiffre partout, daté | Deux chiffres pour la même chose (Qonto, Pennylane, Billow) |
-| Numéro d'immatriculation PA affiché à côté de la mention | « Plateforme agréée » sans numéro (Qonto, Pennylane) |
-| Hébergeur et région nommés | « Infrastructure cloud sécurisée » sans nom (Billow) |
+| « Plateforme agréée » expliqué, avec un lien vers la liste officielle, sans numéro inventé | « Plateforme agréée » sans numéro (Qonto, Pennylane) |
+| Région d'hébergement et chiffrement écrits en clair | « Infrastructure cloud sécurisée » sans nom (Billow) |
 
 ---
 
@@ -307,14 +311,14 @@ Avec `prefers-reduced-motion: reduce`, les montants s'affichent directement à l
 | # | Référence | Capture | Pourquoi à côté |
 |---|---|---|---|
 | 4 | [Fintt.te, Landing Page (Fintech)](https://www.behance.net/gallery/141980721/Finttte-Landing-Page-(Fintech)) (Behance) | Non capturé | Non vérifié : Behance renvoie une erreur 400 à un navigateur automatisé. Remplacé par le n° 22. |
-| 5 | [Abby, facturation électronique](https://abby.fr/facturation-electronique) (France) | Non capturé | Non vérifié : erreur 403 CloudFront sur la page et sur l'accueil. Le calendrier, la gratuité et les notes restent à contrôler. Pour l'échéancier, voir le n° 6. |
+| 5 | [Abby, facturation électronique](https://abby.fr/facturation-electronique) (France) | Non capturé | Non vérifié : erreur 403 CloudFront sur la page et sur l'accueil. Le calendrier, la gratuité et les notes ne sont donc pas cités ici ; l'étude de cas s'appuie sur la presse pour Abby. Pour l'échéancier, voir le n° 6. |
 | 7 | [Fintech mobile app](https://dribbble.com/shots/15812075-Fintech-mobile-app) (Excel Belmiro, Dribbble) | [capture](captures/a-cote/07-dribbble-excel.jpg) | Hors marque et hors ton : dégradé rose-violet, personnage 3D, registre d'app grand public, loin de « simple, chaleureux, rassurant » et de la palette crème, violet profond, corail. La palette (`#E8DFFB`, `#CAB7F8`, `#AA2DA8`, `#6538E5`, `#613939`, `#C4A9BD`) est extraite automatiquement. Le lilas `#E8DFFB` est cité dans « Palette ». |
 | 9 | [Tara](https://onepagelove.com/tara) (One Page Love, 25 septembre 2026) | [capture](captures/a-cote/09-onepagelove-tara.jpg) | Hors marque et hors ton : coffre crypto, rendus 3D, dégradés vert-rose, police Herokid. Le seul détail utile (champ et « Join waitlist » sur une ligne) est cité au bloc 1 et mieux couvert par les n° 1 et 3. |
 | 10 | [Revolut](https://godly.website/website/revolut-254) (Godly) | Non capturé | Non vérifié : redirection vers recent.design ; le site de Revolut Business affiche un challenge Cloudflare, non contourné. Remplacé par le n° 24. |
 | 11 | [Eco](https://godly.website/website/eco-935) (Godly) | Non capturé | Non vérifié : redirection vers recent.design. Remplacé par le n° 25. |
 | 12 | [Invo, SaaS product for automatizing invoicing](https://www.behance.net/gallery/157230691/Invo-SaaS-product-for-automatizing-invoicing?locale=en_US) (Behance) | Non capturé | Non vérifié : erreur 400. Remplacé par le n° 23. |
-| 14 | [Maze, Pricing](https://maze.co/pricing/) (fiche [Land-book](https://land-book.com/websites/37536-flexible-pricing-and-plans-maze) bloquée par Cloudflare) | [capture](captures/a-cote/14-maze-pricing.jpg) | Contre-exemple pour le bloc 7 : 2 formules, « Free » et « Enterprise » (« Custom pricing »), et aucun prix. Le brief demande 2 ou 3 formules avec prix HT et TTC lisibles. Titre « Pricing & Packages » en Phonic 300 de 90 px. |
-| 15 | [Bonsai](https://www.hellobonsai.com/pricing), via [SaaS Landing Page](https://saaslandingpage.com/bonsai/) | [tarifs](captures/a-cote/15-bonsai-pricing.jpg), [fiche](captures/a-cote/15-bonsai-slp.jpg) | Contraire au bloc 7 : 4 formules (9, 19, 29 et 49 $ par utilisateur et par mois) au lieu de 2 ou 3, sans mention HT ni TTC, bouton en dégradé sur la formule mise en avant. Sous le hero, 13 onglets de fonctionnalités, beaucoup pour un artisan. Palette `#003C2F`, `#22AD01`, `#EE8146`, Geist Sans, hors marque. Le badge « Most popular » est cité au bloc 7. |
+| 14 | [Maze, Pricing](https://maze.co/pricing/) (fiche [Land-book](https://land-book.com/websites/37536-flexible-pricing-and-plans-maze) bloquée par Cloudflare) | [capture](captures/a-cote/14-maze-pricing.jpg) | Contre-exemple pour le bloc 7 : 2 formules, « Free » et « Enterprise » (« Custom pricing »), et aucun prix. Le brief demande 2 formules avec prix HT et TTC lisibles. Titre « Pricing & Packages » en Phonic 300 de 90 px. |
+| 15 | [Bonsai](https://www.hellobonsai.com/pricing), via [SaaS Landing Page](https://saaslandingpage.com/bonsai/) | [tarifs](captures/a-cote/15-bonsai-pricing.jpg), [fiche](captures/a-cote/15-bonsai-slp.jpg) | Contraire au bloc 7 : 4 formules (9, 19, 29 et 49 $ par utilisateur et par mois) au lieu de 2, sans mention HT ni TTC, bouton en dégradé sur la formule mise en avant. Sous le hero, 13 onglets de fonctionnalités, beaucoup pour un artisan. Palette `#003C2F`, `#22AD01`, `#EE8146`, Geist Sans, hors marque. Le badge « Most popular » est cité au bloc 7. |
 | 17 | [Invoice Builder by Tola](https://www.awwwards.com/sites/invoice-builder-by-tola) (Awwwards, mention honorable, 19 janvier 2024) | [capture](captures/a-cote/17-awwwards-tola.jpg) | URL morte : le site primé (invoice.tolahq.com) renvoie une erreur Cloudflare 1000. Seule la fiche a été vue (tablette en biais, « Create beautiful invoices in seconds »). L'aperçu en direct et les montants n'ont pas pu être vérifiés. |
 | 18 | [Yapstone, par Hangar](https://hangar.co/projects/yapstone) (épingle [Pinterest](https://co.pinterest.com/pin/1044694444796643488/) derrière un mur de connexion) | [capture](captures/a-cote/18-hangar-yapstone.jpg) | Contexte seulement : identité d'une fintech de paiement, noir chaud, lilas et 5 couleurs vives (lilas, bleu, vert, jaune, rose) avec chacune sa version claire, police Graphik. Hors palette du brief (crème, violet profond, corail). Le principe d'une teinte claire par couleur est cité dans « Palette ». |
 | 19 | [Idées « Purple Website Design Inspiration »](https://www.pinterest.com/ideas/purple-website-design-inspiration/916159820380/) (Pinterest) | Non capturé | Non vérifié : mur de connexion, aucun visuel lisible. Remplacé par le n° 26. |
@@ -350,8 +354,13 @@ Avec `prefers-reduced-motion: reduce`, les montants s'affichent directement à l
 
 ---
 
-## Points à remonter au client
+## Arbitrages
 
-- **DM Sans et chiffres tabulaires** : le brief demande « DM Sans ou Outfit » avec des chiffres tabulaires. DM Sans servie par Google Fonts n'en a pas. Avec DM Sans, il faut une 2e police pour les montants (Outfit) ; avec Outfit seule, une seule police suffit. À trancher.
-- **Le corail comme signal** : le brief l'exclut déjà du texte sur crème. Il est aussi sous 3:1 comme pastille ou jalon sur tous les fonds clairs. Il ne peut donc jamais être le seul indice de « payé » ou du jalon actif : un texte l'accompagne toujours.
-- **Le crème est déjà pris par Indy** (`#FEF7EC`, hero artisan avec carte « Payée »), concurrent direct sur les artisans. La palette du brief reste valable, mais la différence doit venir du violet profond et des vraies captures de l'app.
+- **DM Sans et chiffres tabulaires** : on garde DM Sans pour les titres et le texte, et on passe les montants en Outfit 600 avec `tabular-nums`, parce que DM Sans servie par Google Fonts n'a pas de chiffres tabulaires (test du 2026-11-12) et qu'Outfit reste dans les deux polices de la marque.
+- **Le corail comme signal** : on n'utilise jamais le corail seul pour dire « payé » ou marquer le jalon actif. Il est sous 3:1 sur tous les fonds clairs (2,54:1 sur crème), donc un texte ou une icône l'accompagne toujours, ou un contour `#B8412E`.
+- **Le crème déjà pris par Indy** : on garde la palette crème, violet profond et corail. On se distingue d'Indy (`#FEF7EC`, carte « Payée ») par le violet profond, des maquettes de l'app Liasse au lieu d'une photo d'artisan, et la trésorerie à 90 jours.
+- **Aucun chiffre propre à Liasse** : on retire du brief l'équipe, les utilisateurs, la levée, les cibles de KPI, le budget et la promesse « 2 minutes », parce qu'ils seraient inventés. Les indicateurs restent, sans cible.
+- **Prix et essai** : on cale les 2 formules sur les deux premières formules publiques de Pennylane (7 et 14 € HT par mois) et l'essai sur celui de Qonto (30 jours), sources vues le 2026-11-13, et le site les marque « prix de démonstration ». Une démo sans prix ne permet pas de tester la grille HT et TTC.
+- **Avis** : on retire le bloc d'avis. Une entreprise fictive n'a ni note ni verbatims, et des avis inventés seraient de faux avis.
+- **Plateforme agréée** : on écrit « plateforme agréée » dans le texte, sans numéro et sans le logo officiel, avec un lien vers la liste d'impots.gouv.fr. Liasse n'a pas d'immatriculation, et un faux numéro tromperait le visiteur.
+- **Prestataires réels** : on ne nomme ni hébergeur, ni agrégateur bancaire, ni logiciel comptable compatible. On écrit la région d'hébergement, le chiffrement, le statut réglementaire du prestataire et les formats d'export, parce qu'une entreprise fictive n'a aucun contrat à afficher.

@@ -5,7 +5,7 @@ Site de démonstration pour la catégorie « fintech et logiciels de gestion »,
 ## Entreprise fictive
 
 **Liasse** : la facturation électronique et la trésorerie pour les artisans et TPE. Ils émettent des factures conformes, sont relancés automatiquement et voient leur trésorerie à 90 jours.
-Le nom est provisoire : vérifier l'INPI avant de le réutiliser.
+Entreprise et nom fictifs, sans dépôt de marque. Aucun chiffre propre à Liasse (équipe, clients, prix, avis) n'est inventé : voir l'avertissement du [brief](BRIEF-CLIENT.md).
 
 ## Qui achète ce type de site
 
@@ -14,14 +14,16 @@ Références réelles à prospecter : Wavo, Wealthcome, Spiko (en amorçage plut
 
 ## Sections du one-page
 
-1. Hero : « Vos factures électroniques, prêtes en 2 minutes » + CTA « Essai gratuit 30 jours »
+1. Hero : « Vos factures électroniques, faites depuis votre téléphone » + CTA « Essai gratuit 30 jours »
 2. Échéancier de la réforme (qui est concerné et quand)
 3. Fonctionnalités : facture, relance, trésorerie, export comptable
 4. Aperçu de l'application (captures mobile et desktop)
 5. Pour les experts-comptables (section dédiée)
-6. Sécurité : plateforme agréée (PA), hébergement, chiffrement
-7. Tarifs simples + comparatif
-8. Avis clients (note, verbatims) + FAQ + inscription
+6. Sécurité : plateforme agréée (PA, sans numéro puisque Liasse est fictive), hébergement, chiffrement
+7. Tarifs simples (prix de démonstration calés sur une grille publique sourcée) + comparatif
+8. FAQ + inscription (pas d'avis : une entreprise fictive n'en a pas)
+
+Pas de bloc équipe ni de photo d'équipe : le pied de page dit en une phrase qui fait Liasse.
 
 ## Direction artistique
 
@@ -36,8 +38,8 @@ Captures de l'app mobile en premier, inscription en un champ (email).
 
 ## Dossier
 
-- [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions à valider
-- [Brief client](BRIEF-CLIENT.md) : objectifs, KPIs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning, budget
-- [Bench](BENCH.md) : les références classées bloc par bloc selon le brief, les directions de moodboard, les design tokens, les composants, et les références mises à côté avec leur raison
+- [Étude de cas](ETUDE-DE-CAS.md) : le marché, la critique de vrais sites du secteur, les thèmes, les opportunités, les questions de recherche utilisateur
+- [Brief client](BRIEF-CLIENT.md) : objectifs, indicateurs, personas, plan de recherche utilisateur, UX copy, arborescence, contraintes, planning
+- [Bench](BENCH.md) : les références classées bloc par bloc selon le brief, les directions de moodboard, les design tokens, les composants, et les références mises à côté avec leur raison, et les arbitrages
 
 Les références du bench ont été ouvertes le 2026-11-12 avec un vrai navigateur. Les captures sont triées dans [`captures/inspis/`](captures/inspis/) (inspirations) et [`captures/a-cote/`](captures/a-cote/) (contre-exemples, hors marque, non vérifiées). Quelques sources restent bloquées (Behance, Abby, Godly, Lapa Ninja, Land-book, Pinterest) : elles sont marquées « non vérifié » dans le bench, avec une référence de remplacement vue. Voir la section « Limites, à lire en premier » du [bench](BENCH.md).
