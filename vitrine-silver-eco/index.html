@@ -750,8 +750,8 @@ section[id]{scroll-margin-top:96px}
         <p>Pour le ménage, les repas, les courses, la compagnie et l'aide au lever et au coucher.</p>
         <p class="source">Tarif de démonstration, calé sur le tarif public d'une aide à domicile jusqu'à 25 h par semaine à l'agence <a href="https://www.petits-fils.com/nos-agences/agence-aide-a-domicile-bordeaux-chartrons/#tarifs" rel="noopener">Petits-fils Bordeaux Chartrons</a> (consulté le 13/11/2026). Ce réseau est cité comme repère public, ce n'est pas un prix réel de Les Jours Tranquilles.</p>
         <div class="price-example">
-          <p><b>Exemple&nbsp;: 10 h par semaine</b></p>
-          <p>355&nbsp;€ TTC, soit 177,50&nbsp;€ après le crédit d'impôt de 50&nbsp;%, hors APA.</p>
+          <p><b>Exemple&nbsp;: 6 h par semaine</b></p>
+          <p>213&nbsp;€ TTC, soit 106,50&nbsp;€ après le crédit d'impôt de 50&nbsp;%, hors APA. Sur 52 semaines, 11&nbsp;076&nbsp;€ de dépenses, sous le plafond de 12&nbsp;000&nbsp;€.</p>
           <p class="source">Votre devis gratuit précise le tarif et les aides pour votre situation.</p>
         </div>
       </div>
@@ -762,14 +762,14 @@ section[id]{scroll-margin-top:96px}
         <div class="sim-control">
           <label for="hours">Nombre d'heures par semaine</label>
           <button class="step-btn" type="button" id="hours-minus" aria-label="Une heure de moins">−</button>
-          <input type="range" id="hours" min="1" max="25" step="1" value="10" aria-describedby="hours-out">
+          <input type="range" id="hours" min="1" max="25" step="1" value="6" aria-describedby="hours-out">
           <button class="step-btn" type="button" id="hours-plus" aria-label="Une heure de plus">+</button>
-          <output id="hours-out" class="sim-hours" for="hours">10 h</output>
+          <output id="hours-out" class="sim-hours" for="hours">6 h</output>
         </div>
         <dl class="calc" aria-live="polite">
-          <div><dt>Prix TTC</dt><dd id="out-ttc">355,00&nbsp;€<small>par semaine</small></dd></div>
-          <div><dt>Crédit d'impôt</dt><dd id="out-credit">− 177,50&nbsp;€<small>soit 50&nbsp;%</small></dd></div>
-          <div class="net"><dt>Coût réel</dt><dd id="out-net">177,50&nbsp;€<small>par semaine</small></dd></div>
+          <div><dt>Prix TTC</dt><dd id="out-ttc">213,00&nbsp;€<small>par semaine</small></dd></div>
+          <div><dt>Crédit d'impôt</dt><dd id="out-credit">− 106,50&nbsp;€<small>soit 50&nbsp;%</small></dd></div>
+          <div class="net"><dt>Coût réel</dt><dd id="out-net">106,50&nbsp;€<small>par semaine</small></dd></div>
         </dl>
         <p class="sim-warning" id="sim-warning" hidden><svg aria-hidden="true"><use href="#i-alert"/></svg><span id="sim-warning-text"></span></p>
         <p class="sim-foot">Sous réserve de la législation en vigueur. Le crédit d'impôt est calculé sur les dépenses retenues dans la limite de 12&nbsp;000&nbsp;€ par an, majorée de 1&nbsp;500&nbsp;€ par membre du foyer ou ascendant de plus de 65 ans, sans dépasser 15&nbsp;000&nbsp;€. Source&nbsp;: <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F12" rel="noopener">fiche F12, Service Public</a> (vérifiée le 15/04/2026, consultée le 13/11/2026).</p>

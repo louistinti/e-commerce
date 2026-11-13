@@ -87,7 +87,7 @@ One-page avec ancres, plus des pages annexes.
 2. **Les services** : 6 cartes simples (ménage et linge, repas, courses et sorties, compagnie, lever et coucher et toilette, présence de nuit). Chaque carte : une icône, un titre, une phrase.
 3. **Comment ça se passe** : 1. premier appel, 2. visite d'évaluation gratuite à domicile, 3. présentation de l'auxiliaire attitrée, 4. premier passage, puis un premier point avec la famille.
 4. **Le lien avec la famille** : maquette de téléphone avec un exemple de compte-rendu, marqué « exemple » (« Passage de 9 h à 11 h. Repas préparé, courses faites. Mme D. était en forme, elle a parlé de son petit-fils. »), choix entre SMS et application.
-5. **Tarifs et aides** : un tarif horaire TTC de démonstration, marqué « tarif d'exemple » : **35,50 € TTC de l'heure**, calé sur le tarif public d'une aide à domicile jusqu'à 25 h par semaine à l'agence [Petits-fils Bordeaux Chartrons](https://www.petits-fils.com/nos-agences/agence-aide-a-domicile-bordeaux-chartrons/#tarifs) (vu le 2026-11-13 ; réseau mandataire, cité comme repère public et non comme notre prix). Exemple de calcul : 10 h par semaine, soit 355 € TTC, ou 177,50 € après le crédit d'impôt de 50 %, hors APA. Puis les explications sur l'APA, le crédit d'impôt et l'avance immédiate, les liens vers les sources officielles et le CTA « Recevoir un devis gratuit ».
+5. **Tarifs et aides** : un tarif horaire TTC de démonstration, marqué « tarif d'exemple » : **35,50 € TTC de l'heure**, calé sur le tarif public d'une aide à domicile jusqu'à 25 h par semaine à l'agence [Petits-fils Bordeaux Chartrons](https://www.petits-fils.com/nos-agences/agence-aide-a-domicile-bordeaux-chartrons/#tarifs) (vu le 2026-11-13 ; réseau mandataire, cité comme repère public et non comme notre prix). Exemple de calcul : 6 h par semaine, soit 213 € TTC, ou 106,50 € après le crédit d'impôt de 50 %, hors APA ; sur 52 semaines, 11 076 € de dépenses, sous le plafond de 12 000 € de la fiche F12 (l'ancien exemple de 10 h par semaine, 18 460 € par an, dépassait ce plafond). Puis les explications sur l'APA, le crédit d'impôt et l'avance immédiate, les liens vers les sources officielles et le CTA « Recevoir un devis gratuit ».
 6. **Qui sommes-nous** : un bloc court, sans photo, avec le logo. Texte : « Les Jours Tranquilles est un service d'aide à domicile de proximité. Nous employons nos auxiliaires de vie, formées et accompagnées par une responsable de secteur. Chaque personne a son auxiliaire attitrée, et sa famille reçoit des nouvelles après chaque passage. »
 7. **Avis des familles** : 3 à 5 avis d'exemple, marqués « avis d'exemple », avec l'emplacement de la source et de la période de collecte. Pas de note globale ni de nombre d'avis.
 8. **Zone d'intervention et contact** : carte illustrée au trait et liste de communes fictives, téléphone en très grand (« 0X XX XX XX XX » sur la démo, pour ne jamais tomber sur un vrai abonné), formulaire de rappel (nom, téléphone), horaires et adresse de l'agence marqués « démonstration ».
@@ -132,7 +132,7 @@ One-page avec ancres, plus des pages annexes.
 - **Objectif** : vérifier que (1) l'enfant adulte trouve le prix réel et le moyen d'être rappelé en moins de 30 secondes, (2) le ton est perçu comme respectueux par les seniors, (3) le compte-rendu de passage est compris comme rassurant et non intrusif.
 - **Méthode** : **5 entretiens suivis d'un test sur maquette** (fin S4) : 3 enfants adultes de 45 à 60 ans ayant un parent aidé ou sur le point de l'être (à distance, sur leur téléphone) et 2 seniors de plus de 75 ans (à domicile, sur tablette). 45 minutes, consentement écrit, enregistrement audio.
 - **Recrutement** : via un CCAS et des associations d'aidants.
-- **Mesures** : réussite des tâches (« Combien paierez-vous pour 10 h par semaine ? », « Demandez à être rappelé »), temps, verbatims, mots qui gênent.
+- **Mesures** : réussite des tâches (« Combien paierez-vous pour 6 h par semaine ? », « Demandez à être rappelé »), temps, verbatims, mots qui gênent.
 
 ### Guide d'entretien en 5 temps
 
@@ -149,7 +149,7 @@ One-page avec ancres, plus des pages annexes.
    - Seniors : « Quels mots ou quelles images vous agacent dans les publicités pour les seniors ? »
 4. **Réaction à la maquette (15 min)**
    - « Regardez cette page 5 secondes. De quoi s'agit-il, et pour qui ? »
-   - Tâches : trouver le prix pour 10 h par semaine, demander à être rappelé, trouver si sa commune est desservie.
+   - Tâches : trouver le prix pour 6 h par semaine, demander à être rappelé, trouver si sa commune est desservie.
    - « Voici un exemple de message envoyé après une visite. Qu'en pensez-vous ? Rassurant, intrusif ? »
 5. **Conclusion (5 min)**
    - « Qu'est-ce qui vous donnerait envie d'appeler ? Et qu'est-ce qui vous retiendrait ? »
