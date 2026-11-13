@@ -28,11 +28,11 @@
   --ease:cubic-bezier(.2,0,0,1);
   --gutter:clamp(16px, 4vw, 56px);
   --maxw:1320px;
-  --section:96px;
+  --section:56px;
   --header:64px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 8px);-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 1px);-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
@@ -46,8 +46,8 @@ button,input,textarea,select{font:inherit;color:inherit}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
 .mono{font-family:var(--mono)}
 .overline{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1.2}
-.h2{font-size:34px;line-height:1.15;letter-spacing:-.01em;max-width:24ch}
-.lead{color:var(--muted);max-width:62ch;margin-top:16px}
+.h2{font-size:34px;line-height:1.15;letter-spacing:-.01em;max-width:40ch}
+.lead{color:var(--muted);max-width:74ch;margin-top:12px}
 .small{font-size:14px;line-height:1.5}
 .note{font-size:13px;line-height:1.5;color:var(--muted)}
 .note a,.lead a{color:var(--text);text-underline-offset:3px}
@@ -64,8 +64,10 @@ section{padding:var(--section) 0;border-top:1px solid var(--rule)}
 .btn-ghost:hover{border-color:var(--muted)}
 .btn[aria-disabled="true"],.btn:disabled{background:var(--rule);color:var(--muted);cursor:not-allowed}
 .btn svg{flex:none}
-.icon-btn{width:44px;height:44px;display:inline-grid;place-items:center;border:1px solid var(--rule);background:var(--bg);border-radius:2px;cursor:pointer;color:var(--text);transition:border-color 120ms var(--ease)}
-.icon-btn:hover{border-color:var(--muted)}
+.icon-btn,.menu-toggle{width:44px;height:44px;display:inline-grid;place-items:center;border:0;background:none;padding:0;cursor:pointer;color:var(--muted);transition:color 120ms var(--ease)}
+.icon-btn:hover,.menu-toggle:hover{color:var(--text)}
+.icon-btn:focus,.menu-toggle:focus,.icon-btn:focus-visible,.menu-toggle:focus-visible{outline:none}
+.icon-btn:focus-visible,.menu-toggle:focus-visible{color:var(--focus)}
 .textlink{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--muted);font-weight:500}
 .textlink:hover{text-decoration-color:var(--text)}
 
@@ -81,8 +83,7 @@ section{padding:var(--section) 0;border-top:1px solid var(--rule)}
 .lang a{padding:4px 6px;text-decoration:none;color:var(--muted)}
 .lang a[aria-current]{color:var(--text);border-bottom:1px solid var(--text)}
 .header-cta{min-height:40px;padding:0 16px;font-size:15px}
-.menu-toggle{display:none;margin-left:auto;background:none;border:0;width:44px;height:44px;cursor:pointer;place-items:center}
-.menu-toggle:focus:not(:focus-visible){outline:none}
+.menu-toggle{display:none;margin-left:auto;color:var(--text)}
 .mobile-nav{display:none}
 
 /* Hero */
@@ -112,14 +113,14 @@ section{padding:var(--section) 0;border-top:1px solid var(--rule)}
 
 /* Tech */
 .tech-head{display:flex;flex-direction:column;gap:0}
-.tabs{display:flex;gap:0;margin-top:40px;border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
+.tabs{display:flex;gap:0;margin-top:24px;border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{background:none;border:0;border-bottom:2px solid transparent;padding:14px 22px 12px;font-size:16px;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap;margin-bottom:-1px;transition:color 120ms var(--ease),border-color 240ms var(--ease)}
 .tab:first-child{padding-left:0}
 .tab:hover{color:var(--text)}
 .tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--text)}
 .tab .mono{font-size:12px;color:var(--muted);margin-left:8px}
-.panel{padding-top:40px}
+.panel{padding-top:28px}
 .panel[hidden]{display:none}
 .panel{animation:fade 240ms var(--ease)}
 @keyframes fade{from{opacity:.4}to{opacity:1}}
@@ -129,37 +130,38 @@ section{padding:var(--section) 0;border-top:1px solid var(--rule)}
 .brief-list li::before{counter-increment:b;content:counter(b,decimal-leading-zero);font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:5px}
 .schema{background:var(--surface);border:1px solid var(--rule);padding:24px}
 .schema figcaption{margin-top:14px}
-.eng-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+.eng-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.85fr);gap:44px}
 .eng-grid h3{font-size:22px;line-height:1.3;font-weight:500}
-.eng-grid p{color:var(--muted);margin-top:10px;font-size:17px}
-.chain{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:0;border-left:1px solid var(--rule)}
-.chain li{position:relative;padding:8px 0 8px 22px;font-size:16px}
-.chain li::before{content:"";position:absolute;left:-4px;top:17px;width:7px;height:7px;background:var(--bg);border:1px solid var(--muted);border-radius:50%}
+.eng-grid p{color:var(--muted);margin-top:10px;font-size:16px;line-height:1.55}
+.chain{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:0;border-left:1px solid var(--rule)}
+.chain li{position:relative;padding:5px 0 5px 22px;font-size:15px}
+.chain li::before{content:"";position:absolute;left:-4px;top:13px;width:7px;height:7px;background:var(--bg);border:1px solid var(--muted);border-radius:50%}
 .chain li:last-child::before{background:var(--text);border-color:var(--text)}
-.spec{margin-top:24px;display:grid;gap:22px}
-.spec-group{border-top:1px solid var(--rule);padding-top:14px}
+.spec{margin-top:16px;display:grid;gap:16px}
+.spec-group{border-top:1px solid var(--rule);padding-top:12px}
 .spec-group .overline{margin-bottom:8px}
-.spec dl{margin:0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px 20px}
+.spec dl{margin:0;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:6px 16px}
 .spec dt{color:var(--muted);font-size:15px}
 .spec dd{margin:0;font-family:var(--mono);font-size:15px;font-weight:500;line-height:1.4}
-.precision{margin-top:36px;border:1px solid var(--rule);padding:20px;display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}
+.precision{border:1px solid var(--rule);padding:20px;display:grid;gap:14px;align-content:start}
+.precision svg{max-width:200px}
 .pubs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
-.pubs li{padding:22px 0;border-top:1px solid var(--rule)}
+.pubs li{padding:18px 0;border-top:1px solid var(--rule)}
 .pubs .year{font-family:var(--mono);font-size:13px;color:var(--muted)}
 .pubs h3{font-size:19px;line-height:1.35;font-weight:500;margin-top:6px}
 .pubs .src{font-size:15px;color:var(--muted);margin-top:6px}
 .pubs a.doi{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:14px}
-.export{margin-top:28px}
+.export{margin-top:20px}
 
 /* Applications matrix */
-.matrix{margin-top:48px;display:grid;grid-template-columns:180px repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
-.matrix > *{padding:20px 24px 22px;border-bottom:1px solid var(--rule)}
+.matrix{margin-top:28px;display:grid;grid-template-columns:180px repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.matrix > *{padding:16px 24px 18px;border-bottom:1px solid var(--rule)}
 .matrix .corner{padding-left:0}
 .matrix .col-head{border-left:1px solid var(--rule)}
-.col-head svg{width:100%;max-width:200px;height:88px;margin-bottom:18px}
+.col-head svg{width:100%;max-width:170px;height:64px;margin-bottom:12px}
 .col-head h3{font-size:22px;line-height:1.3;font-weight:500}
 .col-head .who{font-size:14px;color:var(--muted);margin-top:4px}
-.row-label{padding-left:0;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:24px}
+.row-label{padding-left:0;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:20px}
 .cell{border-left:1px solid var(--rule);font-size:16px;line-height:1.55}
 .cell.decision{font-weight:500;font-size:17px;color:var(--text)}
 .cell .m-label{display:none}
@@ -167,7 +169,7 @@ section{padding:var(--section) 0;border-top:1px solid var(--rule)}
 /* Roadmap */
 .road-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
 .road-controls{display:flex;gap:8px}
-.track-wrap{margin-top:40px;position:relative}
+.track-wrap{margin-top:28px;position:relative}
 .track{display:grid;grid-auto-flow:column;grid-auto-columns:300px;gap:0;overflow-x:auto;padding-bottom:20px;scrollbar-width:thin;scrollbar-color:var(--rule) transparent;list-style:none;margin:0;padding-left:0}
 .track::-webkit-scrollbar{height:6px}
 .track::-webkit-scrollbar-thumb{background:var(--rule)}
@@ -193,7 +195,7 @@ section{padding:var(--section) 0;border-top:1px solid var(--rule)}
 .next .pill{color:var(--muted);border-color:var(--rule)}
 .step-card .pill{margin-top:auto}
 .step-card .spacer{flex:1;min-height:16px}
-.newsletter{margin-top:36px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;border-top:1px solid var(--rule);padding-top:28px}
+.newsletter{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;border-top:1px solid var(--rule);padding-top:28px}
 .newsletter form{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
 .newsletter .field{min-width:300px}
 .nl-msg{grid-column:1/-1;font-size:15px}
@@ -207,13 +209,13 @@ section{padding:var(--section) 0;border-top:1px solid var(--rule)}
 .input:hover{border-color:var(--muted)}
 .input:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-color:var(--text)}
 .input[aria-invalid="true"]{border-color:var(--error)}
-textarea.input{min-height:120px;resize:vertical;line-height:1.5}
+textarea.input{min-height:100px;resize:vertical;line-height:1.5}
 .err{display:flex;gap:8px;align-items:flex-start;color:var(--error);font-size:14px;line-height:1.45}
 .err[hidden]{display:none}
 .err svg{flex:none;margin-top:2px}
 
 /* Data */
-.data-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:40px;margin-top:40px;align-items:start}
+.data-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:40px;margin-top:24px;align-items:start}
 .map-frame{position:relative;background:var(--surface);border:1px solid var(--rule);padding:14px}
 .map-top,.map-bottom{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.4}
 .map-top{margin-bottom:10px}
@@ -221,7 +223,7 @@ textarea.input{min-height:120px;resize:vertical;line-height:1.5}
 .map-svg{width:100%;height:auto;cursor:crosshair;touch-action:manipulation}
 .map-svg rect.c{shape-rendering:crispEdges;transition:fill 240ms var(--ease)}
 .map-src{margin-top:12px}
-.ctrl{display:grid;gap:22px}
+.ctrl{display:grid;gap:16px}
 .day-read{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:14px}
 .day-read output{font-family:var(--mono);font-size:28px;font-weight:500;letter-spacing:-.01em}
 .day-read output small{font-size:15px;color:var(--muted);font-weight:400}
@@ -238,13 +240,13 @@ textarea.input{min-height:120px;resize:vertical;line-height:1.5}
 .readout strong{color:var(--text);font-weight:500}
 table{border-collapse:collapse;width:100%;font-size:14px}
 caption{text-align:left;font-size:15px;font-weight:500;margin-bottom:8px}
-th,td{text-align:left;padding:7px 8px 7px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
+th,td{text-align:left;padding:5px 8px 5px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
 thead th{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 td .sw{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:-1px}
 td.trend{color:var(--muted)}
 
 /* Partners */
-.partners-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;margin-top:40px;align-items:start}
+.partners-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;margin-top:28px;align-items:start}
 .logos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
 .logo-cell{position:relative;padding:26px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-height:150px;display:flex;flex-direction:column;gap:14px;outline:none}
 .logo-cell svg{height:34px;width:auto;max-width:100%;align-self:flex-start;color:var(--text);opacity:.9;transition:opacity 120ms var(--ease)}
@@ -259,10 +261,10 @@ td.trend{color:var(--muted)}
 
 /* Team */
 .team-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:start}
-.about-art{margin-top:32px;border:1px solid var(--rule);background:var(--surface);padding:20px}
+.about-art{margin-top:24px;border:1px solid var(--rule);background:var(--surface);padding:20px}
 .about p.body{margin-top:18px;max-width:46ch}
 .jobs{list-style:none;margin:0;padding:0}
-.job{border-top:1px solid var(--rule);padding:24px 0}
+.job{border-top:1px solid var(--rule);padding:18px 0}
 .job:last-child{border-bottom:1px solid var(--rule)}
 .job-top{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
 .job h3{font-size:22px;line-height:1.3;font-weight:500}
@@ -274,16 +276,17 @@ td.trend{color:var(--muted)}
 
 /* Contact */
 .contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}
-.press{list-style:none;margin:28px 0 0;padding:0}
-.press li{border-top:1px solid var(--rule);padding:16px 0;display:grid;grid-template-columns:96px 1fr;gap:16px}
+.press{list-style:none;margin:14px 0 0;padding:0}
+.press li{border-top:1px solid var(--rule);padding:12px 0;display:grid;grid-template-columns:96px 1fr;gap:16px}
 .press li:last-child{border-bottom:1px solid var(--rule)}
 .press .tag{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;padding-top:4px}
 .press p{font-size:16px;line-height:1.45}
-.kit{margin-top:24px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-.where{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.kit{margin-top:20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.where{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
 .where address{font-style:normal;font-size:16px;line-height:1.55}
 .where svg{border:1px solid var(--rule);background:var(--surface);width:100%;height:auto}
-.form-card{background:var(--surface);border:1px solid var(--rule);padding:32px}
+.form-card{background:var(--surface);border:1px solid var(--rule);padding:28px}
+.field-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
 .form-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
 .form-head h3{font-size:22px;font-weight:500}
 .steps{font-family:var(--mono);font-size:13px;color:var(--muted)}
@@ -344,7 +347,9 @@ legend{padding:0;margin-bottom:12px}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fact:nth-child(3){border-left:0;padding-left:0}
   .fact:nth-child(n+3){border-top:1px solid var(--rule)}
-  .brief-grid,.eng-grid,.data-grid,.partners-grid,.team-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .eng-grid{grid-template-columns:1fr 1fr}
+  .eng-grid .precision{grid-column:1/-1}
+  .brief-grid,.data-grid,.partners-grid,.team-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
   .matrix{grid-template-columns:repeat(3,minmax(0,1fr))}
   .matrix .corner,.matrix .row-label{display:none}
   .matrix .col-head:nth-child(2){border-left:0}
@@ -365,7 +370,8 @@ legend{padding:0;margin-bottom:12px}
   .tab{padding:12px 14px 10px;font-size:15px}
   .tab .mono{display:none}
   .brief-list li{font-size:16px}
-  .precision{grid-template-columns:1fr}
+  .eng-grid{grid-template-columns:1fr}
+  .eng-grid .precision{grid-column:auto}
   .pubs{grid-template-columns:1fr}
   /* applications become stacked blocks */
   .matrix{grid-template-columns:1fr;border-top:0}
@@ -398,6 +404,7 @@ legend{padding:0;margin-bottom:12px}
   .market .btn{width:100%;white-space:normal;text-align:center}
   .where{grid-template-columns:1fr}
   .form-card{padding:22px 18px}
+  .field-row{grid-template-columns:1fr;gap:0}
   .who-grid{grid-template-columns:1fr}
   .form-actions .btn{width:100%}
   .press li{grid-template-columns:1fr;gap:4px}
@@ -564,7 +571,7 @@ legend{padding:0;margin-bottom:12px}
 <section id="technologie" aria-labelledby="tech-title">
   <div class="wrap">
     <h2 class="h2" id="tech-title">La technologie, à trois niveaux de lecture</h2>
-    <p class="lead">Choisissez votre niveau : l'essentiel en trois phrases, le détail pour les ingénieurs, ou les publications de référence du domaine.</p>
+    <p class="lead">L'essentiel en trois phrases, le détail pour les ingénieurs, ou les publications de référence.</p>
     <div class="tabs" role="tablist" aria-label="Niveaux de lecture">
       <button class="tab" role="tab" id="tab-bref" aria-controls="panel-bref" aria-selected="true">En bref</button>
       <button class="tab" role="tab" id="tab-ing" aria-controls="panel-ing" aria-selected="false" tabindex="-1">Pour les ingénieurs</button>
@@ -626,7 +633,7 @@ legend{padding:0;margin-bottom:12px}
       <div class="eng-grid">
         <div>
           <h3>Principe GNSS-R</h3>
-          <p>Le récepteur compare le signal direct d'un satellite de navigation et son reflet sur la Terre, autour du point de réflexion spéculaire. En bande L, la réflectivité du sol dépend de sa constante diélectrique, donc de son contenu en eau. La végétation et la rugosité de surface atténuent ce lien : la chaîne de traitement les corrige.</p>
+          <p>Le récepteur compare le signal direct d'un satellite de navigation et son reflet au point de réflexion spéculaire. En bande L, la réflectivité du sol suit sa constante diélectrique, donc sa teneur en eau. La chaîne de traitement corrige l'effet de la végétation et de la rugosité.</p>
           <ol class="chain" aria-label="Chaîne de traitement">
             <li>Réception des signaux direct et réfléchi</li>
             <li>Calcul de la réflectivité au point spéculaire</li>
@@ -642,7 +649,7 @@ legend{padding:0;margin-bottom:12px}
             <div class="spec-group">
               <p class="overline">Mesure</p>
               <dl>
-                <dt>Principe</dt><dd>Réflectométrie GNSS, bande L</dd>
+                <dt>Principe</dt><dd>GNSS-R, bande L</dd>
                 <dt>Calibration</dt><dd>Sondes au sol</dd>
                 <dt>Fusion</dt><dd>Modèles hydrologiques</dd>
               </dl>
@@ -651,7 +658,7 @@ legend{padding:0;margin-bottom:12px}
               <p class="overline">Livraison</p>
               <dl>
                 <dt>Résolution visée</dt><dd>La parcelle</dd>
-                <dt>Revisite visée</dt><dd>Quotidienne, constellation complète</dd>
+                <dt>Revisite visée</dt><dd>Quotidienne</dd>
                 <dt>Formats</dt><dd>GeoTIFF, API, WMS</dd>
               </dl>
             </div>
@@ -664,7 +671,6 @@ legend{padding:0;margin-bottom:12px}
             </div>
           </div>
         </div>
-      </div>
       <div class="precision">
         <svg viewBox="0 0 220 180" role="img" aria-labelledby="prec-t">
           <title id="prec-t">Format de la courbe de comparaison avec les sondes au sol, sans valeurs</title>
@@ -676,9 +682,10 @@ legend{padding:0;margin-bottom:12px}
           <text x="16" y="80" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="middle" transform="rotate(-90 16 80)">GNSS-R</text>
         </svg>
         <div>
-          <h3 style="font-size:19px;font-weight:500">Bilan de précision : une mesure, pas une estimation</h3>
-          <p class="small" style="color:var(--muted);margin-top:8px;max-width:60ch">Ce graphique compare l'humidité mesurée depuis l'orbite à celle des sondes au sol. Il n'affiche aucune valeur tant que la comparaison n'est pas publiée : les points seront tracés sur une paire de données publiques, légendée comme telle.</p>
+          <h3>Bilan de précision</h3>
+          <p class="small" style="color:var(--muted);margin-top:8px">Ce graphique compare l'humidité mesurée depuis l'orbite à celle des sondes au sol. Il n'affiche aucune valeur tant que la comparaison n'est pas publiée : les points seront tracés sur une paire de données publiques, légendée comme telle.</p>
         </div>
+      </div>
       </div>
     </div>
 
@@ -846,8 +853,7 @@ legend{padding:0;margin-bottom:12px}
 <!-- 5. DONNÉES -->
 <section id="donnees" aria-labelledby="data-title">
   <div class="wrap">
-    <p class="overline">Carte d'exemple</p>
-    <h2 class="h2" id="data-title" style="margin-top:14px">À quoi ressemble la donnée, jour après jour</h2>
+    <h2 class="h2" id="data-title">À quoi ressemble la donnée, jour après jour</h2>
     <p class="lead">Faites glisser le curseur sur trente jours : une période sèche, un épisode de pluie, puis le ressuyage. Touchez une parcelle pour lire son palier.</p>
     <div class="data-grid">
       <figure class="map-frame" style="margin:0">
@@ -986,9 +992,8 @@ legend{padding:0;margin-bottom:12px}
 <section id="contact" aria-labelledby="contact-title">
   <div class="wrap contact-grid">
     <div>
-      <p class="overline">Presse et contact</p>
-      <h2 class="h2" id="contact-title" style="margin-top:14px">Parlons de votre territoire, de votre fonds ou de votre article</h2>
-      <h3 style="font-size:19px;font-weight:500;margin-top:36px">Dans la presse</h3>
+      <h2 class="h2" id="contact-title">Presse et contact</h2>
+      <h3 style="font-size:19px;font-weight:500;margin-top:20px">Dans la presse</h3>
       <ul class="press">
         <li><span class="tag">Exemple</span><p>Titre d'article sur la mesure de l'humidité des sols depuis l'orbite</p></li>
         <li><span class="tag">Exemple</span><p>Titre d'article sur les nanosatellites issus des laboratoires toulousains</p></li>
@@ -1045,6 +1050,7 @@ legend{padding:0;margin-bottom:12px}
 
         <div class="form-step" id="step2" hidden>
           <p class="chosen">Vous êtes : <strong id="chosen-who"></strong></p>
+          <div class="field-row">
           <div class="field">
             <label for="f-first">Prénom</label>
             <input class="input" id="f-first" name="prenom" type="text" autocomplete="given-name" aria-describedby="first-err">
@@ -1054,6 +1060,7 @@ legend{padding:0;margin-bottom:12px}
             <label for="f-email">E-mail</label>
             <input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="prenom@organisation.fr" aria-describedby="email-err">
             <p class="err" id="email-err" hidden></p>
+          </div>
           </div>
           <div class="field">
             <label for="f-org"><span id="org-label">Organisation</span> <span class="opt">(facultatif)</span></label>
