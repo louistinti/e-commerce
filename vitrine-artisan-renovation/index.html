@@ -29,7 +29,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:77px;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--lime);color:var(--n900);font-family:var(--sans);font-size:18px;line-height:1.65;overflow-x:hidden}
 img,svg{display:block;max-width:100%}
 a{color:var(--green);text-underline-offset:3px}
@@ -41,7 +41,7 @@ p{margin:0}
 :focus{outline:none}
 :focus-visible{box-shadow:var(--focus);border-radius:var(--r-sm)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
-.section{padding:112px 0}
+.section{padding:40px 0}
 .lead{font-size:20px;line-height:1.6;color:var(--n700);max-width:62ch}
 .small{font-size:17px;font-weight:500;line-height:1.5;color:var(--n700)}
 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -63,7 +63,7 @@ p{margin:0}
 .btn[disabled]{background:var(--n300);color:var(--n700);cursor:not-allowed}
 
 /* Header */
-.header{position:sticky;top:0;z-index:40;background:rgba(246,241,231,.96);border-bottom:1px solid var(--n300)}
+.header{position:sticky;top:0;z-index:40;background:var(--lime);border-bottom:1px solid var(--n300)}
 .header__in{display:flex;align-items:center;gap:28px;height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--green);flex:none}
 .brand svg{width:42px;height:42px}
@@ -110,20 +110,19 @@ p{margin:0}
 .trust__item span{display:block;font-size:16px;line-height:1.35;color:var(--n700)}
 
 /* Section heads */
-.head{max-width:760px;margin-bottom:48px}
-.head p{margin-top:16px}
+.head{max-width:900px;margin-bottom:26px}
+.head p{margin-top:10px}
 .kicker{display:block;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--wood-dark);margin-bottom:8px}
 
 /* Travaux bento */
-.works{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .work{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);overflow:hidden;display:grid;grid-template-rows:auto 1fr}
-.work--a{grid-column:span 7}.work--b{grid-column:span 5}.work--c{grid-column:span 5}.work--d{grid-column:span 7}
-.work__art{background:var(--n100);aspect-ratio:16/8.4;display:grid;place-items:center;padding:18px}
-.work--b .work__art,.work--c .work__art{aspect-ratio:16/10.6}
+.work__art{background:var(--n100);aspect-ratio:16/9;display:grid;place-items:center;padding:14px}
 .work__art svg{width:100%;height:100%}
-.work__body{padding:26px 28px 28px;display:flex;flex-direction:column;gap:12px}
+.work__body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px}
+.work__body > p{font-size:17px;line-height:1.5}
 .work__body > p{color:var(--n700)}
-.change{margin-top:auto;border-top:2px solid var(--wood);padding-top:14px;display:grid;gap:6px}
+.change{margin-top:auto;border-top:2px solid var(--wood);padding-top:10px;display:grid;gap:4px}
 .change h4{margin:0;font-size:17px;font-weight:700;color:var(--green)}
 .change p{font-size:17px;line-height:1.5}
 .change p b{font-weight:600}
@@ -132,21 +131,21 @@ p{margin:0}
 .work--d .work__body > p,.work--d .change p{color:#E7E0D3}
 .work--d .work__art{background:#173A2B}
 .work--d .change{border-top-color:var(--wood)}
-.works-cap{margin-top:18px}
 
 /* Estimateur */
 .est-sec{background:var(--n100)}
-.est-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
-.est-notes{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px}
+.est-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:48px;align-items:start}
+.est-notes{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
 .est-notes li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:17px;line-height:1.5}
 .est-notes svg{width:24px;height:24px;color:var(--info);margin-top:1px}
-.est{background:var(--lime-light);border-radius:var(--r-lg);box-shadow:var(--shadow-md);border:1px solid var(--n300);padding:32px;min-height:560px;display:flex;flex-direction:column;position:relative}
+.est{background:var(--lime-light);border-radius:var(--r-lg);box-shadow:var(--shadow-md);border:1px solid var(--n300);padding:26px 30px;min-height:520px;display:flex;flex-direction:column;position:relative}
 .est__top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:6px}
 .est__step{font-weight:700;font-size:17px;color:var(--green)}
 .est__close{display:none;background:none;border:0;padding:6px;color:var(--n900);cursor:pointer;line-height:0}
 .est__close svg{width:30px;height:30px}
-.est__close:focus-visible{box-shadow:none;color:var(--red)}
-.est__bar{height:6px;border-radius:var(--r-full);background:var(--n300);overflow:hidden;margin-bottom:26px}
+.est__close:hover{opacity:.7}
+.est__close:focus-visible{box-shadow:none;outline:none;color:var(--red);opacity:1}
+.est__bar{height:6px;border-radius:var(--r-full);background:var(--n300);overflow:hidden;margin-bottom:20px}
 .est__bar i{display:block;height:100%;width:0;background:var(--green);transition:width .22s var(--ease)}
 .est__panel{display:none;flex-direction:column;flex:1}
 .est__panel.is-on{display:flex;animation:stepIn .22s var(--ease)}
@@ -169,7 +168,7 @@ p{margin:0}
 .choice input:focus-visible + label{box-shadow:var(--focus)}
 .choices--5 .choice label{justify-content:center;font-size:20px;padding:12px 6px;text-align:center}
 .choices--5 .choice label .box{display:none}
-.est__nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:26px}
+.est__nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:18px}
 .err{display:none;align-items:flex-start;gap:8px;color:var(--error);font-size:17px;font-weight:600;line-height:1.45;margin-top:10px}
 .err.is-on{display:flex}
 .err svg{flex:none;width:22px;height:22px;margin-top:1px}
@@ -177,7 +176,7 @@ p{margin:0}
 .field label,.field legend{font-weight:600;font-size:17px;line-height:1.3;color:var(--n900)}
 .field .hint{font-size:16px;color:var(--n700);line-height:1.4}
 .input,select.input,textarea.input{width:100%;min-height:52px;padding:12px 14px;font:400 18px/1.4 var(--sans);color:var(--n900);background:var(--n0);border:2px solid var(--n500);border-radius:var(--r-sm)}
-textarea.input{min-height:104px;resize:vertical}
+textarea.input{min-height:64px;resize:vertical}
 .input:focus-visible{box-shadow:var(--focus);border-color:var(--green)}
 .input[aria-invalid=true]{border-color:var(--error)}
 .est-intro{display:flex;flex-direction:column;gap:18px;flex:1}
@@ -186,11 +185,12 @@ textarea.input{min-height:104px;resize:vertical}
 .est-intro li::before{content:counter(q);width:30px;height:30px;flex:none;border-radius:50%;background:var(--n100);color:var(--green);display:grid;place-items:center;font-weight:700}
 .result__amount{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;font-family:var(--serif);font-size:28px;font-weight:600;color:var(--green);line-height:1.2;margin:6px 0 8px}
 .slot{display:inline-block;min-width:118px;border-bottom:3px dashed var(--n500);color:var(--n500);text-align:center;font-family:var(--sans);font-size:22px;font-weight:600;padding:0 6px 2px}
-.result__mention{font-size:17px;font-weight:600;color:var(--n900);margin-bottom:6px}
-.result__demo{font-size:16px;color:var(--n700);margin-bottom:18px}
-.result__profile{font-size:17px;color:var(--n700);margin-bottom:16px}
-.aids{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px}
-.aids li{display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:17px;line-height:1.45}
+.result__mention{font-size:17px;font-weight:600;color:var(--n900);margin-bottom:2px}
+.result__demo{font-size:16px;color:var(--n700);margin-bottom:14px}
+.result__profile{font-size:17px;color:var(--n700);margin-bottom:8px}
+.result__lbl{font-family:var(--sans);font-size:18px;font-weight:600;color:var(--n900)}
+.aids{list-style:none;margin:0 0 16px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px}
+.aids li{display:grid;grid-template-columns:24px 1fr;gap:8px;font-size:17px;line-height:1.4}
 .aids svg{width:22px;height:22px;color:var(--success);margin-top:2px}
 .aids li.info svg{color:var(--info)}
 .alert{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:var(--r-md);font-size:17px;line-height:1.5}
@@ -206,19 +206,22 @@ textarea.input{min-height:104px;resize:vertical}
 .fr-band{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:20px;border-top:3px solid var(--n900);border-bottom:3px solid var(--n900);background:var(--n0);padding:14px 18px}
 .fr-band__slot{width:210px;min-height:72px;border:2px dashed var(--n500);border-radius:var(--r-sm);display:grid;place-items:center;text-align:center;font-size:14px;font-weight:600;line-height:1.3;color:var(--n700);padding:8px}
 .fr-band p{font-size:17px;line-height:1.45;color:var(--n900)}
+.fr-band--sm{padding:10px 14px;gap:14px}
+.fr-band--sm .fr-band__slot{width:170px;min-height:56px;font-size:13px}
+.fr-band--sm p{font-size:16px;line-height:1.4}
 .fr-band a{font-weight:700;color:var(--n900)}
 
 /* Réalisations */
-.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
 .filter{min-height:48px;padding:0 18px;border-radius:var(--r-full);border:2px solid var(--n500);background:var(--n0);font:600 17px/1 var(--sans);color:var(--n900);cursor:pointer}
 .filter[aria-pressed=true]{background:var(--green);border-color:var(--green);color:var(--lime)}
-.filters-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-bottom:28px}
+.filters-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-bottom:20px}
 .toggle-split{min-height:48px;background:none;border:0;font:600 17px/1.2 var(--sans);color:var(--green);text-decoration:underline;text-underline-offset:4px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:0 4px}
 .toggle-split svg{width:22px;height:22px}
-.cases{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.cases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .case{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column}
 .case[hidden]{display:none}
-.ba{position:relative;aspect-ratio:3/2;background:var(--n100);touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%}
+.ba{position:relative;aspect-ratio:16/10;background:var(--n100);touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--pos:50%}
 .ba__layer{position:absolute;inset:0}
 .ba__layer svg{width:100%;height:100%}
 .ba__after{clip-path:inset(0 0 0 var(--pos))}
@@ -231,16 +234,18 @@ textarea.input{min-height:104px;resize:vertical}
 .cases.is-split .ba{display:grid;grid-template-columns:1fr 1fr;gap:4px;cursor:default;background:var(--lime-light)}
 .cases.is-split .ba__layer{position:relative;inset:auto;clip-path:none}
 .cases.is-split .ba__line,.cases.is-split .ba__handle{display:none}
-.case__body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.case__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.case h3{font-size:20px}
 .case__top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
-.case__works{color:var(--n700);font-size:17px}
-.case__data{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 0;padding:14px 0;border-top:1px solid var(--n300);border-bottom:1px solid var(--n300)}
-.case__data dt{font-size:15px;font-weight:600;color:var(--n700);line-height:1.3}
-.case__data dd{margin:4px 0 0;display:flex;align-items:center;gap:8px;font-weight:600;font-size:17px}
-.dpe{display:inline-grid;place-items:center;min-width:40px;height:32px;padding:0 10px;border-radius:var(--r-full);border:2px dashed var(--n500);color:var(--n700);font-size:15px;font-weight:700;background:var(--n0)}
-.case__data .empty{color:var(--n700);font-weight:500;font-size:16px}
-.case blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.45;color:var(--n900)}
-.case blockquote footer{font-family:var(--sans);font-style:normal;font-size:16px;color:var(--n700);margin-top:6px}
+.case__works{color:var(--n700);font-size:17px;line-height:1.45}
+.case__data{display:grid;gap:4px;margin:2px 0 0;padding:8px 0;border-top:1px solid var(--n300);border-bottom:1px solid var(--n300)}
+.case__data > div{display:flex;align-items:center;justify-content:space-between;gap:4px 10px}
+.case__data dt{font-size:15px;font-weight:600;color:var(--n700);line-height:1.3;white-space:nowrap}
+.case__data dd{margin:0;display:flex;align-items:center;gap:6px;font-weight:600;font-size:17px}
+.dpe{display:inline-grid;place-items:center;min-width:38px;height:30px;padding:0 10px;border-radius:var(--r-full);border:2px dashed var(--n500);color:var(--n700);font-size:15px;font-weight:700;background:var(--n0)}
+.case__data .empty{color:var(--n700);font-weight:500;font-size:16px;white-space:nowrap}
+.case blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.4;color:var(--n900)}
+.case blockquote footer{font-family:var(--sans);font-style:normal;font-size:16px;color:var(--n700);margin-top:4px}
 .case__link{margin-top:auto;font-weight:600}
 .dpe-scale{display:flex;gap:3px;align-items:center;margin-top:22px;flex-wrap:wrap}
 .dpe-scale span{display:grid;place-items:center;width:34px;height:28px;font-weight:700;font-size:15px;color:#1E1A17;border-radius:4px}
@@ -254,7 +259,7 @@ textarea.input{min-height:104px;resize:vertical}
 .step h3{font-size:22px;margin-bottom:10px}
 .step p{font-size:17px;line-height:1.55;color:var(--n700)}
 .step .who{display:block;margin-top:12px;font-size:16px;font-weight:600;color:var(--green)}
-.referent{margin-top:48px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding:22px 26px;border:2px solid var(--green);border-radius:var(--r-lg);background:var(--lime-light)}
+.referent{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding:22px 26px;border:2px solid var(--green);border-radius:var(--r-lg);background:var(--lime-light)}
 .referent svg{width:40px;height:40px;color:var(--green);flex:none}
 .referent p{flex:1;min-width:240px;font-size:18px}
 .referent strong{color:var(--green)}
@@ -262,7 +267,7 @@ textarea.input{min-height:104px;resize:vertical}
 /* Labels */
 .labels-sec{background:var(--n100)}
 .labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
-.label-card{background:var(--lime-light);border-radius:var(--r-lg);padding:30px;position:relative;border:2px solid var(--green);outline:1px solid var(--green);outline-offset:-10px}
+.label-card{background:var(--lime-light);border-radius:var(--r-lg);padding:26px 30px;position:relative;border:2px solid var(--green);outline:1px solid var(--green);outline-offset:-10px}
 .label-card__head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
 .seal{flex:none;width:72px;height:72px;border-radius:50%;border:3px double var(--green);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:22px;color:var(--green);background:var(--n0)}
 .label-card dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0 0 22px}
@@ -274,7 +279,7 @@ textarea.input{min-height:104px;resize:vertical}
 .labels-foot{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center}
 
 /* Avis */
-.reviews-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-bottom:40px}
+.reviews-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-bottom:28px}
 .gbox{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);padding:20px 24px;display:grid;gap:10px;min-width:330px}
 .gbox__row{display:flex;gap:28px}
 .gbox__row div{display:grid}
@@ -291,31 +296,36 @@ textarea.input{min-height:104px;resize:vertical}
 .quote-mark{font-family:var(--serif);font-size:84px;line-height:.6;color:var(--wood);height:36px}
 
 /* Contact */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:start}
-.about{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;padding-bottom:32px;border-bottom:1px solid var(--n300)}
-.about svg.logo{width:76px;height:76px}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.1fr) minmax(0,1.16fr);gap:30px;align-items:start}
+.about{padding-bottom:20px;border-bottom:1px solid var(--n300)}
+.about__title{display:flex;align-items:center;gap:14px}
+.about__title h2{font-size:28px}
+.about svg.logo{width:56px;height:56px;flex:none}
 .about h2 span{display:block;font-style:italic;font-weight:400;font-size:22px;color:var(--wood-dark);margin-bottom:4px}
-.about p{margin-top:14px;font-size:19px}
-.promise{margin-top:18px;display:flex;gap:12px;align-items:flex-start;background:var(--lime-light);border-left:4px solid var(--green);padding:14px 16px;border-radius:0 var(--r-md) var(--r-md) 0;font-size:17px}
+.about .about__txt{margin-top:12px;font-size:17px;line-height:1.55}
+.promise{margin-top:14px;display:flex;gap:12px;align-items:flex-start;background:var(--lime-light);border-left:4px solid var(--green);padding:14px 16px;border-radius:0 var(--r-md) var(--r-md) 0;font-size:17px}
 .promise svg{flex:none;width:26px;height:26px;color:var(--green)}
-.coords{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:28px 0;border-bottom:1px solid var(--n300)}
+.coords{display:grid;gap:14px;padding-top:18px}
 .coords h3{font-family:var(--sans);font-size:17px;font-weight:700;color:var(--n700);margin-bottom:6px;letter-spacing:0}
-.coords .tel{font-size:30px;font-weight:700;color:var(--green);text-decoration:none;white-space:nowrap}
+.coords .tel{font-size:28px;font-weight:700;color:var(--green);text-decoration:none;white-space:nowrap}
 .coords p{font-size:17px;line-height:1.5}
-.zone{padding-top:28px}
-.zone h3{margin-bottom:14px}
+.zone h3{margin-bottom:12px;font-size:22px}
 .map{background:var(--n100);border-radius:var(--r-lg);padding:10px}
 .map svg{width:100%;height:auto}
-.communes{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.communes li{font-size:16px;font-weight:600;padding:5px 12px;border-radius:var(--r-full);background:var(--lime-light);border:1px solid var(--n300)}
-.form-card{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:34px;position:sticky;top:96px}
-.form-card h3{font-size:28px;margin-bottom:6px}
-.form-card > p{color:var(--n700);font-size:17px;margin-bottom:22px}
-.form{display:grid;gap:20px}
+.map-cap{margin-top:8px;font-size:15px;line-height:1.4}
+.communes{margin:10px 0 0;font-size:17px;line-height:1.5;color:var(--n900)}
+.communes-list{display:inline;list-style:none;margin:0;padding:0}
+.communes-list li{display:inline}
+.communes-list li:not(:last-child)::after{content:", "}
+.communes-t{font-weight:700;color:var(--green)}
+.form-card{background:var(--lime-light);border:1px solid var(--n300);border-radius:var(--r-lg);box-shadow:var(--shadow-md);padding:24px 28px}
+.form-card h3{font-size:23px;margin-bottom:4px}
+.form-card > p{color:var(--n700);font-size:17px;line-height:1.45;margin-bottom:16px}
+.form{display:grid;gap:14px}
 .form .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form fieldset{border:0;margin:0;padding:0}
-.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
-.slots .choice label{min-height:52px;font-size:17px;justify-content:center;text-align:center;padding:8px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.slots .choice label{min-height:48px;font-size:16px;line-height:1.2;justify-content:center;text-align:center;padding:6px}
 .slots .choice label .box{display:none}
 .consent{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:17px;line-height:1.45}
 .consent input{width:24px;height:24px;margin:2px 0 0;accent-color:var(--green)}
@@ -342,6 +352,9 @@ textarea.input{min-height:104px;resize:vertical}
 
 @media (max-width:1180px){
   .nav{display:none}
+  .works,.cases{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .contact-grid .form-card{grid-column:1/-1}
   .header__call{margin-left:auto}
   .hero h1{font-size:46px}
 }
@@ -353,7 +366,6 @@ textarea.input{min-height:104px;resize:vertical}
   .steps::before{left:27px;right:auto;top:28px;bottom:28px;border-top:0;border-left:2px dashed var(--wood)}
   .step{display:grid;grid-template-columns:56px 1fr;gap:0 20px;padding-right:0}
   .step__num{margin-bottom:0;grid-row:span 3}
-  .form-card{position:static}
   .footer__grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:767px){
@@ -382,7 +394,6 @@ textarea.input{min-height:104px;resize:vertical}
   .trust__item,.trust__item:nth-child(3){border-left:0;padding:14px 0;border-top:1px solid var(--n300)}
   .trust__item:first-child{border-top:0}
   .works{grid-template-columns:1fr;gap:16px}
-  .work--a,.work--b,.work--c,.work--d{grid-column:auto}
   .work .work__art{aspect-ratio:16/9.5}
   .work__body{padding:20px}
   .est{padding:22px 18px;min-height:0}
@@ -391,7 +402,8 @@ textarea.input{min-height:104px;resize:vertical}
   .choices--2{grid-template-columns:1fr}
   .choices--5{grid-template-columns:repeat(5,1fr);gap:6px}
   .result__amount{font-size:24px}
-  html{scroll-padding-top:76px}
+  html{scroll-padding-top:64px}
+  .aids{grid-template-columns:1fr}
   .fr-band{grid-template-columns:1fr;gap:12px}
   .fr-band__slot{width:100%}
   .cases{grid-template-columns:1fr;gap:20px}
@@ -445,6 +457,7 @@ textarea.input{min-height:104px;resize:vertical}
     <symbol id="i-columns" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="8" height="14" rx="1.5"/><rect x="13" y="5" width="8" height="14" rx="1.5"/></g></symbol>
     <symbol id="i-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M8.5 5.5h7"/></g></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="logo-light" viewBox="0 0 48 48"><rect x="1" y="1" width="46" height="46" rx="10" fill="#F6F1E7"/><path d="M8 24L24 10l16 14" fill="none" stroke="#1F4A37" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M14 22v16M34 22v16M14 29h20" fill="none" stroke="#1F4A37" stroke-width="3.4" stroke-linecap="round"/><path d="M19 38V29M29 38V29" stroke="#7A5534" stroke-width="2.4" stroke-linecap="round"/></symbol>
     <symbol id="logo" viewBox="0 0 48 48"><rect x="1" y="1" width="46" height="46" rx="10" fill="#1F4A37"/><path d="M8 24L24 10l16 14" fill="none" stroke="#F6F1E7" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M14 22v16M34 22v16M14 29h20" fill="none" stroke="#F6F1E7" stroke-width="3.4" stroke-linecap="round"/><path d="M19 38V29M29 38V29" stroke="#B98A5A" stroke-width="2.4" stroke-linecap="round"/></symbol>
     <pattern id="wool" width="20" height="10" patternUnits="userSpaceOnUse"><rect width="20" height="10" fill="#EBD9BC"/><path d="M0 5c3-4 7-4 10 0s7 4 10 0" fill="none" stroke="#B98A5A" stroke-width="1.6"/></pattern>
     <pattern id="wool-dark" width="20" height="10" patternUnits="userSpaceOnUse"><rect width="20" height="10" fill="#D9BF96"/><path d="M0 5c3-4 7-4 10 0s7 4 10 0" fill="none" stroke="#7A5534" stroke-width="1.6"/></pattern>
@@ -584,7 +597,7 @@ textarea.input{min-height:104px;resize:vertical}
   <div class="wrap">
     <div class="head">
       <h2 id="travaux-t">Les travaux que nous faisons nous-mêmes</h2>
-      <p class="lead">Quatre métiers, une seule équipe. Pour chacun, ce que vous sentirez dans la maison et sur la facture.</p>
+      <p class="lead">Quatre métiers, une seule équipe. Sur cette démo, des dessins remplacent nos photos de chantier.</p>
     </div>
     <div class="works">
       <article class="work work--a">
@@ -603,11 +616,11 @@ textarea.input{min-height:104px;resize:vertical}
         </div>
         <div class="work__body">
           <h3>Isolation</h3>
-          <p>Combles perdus ou aménagés, murs par l'extérieur ou par l'intérieur. Nous choisissons l'isolant avec vous selon la maison et le budget.</p>
+          <p>Combles, murs par l'extérieur ou par l'intérieur. L'isolant se choisit avec vous.</p>
           <div class="change">
             <h4>Ce que ça change</h4>
-            <p><b>Confort :</b> moins de parois froides l'hiver, des chambres sous le toit plus supportables l'été.</p>
-            <p><b>Facture :</b> la chaleur produite reste dans la maison, il en faut moins.</p>
+            <p><b>Confort :</b> moins de parois froides, des combles plus vivables l'été.</p>
+            <p><b>Facture :</b> la chaleur reste dedans, il en faut moins.</p>
           </div>
         </div>
       </article>
@@ -630,11 +643,11 @@ textarea.input{min-height:104px;resize:vertical}
         </div>
         <div class="work__body">
           <h3>Pompe à chaleur air/eau</h3>
-          <p>Elle remplace une chaudière fioul ou gaz et alimente vos radiateurs ou un plancher chauffant. Nous choisissons l'emplacement avec vous, bruit compris.</p>
+          <p>Elle remplace la chaudière fioul ou gaz. L'emplacement se choisit avec vous, bruit compris.</p>
           <div class="change">
             <h4>Ce que ça change</h4>
-            <p><b>Confort :</b> une chaleur régulière, plus de livraison de fioul ni de cuve.</p>
-            <p><b>Facture :</b> elle puise une partie de la chaleur dans l'air extérieur.</p>
+            <p><b>Confort :</b> une chaleur régulière, plus de cuve à remplir.</p>
+            <p><b>Facture :</b> une partie de la chaleur vient de l'air extérieur.</p>
           </div>
         </div>
       </article>
@@ -657,11 +670,11 @@ textarea.input{min-height:104px;resize:vertical}
         </div>
         <div class="work__body">
           <h3>Menuiseries</h3>
-          <p>Fenêtres et portes-fenêtres en bois, PVC ou aluminium, à double vitrage, posées dans les règles pour éviter les fuites d'air.</p>
+          <p>Fenêtres et portes-fenêtres à double vitrage, en bois, PVC ou aluminium.</p>
           <div class="change">
             <h4>Ce que ça change</h4>
-            <p><b>Confort :</b> plus de courant d'air près des fenêtres, moins de bruit de la rue.</p>
-            <p><b>Facture :</b> moins de chaleur perdue par les vitres et les joints.</p>
+            <p><b>Confort :</b> plus de courant d'air, moins de bruit de la rue.</p>
+            <p><b>Facture :</b> moins de chaleur perdue par les vitres.</p>
           </div>
         </div>
       </article>
@@ -692,16 +705,15 @@ textarea.input{min-height:104px;resize:vertical}
         </div>
         <div class="work__body">
           <h3>Rénovation globale</h3>
-          <p>Isolation, chauffage et menuiseries pensés ensemble, dans le bon ordre, après un audit. C'est le parcours qui ouvre droit à l'accompagnement renforcé des aides.</p>
+          <p>Isolation, chauffage et menuiseries dans le bon ordre, après un audit.</p>
           <div class="change">
             <h4>Ce que ça change</h4>
-            <p><b>Confort :</b> une maison chauffée de façon homogène, de la cave au grenier.</p>
-            <p><b>Facture :</b> le gain est estimé par l'audit, en classe DPE et en kWh, avant les travaux.</p>
+            <p><b>Confort :</b> la même chaleur de la cave au grenier.</p>
+            <p><b>Facture :</b> le gain est estimé par l'audit, en classe DPE et en kWh.</p>
           </div>
         </div>
       </article>
     </div>
-    <p class="src works-cap">Les dessins remplacent les photos de chantier sur cette démo. Sur le site réel : nos chantiers, nos mains, nos matériaux.</p>
   </div>
 </section>
 
@@ -797,12 +809,11 @@ textarea.input{min-height:104px;resize:vertical}
         <div id="res-in">
           <h3>Votre estimation indicative</h3>
           <p class="result__profile" id="res-profile"></p>
-          <p class="small" style="margin-bottom:2px">MaPrimeRénov' + prime CEE</p>
-          <div class="result__amount" aria-label="Fourchette non calculée sur la démo"><span class="slot">montant bas</span><span>à</span><span class="slot">montant haut</span><span>€</span></div>
+          <div class="result__amount" aria-label="Fourchette MaPrimeRénov' et prime CEE, non calculée sur la démo"><span class="result__lbl">MaPrimeRénov' + CEE :</span><span class="slot">montant bas</span><span>à</span><span class="slot">montant haut</span><span>€</span></div>
           <p class="result__mention">Indicatif, barème du JJ/MM/AAAA, sous réserve d'éligibilité.</p>
-          <p class="result__demo">Démo : le barème Anah n'est pas saisi, aucun montant n'est calculé. Sur le site réel, l'atelier saisit le barème en vigueur et sa date.</p>
+          <p class="result__demo">Démo : barème Anah non saisi, aucun montant n'est calculé.</p>
           <ul class="aids" id="res-aids"></ul>
-          <div class="fr-band" style="margin-bottom:18px">
+          <div class="fr-band fr-band--sm">
             <div class="fr-band__slot">Bandeau officiel France Rénov' (kit Anah, image non redessinée)</div>
             <p>Avant de vous engager, le service public vous informe gratuitement pour préparer et sécuriser votre projet : <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">france-renov.gouv.fr</a></p>
           </div>
@@ -829,9 +840,8 @@ textarea.input{min-height:104px;resize:vertical}
 <section class="section" id="realisations" aria-labelledby="real-t">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Avant, après</span>
-      <h2 id="real-t">Chaque chantier montre sa classe énergie, estimée par l'audit</h2>
-      <p class="lead">Faites glisser le curseur, à la souris, au doigt ou avec les flèches du clavier. Les avant et après sont pris du même point de vue.</p>
+      <h2 id="real-t">Avant, après : la classe énergie de chaque chantier</h2>
+      <p class="lead" style="max-width:none">Faites glisser le curseur. Chantiers de démonstration : classes et gains restent vides.</p>
     </div>
     <div class="filters-row">
       <div class="filters" role="group" aria-label="Filtrer les réalisations par travaux">
@@ -844,15 +854,11 @@ textarea.input{min-height:104px;resize:vertical}
       <button class="toggle-split" type="button" aria-pressed="false" id="split"><svg aria-hidden="true"><use href="#i-columns"/></svg>Voir avant et après côte à côte</button>
     </div>
     <div class="cases" id="cases"></div>
-    <div class="dpe-scale" aria-label="Échelle des classes DPE, de A à G">
-      <span style="background:var(--dpe-a);color:#fff">A</span><span style="background:var(--dpe-b)">B</span><span style="background:var(--dpe-c)">C</span><span style="background:var(--dpe-d)">D</span><span style="background:var(--dpe-e)">E</span><span style="background:var(--dpe-f)">F</span><span style="background:var(--dpe-g);color:#fff">G</span>
-      <span style="width:auto;padding-left:10px;font-weight:500;color:var(--n700)" class="src">Les badges prennent la couleur de la classe une fois l'audit saisi. Sur la démo, classes et gains restent vides : l'entreprise est fictive.</span>
-    </div>
   </div>
 </section>
 
 <!-- 5. DÉROULÉ -->
-<section class="section" id="deroule" aria-labelledby="der-t" style="padding-top:0">
+<section class="section" id="deroule" aria-labelledby="der-t">
   <div class="wrap">
     <div class="head">
       <h2 id="der-t">Comment se passe un chantier, en 5 étapes</h2>
@@ -878,7 +884,7 @@ textarea.input{min-height:104px;resize:vertical}
   <div class="wrap">
     <div class="head">
       <h2 id="lab-t">Certifiés et assurés : vérifiez par vous-même</h2>
-      <p class="lead">Chaque label a son numéro et son lien de vérification. Sur ce site de démonstration, les numéros ne sont pas publiés : l'entreprise est fictive, un faux numéro vous tromperait.</p>
+      <p class="lead">Chaque label a son numéro et son lien de vérification. Sur cette démo, les numéros ne sont pas publiés : un faux numéro vous tromperait.</p>
     </div>
     <div class="labels">
       <article class="label-card">
@@ -945,59 +951,59 @@ textarea.input{min-height:104px;resize:vertical}
 </section>
 
 <!-- 8. QUI SOMMES-NOUS, ZONE, CONTACT -->
-<section class="section" id="contact" aria-labelledby="about-t" style="padding-top:0">
+<section class="section" id="contact" aria-labelledby="about-t">
   <div class="wrap contact-grid">
     <div>
       <div class="about">
-        <svg class="logo" aria-hidden="true"><use href="#logo"/></svg>
-        <div>
-          <h2 id="about-t"><span lang="eu">Nor gara</span>Qui sommes-nous</h2>
-          <p>Arotz Rénovation est une entreprise du bâtiment installée à Ustaritz. Nous isolons, posons des pompes à chaleur et des menuiseries, et rénovons des maisons entières au Pays basque. Le même chef de chantier vous suit de la visite à la réception.</p>
-          <div class="promise"><svg aria-hidden="true"><use href="#i-nocall"/></svg><p><b>On ne vous appelle jamais sans demande.</b> Le démarchage pour ces travaux est interdit. Un doute sur un appel reçu ? Le service public <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">France Rénov'</a> vous renseigne.</p></div>
-        </div>
+        <div class="about__title"><svg class="logo" aria-hidden="true"><use href="#logo"/></svg><h2 id="about-t"><span lang="eu">Nor gara</span>Qui sommes-nous</h2></div>
+          <p class="about__txt">Arotz Rénovation est une entreprise du bâtiment installée à Ustaritz. Nous isolons, posons des pompes à chaleur et des menuiseries, et rénovons des maisons entières au Pays basque. Le même chef de chantier vous suit de la visite à la réception.</p>
+          <div class="promise"><svg aria-hidden="true"><use href="#i-nocall"/></svg><p><b>On ne vous appelle jamais sans demande.</b> Un doute sur un appel reçu ? Le service public <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">France Rénov'</a> vous renseigne.</p></div>
       </div>
       <div class="coords">
         <div>
           <h3>Téléphone de l'atelier</h3>
           <a class="tel" href="tel:05XXXXXXXX">05 XX XX XX XX</a>
-          <p>Du lundi au vendredi, en journée. Horaires détaillés sur la fiche Google.</p>
+          <p>Du lundi au vendredi, en journée.</p>
         </div>
         <div>
           <h3>Atelier</h3>
-          <p>Adresse non publiée (démo)<br>64480 Ustaritz<br>Visites sur rendez-vous</p>
+          <p>Adresse non publiée (démo), 64480 Ustaritz. Visites sur rendez-vous.</p>
         </div>
       </div>
+    </div>
+    <div>
       <div class="zone">
         <h3>Zone d'intervention : Pays basque et sud des Landes</h3>
         <div class="map">
-          <svg viewBox="0 0 600 470" role="img" aria-labelledby="map-t" id="map"><title id="map-t">Carte stylisée de la zone d'intervention, de Capbreton à Mauléon, avec l'atelier à Ustaritz.</title></svg>
+          <svg viewBox="0 0 600 420" role="img" aria-labelledby="map-t" id="map"><title id="map-t">Carte stylisée de la zone d'intervention, de Capbreton à Mauléon, avec l'atelier à Ustaritz.</title></svg>
         </div>
-        <ul class="communes" id="communes" aria-label="Communes de la zone d'intervention"></ul>
+        <p class="src map-cap">Point cerclé : l'atelier. Carte schématique, communes placées d'après geo.api.gouv.fr.</p>
+        <div class="communes"><span class="communes-t">Communes : </span><ul class="communes-list" id="communes" aria-label="Communes de la zone d'intervention"></ul></div>
       </div>
     </div>
 
     <div class="form-card">
       <h3>Demander une visite gratuite</h3>
-      <p>Nous vous rappelons au créneau choisi pour fixer la visite. Ce sera notre seul appel si vous ne donnez pas suite.</p>
+      <p>Nous vous rappelons au créneau choisi. Ce sera notre seul appel si vous ne donnez pas suite.</p>
       <form class="form" id="form" novalidate>
+        <div class="row2">
         <div class="field">
           <label for="f-name">Prénom et nom</label>
           <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="e-name">
           <p class="err" id="e-name"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Nom manquant : indiquez-le pour que nous sachions qui demander au téléphone.</span></p>
         </div>
-        <div class="row2">
           <div class="field">
             <label for="f-tel">Téléphone</label>
             <input class="input" id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="e-tel">
             <p class="err" id="e-tel"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Numéro incomplet : il faut 10 chiffres, en commençant par 0, pour que nous puissions vous rappeler.</span></p>
           </div>
+        </div>
+        <div class="row2">
           <div class="field">
-            <label for="f-cp">Code postal du logement</label>
+            <label for="f-cp">Code postal</label>
             <input class="input" id="f-cp" name="cp" inputmode="numeric" autocomplete="postal-code" maxlength="5" aria-describedby="e-cp">
             <p class="err" id="e-cp"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Code postal incomplet : il faut 5 chiffres pour vérifier que vous êtes dans notre zone. Exemple : 64480.</span></p>
           </div>
-        </div>
-        <div class="alert alert--warn form-msg" id="m-zone" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><p>Votre commune est hors de notre zone d'intervention (Pays basque et sud des Landes). Vous trouverez un artisan RGE proche de chez vous sur <a href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">l'annuaire France Rénov'</a>.</p></div>
         <div class="field">
           <label for="f-works">Travaux envisagés</label>
           <select class="input" id="f-works" name="works">
@@ -1009,29 +1015,30 @@ textarea.input{min-height:104px;resize:vertical}
             <option value="globale">Rénovation globale</option>
           </select>
         </div>
+        </div>
+        <div class="alert alert--warn form-msg" id="m-zone" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><p>Votre commune est hors de notre zone d'intervention (Pays basque et sud des Landes). Vous trouverez un artisan RGE proche de chez vous sur <a href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">l'annuaire France Rénov'</a>.</p></div>
         <fieldset class="field">
           <legend>Quand pouvons-nous vous rappeler ?</legend>
           <div class="slots">
             <div class="choice"><input type="radio" id="s1" name="slot" value="matin" checked><label for="s1"><span class="box"></span>Le matin</label></div>
-            <div class="choice"><input type="radio" id="s2" name="slot" value="midi"><label for="s2"><span class="box"></span>En début d'après-midi</label></div>
-            <div class="choice"><input type="radio" id="s3" name="slot" value="soir"><label for="s3"><span class="box"></span>En fin de journée</label></div>
+            <div class="choice"><input type="radio" id="s2" name="slot" value="midi"><label for="s2"><span class="box"></span>Début d'après-midi</label></div>
+            <div class="choice"><input type="radio" id="s3" name="slot" value="soir"><label for="s3"><span class="box"></span>Fin de journée</label></div>
           </div>
         </fieldset>
         <div class="field">
           <label for="f-msg">Votre maison en quelques mots <span style="font-weight:400;color:var(--n700)">(facultatif)</span></label>
-          <textarea class="input" id="f-msg" name="msg" aria-describedby="f-msg-h"></textarea>
-          <p class="hint" id="f-msg-h">Année de construction, chauffage actuel, ce qui vous gêne.</p>
+          <textarea class="input" id="f-msg" name="msg" rows="2"></textarea>
         </div>
         <div>
           <div class="consent">
             <input type="checkbox" id="f-ok" name="ok" aria-describedby="e-ok">
-            <label for="f-ok">J'accepte qu'Arotz Rénovation utilise ces informations uniquement pour me rappeler au sujet de cette demande.</label>
+            <label for="f-ok">J'accepte qu'Arotz Rénovation utilise ces informations uniquement pour me rappeler.</label>
           </div>
           <p class="err" id="e-ok"><svg aria-hidden="true"><use href="#i-alert"/></svg><span>Accord manquant : cochez la case, sans elle nous ne pouvons pas vous rappeler.</span></p>
         </div>
         <div class="alert alert--err form-msg" id="m-fail" role="alert"><svg aria-hidden="true"><use href="#i-alert"/></svg><p>Votre demande n'a pas pu partir : la connexion a été interrompue. Vos réponses sont conservées. Réessayez, ou appelez-nous au 05 XX XX XX XX.</p></div>
         <button class="btn btn--primary" type="submit" id="f-submit">Envoyer ma demande de visite</button>
-        <p class="src">Site de démonstration : rien n'est envoyé.</p>
+        <p class="src" style="font-size:15px">Site de démonstration : rien n'est envoyé.</p>
       </form>
       <div class="alert alert--ok form-msg" id="m-ok" role="status" tabindex="-1"><svg aria-hidden="true"><use href="#i-check"/></svg><p>Merci, votre demande est bien arrivée. Nous vous rappelons au créneau indiqué pour fixer la visite. Pas de démarchage : ce sera notre seul appel si vous ne donnez pas suite.</p></div>
     </div>
@@ -1048,7 +1055,7 @@ textarea.input{min-height:104px;resize:vertical}
     </div>
     <div class="footer__grid">
       <div>
-        <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><span class="brand__name">Arotz<small>Rénovation, Ustaritz</small></span></a>
+        <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo-light"/></svg><span class="brand__name">Arotz<small>Rénovation, Ustaritz</small></span></a>
         <p>Isolation, pompe à chaleur, menuiseries et rénovation globale au Pays basque et dans le sud des Landes.</p>
       </div>
       <div>
@@ -1079,7 +1086,7 @@ textarea.input{min-height:104px;resize:vertical}
       </div>
     </div>
     <div class="footer__sources">
-      Sources, vues le 13/11/2026 : TVA à 5,5 % pour certains travaux de rénovation énergétique, <a href="https://france-renov.gouv.fr/aides/tva-taux-reduit" target="_blank" rel="noopener">France Rénov'</a> ; numéro et horaires de France Rénov', <a href="https://france-renov.gouv.fr/contact" target="_blank" rel="noopener">page contact</a> ; RGE obligatoire pour MaPrimeRénov', <a href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">annuaire France Rénov'</a> ; bandeau France Rénov' obligatoire depuis le 1er octobre 2026, <a href="https://france-renov.gouv.fr/actualites/publicite-pour-la-renovation-energetique-obligation-desormais-de-faire-reference-au" target="_blank" rel="noopener">France Rénov'</a> ; lien vers le service public (loi du 30 juin 2025, art. 14), <a href="https://www.anil.org/aj-loi-lutte-fraude-aides-publiqus-renovation-energetique/" target="_blank" rel="noopener">ANIL</a> ; Mon Accompagnateur Rénov' obligatoire pour le Parcours accompagné, <a href="https://selectra.info/energie/renovation-energetique/aides/ma-prime-renov" target="_blank" rel="noopener">Selectra</a>.
+      Sources, vues le 13/11/2026 : TVA à 5,5 % pour certains travaux de rénovation énergétique, <a href="https://france-renov.gouv.fr/aides/tva-taux-reduit" target="_blank" rel="noopener">France Rénov'</a> ; numéro et horaires de France Rénov', <a href="https://france-renov.gouv.fr/contact" target="_blank" rel="noopener">page contact</a> ; RGE obligatoire pour MaPrimeRénov', <a href="https://france-renov.gouv.fr/annuaires-professionnels/artisan-rge-architecte" target="_blank" rel="noopener">annuaire France Rénov'</a> ; bandeau France Rénov' obligatoire depuis le 1er octobre 2026, <a href="https://france-renov.gouv.fr/actualites/publicite-pour-la-renovation-energetique-obligation-desormais-de-faire-reference-au" target="_blank" rel="noopener">France Rénov'</a> ; lien vers le service public (loi du 30 juin 2025, art. 14), <a href="https://www.anil.org/aj-loi-lutte-fraude-aides-publiqus-renovation-energetique/" target="_blank" rel="noopener">ANIL</a> ; Mon Accompagnateur Rénov' obligatoire pour le Parcours accompagné, <a href="https://selectra.info/energie/renovation-energetique/aides/ma-prime-renov" target="_blank" rel="noopener">Selectra</a> ; codes postaux de la zone et position des communes sur la carte, <a href="https://geo.api.gouv.fr/decoupage-administratif/communes" target="_blank" rel="noopener">geo.api.gouv.fr</a>.
       <p class="footer__demo">Site de démonstration. Arotz Rénovation est une entreprise fictive.</p>
     </div>
   </div>
@@ -1096,7 +1103,9 @@ textarea.input{min-height:104px;resize:vertical}
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 
-  /* ---------- Zone d'intervention ---------- */
+  /* ---------- Zone d'intervention ----------
+     Codes postaux vérifiés sur geo.api.gouv.fr (base officielle des communes), le 13/11/2026.
+     La commune nommée est l'une des communes desservies par le code. */
   const ZONE = {
     "64100":"Bayonne","64600":"Anglet","64200":"Biarritz","64210":"Bidart","64500":"Saint-Jean-de-Luz","64122":"Urrugne",
     "64700":"Hendaye","64310":"Saint-Pée-sur-Nivelle","64480":"Ustaritz","64250":"Cambo-les-Bains","64240":"Hasparren",
@@ -1119,36 +1128,35 @@ textarea.input{min-height:104px;resize:vertical}
     const adour = [[-1.525,43.525],[-1.47,43.505],[-1.40,43.52],[-1.30,43.535],[-1.20,43.53],[-1.08,43.55],[-0.95,43.60],[-0.80,43.64]];
     const nive = [[-1.475,43.49],[-1.47,43.44],[-1.455,43.40],[-1.42,43.37],[-1.38,43.33],[-1.30,43.26],[-1.24,43.17]];
     const towns = [
-      ["Capbreton",-1.43,43.645,"r"],["Labenne",-1.425,43.595,"r"],["Tarnos",-1.46,43.54,"r"],["Bayonne",-1.475,43.492,"r"],
-      ["Anglet",-1.515,43.485,"t"],["Biarritz",-1.558,43.47,"l"],["Saint-Jean-de-Luz",-1.66,43.39,"b"],["Hendaye",-1.775,43.36,"b"],
-      ["Ustaritz",-1.457,43.40,"t",1],["Cambo-les-Bains",-1.40,43.358,"r"],["Hasparren",-1.305,43.385,"r"],
-      ["Saint-Palais",-1.033,43.33,"r"],["Saint-Jean-Pied-de-Port",-1.236,43.163,"r"],["Mauléon-Licharre",-0.885,43.225,"l"]
+      /* centres des communes : geo.api.gouv.fr, vus le 13/11/2026 */
+      ["Capbreton",-1.4289,43.6311,[10,6,"start"]],["Labenne",-1.4371,43.5982,[10,6,"start"]],["Tarnos",-1.4717,43.5338,[10,4,"start"]],["Bayonne",-1.4611,43.4844,[10,8,"start"]],
+      ["Anglet",-1.5193,43.4893,[-8,-8,"end"]],["Biarritz",-1.5557,43.4709,[-10,10,"end"]],["Saint-Jean-de-Luz",-1.6337,43.3934,[4,24,"middle"]],["Hendaye",-1.7627,43.3635,[-6,28,"start"]],
+      ["Ustaritz",-1.4704,43.4019,[0,-18,"middle"],1],["Cambo-les-Bains",-1.3886,43.3622,[8,22,"start"]],["Hasparren",-1.3196,43.3951,[10,6,"start"]],
+      ["Saint-Palais",-1.041,43.3173,[10,6,"start"]],["Saint-Jean-Pied-de-Port",-1.2338,43.157,[10,6,"start"]],["Mauléon-Licharre",-0.8842,43.214,[-10,6,"end"]]
     ];
     let h = "";
-    h += `<rect width="600" height="470" fill="#D3E2EA"/>`;
+    h += `<rect width="600" height="420" fill="#D3E2EA"/>`;
     h += `<polygon points="${pts(spain)}" fill="#E7E0D3"/>`;
     h += `<polygon points="${pts(land)}" fill="#FBF8F2" stroke="#857A70" stroke-width="1.5"/>`;
     h += `<polygon points="${pts(zone)}" fill="#E1EBE3" stroke="#1F4A37" stroke-width="2.5" stroke-dasharray="8 6" stroke-linejoin="round"/>`;
     h += `<polyline points="${pts(adour)}" fill="none" stroke="#2D5C7A" stroke-width="3" stroke-linecap="round"/>`;
     h += `<polyline points="${pts(nive)}" fill="none" stroke="#2D5C7A" stroke-width="2" stroke-linecap="round"/>`;
     h += `<polyline points="${pts(border)}" fill="none" stroke="#857A70" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/>`;
-    h += `<text x="24" y="40" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="22" fill="#2D5C7A">Océan</text><text x="24" y="66" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="22" fill="#2D5C7A">Atlantique</text>`;
-    h += `<text x="120" y="400" font-family="Source Sans 3, sans-serif" font-size="18" font-weight="600" fill="#857A70" letter-spacing="3">ESPAGNE</text>`;
-    h += `<text x="370" y="102" font-family="Source Sans 3, sans-serif" font-size="16" font-style="italic" fill="#2D5C7A">Adour</text>`;
+    h += `<text x="16" y="40" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="26" fill="#2D5C7A">Océan</text><text x="16" y="70" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="26" fill="#2D5C7A">Atlantique</text>`;
+    h += `<text x="110" y="390" font-family="Source Sans 3, sans-serif" font-size="22" font-weight="600" fill="#857A70" letter-spacing="3">ESPAGNE</text>`;
+    h += `<text x="420" y="96" font-family="Source Sans 3, sans-serif" font-size="20" font-style="italic" fill="#2D5C7A">Adour</text>`;
     towns.forEach(t => {
       const [x,y] = P(t[1], t[2]).map(Number);
       const main = t[4];
       if(main){
         h += `<circle cx="${x}" cy="${y}" r="13" fill="#1F4A37" opacity=".18"/><circle cx="${x}" cy="${y}" r="7.5" fill="#1F4A37" stroke="#FBF8F2" stroke-width="2.5"/>`;
       } else {
-        h += `<circle cx="${x}" cy="${y}" r="4.5" fill="#1F4A37"/>`;
+        h += `<circle cx="${x}" cy="${y}" r="5.5" fill="#1F4A37"/>`;
       }
-      const fs = main ? 19 : 15, fw = main ? 700 : 600;
-      let tx = x + 10, ty = y + 5, anchor = "start";
-      if(t[3] === "l"){ tx = x - 10; anchor = "end"; }
-      if(t[3] === "b"){ tx = x + 6; ty = y + 22; anchor = "middle"; }
-      if(t[3] === "t"){ tx = x; ty = y - 18; anchor = "middle"; }
-      const label = main ? "Ustaritz, l'atelier" : t[0];
+      const fs = main ? 24 : 19, fw = main ? 700 : 600;
+      const [dx, dy, anchor] = t[3];
+      const tx = x + dx, ty = y + dy;
+      const label = t[0];
       h += `<text x="${tx}" y="${ty}" text-anchor="${anchor}" font-family="Source Sans 3, sans-serif" font-size="${fs}" font-weight="${fw}" fill="#1E1A17" paint-order="stroke" stroke="#FBF8F2" stroke-width="4" stroke-linejoin="round">${label}</text>`;
     });
     svg.insertAdjacentHTML("beforeend", h);
@@ -1235,17 +1243,17 @@ textarea.input{min-height:104px;resize:vertical}
   }
 
   const CASES = [
-    { id:"anglet", title:"Maison de 1975, Anglet", works:"Isolation des combles et pompe à chaleur air/eau, à la place d'une chaudière fioul", f:["isolation","pac"],
-      quote:"Plus de livraison de fioul, et la maison reste tiède même au fond du couloir.", who:"Maite et Jean-Pierre",
+    { id:"anglet", title:"Maison de 1975, Anglet", works:"Combles isolés, pompe à chaleur à la place du fioul", f:["isolation","pac"],
+      quote:"Plus de fioul, et la maison reste tiède jusqu'au fond du couloir.", who:"Maite et Jean-Pierre",
       sc:{x:150,w:260,top:200,roof:"gable",peak:.5,apex:118,chimney:300,fioul:1,combles:1,pac:1,tree:70,win:[[178,236,54,42],[330,236,54,42]],door:[256,46],shutters:1} },
-    { id:"hasparren", title:"Maison des années 1950, Hasparren", works:"Rénovation globale : murs par l'extérieur, menuiseries, pompe à chaleur", f:["globale","isolation","pac","menuiseries"],
-      quote:"L'audit nous a donné l'ordre des travaux. On a tout fait en une fois, avec un seul devis.", who:"Laura et Iban",
+    { id:"hasparren", title:"Maison des années 1950, Hasparren", works:"Rénovation globale : murs, fenêtres, pompe à chaleur", f:["globale","isolation","pac","menuiseries"],
+      quote:"L'audit nous a donné l'ordre des travaux, et un seul devis.", who:"Laura et Iban",
       sc:{x:170,w:230,top:130,roof:"hip",apex:78,chimney:330,fioul:1,murs:1,menu:1,combles:1,pac:1,tree:520,win:[[194,160,46,48],[330,160,46,48],[194,236,46,48],[330,236,46,48]],door:[262,46]} },
-    { id:"bayonne", title:"Maison de ville, Bayonne", works:"Isolation des murs par l'intérieur et menuiseries, logement en location", f:["isolation","menuiseries"],
-      quote:"Toutes les attestations remises à la fin pour le diagnostiqueur.", who:"Philippe, propriétaire bailleur",
+    { id:"bayonne", title:"Maison de ville, Bayonne", works:"Murs isolés par l'intérieur et fenêtres, logement loué", f:["isolation","menuiseries"],
+      quote:"Toutes les attestations remises à la fin pour le diagnostiqueur.", who:"Philippe, bailleur",
       sc:{x:210,w:170,top:70,roof:"flat",apex:40,menu:1,shutters:1,tree:90,win:[[236,96,40,56],[316,96,40,56],[236,176,40,56],[316,176,40,56]],door:[274,44]} },
-    { id:"ustaritz", title:"Maison labourdine, Ustaritz", works:"Menuiseries bois à double vitrage et isolation des combles", f:["menuiseries","isolation"],
-      quote:"Des fenêtres en bois comme avant, mais sans courant d'air.", who:"Ainhoa",
+    { id:"ustaritz", title:"Maison labourdine, Ustaritz", works:"Fenêtres bois double vitrage et combles isolés", f:["menuiseries","isolation"],
+      quote:"Des fenêtres en bois comme avant, sans courant d'air.", who:"Ainhoa",
       sc:{x:120,w:360,top:170,roof:"gable",peak:.46,apex:84,timber:1,menu:1,combles:1,shutters:1,tree:530,win:[[160,250,44,46],[388,250,44,46],[250,186,40,40]],door:[290,46]} }
   ];
 
@@ -1261,13 +1269,13 @@ textarea.input{min-height:104px;resize:vertical}
         <span class="ba__handle" role="slider" tabindex="0" aria-label="Comparer avant et après, ${c.title}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Moitié avant, moitié après"><svg aria-hidden="true"><use href="#i-arrows"/></svg></span>
       </div>
       <div class="case__body">
-        <div class="case__top"><h3>${c.title}</h3><span class="demo-tag">Chantier de démonstration</span></div>
+        <h3>${c.title}</h3>
         <p class="case__works">${c.works}</p>
         <dl class="case__data">
-          <div><dt>Classe DPE avant, puis après</dt><dd><span class="dpe" aria-label="classe avant non renseignée">?</span><span aria-hidden="true">→</span><span class="dpe" aria-label="classe après non renseignée">?</span></dd></div>
-          <div><dt>Gain estimé par l'audit</dt><dd class="empty">À renseigner depuis l'audit</dd></div>
+          <div><dt>Classe DPE</dt><dd><span class="dpe" aria-label="classe avant non renseignée">?</span><span aria-hidden="true">→</span><span class="dpe" aria-label="classe après non renseignée">?</span></dd></div>
+          <div><dt>Gain estimé (audit)</dt><dd class="empty">à renseigner</dd></div>
         </dl>
-        <blockquote>« ${c.quote} »<footer>${c.who}, avis de démonstration</footer></blockquote>
+        <blockquote>« ${c.quote} »<footer>${c.who}, exemple d'avis</footer></blockquote>
         <a class="case__link" href="#">Voir le chantier complet</a>
       </div>
     </article>`).join("");
@@ -1375,19 +1383,19 @@ textarea.input{min-height:104px;resize:vertical}
     const hh = $("input[name=hh]:checked").value;
     const rev = $("input[name=rev]:checked").value;
     const hhTxt = hh === "5" ? "5 personnes et plus" : hh + (hh === "1" ? " personne" : " personnes");
-    $("#res-profile").textContent = `Foyer de ${hhTxt}, ${REV[rev]}, logement à ${ZONE[cp]} (${cp}).`;
+    $("#res-profile").textContent = `Foyer de ${hhTxt}, ${REV[rev]}, code postal ${cp}, dans notre zone.`;
     const ico = (c) => `<svg aria-hidden="true"><use href="#${c}"/></svg>`;
     let items = [
-      `<li>${ico("i-check")}<span><b>MaPrimeRénov'</b> : montant selon votre tranche de revenus et les travaux, travaux confiés à un artisan RGE.</span></li>`,
-      `<li>${ico("i-check")}<span><b>Prime CEE</b> (certificats d'économies d'énergie) : versée par les fournisseurs d'énergie, cumulable selon les cas.</span></li>`,
-      `<li>${ico("i-check")}<span><b>TVA à 5,5 %</b> sur les travaux d'amélioration de la performance énergétique éligibles (<a href="https://france-renov.gouv.fr/aides/tva-taux-reduit" target="_blank" rel="noopener">France Rénov'</a>, vu le 13/11/2026).</span></li>`,
-      `<li>${ico("i-check")}<span><b>Éco-PTZ</b> : un prêt sans intérêts pour financer le reste à charge, à voir avec votre banque.</span></li>`
+      `<li>${ico("i-check")}<span><b>MaPrimeRénov'</b> : selon revenus et travaux, artisan RGE obligatoire.</span></li>`,
+      `<li>${ico("i-check")}<span><b>Prime CEE</b> : versée par les fournisseurs d'énergie.</span></li>`,
+      `<li>${ico("i-check")}<span><b>TVA à 5,5 %</b> sur les travaux éligibles (<a href="https://france-renov.gouv.fr/aides/tva-taux-reduit" target="_blank" rel="noopener">France Rénov'</a>, vu le 13/11/2026).</span></li>`,
+      `<li>${ico("i-check")}<span><b>Éco-PTZ</b> : prêt sans intérêts pour le reste à charge.</span></li>`
     ];
     if(works.includes("globale")){
-      items.push(`<li class="info">${ico("i-info")}<span><b>Rénovation d'ampleur</b> : Mon Accompagnateur Rénov' est obligatoire pour le Parcours accompagné (<a href="https://selectra.info/energie/renovation-energetique/aides/ma-prime-renov" target="_blank" rel="noopener">Selectra</a>, vu le 13/11/2026). Nous vous orientons lors de la visite.</span></li>`);
+      items.push(`<li class="info">${ico("i-info")}<span><b>Rénovation d'ampleur</b> : Mon Accompagnateur Rénov' obligatoire (<a href="https://selectra.info/energie/renovation-energetique/aides/ma-prime-renov" target="_blank" rel="noopener">Selectra</a>, vu le 13/11/2026).</span></li>`);
     }
     if(rev === "s"){
-      items.push(`<li class="info">${ico("i-info")}<span>Avec des revenus supérieurs, les aides possibles sont plus limitées : nous vérifions avec vous ce qui reste accessible.</span></li>`);
+      items.push(`<li class="info">${ico("i-info")}<span><b>Revenus supérieurs</b> : aides plus limitées, nous vérifions avec vous.</span></li>`);
     }
     $("#res-aids").innerHTML = items.join("");
   }
