@@ -1,0 +1,1352 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Strate Orbital</title>
+<meta name="description" content="Strate Orbital mesure l'humidité des sols depuis l'espace avec une constellation de nanosatellites. Site de démonstration, entreprise fictive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0B0D;
+  --surface:#14171B;
+  --rule:#2A2F36;
+  --text:#F4F4F1;
+  --muted:#9AA0A6;
+  --accent:#FF5A1F;
+  --accent-hover:#FF7440;
+  --on-accent:#0A0B0D;
+  --success:#3FB950;
+  --warning:#D4A72C;
+  --error:#F85149;
+  --focus:#7AB8FF;
+  --m1:#6B5A3E; --m2:#8C8A5A; --m3:#4F8F86; --m4:#3C7FB0; --m5:#9CCBEB;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --ease:cubic-bezier(.2,0,0,1);
+  --gutter:clamp(16px, 4vw, 56px);
+  --maxw:1320px;
+  --section:96px;
+  --header:64px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 8px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:600}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--text);color:var(--bg);padding:10px 14px;border-radius:2px;text-decoration:none;font-weight:500}
+.skip:focus{top:12px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--mono)}
+.overline{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1.2}
+.h2{font-size:34px;line-height:1.15;letter-spacing:-.01em;max-width:24ch}
+.lead{color:var(--muted);max-width:62ch;margin-top:16px}
+.small{font-size:14px;line-height:1.5}
+.note{font-size:13px;line-height:1.5;color:var(--muted)}
+.note a,.lead a{color:var(--text);text-underline-offset:3px}
+section{padding:var(--section) 0;border-top:1px solid var(--rule)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:2px;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;transition:background-color 120ms var(--ease),border-color 120ms var(--ease),transform 120ms var(--ease)}
+.btn:active{transform:translateY(1px);filter:brightness(.92)}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-secondary{border-color:var(--text);color:var(--text);background:transparent}
+.btn-secondary:hover{background:var(--surface)}
+.btn-ghost{border-color:var(--rule);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--muted)}
+.btn[aria-disabled="true"],.btn:disabled{background:var(--rule);color:var(--muted);cursor:not-allowed}
+.btn svg{flex:none}
+.icon-btn{width:44px;height:44px;display:inline-grid;place-items:center;border:1px solid var(--rule);background:var(--bg);border-radius:2px;cursor:pointer;color:var(--text);transition:border-color 120ms var(--ease)}
+.icon-btn:hover{border-color:var(--muted)}
+.textlink{color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--muted);font-weight:500}
+.textlink:hover{text-decoration-color:var(--text)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(10,11,13,.94);border-bottom:1px solid var(--rule)}
+.header-in{height:var(--header);display:flex;align-items:center;gap:28px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.005em;flex:none}
+.brand svg{width:28px;height:28px}
+.nav{display:flex;gap:24px;margin-left:auto}
+.nav a{font-size:15px;color:var(--muted);text-decoration:none;transition:color 120ms var(--ease)}
+.nav a:hover{color:var(--text)}
+.lang{display:flex;gap:2px;font-family:var(--mono);font-size:13px}
+.lang a{padding:4px 6px;text-decoration:none;color:var(--muted)}
+.lang a[aria-current]{color:var(--text);border-bottom:1px solid var(--text)}
+.header-cta{min-height:40px;padding:0 16px;font-size:15px}
+.menu-toggle{display:none;margin-left:auto;background:none;border:0;width:44px;height:44px;cursor:pointer;place-items:center}
+.menu-toggle:focus:not(:focus-visible){outline:none}
+.mobile-nav{display:none}
+
+/* Hero */
+.hero{padding:0;border-top:0;position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:48px;align-items:center;min-height:calc(100dvh - var(--header) - 112px);padding-top:56px;padding-bottom:40px}
+.hero-copy .overline{display:flex;align-items:center;gap:10px;color:var(--text)}
+.status-live{width:8px;height:8px;border-radius:50%;background:var(--success);flex:none}
+.hero h1{font-size:clamp(44px,4.6vw,66px);line-height:1.04;letter-spacing:-.025em;margin-top:22px;max-width:17ch}
+.hero-sub{font-size:20px;line-height:1.55;color:var(--muted);max-width:44ch;margin-top:24px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero-visual{position:relative}
+.orbit-svg{width:100%;height:auto;aspect-ratio:1/1;max-height:calc(100dvh - 220px);margin-left:auto}
+.visual-meta{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:8px}
+.visual-meta .note{max-width:34ch}
+.facts{border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.fact{padding:20px 24px 22px;border-left:1px solid var(--rule)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fact dd{margin:6px 0 0;font-size:16px;font-weight:500;line-height:1.4}
+
+/* orbit animation */
+.constellation{transform-origin:300px 900px;transform-box:view-box;animation:pan 80s ease-in-out infinite alternate}
+@keyframes pan{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+.pulse{animation:dash 3.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+.paused .constellation,.paused .pulse{animation-play-state:paused}
+
+/* Tech */
+.tech-head{display:flex;flex-direction:column;gap:0}
+.tabs{display:flex;gap:0;margin-top:40px;border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;border-bottom:2px solid transparent;padding:14px 22px 12px;font-size:16px;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap;margin-bottom:-1px;transition:color 120ms var(--ease),border-color 240ms var(--ease)}
+.tab:first-child{padding-left:0}
+.tab:hover{color:var(--text)}
+.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--text)}
+.tab .mono{font-size:12px;color:var(--muted);margin-left:8px}
+.panel{padding-top:40px}
+.panel[hidden]{display:none}
+.panel{animation:fade 240ms var(--ease)}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+.brief-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.brief-list{list-style:none;margin:0;padding:0;display:grid;gap:22px;counter-reset:b}
+.brief-list li{display:grid;grid-template-columns:36px 1fr;gap:8px;font-size:18px}
+.brief-list li::before{counter-increment:b;content:counter(b,decimal-leading-zero);font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:5px}
+.schema{background:var(--surface);border:1px solid var(--rule);padding:24px}
+.schema figcaption{margin-top:14px}
+.eng-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+.eng-grid h3{font-size:22px;line-height:1.3;font-weight:500}
+.eng-grid p{color:var(--muted);margin-top:10px;font-size:17px}
+.chain{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:0;border-left:1px solid var(--rule)}
+.chain li{position:relative;padding:8px 0 8px 22px;font-size:16px}
+.chain li::before{content:"";position:absolute;left:-4px;top:17px;width:7px;height:7px;background:var(--bg);border:1px solid var(--muted);border-radius:50%}
+.chain li:last-child::before{background:var(--text);border-color:var(--text)}
+.spec{margin-top:24px;display:grid;gap:22px}
+.spec-group{border-top:1px solid var(--rule);padding-top:14px}
+.spec-group .overline{margin-bottom:8px}
+.spec dl{margin:0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px 20px}
+.spec dt{color:var(--muted);font-size:15px}
+.spec dd{margin:0;font-family:var(--mono);font-size:15px;font-weight:500;line-height:1.4}
+.precision{margin-top:36px;border:1px solid var(--rule);padding:20px;display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}
+.pubs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.pubs li{padding:22px 0;border-top:1px solid var(--rule)}
+.pubs .year{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.pubs h3{font-size:19px;line-height:1.35;font-weight:500;margin-top:6px}
+.pubs .src{font-size:15px;color:var(--muted);margin-top:6px}
+.pubs a.doi{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:14px}
+.export{margin-top:28px}
+
+/* Applications matrix */
+.matrix{margin-top:48px;display:grid;grid-template-columns:180px repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.matrix > *{padding:20px 24px 22px;border-bottom:1px solid var(--rule)}
+.matrix .corner{padding-left:0}
+.matrix .col-head{border-left:1px solid var(--rule)}
+.col-head svg{width:100%;max-width:200px;height:88px;margin-bottom:18px}
+.col-head h3{font-size:22px;line-height:1.3;font-weight:500}
+.col-head .who{font-size:14px;color:var(--muted);margin-top:4px}
+.row-label{padding-left:0;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:24px}
+.cell{border-left:1px solid var(--rule);font-size:16px;line-height:1.55}
+.cell.decision{font-weight:500;font-size:17px;color:var(--text)}
+.cell .m-label{display:none}
+
+/* Roadmap */
+.road-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.road-controls{display:flex;gap:8px}
+.track-wrap{margin-top:40px;position:relative}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:300px;gap:0;overflow-x:auto;padding-bottom:20px;scrollbar-width:thin;scrollbar-color:var(--rule) transparent;list-style:none;margin:0;padding-left:0}
+.track::-webkit-scrollbar{height:6px}
+.track::-webkit-scrollbar-thumb{background:var(--rule)}
+.step{position:relative;padding:0 24px 0 0;display:flex;flex-direction:column}
+.step .step-card{flex:1}
+.step-axis{position:relative;height:40px;display:flex;align-items:center;margin-right:-24px}
+.step-axis::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule)}
+.step.done .step-axis::before,.step.part .step-axis::before{background:var(--text)}
+.step.part .step-axis::before{background:linear-gradient(90deg,var(--text) 0 40%,var(--rule) 40%)}
+.node{position:relative;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--bg)}
+.done .node{background:var(--success);color:var(--bg)}
+.part .node{border:2px solid var(--accent);background:var(--bg)}
+.part .node::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.next .node{border:1px dashed var(--muted)}
+.step-card{margin-top:18px;background:var(--surface);border:1px solid var(--rule);padding:20px;margin-right:0;min-height:236px;display:flex;flex-direction:column}
+.step-card .overline{color:var(--muted)}
+.step-card h3{font-size:20px;line-height:1.3;font-weight:500;margin-top:10px}
+.step-card p{font-size:15px;line-height:1.55;color:var(--muted);margin-top:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;margin-top:auto;align-self:flex-start;padding:4px 10px 4px 8px;border-radius:999px;font-family:var(--mono);font-size:12px;font-weight:500;border:1px solid}
+.pill svg{width:12px;height:12px}
+.done .pill{color:var(--success);border-color:rgba(63,185,80,.5)}
+.part .pill{color:var(--warning);border-color:rgba(212,167,44,.5)}
+.next .pill{color:var(--muted);border-color:var(--rule)}
+.step-card .pill{margin-top:auto}
+.step-card .spacer{flex:1;min-height:16px}
+.newsletter{margin-top:36px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;border-top:1px solid var(--rule);padding-top:28px}
+.newsletter form{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.newsletter .field{min-width:300px}
+.nl-msg{grid-column:1/-1;font-size:15px}
+
+/* Form fields */
+.field{display:grid;gap:8px}
+.field label,.legend-title{font-size:15px;font-weight:500}
+.field .opt{color:var(--muted);font-weight:400}
+.input{width:100%;min-height:48px;padding:10px 14px;background:var(--bg);border:1px solid #4A515A;border-radius:2px;font-size:16px;transition:border-color 120ms var(--ease)}
+.input::placeholder{color:#80868C}
+.input:hover{border-color:var(--muted)}
+.input:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-color:var(--text)}
+.input[aria-invalid="true"]{border-color:var(--error)}
+textarea.input{min-height:120px;resize:vertical;line-height:1.5}
+.err{display:flex;gap:8px;align-items:flex-start;color:var(--error);font-size:14px;line-height:1.45}
+.err[hidden]{display:none}
+.err svg{flex:none;margin-top:2px}
+
+/* Data */
+.data-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:40px;margin-top:40px;align-items:start}
+.map-frame{position:relative;background:var(--surface);border:1px solid var(--rule);padding:14px}
+.map-top,.map-bottom{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.4}
+.map-top{margin-bottom:10px}
+.map-bottom{margin-top:10px}
+.map-svg{width:100%;height:auto;cursor:crosshair;touch-action:manipulation}
+.map-svg rect.c{shape-rendering:crispEdges;transition:fill 240ms var(--ease)}
+.map-src{margin-top:12px}
+.ctrl{display:grid;gap:22px}
+.day-read{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:14px}
+.day-read output{font-family:var(--mono);font-size:28px;font-weight:500;letter-spacing:-.01em}
+.day-read output small{font-size:15px;color:var(--muted);font-weight:400}
+.range{width:100%;-webkit-appearance:none;appearance:none;background:transparent;height:44px;cursor:pointer;margin:0}
+.range::-webkit-slider-runnable-track{height:2px;background:var(--rule)}
+.range::-moz-range-track{height:2px;background:var(--rule)}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-10px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);box-shadow:0 0 0 1px var(--accent)}
+.range::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.range-ends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:-6px}
+.legend{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.legend li{font-size:13px;line-height:1.3;color:var(--muted)}
+.legend .sw{display:block;height:12px;margin-bottom:6px}
+.readout{font-size:15px;line-height:1.5;color:var(--muted);min-height:45px}
+.readout strong{color:var(--text);font-weight:500}
+table{border-collapse:collapse;width:100%;font-size:14px}
+caption{text-align:left;font-size:15px;font-weight:500;margin-bottom:8px}
+th,td{text-align:left;padding:7px 8px 7px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
+thead th{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td .sw{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:-1px}
+td.trend{color:var(--muted)}
+
+/* Partners */
+.partners-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;margin-top:40px;align-items:start}
+.logos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.logo-cell{position:relative;padding:26px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-height:150px;display:flex;flex-direction:column;gap:14px;outline:none}
+.logo-cell svg{height:34px;width:auto;max-width:100%;align-self:flex-start;color:var(--text);opacity:.9;transition:opacity 120ms var(--ease)}
+.logo-cell:hover svg,.logo-cell:focus-within svg{opacity:1}
+.logo-cell p{font-size:15px;line-height:1.5;color:var(--muted)}
+.logo-cell p strong{color:var(--text);font-weight:500}
+.market{background:var(--surface);border:1px solid var(--rule);padding:28px}
+.market .figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0 18px}
+.market .fig{font-family:var(--mono);font-size:30px;font-weight:500;letter-spacing:-.02em;line-height:1.1}
+.market .fig-l{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
+.market .btn{margin-top:22px}
+
+/* Team */
+.team-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:start}
+.about-art{margin-top:32px;border:1px solid var(--rule);background:var(--surface);padding:20px}
+.about p.body{margin-top:18px;max-width:46ch}
+.jobs{list-style:none;margin:0;padding:0}
+.job{border-top:1px solid var(--rule);padding:24px 0}
+.job:last-child{border-bottom:1px solid var(--rule)}
+.job-top{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
+.job h3{font-size:22px;line-height:1.3;font-weight:500}
+.job .meta{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.job .problem{margin-top:10px;font-size:16px;color:var(--muted);max-width:60ch}
+.job .problem b{color:var(--text);font-weight:500}
+.job a{margin-top:12px;display:inline-block;font-size:15px}
+.jobs-foot{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:28px}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}
+.press{list-style:none;margin:28px 0 0;padding:0}
+.press li{border-top:1px solid var(--rule);padding:16px 0;display:grid;grid-template-columns:96px 1fr;gap:16px}
+.press li:last-child{border-bottom:1px solid var(--rule)}
+.press .tag{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;padding-top:4px}
+.press p{font-size:16px;line-height:1.45}
+.kit{margin-top:24px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.where{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.where address{font-style:normal;font-size:16px;line-height:1.55}
+.where svg{border:1px solid var(--rule);background:var(--surface);width:100%;height:auto}
+.form-card{background:var(--surface);border:1px solid var(--rule);padding:32px}
+.form-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.form-head h3{font-size:22px;font-weight:500}
+.steps{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.steps b{color:var(--text);font-weight:500}
+fieldset{border:0;margin:24px 0 0;padding:0;min-width:0}
+legend{padding:0;margin-bottom:12px}
+.who-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.who-opt{position:relative}
+.who-opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.who-opt label{display:flex;flex-direction:column;gap:2px;min-height:76px;justify-content:center;padding:14px 16px;border:1px solid #4A515A;border-radius:2px;cursor:pointer;transition:border-color 120ms var(--ease),background-color 120ms var(--ease)}
+.who-opt label span{font-size:14px;color:var(--muted);line-height:1.35}
+.who-opt label strong{font-weight:500;font-size:16px}
+.who-opt input:hover + label{border-color:var(--muted)}
+.who-opt input:checked + label{border-color:var(--text);background:var(--bg);box-shadow:inset 3px 0 0 var(--text)}
+.who-opt input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
+.form-step[hidden]{display:none}
+.form-step .field{margin-top:18px}
+.form-actions{display:flex;gap:12px;align-items:center;margin-top:24px;flex-wrap:wrap}
+.backlink{background:none;border:0;color:var(--muted);text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:12px 4px;font-size:15px}
+.backlink:hover{color:var(--text)}
+.chosen{margin-top:14px;font-size:15px;color:var(--muted)}
+.chosen strong{color:var(--text);font-weight:500}
+.success{border-left:3px solid var(--success);padding:4px 0 4px 18px}
+.success h3{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:500}
+.success h3 svg{color:var(--success)}
+.success p{margin-top:10px;color:var(--muted);font-size:16px}
+.success p a{color:var(--text)}
+.spinner{width:16px;height:16px;border:2px solid rgba(10,11,13,.35);border-top-color:var(--on-accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--rule);padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:start}
+.foot-nav{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:15px}
+.foot-nav a{color:var(--muted);text-decoration:none}
+.foot-nav a:hover{color:var(--text)}
+.demo-line{margin-top:28px;padding-top:20px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.demo-line strong{color:var(--text);font-weight:500}
+
+/* Responsive */
+@media (max-width:1180px){
+  .nav{gap:18px}
+  .header-cta{display:none}
+}
+@media (max-width:1023px){
+  :root{--section:80px}
+  .nav,.lang.desktop{display:none}
+  .menu-toggle{display:grid}
+  .mobile-nav{position:fixed;inset:var(--header) 0 0 0;background:var(--bg);z-index:49;padding:24px var(--gutter) 40px;overflow-y:auto}
+  .mobile-nav.open{display:block}
+  .mobile-nav a.m-link{display:block;font-size:22px;font-weight:500;padding:14px 0;border-bottom:1px solid var(--rule);text-decoration:none}
+  .mobile-nav .btn{width:100%;margin-top:28px}
+  .mobile-nav .lang{margin-top:20px}
+  .hero-grid{grid-template-columns:1fr;min-height:0;gap:8px;padding-top:24px}
+  .hero-visual{order:-1}
+  .orbit-svg{aspect-ratio:auto;height:240px;max-height:none;width:100%}
+  .visual-meta{display:none}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--rule)}
+  .brief-grid,.eng-grid,.data-grid,.partners-grid,.team-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .matrix{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .matrix .corner,.matrix .row-label{display:none}
+  .matrix .col-head:nth-child(2){border-left:0}
+  .matrix > :nth-child(4n+2){border-left:0}
+  .cell .m-label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500}
+}
+@media (max-width:767px){
+  body{font-size:16px}
+  :root{--section:72px}
+  .h2{font-size:26px}
+  .hero h1{font-size:40px;line-height:1.04;margin-top:14px}
+  .hero-sub{font-size:17px;margin-top:16px}
+  .hero-ctas{flex-direction:column;margin-top:24px;gap:10px}
+  .hero-ctas .btn{width:100%}
+  .orbit-svg{height:230px}
+  .fact{padding:16px 12px 16px 16px}
+  .fact dd{font-size:15px}
+  .tab{padding:12px 14px 10px;font-size:15px}
+  .tab .mono{display:none}
+  .brief-list li{font-size:16px}
+  .precision{grid-template-columns:1fr}
+  .pubs{grid-template-columns:1fr}
+  /* applications become stacked blocks */
+  .matrix{grid-template-columns:1fr;border-top:0}
+  .matrix > *{padding:0;border:0}
+  .matrix > :nth-child(2){order:1}.matrix > :nth-child(6){order:2}.matrix > :nth-child(10){order:3}.matrix > :nth-child(14){order:4}
+  .matrix > :nth-child(3){order:5}.matrix > :nth-child(7){order:6}.matrix > :nth-child(11){order:7}.matrix > :nth-child(15){order:8}
+  .matrix > :nth-child(4){order:9}.matrix > :nth-child(8){order:10}.matrix > :nth-child(12){order:11}.matrix > :nth-child(16){order:12}
+  .matrix > :nth-child(14),.matrix > :nth-child(15),.matrix > :nth-child(16){padding-bottom:28px}
+  .matrix .col-head{border-left:0;padding-top:24px;border-top:1px solid var(--rule)}
+  .matrix .cell{border-left:0;padding:14px 0 0}
+  .col-head svg{height:72px;max-width:170px}
+  /* vertical timeline */
+  .road-controls{display:none}
+  .track{grid-auto-flow:row;grid-auto-columns:auto;overflow:visible;padding-bottom:0}
+  .step{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:0}
+  .step-axis{height:auto;flex-direction:column;justify-content:flex-start;padding-top:20px;margin-right:0}
+  .step-axis::before{left:50%;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .step.part .step-axis::before{background:linear-gradient(180deg,var(--text) 0 40%,var(--rule) 40%)}
+  .step:last-child .step-axis::before{bottom:auto;height:30px}
+  .step-card{margin:0 0 14px;min-height:0}
+  .newsletter{grid-template-columns:1fr}
+  .newsletter form{flex-direction:column;align-items:stretch}
+  .newsletter .field{min-width:0}
+  .map-frame{padding:10px}
+  .map-top,.map-bottom{font-size:11px}
+  .legend li{font-size:12px}
+  .logos{grid-template-columns:1fr}
+  .market .figs{grid-template-columns:1fr 1fr}
+  .market .fig{font-size:26px}
+  .market .btn{width:100%;white-space:normal;text-align:center}
+  .where{grid-template-columns:1fr}
+  .form-card{padding:22px 18px}
+  .who-grid{grid-template-columns:1fr}
+  .form-actions .btn{width:100%}
+  .press li{grid-template-columns:1fr;gap:4px}
+  .foot-grid{grid-template-columns:1fr}
+  .jobs-foot .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .constellation,.pulse,.spinner{animation:none!important}
+  .panel{animation:none}
+  *{transition-duration:0ms!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="#top" aria-label="Strate Orbital, retour en haut de page">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M5 19h22M6.5 23h19M9.5 27h13" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="25.2" cy="6.8" r="2.6" fill="#FF5A1F"/>
+      </svg>
+      Strate Orbital
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#technologie">Technologie</a>
+      <a href="#applications">Applications</a>
+      <a href="#feuille-de-route">Feuille de route</a>
+      <a href="#donnees">Données</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="lang desktop" aria-label="Langue">
+      <a href="#" aria-current="true" lang="fr">FR</a>
+      <a href="#" lang="en" hreflang="en">EN</a>
+    </div>
+    <a class="btn btn-primary header-cta" href="#contact">Contacter l'équipe partenariats</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Ouvrir le menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="i-open" d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6"/><path class="i-close" d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" style="display:none"/></svg>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <a class="m-link" href="#technologie">Technologie</a>
+    <a class="m-link" href="#applications">Applications</a>
+    <a class="m-link" href="#feuille-de-route">Feuille de route</a>
+    <a class="m-link" href="#donnees">Données</a>
+    <a class="m-link" href="#equipe">Équipe</a>
+    <a class="m-link" href="#contact">Contact</a>
+    <a class="btn btn-primary" href="#contact">Contacter l'équipe partenariats</a>
+    <div class="lang" aria-label="Langue">
+      <a href="#" aria-current="true" lang="fr">FR</a>
+      <a href="#" lang="en" hreflang="en">EN</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenu">
+
+<!-- 1. HERO -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="overline"><span class="status-live" aria-hidden="true"></span>Démonstrateur SO-1 en orbite</p>
+        <h1 id="hero-title">L'humidité des sols, mesurée depuis l'espace, chaque jour.</h1>
+        <p class="hero-sub">Une constellation de nanosatellites pour piloter l'irrigation, anticiper la sécheresse et assurer le risque climatique.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">Contacter l'équipe partenariats</a>
+          <a class="btn btn-secondary" href="#donnees">Explorer la carte d'exemple</a>
+        </div>
+      </div>
+      <figure class="hero-visual" id="orbit" style="margin:0">
+        <svg class="orbit-svg" viewBox="0 0 600 600" id="orbit-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="orbit-title orbit-desc">
+          <title id="orbit-title">Schéma de la mesure GNSS-R</title>
+          <desc id="orbit-desc">Un satellite de navigation émet un signal en bande L. Le signal se réfléchit sur le sol, et un nanosatellite 6U de Strate Orbital le reçoit. Vue schématique, pas à l'échelle.</desc>
+          <defs>
+            <clipPath id="earth-clip"><circle cx="300" cy="900" r="520"/></clipPath>
+            <radialGradient id="limb" cx="300" cy="900" r="560" gradientUnits="userSpaceOnUse">
+              <stop offset=".86" stop-color="#14171B"/>
+              <stop offset="1" stop-color="#1B2026"/>
+            </radialGradient>
+          </defs>
+          <!-- framing brackets -->
+          <g stroke="#FF5A1F" stroke-width="1.5" fill="none">
+            <path d="M24 70V24h46"/><path d="M530 24h46v46"/><path d="M576 530v46h-46"/><path d="M70 576H24v-46"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="12" fill="#9AA0A6" letter-spacing=".08em">
+            <text x="560" y="52" text-anchor="end">VUE SCHÉMATIQUE</text>
+          </g>
+          <!-- orbits -->
+          <circle cx="300" cy="900" r="640" stroke="#2A2F36" fill="none"/>
+          <circle cx="300" cy="900" r="860" stroke="#2A2F36" fill="none" stroke-dasharray="2 6"/>
+          <!-- earth -->
+          <circle cx="300" cy="900" r="520" fill="url(#limb)" stroke="#9AA0A6" stroke-width="1"/>
+          <g clip-path="url(#earth-clip)" stroke="#2A2F36" fill="none">
+            <ellipse cx="300" cy="900" rx="520" ry="470"/>
+            <ellipse cx="300" cy="900" rx="520" ry="410"/>
+            <ellipse cx="300" cy="900" rx="520" ry="340"/>
+            <ellipse cx="300" cy="900" rx="420" ry="520"/>
+            <ellipse cx="300" cy="900" rx="260" ry="520"/>
+            <ellipse cx="300" cy="900" rx="90" ry="520"/>
+          </g>
+          <g class="constellation">
+            <!-- moisture pixels near specular point -->
+            <g clip-path="url(#earth-clip)">
+              <rect x="300" y="384" width="14" height="10" fill="#4F8F86"/><rect x="314" y="384" width="14" height="10" fill="#3C7FB0"/><rect x="328" y="384" width="14" height="10" fill="#8C8A5A"/><rect x="342" y="386" width="14" height="10" fill="#4F8F86"/>
+              <rect x="300" y="394" width="14" height="10" fill="#3C7FB0"/><rect x="314" y="394" width="14" height="10" fill="#9CCBEB"/><rect x="328" y="394" width="14" height="10" fill="#4F8F86"/><rect x="342" y="396" width="14" height="10" fill="#6B5A3E"/>
+              <rect x="300" y="404" width="14" height="10" fill="#8C8A5A"/><rect x="314" y="404" width="14" height="10" fill="#4F8F86"/><rect x="328" y="404" width="14" height="10" fill="#3C7FB0"/><rect x="342" y="406" width="14" height="10" fill="#8C8A5A"/>
+            </g>
+            <!-- signal paths -->
+            <path d="M172 90L327 381" stroke="#F4F4F1" stroke-width="1" opacity=".7"/>
+            <path class="pulse" d="M327 381L411 270" stroke="#F4F4F1" stroke-width="1.5" stroke-dasharray="6 8"/>
+            <path d="M172 90L411 270" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="2 5" opacity=".7"/>
+            <!-- specular point reticle -->
+            <g stroke="#FF5A1F" stroke-width="1.5">
+              <path d="M327 362v12M327 388v12M308 381h12M334 381h12"/>
+              <circle cx="327" cy="381" r="4" fill="none"/>
+            </g>
+            <!-- GNSS satellite -->
+            <g transform="translate(172 90) rotate(-9)" stroke="#9AA0A6" fill="#0A0B0D">
+              <rect x="-7" y="-7" width="14" height="14"/>
+              <rect x="-31" y="-4" width="20" height="8"/><rect x="11" y="-4" width="20" height="8"/>
+              <path d="M-11 0h4M7 0h4"/>
+            </g>
+            <!-- 6U nanosatellite -->
+            <g transform="translate(411 270) rotate(10)">
+              <rect x="-9" y="-14" width="18" height="28" fill="#0A0B0D" stroke="#F4F4F1" stroke-width="1.5"/>
+              <path d="M-9 -4.7h18M-9 4.7h18M0 -14v28" stroke="#F4F4F1" stroke-width="1"/>
+              <g stroke="#F4F4F1" stroke-width="1" fill="#14171B">
+                <rect x="-45" y="-10" width="34" height="20"/><rect x="11" y="-10" width="34" height="20"/>
+                <path d="M-34 -10v20M-23 -10v20M22 -10v20M33 -10v20" stroke="#2A2F36"/>
+              </g>
+              <rect x="-4" y="14" width="8" height="4" fill="#FF5A1F"/>
+            </g>
+            <g font-family="IBM Plex Mono, monospace" font-size="12" fill="#9AA0A6" letter-spacing=".06em">
+              <text x="172" y="66" text-anchor="middle">GNSS, BANDE L</text>
+              <text x="462" y="262">SO-1, 6U</text>
+              <text x="356" y="372" fill="#F4F4F1">POINT DE RÉFLEXION</text>
+            </g>
+          </g>
+        </svg>
+        <figcaption class="visual-meta">
+          <span class="note">Vue schématique, pas à l'échelle. Le signal GNSS réfléchi par le sol est reçu par le nanosatellite.</span>
+          <button class="icon-btn" type="button" id="orbit-toggle" aria-pressed="false" aria-label="Mettre en pause l'animation">
+            <svg class="i-pause" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>
+            <svg class="i-play" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="display:none"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg>
+          </button>
+        </figcaption>
+      </figure>
+    </div>
+    <dl class="facts">
+      <div class="fact"><dt>Preuve</dt><dd>Démonstrateur SO-1 en orbite</dd></div>
+      <div class="fact"><dt>Mesure</dt><dd>Réflectométrie GNSS en bande L</dd></div>
+      <div class="fact"><dt>Plateforme</dt><dd>Nanosatellites au format 6U</dd></div>
+      <div class="fact"><dt>Origine</dt><dd>Laboratoire public, Toulouse</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 2. TECHNOLOGIE -->
+<section id="technologie" aria-labelledby="tech-title">
+  <div class="wrap">
+    <h2 class="h2" id="tech-title">La technologie, à trois niveaux de lecture</h2>
+    <p class="lead">Choisissez votre niveau : l'essentiel en trois phrases, le détail pour les ingénieurs, ou les publications de référence du domaine.</p>
+    <div class="tabs" role="tablist" aria-label="Niveaux de lecture">
+      <button class="tab" role="tab" id="tab-bref" aria-controls="panel-bref" aria-selected="true">En bref</button>
+      <button class="tab" role="tab" id="tab-ing" aria-controls="panel-ing" aria-selected="false" tabindex="-1">Pour les ingénieurs</button>
+      <button class="tab" role="tab" id="tab-pub" aria-controls="panel-pub" aria-selected="false" tabindex="-1">Publications<span class="mono">DOI</span></button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="panel-bref" aria-labelledby="tab-bref" tabindex="0">
+      <div class="brief-grid">
+        <div>
+          <ol class="brief-list">
+            <li><span>Les satellites de navigation (GPS, Galileo) émettent en continu des signaux qui se réfléchissent sur le sol.</span></li>
+            <li><span>Un sol humide renvoie un signal plus fort qu'un sol sec : nos nanosatellites captent ce reflet et en déduisent l'humidité.</span></li>
+            <li><span>Les mesures sont calibrées sur des sondes au sol et fusionnées avec des modèles hydrologiques, puis livrées sous forme de carte.</span></li>
+          </ol>
+          <p style="margin-top:32px"><button class="btn btn-ghost" type="button" data-goto="tab-pub">Lire les publications</button></p>
+        </div>
+        <figure class="schema" style="margin:0">
+          <svg viewBox="0 0 640 250" role="img" aria-labelledby="schema-t">
+            <title id="schema-t">Chaîne de mesure : satellites GNSS, réflexion sur le sol, nanosatellite 6U, station sol, carte d'humidité</title>
+            <g fill="none" stroke="#2A2F36"><path d="M0 200h640"/></g>
+            <!-- ground pattern -->
+            <g>
+              <rect x="150" y="200" width="22" height="10" fill="#6B5A3E"/><rect x="172" y="200" width="22" height="10" fill="#8C8A5A"/><rect x="194" y="200" width="22" height="10" fill="#4F8F86"/><rect x="216" y="200" width="22" height="10" fill="#3C7FB0"/><rect x="238" y="200" width="22" height="10" fill="#9CCBEB"/>
+            </g>
+            <!-- GNSS -->
+            <g stroke="#9AA0A6" fill="#0A0B0D"><rect x="40" y="30" width="14" height="14"/><rect x="18" y="33" width="18" height="8"/><rect x="58" y="33" width="18" height="8"/></g>
+            <path d="M54 46L205 198" stroke="#F4F4F1"/>
+            <path d="M205 198L330 62" stroke="#F4F4F1" stroke-dasharray="5 6"/>
+            <g stroke="#FF5A1F" stroke-width="1.5"><path d="M205 180v10M193 198h7M210 198h7"/></g>
+            <!-- nanosat -->
+            <g stroke="#F4F4F1" fill="#0A0B0D"><rect x="322" y="44" width="16" height="24"/><rect x="298" y="50" width="20" height="12" fill="#14171B"/><rect x="342" y="50" width="20" height="12" fill="#14171B"/></g>
+            <!-- downlink -->
+            <path d="M338 70L470 178" stroke="#9AA0A6" stroke-dasharray="2 5"/>
+            <!-- ground station -->
+            <g stroke="#F4F4F1" fill="none"><path d="M462 200l10-22 10 22"/><path d="M458 172a16 16 0 0 1 28 0" /></g>
+            <!-- map -->
+            <g transform="translate(540 128)">
+              <rect width="76" height="60" fill="#14171B" stroke="#9AA0A6"/>
+              <rect x="6" y="6" width="16" height="12" fill="#4F8F86"/><rect x="22" y="6" width="16" height="12" fill="#3C7FB0"/><rect x="38" y="6" width="16" height="12" fill="#8C8A5A"/><rect x="54" y="6" width="16" height="12" fill="#4F8F86"/>
+              <rect x="6" y="18" width="16" height="12" fill="#8C8A5A"/><rect x="22" y="18" width="16" height="12" fill="#9CCBEB"/><rect x="38" y="18" width="16" height="12" fill="#4F8F86"/><rect x="54" y="18" width="16" height="12" fill="#6B5A3E"/>
+              <rect x="6" y="30" width="16" height="12" fill="#3C7FB0"/><rect x="22" y="30" width="16" height="12" fill="#4F8F86"/><rect x="38" y="30" width="16" height="12" fill="#3C7FB0"/><rect x="54" y="30" width="16" height="12" fill="#8C8A5A"/>
+              <rect x="6" y="42" width="16" height="12" fill="#6B5A3E"/><rect x="22" y="42" width="16" height="12" fill="#8C8A5A"/><rect x="38" y="42" width="16" height="12" fill="#4F8F86"/><rect x="54" y="42" width="16" height="12" fill="#9CCBEB"/>
+            </g>
+            <path d="M490 190h40" stroke="#9AA0A6"/><path d="M524 185l6 5-6 5" stroke="#9AA0A6" fill="none"/>
+            <g font-family="IBM Plex Mono, monospace" font-size="12" fill="#9AA0A6" letter-spacing=".04em">
+              <text x="12" y="20">1. GNSS</text>
+              <text x="150" y="232">2. RÉFLEXION SUR LE SOL</text>
+              <text x="296" y="30">3. NANOSATELLITE 6U</text>
+              <text x="420" y="232">4. STATION SOL</text>
+              <text x="540" y="116">5. CARTE</text>
+            </g>
+          </svg>
+          <figcaption class="note">Schéma de principe, tel que publié dans la littérature sur la GNSS-R, pas à l'échelle : 1. satellites GNSS, 2. réflexion sur le sol, 3. nanosatellite 6U, 4. station sol, 5. carte d'humidité.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="panel-ing" aria-labelledby="tab-ing" tabindex="0" hidden>
+      <div class="eng-grid">
+        <div>
+          <h3>Principe GNSS-R</h3>
+          <p>Le récepteur compare le signal direct d'un satellite de navigation et son reflet sur la Terre, autour du point de réflexion spéculaire. En bande L, la réflectivité du sol dépend de sa constante diélectrique, donc de son contenu en eau. La végétation et la rugosité de surface atténuent ce lien : la chaîne de traitement les corrige.</p>
+          <ol class="chain" aria-label="Chaîne de traitement">
+            <li>Réception des signaux direct et réfléchi</li>
+            <li>Calcul de la réflectivité au point spéculaire</li>
+            <li>Correction de la végétation et de la rugosité</li>
+            <li>Fusion avec les modèles hydrologiques</li>
+            <li>Calibration et validation sur sondes au sol</li>
+            <li>Carte livrée : GeoTIFF, API, WMS</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Fiche technique</h3>
+          <div class="spec">
+            <div class="spec-group">
+              <p class="overline">Mesure</p>
+              <dl>
+                <dt>Principe</dt><dd>Réflectométrie GNSS, bande L</dd>
+                <dt>Calibration</dt><dd>Sondes au sol</dd>
+                <dt>Fusion</dt><dd>Modèles hydrologiques</dd>
+              </dl>
+            </div>
+            <div class="spec-group">
+              <p class="overline">Livraison</p>
+              <dl>
+                <dt>Résolution visée</dt><dd>La parcelle</dd>
+                <dt>Revisite visée</dt><dd>Quotidienne, constellation complète</dd>
+                <dt>Formats</dt><dd>GeoTIFF, API, WMS</dd>
+              </dl>
+            </div>
+            <div class="spec-group">
+              <p class="overline">Statut</p>
+              <dl>
+                <dt>En orbite</dt><dd>Démonstrateur SO-1</dd>
+                <dt>À venir</dt><dd>Constellation complète</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="precision">
+        <svg viewBox="0 0 220 180" role="img" aria-labelledby="prec-t">
+          <title id="prec-t">Format de la courbe de comparaison avec les sondes au sol, sans valeurs</title>
+          <path d="M36 10v140h174" stroke="#9AA0A6" fill="none"/>
+          <path d="M36 150L206 14" stroke="#2A2F36" stroke-dasharray="4 5"/>
+          <g stroke="#2A2F36"><path d="M36 115h174M36 80h174M36 45h174"/></g>
+          <text x="200" y="28" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="end">1:1</text>
+          <text x="123" y="172" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="middle">SONDES AU SOL</text>
+          <text x="16" y="80" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6" text-anchor="middle" transform="rotate(-90 16 80)">GNSS-R</text>
+        </svg>
+        <div>
+          <h3 style="font-size:19px;font-weight:500">Bilan de précision : une mesure, pas une estimation</h3>
+          <p class="small" style="color:var(--muted);margin-top:8px;max-width:60ch">Ce graphique compare l'humidité mesurée depuis l'orbite à celle des sondes au sol. Il n'affiche aucune valeur tant que la comparaison n'est pas publiée : les points seront tracés sur une paire de données publiques, légendée comme telle.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="panel-pub" aria-labelledby="tab-pub" tabindex="0" hidden>
+      <p class="note" style="margin-bottom:12px">Lectures de référence du domaine GNSS-R, publiées par d'autres équipes de recherche. Ce ne sont pas des travaux de Strate Orbital. DOI vérifiés sur Crossref le 13 novembre 2026.</p>
+      <ul class="pubs">
+        <li>
+          <span class="year">2000</span>
+          <h3>Scattering of GPS signals from the ocean with wind remote sensing application</h3>
+          <p class="src">Zavorotny, V. U., Voronovich, A. G. IEEE Transactions on Geoscience and Remote Sensing.</p>
+          <a class="doi textlink" href="https://doi.org/10.1109/36.841977">doi:10.1109/36.841977</a>
+        </li>
+        <li>
+          <span class="year">2014</span>
+          <h3>Tutorial on Remote Sensing Using GNSS Bistatic Radar of Opportunity</h3>
+          <p class="src">Zavorotny, V. U., Gleason, S., Cardellach, E., Camps, A. IEEE Geoscience and Remote Sensing Magazine.</p>
+          <a class="doi textlink" href="https://doi.org/10.1109/MGRS.2014.2374220">doi:10.1109/MGRS.2014.2374220</a>
+        </li>
+        <li>
+          <span class="year">2016</span>
+          <h3>Sensitivity of GNSS-R Spaceborne Observations to Soil Moisture and Vegetation</h3>
+          <p class="src">Camps, A., Park, H., Pablos, M., Foti, G., et al. IEEE JSTARS.</p>
+          <a class="doi textlink" href="https://doi.org/10.1109/JSTARS.2016.2588467">doi:10.1109/JSTARS.2016.2588467</a>
+        </li>
+        <li>
+          <span class="year">2018</span>
+          <h3>Soil Moisture Sensing Using Spaceborne GNSS Reflections: Comparison of CYGNSS Reflectivity to SMAP Soil Moisture</h3>
+          <p class="src">Chew, C. C., Small, E. E. Geophysical Research Letters.</p>
+          <a class="doi textlink" href="https://doi.org/10.1029/2018GL077905">doi:10.1029/2018GL077905</a>
+        </li>
+      </ul>
+    </div>
+    <p class="note export">La technologie est décrite au niveau du principe publié, sans spécification de charge utile, conformément au règlement (UE) 2021/821 sur les biens à double usage.</p>
+  </div>
+</section>
+
+<!-- 3. APPLICATIONS -->
+<section id="applications" aria-labelledby="apps-title">
+  <div class="wrap">
+    <h2 class="h2" id="apps-title">Trois décisions que la donnée rend possibles</h2>
+    <p class="lead">Pour chaque usage : le problème, la donnée livrée, et ce qu'elle permet de décider.</p>
+    <div class="matrix">
+      <div class="corner" aria-hidden="true"></div>
+      <div class="col-head">
+        <svg viewBox="0 0 200 88" aria-hidden="true" fill="none">
+          <path d="M0 87h200" stroke="#2A2F36"/>
+          <circle cx="40" cy="44" r="34" stroke="#9AA0A6"/><path d="M40 44L66 22" stroke="#F4F4F1"/>
+          <circle cx="112" cy="44" r="34" stroke="#9AA0A6"/><path d="M112 44l-8 33" stroke="#F4F4F1"/>
+          <circle cx="40" cy="44" r="18" fill="#3C7FB0" opacity=".55"/><circle cx="112" cy="44" r="22" fill="#8C8A5A" opacity=".55"/>
+          <rect x="156" y="10" width="40" height="68" stroke="#9AA0A6"/><rect x="156" y="44" width="40" height="34" fill="#6B5A3E" opacity=".7"/>
+        </svg>
+        <h3>Agriculture</h3>
+        <p class="who">Irrigation, exploitations et coopératives</p>
+      </div>
+      <div class="col-head">
+        <svg viewBox="0 0 200 88" aria-hidden="true" fill="none">
+          <path d="M0 87h200" stroke="#2A2F36"/>
+          <path d="M4 20c30 10 26 34 60 40s50-30 80-22 40 30 52 40" stroke="#3C7FB0" stroke-width="2"/>
+          <path d="M4 60h192" stroke="#D4A72C" stroke-dasharray="4 5"/>
+          <path d="M4 70c40-4 60-30 96-28s60 26 96 18" stroke="#F4F4F1"/>
+          <path d="M150 50v20" stroke="#FF5A1F" stroke-width="1.5"/><path d="M144 56l6-6 6 6" stroke="#FF5A1F" stroke-width="1.5"/>
+        </svg>
+        <h3>Eau</h3>
+        <p class="who">Gestion de la ressource, alerte sécheresse</p>
+      </div>
+      <div class="col-head">
+        <svg viewBox="0 0 200 88" aria-hidden="true" fill="none">
+          <path d="M0 87h200" stroke="#2A2F36"/>
+          <path d="M6 24c24 4 34 12 56 16s40 4 58 18 34 18 72 20" stroke="#F4F4F1"/>
+          <path d="M6 56h188" stroke="#9AA0A6" stroke-dasharray="4 5"/>
+          <circle cx="114" cy="56" r="5" stroke="#FF5A1F" stroke-width="1.5"/>
+          <path d="M114 61v26" stroke="#FF5A1F" stroke-width="1.5"/>
+          <rect x="128" y="62" width="64" height="24" fill="#14171B" stroke="#2A2F36"/>
+          <path d="M136 74h48" stroke="#9AA0A6"/>
+        </svg>
+        <h3>Assurance climatique</h3>
+        <p class="who">Indice paramétrique, assureurs et réassureurs</p>
+      </div>
+
+      <div class="row-label">Le problème</div>
+      <div class="cell"><span class="m-label">Le problème</span>Irriguer au calendrier gaspille l'eau là où le sol est encore humide et arrive trop tard là où il s'assèche.</div>
+      <div class="cell"><span class="m-label">Le problème</span>Les restrictions d'eau se décident souvent sur des relevés ponctuels, sans vue continue du territoire.</div>
+      <div class="cell"><span class="m-label">Le problème</span>Indemniser une sécheresse agricole exige une expertise sur place, lente et contestable.</div>
+
+      <div class="row-label">La donnée livrée</div>
+      <div class="cell"><span class="m-label">La donnée livrée</span>L'humidité du sol à la parcelle, chaque jour, dans l'outil de pilotage de l'exploitation.</div>
+      <div class="cell"><span class="m-label">La donnée livrée</span>Des cartes quotidiennes du bassin et leur historique, en GeoTIFF ou en WMS dans le SIG du service.</div>
+      <div class="cell"><span class="m-label">La donnée livrée</span>Une série d'humidité indépendante, documentée et horodatée, par l'API, pour chaque zone assurée.</div>
+
+      <div class="row-label">La décision</div>
+      <div class="cell decision"><span class="m-label">La décision</span>Décider quelle parcelle irriguer aujourd'hui, et laquelle peut attendre.</div>
+      <div class="cell decision"><span class="m-label">La décision</span>Déclencher une alerte sécheresse au bon niveau, sur le bon secteur.</div>
+      <div class="cell decision"><span class="m-label">La décision</span>Déclencher l'indemnisation quand l'indice franchit le seuil prévu au contrat.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. FEUILLE DE ROUTE -->
+<section id="feuille-de-route" aria-labelledby="road-title">
+  <div class="wrap">
+    <div class="road-head">
+      <div>
+        <h2 class="h2" id="road-title">Feuille de route</h2>
+        <p class="lead">Chaque jalon porte son ordre et son statut. Aucune date n'est affichée tant qu'elle n'est pas tenue.</p>
+      </div>
+      <div class="road-controls">
+        <button class="icon-btn" type="button" id="road-prev" aria-label="Jalons précédents"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <button class="icon-btn" type="button" id="road-next" aria-label="Jalons suivants"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <button class="icon-btn" type="button" id="road-toggle" aria-pressed="false" aria-label="Mettre en pause le défilement">
+          <svg class="i-pause" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg>
+          <svg class="i-play" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="display:none"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="track-wrap">
+      <ol class="track" id="track" tabindex="0" aria-label="Jalons de la feuille de route">
+        <li class="step done">
+          <div class="step-axis"><span class="node"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg></span></div>
+          <div class="step-card"><p class="overline">Étape 01</p><h3>Essaimage du laboratoire</h3><p>La société naît des travaux d'un laboratoire public de géophysique spatiale, à Toulouse.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg>Réalisé</span></div>
+        </li>
+        <li class="step done">
+          <div class="step-axis"><span class="node"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg></span></div>
+          <div class="step-card"><p class="overline">Étape 02</p><h3>Démonstrateur SO-1 en orbite</h3><p>Un nanosatellite 6U valide la mesure GNSS-R en conditions réelles.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg>Réalisé</span></div>
+        </li>
+        <li class="step done">
+          <div class="step-axis"><span class="node"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg></span></div>
+          <div class="step-card"><p class="overline">Étape 03</p><h3>Première carte d'humidité</h3><p>Une première carte produite à partir des signaux reçus par SO-1.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8"/></svg>Réalisé</span></div>
+        </li>
+        <li class="step part">
+          <div class="step-axis"><span class="node" aria-hidden="true"></span></div>
+          <div class="step-card"><p class="overline">Étape 04</p><h3>Calibration sur sondes au sol</h3><p>Comparaison site par site avec des réseaux de sondes. La campagne se poursuit.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5a4.5 4.5 0 0 1 0 9z" fill="currentColor"/></svg>Partiel</span></div>
+        </li>
+        <li class="step next">
+          <div class="step-axis"><span class="node" aria-hidden="true"></span></div>
+          <div class="step-card"><p class="overline">Étape 05</p><h3>Pilotes avec des utilisateurs</h3><p>Cartes livrées à des services de l'eau et à des exploitations, dans leurs formats.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 2"/></svg>À venir</span></div>
+        </li>
+        <li class="step next">
+          <div class="step-axis"><span class="node" aria-hidden="true"></span></div>
+          <div class="step-card"><p class="overline">Étape 06</p><h3>Constellation complète</h3><p>Assez de satellites pour repasser chaque jour au-dessus de chaque parcelle.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 2"/></svg>À venir</span></div>
+        </li>
+        <li class="step next">
+          <div class="step-axis"><span class="node" aria-hidden="true"></span></div>
+          <div class="step-card"><p class="overline">Étape 07</p><h3>Service opérationnel</h3><p>Données quotidiennes en GeoTIFF, par API et en WMS, avec un engagement de continuité.</p><span class="spacer"></span><span class="pill"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 2"/></svg>À venir</span></div>
+        </li>
+      </ol>
+    </div>
+    <div class="newsletter">
+      <div>
+        <h3 style="font-size:22px;font-weight:500">Recevoir chaque nouveau jalon</h3>
+        <p class="small" style="color:var(--muted);margin-top:4px">Un e-mail à chaque lancement et à chaque changement de statut. Désinscription en un clic.</p>
+      </div>
+      <form id="nl-form" novalidate>
+        <div class="field">
+          <label for="nl-email">Adresse e-mail</label>
+          <input class="input" id="nl-email" name="email" type="email" autocomplete="email" placeholder="prenom@organisation.fr" aria-describedby="nl-err">
+        </div>
+        <button class="btn btn-ghost" type="submit">Suivre nos lancements</button>
+      </form>
+      <p class="err" id="nl-err" hidden></p>
+      <p class="nl-msg" id="nl-msg" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. DONNÉES -->
+<section id="donnees" aria-labelledby="data-title">
+  <div class="wrap">
+    <p class="overline">Carte d'exemple</p>
+    <h2 class="h2" id="data-title" style="margin-top:14px">À quoi ressemble la donnée, jour après jour</h2>
+    <p class="lead">Faites glisser le curseur sur trente jours : une période sèche, un épisode de pluie, puis le ressuyage. Touchez une parcelle pour lire son palier.</p>
+    <div class="data-grid">
+      <figure class="map-frame" style="margin:0">
+        <div class="map-top" aria-hidden="true"><span>TUILE D'ILLUSTRATION</span><span id="map-day-label">JOUR 30 / 30</span></div>
+        <svg class="map-svg" id="map" viewBox="0 0 800 500" role="img" aria-labelledby="map-t">
+          <title id="map-t">Carte d'illustration de l'humidité des sols, découpée en six zones. Les valeurs sont reprises dans le tableau à côté.</title>
+          <g id="cells"></g>
+          <g id="zones" fill="none" stroke="#0A0B0D" stroke-width="3"></g>
+          <g id="zone-labels" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="500" fill="#F4F4F1"></g>
+          <g id="reticle" stroke="#FF5A1F" stroke-width="2" fill="none" pointer-events="none">
+            <path d="M-6 4V-6H4M20 -6H30V4M30 20V30H20M4 30H-6V20"/>
+            <path d="M12 -18v8M12 34v8M-18 12h8M34 12h8"/>
+          </g>
+        </svg>
+        <div class="map-bottom" aria-hidden="true"><span>PALIERS 1 À 5, DU PLUS SEC AU PLUS HUMIDE</span><span>N ↑</span></div>
+        <figcaption class="note map-src">Tuile générée pour la maquette : aucune valeur mesurée, ce n'est pas une mesure de Strate Orbital. Dans le site livré, la tuile vient du produit Surface Soil Moisture du Copernicus Land Monitoring Service (1 km de résolution en Europe, à partir de Sentinel-1), un repère public. Source : <a href="https://land.copernicus.eu/en/products/soil-moisture">CLMS, Soil Moisture</a>, vu le 13 novembre 2026.</figcaption>
+      </figure>
+      <div class="ctrl">
+        <div>
+          <div class="day-read">
+            <label for="day" class="legend-title">Jour affiché</label>
+            <output id="day-out" for="day">30 <small>/ 30</small></output>
+          </div>
+          <input class="range" id="day" type="range" min="1" max="30" step="1" value="30" aria-describedby="day-help">
+          <div class="range-ends" aria-hidden="true"><span>Jour 1</span><span>Jour 30</span></div>
+          <p class="sr-only" id="day-help">Les flèches du clavier changent le jour d'une unité.</p>
+        </div>
+        <div>
+          <p class="legend-title" id="legend-t">Légende</p>
+          <ul class="legend" aria-labelledby="legend-t">
+            <li><span class="sw" style="background:var(--m1)"></span>1. Très sec</li>
+            <li><span class="sw" style="background:var(--m2)"></span>2. Sec</li>
+            <li><span class="sw" style="background:var(--m3)"></span>3. Moyen</li>
+            <li><span class="sw" style="background:var(--m4)"></span>4. Humide</li>
+            <li><span class="sw" style="background:var(--m5)"></span>5. Très humide</li>
+          </ul>
+        </div>
+        <p class="readout" id="readout" aria-live="polite">Touchez une parcelle de la carte pour lire son palier.</p>
+        <table>
+          <caption>Palier dominant par zone, jour <span id="tbl-day">30</span></caption>
+          <thead><tr><th scope="col">Zone</th><th scope="col">Palier</th><th scope="col">Sur la veille</th></tr></thead>
+          <tbody id="tbl-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PARTENAIRES -->
+<section id="partenaires" aria-labelledby="partners-title">
+  <div class="wrap">
+    <h2 class="h2" id="partners-title">Partenaires et financeurs</h2>
+    <p class="lead">La nature de chaque soutien est écrite en toutes lettres. Logotypes fictifs : Strate Orbital est une entreprise de démonstration et n'a aucun soutien réel.</p>
+    <div class="partners-grid">
+      <ul class="logos">
+        <li class="logo-cell" title="Incubateur : hébergement et accompagnement depuis l'essaimage">
+          <svg viewBox="0 0 190 34" role="img" aria-label="Mirevent (logotype fictif)"><circle cx="17" cy="17" r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21l6-8 5 6 4-4 4 6" fill="none" stroke="currentColor" stroke-width="2"/><text x="40" y="23" font-family="IBM Plex Sans, sans-serif" font-size="19" font-weight="600" fill="currentColor">Mirevent</text></svg>
+          <p><strong>Incubateur.</strong> Hébergement et accompagnement depuis l'essaimage (exemple).</p>
+        </li>
+        <li class="logo-cell" title="Lauréat d'un appel à projets d'innovation">
+          <svg viewBox="0 0 220 34" role="img" aria-label="Fonds Corbière (logotype fictif)"><rect x="4" y="4" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 30L30 4" stroke="currentColor" stroke-width="2"/><text x="40" y="23" font-family="IBM Plex Sans, sans-serif" font-size="19" font-weight="500" fill="currentColor" letter-spacing=".02em">Fonds Corbière</text></svg>
+          <p><strong>Lauréat d'un appel à projets</strong> d'innovation (exemple).</p>
+        </li>
+        <li class="logo-cell" title="Contrat d'étude sur la mesure de l'humidité des sols">
+          <svg viewBox="0 0 220 34" role="img" aria-label="Agence Vellane (logotype fictif)"><path d="M4 28L17 5l13 23z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 22h14" stroke="currentColor" stroke-width="2"/><text x="40" y="23" font-family="IBM Plex Mono, monospace" font-size="17" font-weight="500" fill="currentColor">AGENCE VELLANE</text></svg>
+          <p><strong>Contrat d'étude</strong> sur la mesure de l'humidité des sols (exemple).</p>
+        </li>
+        <li class="logo-cell" title="Prêt d'amorçage remboursable">
+          <svg viewBox="0 0 220 34" role="img" aria-label="Programme Talweg (logotype fictif)"><path d="M3 10c6 0 8 14 14 14s8-14 14-14" fill="none" stroke="currentColor" stroke-width="2"/><text x="40" y="23" font-family="IBM Plex Sans, sans-serif" font-size="19" font-weight="400" fill="currentColor"><tspan font-weight="600">Talweg</tspan> programme</text></svg>
+          <p><strong>Prêt d'amorçage</strong> remboursable (exemple).</p>
+        </li>
+      </ul>
+      <aside class="market" aria-labelledby="market-t">
+        <h3 id="market-t" style="font-size:20px;font-weight:500">Le contexte de financement</h3>
+        <p class="small" style="color:var(--muted);margin-top:6px">Spatial européen, premier semestre 2026. La France est en tête des montants levés.</p>
+        <div class="figs">
+          <div><p class="fig">30</p><p class="fig-l">entreprises financées</p></div>
+          <div><p class="fig">1,6 Md€</p><p class="fig-l">en fonds propres</p></div>
+          <div><p class="fig">1,3 Md€</p><p class="fig-l">en dette</p></div>
+        </div>
+        <p class="note">Source : <a href="https://funding.tech.eu/sectors/space/2026/h1">Tech.eu Funding Explorer, Space H1 2026</a>, données au 12 novembre 2026, vu le 13 novembre 2026.</p>
+        <a class="btn btn-ghost" href="#contact" data-preset="investisseur">Demander le dossier investisseurs</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 7. ÉQUIPE ET RECRUTEMENT -->
+<section id="equipe" aria-labelledby="team-title">
+  <div class="wrap team-grid">
+    <div class="about">
+      <h2 class="h2" id="team-title">Qui sommes-nous</h2>
+      <p class="body">Strate Orbital est née d'un laboratoire public de recherche en géophysique spatiale, à Toulouse. Nous construisons des nanosatellites qui mesurent l'humidité des sols, et nous livrons cette donnée à ceux qui gèrent l'eau et les cultures. L'équipe réunit des ingénieurs système, des spécialistes du signal et des hydrologues.</p>
+      <figure class="about-art" style="margin-left:0;margin-right:0;margin-bottom:0">
+        <svg viewBox="0 0 460 150" role="img" aria-label="Illustration au trait : coupe du sol en strates, survolée par l'orbite d'un nanosatellite">
+          <path d="M0 74h460" stroke="#9AA0A6"/>
+          <path d="M0 92c60 6 120-6 190 0s150 10 270 2" stroke="#2A2F36"/>
+          <path d="M0 112c80 4 150-8 230-2s150 8 230 0" stroke="#2A2F36"/>
+          <path d="M0 132c90-4 170 6 250 2s140-6 210 0" stroke="#2A2F36"/>
+          <g fill="#3C7FB0" opacity=".8"><circle cx="70" cy="100" r="2"/><circle cx="96" cy="118" r="2"/><circle cx="150" cy="104" r="2"/><circle cx="210" cy="124" r="2"/><circle cx="268" cy="98" r="2"/><circle cx="330" cy="120" r="2"/><circle cx="390" cy="104" r="2"/><circle cx="420" cy="128" r="2"/></g>
+          <path d="M20 60C120 6 340 6 440 60" stroke="#9AA0A6" stroke-dasharray="3 6" fill="none"/>
+          <g transform="translate(300 24) rotate(14)"><rect x="-5" y="-8" width="10" height="16" fill="#0A0B0D" stroke="#F4F4F1"/><rect x="-21" y="-5" width="14" height="10" fill="#14171B" stroke="#F4F4F1"/><rect x="7" y="-5" width="14" height="10" fill="#14171B" stroke="#F4F4F1"/></g>
+          <path d="M300 34L272 74" stroke="#FF5A1F" stroke-width="1.5" stroke-dasharray="4 4"/>
+        </svg>
+      </figure>
+    </div>
+    <div>
+      <h3 style="font-size:26px;line-height:1.2">Postes ouverts</h3>
+      <p class="small" style="color:var(--muted);margin-top:6px">Pour chaque offre, le problème que vous aurez à résoudre. Salaire et BSPCE sont indiqués dans chaque fiche de poste.</p>
+      <ul class="jobs" style="margin-top:20px">
+        <li class="job">
+          <div class="job-top"><h3>Ingénieur·e GNC</h3><span class="meta">CDI, Toulouse</span></div>
+          <p class="problem"><b>Le problème :</b> garder l'antenne d'un nanosatellite 6U pointée vers la Terre pendant toute l'acquisition, avec les actionneurs d'une petite plateforme.</p>
+          <a class="textlink" href="#">Lire l'offre</a>
+        </li>
+        <li class="job">
+          <div class="job-top"><h3>Ingénieur·e traitement du signal GNSS-R</h3><span class="meta">CDI, Toulouse</span></div>
+          <p class="problem"><b>Le problème :</b> séparer, dans le signal réfléchi, la part due à l'humidité du sol de celle due à la végétation et à la rugosité.</p>
+          <a class="textlink" href="#">Lire l'offre</a>
+        </li>
+        <li class="job">
+          <div class="job-top"><h3>Ingénieur·e données et hydrologie</h3><span class="meta">CDI, Toulouse</span></div>
+          <p class="problem"><b>Le problème :</b> fusionner les mesures orbitales, les modèles hydrologiques et les sondes au sol pour livrer chaque jour une carte fiable.</p>
+          <a class="textlink" href="#">Lire l'offre</a>
+        </li>
+      </ul>
+      <div class="jobs-foot">
+        <a class="btn btn-secondary" href="#">Voir les postes ouverts (3)</a>
+        <a class="textlink small" href="#">Page carrière</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. PRESSE ET CONTACT -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="overline">Presse et contact</p>
+      <h2 class="h2" id="contact-title" style="margin-top:14px">Parlons de votre territoire, de votre fonds ou de votre article</h2>
+      <h3 style="font-size:19px;font-weight:500;margin-top:36px">Dans la presse</h3>
+      <ul class="press">
+        <li><span class="tag">Exemple</span><p>Titre d'article sur la mesure de l'humidité des sols depuis l'orbite</p></li>
+        <li><span class="tag">Exemple</span><p>Titre d'article sur les nanosatellites issus des laboratoires toulousains</p></li>
+        <li><span class="tag">Exemple</span><p>Titre d'article sur les données satellitaires et la sécheresse agricole</p></li>
+      </ul>
+      <div class="kit">
+        <a class="btn btn-ghost" href="#">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" stroke="currentColor" stroke-width="1.6"/></svg>
+          Télécharger le kit presse (ZIP)
+        </a>
+        <p class="note">Logos, visuels légendés et fiche entreprise. Le poids réel du fichier s'affiche à la mise en ligne.</p>
+      </div>
+      <div class="where">
+        <address>
+          <strong style="font-weight:500">Strate Orbital</strong><br>
+          Toulouse, Haute-Garonne<br>
+          <span class="note">Adresse de démonstration : le site livré affiche l'adresse réelle.</span><br>
+          <a class="textlink small" href="mailto:partenaires@strate-orbital.example">partenaires@strate-orbital.example</a>
+        </address>
+        <svg viewBox="0 0 260 160" role="img" aria-label="Plan schématique : Toulouse, la Garonne et l'emplacement des bureaux">
+          <g stroke="#2A2F36" fill="none"><path d="M0 40h260M0 90h260M0 130h260M60 0v160M140 0v160M210 0v160M0 0l260 160"/></g>
+          <path d="M30 0c30 40 10 70 50 90s70 20 90 70" stroke="#3C7FB0" stroke-width="5" fill="none" opacity=".75"/>
+          <text x="22" y="150" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AA0A6">GARONNE</text>
+          <circle cx="170" cy="66" r="18" fill="none" stroke="#FF5A1F" stroke-width="1.5"/>
+          <path d="M170 44v10M170 78v10M148 66h10M182 66h10" stroke="#FF5A1F" stroke-width="1.5"/>
+          <circle cx="170" cy="66" r="3" fill="#FF5A1F"/>
+          <text x="196" y="30" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F4F4F1">TOULOUSE</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="form-card" id="form-card">
+      <form id="contact-form" novalidate>
+        <div class="form-head">
+          <h3 id="form-title">Votre demande</h3>
+          <p class="steps" id="step-count" aria-live="polite">Étape <b>1</b> sur 2</p>
+        </div>
+
+        <div class="form-step" id="step1">
+          <fieldset>
+            <legend class="legend-title">Vous êtes</legend>
+            <div class="who-grid">
+              <div class="who-opt"><input type="radio" name="who" id="who-inv" value="investisseur"><label for="who-inv"><strong>Investisseur</strong><span>Dossier investisseurs, rendez-vous</span></label></div>
+              <div class="who-opt"><input type="radio" name="who" id="who-cli" value="client"><label for="who-cli"><strong>Client ou acheteur public</strong><span>Données, fiche technique, pilote</span></label></div>
+              <div class="who-opt"><input type="radio" name="who" id="who-pre" value="presse"><label for="who-pre"><strong>Presse</strong><span>Interview, visuels, informations</span></label></div>
+              <div class="who-opt"><input type="radio" name="who" id="who-can" value="candidat"><label for="who-can"><strong>Candidat</strong><span>Candidature spontanée ou sur une offre</span></label></div>
+            </div>
+          </fieldset>
+          <p class="err" id="who-err" hidden style="margin-top:10px"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4.5M8 10.8v.7" stroke="currentColor" stroke-width="1.6"/></svg><span>Aucun profil choisi. Nous orientons chaque demande vers la bonne personne : choisissez l'une des quatre options pour continuer.</span></p>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="button" id="to-step2">Continuer</button>
+          </div>
+        </div>
+
+        <div class="form-step" id="step2" hidden>
+          <p class="chosen">Vous êtes : <strong id="chosen-who"></strong></p>
+          <div class="field">
+            <label for="f-first">Prénom</label>
+            <input class="input" id="f-first" name="prenom" type="text" autocomplete="given-name" aria-describedby="first-err">
+            <p class="err" id="first-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-email">E-mail</label>
+            <input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="prenom@organisation.fr" aria-describedby="email-err">
+            <p class="err" id="email-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-org"><span id="org-label">Organisation</span> <span class="opt">(facultatif)</span></label>
+            <input class="input" id="f-org" name="organisation" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-msg" id="msg-label">Votre message</label>
+            <textarea class="input" id="f-msg" name="message" aria-describedby="msg-err"></textarea>
+            <p class="err" id="msg-err" hidden></p>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit" id="submit-btn">Envoyer ma demande</button>
+            <button class="backlink" type="button" id="to-step1">Modifier mon profil</button>
+          </div>
+        </div>
+      </form>
+      <div class="success" id="success" hidden tabindex="-1">
+        <h3><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="9.5" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 11.3l3 3 6-6.3" stroke="currentColor" stroke-width="1.8"/></svg>Demande envoyée.</h3>
+        <p>Merci, <span id="success-name"></span>. Votre message est arrivé à l'équipe partenariats, qui vous répond par e-mail. En attendant, vous pouvez <a href="#donnees">explorer la carte d'exemple</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="brand" href="#top" aria-label="Strate Orbital, retour en haut de page">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.5"/><path d="M5 19h22M6.5 23h19M9.5 27h13" stroke="currentColor" stroke-width="1.5"/><circle cx="25.2" cy="6.8" r="2.6" fill="#FF5A1F"/></svg>
+        Strate Orbital
+      </a>
+      <nav class="foot-nav" aria-label="Liens de pied de page">
+        <a href="#technologie">Technologie</a>
+        <a href="#donnees">Données</a>
+        <a href="#equipe">Carrière</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">Déclaration d'accessibilité</a>
+      </nav>
+    </div>
+    <div class="demo-line">
+      <p><strong>Site de démonstration.</strong> Strate Orbital est une entreprise fictive.</p>
+      <p>Chaque chiffre affiché porte sa source. Les cartes et schémas sont des illustrations légendées.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Mobile menu */
+  var toggle = document.querySelector('.menu-toggle');
+  var mnav = document.getElementById('mobile-nav');
+  function setMenu(open){
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    mnav.classList.toggle('open', open);
+    toggle.querySelector('.i-open').style.display = open ? 'none' : '';
+    toggle.querySelector('.i-close').style.display = open ? '' : 'none';
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  toggle.addEventListener('click', function(){ setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+  mnav.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && mnav.classList.contains('open')) { setMenu(false); toggle.focus(); } });
+
+  /* Orbit pause */
+  var orbit = document.getElementById('orbit');
+  var ot = document.getElementById('orbit-toggle');
+  function setOrbit(paused){
+    orbit.classList.toggle('paused', paused);
+    ot.setAttribute('aria-pressed', String(paused));
+    ot.setAttribute('aria-label', paused ? "Relancer l'animation" : "Mettre en pause l'animation");
+    ot.querySelector('.i-pause').style.display = paused ? 'none' : '';
+    ot.querySelector('.i-play').style.display = paused ? '' : 'none';
+  }
+  ot.addEventListener('click', function(){ setOrbit(!orbit.classList.contains('paused')); });
+  if (reduce.matches) setOrbit(true);
+  var osvg = document.getElementById('orbit-svg'), narrow = window.matchMedia('(max-width: 1023px)');
+  function frame(){ osvg.setAttribute('viewBox', narrow.matches ? '30 40 540 390' : '0 0 600 600'); }
+  frame(); if (narrow.addEventListener) narrow.addEventListener('change', frame);
+
+  /* Tabs */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function selectTab(tab, focus){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ selectTab(t); });
+    t.addEventListener('keydown', function(e){
+      var n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (e.key === 'Home') n = tabs[0];
+      if (e.key === 'End') n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); selectTab(n, true); }
+    });
+  });
+  document.querySelectorAll('[data-goto]').forEach(function(b){
+    b.addEventListener('click', function(){ selectTab(document.getElementById(b.getAttribute('data-goto')), true); });
+  });
+
+  /* Roadmap: slow horizontal drift on desktop */
+  var track = document.getElementById('track');
+  var rt = document.getElementById('road-toggle');
+  var userPaused = false, hover = false, visible = false, pos = 0, holdUntil = 0, dir = 1;
+  function setRoad(paused){
+    userPaused = paused;
+    rt.setAttribute('aria-pressed', String(paused));
+    rt.setAttribute('aria-label', paused ? 'Relancer le défilement' : 'Mettre en pause le défilement');
+    rt.querySelector('.i-pause').style.display = paused ? 'none' : '';
+    rt.querySelector('.i-play').style.display = paused ? '' : 'none';
+  }
+  if (reduce.matches) setRoad(true);
+  rt.addEventListener('click', function(){ setRoad(!userPaused); pos = track.scrollLeft; });
+  ['pointerenter','focusin','touchstart'].forEach(function(ev){ track.addEventListener(ev, function(){ hover = true; }, {passive:true}); });
+  ['pointerleave','focusout'].forEach(function(ev){ track.addEventListener(ev, function(){ hover = false; pos = track.scrollLeft; }); });
+  track.addEventListener('wheel', function(){ pos = track.scrollLeft; holdUntil = performance.now() + 4000; }, {passive:true});
+  function nudge(d){ setRoad(true); track.scrollBy({left: d * 300, behavior: reduce.matches ? 'auto' : 'smooth'}); }
+  document.getElementById('road-prev').addEventListener('click', function(){ nudge(-1); });
+  document.getElementById('road-next').addEventListener('click', function(){ nudge(1); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){ visible = entries[0].isIntersecting; }, {threshold: .35}).observe(track);
+  }
+  var last = 0;
+  function drift(ts){
+    var dt = last ? Math.min(ts - last, 50) : 16; last = ts;
+    var max = track.scrollWidth - track.clientWidth;
+    var horizontal = window.innerWidth >= 768 && max > 4;
+    if (horizontal && visible && !hover && !userPaused && ts > holdUntil) {
+      pos += dir * dt * 0.018;
+      if (pos >= max) { pos = max; dir = -1; holdUntil = ts + 2500; }
+      if (pos <= 0) { pos = 0; dir = 1; holdUntil = ts + 2500; }
+      track.scrollLeft = Math.round(pos);
+    }
+    requestAnimationFrame(drift);
+  }
+  requestAnimationFrame(drift);
+
+  /* Newsletter */
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function emailError(v){
+    if (!v) return "Adresse e-mail manquante. Nous en avons besoin pour vous répondre : saisissez-la (exemple : prenom@organisation.fr).";
+    if (v.indexOf('@') === -1) return "Adresse e-mail incomplète. Il manque le @ et le domaine : vérifiez-la (exemple : prenom@organisation.fr).";
+    if (!emailRe.test(v)) return "Adresse e-mail incomplète. Il manque le domaine après le @ : vérifiez-la (exemple : prenom@organisation.fr).";
+    return '';
+  }
+  var errIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4.5M8 10.8v.7" stroke="currentColor" stroke-width="1.6"/></svg>';
+  function showErr(input, el, msg){
+    if (msg) { el.innerHTML = errIcon + '<span></span>'; el.querySelector('span').textContent = msg; el.hidden = false; input.setAttribute('aria-invalid','true'); }
+    else { el.hidden = true; input.removeAttribute('aria-invalid'); }
+    return !msg;
+  }
+  var nl = document.getElementById('nl-form');
+  nl.addEventListener('submit', function(e){
+    e.preventDefault();
+    var inp = document.getElementById('nl-email');
+    var ok = showErr(inp, document.getElementById('nl-err'), emailError(inp.value.trim()));
+    var msg = document.getElementById('nl-msg');
+    if (!ok) { msg.textContent = ''; inp.focus(); return; }
+    msg.innerHTML = '<span style="color:var(--success)">Inscription enregistrée.</span> Vous recevrez un e-mail au prochain jalon. Rien n\'a été envoyé : ce site est une démonstration.';
+    nl.reset();
+  });
+
+  /* Map (illustration tile, generated) */
+  var COLS = 32, ROWS = 20, S = 25;
+  var palette = ['#6B5A3E','#8C8A5A','#4F8F86','#3C7FB0','#9CCBEB'];
+  var names = ['Très sec','Sec','Moyen','Humide','Très humide'];
+  function rnd(i, j, s){ var h = (i * 73856093) ^ (j * 19349663) ^ (s * 83492791); h = Math.imul(h ^ (h >>> 13), 1274126177); h ^= h >>> 16; return (h >>> 0) / 4294967296; }
+  function vn(x, y, s){ var i = Math.floor(x), j = Math.floor(y), fx = x - i, fy = y - j, u = fx*fx*(3-2*fx), v = fy*fy*(3-2*fy);
+    var a = rnd(i,j,s), b = rnd(i+1,j,s), c = rnd(i,j+1,s), d = rnd(i+1,j+1,s); return a + (b-a)*u + (c-a)*v + (a-b-c+d)*u*v; }
+  var base = [], k = [];
+  for (var y = 0; y < ROWS; y++) for (var x = 0; x < COLS; x++) {
+    var b = 0.62 * vn(x/7, y/7, 1) + 0.38 * vn(x/3.2, y/3.2, 2);
+    var yr = 9 + 4.5 * Math.sin(x/5.5) + 1.4 * Math.sin(x/2.3);
+    var wet = 0.42 * Math.exp(-Math.pow(y - yr, 2) / 5);
+    base.push(b * 0.62 + wet + 0.16);
+    k.push(0.6 + 0.8 * vn(x/5, y/5, 3));
+  }
+  function dry(t){ return t < 20 ? 0.017 * (t - 1) : -0.08 + 0.017 * (t - 20); }
+  function val(idx, t){ return base[idx] - k[idx] * dry(t); }
+  function cls(m){ return Math.max(1, Math.min(5, 1 + Math.floor(m * 5))); }
+  var ns = 'http://www.w3.org/2000/svg';
+  var gCells = document.getElementById('cells'), rects = [];
+  for (var yy = 0; yy < ROWS; yy++) for (var xx = 0; xx < COLS; xx++) {
+    var r = document.createElementNS(ns, 'rect');
+    r.setAttribute('x', xx * S); r.setAttribute('y', yy * S); r.setAttribute('width', S - 1); r.setAttribute('height', S - 1);
+    r.setAttribute('class', 'c'); r.dataset.i = yy * COLS + xx;
+    gCells.appendChild(r); rects.push(r);
+  }
+  var zoneCols = [[0,11],[11,22],[22,32]], zoneRows = [[0,10],[10,20]], zones = [];
+  var letters = 'ABCDEF', zi = 0;
+  zoneRows.forEach(function(zr){ zoneCols.forEach(function(zc){ zones.push({id: letters[zi++], c: zc, r: zr}); }); });
+  var gZ = document.getElementById('zones'), gL = document.getElementById('zone-labels');
+  zones.forEach(function(z){
+    var rr = document.createElementNS(ns, 'rect');
+    rr.setAttribute('x', z.c[0]*S - 0.5); rr.setAttribute('y', z.r[0]*S - 0.5);
+    rr.setAttribute('width', (z.c[1]-z.c[0])*S); rr.setAttribute('height', (z.r[1]-z.r[0])*S);
+    gZ.appendChild(rr);
+    var bg = document.createElementNS(ns, 'rect');
+    bg.setAttribute('x', z.c[0]*S + 6); bg.setAttribute('y', z.r[0]*S + 6); bg.setAttribute('width', 26); bg.setAttribute('height', 24); bg.setAttribute('fill', '#0A0B0D');
+    gL.appendChild(bg);
+    var tx = document.createElementNS(ns, 'text');
+    tx.setAttribute('x', z.c[0]*S + 19); tx.setAttribute('y', z.r[0]*S + 23); tx.setAttribute('text-anchor', 'middle'); tx.textContent = z.id;
+    gL.appendChild(tx);
+  });
+  function zoneMean(z, t){ var s = 0, n = 0; for (var y = z.r[0]; y < z.r[1]; y++) for (var x = z.c[0]; x < z.c[1]; x++) { s += val(y*COLS + x, t); n++; } return s / n; }
+  var dayInput = document.getElementById('day'), selected = 12 * COLS + 9, day = 30;
+  var ret = document.getElementById('reticle');
+  function placeReticle(){ var x = selected % COLS, y = Math.floor(selected / COLS); ret.setAttribute('transform', 'translate(' + (x*S) + ' ' + (y*S) + ')'); }
+  function zoneOf(i){ var x = i % COLS, y = Math.floor(i / COLS); for (var q = 0; q < zones.length; q++) { var z = zones[q]; if (x >= z.c[0] && x < z.c[1] && y >= z.r[0] && y < z.r[1]) return z.id; } return ''; }
+  function updateReadout(announce){
+    var c = cls(val(selected, day)), x = selected % COLS + 1, y = Math.floor(selected / COLS) + 1;
+    var el = document.getElementById('readout');
+    el.innerHTML = 'Parcelle sélectionnée, zone ' + zoneOf(selected) + ' (colonne ' + x + ', ligne ' + y + ') : <strong>' + names[c-1] + '</strong>, palier ' + c + ' sur 5.';
+  }
+  function render(){
+    for (var i = 0; i < rects.length; i++) rects[i].setAttribute('fill', palette[cls(val(i, day)) - 1]);
+    document.getElementById('day-out').innerHTML = day + ' <small>/ 30</small>';
+    document.getElementById('map-day-label').textContent = 'JOUR ' + day + ' / 30';
+    document.getElementById('tbl-day').textContent = day;
+    var rows = '';
+    zones.forEach(function(z){
+      var m = zoneMean(z, day), c = cls(m), trend = 'Premier jour';
+      if (day > 1) { var d = m - zoneMean(z, day - 1); trend = d > 0.004 ? 'Plus humide' : (d < -0.004 ? 'Plus sec' : 'Stable'); }
+      rows += '<tr><th scope="row">Zone ' + z.id + '</th><td><span class="sw" style="background:' + palette[c-1] + '"></span>' + c + '. ' + names[c-1] + '</td><td class="trend">' + trend + '</td></tr>';
+    });
+    document.getElementById('tbl-body').innerHTML = rows;
+    updateReadout();
+  }
+  dayInput.addEventListener('input', function(){ day = +dayInput.value; render(); });
+  gCells.addEventListener('click', function(e){ var t = e.target.closest('rect.c'); if (!t) return; selected = +t.dataset.i; placeReticle(); updateReadout(); });
+  placeReticle(); render();
+
+  /* Contact form */
+  var form = document.getElementById('contact-form');
+  var whoLabels = {investisseur:'Investisseur', client:'Client ou acheteur public', presse:'Presse', candidat:'Candidat'};
+  var orgLabels = {investisseur:'Fonds ou organisation', client:'Organisation', presse:'Média', candidat:'Poste visé'};
+  var msgLabels = {investisseur:'Votre message (par exemple, la demande du dossier investisseurs)', client:'Votre besoin (territoire, usage, formats)', presse:'Votre demande (sujet, échéance)', candidat:'Quelques lignes sur votre parcours'};
+  var step1 = document.getElementById('step1'), step2 = document.getElementById('step2'), stepCount = document.getElementById('step-count');
+  function currentWho(){ var c = form.querySelector('input[name="who"]:checked'); return c ? c.value : ''; }
+  function goStep2(){
+    var w = currentWho();
+    var err = document.getElementById('who-err');
+    if (!w) { err.hidden = false; form.querySelector('input[name="who"]').focus(); return; }
+    err.hidden = true;
+    document.getElementById('chosen-who').textContent = whoLabels[w];
+    document.getElementById('org-label').textContent = orgLabels[w];
+    document.getElementById('msg-label').textContent = msgLabels[w];
+    step1.hidden = true; step2.hidden = false;
+    stepCount.innerHTML = 'Étape <b>2</b> sur 2';
+    document.getElementById('f-first').focus();
+  }
+  document.getElementById('to-step2').addEventListener('click', goStep2);
+  form.querySelectorAll('input[name="who"]').forEach(function(r){ r.addEventListener('change', function(){ document.getElementById('who-err').hidden = true; }); });
+  document.getElementById('to-step1').addEventListener('click', function(){
+    step2.hidden = true; step1.hidden = false; stepCount.innerHTML = 'Étape <b>1</b> sur 2';
+    var c = form.querySelector('input[name="who"]:checked'); if (c) c.focus();
+  });
+  document.querySelectorAll('[data-preset]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var r = form.querySelector('input[value="' + a.getAttribute('data-preset') + '"]');
+      if (r) { r.checked = true; setTimeout(goStep2, reduce.matches ? 0 : 450); }
+    });
+  });
+  var first = document.getElementById('f-first'), email = document.getElementById('f-email'), msg = document.getElementById('f-msg');
+  function vFirst(){ return showErr(first, document.getElementById('first-err'), first.value.trim() ? '' : "Prénom manquant. Nous l'utilisons pour personnaliser notre réponse : saisissez votre prénom."); }
+  function vEmail(){ return showErr(email, document.getElementById('email-err'), emailError(email.value.trim())); }
+  function vMsg(){ return showErr(msg, document.getElementById('msg-err'), msg.value.trim() ? '' : "Message vide. L'équipe a besoin de quelques mots pour orienter votre demande : décrivez-la en une ou deux phrases."); }
+  first.addEventListener('blur', function(){ if (first.value) vFirst(); });
+  email.addEventListener('blur', function(){ if (email.value) vEmail(); });
+  [first, email, msg].forEach(function(f){ f.addEventListener('input', function(){ if (f.getAttribute('aria-invalid')) { if (f === first) vFirst(); else if (f === email) vEmail(); else vMsg(); } }); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var a = vFirst(), b = vEmail(), c = vMsg();
+    if (!(a && b && c)) { (a ? (b ? msg : email) : first).focus(); return; }
+    var btn = document.getElementById('submit-btn');
+    btn.setAttribute('aria-disabled', 'true'); btn.disabled = true;
+    btn.innerHTML = '<span class="spinner" aria-hidden="true"></span>Envoi…';
+    setTimeout(function(){
+      document.getElementById('success-name').textContent = first.value.trim();
+      form.hidden = true;
+      var s = document.getElementById('success'); s.hidden = false; s.focus();
+    }, 900);
+  });
+})();
+</script>
+</body>
+</html>
