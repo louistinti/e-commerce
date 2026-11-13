@@ -104,7 +104,7 @@ section[id]{scroll-margin-top:96px}
 .callbar{display:none}
 
 /* Header */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(251,245,236,.96);border-bottom:1px solid var(--color-neutral-300)}
+.site-header{position:sticky;top:0;z-index:50;background:var(--color-neutral-50);border-bottom:1px solid var(--color-neutral-300)}
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--color-neutral-900)}
 .brand svg{width:44px;height:44px}
@@ -151,7 +151,7 @@ section[id]{scroll-margin-top:96px}
 /* Services */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .service{background:var(--color-neutral-0);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:32px;display:flex;flex-direction:column;gap:14px}
-.service .ico{width:64px;height:64px;border-radius:18px;background:var(--tint-olive);display:grid;place-items:center;color:var(--color-brand-secondary)}
+.service .ico{flex:none;width:64px;height:64px;border-radius:18px;background:var(--tint-olive);display:grid;place-items:center;color:var(--color-brand-secondary)}
 .service:nth-child(even) .ico{background:var(--tint-terracotta);color:var(--color-brand-primary-hover)}
 .service .ico svg{width:40px;height:40px}
 .services-foot{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
@@ -331,6 +331,91 @@ section[id]{scroll-margin-top:96px}
 .footer-legal strong{color:#FBF5EC}
 .site-footer .brand{color:#FBF5EC}
 
+
+.price-actions{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.zone-lead{margin-top:14px}
+.zone-a .map-card{margin-top:24px}
+.zone-a .agency{margin-top:24px}
+.zone-b .check-form{margin-top:24px}
+.zone-b .communes{margin-top:0}
+
+/* Icon buttons: glyph only, no background, border or focus ring; focus shown by colour and size */
+.step-btn{border:0 !important;background:transparent !important;box-shadow:none !important;color:var(--color-brand-secondary);font-size:36px;font-weight:700;
+  transition:color var(--duration-fast) var(--ease-standard),transform var(--duration-fast) var(--ease-standard)}
+.step-btn:hover{color:var(--color-brand-primary)}
+.step-btn:focus-visible{outline:none;box-shadow:none !important;color:var(--color-brand-primary);transform:scale(1.25)}
+
+/* Desktop: each anchored section fits the screen under the fixed header */
+@media (min-width:1025px){
+  section[id]{scroll-margin-top:76px}
+  .section{padding:56px 0}
+  .section-head{margin-bottom:28px}
+  .section-head p{margin-top:10px}
+  .service{flex-direction:row;align-items:flex-start;padding:24px;gap:18px}
+  .service .ico{width:56px;height:56px}
+  .service .ico svg{width:34px;height:34px}
+  .service p{margin-top:6px}
+  .services-grid{gap:20px}
+  .services-foot{margin-top:28px}
+  #tarifs{padding:40px 0}
+  #tarifs .section-head{margin-bottom:20px}
+  .pricing-grid{grid-template-columns:.9fr 1.1fr;gap:24px}
+  .price-card,.sim{padding:28px}
+  .price-card{gap:12px}
+  .price{font-size:50px}
+  .sim-control{margin:14px 0 16px}
+  .calc dd{font-size:26px}
+  .calc div{padding:12px 16px}
+  .calc dt{margin:-12px -16px 10px;padding:10px 16px}
+  .sim-warning{margin-top:12px;padding:10px 14px}
+  .sim-foot{margin-top:12px}
+  .aids{margin-top:24px}
+  .aid{padding-top:18px}
+  .aid p{margin-top:6px}
+  .aid .source{margin-top:6px}
+  #avis .section-head{margin-bottom:24px}
+  .reviews-foot{margin-top:18px}
+  #contact{padding:40px 0}
+  .contact .wrap{grid-template-columns:1.1fr .8fr 1.1fr;gap:32px}
+  .map-card{padding:16px}
+  .legend{margin-top:10px}
+  .agency{grid-template-columns:1fr 1fr}
+  .communes{grid-template-columns:1fr;gap:14px}
+  .communes ul{margin-top:4px}
+  .check-row .btn{width:100%;white-space:normal;text-align:center}
+  .contact-card{padding:28px}
+  .contact-card hr{margin:18px 0}
+  .big-phone{font-size:34px;margin:6px 0 2px}
+  .big-phone svg{width:30px;height:30px}
+  .contact-card h2{font-size:30px !important}
+  .field{margin-bottom:14px}
+  .form-note{margin-top:10px}
+}
+
+
+@media (min-width:1400px){
+  :root{--maxw:1320px}
+}
+@media (min-width:1025px){
+  section[id]{scroll-margin-top:77px}
+  .sim-control{grid-template-columns:auto auto 1fr auto auto;gap:10px}
+  .sim-control label{grid-column:1;grid-row:1;margin-right:6px}
+  #hours-minus{grid-column:2;grid-row:1}#hours{grid-column:3;grid-row:1}#hours-plus{grid-column:4;grid-row:1}
+  .sim-control .sim-hours{grid-column:5;grid-row:1}
+  .contact .wrap{grid-template-columns:1.05fr .75fr 1.2fr}
+  .contact-card h3{font-size:22px}
+  #contact{padding:36px 0}
+}
+
+
+@media (min-width:1025px){
+  #tarifs{padding:32px 0}
+  .sim .sim-warning{margin-top:4px;padding:6px 12px}
+  #tarifs .section-head{margin-bottom:14px}
+  #tarifs .aids{margin-top:16px}
+  #tarifs .aid{padding-top:14px}
+}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:0ms !important;animation-iteration-count:1 !important;transition-duration:0ms !important}
@@ -358,6 +443,7 @@ section[id]{scroll-margin-top:96px}
 @media (max-width:767px){
   :root{--gutter:16px}
   body{font-size:19px;padding-top:60px}
+  section[id]{scroll-margin-top:64px}
   h1{font-size:38px;line-height:1.15}
   h2{font-size:30px}
   h3{font-size:23px}
@@ -738,29 +824,27 @@ section[id]{scroll-margin-top:96px}
 <section class="section section--alt" id="tarifs" aria-labelledby="pricing-title">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Tarifs et aides</p>
       <h2 id="pricing-title">Le vrai prix, aides déduites</h2>
-      <p class="lead">Le tarif est affiché toutes taxes comprises. Le devis, personnalisé, est gratuit.</p>
     </div>
 
     <div class="pricing-grid">
       <div class="price-card">
         <span class="tag" style="align-self:flex-start">Tarif d'exemple</span>
         <p class="price">35,50&nbsp;€<small>TTC de l'heure</small></p>
-        <p>Pour le ménage, les repas, les courses, la compagnie et l'aide au lever et au coucher.</p>
-        <p class="source">Tarif de démonstration, calé sur le tarif public d'une aide à domicile jusqu'à 25 h par semaine à l'agence <a href="https://www.petits-fils.com/nos-agences/agence-aide-a-domicile-bordeaux-chartrons/#tarifs" rel="noopener">Petits-fils Bordeaux Chartrons</a> (consulté le 13/11/2026). Ce réseau est cité comme repère public, ce n'est pas un prix réel de Les Jours Tranquilles.</p>
-        <div class="price-example">
-          <p><b>Exemple&nbsp;: 6 h par semaine</b></p>
-          <p>213&nbsp;€ TTC, soit 106,50&nbsp;€ après le crédit d'impôt de 50&nbsp;%, hors APA. Sur 52 semaines, 11&nbsp;076&nbsp;€ de dépenses, sous le plafond de 12&nbsp;000&nbsp;€.</p>
-          <p class="source">Votre devis gratuit précise le tarif et les aides pour votre situation.</p>
+        <p>Prix TTC pour le ménage, les repas, les courses, la compagnie et l'aide au lever et au coucher. Le devis, personnalisé, est gratuit.</p>
+        <p class="source">Tarif de démonstration, calé sur le tarif public jusqu'à 25 h par semaine de l'agence <a href="https://www.petits-fils.com/nos-agences/agence-aide-a-domicile-bordeaux-chartrons/#tarifs" rel="noopener">Petits-fils Bordeaux Chartrons</a> (consulté le 13/11/2026), cité comme repère&nbsp;: ce n'est pas un prix réel de Les Jours Tranquilles.</p>
+        <div class="price-actions">
+          <a class="btn btn--primary" href="#rappel">Recevoir un devis gratuit</a>
+          <a href="#">Voir la grille des tarifs détaillés</a>
         </div>
       </div>
 
       <div class="sim" aria-labelledby="sim-title">
         <h3 id="sim-title">Calculez votre coût réel</h3>
-        <p class="muted">Exemple de calcul sur le tarif d'exemple, hors APA.</p>
+        <p class="muted" id="sim-example">Exemple&nbsp;: 6 h par semaine, sous le plafond annuel. Hors APA.</p>
+        <p class="sim-warning" id="sim-warning" hidden><svg aria-hidden="true"><use href="#i-alert"/></svg><span id="sim-warning-text"></span></p>
         <div class="sim-control">
-          <label for="hours">Nombre d'heures par semaine</label>
+          <label for="hours">Heures par semaine</label>
           <button class="step-btn" type="button" id="hours-minus" aria-label="Une heure de moins">−</button>
           <input type="range" id="hours" min="1" max="25" step="1" value="6" aria-describedby="hours-out">
           <button class="step-btn" type="button" id="hours-plus" aria-label="Une heure de plus">+</button>
@@ -771,32 +855,26 @@ section[id]{scroll-margin-top:96px}
           <div><dt>Crédit d'impôt</dt><dd id="out-credit">− 106,50&nbsp;€<small>soit 50&nbsp;%</small></dd></div>
           <div class="net"><dt>Coût réel</dt><dd id="out-net">106,50&nbsp;€<small>par semaine</small></dd></div>
         </dl>
-        <p class="sim-warning" id="sim-warning" hidden><svg aria-hidden="true"><use href="#i-alert"/></svg><span id="sim-warning-text"></span></p>
-        <p class="sim-foot">Sous réserve de la législation en vigueur. Le crédit d'impôt est calculé sur les dépenses retenues dans la limite de 12&nbsp;000&nbsp;€ par an, majorée de 1&nbsp;500&nbsp;€ par membre du foyer ou ascendant de plus de 65 ans, sans dépasser 15&nbsp;000&nbsp;€. Source&nbsp;: <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F12" rel="noopener">fiche F12, Service Public</a> (vérifiée le 15/04/2026, consultée le 13/11/2026).</p>
+        <p class="sim-foot">Sous réserve de la législation en vigueur. Plafond annuel des dépenses&nbsp;: 12&nbsp;000&nbsp;€, majoré de 1&nbsp;500&nbsp;€ par membre du foyer ou ascendant de plus de 65&nbsp;ans, 15&nbsp;000&nbsp;€ au total. Source&nbsp;: <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F12" rel="noopener">fiche F12, Service Public</a> (vérifiée le 15/04/2026).</p>
       </div>
     </div>
 
     <div class="aids">
       <div class="aid">
         <h3>L'APA</h3>
-        <p>L'allocation personnalisée d'autonomie aide les personnes d'au moins 60 ans à payer l'aide à domicile. Elle est versée par le département. Nous vous aidons à monter le dossier.</p>
-        <p class="source">Source&nbsp;: <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F10009" rel="noopener">fiche F10009, Service Public</a> (vérifiée le 01/06/2026, consultée le 13/11/2026).</p>
+        <p>Versée par le département aux personnes d'au moins 60 ans pour payer l'aide à domicile.</p>
+        <p class="source">Source&nbsp;: <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F10009" rel="noopener">fiche F10009, Service Public</a> (vérifiée le 01/06/2026).</p>
       </div>
       <div class="aid">
         <h3>Le crédit d'impôt</h3>
-        <p>La moitié des dépenses d'aide à domicile vous est rendue en crédit d'impôt, même si vous n'êtes pas imposable. Les aides reçues, dont l'APA, sont déduites des dépenses.</p>
+        <p>La moitié des dépenses vous est rendue, même sans impôt à payer. Les aides reçues, dont l'APA, en sont déduites.</p>
         <p class="source">Source&nbsp;: <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F12" rel="noopener">fiche F12, Service Public</a>.</p>
       </div>
       <div class="aid">
         <h3>L'avance immédiate</h3>
-        <p>Avec ce dispositif de l'Urssaf, le crédit d'impôt est déduit dès le paiement&nbsp;: vous ne réglez que le reste. Il est réservé aux services inscrits. Nous vous dirons à la visite s'il s'applique.</p>
+        <p>Le crédit d'impôt est déduit dès le paiement. Réservée aux services inscrits à l'Urssaf&nbsp;: nous vous dirons à la visite si elle s'applique.</p>
         <p class="source">Source&nbsp;: <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F12" rel="noopener">fiche F12, Service Public</a>.</p>
       </div>
-    </div>
-
-    <div class="pricing-cta">
-      <a class="btn btn--primary" href="#rappel">Recevoir un devis gratuit</a>
-      <a href="#">Voir la grille des tarifs détaillés</a>
     </div>
   </div>
 </section>
@@ -850,10 +928,10 @@ section[id]{scroll-margin-top:96px}
 <!-- 8. ZONE & CONTACT -->
 <section class="section contact" id="contact" aria-labelledby="zone-title">
   <div class="wrap">
-    <div>
+    <div class="zone-a">
       <h2 id="zone-title">Où nous intervenons</h2>
-      <p class="lead" style="margin-top:14px">Autour de Lisebourg, sur deux secteurs. Les communes ci-dessous sont fictives.</p>
-      <div class="map-card" style="margin-top:28px">
+      <p class="lead zone-lead">Autour de Lisebourg, sur deux secteurs. Les communes sont fictives.</p>
+      <div class="map-card">
         <svg viewBox="0 0 520 400" role="img" aria-labelledby="map-title">
           <title id="map-title">Carte illustrée de la zone d'intervention : le secteur nord autour de Lisebourg et le nouveau secteur sud, de part et d'autre de la Lise.</title>
           <rect width="520" height="400" rx="14" fill="#FBF5EC"/>
@@ -890,6 +968,13 @@ section[id]{scroll-margin-top:96px}
           <span><i style="background:#F2D5C5;border-color:#9E4A2F;border-style:dashed"></i>Secteur sud, nouveau</span>
         </div>
       </div>
+      <div class="agency">
+        <div><h3>Horaires</h3><p>Du lundi au vendredi, de 8&nbsp;h&nbsp;30 à 18&nbsp;h.<br><span class="muted">Horaires de démonstration</span></p></div>
+        <div><h3>Agence</h3><p>Rue des Tilleuls, Lisebourg.<br><span class="muted">Adresse de démonstration</span></p></div>
+      </div>
+    </div>
+
+    <div class="zone-b">
       <div class="communes">
         <div><h3>Secteur nord</h3><ul><li>Lisebourg</li><li>Val-des-Tilleuls</li><li>Hautechênaie</li><li>Saint-Ober-sur-Lise</li><li>Combe-aux-Merles</li></ul></div>
         <div><h3>Secteur sud</h3><ul><li>Prémoulin-les-Vignes</li><li>Brossonnet</li><li>Les Hauts-Vergers</li></ul></div>
@@ -910,7 +995,7 @@ section[id]{scroll-margin-top:96px}
     <div class="contact-card" id="rappel">
       <h2 style="font-size:32px">Parlons de votre parent</h2>
       <a class="big-phone" href="tel:0XXXXXXXXX" aria-label="Appeler le 0X XX XX XX XX (numéro de démonstration)"><svg aria-hidden="true"><use href="#i-phone"/></svg>0X XX XX XX XX</a>
-      <p class="muted">Une personne de l'agence vous répond. Numéro de démonstration.</p>
+      <p class="muted">Une personne de l'agence vous répond (numéro de démonstration).</p>
       <hr>
       <h3>Ou laissez votre numéro, on vous rappelle</h3>
       <form id="callback" novalidate style="margin-top:18px">
@@ -927,14 +1012,9 @@ section[id]{scroll-margin-top:96px}
         </div>
         <button class="btn btn--primary" type="submit" id="cb-submit" style="width:100%">Être rappelé aujourd'hui</button>
         <p class="error send-error" id="cb-send-err" aria-live="polite" hidden></p>
-        <p class="form-note">Votre nom et votre numéro servent uniquement à vous rappeler, et sont supprimés après trois mois sans suite (durée de démonstration). Ne précisez aucune information de santé. <a href="#">Politique de confidentialité</a></p>
+        <p class="form-note">Vos coordonnées servent uniquement à vous rappeler, puis sont supprimées après trois mois sans suite (durée de démonstration). N'indiquez aucune information de santé. <a href="#">Confidentialité</a></p>
       </form>
       <div class="success" id="cb-success" role="status" hidden><svg aria-hidden="true"><use href="#i-check"/></svg><p id="cb-success-text"></p></div>
-      <hr>
-      <div class="agency">
-        <div><h3>Horaires</h3><p>Du lundi au vendredi, de 8&nbsp;h&nbsp;30 à 18&nbsp;h.<br><span class="muted">Horaires de démonstration</span></p></div>
-        <div><h3>Agence</h3><p>Rue des Tilleuls, Lisebourg.<br><span class="muted">Adresse de démonstration</span></p></div>
-      </div>
     </div>
   </div>
 </section>
@@ -1009,9 +1089,10 @@ section[id]{scroll-margin-top:96px}
     document.getElementById('out-net').innerHTML=per(eur.format(ttc-credit));
     var w=document.getElementById('sim-warning');
     if(year>CEILING){
-      document.getElementById('sim-warning-text').textContent='Sur une année complète (52 semaines), '+h+' h par semaine représentent environ '+eur0.format(year)+' de dépenses, au-delà du plafond de base de 12 000 €. Le crédit d’impôt ne porte pas sur la part qui dépasse le plafond : le coût réel sur l’année sera plus élevé. Nous le calculons avec vous dans le devis.';
+      document.getElementById('sim-warning-text').textContent='Environ '+eur0.format(year)+' de dépenses sur 52 semaines : la part au-delà du plafond de 12 000 € n\u2019ouvre pas droit au crédit d\u2019impôt.';
       w.hidden=false;
     } else { w.hidden=true; }
+    document.getElementById('sim-example').hidden=!w.hidden;
   }
   range.addEventListener('input',render);
   document.getElementById('hours-minus').addEventListener('click',function(){range.value=Math.max(1,+range.value-1);render();});
