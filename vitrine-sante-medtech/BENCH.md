@@ -35,10 +35,10 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 |---|---|---|
 | 1. Hero : titre, sous-titre, deux CTA « Je suis un établissement » et « Je suis un patient », visuel tableau de bord + questionnaire sur téléphone | 10, 5 | Aucun hero vu ne montre le tableau de bord et le téléphone ensemble : Withings (n° 4) n'a pas pu être vu, avaros.ai (n° 3, à côté) est hors marque. Le visuel se valide en maquette. |
 | 2. Le parcours patient en 4 étapes, illustrations simples | 23, 10, 20 | Aucune illustration au trait du parcours vue dans une palette proche. Les 4 illustrations sont à produire (livrable 5). |
-| 3. Le tableau de bord soignant : capture annotée, chiffres de charge de travail | 22, 21 | Aucune capture annotée (légendes reliées à l'écran) vue sur un site réel. Le principe des fragments mis en avant vient du n° 13 (à côté). |
-| 4. Preuves : cartes d'études (type, n, critère, résultat, lien), chiffres clés sourcés, logos d'établissements | 5, 26, 6 | Aucune carte vue n'affiche le n et le critère : Implicity (n° 26) donne la citation complète, pas les deux champs. Aucune rangée de logos d'établissements vue. |
+| 3. Le tableau de bord soignant : capture annotée avec données fictives, charge de travail décrite sans chiffre | 22, 21 | Aucune capture annotée (légendes reliées à l'écran) vue sur un site réel. Le principe des fragments mis en avant vient du n° 13 (à côté). |
+| 4. Preuves : cartes d'études (type, n, critère, résultat, lien), chiffres de contexte publics et sourcés, établissements pilotes décrits par type, sans logo | 5, 26, 6 | Aucune carte vue n'affiche le n et le critère : Implicity (n° 26) donne la citation complète, pas les deux champs. |
 | 5. Conformité et sécurité : statut DM et CE, HDS, RGPD (DPO, base légale), sécurité, liens vers les documents | 21, 5, 6 | Le statut « en cours de marquage CE » n'est vu nulle part : tous les sites vus sont déjà marqués ou certifiés. La rangée de badges sous le hero vient du n° 14 (à côté). |
-| 6. Équipe médicale et comité scientifique : photos réelles, titres, liens d'intérêts déclarés | 25 | Aucun site vu ne publie les liens d'intérêts. CardiaTec (n° 25) mélange l'équipe et le comité dans un même carrousel. |
+| 6. Qui sommes-nous (court, sans photo) et comité scientifique : titres, liens d'intérêts déclarés | 25 | Aucun site vu ne publie les liens d'intérêts. CardiaTec (n° 25) mélange l'équipe et le comité dans un même carrousel. Photos de banque d'images : Unsplash et Pexels bloqués le 2026-11-13, donc pas de photo (voir le bloc 6). |
 | 7. Publications et presse : liste datée, filtrable par type, CMS | 25, 26, 5 | Aucun filtre par type vu. |
 | 8. Contact : formulaire établissement, bloc patient séparé (espace sécurisé, FAQ, « En cas d'urgence : 15 ») | 10 | Aucun formulaire établissement capturé, aucun rappel « 15 » vu. Les champs et les messages sont fixés par le brief (sections 6 et 9). |
 | Pages annexes : FAQ patient, notice du DM, déclaration d'accessibilité | aucune | Aucune page annexe n'a été ouverte. La mention réglementaire datée de Resilience (n° 5) sert de repère pour la notice. |
@@ -46,11 +46,11 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 | Marque : blanc chaud, vert sauge, bleu profond, pas de rouge hors alerte | 17, 20, 10 | Aucun site vu ne combine les trois teintes. Le couple vert sombre et crème vient du n° 2, la sauge en fond d'icône du n° 24 (tous deux à côté). |
 | Marque : typographie humaniste (Atkinson Hyperlegible ou Source Sans 3), 18 px minimum | aucune | Aucune référence vue n'utilise ces polices. Seul repère : le texte courant en 18 px de Cureety sur mobile (M2, à côté). |
 | Accessibilité : contraste ≥ 4,5:1, niveau d'alerte = couleur + icône + texte, `prefers-reduced-motion` | 22, 23 | `prefers-reduced-motion` n'est pas observable sur une capture. Contre-exemples de contraste : n° 6, 24, 25. |
-| Preuve « Moins de réhospitalisations » formulée comme objectif, résultats observationnels du pilote | 5, 26 | Aucune référence ne présente un résultat comme observationnel. Les sites vus citent des études publiées. |
-| Preuve « 2 minutes par jour » (durée médiane mesurée) | aucune | Aucun site vu n'affiche une durée de questionnaire mesurée. |
-| Preuve « Les alertes arrivent aux bonnes personnes » (taux d'alertes, faux positifs) | 6, 21 | Implicity (n° 6) cite une baisse des faux positifs avec appel de note, Calmedica (n° 21) un témoignage chiffré. Aucun taux d'alertes par patient vu. |
+| Pas d'accroche résultat ; carte du pilote « Résultats du pilote : publication à venir », sans chiffre | 5, 26 | Aucune référence ne présente un résultat à paraître. Les sites vus citent des études publiées : on garde leur format, sans chiffre. |
+| Message « 5 questions par jour » (nombre de questions, valeur de conception) | aucune | Aucun site vu n'affiche une durée de questionnaire mesurée. Veilla n'en affiche pas non plus : elle montre le questionnaire. |
+| Preuve « Les alertes arrivent aux bonnes personnes » (trajet de l'alerte, aucun taux tant que le pilote n'a rien publié) | 6, 21 | Implicity (n° 6) cite une baisse des faux positifs avec appel de note, Calmedica (n° 21) un témoignage chiffré. Aucun taux d'alertes par patient vu. |
 | Preuve « Conçu avec des soignants » (fondatrice, comité nommé) | 25 | Le n° 25 nomme les membres du comité, sans liens d'intérêts. |
-| Preuve « Hébergé en France chez un hébergeur HDS » (nom, certificat) | 21 | Le n° 21 cite HDS et le certificat ISO 27001 avec numéro et date. |
+| Preuve « Hébergé en France chez un hébergeur HDS » (badge, lien vers la liste officielle de l'ANS) | 21 | Le n° 21 cite HDS et le certificat ISO 27001 avec numéro et date. L'hébergeur de Veilla est fictif : le badge renvoie vers la [liste des hébergeurs certifiés](https://esante.gouv.fr/offres-services/hds/liste-des-hebergeurs-certifies) (vu le 2026-11-13). |
 | Preuve « en cours de marquage CE » avant obtention | aucune | Voir le bloc 5 : statut jamais vu en cours. Le format daté de Resilience (n° 5) s'adapte. |
 
 ---
@@ -62,7 +62,7 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
 | 10 | Cureety, espace patient (site réel), https://www.cureety.com/en-us/patient | [choix](captures/inspis/10-cureety-patient.jpg) · [page patient](captures/inspis/10b-cureety-patient-hero.jpg) | À la première visite, deux cartes : « Patient or caregiver » (bouton vert `#487D4C`, texte blanc 4,9:1) et « Healthcare professional » (bouton bleu `#354D8C`, 8,1:1). Le codage vert pour le patient, bleu pour le soignant. À éviter : la fenêtre bloquante et le libellé « Enter ». | Les deux CTA « Je suis un patient » et « Je suis un établissement », intégrés au hero et non en fenêtre. |
-| 5 | Resilience Oncology (site réel), https://www.resilience.care/healthcare-providers/oncology | [capture](captures/inspis/05-resilience-oncology.jpg) | La fenêtre « This site is intended for healthcare professionals » propose toujours une sortie vers le chemin patient (« Not a healthcare professional? Visit patients.resilience.care »). Titre serif EB Garamond 64 px `#282421` sur blanc, bouton « Request a demo » `#282421` à texte `#F4F1E9` (13,6:1). | Si les affaires réglementaires réservent une partie du contenu aux professionnels (régime de publicité des DM, section 7 du brief), le patient garde une sortie claire. Voir « Points à remonter au client ». |
+| 5 | Resilience Oncology (site réel), https://www.resilience.care/healthcare-providers/oncology | [capture](captures/inspis/05-resilience-oncology.jpg) | La fenêtre « This site is intended for healthcare professionals » propose toujours une sortie vers le chemin patient (« Not a healthcare professional? Visit patients.resilience.care »). Titre serif EB Garamond 64 px `#282421` sur blanc, bouton « Request a demo » `#282421` à texte `#F4F1E9` (13,6:1). | Le patient garde toujours une sortie claire. Veilla n'a pas de fenêtre de filtre : ses deux CTA font déjà ce travail (voir « Arbitrages »). |
 
 Détails tirés de références à côté : la preuve courte sous le CTA du n° 1 (à reprendre seulement avec une source), les deux entrées de menu nommées par public du n° 8 (« For you », « For professionals »), le sous-titre qui dit le bénéfice soignant en une phrase du n° 3.
 
@@ -79,7 +79,7 @@ Détails tirés de références à côté : la preuve courte sous le CTA du n° 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
 | 22 | Remote Patient Monitoring Dashboard, Sayem (Dribbble), https://dribbble.com/shots/27191544-Remote-Patient-Monitoring-Dashboard | [capture](captures/inspis/22-dribbble-rpm-dashboard.jpg) | Rangée de 4 indicateurs (patients suivis, alertes critiques, appareils hors ligne, nouvelles alertes) avec tendance, puis un tableau patients. Statut en **pastille avec libellé** (« Critical » sur rose `#FFDCDC`, « Stable » sur vert d'eau, « Warning » sur ambre `#F3BA5B`). Noms fictifs. À éviter : la courbe colorée sans libellé et le rouge répété partout. | La capture annotée (liste des patients, niveau d'alerte, historique) et le niveau d'alerte en couleur + icône + texte. |
-| 21 | Calmedica, télésuivi patient (site réel, FR), https://calmedica.com/ | [capture](captures/inspis/21-calmedica.jpg) · [chiffres](captures/inspis/21b-calmedica-chiffres.jpg) | Témoignage d'une cadre de chirurgie ambulatoire : « on ne passe plus que 1 ou 2 appels par jour ». À éviter : ses grands chiffres sans source. | Les chiffres sur la charge de travail, portés par une paire (persona Claire). |
+| 21 | Calmedica, télésuivi patient (site réel, FR), https://calmedica.com/ | [capture](captures/inspis/21-calmedica.jpg) · [chiffres](captures/inspis/21b-calmedica-chiffres.jpg) | Témoignage d'une cadre de chirurgie ambulatoire : « on ne passe plus que 1 ou 2 appels par jour ». À éviter : ses grands chiffres sans source. | La charge de travail racontée par une paire (persona Claire). Pour Veilla, le témoignage reste sans chiffre. |
 
 Détails tirés de références à côté : montrer des fragments de l'interface mis en avant par un contour plutôt qu'un écran entier illisible (Canvas, n° 13) ; poser la capture en carte arrondie sur un fond doux, sans cadre de navigateur (Brightlab, n° 12).
 
@@ -91,23 +91,25 @@ Détails tirés de références à côté : montrer des fragments de l'interface
 | 26 | Implicity, Clinical Evidence (site réel, ajout), https://implicity.com/clinical-evidence/ | [chiffres](captures/inspis/26-implicity-clinical-evidence.jpg) · [études](captures/inspis/26b-implicity-etudes.jpg) | En haut, 4 cartes chiffrées (« 26% reduction in mortality », « up to 76% fewer false-positive ILR episodes », « 35 days », « 300+ hours saved per year at 200 patients »), chiffres en Montserrat 66 px graisse 900, chacun avec appel de note. Puis des **cartes d'études** : nom de l'étude (« EVIDENCE-RM STUDY »), étiquette revue et année (« HEART RHYTHM · 2024 ») ou « PDF », titre, citation complète, lien « Read More ». À éviter : les étiquettes en 10 à 11 px, et le « up to ». | Les cartes d'études (type, résultat, lien). Il faut ajouter le n et le critère, absents ici. |
 | 6 | Implicity, CIED Remote Monitoring (site réel), https://implicity.com/cied-remote-monitoring/ | [capture](captures/inspis/06-implicity-cied.jpg) | Chaque chiffre (-79 % de faux positifs, -85 % d'alertes FA inutiles, 28 % de patients reconnectés) a un appel de note vers une référence publiée. À éviter : ces chiffres noyés dans des paragraphes de 14 à 15 px, et le bouton « Request a demo » blanc sur `#2B8F9C` (3,8:1, sous le seuil AA). | Preuve « Les alertes arrivent aux bonnes personnes » : un taux de faux positifs avec sa source. |
 
-Logos d'établissements : aucune référence retenue. Rappel du brief : aucun logo sans accord écrit.
+Logos d'établissements : aucune référence retenue, et aucun logo affiché. L'entreprise est fictive : aucun accord écrit n'est possible.
 
 ### 5. Conformité et sécurité
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 21 | Calmedica | [chiffres](captures/inspis/21b-calmedica-chiffres.jpg) | Bloc sécurité exemplaire : ISO 27001 avec organisme, numéro et date du certificat (29 octobre 2025), HDS, RGPD avec DPO. | HDS, RGPD (DPO), sécurité (ISO 27001 si visé), chaque certification liée à son document. |
+| 21 | Calmedica | [chiffres](captures/inspis/21b-calmedica-chiffres.jpg) | Bloc sécurité exemplaire : ISO 27001 avec organisme, numéro et date du certificat (29 octobre 2025), HDS, RGPD avec DPO. | HDS, RGPD (DPO), sécurité, chaque certification liée à son document. Veilla n'affiche pas d'ISO 27001 : elle n'est pas certifiée. |
 | 5 | Resilience Oncology | [capture](captures/inspis/05-resilience-oncology.jpg) | En pied de page : « Class IIa medical device », « CE 0459 », « reimbursed by the French Assurance Maladie », « Update : March 2026 ». | Statut DM et CE, en mention datée. Avant obtention, la même ligne dit « en cours de marquage CE ». |
 | 6 | Implicity, CIED | [capture](captures/inspis/06-implicity-cied.jpg) | Les notes de bas de page donnent le statut réglementaire de chaque module (classe, marquage CE ou FDA). | Un statut exact par fonctionnalité, si l'algorithme et l'application n'ont pas le même statut. |
 
 Détail tiré d'une référence à côté : la rangée de badges de conformité sous le hero (« HIPAA-compliant », « SOC 2-certified », « GDPR-compliant ») de Doxy.me (n° 14).
 
-### 6. Équipe médicale et comité scientifique
+### 6. Qui sommes-nous et comité scientifique
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 25 | CardiaTec Biosciences (site réel, ajout, trouvé via One Page Love), https://cardiatec.ai/ | [équipe](captures/inspis/25-cardiatec-equipe.jpg) | Section « Team » : photos réelles traitées toutes en noir et blanc, en grille de 6, nom et fonction sous chaque photo, lien LinkedIn. Les membres du comité scientifique sont nommés et étiquetés « SAB Member ». À éviter : le comité mélangé à l'équipe dans un carrousel à flèches, et les noms et fonctions en 14 px, `#09155A` à 50 % d'opacité (≈ 3,4:1 sur blanc). | Photos réelles, titres, comité nommé (preuve « Conçu avec des soignants »). Pour Veilla : le comité dans un bloc à part, avec les liens d'intérêts déclarés sous chaque nom. |
+| 25 | CardiaTec Biosciences (site réel, ajout, trouvé via One Page Love), https://cardiatec.ai/ | [équipe](captures/inspis/25-cardiatec-equipe.jpg) | Section « Team » : photos traitées toutes en noir et blanc, en grille de 6, nom et fonction sous chaque photo, lien LinkedIn. Les membres du comité scientifique sont nommés et étiquetés « SAB Member ». On reprend le nom, la fonction et l'étiquette du comité, pas les photos. À éviter : le comité mélangé à l'équipe dans un carrousel à flèches, et les noms et fonctions en 14 px, `#09155A` à 50 % d'opacité (≈ 3,4:1 sur blanc). | Titres et comité nommé (preuve « Conçu avec des soignants »). Pour Veilla : le comité dans un bloc à part, avec les liens d'intérêts déclarés sous chaque nom. |
+
+**Photos d'équipe : aucune.** Recherche de photos de banque d'images le 2026-11-13 : Unsplash renvoie « Access Denied » (HTTP 403) dès la page de recherche, Pexels affiche une vérification anti-robots Cloudflare, non contournée. Veilla a donc un bloc « Qui sommes-nous » court, sans photo : deux ou trois phrases, le logo ou une illustration au trait (texte dans le brief, section 6).
 
 ### 7. Publications et presse
 
@@ -154,7 +156,7 @@ Exigences du brief : chemin « Je suis un patient » en premier sur mobile, gros
 |---|---|---|---|---|
 | M1 | Cureety, choix du public (inspiration) | [capture](captures/inspis/mobile-cureety-choix.jpg) | La carte **patient passe en premier**, avec un bouton vert pleine largeur (276 × 48 px). La carte soignant suit, bouton bleu. Libellés « Enter » en 14 px. | Patient en premier. Veilla va plus loin : 64 px de haut, libellé explicite en 20 px (« Je suis un patient »). |
 | M2 | Cureety, page patient (à côté) | [capture](captures/a-cote/mobile-cureety.jpg) | Texte courant en 18 px, titre fin sur 2 lignes. Deux boutons côte à côte (118 × 48 et 127 × 48 px, libellés en 14 px). Le bouton de connexion est caché dans le menu. | Le 18 px est le bon repère. « Accéder à mon espace » reste visible sans ouvrir le menu. |
-| M3 | Resilience Oncology (à côté) | [capture](captures/a-cote/mobile-resilience.jpg) | La fenêtre « professionnels de santé » ne s'est pas affichée sur mobile (présente dans la page, mais masquée). Titre serif centré sur 3 lignes, un seul CTA « Request a demo ». | Si Veilla filtre un contenu pro, le filtre marche aussi sur mobile, ou n'existe pas. |
+| M3 | Resilience Oncology (à côté) | [capture](captures/a-cote/mobile-resilience.jpg) | La fenêtre « professionnels de santé » ne s'est pas affichée sur mobile (présente dans la page, mais masquée). Titre serif centré sur 3 lignes, un seul CTA « Request a demo ». | Un filtre qui ne marche que sur desktop ne protège rien. Veilla n'en met pas (voir « Arbitrages »). |
 | M4 | Doxy.me (à côté) | [capture](captures/a-cote/mobile-doxy-me.jpg) | Titre en 52 px sur 4 lignes, CTA qui n'arrivent qu'à 474 px du haut. Deux CTA côte à côte de **37 px de haut**. | Sous la cible tactile de 44 px. Le `text-display` de Veilla passe à 36 px sur mobile pour faire monter le CTA patient. |
 
 Poids de page et LCP : non mesurés sur les références.
@@ -207,7 +209,7 @@ Les sites observés confirment le blanc chaud (`#F2F0ED` à `#FDFDF1` chez Visil
 
 ### 3 « à ne pas faire »
 1. **Du rouge ou de l'orange vif pour les CTA** : le rouge signifie « alerte » dans le produit, il ne doit pas apparaître ailleurs. Le guide n° 17 conseille l'inverse ; Canvas (n° 13) et Calmedica (n° 21) le font.
-2. **Des photos de banque d'images de médecins ou de patients souriants** : préférer l'équipe réelle, des captures et des illustrations. Le motif est partout dans les shots Dribbble (n° 1, 23, 24).
+2. **Des photos de banque d'images de médecins ou de patients souriants** : préférer des captures et des illustrations ; le bloc « Qui sommes-nous » n'a pas de photo. Le motif est partout dans les shots Dribbble (n° 1, 23, 24).
 3. **Du texte gris clair ou sauge sur fond blanc cassé** pour faire « doux » : la cible patient âgée exige un contraste ≥ 4,5:1 partout. Implicity (n° 6) a un bouton à 3,8:1, Carely (n° 24) un mot du titre en sauge pâle, CardiaTec (n° 25) des noms à ≈ 3,4:1.
 
 ### Design tokens
@@ -270,7 +272,7 @@ Repère observé : Doxy.me met son titre en 52 px sur mobile, sur 4 lignes, et s
 
 #### Rayons
 
-`radius-sm` 4 px (badges, champs) · `radius-md` 8 px (boutons) · `radius-lg` 16 px (cartes, captures) · `radius-full` 999 px (avatars de l'équipe).
+`radius-sm` 4 px (badges, champs) · `radius-md` 8 px (boutons) · `radius-lg` 16 px (cartes, captures) · `radius-full` 999 px (pastilles de statut).
 
 #### Ombres (teintées bleu nuit)
 
@@ -297,7 +299,7 @@ Repère observé : Doxy.me met son titre en 52 px sur mobile, sur 4 lignes, et s
 #### Choix du public (hero)
 - Deux cartes côte à côte sur desktop, empilées sur mobile avec **la carte patient en premier** (modèle : Cureety, n° 10 et M1).
 - Carte patient : bouton `color-brand-secondary-strong` « Je suis un patient ». Carte établissement : bouton `color-brand-primary` « Je suis un établissement ». Libellés explicites, jamais « Entrer ».
-- Intégré au hero, pas en fenêtre bloquante : le visiteur voit la promesse avant de choisir. Si un contenu doit être réservé aux professionnels, la fenêtre de filtre propose toujours une sortie claire vers le chemin patient, comme Resilience (n° 5), et marche aussi sur mobile (M3).
+- Intégré au hero, pas en fenêtre bloquante : le visiteur voit la promesse avant de choisir. Pas de fenêtre « réservé aux professionnels » (voir « Arbitrages ») : ce que la fenêtre de Resilience (n° 5) fait bien, la sortie vers le chemin patient, les deux CTA le font déjà.
 
 #### Bouton primaire (« Demander une présentation », « Je suis un établissement »)
 - Fond `color-brand-primary`, texte blanc `text-label`, hauteur 52 px (56 px sur mobile), padding horizontal 24 px, `radius-md`.
@@ -311,15 +313,16 @@ Repère observé : Doxy.me met son titre en 52 px sur mobile, sur 4 lignes, et s
 - Transparent, bordure 2 px #1F3A5F, texte #1F3A5F. *Survol* fond #E3EBE4 · *focus* `focus-ring` · *désactivé* opacité 60 % et raison affichée.
 
 #### Carte de preuve
-- Fond blanc, `radius-lg`, `shadow-md`, padding `space-6`. Contenu : un chiffre en `text-stat`, une légende en `text-body`, puis **obligatoirement** une ligne `text-caption` « Source : [étude], n = [x], [date] » avec un lien. Tant qu'aucune étude n'est publiée, la carte dit « résultats observationnels du pilote ».
+- Fond blanc, `radius-lg`, `shadow-md`, padding `space-6`. Contenu : un chiffre en `text-stat`, une légende en `text-body`, puis **obligatoirement** une ligne `text-caption` « Source : [étude], n = [x], [date] » avec un lien. Veilla n'a aucune étude publiée : la carte du pilote n'affiche pas de chiffre et dit « Résultats du pilote : publication à venir ».
 - Modèles observés : Resilience (n° 5), appel de note sur chaque chiffre et lien « Voir les sources » ; Implicity (n° 26), étiquette de type et citation complète. Contre-exemples : Calmedica (n° 21), Institute of Health (n° 7), Cureety (« 94 % », n° 10).
 
 #### Carte d'étude et de publication
 - Étiquette de type (« Étude observationnelle », « Poster », « Presse ») en `text-label`, date complète, titre en `text-h3`, puis n, critère, résultat et lien vers le document. Même carte pour la section Publications, avec un filtre par type au-dessus de la liste.
 - Modèles observés : Implicity (n° 26) pour l'étiquette et la citation, CardiaTec (n° 25) pour la date au-dessus du titre. Les étiquettes restent à 18 px, pas à 10 ou 13 px.
 
-#### Portrait de l'équipe et du comité
-- Photo réelle, traitement homogène, nom en `text-label`, titre en `text-body`, contraste plein (pas d'opacité réduite). Pour le comité scientifique, une ligne « Liens d'intérêts : [déclaration] » avec un lien.
+#### Bloc « Qui sommes-nous » et comité
+- « Qui sommes-nous » : deux ou trois phrases en `text-body-lg`, le logo ou une illustration au trait en `color-brand-secondary-soft`, sans photo.
+- Comité scientifique : nom en `text-label`, titre en `text-body`, contraste plein (pas d'opacité réduite), puis une ligne « Liens d'intérêts : [déclaration] » avec un lien vers la base Transparence Santé.
 - Modèle observé : CardiaTec (n° 25), en séparant l'équipe et le comité.
 
 #### Badge de conformité
@@ -378,10 +381,10 @@ Repère observé : Doxy.me met son titre en 52 px sur mobile, sur 4 lignes, et s
 
 ---
 
-## Points à remonter au client
+## Arbitrages
 
-- **Contenu réservé aux professionnels** : Resilience (n° 5) et Implicity (n° 6 et 26) affichent leurs chiffres cliniques derrière une fenêtre « réservé aux professionnels de santé ». Le brief demande de vérifier le régime de publicité des DM auprès de l'ANSM, mais ne dit pas si la section Preuves peut être vue par les patients. La réponse change le hero et le parcours patient : à trancher avec les affaires réglementaires avant les wireframes (S2).
-- **Liens d'intérêts** : aucun site vu ne les publie. Le format (déclaration publique, lien vers la base Transparence Santé, texte libre) est à fixer avec la direction médicale.
+- **Contenu réservé aux professionnels** : on ne met pas de fenêtre « réservé aux professionnels de santé », comme Resilience (n° 5) et Implicity (n° 6 et 26), parce qu'elle bloquerait le patient avant son espace et que celle de Resilience ne s'affiche même pas sur mobile (M3). Les sections Preuves, Tableau de bord et Comité portent la mention « Information destinée aux professionnels de santé ». Le chemin patient ne contient aucun élément que l'ANSM interdit dans une publicité auprès du public : recommandation de soignants, effet présenté comme assuré, témoignage de guérison, insistance sur une certification ([ANSM](https://ansm.sante.fr/documents/reference/quelles-regles-sont-specifiques-aux-publicites-aupres-du-public), vu le 2026-11-13).
+- **Liens d'intérêts** : on publie sous chaque membre du comité une ligne « Liens d'intérêts : … » et un lien vers la base publique Transparence Santé, parce que c'est la base officielle des conventions, rémunérations et avantages entre entreprises et acteurs de la santé ([transparence.sante.gouv.fr](https://www.transparence.sante.gouv.fr/), vu le 2026-11-13).
 
 ---
 
@@ -396,3 +399,5 @@ Repère observé : Doxy.me met son titre en 52 px sur mobile, sur 4 lignes, et s
 | 2026-11-12 | Site réel | implicity.com, lien « Clinical Evidence » (implicity.com/publications renvoie une 404) | Cartes d'études et chiffres avec notes : retenu (n° 26). |
 | 2026-11-12 | Behance, Land-book, Lapa Ninja, Pinterest | Non réessayés (consigne) | Bloqués lors de la vérification : erreur 400, Cloudflare, mur de connexion. |
 | 2026-11-12 (vérification) | Godly | Recherche santé | Aucun résultat. |
+| 2026-11-13 | Unsplash | https://unsplash.com/s/photos/female-anesthesiologist (photos d'équipe) | « Access Denied » (HTTP 403). Rien de retenu. |
+| 2026-11-13 | Pexels | https://www.pexels.com/search/female%20doctor%20portrait/ (photos d'équipe) | Vérification anti-robots Cloudflare, non contournée. Bloc « Qui sommes-nous » sans photo. |
