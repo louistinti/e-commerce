@@ -21,6 +21,8 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 - **Corrections de tokens** : `semantic.error` passe de `#B42318` (un rouge) à `#9A3412` (rouille), parce que le brief réserve le rouge à l'urgence. Le token `mono` (JetBrains Mono) devient `timestamp` en Manrope, parce que le brief limite la typographie à Manrope ou Plus Jakarta Sans. Le badge « Le plus choisi » devient « Recommandé », parce que Rempart ne peut pas le prouver (brief : pas d'allégations non vérifiables). Un niveau « élevé » manquait pour le quiz : il utilise `semantic.error`. Toutes les autres valeurs ont été recalculées et sont inchangées.
 - **Nouvelles références** : aucune. La recherche ciblée sur les blocs sans inspiration (« Ce que couvre l'offre », formulaire de diagnostic) n'a rien donné : Dribbble affiche désormais une vérification « Let's confirm you are human » (non contournée), et les premiers écrans des sections « Pricing Table » et « Contact Form » de One Page Love ne montrent rien d'utilisable pour Rempart.
 
+**Passe du 2026-11-13** : Rempart est fictive, il n'y a pas de client. Les questions ouvertes deviennent des « Arbitrages » (fin du fichier). Aucun chiffre propre à Rempart (effectif, délai, prix, résultat) : le bench n'en exige plus. Photos d'équipe : Unsplash (« Access Denied ») et Pexels (vérification Cloudflare, non contournée) ont bloqué le navigateur automatisé. Le brief passe donc à un bloc « Qui sommes-nous » court, sans photo.
+
 ---
 
 ## Couverture du brief
@@ -30,9 +32,9 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 | 1. Hero (titre, sous-titre, CTA test, CTA diagnostic, numéro d'urgence en haut à droite) | 19, 25, 9 | Aucune référence n'affiche un numéro d'urgence en clair en haut à droite : Arctic Wolf (n° 9) a un lien texte sans numéro. Le duo « test » + « diagnostic » n'a pas été vu. |
 | 2. Test express (5 questions, niveau et 3 recommandations sans e-mail, rapport contre e-mail) | 4, 20, 24 | Aucun quiz court à résultat immédiat n'a été vu sur un site réel. Dribbble « security quiz » ne renvoie que des applis de formation sombres. |
 | 3. Ce que couvre l'offre (4 cartes, encart « Ce qui n'est pas inclus ») | 10 (partiel) | Aucune référence ne montre 4 cartes de service ni un encart « pas inclus ». Huntress (n° 10) écrit seulement ce qui est inclus. Détail utile chez Advens (n° 17, à côté). |
-| 4. En cas d'attaque (timeline en 6 étapes, de T+0 à J+2) | 7, 9 | Aucune timeline minute par minute vue : Dattak découpe en 3 temps. Le format en 6 étapes horodatées est à dessiner. |
+| 4. En cas d'attaque (timeline en 6 étapes, sans délai affiché) | 7, 9 | Aucune timeline en 6 étapes vue : Dattak découpe en 3 temps. Le format est à dessiner. |
 | 5. NIS2 expliquée (3 paragraphes, test, checklist PDF datée) | 16, 18, 26 | Aucune checklist PDF datée vue, ni de mention « mis à jour le ». |
-| 6. Certifications et partenaires | 13 | Pas de bandeau de logos partenaires technologiques (le repli prévu par le brief sans certification). Advens n° 17 (à côté) montre des logos clients, pas partenaires. |
+| 6. Preuves : qui sommes-nous, certifications, partenaires, témoignages | 13, 14, 23 | Pas de bandeau de logos partenaires technologiques. Advens n° 17 (à côté) montre des logos clients, pas partenaires. |
 | 7. Tarifs (3 paliers par poste, simulateur) | 10, 11, 21, 25 | Aucune référence ne montre à la fois 3 paliers chiffrés et un simulateur. Les deux sont à assembler. |
 | 8. Contact (bloc urgence 24/7, formulaire de diagnostic) | 8, 9, 23 | Formulaire de diagnostic court (nom, entreprise, postes, téléphone, créneau) : aucune inspiration. Coverall (n° 6, à côté) est le contre-exemple. |
 | Page annexe « NIS2 pour les PME » | 16, 26, 18 | Rien. |
@@ -41,11 +43,11 @@ Ce bench suit le brief client bloc par bloc : chaque référence retenue sert un
 | Mobile : quiz en plein écran | aucune | Aucun quiz affiché sur mobile dans le panel. |
 | Marque : marine, blanc cassé, accent cyan, rouge réservé à l'urgence ; jamais de hacker, de cadenas rouge ni de code | 19, 25, 4, 9 | Le secteur est sombre (n° 1, 3, 22 à côté). Aucune référence n'utilise Manrope ni Plus Jakarta Sans. |
 | Accessibilité : contraste 4,5:1, niveau jamais par la couleur seule, bouton d'urgence 44 × 44 px | 20 | Contre-exemples de contraste : Dattak 3,9:1 (n° 3), bouton Advens 2,4:1 (n° 13). Clavier et lecteur d'écran non testés. |
-| Preuve : photo réelle de l'équipe, nombre d'analystes, localisation du SOC | 23 | Aucune photo d'équipe claire, en lumière du jour. Arctic Wolf (n° 15) et Stoïk (n° 2) sont à côté, avec renvoi. |
-| Preuve : timeline et délai moyen de prise en charge | 7, 9 | Voir bloc 4. |
+| Preuve : « Qui sommes-nous » court, sans photo, localisation du SOC | 23 | Pas de photo d'équipe : Unsplash et Pexels ont bloqué la recherche le 2026-11-13. Stoïk (n° 2, à côté) pour la mention géographique du SOC. |
+| Preuve : timeline étape par étape, qui agit | 7, 9 | Voir bloc 4. |
 | Preuve : grille par poste et simulateur | 10, 21 | Voir bloc 7. |
 | Preuve : test « Suis-je concerné ? » et checklist datée | 16 | Checklist datée : voir bloc 5. |
-| Preuve : certifications justifiées | 13 | Rien. |
+| Preuve : certifications (emplacements marqués « exemple ») | 13 | Rien. |
 | Preuve : 3 témoignages (nom, fonction, secteur, taille) | 14 | Le secteur et la taille d'entreprise ne sont pas affichés chez Dattak. |
 | Réglementaire : pas d'allégations non vérifiables, chiffres sourcés | 18, 26 | Rien. |
 
@@ -60,7 +62,7 @@ Les numéros sont ceux du bench d'origine. Une référence peut apparaître dans
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
 | 19 | [Latch : Cybersecurity Landing Page (Dipa Inhouse)](https://dribbble.com/shots/27193953-Latch-Cybersecurity-Landing-Page), Dribbble | [capture](captures/inspis/19-dribbble-latch.jpg) | L'une des rares maquettes claires de la recherche : fond blanc bleuté, titre fin centré, bouton pastille bleu, beaucoup d'air. Plus bas, la photo d'une personne souriante. | Ton rassurant et pédagogique, fond blanc cassé dominant. |
-| 25 | [Steadily (assurance de bailleurs)](https://onepagelove.com/steadily), One Page Love (publié le 16 juin 2022) | [capture](captures/inspis/25-onepagelove-steadily.jpg) | Fond crème, titre « Get fast, affordable landlord insurance », un seul champ (l'adresse) et un bouton « Get a quote », illustration au trait (main, téléphone avec un devis à 60 $ par mois, maison), logos presse puis avis 5 étoiles. | Un service de protection présenté sans image de menace ; illustrations au trait fournies par l'agence (« schémas, pas de personnages menaçants »). |
+| 25 | [Steadily (assurance de bailleurs)](https://onepagelove.com/steadily), One Page Love (publié le 16 juin 2022) | [capture](captures/inspis/25-onepagelove-steadily.jpg) | Fond crème, titre « Get fast, affordable landlord insurance », un seul champ (l'adresse) et un bouton « Get a quote », illustration au trait (main, téléphone avec un devis à 60 $ par mois, maison), logos presse puis avis 5 étoiles. | Un service de protection présenté sans image de menace ; illustrations au trait produites par l'agence (« schémas, pas de personnages menaçants »). |
 | 9 | [Arctic Wolf : How it works](https://arcticwolf.com/how-it-works/), site réel (US) | [capture](captures/inspis/09-arcticwolf-how.jpg) | Un lien « Experienced a Breach? » dans l'en-tête, visible sur desktop. | Numéro d'urgence en haut à droite. Chez Rempart, le numéro lui-même, cliquable, en rouge discret. |
 
 À éviter : la serif de titre de Steadily (Faustina), le bouclier-serrure 3D de Latch (cousin du cadenas). Détails pris chez des références à côté : la mention géographique du SOC (Stoïk n° 2) et le bouton cyan à texte sombre (Huntress n° 1).
@@ -87,8 +89,8 @@ Manque : ni les 4 cartes, ni l'encart « Ce qui n'est pas inclus ». Détail uti
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 7 | [Dattak : Assurance Cyber Proactive](https://www.dattak.io/fr/cyberattack) (redirige vers /fr/insurance), site réel (FR) | [capture](captures/inspis/07-dattak-cyberattack.jpg) | Le découpage « Avant l'incident », « Pendant l'incident », « Après l'incident », avec deux délais chiffrés : « scan et analyse en 5 minutes », « intervention en moyenne en moins de 2 minutes ». | Timeline et délai moyen de prise en charge (preuve « On agit, on ne fait pas qu'alerter »). |
-| 9 | [Arctic Wolf : How it works](https://arcticwolf.com/how-it-works/), site réel (US) | [capture](captures/inspis/09-arcticwolf-how.jpg) | Le « Concierge Delivery Model » montre qui agit (alertes triées, conseils suivis). Sous le hero, 5 chiffres dont « <1 actionable event per day ». | Nommer qui agit à chaque étape de la timeline ; un chiffre qui parle au dirigeant. |
+| 7 | [Dattak : Assurance Cyber Proactive](https://www.dattak.io/fr/cyberattack) (redirige vers /fr/insurance), site réel (FR) | [capture](captures/inspis/07-dattak-cyberattack.jpg) | Le découpage « Avant l'incident », « Pendant l'incident », « Après l'incident », avec deux délais chiffrés : « scan et analyse en 5 minutes », « intervention en moyenne en moins de 2 minutes ». | Timeline (preuve « On agit, on ne fait pas qu'alerter »). Chez Rempart, fictive, aucun délai affiché. |
+| 9 | [Arctic Wolf : How it works](https://arcticwolf.com/how-it-works/), site réel (US) | [capture](captures/inspis/09-arcticwolf-how.jpg) | Le « Concierge Delivery Model » montre qui agit (alertes triées, conseils suivis). Sous le hero, 5 chiffres dont « <1 actionable event per day ». | Nommer qui agit à chaque étape de la timeline. |
 
 À éviter : le hero sombre de Dattak. Chez Rempart, la timeline peut vivre dans une section marine (`bg.inverse`), le reste de la page restant clair.
 
@@ -106,7 +108,7 @@ Manque : ni les 4 cartes, ni l'encart « Ce qui n'est pas inclus ». Détail uti
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 13 | [Advens : qualification PDIS](https://www.advens.com/media/news-advens/qualification-pdis/), site réel (FR) | [capture](captures/inspis/13-advens-pdis.jpg) | Article du 30 septembre 2025. Hero bleu très clair `#E6F6FF`, titre Space Grotesk 700 en `#1F1F1F`, visuel du « Visa de sécurité » de l'ANSSI, lien vers la qualification dans le texte. | Certifications justifiées : logo officiel et lien vers le justificatif (placeholders sur la démo, « uniquement si obtenues »). |
+| 13 | [Advens : qualification PDIS](https://www.advens.com/media/news-advens/qualification-pdis/), site réel (FR) | [capture](captures/inspis/13-advens-pdis.jpg) | Article du 30 septembre 2025. Hero bleu très clair `#E6F6FF`, titre Space Grotesk 700 en `#1F1F1F`, visuel du « Visa de sécurité » de l'ANSSI, lien vers la qualification dans le texte. | Le bloc certifications : ce que garantit chaque qualification, avec un lien vers la source officielle. Sur la démo, emplacements de logo marqués « exemple » (Rempart est fictive). |
 
 À éviter : le bouton flottant « Assistance 24/7 » de la même page, texte blanc sur `#0AB3FF` à 2,4:1.
 
@@ -114,7 +116,7 @@ Manque : ni les 4 cartes, ni l'encart « Ce qui n'est pas inclus ». Détail uti
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
-| 10 | [Huntress : Pricing](https://www.huntress.com/pricing), site réel (US) | [capture](captures/inspis/10-huntress-pricing.jpg) | Plus bas que la capture : Managed EDR à 8,99 $ par poste et par mois, ITDR à 4,80 $ par identité, prix catalogue dégressif, SOC 24/7 inclus. | Prix unitaire public par poste ; « un prix clair, sans surprise ». |
+| 10 | [Huntress : Pricing](https://www.huntress.com/pricing), site réel (US) | [capture](captures/inspis/10-huntress-pricing.jpg) | Plus bas que la capture : Managed EDR à 8,99 $ par poste et par mois, ITDR à 4,80 $ par identité, prix catalogue dégressif, SOC 24/7 inclus. | Prix unitaire public par poste ; « un prix clair, sans surprise ». C'est aussi le repère public du calcul d'exemple du simulateur (brief, section 6). |
 | 11 | [Arctic Wolf : Bundles](https://arcticwolf.com/solutions/bundles/), site réel (US) | [capture](captures/inspis/11-arcticwolf-bundles.jpg) | 3 paliers Core, Plus et Total, avec des options de garantie financière chiffrées (à partir de 100 k$). | 3 paliers (Essentiel, Pro, NIS2) avec une ligne d'engagement par palier. |
 | 21 | [B2B SaaS Pricing Page UX (Katerina Bulkina)](https://dribbble.com/shots/27813140-B2B-SaaS-Pricing-Page-UX-for-Plans-Trials-Enterpris), Dribbble | [capture](captures/inspis/21-dribbble-pricing-seat.jpg) | « Pay per seat. Talk to us when you need more control. », 12 $ par siège et par mois, le total annuel et le prix mensuel écrits sous le montant, « See your estimate below before you start ». | Simulateur « nombre de postes → prix mensuel », estimation avant tout engagement. |
 | 25 | [Steadily](https://onepagelove.com/steadily), One Page Love | [capture](captures/inspis/25-onepagelove-steadily.jpg) | Un seul champ, puis un prix (devis à 60 $ par mois dans l'illustration). | Le simulateur de Rempart : 1 champ (postes), le prix tout de suite, aucune coordonnée. |
@@ -127,7 +129,7 @@ Manque : ni les 4 cartes, ni l'encart « Ce qui n'est pas inclus ». Détail uti
 |---|---|---|---|---|
 | 8 | [Dattak : gestes des premières heures](https://www.dattak.io/fr/blog/dattak-blog-gestes-cyberattaque-reponse-incident), blog (FR) | [capture](captures/inspis/08-dattak-blog-gestes.jpg) | Article du 25 novembre 2025. Gestes : déconnecter les systèmes compromis, isoler les sauvegardes, couper internet si nécessaire. Erreurs citées : redémarrer trop tôt, payer une rançon sans accompagnement juridique, agir seul. Résumé : « Déconnecter, isoler, documenter ». | Bloc « Les 3 réflexes en attendant notre appel » à côté du numéro d'urgence (persona Laurent). |
 | 9 | [Arctic Wolf : How it works](https://arcticwolf.com/how-it-works/), site réel (US) | [capture](captures/inspis/09-arcticwolf-how.jpg) | Le lien d'urgence est dans l'en-tête, hors du formulaire de contact. | Séparer le bloc urgence du formulaire de diagnostic. |
-| 23 | [Enshore Security (Ricardo Dol)](https://www.awwwards.com/sites/enshore-security), Awwwards (nominé, décembre 2023) | [capture](captures/inspis/23-awwwards-enshore.jpg) | Plus bas dans l'aperçu (la capture ne montre que le hero) : un encart « Laissez-nous vous aider » avec 2 auditeurs nommés, en photo, avec leur qualification, à côté de 3 chiffres de volume (1 500+ audits internes, 400+ audits de certification, 30+ ISMS gérés). | « Un interlocuteur humain » (persona Claire) ; preuve « nombre d'analystes ». |
+| 23 | [Enshore Security (Ricardo Dol)](https://www.awwwards.com/sites/enshore-security), Awwwards (nominé, décembre 2023) | [capture](captures/inspis/23-awwwards-enshore.jpg) | Plus bas dans l'aperçu (la capture ne montre que le hero) : un encart « Laissez-nous vous aider » avec 2 auditeurs nommés, en photo, avec leur qualification, à côté de 3 chiffres de volume (1 500+ audits internes, 400+ audits de certification, 30+ ISMS gérés). | « Un interlocuteur humain » (persona Claire). Chez Rempart, des noms et des fonctions, sans photo ni chiffre. |
 
 À éviter : le cadenas et le point d'exclamation rouge de l'infographie Dattak, la Terre vue de l'espace d'Enshore. Le formulaire de diagnostic n'a pas d'inspiration : Coverall (n° 6, à côté) montre ce qu'il ne faut pas faire.
 
@@ -139,16 +141,16 @@ Manque : ni les 4 cartes, ni l'encart « Ce qui n'est pas inclus ». Détail uti
 | 26 | [Thoughtbot](https://onepagelove.com/the-state-of-software-delivery-in-healthcare) | [capture](captures/inspis/26-onepagelove-thoughtbot.jpg) | Rapport en une page, méthode écrite. | Page « NIS2 pour les PME ». |
 | 8 | [Dattak : gestes](https://www.dattak.io/fr/blog/dattak-blog-gestes-cyberattaque-reponse-incident) | [capture](captures/inspis/08-dattak-blog-gestes.jpg) | Les gestes et les erreurs à éviter. | Page « Urgence cyberattaque » (recherche mobile). |
 
-### Preuves sans bloc dédié (section 5 du brief)
+### Preuves (bloc 6 du brief)
 
-Le brief demande 3 témoignages et une photo réelle de l'équipe, mais aucun bloc de l'arborescence ne les accueille (voir « Points à remonter au client »).
+Les témoignages et le « Qui sommes-nous » vont dans le bloc 6, renommé « Preuves » (voir « Arbitrages »).
 
 | # | Référence | Capture | Ce qu'on reprend | Pour quelle exigence du brief |
 |---|---|---|---|---|
 | 14 | [Dattak : Témoignages](https://www.dattak.io/fr/temoignages), site réel (FR) | [capture](captures/inspis/14-dattak-temoignages.jpg) | Chaque témoignage est une carte : vidéo à gauche, citation d'une phrase en italique, nom, fonction et entreprise. | « Des PME comme vous » : 3 témoignages courts sur la home, page complète en lien, vidéo en option. Ajouter secteur et taille. |
-| 23 | [Enshore Security](https://www.awwwards.com/sites/enshore-security) | [capture](captures/inspis/23-awwwards-enshore.jpg) | Chiffres et visages nommés dans le même bloc. | « Surveillé 24 h/24 par des humains, en France » : photo réelle et nombre d'analystes. |
+| 23 | [Enshore Security](https://www.awwwards.com/sites/enshore-security) | [capture](captures/inspis/23-awwwards-enshore.jpg) | Chiffres et visages nommés dans le même bloc. | « Surveillé 24 h/24 par des humains, en France » : des noms et des fonctions, sans photo ni chiffre. |
 
-Détail pris chez une référence à côté : de vraies photos d'analystes plutôt que des hackers à capuche (Arctic Wolf n° 15), mais claires, en lumière du jour.
+Pas de photo d'équipe. Le 2026-11-13, Unsplash a répondu « Access Denied » et Pexels a affiché une vérification Cloudflare (non contournée). Le brief prévoit donc un « Qui sommes-nous » de 3 phrases, sans photo, avec le logo ou une illustration au trait.
 
 ---
 
@@ -166,7 +168,7 @@ Ce que ces observations donnent pour Rempart :
 - une barre d'urgence fixe en bas (« Urgence : appeler le 0X XX XX XX XX », rouge discret). Elle porte un vrai lien `tel:`, mesure au moins 44 px de haut et a un contraste d'au moins 4,5:1 (blanc sur `#C8102E` : 5,9:1). Elle ne se cache jamais dans le menu (critère de réussite : 1 tap depuis n'importe quel écran) ;
 - un quiz en plein écran, une question par écran, une barre de progression, un bouton retour. Aucune page vue n'affiche de quiz directement (Stoïk renvoie vers un test NIS2 par un bouton) : c'est un point de différence ;
 - une grille tarifaire en carrousel horizontal avec le palier « Pro » centré par défaut (tâche du test utilisateur : trouver le prix pour 80 postes) ;
-- les chiffres clés en grille de 2 colonnes, comme Arctic Wolf.
+- les chiffres publics sourcés de la section NIS2 en grille de 2 colonnes, comme Arctic Wolf.
 
 ---
 
@@ -189,7 +191,7 @@ Le brief demande 2 pistes de maquette, au ton « rassurant et pédagogique ».
 **Piste 2 : C « Le tableau de bord »**
 - Des cartes façon interface sur fond blanc cassé (score de risque, statut « surveillé »), des micro-interactions sobres.
 - Le produit est montré comme il sera vécu, avec le score du quiz en écho.
-- Le risque est de faire « éditeur SaaS » plutôt que service humain, ce qui affaiblirait le message « surveillé par des humains, en France ». On le compense par les visages nommés des analystes à côté des cartes (n° 23).
+- Le risque est de faire « éditeur SaaS » plutôt que service humain, ce qui affaiblirait le message « surveillé par des humains, en France ». On le compense par les noms et fonctions des analystes à côté des cartes, sans photo.
 - Inspirations : la jauge Evil Martians (n° 20), le score SAFE (n° 24), les chiffres d'Arctic Wolf (n° 9).
 
 **3 choses à ne pas faire**
@@ -221,7 +223,7 @@ Observé chez Huntress (n° 1, à côté) : un bouton cyan à texte sombre. L'é
 
 - **Manrope** (600 à 800) pour les titres, **Manrope** (400 et 500) pour le texte. Une seule famille, rapide à charger (LCP inférieur à 2,5 s).
 - Alternative : **Plus Jakarta Sans** pour les titres.
-- **Corrigé** : JetBrains Mono n'est plus proposé pour les horodatages de la timeline. Le brief limite la typographie à Manrope ou Plus Jakarta Sans. Les horodatages (« T+05 min ») passent en Manrope 600 avec `font-variant-numeric: tabular-nums` (vérifié le 2026-11-12 sur le Manrope de Google Fonts : avec `tabular-nums`, « 1111 » et « 0000 » ont la même largeur).
+- **Corrigé** : JetBrains Mono n'est plus proposé pour les horodatages de la timeline. Le brief limite la typographie à Manrope ou Plus Jakarta Sans. Les repères d'étape de la timeline (« Étape 3 ») passent en Manrope 600 avec `font-variant-numeric: tabular-nums` (vérifié le 2026-11-12 sur le Manrope de Google Fonts : avec `tabular-nums`, « 1111 » et « 0000 » ont la même largeur).
 - Observé : les références les plus rassurantes des galeries (n° 25, 26) titrent en serif. Le brief impose une grotesque : on ne reprend pas la serif.
 
 ### Couleurs
@@ -257,7 +259,7 @@ Le niveau de risque du quiz ne doit jamais être signalé par la couleur seule :
 | `body-lg` | 18 / 20 px | 400 | 1,6 |
 | `body` | 16 / 17 px | 400 | 1,6 |
 | `small` | 14 px | 500 | 1,5 |
-| `timestamp` (timeline) | 14 / 15 px | 600, chiffres tabulaires | 1,4 |
+| `timestamp` (repères d'étape de la timeline) | 14 / 15 px | 600, chiffres tabulaires | 1,4 |
 
 ### Espacement, rayons, ombres, motion
 
@@ -313,8 +315,8 @@ Ces références restent consultables. Leur détail utile, quand il y en a un, e
 | 3 | [Dattak : accueil](https://www.dattak.io/fr), site réel (FR) | [capture](captures/a-cote/03-dattak.jpg) | Contre-exemple. Le titre reste une catégorie (« Dattak réduit et assure les risques technologiques des entreprises ») alors que le brief veut un titre qui nomme le résultat pour le dirigeant. Bouton terracotta `#C4684A` à texte blanc : 3,9:1, sous le seuil AA du brief. Hero sombre, titre Inter 79 px. |
 | 5 | [Stoïk : Assurance](https://www.stoik.com/assurance), site réel (FR) | [capture](captures/a-cote/05-stoik-assurance.jpg) | Contexte sectoriel seulement (assurance) : les deux boutons visent les courtiers, et la 2e ligne du titre est en rose, hors marque. Aucun scan gratuit sur cette page (les scans sont « inclus dans chaque police »). Seul détail utile : 3 chiffres en pastilles sous le hero (2 Md€, 10 M€, 150 M€). |
 | 6 | [Coverall : estimateur](https://www.coverall.com/commercial-cleaning-services/janitorial/), site réel (US, nettoyage) | [capture](captures/a-cote/06-coverall.jpg) | Contre-exemple pour le simulateur : le bloc « Get an instant cleaning quote » est un formulaire de 10 champs (7 obligatoires, dont nom, e-mail, téléphone et code postal) avant toute fourchette, plus un reCAPTCHA. Le brief demande un prix sans coordonnées, des formulaires minimaux (RGPD) et pas de reCAPTCHA intrusif. Seul détail utile : la promesse écrite « fourchette instantanée selon la surface et la fréquence », voir bloc 7. |
-| 12 | [Stoïk : prix d'une cyber assurance](https://www.stoik.com/prix-assurance-cyber), blog (FR) | [capture](captures/a-cote/12-stoik-prix.jpg) | Contexte sectoriel seulement (prix d'assurance, pas de SOC), article daté du 14 juin 2023, photo de banque d'images (le brief exclut la banque d'images pour l'équipe). Seul détail utile : des prix d'appel par secteur (de 115 à 172 € par mois) avec leurs hypothèses écrites, voir bloc 7. |
-| 15 | [Arctic Wolf : Inside the SOC](https://arcticwolf.com/uk/inside-the-soc/), site réel (UK) | [capture](captures/a-cote/15-arcticwolf-soc.jpg) | Traitement anxiogène, contraire au brief : photo très assombrie, « SOC » en lettres géantes, boutons orange. Seul détail utile : une vraie photo d'analyste au casque à la place des hackers à capuche, voir « Preuves sans bloc dédié ». |
+| 12 | [Stoïk : prix d'une cyber assurance](https://www.stoik.com/prix-assurance-cyber), blog (FR) | [capture](captures/a-cote/12-stoik-prix.jpg) | Contexte sectoriel seulement (prix d'assurance, pas de SOC), article daté du 14 juin 2023, photo de banque d'images. Seul détail utile : des prix d'appel par secteur (de 115 à 172 € par mois) avec leurs hypothèses écrites, voir bloc 7. |
+| 15 | [Arctic Wolf : Inside the SOC](https://arcticwolf.com/uk/inside-the-soc/), site réel (UK) | [capture](captures/a-cote/15-arcticwolf-soc.jpg) | Traitement anxiogène, contraire au brief : photo très assombrie, « SOC » en lettres géantes, boutons orange. Seul détail : une vraie photo d'analyste au casque à la place des hackers à capuche. Non repris : Rempart n'a pas de photo d'équipe, voir « Preuves ». |
 | 17 | [Advens : offres mySOC](https://www.advens.com/mysoc/offres/), site réel (FR) | [capture](captures/a-cote/17-advens-mysoc.jpg) | Ne sert pas le bloc Tarifs : pas de paliers nommés ni de prix, l'offre est une trajectoire en 3 phases (schéma en image), puis 3 valeurs (Efficient, Adaptatif, Collaboratif). Bandeau noir, titre bleu `#006BFF` en Space Grotesk 56 px. Seul détail utile : « un même plan de surveillance, un même analyste », voir bloc 3. |
 | 22 | [Cybersecurity Landing Page (FleexStudio)](https://dribbble.com/shots/26361362-Cybersecurity-Landing-Page), Dribbble | [capture](captures/a-cote/22-dribbble-contre-exemple.jpg) | Contre-exemple : cadenas vert néon, main robotique, silhouette à capuche, fond noir. Il coche le premier interdit du brief (« jamais de hacker à capuche »). Il représente bien la recherche : environ trois quarts des vignettes « cybersecurity landing page » sont sombres. |
 | mobile | [Stoïk : Cybersécurité, mobile](https://www.stoik.com/cybersecurite) | [capture](captures/a-cote/mobile-stoik.jpg) | Aucun numéro ni bouton d'urgence, alors que le brief exige un numéro joignable en 1 tap depuis n'importe quel écran mobile. Voir « Mobile ». |
@@ -340,8 +342,10 @@ Ces références restent consultables. Leur détail utile, quand il y en a un, e
 
 ---
 
-## Points à remonter au client
+## Arbitrages
 
-- **Témoignages et photo d'équipe sans bloc** : la section 5 du brief exige 3 témoignages et une photo réelle de l'équipe, mais l'arborescence (section 6) ne leur donne pas de place. Proposition : les placer dans le bloc 6, renommé « Preuves : équipe, certifications, témoignages », ou ajouter un bloc entre 6 et 7.
-- **Rouge réservé à l'urgence** : appliquée à la lettre, la règle exclut le rouge des erreurs de formulaire et du niveau « élevé » du quiz, alors que c'est une convention que les visiteurs reconnaissent. Le bench applique la règle (rouille `#9A3412`, toujours avec icône et texte). À confirmer avec le client.
-- **Statut de la transposition NIS2** : le brief attend la loi « Résilience » pour fin 2026. Le bench ne l'a pas vérifié. La mention « Transposition française en cours, mis à jour le [date] » et la checklist PDF sont à revérifier juste avant la mise en ligne.
+- **Témoignages et « Qui sommes-nous »** : on les place dans le bloc 6, renommé « Preuves : qui sommes-nous, certifications, partenaires, témoignages ». Le brief les demandait sans leur donner de place, et un bloc de plus allongerait le one-page.
+- **Rouge réservé à l'urgence** : on applique la règle à la lettre. Les erreurs de formulaire et le niveau « élevé » du quiz passent en rouille `#9A3412`, toujours avec icône et texte, parce qu'un rouge partagé ne signalerait plus l'urgence.
+- **Statut de la transposition NIS2** : on écrit « Transposition française en cours, mis à jour le [date de publication] », et la checklist PDF porte la même date. Au 19 octobre 2026, l'Assemblée nationale a retiré le projet de loi « Résilience » de son ordre du jour, sans nouvelle date ([Leto](https://www.leto.legal/news/nis2-transposition-septembre-2026), vu le 2026-11-13).
+- **Photos d'équipe** : on n'en met pas. Unsplash et Pexels ont bloqué la recherche le 2026-11-13, donc le site a un « Qui sommes-nous » court, sans photo.
+- **Prix** : on n'invente pas de tarif. Les 3 paliers affichent « XX € HT », marqués « prix d'exemple », et le simulateur calcule sur le prix public de Huntress (n° 10), présenté comme tel.

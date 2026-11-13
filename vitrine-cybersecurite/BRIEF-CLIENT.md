@@ -1,6 +1,6 @@
 # Brief client : site vitrine Rempart
 
-> Document de travail. **Rempart est une entreprise fictive** créée pour un site de démonstration. Les chiffres internes (clients, délais, prix) sont des hypothèses à remplacer par celles du vrai client. Les certifications citées servent d'exemples et ne doivent pas être affichées sans justificatif.
+> Document de travail. **Rempart est une entreprise fictive**, créée pour un site de démonstration. Il n'y a pas de client derrière ce brief : l'agence décide de tout. Aucun chiffre n'est inventé. Toute donnée chiffrée sur le marché ou la loi a sa source à côté. Rempart n'a ni effectif, ni prix, ni résultat chiffrés, et aucune certification n'est affichée comme obtenue.
 
 Émetteur : Rempart, direction générale et marketing
 Destinataire : l'agence
@@ -11,46 +11,48 @@ Date : novembre 2026
 ## 1. Présentation de l'entreprise
 
 - **Activité** : surveillance de sécurité 24/7 (SOC managé) pour PME et ETI de 20 à 500 postes. L'offre comprend la détection, la réponse à incident, des sauvegardes supervisées, la sensibilisation des équipes et l'accompagnement à la conformité NIS2.
-- **Modèle** : abonnement mensuel à **prix fixe par poste**, sans frais de mise en service au-delà de 50 postes (hypothèse).
+- **Modèle** : abonnement mensuel à **prix fixe par poste**, sans frais de mise en service.
 - **Promesse** : « Votre PME surveillée 24 h/24, sans recruter d'équipe sécurité. »
-- **Équipe (hypothèse)** : 25 personnes, dont 12 analystes SOC basés en France et un SOC Manager attitré par client.
+- **Équipe** : des analystes SOC basés en France et un SOC Manager attitré par client. Pas d'effectif chiffré : Rempart est fictive.
 
 ## 2. Contexte et déclencheur
 
-- NIS2 fait passer le nombre d'entités régulées en France d'environ 500 à environ 15 000. La loi « Résilience » est attendue pour fin 2026. Les dirigeants de PME nous demandent « est-ce que je suis concerné ? » avant même de parler sécurité.
-- Le site actuel (hypothèse) est une plaquette de 2019 : jargon technique, aucun prix, un formulaire « contact » unique. Il génère moins de 5 demandes qualifiées par mois.
+- NIS2 fait passer le nombre d'entités régulées en France d'environ 500 à près de 15 000, d'après la note explicative du projet de loi ([Kiteworks](https://www.kiteworks.com/fr/conformite-reglementaire/france-nis2-report-retard-conformite/), mis à jour le 12 octobre 2026, vu le 2026-11-13). Le projet de loi « Résilience » n'est pas voté : l'Assemblée nationale l'a retiré de son ordre du jour le 6 octobre 2026, sans nouvelle date ([Leto](https://www.leto.legal/news/nis2-transposition-septembre-2026), mise à jour du 19 octobre 2026, vu le 2026-11-13). Les dirigeants de PME nous demandent « est-ce que je suis concerné ? » avant même de parler sécurité.
+- Le site actuel est une plaquette : jargon technique, aucun prix, un formulaire « contact » unique.
 - Nos commerciaux passent leurs premiers rendez-vous à expliquer les bases. Nous voulons que le site fasse ce travail.
 
-## 3. Objectifs business et KPIs
+## 3. Objectifs business et indicateurs
 
-| Objectif | KPI | Cible à 6 mois |
-|---|---|---|
-| Générer des leads qualifiés | Demandes de diagnostic gratuit | 30 par mois |
-| Activer le quiz comme capteur de leads | Taux de complétion du test express | ≥ 55 % des quiz démarrés |
-| | Quiz terminés puis rapport demandé | ≥ 25 % |
-| Rendre l'urgence accessible | Appels sur le numéro d'urgence depuis le site (suivi d'appels) | Suivi, sans cible |
-| Raccourcir le cycle de vente | Leads ayant consulté la grille tarifaire avant le RDV | ≥ 60 % |
-| Visibilité | Positions top 10 sur « SOC managé PME », « NIS2 PME », « surveillance cybersécurité PME » | 3 requêtes sur 5 |
-| Performance | Core Web Vitals en vert sur mobile | 100 % des pages |
+Rempart est fictive : aucune cible chiffrée. Chaque objectif a un indicateur à suivre dès la mise en ligne.
+
+| Objectif | Indicateur à suivre |
+|---|---|
+| Générer des leads qualifiés | Demandes de diagnostic gratuit |
+| Activer le quiz comme capteur de leads | Taux de complétion du test express |
+| | Part des quiz terminés suivis d'une demande de rapport |
+| Rendre l'urgence accessible | Appels sur le numéro d'urgence depuis le site (suivi d'appels) |
+| Raccourcir le cycle de vente | Part des leads ayant consulté la grille tarifaire avant le RDV |
+| Visibilité | Positions sur « SOC managé PME », « NIS2 PME », « surveillance cybersécurité PME » |
+| Performance | Core Web Vitals en vert sur mobile, sur toutes les pages |
 
 ## 4. Cibles et personas
 
-### Persona 1 : Claire, 52 ans, dirigeante d'une PME industrielle (120 salariés)
+### Persona 1 : Claire, dirigeante d'une PME industrielle de taille moyenne
 - **Job to be done** : « Quand un client me demande des garanties cyber, je veux savoir vite où j'en suis et quoi répondre, pour ne pas perdre le contrat. »
 - **Situation** : un client donneur d'ordre lui envoie un questionnaire « sécurité fournisseurs NIS2 ».
 - **Freins** : elle ne comprend pas le vocabulaire, craint un budget sans fond et se méfie des vendeurs de peur.
 - **Attentes** : savoir en 2 minutes si elle est concernée, avoir un prix, un interlocuteur humain et une réponse à donner à son client.
 - **Ce qui la convertit** : le quiz, la grille tarifaire, la checklist NIS2 et un témoignage d'un pair.
 
-### Persona 2 : Karim, 38 ans, responsable informatique seul (ETI de services, 300 postes)
+### Persona 2 : Karim, responsable informatique seul (ETI de services)
 - **Job to be done** : « Quand une alerte tombe la nuit ou pendant mes congés, je veux que quelqu'un de compétent la traite, pour ne plus porter seul ce risque. »
 - **Situation** : il gère tout seul l'infrastructure, les postes et le support. Il ne peut pas surveiller les alertes la nuit.
 - **Freins** : il a peur de perdre la main, doute de la qualité des analystes et redoute un déploiement lourd.
 - **Attentes** : un périmètre précis (ce qui est couvert, ce qui ne l'est pas), le délai de prise en charge, un rapport mensuel, la compatibilité avec ses outils et la réversibilité.
 - **Ce qui le convertit** : la section « Ce que couvre l'offre » détaillée, la timeline d'attaque, les certifications, un exemple de rapport.
 
-### Persona 3 : Laurent, 45 ans, dirigeant d'une PME attaquée ce matin
-- **Job to be done** : « Quand mon entreprise est bloquée par une attaque, je veux joindre un expert en moins d'une minute, pour limiter les dégâts. »
+### Persona 3 : Laurent, dirigeant d'une PME attaquée ce matin
+- **Job to be done** : « Quand mon entreprise est bloquée par une attaque, je veux joindre un expert tout de suite, pour limiter les dégâts. »
 - **Situation** : les écrans affichent une demande de rançon et il cherche « aide cyberattaque » sur mobile.
 - **Freins** : la panique, aucun temps pour lire.
 - **Attentes** : un numéro tout de suite, quelqu'un qui décroche, et les trois premiers gestes.
@@ -60,12 +62,12 @@ Date : novembre 2026
 
 | Message | Preuve à afficher |
 |---|---|
-| Surveillé 24 h/24 par des humains, en France | Photo réelle de l'équipe (pas de banque d'images), nombre d'analystes, localisation du SOC |
-| On agit, on ne fait pas qu'alerter | Timeline minute par minute et délai moyen de prise en charge (à mesurer) |
-| Un prix clair, sans surprise | Grille par poste et simulateur « nombre de postes → prix mensuel » |
+| Surveillé 24 h/24 par des humains, en France | Un bloc « Qui sommes-nous » court, sans photo (voir section 6), et la localisation du SOC |
+| On agit, on ne fait pas qu'alerter | Timeline étape par étape, qui nomme la personne qui agit. Aucun délai affiché : Rempart n'a rien mesuré |
+| Un prix clair, sans surprise | Grille par poste (prix d'exemple) et simulateur « nombre de postes → prix mensuel » |
 | NIS2 sans jargon | Test « Suis-je concerné ? » et checklist PDF datée |
-| Sérieux et certifié | ISO 27001 et qualification ANSSI (PDIS pour la détection, PRIS pour la réponse) **uniquement si obtenues**. Sinon, afficher les partenaires technologiques. |
-| Des PME comme vous | 3 témoignages avec nom, fonction, secteur et taille d'entreprise |
+| Sérieux et certifié | Ce que garantissent ISO 27001 et les qualifications ANSSI (PDIS pour la détection, PRIS pour la réponse). Rempart est fictive : aucune n'est affichée comme obtenue. Les logos de certifications et de partenaires sont des emplacements marqués « exemple ». |
+| Des PME comme vous | 3 témoignages fictifs marqués « exemple », avec nom, fonction, secteur et taille d'entreprise en toutes lettres |
 
 ## 6. Arborescence et contenus attendus
 
@@ -74,21 +76,21 @@ Le site est un one-page avec ancres, plus 4 pages annexes pour le SEO et les obl
 1. **Hero** : titre, sous-titre (« Détection, réponse et conformité NIS2, à prix fixe par poste »), CTA « Faire le test (2 min) », CTA secondaire « Demander mon diagnostic gratuit » et le numéro d'urgence en haut à droite.
 2. **Test express** : 5 questions (sauvegardes testées, double authentification, mises à jour, sensibilisation, personne d'astreinte). Le résultat donne un niveau (faible, moyen, élevé) et 3 recommandations, sans e-mail. Le rapport détaillé est envoyé contre un e-mail.
 3. **Ce que couvre l'offre** : 4 cartes (Détection, Réponse, Sauvegarde, Formation) et un encart « Ce qui n'est pas inclus ».
-4. **En cas d'attaque** : une timeline en 6 étapes (T+0 alerte, T+5 min analyse, T+15 min isolement du poste, T+30 min appel du dirigeant, T+4 h restauration, J+2 rapport). Les délais sont des hypothèses à valider.
+4. **En cas d'attaque** : une timeline en 6 étapes (alerte, analyse, isolement du poste, appel du dirigeant, restauration, rapport). Chaque étape nomme qui agit. Aucun délai n'est affiché : ce serait une promesse inventée.
 5. **NIS2 expliquée** : 3 paragraphes, le test « Suis-je concerné ? » et la checklist PDF, avec la mention « Transposition française en cours, mis à jour le [date] ».
-6. **Certifications et partenaires**.
-7. **Tarifs** : 3 paliers par poste et par mois (Essentiel, Pro, NIS2), avec un simulateur. Les montants de la démo sont fictifs : 12, 19 et 27 € HT par poste et par mois, à calibrer.
+6. **Preuves** : un « Qui sommes-nous » court et sans photo, les certifications et partenaires (emplacements marqués « exemple »), les 3 témoignages. Texte du « Qui sommes-nous » : « Rempart surveille les postes et les serveurs des PME et des ETI, jour et nuit, depuis la France. Nos analystes détectent, bloquent et vous appellent quand il le faut. Chaque client a un SOC Manager attitré, qui connaît son entreprise. » À côté : le logo ou une illustration au trait.
+7. **Tarifs** : 3 paliers par poste et par mois (Essentiel, Pro, NIS2), avec un simulateur. Rempart est fictive, donc pas de prix inventé : chaque palier affiche « XX € HT par poste et par mois », marqué « prix d'exemple ». Le simulateur fait un calcul d'exemple sur un prix public, présenté comme tel : Huntress Managed EDR, 8,99 $ par poste et par mois ([huntress.com/pricing](https://www.huntress.com/pricing), observé le 2026-11-12, bench n° 10).
 8. **Contact** : un bloc urgence (numéro en rouge discret, disponible 24/7) et un formulaire de diagnostic (nom, entreprise, nombre de postes, téléphone, créneau).
 
 Pages annexes : mentions légales, politique de confidentialité, gestion des cookies, page « NIS2 pour les PME » (version longue, cible SEO) et page « Urgence cyberattaque » (pour la recherche mobile).
 
-Contenus fournis par Rempart : textes validés, photos d'équipe, logos partenaires, certificats, 3 témoignages, grille tarifaire. L'agence fournit la rédaction SEO, les icônes et les illustrations (schémas, pas de personnages menaçants).
+À produire par l'agence : tous les textes et la rédaction SEO, le « Qui sommes-nous », les emplacements de logos et de certificats marqués « exemple », les 3 témoignages fictifs, la grille tarifaire d'exemple, les icônes et les illustrations (schémas, pas de personnages menaçants). Pas de photo d'équipe : Unsplash et Pexels ont bloqué la recherche le 2026-11-13 (voir le bench).
 
 ## 7. Plan de recherche utilisateur (mini)
 
 - **Objectif** : vérifier qu'un dirigeant non technique comprend l'offre, fait confiance au prix affiché et termine le quiz. Vérifier aussi que le numéro d'urgence se trouve en moins de 5 secondes sur mobile.
 - **Méthode** : 5 entretiens de 45 min avec des dirigeants et responsables informatiques de PME de 20 à 300 postes (2 personas Claire, 2 personas Karim, 1 dirigeant déjà attaqué). Ensuite, 5 tests d'usabilité modérés sur la maquette mobile (S3), avec 3 tâches : faire le test, trouver le prix pour 80 postes, appeler en urgence.
-- **Recrutement** : le réseau du client, une CCI ou un club d'entreprises. Une incitation de 50 € en bon d'achat (hypothèse).
+- **Recrutement** : une CCI ou un club d'entreprises. Une incitation en bon d'achat.
 
 **Guide d'entretien en 5 temps**
 
@@ -124,7 +126,7 @@ Sous-titre : « Détection, réponse et préparation NIS2, à prix fixe par post
 | Formulaire | « Envoyer ma demande de diagnostic » | Pas de « Envoyer » ni de « Valider » seuls |
 
 **Message de succès (formulaire de diagnostic)**
-> « Demande reçue. Un analyste vous rappelle sous 4 h ouvrées au numéro indiqué, pour fixer un créneau de diagnostic de 30 min. En cas d'attaque en cours, n'attendez pas : appelez le 0X XX XX XX XX. »
+> « Demande reçue. Un analyste vous rappelle au numéro indiqué pour fixer un créneau de diagnostic. En cas d'attaque en cours, n'attendez pas : appelez le 0X XX XX XX XX. »
 
 **Messages d'erreur** (structure : ce qui s'est passé, pourquoi, comment corriger)
 
@@ -140,7 +142,7 @@ Sous-titre : « Détection, réponse et préparation NIS2, à prix fixe par post
 - **Réglementaire** :
   - RGPD : formulaires minimaux, consentement explicite pour le rapport du quiz, aucun traceur publicitaire avant consentement (CNIL).
   - Pas d'allégations non vérifiables (« 100 % sécurisé », « conformité NIS2 garantie »).
-  - Les certifications et qualifications affichées doivent être justifiées.
+  - Aucune certification ni qualification n'est affichée comme obtenue : Rempart est fictive. Le bloc explique ce qu'elles garantissent, avec des emplacements marqués « exemple ».
   - Mentions légales LCEN.
 - **Sécurité du site lui-même**, par cohérence : HTTPS, en-têtes de sécurité (CSP, HSTS), pas de CMS non maintenu, formulaire protégé contre le spam sans reCAPTCHA intrusif, hébergement dans l'UE.
 - **Accessibilité** : RGAA / WCAG 2.1 AA. Contraste de 4,5:1 minimum : le cyan clair ne s'utilise pas pour du texte sur fond clair. Le quiz doit fonctionner au clavier et au lecteur d'écran. Le bouton d'urgence doit mesurer au moins 44 × 44 px.
@@ -153,23 +155,19 @@ Sous-titre : « Détection, réponse et préparation NIS2, à prix fixe par post
 
 | Semaine | Étape |
 |---|---|
-| S1 | Cadrage, atelier messages, collecte des contenus |
+| S1 | Cadrage, atelier messages, production des contenus |
 | S2 | Arborescence, wireframes, logique du quiz |
 | S3–S4 | Design (2 pistes, puis itération) |
 | S5–S7 | Intégration, quiz, simulateur, formulaires |
 | S8 | Recette (contenus, accessibilité, performance), corrections |
-| S9 | Mise en ligne, suivi des KPIs |
+| S9 | Mise en ligne, suivi des indicateurs |
 
-**Budget indicatif** (estimation du marché français, non sourcée) :
-- Freelance confirmé (design et intégration, quiz compris) : **5 000 à 9 000 € HT**.
-- Petite agence (stratégie, rédaction SEO, design sur mesure, quiz et simulateur) : **10 000 à 18 000 € HT**.
-- Maintenance et évolutions : 80 à 250 € HT par mois.
-- Rempart prévoit **12 000 € HT** hors photos.
+**Budget** : pas de montant. Les fourchettes de la version précédente n'avaient pas de source : elles sont retirées.
 
 ## 11. Critères de réussite
 
 - Le site est en ligne en 9 semaines, avec le score Lighthouse mobile suivant : Performance ≥ 90, Accessibilité ≥ 95.
-- Au moins 30 demandes de diagnostic par mois au 6e mois, et un taux de complétion du quiz de 55 % ou plus.
+- Les indicateurs de la section 3 sont suivis dès la mise en ligne (demandes, complétion du quiz, appels d'urgence).
 - Le numéro d'urgence est joignable en 1 tap depuis n'importe quel écran mobile.
 - Un dirigeant non technique comprend l'offre, le prix et le « suis-je concerné NIS2 » en moins de 3 minutes (test utilisateur sur 5 personnes).
 - Aucune image ni formulation anxiogène ne passe la validation (relecture finale contre la charte).
