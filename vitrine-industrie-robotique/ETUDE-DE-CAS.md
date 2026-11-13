@@ -8,7 +8,7 @@ La robotique et la « physical AI » battent des records de financement (27,6 Md
 
 ## 1. Le marché en 5 lignes
 
-- **Records de financement robotique** : PitchBook compte 27,6 Md$ sur 1 009 opérations en 2025, plus du double de 2024 (repris par [AI2Work](https://ai2.work/blog/robotics-startup-funding-doubles-to-27-6b-on-physical-ai-boom), vu le 2026-11-13).
+- **Records de financement robotique** : environ 27,6 Md$ levés sur 1 009 opérations en 2025 par les startups de la robotique et de la physical AI, selon [PitchBook, « Q4 2025 Robotics & Physical AI VC Trends », aperçu, p. 4](https://pitchbook.brightspotcdn.com/8b/51/2ba28f134d58b6bc6055b8f16c1e/q4-2025-robotics-physical-ai-vc-trends-preview.pdf), vu le 2026-11-13.
 - **La « physical AI » s'accélère** : 47,4 Md$ sur 521 opérations au S1 2026, selon les données Crunchbase ([Crunchbase News](https://news.crunchbase.com/venture/physical-ai-funding-startups-robotics-aerospace-h1-2026/), vu le 2026-11-13).
 - **L'arrêt coûte cher** : près de 1 400 Md$ par an pour les 500 plus grandes entreprises mondiales, soit 11 % de leur chiffre d'affaires. Une heure d'arrêt dans une grande usine coûte 36 000 $ dans les biens de grande consommation et 2,3 M$ dans l'automobile ([Siemens, *The True Cost of Downtime 2024*](https://assets.new.siemens.com/siemens/assets/api/uuid:1b43afb5-2d07-47f7-9eb7-893fe7d0bc59/TCOD-2024_original.pdf), PDF ouvert le 2026-11-13).
 - **La filière française se structure et se consolide** :

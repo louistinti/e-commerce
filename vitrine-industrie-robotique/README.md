@@ -1,6 +1,6 @@
 # Vitrine industrie 4.0 / robotique
 
-Site de démonstration pour la catégorie « industrie et robotique » (réindustrialisation, « physical AI » ; 27,6 Md$ levés par les startups de la robotique et de la physical AI en 2025, plus du double de 2024, selon PitchBook repris par [AI2Work](https://ai2.work/blog/robotics-startup-funding-doubles-to-27-6b-on-physical-ai-boom), vu le 2026-11-13).
+Site de démonstration pour la catégorie « industrie et robotique » (réindustrialisation, « physical AI » ; environ 27,6 Md$ levés par les startups de la robotique et de la physical AI en 2025, selon [PitchBook, « Q4 2025 Robotics & Physical AI VC Trends », aperçu, p. 4](https://pitchbook.brightspotcdn.com/8b/51/2ba28f134d58b6bc6055b8f16c1e/q4-2025-robotics-physical-ai-vc-trends-preview.pdf), vu le 2026-11-13).
 
 ## Entreprise fictive
 
