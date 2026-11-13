@@ -5,497 +5,435 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rempart</title>
 <meta name="description" content="Rempart, surveillance de sécurité 24 h/24 pour PME et ETI : détection, réponse et préparation NIS2, à prix fixe par poste. Site de démonstration, entreprise fictive.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%278%27 fill=%27%230B1F3A%27/%3E%3Cpath d=%27M9 30V14h5v4h4.5v-4h3v4H26v-4h5v16z%27 fill=%27%23F7F5F0%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0B1F3A;
-  --navy-hover:#132E54;
-  --navy-soft:#16294A;
+  --navy-2:#16294A;
   --cyan:#00B8D9;
   --cyan-text:#006B85;
   --urgent:#C8102E;
-  --error:#9A3412;
-  --success:#15803D;
-  --warning:#B45309;
-  --text:#1E293B;
+  --urgent-hover:#A90D26;
+  --low:#15803D;
+  --mid:#B45309;
+  --high:#9A3412;
+  --ink:#1E293B;
   --muted:#5B6B80;
-  --border:#7A8699;
-  --line:#E2E0D8;
+  --rule:#C9C4B6;
+  --hair:#E2DED3;
   --bg:#F7F5F0;
-  --surface:#FFFFFF;
-  --on-navy:#F7F5F0;
-  --on-navy-muted:#B8C4D6;
-  --radius-sm:6px;
-  --radius-md:10px;
-  --radius-lg:16px;
-  --shadow-sm:0 1px 2px rgba(11,31,58,.08);
-  --shadow-md:0 4px 16px rgba(11,31,58,.10);
-  --ease-out:cubic-bezier(.2,.8,.2,1);
+  --paper:#FDFCF9;
   --font:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --gutter:clamp(16px,4vw,48px);
-  --header-h:72px;
+  --rail:236px;
+  --top:0px;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 1px);-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:17px;line-height:1.6;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:var(--top);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.65;overflow-x:hidden}
 img,svg{display:block;max-width:100%}
 a{color:var(--cyan-text);text-underline-offset:3px}
-h1,h2,h3{color:var(--navy);margin:0;font-weight:800;letter-spacing:-.02em}
+h1,h2,h3{color:var(--navy);margin:0;letter-spacing:-.015em}
 h1,h2{text-wrap:balance}
-.nowrap{white-space:nowrap}
-h2{font-size:clamp(24px,2.6vw,32px);line-height:1.2;font-weight:700}
-h3{font-size:clamp(20px,1.8vw,22px);line-height:1.3;font-weight:700}
-p{margin:0}
+p,ol,ul,figure,blockquote{margin:0}
 button,input,select{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--cyan-text);outline-offset:2px;border-radius:4px}
-.on-navy :focus-visible{outline-color:var(--cyan)}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
 [hidden]{display:none !important}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.skip{position:absolute;left:16px;top:-60px;background:var(--navy);color:#fff;padding:10px 16px;border-radius:var(--radius-md);z-index:100;text-decoration:none;font-weight:600}
+.nowrap{white-space:nowrap}
+.skip{position:absolute;left:16px;top:-60px;background:var(--navy);color:#fff;padding:10px 16px;z-index:100;text-decoration:none;font-weight:700}
 .skip:focus{top:12px}
-.container{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
-section{padding:96px 0}
-.lead{font-size:clamp(18px,1.5vw,20px);color:var(--text);max-width:60ch}
-.muted{color:var(--muted)}
-.small{font-size:14px;line-height:1.5;font-weight:500}
-.source{font-size:13px;line-height:1.5;color:var(--muted);font-weight:500}
-.source a{color:var(--cyan-text)}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--radius-md);font-weight:700;font-size:16px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color .12s var(--ease-out),box-shadow .12s var(--ease-out),transform .12s var(--ease-out)}
-.btn:active{transform:translateY(1px)}
-.btn-primary{background:var(--navy);color:#fff}
-.btn-primary:hover{background:var(--navy-hover)}
-.btn-secondary{background:transparent;color:var(--navy);border-color:var(--navy)}
-.btn-secondary:hover{background:#0B1F3A0D}
-.btn-cyan{background:var(--cyan);color:var(--navy)}
-.btn-cyan:hover{background:#2BC6E2}
-.btn-urgent{background:var(--urgent);color:#fff}
-.btn-urgent:hover{background:#A90D26}
-.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:4px;font-weight:700;font-size:16px;line-height:1.25;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease)}
 .btn svg{flex:none}
-.link-arrow{font-weight:700;color:var(--cyan-text);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-.link-arrow:hover{text-decoration:underline}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-2)}
+.btn-line{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-line:hover{background:var(--navy);color:#fff}
+.btn-urgent{background:var(--urgent);color:#fff}
+.btn-urgent:hover{background:var(--urgent-hover)}
+.btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.text-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:5px;text-decoration-thickness:1px}
+.text-link:hover{text-decoration-color:var(--navy)}
 
-/* Header */
-.site-header{position:sticky;top:0;z-index:40;background:rgba(247,245,240,.94);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
-.header-in{height:var(--header-h);display:flex;align-items:center;gap:28px}
-.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:800;font-size:21px;letter-spacing:-.02em}
-.brand svg{width:34px;height:34px}
-.main-nav{margin-left:auto}
-.main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
-.main-nav a{display:block;padding:8px 12px;border-radius:var(--radius-md);color:var(--text);text-decoration:none;font-weight:600;font-size:15px}
-.main-nav a:hover{background:#0B1F3A0D;color:var(--navy)}
-.header-urgent{min-height:44px;padding:0 16px;font-size:15px}
-.menu-btn{display:none;margin-left:auto;background:none;border:0;padding:0;width:44px;height:44px;align-items:center;justify-content:center;color:var(--navy);cursor:pointer}
-.menu-btn:focus-visible{outline:none;color:var(--cyan-text)}
-.menu-btn:focus-visible svg{transform:scale(1.15)}
+/* ---------- Urgent pill (only element top right) ---------- */
+.urgent-pill{position:fixed;top:20px;right:24px;z-index:60;display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px;border-radius:999px;background:var(--urgent);color:#fff;font-weight:800;font-size:15px;text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap}
+.urgent-pill:hover{background:var(--urgent-hover)}
+.urgent-pill .pulse{width:8px;height:8px;border-radius:50%;background:#fff;flex:none}
 
-/* Hero */
-.hero{padding:56px 0 104px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center}
-.eyebrow{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan-text);margin-bottom:18px}
-.hero h1{font-size:clamp(36px,4.1vw,54px);line-height:1.1;letter-spacing:-.03em}
-.hero .lead{margin-top:22px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.hero-visual{position:relative}
-.hero-panel{background:var(--navy);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-md)}
-.hero-panel svg{width:100%;height:auto}
-.notif{position:absolute;left:-28px;bottom:-56px;width:min(330px,82%);background:var(--surface);border-radius:var(--radius-lg);box-shadow:0 12px 32px rgba(11,31,58,.16);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start}
-.notif-icon{grid-row:span 2;width:36px;height:36px;border-radius:50%;background:#E7F3EC;color:var(--success);display:grid;place-items:center}
-.notif strong{color:var(--navy);font-size:15px;line-height:1.35}
-.notif span{font-size:14px;line-height:1.45;color:var(--text)}
-.notif em{grid-column:2;font-style:normal;font-size:12px;font-weight:600;color:var(--muted)}
+/* ---------- Rail (desktop navigation) ---------- */
+.rail{position:fixed;left:0;top:0;bottom:0;width:var(--rail);z-index:40;display:flex;flex-direction:column;padding:30px 22px 26px 30px;border-right:1px solid var(--hair);background:var(--bg)}
+.brand{display:inline-flex;align-items:center;gap:10px;color:var(--navy);text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brand svg{width:32px;height:32px}
+.rail-nav{margin:auto 0;position:relative}
+.rail-label{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;padding-left:26px}
+.rail-nav ol{list-style:none;padding:0;position:relative;display:grid;gap:6px}
+.rail-nav ol::before{content:"";position:absolute;left:4.5px;top:16px;bottom:16px;width:1px;background:var(--rule)}
+.rail-fill{position:absolute;left:4px;top:16px;width:2px;height:0;background:var(--navy)}
+.rail-nav a{position:relative;display:flex;align-items:baseline;gap:10px;padding:6px 0 6px 26px;text-decoration:none;color:var(--muted);font-weight:600;font-size:15px;line-height:1.35;transition:color .15s var(--ease)}
+.rail-nav a .n{font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.04em;color:var(--muted)}
+.rail-nav a .dot{position:absolute;left:0;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--bg);border:1.5px solid var(--rule);transition:background-color .15s var(--ease),border-color .15s var(--ease)}
+.rail-nav a:hover{color:var(--navy)}
+.rail-nav a.passed .dot{background:var(--navy);border-color:var(--navy)}
+.rail-nav a[aria-current="true"]{color:var(--navy);font-weight:800}
+.rail-nav a[aria-current="true"] .n{color:var(--cyan-text)}
+.rail-nav a[aria-current="true"] .dot{background:var(--bg);border:2.5px solid var(--navy)}
+.rail-nav a:focus-visible{outline:none;color:var(--cyan-text)}
+.rail-foot{display:grid;gap:12px}
+.rail-foot .btn{min-height:44px;padding:0 12px;font-size:14px;width:100%}
+.rail-read{font-size:13px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
 
-/* Quiz */
-.quiz-section{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.quiz-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
-.quiz-intro h2{max-width:16ch}
-.quiz-intro .lead{margin-top:16px}
-.quiz-topics{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px}
-.quiz-topics li{display:flex;gap:12px;align-items:center;font-weight:600;color:var(--navy)}
-.quiz-topics svg{color:var(--cyan-text);flex:none}
-.quiz-start{display:none;margin-top:28px}
-.quiz-panel{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px;min-height:470px;display:flex;flex-direction:column}
-.quiz-top{display:flex;align-items:center;gap:16px;min-height:44px}
-.quiz-back{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:8px 4px;font-weight:700;color:var(--navy);cursor:pointer;min-height:44px}
-.quiz-back[hidden]{display:none}
-.quiz-progress{margin-left:auto;font-weight:700;font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
-.quiz-close{display:none;background:none;border:0;padding:0;width:44px;height:44px;align-items:center;justify-content:center;color:var(--navy);cursor:pointer}
-.quiz-close:focus-visible{outline:none;color:var(--cyan-text)}
-.quiz-close:focus-visible svg{transform:scale(1.15)}
-.progress-bar{height:4px;border-radius:4px;margin:12px 0 28px;background:linear-gradient(var(--cyan-text),var(--cyan-text)) left/var(--p,20%) 100% no-repeat}
-.quiz-stage{flex:1;display:flex;flex-direction:column}
-.q-legend{font-size:clamp(21px,2vw,26px);line-height:1.3;font-weight:700;color:var(--navy);margin-bottom:8px;outline:none}
-.q-hint{color:var(--muted);font-size:15px;margin-bottom:24px}
-.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.answer{display:flex;align-items:center;gap:12px;text-align:left;min-height:64px;padding:14px 18px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius-md);font-weight:700;font-size:17px;color:var(--navy);cursor:pointer;transition:border-color .12s var(--ease-out),box-shadow .12s var(--ease-out)}
-.answer:hover{border-color:var(--navy);box-shadow:var(--shadow-sm)}
-.answer[aria-pressed="true"]{border-color:var(--cyan-text);box-shadow:inset 0 0 0 1px var(--cyan-text)}
-.answer .mark{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);flex:none;display:grid;place-items:center}
-.answer[aria-pressed="true"] .mark{border-color:var(--cyan-text);background:var(--cyan-text)}
-.answer[aria-pressed="true"] .mark::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
-.result{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start}
-.gauge{width:200px}
-.level{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:20px;margin-top:4px}
-.level.low{color:var(--success)}
-.level.mid{color:var(--warning)}
-.level.high{color:var(--error)}
-.result h3{font-size:21px}
-.result-text{margin-top:8px;color:var(--text);font-size:16px}
-.recos{margin:18px 0 0;padding:0;list-style:none;counter-reset:r;display:grid;gap:10px}
-.recos li{counter-increment:r;display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:15px;line-height:1.5}
-.recos li::before{content:counter(r);width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;display:grid;place-items:center}
-.report{grid-column:1/-1;border-top:1px solid var(--line);padding-top:22px;margin-top:4px}
+/* Mobile top bar */
+.topbar{display:none}
+
+/* ---------- Page and chapters ---------- */
+.page{margin-left:var(--rail)}
+.col{width:100%;max-width:1008px;margin:0 auto;padding:0 40px}
+.chap{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:64px 0 48px}
+.chap + .chap{border-top:1px solid var(--hair)}
+.chap-n{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan-text)}
+.chap-n::before{content:"";width:32px;height:1px;background:var(--cyan-text)}
+.chap-head h2{margin-top:14px;font-size:clamp(28px,2.5vw,36px);line-height:1.18;font-weight:700}
+.lead{margin-top:14px;font-size:18px;line-height:1.6;max-width:60ch}
+.source{font-size:13px;line-height:1.55;color:var(--muted);font-weight:500}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--mid);border:1px solid var(--mid);border-radius:999px;padding:1px 9px}
+.box{border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
+
+/* ---------- 01 Hero = the consultation ---------- */
+.hero{text-align:center}
+.hero-eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan-text)}
+.hero h1{margin:12px auto 0;font-size:clamp(22px,1.9vw,27px);line-height:1.3;font-weight:700;max-width:46em}
+.hero-sub{margin:10px auto 0;font-size:16px;line-height:1.6;color:var(--muted);max-width:62ch}
+.consult{position:relative;margin:30px auto 0;max-width:840px;min-height:500px;padding:30px 44px 24px;text-align:left;display:flex;flex-direction:column}
+.consult-top{display:flex;align-items:center;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--hair)}
+.consult-label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ticks{margin-left:auto;display:flex;gap:6px}
+.ticks i{width:26px;height:3px;background:var(--hair);border-radius:2px;transition:background-color .2s var(--ease)}
+.ticks i.on{background:var(--navy)}
+.consult-count{font-size:15px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;min-width:58px;text-align:right}
+.consult-stage{flex:1;display:flex;flex-direction:column;justify-content:center;padding:26px 0 20px}
+.q-legend{font-size:clamp(28px,2.6vw,38px);line-height:1.2;font-weight:700;max-width:24ch;outline:none}
+.q-hint{margin-top:10px;font-size:16px;color:var(--muted)}
+.answers{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.answer{display:flex;align-items:center;gap:16px;min-height:76px;padding:14px 20px;background:var(--bg);border:1px solid var(--rule);border-radius:4px;font-size:19px;font-weight:700;color:var(--navy);text-align:left;cursor:pointer;transition:background-color .15s var(--ease),border-color .15s var(--ease),color .15s var(--ease)}
+.answer .key{flex:none;width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--rule);border-radius:3px;font-size:13px;font-weight:800;color:var(--muted)}
+.answer:hover{border-color:var(--navy);background:#fff}
+.answer[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.answer[aria-pressed="true"] .key{border-color:#ffffff66;color:#fff}
+.consult-foot{display:flex;align-items:center;gap:16px;min-height:40px;border-top:1px solid var(--hair);padding-top:12px}
+.quiz-back{display:inline-flex;align-items:center;gap:8px;background:none;border:0;padding:6px 0;font-weight:700;font-size:15px;color:var(--navy);cursor:pointer;min-height:40px}
+.quiz-back:focus-visible{outline:none;color:var(--cyan-text);text-decoration:underline;text-underline-offset:4px}
+.consult-note{margin-left:auto;font-size:13px;font-weight:600;color:var(--muted)}
+.hero-cta{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 22px}
+.hero-cta p{font-size:14px;color:var(--muted);font-weight:600}
+
+/* Result inside the consultation card */
+.result{display:grid;grid-template-columns:190px 1fr;gap:6px 32px;align-items:start}
+.gauge{width:190px}
+.level{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:18px;margin-top:6px}
+.level.low{color:var(--low)}
+.level.mid{color:var(--mid)}
+.level.high{color:var(--high)}
+.res-title{font-size:24px;line-height:1.25;font-weight:700;outline:none}
+.res-text{margin-top:6px;font-size:15px;line-height:1.55}
+.recos{margin-top:12px;padding:0;list-style:none;counter-reset:r;display:grid;gap:6px}
+.recos li{counter-increment:r;display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:14.5px;line-height:1.5}
+.recos li::before{content:counter(r);width:24px;height:24px;border:1px solid var(--navy);border-radius:50%;color:var(--navy);font-weight:800;font-size:12px;display:grid;place-items:center;margin-top:1px}
+.report{grid-column:1/-1;margin-top:12px;padding-top:12px;border-top:1px solid var(--hair)}
 .report-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
-.restart{background:none;border:0;padding:0;margin-top:14px;color:var(--cyan-text);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px;min-height:32px}
+.consult.is-result .consult-foot{display:none}
+.consult.is-result .consult-stage{padding:20px 0 4px}
+.res-actions{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px 24px}
+.restart{background:none;border:0;padding:0;color:var(--cyan-text);font-weight:700;font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;min-height:32px}
+.restart:focus-visible{outline:none;color:var(--navy)}
 
 /* Fields */
-.field{display:grid;gap:8px;align-content:start}
-.field label,.field .label{font-weight:700;font-size:15px;color:var(--navy)}
-.field .help{font-size:13px;color:var(--muted);font-weight:500;margin-top:-4px}
-.input{width:100%;height:48px;padding:0 14px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:16px;color:var(--text)}
-.input::placeholder{color:#6B7787}
-.input:focus-visible{outline:none;border-color:var(--cyan-text);box-shadow:0 0 0 3px var(--cyan-text)}
-.input[aria-invalid="true"]{border-color:var(--error)}
+.field{display:grid;gap:6px;align-content:start}
+.field label{font-weight:700;font-size:14px;color:var(--navy)}
+.help{font-size:13px;color:var(--muted);font-weight:500}
+.input{width:100%;height:48px;padding:0 14px;background:#fff;border:1px solid #7A8699;border-radius:4px;font-size:16px;color:var(--ink)}
+.input:focus-visible{outline:none;border-color:var(--navy);box-shadow:0 0 0 2px var(--navy)}
+.input[aria-invalid="true"]{border-color:var(--high)}
 select.input{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230B1F3A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
-.err{display:none;gap:8px;align-items:flex-start;color:var(--error);font-size:14px;font-weight:600;line-height:1.45}
+.err{display:none;gap:8px;align-items:flex-start;color:var(--high);font-size:13px;font-weight:600;line-height:1.45}
 .err.show{display:flex}
 .err svg{flex:none;margin-top:2px}
-.check{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;font-size:14px;line-height:1.5;margin-top:14px;cursor:pointer}
-.check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--navy)}
-.success{display:flex;gap:12px;align-items:flex-start;background:#EEF7F1;border:1.5px solid var(--success);border-radius:var(--radius-md);padding:16px 18px;color:var(--text);font-size:15px}
-.success svg{color:var(--success);flex:none;margin-top:2px}
+.check{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-size:14px;line-height:1.5;margin-top:10px;cursor:pointer}
+.check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--navy)}
+.success{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--low);border-radius:4px;background:#F1F7F3;padding:14px 16px;font-size:15px}
+.success svg{color:var(--low);flex:none;margin-top:2px}
 .success a{font-weight:700;color:var(--navy)}
 
-/* Offer */
-.offer-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:56px;align-items:start}
-.offer-head{position:sticky;top:calc(var(--header-h) + 32px)}
-.offer-head .lead{margin-top:16px}
-.not-included{margin-top:32px;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;background:var(--bg)}
-.not-included h3{font-size:18px;display:flex;align-items:center;gap:10px}
-.not-included ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-.not-included li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:15px;line-height:1.5}
-.not-included li svg{margin-top:3px;color:var(--muted)}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{background:var(--surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:28px;border:1px solid var(--line);transition:box-shadow .12s var(--ease-out)}
-.card:hover{box-shadow:var(--shadow-md)}
-.card-icon{width:52px;height:52px;border-radius:12px;background:var(--navy);color:var(--cyan);display:grid;place-items:center;margin-bottom:20px}
-.card p{margin-top:8px;font-size:16px;color:var(--text)}
-.card ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
-.card li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:15px;line-height:1.5}
-.card li svg{margin-top:3px;color:var(--cyan-text)}
-.card-manager{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--navy);color:var(--on-navy);border-radius:var(--radius-lg);padding:24px 28px}
-.card-manager strong{color:#fff;font-size:18px;display:block}
-.card-manager span{color:var(--on-navy-muted);font-size:15px}
-.card-manager .card-icon{margin:0;background:#ffffff14}
+/* ---------- 02 Offer ---------- */
+.scope{margin-top:24px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.scope > *{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:18px 20px 20px;background:var(--paper)}
+.scope .sc-n{margin-left:auto;font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+.scope h3{font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px}
+.scope h3 svg{color:var(--cyan-text)}
+.scope p{margin-top:8px;font-size:15px;line-height:1.5}
+.ticklist{margin-top:10px;padding:0;list-style:none;display:grid;gap:5px}
+.ticklist li{display:grid;grid-template-columns:16px 1fr;gap:9px;font-size:14px;line-height:1.5}
+.ticklist svg{margin-top:3px;color:var(--cyan-text)}
+.scope .manager{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:16px 22px;background:var(--bg)}
+.manager svg{flex:none;color:var(--navy)}
+.manager p{margin:0;font-size:15px}
+.manager strong{color:var(--navy)}
+.excluded{margin-top:18px;display:grid;grid-template-columns:200px 1fr;gap:20px;padding:16px 20px;border:1px dashed var(--rule);border-radius:6px}
+.excluded h3{font-size:16px;font-weight:700}
+.excluded ul{padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}
+.excluded li{display:grid;grid-template-columns:14px 1fr;gap:9px;font-size:14px;line-height:1.5}
+.excluded li svg{margin-top:4px;color:var(--muted)}
 
-/* Timeline */
-.attack{background:var(--navy);color:var(--on-navy)}
-.attack h2{color:#fff}
-.attack .lead{color:var(--on-navy-muted);margin-top:16px}
-.timeline{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;position:relative}
-.timeline::before{content:"";position:absolute;left:24px;right:calc((100% - 100px) / 6 - 24px);top:23px;height:2px;background:repeating-linear-gradient(90deg,#00B8D9 0 8px,transparent 8px 14px)}
-.step{position:relative}
-.step-dot{width:48px;height:48px;border-radius:50%;background:var(--navy);border:2px solid var(--cyan);display:grid;place-items:center;color:var(--cyan);position:relative;z-index:1}
-.step-n{display:block;margin-top:20px;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--on-navy-muted)}
-.step h3{color:#fff;font-size:20px;margin-top:2px}
-.step p{font-size:15px;line-height:1.55;color:var(--on-navy-muted);margin-top:8px}
-.who{display:block;margin-top:12px;font-size:14px;line-height:1.45;font-weight:700;color:var(--cyan)}
-.attack-note{margin-top:40px;padding-top:20px;border-top:1px solid #ffffff1f;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
-.attack-note p{font-size:14px;color:var(--on-navy-muted);max-width:70ch}
+/* ---------- 03 The 24 h dial ---------- */
+.dial-stage{position:relative;margin-top:22px;height:470px}
+.dial{position:absolute;left:50%;top:50%;width:400px;height:400px;transform:translate(-50%,-50%)}
+.dial .node circle{fill:#fff;stroke:var(--navy);stroke-width:1.5;transition:fill .2s var(--ease)}
+.dial .node text{fill:var(--navy);font:800 14px var(--font);transition:fill .2s var(--ease)}
+.dial .node.on circle{fill:var(--navy)}
+.dial .node.on text{fill:#fff}
+.dial .hand{transform-origin:200px 200px;transition:transform .45s var(--ease)}
+.steps{list-style:none;padding:0}
+.step{position:absolute;width:250px;transform:translateY(-50%)}
+.step.r{left:calc(50% + 218px)}
+.step.l{right:calc(50% + 218px);text-align:right}
+.step.s1,.step.s6{top:calc(50% - 168px)}
+.step.s2,.step.s5{top:50%}
+.step.s3,.step.s4{top:calc(50% + 168px)}
+.step h3{font-size:18px;font-weight:700;line-height:1.3}
+.st-btn{all:unset;cursor:pointer;display:inline-flex;align-items:baseline;gap:9px;color:var(--navy)}
+.step.l .st-btn{flex-direction:row-reverse}
+.st-btn .st-n{font-size:13px;font-weight:800;color:var(--cyan-text);font-variant-numeric:tabular-nums}
+.st-btn:focus-visible{color:var(--cyan-text);text-decoration:underline;text-underline-offset:4px}
+.step p{margin-top:4px;font-size:14px;line-height:1.5}
+.step .who{margin-top:6px;font-size:13.5px;line-height:1.45;font-weight:700;color:var(--cyan-text)}
+.step.on h3 .st-btn{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.dial-note{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding-top:16px;border-top:1px solid var(--hair)}
+.dial-note p{font-size:14px;line-height:1.55;color:var(--muted);max-width:66ch}
 
-/* NIS2 */
-.nis2-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:start}
-.nis2-text h2{max-width:20ch}
-.nis2-text p{margin-top:18px;max-width:62ch}
-.nis2-text p:first-of-type{margin-top:20px}
-.stamp{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--border);font-size:14px;font-weight:700;color:var(--navy);background:var(--surface)}
-.figures{margin-top:28px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:12px 24px;padding-top:24px;border-top:1px solid var(--line)}
-.fig-big{font-size:clamp(28px,2.4vw,34px);white-space:nowrap;font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.fig-label{font-size:15px;line-height:1.45;margin-top:6px}
-.bars{margin-top:10px;display:grid;gap:6px}
-.bar{display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:center;font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
-.bar i{display:block;height:10px;border-radius:3px;background:var(--navy)}
-.bar.before i{background:var(--border)}
-.figures .fig-src{grid-column:1/-1}
-.nis2-tool{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:28px}
-.nis2-tool h3{font-size:22px}
-.nis2-tool > p{margin-top:6px;font-size:15px;color:var(--muted)}
-.yn{border:0;padding:0;margin:20px 0 0}
-.yn legend{font-weight:700;color:var(--navy);font-size:16px;line-height:1.45;padding:0}
-.yn .help{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:4px}
-.yn-opts{display:flex;gap:10px;margin-top:10px}
+/* ---------- 04 NIS2 ---------- */
+.nis2-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:48px;align-items:start}
+.nis2-text p.para{margin-top:12px;font-size:16px;line-height:1.65;max-width:64ch}
+.nis2-text .chap-head + p.para{margin-top:18px}
+.stamp{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:6px 12px;border:1px solid var(--rule);border-radius:4px;font-size:13.5px;font-weight:700;color:var(--navy);background:var(--paper)}
+.figures{margin-top:20px;padding-top:16px;border-top:1px solid var(--hair);display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:10px 24px}
+.fig-big{font-size:28px;font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fig-label{font-size:14px;line-height:1.45;margin-top:4px}
+.bars{margin-top:8px;display:grid;gap:5px}
+.bar{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;font-size:12px;font-weight:700;color:var(--muted)}
+.bar i{display:block;height:8px;background:var(--navy)}
+.bar.before i{background:var(--rule)}
+.figures .source{grid-column:1/-1}
+.nis2-tool{padding:22px 22px 20px}
+.nis2-tool h3{font-size:20px;font-weight:700}
+.nis2-tool > p{margin-top:2px;font-size:14px;color:var(--muted)}
+.yn{border:0;padding:0;margin:10px 0 0;padding-top:10px;border-top:1px solid var(--hair)}
+.yn legend{float:left;width:100%;font-weight:700;color:var(--navy);font-size:14.5px;line-height:1.45;padding:0}
+.yn .help{display:block;font-size:12.5px;margin-top:2px;line-height:1.4}
+.yn-opts{clear:both;display:flex;gap:8px;padding-top:8px}
 .yn-opts label{position:relative}
 .yn-opts input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-.yn-opts span{display:inline-flex;align-items:center;justify-content:center;min-width:88px;min-height:44px;padding:0 18px;border:1.5px solid var(--border);border-radius:999px;font-weight:700;color:var(--navy);background:var(--surface)}
+.yn-opts span{display:inline-flex;align-items:center;justify-content:center;min-width:76px;min-height:40px;padding:0 16px;border:1px solid var(--rule);border-radius:4px;font-weight:700;font-size:15px;color:var(--navy);background:#fff}
 .yn-opts input:checked + span{background:var(--navy);border-color:var(--navy);color:#fff}
-.yn-opts input:focus-visible + span{box-shadow:0 0 0 3px var(--cyan-text)}
-.nis2-result{margin-top:22px;border-radius:var(--radius-md);padding:16px 18px;background:var(--bg);border:1.5px dashed var(--border);font-size:15px}
-.nis2-result strong{display:block;color:var(--navy);font-size:17px;margin-bottom:4px}
-.nis2-tool .btn{margin-top:22px;width:100%;white-space:normal;text-align:center;line-height:1.3;padding:10px 18px}
-.nis2-tool .source{margin-top:12px}
+.yn-opts input:focus-visible + span{outline:2px solid var(--navy);outline-offset:3px}
+.nis2-result{margin-top:14px;padding:10px 14px;border-left:3px solid var(--navy);background:var(--bg);font-size:14px;line-height:1.5}
+.nis2-result strong{display:block;color:var(--navy);font-size:15px}
+.nis2-tool .btn{margin-top:14px;width:100%;padding:10px 14px;font-size:15px;text-align:center}
+.nis2-tool .source{margin-top:10px;font-size:12.5px}
 
-/* Proof */
-.proof-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
-.about{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:start}
-.about-art{background:var(--navy);border-radius:var(--radius-lg);aspect-ratio:1;display:grid;place-items:center;padding:18px}
-.about p{margin-top:16px;font-size:18px;line-height:1.6;max-width:52ch}
-.about .facts{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--navy)}
-.chip svg{color:var(--cyan-text)}
-.certs h3{font-size:20px}
-.cert-list{margin-top:16px;display:grid;gap:14px}
-.cert{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:start;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg)}
-.slot{border:1.5px dashed var(--border);border-radius:var(--radius-sm);min-height:64px;display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.3;font-weight:700;color:var(--muted);padding:6px}
-.cert strong{color:var(--navy);font-size:16px;display:block}
-.cert span{font-size:14px;line-height:1.5;display:block;margin-top:4px}
-.cert-note{margin-top:12px}
-.partners{margin-top:48px;display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));gap:16px;align-items:center}
-.partners p{font-weight:700;color:var(--navy);font-size:15px;max-width:16ch}
-.quotes{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
-.quote{padding:28px 28px 0 0;margin:0}
-.quote + .quote{padding-left:28px;border-left:1px solid var(--line)}
-.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:#0B1F3A0F;color:var(--navy)}
-.quote blockquote{margin:14px 0 0;font-size:18px;line-height:1.5;font-weight:600;color:var(--navy)}
-.quote figcaption{margin-top:16px;font-size:14px;line-height:1.5}
-.quote figcaption strong{display:block;color:var(--text);font-size:15px}
+/* ---------- 05 Proof ---------- */
+.about{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:48px;align-items:center}
+.about .about-text{margin-top:12px;font-size:17px;line-height:1.6;max-width:60ch}
+.about-art{padding:18px;display:grid;place-items:center}
+.about-art svg{width:96px;height:96px}
+.about-art figcaption{margin-top:8px;font-size:12.5px;color:var(--muted);text-align:center;font-weight:600}
+.facts{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px 22px;padding:0;list-style:none}
+.facts li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--navy)}
+.facts svg{color:var(--cyan-text)}
+.certs{margin-top:22px}
+.certs-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px}
+.certs-head h3{font-size:18px;font-weight:700}
+.cert-list{margin-top:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.cert{display:grid;grid-template-columns:108px 1fr;gap:4px 14px;align-items:center;padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper)}
+.cert strong{color:var(--navy);font-size:15px;line-height:1.3}
+.cert span{grid-column:1/-1;display:block;margin-top:6px;font-size:13.5px;line-height:1.5}
+.slot{border:1px dashed var(--rule);border-radius:3px;min-height:40px;display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.3;font-weight:700;color:var(--muted);padding:4px 8px}
+.partners{margin-top:14px;display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));gap:12px;align-items:center}
+.partners p{font-weight:700;color:var(--navy);font-size:14px;padding-right:8px}
+.quotes{margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.quote{padding:16px 24px 0 0}
+.quote + .quote{padding-left:24px;border-left:1px solid var(--hair)}
+.quote blockquote{margin-top:8px;font-size:15px;line-height:1.5;font-weight:600;color:var(--navy)}
+.quote figcaption{margin-top:8px;font-size:13.5px;line-height:1.45}
+.quote figcaption strong{display:block;color:var(--ink);font-size:14px}
 .quote figcaption span{color:var(--muted);font-weight:500}
 
-/* Pricing */
-.pricing{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.pricing-head{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:flex-end;justify-content:space-between}
-.pricing-head h2{max-width:none}
-.pricing-head .lead{margin-top:12px}
-.pricing-body{margin-top:36px;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:20px;align-items:stretch}
-.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
-.tier{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;display:flex;flex-direction:column}
-.tier.reco{border:2px solid var(--cyan-text);background:var(--surface);box-shadow:var(--shadow-md)}
-.badge{position:absolute;top:-13px;left:28px;background:var(--cyan-text);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px}
-.tier h3{font-size:22px}
-.tier .for{font-size:15px;color:var(--muted);margin-top:4px}
-.price{margin-top:18px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-.price b{font-size:36px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
-.price span{font-size:15px;color:var(--text)}
-.demo-tag{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;color:var(--warning);border:1.5px solid var(--warning);border-radius:999px;padding:2px 10px;align-self:flex-start}
-.tier ul{margin:20px 0 24px;padding:0;list-style:none;display:grid;gap:10px;flex:1;align-content:start}
-.tier li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:15px;line-height:1.5}
-.tier li svg{margin-top:3px;color:var(--cyan-text)}
-.tier li.inherit{font-weight:700;color:var(--navy)}
+/* ---------- 06 Pricing ---------- */
+.lead-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px}
+.lead-row .lead{margin-top:0}
+.price-head .lead-row{margin-top:10px}
+.tiers{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.tier{position:relative;display:flex;flex-direction:column;padding:18px 22px 20px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper)}
+.tier.reco{box-shadow:inset 0 3px 0 var(--navy)}
+.reco-label{position:absolute;top:18px;right:20px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+.tier h3{font-size:21px;font-weight:700}
+.tier .for{font-size:14px;color:var(--muted)}
+.price{margin-top:10px;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px}
+.price b{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.price span{font-size:14px}
+.tier .tag{margin-top:6px;align-self:flex-start}
+.tier .ticklist{margin:12px 0 16px;flex:1;align-content:start}
+.tier .ticklist li.inherit{font-weight:700;color:var(--navy)}
 .tier .btn{width:100%}
-.sim{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;gap:0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line)}
-.sim-in{padding:28px;background:var(--bg)}
-.sim-in h3{font-size:20px}
-.sim-row{display:grid;grid-template-columns:1fr 110px;gap:16px;align-items:center;margin-top:16px}
-input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:transparent;cursor:pointer}
-.sim-out{background:var(--navy);color:var(--on-navy);padding:28px;display:flex;flex-direction:column;justify-content:center}
-.sim-out .calc{font-size:15px;color:var(--on-navy-muted);font-variant-numeric:tabular-nums}
-.sim-out .total{font-size:clamp(32px,3.4vw,44px);font-weight:800;color:#fff;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.15;margin-top:4px}
-.sim-out .total small{font-size:17px;font-weight:600;color:var(--on-navy-muted);letter-spacing:0}
-.sim-out .source{color:var(--on-navy-muted);margin-top:14px}
-.sim-out .source a{color:var(--cyan)}
-.pricing-foot{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 24px}
+.sim{margin-top:16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
+.sim-in{padding:18px 22px}
+.sim-in h3{font-size:17px;font-weight:700}
+.sim-row{display:grid;grid-template-columns:1fr 92px;gap:14px;align-items:center;margin-top:8px}
+input[type=range]{width:100%;height:40px;accent-color:var(--navy);background:transparent;cursor:pointer}
+.sim-in .help{margin-top:2px}
+.sim-out{padding:18px 22px;border-left:1px solid var(--rule)}
+.sim-out .calc{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;font-weight:600}
+.sim-out .total{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.2}
+.sim-out .total small{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0}
+.sim-out .source{margin-top:6px;font-size:12.5px}
 
-/* Contact */
-.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:32px;align-items:start}
-.urgent-box{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--urgent);border-radius:var(--radius-lg);padding:32px}
-.urgent-box h2{font-size:clamp(22px,2.2vw,28px)}
-.urgent-num{display:block;margin-top:14px;font-size:clamp(28px,3vw,36px);font-weight:800;color:var(--urgent);text-decoration:none;letter-spacing:.01em;font-variant-numeric:tabular-nums}
-.urgent-box .avail{font-size:15px;font-weight:600;color:var(--text);margin-top:2px}
-.urgent-box .btn{margin-top:18px;width:100%;white-space:normal;line-height:1.3;min-height:52px}
-.reflexes{margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
-.reflexes h3{font-size:18px}
-.reflexes ol{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:14px}
-.reflexes li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:15px;line-height:1.5}
-.reflexes li > span:first-child{width:40px;height:40px;border-radius:10px;background:var(--navy);color:var(--cyan);display:grid;place-items:center}
-.reflexes li b{display:block;color:var(--navy);font-size:16px}
-.avoid{margin-top:16px;font-size:14px;color:var(--text);background:var(--bg);border-radius:var(--radius-md);padding:12px 14px}
-.form-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm)}
-.form-box h2{font-size:clamp(22px,2.2vw,28px)}
-.form-box > p{margin-top:8px;color:var(--text);font-size:16px}
-.picked{margin-top:14px;display:none;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--navy);background:#0B1F3A0D;border-radius:999px;padding:6px 12px;width:fit-content}
+/* ---------- 07 Contact ---------- */
+.contact-grid{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.urgent-box{padding:24px 26px;border-top:3px solid var(--urgent)}
+.urgent-box h2,.form-box h2{font-size:24px;font-weight:700;line-height:1.25}
+.urgent-num{display:block;margin-top:6px;font-size:32px;font-weight:800;color:var(--urgent);text-decoration:none;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.avail{font-size:14.5px;font-weight:600}
+.urgent-box .btn{margin-top:14px;width:100%;min-height:52px;text-align:center}
+.reflexes{margin-top:18px;padding-top:16px;border-top:1px solid var(--hair)}
+.reflexes h3{font-size:16px;font-weight:700}
+.reflexes ol{margin-top:10px;padding:0;list-style:none;counter-reset:x;display:grid;gap:10px}
+.reflexes li{counter-increment:x;display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:14px;line-height:1.5}
+.reflexes li::before{content:counter(x);width:28px;height:28px;border:1px solid var(--navy);border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;color:var(--navy)}
+.reflexes li b{display:block;color:var(--navy);font-size:15px}
+.avoid{margin-top:12px;font-size:13.5px;padding:10px 12px;background:var(--bg);border-radius:4px}
+.form-box{padding:24px 26px}
+.form-box > p{margin-top:4px;font-size:15px}
+.picked{margin-top:10px;display:none;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--navy);border:1px solid var(--rule);border-radius:999px;padding:4px 12px;width:fit-content}
 .picked.show{display:inline-flex}
-.form-grid{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-grid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-grid .full{grid-column:1/-1}
-.form-box .btn-primary{width:100%;margin-top:6px}
+.form-box .btn-primary{width:100%}
 .spinner{width:18px;height:18px;border-radius:50%;border:2.5px solid #ffffff55;border-top-color:#fff;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.privacy{margin-top:12px;font-size:13px;color:var(--muted)}
+.privacy{margin-top:8px;font-size:13px;color:var(--muted)}
 
-/* Footer */
-.site-footer{background:var(--navy);color:var(--on-navy-muted);padding:56px 0 40px;font-size:15px}
-.footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1.4fr;gap:40px}
-.site-footer .brand{color:#fff}
-.site-footer h3{color:#fff;font-size:15px;margin-bottom:12px}
-.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.site-footer a{color:var(--on-navy);text-decoration:none}
+/* ---------- Footer ---------- */
+.site-footer{border-top:1px solid var(--rule);padding:48px 0 36px;font-size:14px}
+.foot-grid{display:grid;grid-template-columns:1.2fr .9fr .9fr 1.4fr;gap:32px}
+.site-footer h3{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.site-footer ul{list-style:none;padding:0;display:grid;gap:6px}
+.site-footer a{color:var(--navy);text-decoration:none}
 .site-footer a:hover{text-decoration:underline}
 .site-footer .sources li{font-size:13px;line-height:1.5}
-.site-footer .sources a{color:var(--cyan)}
-.footer-bottom{margin-top:40px;padding-top:20px;border-top:1px solid #ffffff1f;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:14px}
-.footer-bottom strong{color:#fff;font-weight:700}
+.site-footer .sources a{color:var(--cyan-text);text-decoration:underline}
+.foot-bottom{margin-top:32px;padding-top:16px;border-top:1px solid var(--hair);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13.5px;color:var(--muted)}
+.foot-bottom strong{color:var(--navy)}
 
-/* Mobile urgent bar */
-.urgent-bar{display:none}
-
-/* Entry motion (no content waits for scroll) */
+/* ---------- Motion ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .hero-copy > *{animation:rise .5s var(--ease-out) both}
-  .hero-copy > *:nth-child(2){animation-delay:.05s}
-  .hero-copy > *:nth-child(3){animation-delay:.1s}
-  .hero-copy > *:nth-child(4){animation-delay:.15s}
-  .hero-visual{animation:rise .6s .1s var(--ease-out) both}
-  .q-anim{animation:fadeIn .2s var(--ease-out) both}
-  .needle{transition:transform .32s var(--ease-out)}
+  .q-anim{animation:fade .22s var(--ease) both}
+  .needle{transition:transform .4s var(--ease)}
 }
-@keyframes rise{from{transform:translateY(10px)}to{transform:none}}
-@keyframes fadeIn{from{transform:translateX(8px)}to{transform:none}}
+@keyframes fade{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:0ms !important;transition-duration:0ms !important}
 }
 
-
-/* Desktop: every anchored section fits one screen under the sticky header */
-@media (min-width:1024px){
-  #test,#offre,#attaque,#nis2,#tarifs,#contact{padding:48px 0}
-  .quiz-panel{min-height:430px;padding:24px 28px}
-  .progress-bar{margin:8px 0 20px}
-  .result{grid-template-columns:180px 1fr;gap:24px}
-  .gauge{width:180px}
-  .result-text{font-size:15px;margin-top:6px}
-  .recos{margin-top:12px;gap:6px}
-  .recos li{font-size:14px;line-height:1.45}
-  .report{padding-top:14px;margin-top:0}
-  .check{margin-top:10px}
-  .restart{margin-top:6px}
-  .offer-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.7fr);gap:48px}
-  .offer-head{position:static}
-  .cards{gap:16px}
-  .card{display:grid;grid-template-columns:44px 1fr;column-gap:14px;align-items:center;align-content:start;padding:22px 24px}
-  .card-icon{width:44px;height:44px;margin:0}
-  .card p,.card ul{grid-column:1/-1}
-  .card p{margin-top:12px;font-size:15px}
-  .card ul{margin-top:12px;gap:6px}
-  .card-manager{padding:18px 24px}
-  .card-manager .card-icon{width:44px;height:44px}
-  .timeline{margin-top:44px}
-  .attack-note{margin-top:32px}
-  .nis2-grid{gap:48px}
-  .nis2-text p{font-size:16px;margin-top:12px}
-  .nis2-text p:first-of-type{margin-top:16px}
-  .nis2-text .figures p.fig-label{font-size:14px;margin-top:4px}
-  .nis2-text .figures p.source{font-size:13px;margin-top:4px}
-  .card-manager{grid-template-columns:44px 1fr;gap:16px;align-items:start}
-  .card-manager strong{font-size:16px}
-  .card-manager span{font-size:14px;display:block;margin-top:2px}
-  .stamp{margin-top:18px}
-  .nis2-tool{padding:24px}
-  .yn{margin-top:14px}
-  .yn legend{font-size:15px}
-  .yn-opts{margin-top:8px}
-  .yn-opts span{min-height:40px}
-  .nis2-result{margin-top:16px;padding:12px 16px}
-  .nis2-tool .btn{margin-top:16px}
-  .tier{padding:24px 22px}
-  .tier ul{margin:16px 0 20px}
-  .price b{font-size:32px}
-  .sim-in,.sim-out{padding:22px}
-  .sim-in h3{font-size:18px}
-  .sim-row{grid-template-columns:1fr 84px;gap:12px}
-  .sim-out{justify-content:flex-start}
-  .sim-out .total{font-size:clamp(28px,2.3vw,34px)}
-  .urgent-box,.form-box{padding:26px 28px}
-  .urgent-num{margin-top:8px}
-  .urgent-box .btn{margin-top:14px}
-  .reflexes{margin-top:20px;padding-top:18px}
-  .reflexes ol{gap:10px;margin-top:12px}
-  .reflexes li{grid-template-columns:36px 1fr}
-  .reflexes li > span:first-child{width:36px;height:36px}
-  .avoid{margin-top:12px}
-  .form-grid{gap:14px;margin-top:16px}
-  .contact-grid{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:28px}
-  .form-box .err{font-size:13px}
-  .form-box .field{gap:6px}
-}
-/* Responsive */
-@media (max-width:1100px){
-  .main-nav a{padding:8px 8px;font-size:14px}
-  .timeline{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:40px}
-  .timeline::before{display:none}
+/* ---------- Responsive ---------- */
+@media (max-width:1279px){
+  .dial-stage{height:auto;display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center}
+  .dial{position:relative;left:auto;top:auto;transform:none;width:320px;height:320px}
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
+  .step,.step.l,.step.r{position:static;width:auto;transform:none;text-align:left}
+  .step.l .st-btn{flex-direction:row}
+  .scope{grid-template-columns:1fr 1fr}
 }
 @media (max-width:1023px){
-  .main-nav{display:none;position:absolute;left:0;right:0;top:var(--header-h);background:var(--bg);border-bottom:1px solid var(--line);padding:8px var(--gutter) 16px}
-  .main-nav.open{display:block}
-  .main-nav ul{flex-direction:column}
-  .main-nav a{padding:12px 8px;font-size:16px}
-  .menu-btn{display:inline-flex}
-  .header-in{gap:8px}
-  .hero-grid,.quiz-layout,.offer-grid,.nis2-grid,.proof-top,.contact-grid{grid-template-columns:minmax(0,1fr)}
-  .offer-head{position:static}
-  .pricing-body{grid-template-columns:minmax(0,1fr)}
-  .hero-visual{max-width:620px}
-  .notif{left:16px}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .footer-grid > :first-child{grid-column:1/-1}
+  :root{--top:57px}
+  .rail{display:none}
+  .page{margin-left:0}
+  .topbar{display:flex;position:fixed;left:0;right:0;top:0;height:56px;z-index:50;align-items:center;padding:0 16px;background:var(--bg);border-bottom:1px solid var(--hair)}
+  .topbar .brand{font-size:18px}
+  .topbar .brand svg{width:28px;height:28px}
+  .topbar-progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--navy)}
+  .urgent-pill{top:6px;right:12px;min-height:44px;padding:0 14px;font-size:14px}
+  .chap{min-height:0;padding:56px 0}
+  .hero{padding-top:84px}
+  .nis2-grid,.about,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .about-art{width:200px}
+  .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:767px){
-  :root{--header-h:64px}
-  body{font-size:16px;padding-bottom:calc(60px + env(safe-area-inset-bottom))}
-  section{padding:64px 0}
-  .header-urgent{display:none}
-  .hero{padding:36px 0 96px}
-  .hero-ctas .btn{width:100%}
-  .hero-panel{padding:12px}
-  .notif{left:12px;bottom:-64px;width:calc(100% - 24px)}
-  .quiz-start{display:inline-flex;width:100%}
-  .quiz-panel{display:none}
-  body.quiz-open{overflow:hidden}
-  body.quiz-open .quiz-panel{display:flex;position:fixed;inset:0;z-index:60;border-radius:0;border:0;min-height:0;overflow-y:auto;padding:12px 16px calc(76px + env(safe-area-inset-bottom));background:var(--bg)}
-  .quiz-close{display:inline-flex}
-  .answers{grid-template-columns:1fr}
-  .result{grid-template-columns:1fr;gap:16px}
-  .gauge{width:180px}
+  body{font-size:16px}
+  .col{padding:0 16px}
+  .chap{padding:48px 0}
+  .hero{padding-top:76px;padding-bottom:40px}
+  .hero-eyebrow{font-size:12px}
+  .hero h1{font-size:21px}
+  .hero-sub{font-size:15px}
+  .consult{margin-top:22px;padding:18px 16px 14px;min-height:0}
+  .consult-top{gap:10px;padding-bottom:12px}
+  .consult-label{font-size:11.5px;letter-spacing:.06em}
+  .ticks{display:none}
+  .consult-count{margin-left:auto}
+  .consult-stage{padding:18px 0 14px}
+  .q-legend{font-size:24px}
+  .q-hint{font-size:15px}
+  .answers{grid-template-columns:1fr;margin-top:18px;gap:10px}
+  .answer{min-height:54px;font-size:17px;padding:8px 14px}
+  .consult-note{display:none}
+  .hide-sm{display:none}
+  .consult-foot:has(.quiz-back[hidden]){display:none}
+  .about-art{width:auto;display:flex;align-items:center;gap:14px;padding:12px 16px}
+  .about-art svg{width:56px;height:56px}
+  .about-art figcaption{margin:0;text-align:left}
+  .hero-cta .btn{width:100%}
+  .result{grid-template-columns:1fr;gap:12px}
+  .res-gauge{display:flex;align-items:center;gap:14px}
+  .gauge{width:130px}
   .report-row{grid-template-columns:1fr}
   .report-row .btn{width:100%}
-  .cards{grid-template-columns:1fr}
-  .card-manager{grid-template-columns:1fr}
-  .timeline{grid-template-columns:1fr;gap:0;margin-top:40px}
-  .step{display:grid;grid-template-columns:48px 1fr;column-gap:18px;padding-bottom:28px}
-  .step::before{content:"";position:absolute;left:23px;top:48px;bottom:0;width:2px;background:repeating-linear-gradient(180deg,#00B8D9 0 8px,transparent 8px 14px)}
-  .step:last-child::before{display:none}
-  .step-dot{grid-row:span 4}
-  .step-n{margin-top:2px}
-  .figures{grid-template-columns:1fr}
-  .pricing-body{display:block}
-  .sim{margin-top:28px}
-  .about{grid-template-columns:1fr}
-  .about-art{width:120px}
-  .cert{grid-template-columns:72px 1fr;gap:14px}
+  .chap-head h2{font-size:26px}
+  .lead{font-size:16.5px}
+  .scope{grid-template-columns:1fr}
+  .excluded{grid-template-columns:1fr;gap:10px}
+  .excluded ul{grid-template-columns:1fr}
+  .dial-stage{display:block}
+  .dial{width:min(300px,100%);height:auto;aspect-ratio:1;margin:0 auto}
+  .steps{margin-top:24px;grid-template-columns:1fr;gap:0}
+  .step{padding:14px 0;border-top:1px solid var(--hair)}
+  .figures{grid-template-columns:1fr 1fr}
+  .figures .fig-wide{grid-column:1/-1}
+  .nis2-grid{gap:28px}
+  .cert-list{grid-template-columns:1fr}
   .partners{grid-template-columns:1fr 1fr}
-  .partners p{grid-column:1/-1;max-width:none}
+  .partners p{grid-column:1/-1}
   .quotes{grid-template-columns:1fr;border-top:0}
-  .quote,.quote + .quote{padding:24px 0;border-left:0;border-top:1px solid var(--line)}
-  .tiers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:32px calc(-1 * var(--gutter)) 0;padding:16px var(--gutter) 8px;scrollbar-width:none}
-  .tiers::-webkit-scrollbar{display:none}
-  .tier{flex:0 0 84%;scroll-snap-align:center}
+  .quote,.quote + .quote{padding:18px 0;border-left:0;border-top:1px solid var(--hair)}
+  .tiers{grid-template-columns:1fr}
   .sim{grid-template-columns:1fr}
+  .sim-out{border-left:0;border-top:1px solid var(--rule)}
   .form-grid{grid-template-columns:1fr}
-  .urgent-box,.form-box,.nis2-tool{padding:22px}
-  .stamp{border-radius:14px;align-items:flex-start}
-  .stamp svg{margin-top:2px;flex:none}
-  .footer-grid{grid-template-columns:1fr}
-  .urgent-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:8px 16px calc(8px + env(safe-area-inset-bottom));background:var(--urgent);color:#fff;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 -4px 16px rgba(11,31,58,.18)}
-  .urgent-bar:focus-visible{outline:3px solid var(--navy);outline-offset:-5px}
+  .urgent-box,.form-box{padding:20px 18px}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (max-width:400px){
+  .topbar .brand span{display:none}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 
-<!-- Inline icon sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.2l1.6 4-2 1.3a11 11 0 0 0 5 5l1.3-2 4 1.6V17a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
@@ -505,281 +443,249 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
     <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5v5.5M12 16.2v.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
-    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M12 3.5l7 3v5.2c0 4.3-3 7.6-7 8.8-4-1.2-7-4.5-7-8.8V6.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.8 12.2l2.3 2.3 4.3-4.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 1.5h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-disk" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7.5" ry="2.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 6v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8V6M4.5 12v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
     <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 19c.6-3.3 3-5 6-5s5.4 1.7 6 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15.5 5.6a3.1 3.1 0 0 1 0 5.8M17.5 14.4c1.8.6 3.1 2.1 3.5 4.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4.5 14v-2a7.5 7.5 0 0 1 15 0v2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="13" width="4" height="6" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="16.5" y="13" width="4" height="6" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M18.5 19c0 1.5-2 2.5-5 2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 1.5h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 15l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-unplug" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 20h8M12 16.5V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 8.5l6 4M15 8.5l-6 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-restore" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4.5 4.5v4h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8.5V12l2.5 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3.5h7.5l4 4v13h-11.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.5 3.5v4.5h4.5M9.5 12.5h5M9.5 16h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3.2l1.6-2.5h6.4L16.8 8H20v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13.3" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-logo-light" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="#F7F5F0"/><path d="M9 30V14h5v4h4.5v-4h3v4H26v-4h5v16z" fill="#0B1F3A"/><path d="M9 33.5h22" stroke="#006B85" stroke-width="2.4" stroke-linecap="round"/></symbol>
-    <symbol id="i-logo" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="#0B1F3A"/><path d="M9 30V14h5v4h4.5v-4h3v4H26v-4h5v16z" fill="#F7F5F0"/><path d="M9 33.5h22" stroke="#00B8D9" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M9 30V14h5v4h4.5v-4h3v4H26v-4h5v16z" fill="#F7F5F0"/><path d="M9 33.5h22" stroke="#00B8D9" stroke-width="2.4" stroke-linecap="round"/></symbol>
   </defs>
 </svg>
 
-<header class="site-header">
-  <div class="container header-in">
-    <a class="brand" href="#contenu" aria-label="Rempart, retour en haut de page"><svg aria-hidden="true"><use href="#i-logo"/></svg>Rempart</a>
-    <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
-      <ul>
-        <li><a href="#test">Test express</a></li>
-        <li><a href="#offre">L'offre</a></li>
-        <li><a href="#attaque">En cas d'attaque</a></li>
-        <li><a href="#nis2">NIS2</a></li>
-        <li><a href="#tarifs">Tarifs</a></li>
-        <li><a href="#contact">Diagnostic</a></li>
-      </ul>
-    </nav>
-    <a class="btn btn-urgent header-urgent" href="tel:+33000000000"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Urgence&nbsp;: 0X XX XX XX XX</a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu"><svg width="24" height="24" aria-hidden="true"><use href="#i-menu"/></svg></button>
+<!-- Desktop rail: chapters with reading progress -->
+<aside class="rail" aria-label="Sommaire">
+  <a class="brand" href="#test" aria-label="Rempart, retour au début"><svg aria-hidden="true"><use href="#i-logo"/></svg>Rempart</a>
+  <nav class="rail-nav" aria-label="Chapitres">
+    <p class="rail-label">Sommaire</p>
+    <ol id="rail-list">
+      <li><a href="#test" data-chap><span class="dot" aria-hidden="true"></span><span class="n">01</span>Le test</a></li>
+      <li><a href="#offre" data-chap><span class="dot" aria-hidden="true"></span><span class="n">02</span>L'offre</a></li>
+      <li><a href="#attaque" data-chap><span class="dot" aria-hidden="true"></span><span class="n">03</span>En cas d'attaque</a></li>
+      <li><a href="#nis2" data-chap><span class="dot" aria-hidden="true"></span><span class="n">04</span>NIS2</a></li>
+      <li><a href="#preuves" data-chap><span class="dot" aria-hidden="true"></span><span class="n">05</span>Preuves</a></li>
+      <li><a href="#tarifs" data-chap><span class="dot" aria-hidden="true"></span><span class="n">06</span>Tarifs</a></li>
+      <li><a href="#contact" data-chap><span class="dot" aria-hidden="true"></span><span class="n">07</span>Diagnostic</a></li>
+    </ol>
+    <span class="rail-fill" id="rail-fill" aria-hidden="true"></span>
+  </nav>
+  <div class="rail-foot">
+    <a class="btn btn-line" href="#test" data-start-quiz>Faire le test (2&nbsp;min)</a>
+    <p class="rail-read" id="rail-read" aria-hidden="true">Lu à 0&nbsp;%</p>
   </div>
-</header>
+</aside>
 
+<!-- Mobile top bar -->
+<div class="topbar">
+  <a class="brand" href="#test" aria-label="Rempart, retour au début"><svg aria-hidden="true"><use href="#i-logo"/></svg><span>Rempart</span></a>
+  <span class="topbar-progress" id="topbar-progress" aria-hidden="true"></span>
+</div>
+
+<!-- The only element top right: urgency -->
+<a class="urgent-pill" href="tel:+33000000000"><svg width="17" height="17" aria-hidden="true"><use href="#i-phone"/></svg>Urgence&nbsp;: 0X XX XX XX XX</a>
+
+<div class="page">
 <main id="contenu">
 
-<!-- 1. Hero -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow">SOC managé pour PME et ETI</span>
-      <h1 id="hero-title">Votre PME surveillée 24&nbsp;h/24, sans recruter d'équipe sécurité</h1>
-      <p class="lead">Détection, réponse et préparation NIS2, à prix fixe par poste. Des analystes en France vous appellent avant que ça dégénère.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="#test" data-start-quiz>Faire le test (2&nbsp;min)<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-secondary" href="#contact">Demander mon diagnostic gratuit</a>
+<!-- 01 Hero: the express test is the first screen -->
+<section class="chap hero" id="test" aria-labelledby="hero-title">
+  <div class="col">
+    <p class="hero-eyebrow"><span class="hide-sm">Première consultation · </span>SOC managé pour PME et ETI</p>
+    <h1 id="hero-title">Votre PME surveillée 24&nbsp;h/24, sans recruter d'équipe sécurité</h1>
+    <p class="hero-sub">Détection, réponse et préparation NIS2, à prix fixe par poste. Des analystes en France vous appellent avant que ça dégénère.</p>
+
+    <div class="consult box" id="quiz" role="region" aria-labelledby="quiz-label">
+      <div class="consult-top">
+        <p class="consult-label" id="quiz-label"><span class="hide-sm">Test express · </span>5 questions · sans e-mail</p>
+        <div class="ticks" id="quiz-ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="consult-count" id="quiz-progress" aria-live="polite"><span class="sr-only">Question </span>1/5</p>
+      </div>
+      <div class="consult-stage" id="quiz-stage">
+        <div><h2 class="q-legend" id="q-legend" tabindex="-1">Vos sauvegardes sont-elles testées régulièrement&nbsp;?</h2></div>
+      </div>
+      <div class="consult-foot">
+        <button class="quiz-back" type="button" id="quiz-back" hidden><svg width="18" height="18" aria-hidden="true"><use href="#i-back"/></svg>Question précédente</button>
+        <p class="consult-note">Vos réponses restent sur votre écran.</p>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-panel on-navy">
-        <svg viewBox="0 0 520 486" role="img" aria-labelledby="hv-t hv-d">
-          <title id="hv-t">Schéma de la surveillance Rempart</title>
-          <desc id="hv-d">Les postes d'une PME sont reliés à un analyste Rempart en France, qui veille de jour comme de nuit.</desc>
-          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <!-- day / night arc -->
-            <path d="M92 96 Q260 -4 428 96" stroke="#B8C4D6" stroke-width="1.6" stroke-dasharray="2 7"/>
-            <path d="M70 80 a15 15 0 1 0 14 22 a12 12 0 0 1 -14 -22z" stroke="#F7F5F0" stroke-width="2"/>
-            <circle cx="448" cy="96" r="9" stroke="#00B8D9" stroke-width="2"/>
-            <path d="M448 78v-5M448 119v-5M430 96h-5M471 96h-5M435 83l-3.5-3.5M464.5 112.5l-3.5-3.5M461 83l3.5-3.5M431.5 112.5l3.5-3.5" stroke="#00B8D9" stroke-width="2"/>
-            <!-- ground -->
-            <path d="M24 372H496" stroke="#B8C4D6" stroke-width="1.6"/>
-            <!-- building -->
-            <rect x="46" y="168" width="176" height="204" rx="6" stroke="#F7F5F0" stroke-width="2"/>
-            <path d="M46 196H222" stroke="#F7F5F0" stroke-width="2" opacity=".5"/>
-            <g stroke="#F7F5F0" stroke-width="1.8">
-              <rect x="66" y="214" width="36" height="24" rx="3"/><path d="M84 238v7M76 245h16"/>
-              <rect x="116" y="214" width="36" height="24" rx="3"/><path d="M134 238v7M126 245h16"/>
-              <rect x="166" y="214" width="36" height="24" rx="3"/><path d="M184 238v7M176 245h16"/>
-              <rect x="66" y="264" width="36" height="24" rx="3"/><path d="M84 288v7M76 295h16"/>
-              <rect x="166" y="264" width="36" height="24" rx="3"/><path d="M184 288v7M176 295h16"/>
-              <rect x="122" y="324" width="24" height="48" rx="2"/>
-            </g>
-            <!-- isolated workstation -->
-            <rect x="116" y="264" width="36" height="24" rx="3" stroke="#00B8D9" stroke-width="2" stroke-dasharray="4 3"/>
-            <path d="M134 288v7M126 295h16" stroke="#00B8D9" stroke-width="2"/>
-            <path d="M128 270l12 12M140 270l-12 12" stroke="#00B8D9" stroke-width="1.8"/>
-            <!-- link -->
-            <path d="M222 268 C262 268 270 300 320 304" stroke="#00B8D9" stroke-width="2" stroke-dasharray="5 7"/>
-            <circle cx="268" cy="286" r="15" fill="#0B1F3A" stroke="#00B8D9" stroke-width="2"/>
-            <path d="M261 286.5l4.6 4.6 8.4-9" stroke="#00B8D9" stroke-width="2.2"/>
-            <!-- analyst -->
-            <path d="M356 372v-40M468 372v-40" stroke="#B8C4D6" stroke-width="1.8"/>
-            <path d="M330 332H492" stroke="#F7F5F0" stroke-width="2"/>
-            <circle cx="410" cy="222" r="24" stroke="#F7F5F0" stroke-width="2"/>
-            <path d="M382 224a28 28 0 0 1 56 0" stroke="#F7F5F0" stroke-width="2"/>
-            <rect x="378" y="218" width="9" height="17" rx="3.5" fill="#0B1F3A" stroke="#F7F5F0" stroke-width="2"/>
-            <rect x="433" y="218" width="9" height="17" rx="3.5" fill="#0B1F3A" stroke="#F7F5F0" stroke-width="2"/>
-            <path d="M384 236c2 12 10 17 20 17" stroke="#00B8D9" stroke-width="2"/>
-            <path d="M360 332c0-38 22-62 50-62s50 24 50 62" stroke="#F7F5F0" stroke-width="2"/>
-            <path d="M372 332l10-46h56l10 46z" fill="#0B1F3A" stroke="#F7F5F0" stroke-width="2"/>
-            <path d="M402 306h16v12h-16z" stroke="#00B8D9" stroke-width="1.6"/>
-          </g>
-          <g font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-weight="600" text-anchor="middle">
-            <text x="260" y="40" fill="#F7F5F0" font-size="15">Jour et nuit, 7 jours sur 7</text>
-            <text x="134" y="404" fill="#B8C4D6" font-size="14">Votre PME</text>
-            <text x="410" y="404" fill="#B8C4D6" font-size="14">Analyste Rempart, en France</text>
-          </g>
-        </svg>
-      </div>
-      <div class="notif" aria-hidden="true">
-        <span class="notif-icon"><svg width="20" height="20"><use href="#i-check"/></svg></span>
-        <strong>Poste « compta-02 » isolé du réseau</strong>
-        <span>Votre SOC Manager vous appelle pour faire le point.</span>
-        <em>Exemple de notification</em>
-      </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">Demander mon diagnostic gratuit<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <p>Un analyste vous rappelle pour faire le point.</p>
     </div>
   </div>
 </section>
 
-<!-- 2. Test express -->
-<section class="quiz-section" id="test" aria-labelledby="test-title">
-  <div class="container quiz-layout">
-    <div class="quiz-intro">
-      <h2 id="test-title">Test express&nbsp;: où en est votre PME&nbsp;?</h2>
-      <p class="lead">5 questions, sans e-mail. Vous obtenez tout de suite un niveau de risque et 3 recommandations concrètes.</p>
-      <ul class="quiz-topics">
-        <li><svg width="22" height="22" aria-hidden="true"><use href="#i-disk"/></svg>Sauvegardes testées</li>
-        <li><svg width="22" height="22" aria-hidden="true"><use href="#i-hand"/></svg>Double authentification</li>
-        <li><svg width="22" height="22" aria-hidden="true"><use href="#i-restore"/></svg>Mises à jour</li>
-        <li><svg width="22" height="22" aria-hidden="true"><use href="#i-people"/></svg>Sensibilisation des équipes</li>
-        <li><svg width="22" height="22" aria-hidden="true"><use href="#i-headset"/></svg>Personne d'astreinte</li>
-      </ul>
-      <button class="btn btn-primary quiz-start" type="button" data-start-quiz>Commencer le test<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-    </div>
-
-    <div class="quiz-panel" id="quiz" role="region" aria-label="Test express, 5 questions">
-      <div class="quiz-top">
-        <button class="quiz-back" type="button" id="quiz-back" hidden><svg width="18" height="18" aria-hidden="true"><use href="#i-back"/></svg>Retour</button>
-        <span class="quiz-progress" id="quiz-progress" aria-live="polite">Question 1/5</span>
-        <button class="quiz-close" type="button" id="quiz-close" aria-label="Fermer le test"><svg width="24" height="24" aria-hidden="true"><use href="#i-x"/></svg></button>
-      </div>
-      <div class="progress-bar" id="quiz-bar" aria-hidden="true"></div>
-      <div class="quiz-stage" id="quiz-stage"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. Ce que couvre l'offre -->
-<section id="offre" aria-labelledby="offre-title">
-  <div class="container offer-grid">
-    <div class="offer-head">
+<!-- 02 Offer -->
+<section class="chap" id="offre" aria-labelledby="offre-title">
+  <div class="col">
+    <header class="chap-head">
+      <p class="chap-n">Chapitre 02 · L'offre</p>
       <h2 id="offre-title">Ce que couvre l'offre</h2>
       <p class="lead">Un abonnement mensuel, un prix fixe par poste, sans frais de mise en service. Voici ce qui est compris, et ce qui ne l'est pas.</p>
-      <div class="not-included">
-        <h3><svg width="20" height="20" aria-hidden="true"><use href="#i-minus"/></svg>Ce qui n'est pas inclus</h3>
-        <ul>
-          <li><svg width="16" height="16" aria-hidden="true"><use href="#i-x"/></svg>Le support informatique du quotidien (mots de passe oubliés, imprimantes, logiciels de bureau).</li>
-          <li><svg width="16" height="16" aria-hidden="true"><use href="#i-x"/></svg>L'achat ou le remplacement de votre matériel.</li>
-          <li><svg width="16" height="16" aria-hidden="true"><use href="#i-x"/></svg>La maintenance de vos logiciels métier.</li>
-          <li><svg width="16" height="16" aria-hidden="true"><use href="#i-x"/></svg>Le conseil juridique et la déclaration à votre assureur&nbsp;: nous vous orientons vers les bons interlocuteurs.</li>
-        </ul>
-      </div>
-      <div class="card-manager on-navy">
-        <div class="card-icon"><svg width="26" height="26" aria-hidden="true"><use href="#i-headset"/></svg></div>
-        <div><strong>Un SOC Manager attitré, qui connaît votre entreprise</strong><span>Le même interlocuteur pour les alertes, les rapports mensuels et les questions de vos clients sur la sécurité.</span></div>
-      </div>
-    </div>
-    <div class="cards">
-      <article class="card">
-        <div class="card-icon"><svg width="26" height="26" aria-hidden="true"><use href="#i-eye"/></svg></div>
-        <h3>Détection</h3>
+    </header>
+    <div class="scope">
+      <article>
+        <h3><svg width="20" height="20" aria-hidden="true"><use href="#i-eye"/></svg>Détection<span class="sc-n" aria-hidden="true">2.1</span></h3>
         <p>Vos postes et serveurs sont surveillés en continu.</p>
-        <ul>
+        <ul class="ticklist">
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Un agent léger installé sur chaque poste et serveur</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Chaque alerte relue par un analyste, jour et nuit</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Les fausses alertes filtrées avant de vous déranger</li>
         </ul>
       </article>
-      <article class="card">
-        <div class="card-icon"><svg width="26" height="26" aria-hidden="true"><use href="#i-bell"/></svg></div>
-        <h3>Réponse</h3>
+      <article>
+        <h3><svg width="20" height="20" aria-hidden="true"><use href="#i-bell"/></svg>Réponse<span class="sc-n" aria-hidden="true">2.2</span></h3>
         <p>On agit, on ne se contente pas d'alerter.</p>
-        <ul>
+        <ul class="ticklist">
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Isolement à distance d'un poste touché</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Appel du dirigeant, en mots simples</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Rapport écrit après chaque incident</li>
         </ul>
       </article>
-      <article class="card">
-        <div class="card-icon"><svg width="26" height="26" aria-hidden="true"><use href="#i-disk"/></svg></div>
-        <h3>Sauvegarde</h3>
+      <article>
+        <h3><svg width="20" height="20" aria-hidden="true"><use href="#i-disk"/></svg>Sauvegarde<span class="sc-n" aria-hidden="true">2.3</span></h3>
         <p>Des sauvegardes supervisées, prêtes le jour où il faut repartir.</p>
-        <ul>
+        <ul class="ticklist">
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Une copie conservée hors de votre réseau</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Des restaurations testées, pas seulement lancées</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Un échec de sauvegarde signalé, puis corrigé</li>
         </ul>
       </article>
-      <article class="card">
-        <div class="card-icon"><svg width="26" height="26" aria-hidden="true"><use href="#i-people"/></svg></div>
-        <h3>Formation</h3>
+      <article>
+        <h3><svg width="20" height="20" aria-hidden="true"><use href="#i-people"/></svg>Formation<span class="sc-n" aria-hidden="true">2.4</span></h3>
         <p>Vos équipes reconnaissent un e-mail piégé.</p>
-        <ul>
+        <ul class="ticklist">
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Des sessions courtes, sans jargon</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Des exercices de faux hameçonnage</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Les bons réflexes affichés au poste de travail</li>
         </ul>
       </article>
+      <div class="manager">
+        <svg width="26" height="26" aria-hidden="true"><use href="#i-headset"/></svg>
+        <p><strong>Un SOC Manager attitré, qui connaît votre entreprise.</strong> Le même interlocuteur pour les alertes, les rapports mensuels et les questions de vos clients sur la sécurité.</p>
+      </div>
+    </div>
+    <div class="excluded">
+      <h3>Ce qui n'est pas inclus</h3>
+      <ul>
+        <li><svg width="14" height="14" aria-hidden="true"><use href="#i-x"/></svg>Le support informatique du quotidien (mots de passe oubliés, imprimantes, logiciels de bureau).</li>
+        <li><svg width="14" height="14" aria-hidden="true"><use href="#i-x"/></svg>L'achat ou le remplacement de votre matériel.</li>
+        <li><svg width="14" height="14" aria-hidden="true"><use href="#i-x"/></svg>La maintenance de vos logiciels métier.</li>
+        <li><svg width="14" height="14" aria-hidden="true"><use href="#i-x"/></svg>Le conseil juridique et la déclaration à votre assureur&nbsp;: nous vous orientons vers les bons interlocuteurs.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- 4. En cas d'attaque -->
-<section class="attack on-navy" id="attaque" aria-labelledby="attaque-title">
-  <div class="container">
-    <h2 id="attaque-title">En cas d'attaque, voici qui fait quoi</h2>
-    <p class="lead">Six étapes, de l'alerte au rapport. À chacune, une personne nommée agit pour vous.</p>
-    <ol class="timeline">
-      <li class="step">
-        <span class="step-dot" aria-hidden="true"><svg width="22" height="22"><use href="#i-bell"/></svg></span>
-        <span class="step-n">Étape 1</span>
-        <h3>Alerte</h3>
-        <p>Un comportement anormal remonte d'un poste ou d'un serveur.</p>
-        <span class="who">Qui agit&nbsp;: la plateforme de détection, relue par l'analyste</span>
-      </li>
-      <li class="step">
-        <span class="step-dot" aria-hidden="true"><svg width="22" height="22"><use href="#i-search"/></svg></span>
-        <span class="step-n">Étape 2</span>
-        <h3>Analyse</h3>
-        <p>Vraie attaque ou fausse alerte&nbsp;? L'analyste vérifie avant de vous déranger.</p>
-        <span class="who">Qui agit&nbsp;: l'analyste SOC de garde</span>
-      </li>
-      <li class="step">
-        <span class="step-dot" aria-hidden="true"><svg width="22" height="22"><use href="#i-unplug"/></svg></span>
-        <span class="step-n">Étape 3</span>
-        <h3>Isolement du poste</h3>
-        <p>Le poste touché est coupé du réseau à distance. Les autres continuent de travailler.</p>
-        <span class="who">Qui agit&nbsp;: l'analyste SOC</span>
-      </li>
-      <li class="step">
-        <span class="step-dot" aria-hidden="true"><svg width="22" height="22"><use href="#i-phone"/></svg></span>
-        <span class="step-n">Étape 4</span>
-        <h3>Appel du dirigeant</h3>
-        <p>Ce qui se passe, en mots simples, et ce que vous avez à décider.</p>
-        <span class="who">Qui agit&nbsp;: votre SOC Manager</span>
-      </li>
-      <li class="step">
-        <span class="step-dot" aria-hidden="true"><svg width="22" height="22"><use href="#i-restore"/></svg></span>
-        <span class="step-n">Étape 5</span>
-        <h3>Restauration</h3>
-        <p>Les données reviennent depuis les sauvegardes supervisées.</p>
-        <span class="who">Qui agit&nbsp;: l'équipe réponse, avec votre informaticien</span>
-      </li>
-      <li class="step">
-        <span class="step-dot" aria-hidden="true"><svg width="22" height="22"><use href="#i-doc"/></svg></span>
-        <span class="step-n">Étape 6</span>
-        <h3>Rapport</h3>
-        <p>Ce qui s'est passé, ce qui a été fait, ce qui change ensuite.</p>
-        <span class="who">Qui agit&nbsp;: votre SOC Manager</span>
-      </li>
-    </ol>
-    <div class="attack-note">
-      <p>Aucun délai n'est affiché ici&nbsp;: Rempart est une entreprise fictive et n'a rien mesuré. Un vrai prestataire doit pouvoir vous donner les siens, par écrit.</p>
-      <a class="btn btn-cyan" href="#contact"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Attaque en cours&nbsp;? Les 3 réflexes</a>
+<!-- 03 In case of attack: the 24 h dial -->
+<section class="chap" id="attaque" aria-labelledby="attaque-title">
+  <div class="col">
+    <header class="chap-head">
+      <p class="chap-n">Chapitre 03 · En cas d'attaque</p>
+      <h2 id="attaque-title">En cas d'attaque, voici qui fait quoi</h2>
+      <p class="lead">Six étapes, de l'alerte au rapport. À chacune, une personne nommée agit pour vous, de jour comme de nuit.</p>
+    </header>
+
+    <div class="dial-stage">
+      <svg class="dial" viewBox="0 0 400 400" role="img" aria-labelledby="dial-t dial-d">
+        <title id="dial-t">Cadran de 24 heures</title>
+        <desc id="dial-d">Un cadran jour et nuit. Les six étapes de la réponse à incident sont placées autour, dans l'ordre, de l'alerte au rapport. Le même déroulé s'applique à toute heure.</desc>
+        <circle cx="200" cy="200" r="197" fill="#FDFCF9" stroke="#C9C4B6"/>
+        <!-- day (top) / night (bottom) ring -->
+        <path d="M22 200 A178 178 0 0 1 378 200" fill="none" stroke="#E4EEF1" stroke-width="22"/>
+        <path d="M378 200 A178 178 0 0 1 22 200" fill="none" stroke="#0B1F3A" stroke-width="22"/>
+        <!-- sun and moon -->
+        <g fill="none" stroke="#006B85" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="200" cy="22" r="5"/>
+          <path d="M200 12.5v2M200 29.5v2M190.5 22h2M207.5 22h2M193.3 15.3l1.4 1.4M205.3 27.3l1.4 1.4M206.7 15.3l-1.4 1.4M194.7 27.3l-1.4 1.4"/>
+        </g>
+        <path d="M203.5 371.5a7 7 0 1 0 0 13a5.6 5.6 0 0 1 0-13z" fill="#F7F5F0"/>
+        <!-- hour ticks -->
+        <g stroke="#9AA3B0" stroke-width="1" id="dial-ticks"></g>
+        <g font-family="Manrope, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="#5B6B80" text-anchor="middle">
+          <text x="200" y="66">12 h</text>
+          <text x="200" y="342">0 h</text>
+          <text x="62" y="204">6 h</text>
+          <text x="338" y="204">18 h</text>
+        </g>
+        <!-- sequence ring -->
+        <circle cx="200" cy="200" r="100" fill="none" stroke="#006B85" stroke-width="1.2" stroke-dasharray="3 5"/>
+        <!-- hand -->
+        <g class="hand" id="dial-hand" style="transform:rotate(30deg)">
+          <path d="M200 162V118" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <circle cx="200" cy="200" r="3" fill="#0B1F3A"/>
+        <g font-family="Manrope, ui-sans-serif, system-ui, sans-serif" text-anchor="middle">
+          <text x="200" y="190" font-size="20" font-weight="800" fill="#0B1F3A">24 h/24</text>
+          <text x="200" y="222" font-size="13" font-weight="700" fill="#5B6B80">7 j/7</text>
+        </g>
+        <!-- step nodes, placed in order, not at a given hour -->
+        <g class="node on" data-node="0"><circle cx="250" cy="113.4" r="17"/><text x="250" y="118.4" text-anchor="middle">1</text></g>
+        <g class="node" data-node="1"><circle cx="300" cy="200" r="17"/><text x="300" y="205" text-anchor="middle">2</text></g>
+        <g class="node" data-node="2"><circle cx="250" cy="286.6" r="17"/><text x="250" y="291.6" text-anchor="middle">3</text></g>
+        <g class="node" data-node="3"><circle cx="150" cy="286.6" r="17"/><text x="150" y="291.6" text-anchor="middle">4</text></g>
+        <g class="node" data-node="4"><circle cx="100" cy="200" r="17"/><text x="100" y="205" text-anchor="middle">5</text></g>
+        <g class="node" data-node="5"><circle cx="150" cy="113.4" r="17"/><text x="150" y="118.4" text-anchor="middle">6</text></g>
+      </svg>
+
+      <ol class="steps" id="steps">
+        <li class="step r s1 on">
+          <h3><button class="st-btn" type="button" data-step="0"><span class="st-n">1</span>Alerte</button></h3>
+          <p>Un comportement anormal remonte d'un poste ou d'un serveur.</p>
+          <p class="who">Qui agit&nbsp;: la plateforme de détection, relue par l'analyste</p>
+        </li>
+        <li class="step r s2">
+          <h3><button class="st-btn" type="button" data-step="1"><span class="st-n">2</span>Analyse</button></h3>
+          <p>Vraie attaque ou fausse alerte&nbsp;? L'analyste vérifie avant de vous déranger.</p>
+          <p class="who">Qui agit&nbsp;: l'analyste SOC de garde</p>
+        </li>
+        <li class="step r s3">
+          <h3><button class="st-btn" type="button" data-step="2"><span class="st-n">3</span>Isolement du poste</button></h3>
+          <p>Le poste touché est coupé du réseau à distance. Les autres continuent de travailler.</p>
+          <p class="who">Qui agit&nbsp;: l'analyste SOC</p>
+        </li>
+        <li class="step l s4">
+          <h3><button class="st-btn" type="button" data-step="3"><span class="st-n">4</span>Appel du dirigeant</button></h3>
+          <p>Ce qui se passe, en mots simples, et ce que vous avez à décider.</p>
+          <p class="who">Qui agit&nbsp;: votre SOC Manager</p>
+        </li>
+        <li class="step l s5">
+          <h3><button class="st-btn" type="button" data-step="4"><span class="st-n">5</span>Restauration</button></h3>
+          <p>Les données reviennent depuis les sauvegardes supervisées.</p>
+          <p class="who">Qui agit&nbsp;: l'équipe réponse, avec votre informaticien</p>
+        </li>
+        <li class="step l s6">
+          <h3><button class="st-btn" type="button" data-step="5"><span class="st-n">6</span>Rapport</button></h3>
+          <p>Ce qui s'est passé, ce qui a été fait, ce qui change ensuite.</p>
+          <p class="who">Qui agit&nbsp;: votre SOC Manager</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="dial-note">
+      <p>Les étapes sont placées dans l'ordre, pas à une heure précise&nbsp;: le même déroulé vaut la nuit comme le jour. Aucun délai n'est affiché&nbsp;: Rempart est une entreprise fictive et n'a rien mesuré. Un vrai prestataire doit pouvoir vous donner les siens, par écrit.</p>
+      <a class="text-link" href="#contact">Attaque en cours&nbsp;? Les 3 réflexes<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- 5. NIS2 -->
-<section id="nis2" aria-labelledby="nis2-title">
-  <div class="container nis2-grid">
+<!-- 04 NIS2 -->
+<section class="chap" id="nis2" aria-labelledby="nis2-title">
+  <div class="col nis2-grid">
     <div class="nis2-text">
-      <h2 id="nis2-title">NIS2, expliquée sans jargon</h2>
-      <p>NIS2 est une directive européenne. Elle oblige les entreprises concernées à gérer leurs risques informatiques, à signaler leurs incidents graves et à impliquer leur direction. Chaque pays l'inscrit dans sa propre loi.</p>
-      <p>En France, le nombre d'entités régulées passe d'environ 500 à près de 15&nbsp;000, dans 18 secteurs au lieu de 6. En règle générale, vous êtes concerné si vous travaillez dans l'un de ces secteurs et que vous n'êtes plus une petite entreprise au sens européen&nbsp;: moins de 50 personnes et pas plus de 10&nbsp;M€ de chiffre d'affaires ou de bilan.</p>
-      <p>Même hors du champ, vos clients régulés vous demanderont des garanties, souvent par un questionnaire fournisseur. La loi française n'est pas encore votée&nbsp;: l'Assemblée nationale a retiré le projet de loi «&nbsp;Résilience&nbsp;» de son ordre du jour le 6 octobre 2026, sans nouvelle date.</p>
-      <span class="stamp"><svg width="18" height="18" aria-hidden="true"><use href="#i-clock"/></svg>Transposition française en cours, mis à jour le 13 novembre 2026</span>
-
+      <header class="chap-head">
+        <p class="chap-n">Chapitre 04 · NIS2</p>
+        <h2 id="nis2-title">NIS2, expliquée sans jargon</h2>
+      </header>
+      <p class="para">NIS2 est une directive européenne. Elle oblige les entreprises concernées à gérer leurs risques informatiques, à signaler leurs incidents graves et à impliquer leur direction. Chaque pays l'inscrit dans sa propre loi.</p>
+      <p class="para">En France, le nombre d'entités régulées passe d'environ 500 à près de 15&nbsp;000, dans 18 secteurs au lieu de 6. En règle générale, vous êtes concerné si vous travaillez dans l'un de ces secteurs et que vous n'êtes plus une petite entreprise au sens européen&nbsp;: moins de 50 personnes et pas plus de 10&nbsp;M€ de chiffre d'affaires ou de bilan.</p>
+      <p class="para">Même hors du champ, vos clients régulés vous demanderont des garanties, souvent par un questionnaire fournisseur. La loi française n'est pas encore votée&nbsp;: l'Assemblée nationale a retiré le projet de loi «&nbsp;Résilience&nbsp;» de son ordre du jour le 6 octobre 2026, sans nouvelle date.</p>
+      <span class="stamp"><svg width="16" height="16" aria-hidden="true"><use href="#i-clock"/></svg>Transposition française en cours, mis à jour le 13 novembre 2026</span>
       <div class="figures">
-        <div class="fig fig-wide">
+        <div class="fig-wide">
           <div class="fig-big">500 → 15&nbsp;000</div>
           <p class="fig-label">entités régulées en France, environ, avant et après NIS2</p>
           <div class="bars" aria-hidden="true">
@@ -787,13 +693,13 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
             <div class="bar"><span>Après</span><i style="width:100%"></i></div>
           </div>
         </div>
-        <div class="fig"><div class="fig-big">80&nbsp;%</div><p class="fig-label">des TPE-PME ne se disent pas préparées</p></div>
-        <div class="fig"><div class="fig-big">16&nbsp;%</div><p class="fig-label">se déclarent victimes d'au moins un incident</p></div>
-        <p class="source fig-src">Sources&nbsp;: note explicative du projet de loi, citée par <a href="https://www.kiteworks.com/fr/conformite-reglementaire/france-nis2-report-retard-conformite/" rel="noopener">Kiteworks</a> (mise à jour du 12 octobre 2026)&nbsp;; enquête OpinionWay pour <a href="https://www.cybermalveillance.gouv.fr/medias/2025/10/250910_InfographieMaturiteCyberTPE-PME_SCREEN.pdf" rel="noopener">Cybermalveillance.gouv.fr</a>, 588 entreprises de moins de 250 salariés, juin et juillet 2025.</p>
+        <div><div class="fig-big">80&nbsp;%</div><p class="fig-label">des TPE-PME ne se disent pas préparées</p></div>
+        <div><div class="fig-big">16&nbsp;%</div><p class="fig-label">se déclarent victimes d'au moins un incident</p></div>
+        <p class="source">Sources&nbsp;: note explicative du projet de loi, citée par <a href="https://www.kiteworks.com/fr/conformite-reglementaire/france-nis2-report-retard-conformite/" rel="noopener">Kiteworks</a> (mise à jour du 12 octobre 2026)&nbsp;; enquête OpinionWay pour <a href="https://www.cybermalveillance.gouv.fr/medias/2025/10/250910_InfographieMaturiteCyberTPE-PME_SCREEN.pdf" rel="noopener">Cybermalveillance.gouv.fr</a>, 588 entreprises de moins de 250 salariés, juin et juillet 2025.</p>
       </div>
     </div>
 
-    <aside class="nis2-tool" aria-labelledby="nis2-tool-title">
+    <aside class="nis2-tool box" aria-labelledby="nis2-tool-title">
       <h3 id="nis2-tool-title">Suis-je concerné&nbsp;?</h3>
       <p>3 questions, réponse immédiate.</p>
       <form id="nis2-form" novalidate>
@@ -817,46 +723,48 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
   </div>
 </section>
 
-<!-- 6. Preuves -->
-<section id="preuves" aria-labelledby="preuves-title" style="padding-top:0">
-  <div class="container">
-    <div class="proof-top">
-      <div class="about">
-        <div class="about-art" aria-hidden="true">
-          <svg viewBox="0 0 120 120" width="100%" height="100%" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 96V46h14v12h12V46h12v12h12V46h12v12h12V46h14v50z" stroke="#F7F5F0" stroke-width="3"/>
-            <path d="M52 96V78a8 8 0 0 1 16 0v18" stroke="#F7F5F0" stroke-width="3"/>
-            <path d="M10 106h100" stroke="#00B8D9" stroke-width="3.5"/>
-            <path d="M60 18v14M50 24l10-6 10 6" stroke="#00B8D9" stroke-width="3"/>
-          </svg>
-        </div>
-        <div>
-          <h2 id="preuves-title">Qui sommes-nous</h2>
-          <p>Rempart surveille les postes et les serveurs des PME et des ETI, jour et nuit, depuis la France. Nos analystes détectent, bloquent et vous appellent quand il le faut. Chaque client a un SOC Manager attitré, qui connaît son entreprise.</p>
-          <div class="facts">
-            <span class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#i-pin"/></svg>SOC basé en France</span>
-            <span class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#i-headset"/></svg>Un SOC Manager par client</span>
-            <span class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#i-clock"/></svg>24 h/24, 7 j/7</span>
-          </div>
-        </div>
+<!-- 05 Proof -->
+<section class="chap" id="preuves" aria-labelledby="preuves-title">
+  <div class="col">
+    <div class="about">
+      <div>
+        <p class="chap-n">Chapitre 05 · Preuves</p>
+        <h2 id="preuves-title" style="margin-top:14px;font-size:clamp(28px,2.5vw,36px);line-height:1.18;font-weight:700">Qui sommes-nous</h2>
+        <p class="about-text">Rempart surveille les postes et les serveurs des PME et des ETI, jour et nuit, depuis la France. Nos analystes détectent, bloquent et vous appellent quand il le faut. Chaque client a un SOC Manager attitré, qui connaît son entreprise.</p>
+        <ul class="facts">
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#i-pin"/></svg>SOC basé en France</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#i-headset"/></svg>Un SOC Manager par client</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#i-clock"/></svg>24 h/24, 7 j/7</li>
+        </ul>
       </div>
-      <div class="certs">
-        <h3>Ce que garantissent les certifications</h3>
-        <div class="cert-list">
-          <div class="cert"><div class="slot">Logo ISO 27001<br>(exemple)</div><div><strong>ISO/IEC 27001</strong><span>Norme internationale de management de la sécurité. Les risques sont analysés, les mesures documentées, et un auditeur externe vérifie.</span></div></div>
-          <div class="cert"><div class="slot">Visa ANSSI PDIS<br>(exemple)</div><div><strong>PDIS, qualification ANSSI</strong><span>Prestataire de détection des incidents de sécurité. L'ANSSI contrôle les compétences des analystes et la sécurité du service.</span></div></div>
-          <div class="cert"><div class="slot">Visa ANSSI PRIS<br>(exemple)</div><div><strong>PRIS, qualification ANSSI</strong><span>Prestataire de réponse aux incidents de sécurité. Elle encadre l'intervention après une attaque&nbsp;: investigation, endiguement, remise en état.</span></div></div>
-        </div>
-        <p class="source cert-note">Rempart est une entreprise fictive&nbsp;: aucune de ces certifications n'est obtenue. Les emplacements montrent où elles figureraient.</p>
-      </div>
+      <figure class="about-art box" aria-hidden="true">
+        <svg viewBox="0 0 120 120" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 96V46h14v12h12V46h12v12h12V46h12v12h12V46h14v50z" stroke="#0B1F3A" stroke-width="2.4"/>
+          <path d="M52 96V78a8 8 0 0 1 16 0v18" stroke="#0B1F3A" stroke-width="2.4"/>
+          <path d="M10 106h100" stroke="#006B85" stroke-width="2.8"/>
+          <path d="M60 18v14M50 24l10-6 10 6" stroke="#006B85" stroke-width="2.4"/>
+        </svg>
+        <figcaption>Le rempart, emblème de la maison</figcaption>
+      </figure>
     </div>
 
-    <div class="partners" aria-label="Partenaires technologiques, emplacements d'exemple">
-      <p>Partenaires technologiques</p>
-      <div class="slot">Logo partenaire<br>(exemple)</div>
-      <div class="slot">Logo partenaire<br>(exemple)</div>
-      <div class="slot">Logo partenaire<br>(exemple)</div>
-      <div class="slot">Logo partenaire<br>(exemple)</div>
+    <div class="certs">
+      <div class="certs-head">
+        <h3>Ce que garantissent les certifications</h3>
+        <p class="source">Rempart est une entreprise fictive&nbsp;: aucune de ces certifications n'est obtenue. Les emplacements montrent où elles figureraient.</p>
+      </div>
+      <div class="cert-list">
+        <div class="cert"><div class="slot">Logo ISO 27001 (exemple)</div><strong>ISO/IEC 27001</strong><span>Norme internationale de management de la sécurité. Les risques sont analysés, les mesures documentées, et un auditeur externe vérifie.</span></div>
+        <div class="cert"><div class="slot">Visa ANSSI PDIS (exemple)</div><strong>PDIS, qualification ANSSI</strong><span>Prestataire de détection des incidents de sécurité. L'ANSSI contrôle les compétences des analystes et la sécurité du service.</span></div>
+        <div class="cert"><div class="slot">Visa ANSSI PRIS (exemple)</div><strong>PRIS, qualification ANSSI</strong><span>Prestataire de réponse aux incidents de sécurité. Elle encadre l'intervention après une attaque&nbsp;: investigation, endiguement, remise en état.</span></div>
+      </div>
+      <div class="partners" aria-label="Partenaires technologiques, emplacements d'exemple">
+        <p>Partenaires technologiques</p>
+        <div class="slot">Logo partenaire (exemple)</div>
+        <div class="slot">Logo partenaire (exemple)</div>
+        <div class="slot">Logo partenaire (exemple)</div>
+        <div class="slot">Logo partenaire (exemple)</div>
+      </div>
     </div>
 
     <div class="quotes">
@@ -879,39 +787,41 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
   </div>
 </section>
 
-<!-- 7. Tarifs -->
-<section class="pricing" id="tarifs" aria-labelledby="tarifs-title">
-  <div class="container">
-    <div class="pricing-head">
-      <div>
+<!-- 06 Pricing -->
+<section class="chap" id="tarifs" aria-labelledby="tarifs-title">
+  <div class="col">
+    <div class="price-head">
+      <header class="chap-head">
+        <p class="chap-n">Chapitre 06 · Tarifs</p>
         <h2 id="tarifs-title">Un prix par poste, affiché avant tout rendez-vous</h2>
+      </header>
+      <div class="lead-row">
         <p class="lead">Trois paliers, un abonnement mensuel, aucun frais de mise en service.</p>
+        <a class="btn btn-line" href="#simulateur"><svg width="18" height="18" aria-hidden="true"><use href="#i-calc"/></svg>Calculer mon prix</a>
       </div>
-      <a class="btn btn-secondary" href="#simulateur"><svg width="18" height="18" aria-hidden="true"><use href="#i-calc"/></svg>Calculer mon prix</a>
     </div>
 
-    <div class="pricing-body">
-    <div class="tiers" id="tiers">
+    <div class="tiers">
       <article class="tier">
         <h3>Essentiel</h3>
         <p class="for">Surveiller et réagir</p>
         <div class="price"><b>XX&nbsp;€&nbsp;HT</b><span>par poste et par mois</span></div>
-        <span class="demo-tag">Prix d'exemple</span>
-        <ul>
+        <span class="tag">Prix d'exemple</span>
+        <ul class="ticklist">
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Détection 24 h/24 sur postes et serveurs</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Isolement à distance d'un poste touché</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>SOC Manager attitré</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Rapport mensuel</li>
         </ul>
-        <a class="btn btn-secondary" href="#contact" data-plan="Essentiel">Choisir l'offre Essentiel</a>
+        <a class="btn btn-line" href="#contact" data-plan="Essentiel">Choisir l'offre Essentiel</a>
       </article>
-      <article class="tier reco" id="tier-pro">
-        <span class="badge">Recommandé</span>
+      <article class="tier reco">
+        <span class="reco-label">Recommandé</span>
         <h3>Pro</h3>
         <p class="for">Surveiller, réparer, former</p>
         <div class="price"><b>XX&nbsp;€&nbsp;HT</b><span>par poste et par mois</span></div>
-        <span class="demo-tag">Prix d'exemple</span>
-        <ul>
+        <span class="tag">Prix d'exemple</span>
+        <ul class="ticklist">
           <li class="inherit"><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Tout Essentiel, plus&nbsp;:</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Réponse à incident et restauration</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Sauvegardes supervisées</li>
@@ -923,103 +833,104 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
         <h3>NIS2</h3>
         <p class="for">Se préparer à la loi</p>
         <div class="price"><b>XX&nbsp;€&nbsp;HT</b><span>par poste et par mois</span></div>
-        <span class="demo-tag">Prix d'exemple</span>
-        <ul>
+        <span class="tag">Prix d'exemple</span>
+        <ul class="ticklist">
           <li class="inherit"><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Tout Pro, plus&nbsp;:</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Analyse de risques et politique de sécurité</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Procédure de signalement des incidents</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg>Aide aux questionnaires de vos clients</li>
         </ul>
-        <a class="btn btn-secondary" href="#contact" data-plan="NIS2">Choisir l'offre NIS2</a>
+        <a class="btn btn-line" href="#contact" data-plan="NIS2">Choisir l'offre NIS2</a>
       </article>
     </div>
 
     <div class="sim" id="simulateur">
       <div class="sim-in">
         <h3>Simulateur&nbsp;: nombre de postes, prix mensuel</h3>
-        <p class="small muted" style="margin-top:6px">Aucune coordonnée demandée.</p>
         <div class="sim-row">
           <input type="range" id="sim-range" min="20" max="500" step="1" value="80" aria-label="Nombre de postes (curseur)">
           <div class="field"><label for="sim-num" class="sr-only">Nombre de postes</label><input class="input" type="number" id="sim-num" min="20" max="500" value="80" inputmode="numeric"></div>
         </div>
-        <p class="small muted" style="margin-top:8px">De 20 à 500 postes.</p>
+        <p class="help">De 20 à 500 postes. Aucune coordonnée demandée.</p>
       </div>
-      <div class="sim-out on-navy" aria-live="polite">
+      <div class="sim-out" aria-live="polite">
         <p class="calc" id="sim-calc">80 postes × 8,99&nbsp;$</p>
         <p class="total"><span id="sim-total">719,20&nbsp;$</span> <small>par mois</small></p>
         <p class="source">Calcul d'exemple sur un prix public&nbsp;: Huntress Managed EDR, 8,99&nbsp;$ par poste et par mois (<a href="https://www.huntress.com/pricing" rel="noopener">huntress.com/pricing</a>, observé le 12 novembre 2026). Ce n'est pas un prix Rempart&nbsp;: Rempart est une entreprise fictive.</p>
       </div>
     </div>
-    </div>
   </div>
 </section>
 
-<!-- 8. Contact -->
-<section id="contact" aria-labelledby="diag-title">
-  <div class="container contact-grid">
-    <div class="urgent-box" aria-labelledby="urg-title">
-      <h2 id="urg-title">Attaque en cours&nbsp;?</h2>
-      <a class="urgent-num" href="tel:+33000000000">0X XX XX XX XX</a>
-      <p class="avail">Disponible 24 h/24, 7 j/7. Un analyste décroche.</p>
-      <a class="btn btn-urgent" href="tel:+33000000000"><svg width="20" height="20" aria-hidden="true"><use href="#i-phone"/></svg><span>Urgence&nbsp;: appeler le <span class="nowrap">0X XX XX XX XX</span></span></a>
-      <div class="reflexes">
-        <h3>Les 3 réflexes en attendant notre appel</h3>
-        <ol>
-          <li><span aria-hidden="true"><svg width="20" height="20"><use href="#i-unplug"/></svg></span><div><b>Déconnecter</b>Débranchez le câble réseau et coupez le Wi-Fi du poste touché. Ne l'éteignez pas.</div></li>
-          <li><span aria-hidden="true"><svg width="20" height="20"><use href="#i-disk"/></svg></span><div><b>Isoler les sauvegardes</b>Débranchez les disques et les serveurs de sauvegarde du réseau.</div></li>
-          <li><span aria-hidden="true"><svg width="20" height="20"><use href="#i-camera"/></svg></span><div><b>Documenter</b>Photographiez l'écran, notez l'heure et ce que vous avez vu.</div></li>
-        </ol>
-        <p class="avoid"><strong>À éviter&nbsp;:</strong> redémarrer trop tôt, payer une rançon sans accompagnement, agir seul.</p>
-      </div>
-    </div>
-
-    <div class="form-box">
-      <h2 id="diag-title">Demander mon diagnostic gratuit</h2>
-      <p>Un analyste vous rappelle pour faire le point sur vos postes et NIS2.</p>
-      <span class="picked" id="picked"><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span></span></span>
-      <form id="diag-form" novalidate>
-        <div class="form-grid">
-          <div class="field">
-            <label for="f-name">Nom</label>
-            <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="e-name">
-            <p class="err" id="e-name"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nom est vide. Indiquez qui l'analyste doit demander.</span></p>
-          </div>
-          <div class="field">
-            <label for="f-company">Entreprise</label>
-            <input class="input" id="f-company" name="company" autocomplete="organization" aria-describedby="e-company">
-            <p class="err" id="e-company"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nom de l'entreprise est vide.</span></p>
-          </div>
-          <div class="field">
-            <label for="f-seats">Nombre de postes</label>
-            <input class="input" id="f-seats" name="seats" type="number" min="1" inputmode="numeric" aria-describedby="h-seats e-seats">
-            <p class="help" id="h-seats">Ordinateurs et serveurs. Une estimation suffit.</p>
-            <p class="err" id="e-seats"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nombre de postes est vide. Nous en avons besoin pour préparer un diagnostic adapté. Une estimation suffit.</span></p>
-          </div>
-          <div class="field">
-            <label for="f-phone">Téléphone</label>
-            <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="e-phone">
-            <p class="err" id="e-phone"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Ce numéro ne semble pas complet. Il faut 10 chiffres pour qu'un analyste puisse vous rappeler. Exemple&nbsp;: 06 12 34 56 78.</span></p>
-          </div>
-          <div class="field full">
-            <label for="f-slot">Créneau de rappel</label>
-            <select class="input" id="f-slot" name="slot" aria-describedby="e-slot">
-              <option value="">Choisir un créneau</option>
-              <option>En matinée</option>
-              <option>À l'heure du déjeuner</option>
-              <option>Dans l'après-midi</option>
-              <option>En fin de journée</option>
-            </select>
-            <p class="err" id="e-slot"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Aucun créneau choisi. Indiquez quand vous êtes joignable.</span></p>
-          </div>
-          <div class="full">
-            <button class="btn btn-primary" type="submit" id="diag-submit">Envoyer ma demande de diagnostic</button>
-            <p class="privacy">Vos coordonnées servent uniquement à vous rappeler. Aucun traceur publicitaire.</p>
-          </div>
+<!-- 07 Contact -->
+<section class="chap" id="contact" aria-labelledby="diag-title">
+  <div class="col">
+    <p class="chap-n">Chapitre 07 · Diagnostic</p>
+    <div class="contact-grid">
+      <div class="urgent-box box">
+        <h2 id="urg-title">Attaque en cours&nbsp;?</h2>
+        <a class="urgent-num" href="tel:+33000000000">0X XX XX XX XX</a>
+        <p class="avail">Disponible 24 h/24, 7 j/7. Un analyste décroche.</p>
+        <a class="btn btn-urgent" href="tel:+33000000000"><svg width="20" height="20" aria-hidden="true"><use href="#i-phone"/></svg><span>Urgence&nbsp;: appeler le <span class="nowrap">0X XX XX XX XX</span></span></a>
+        <div class="reflexes">
+          <h3>Les 3 réflexes en attendant notre appel</h3>
+          <ol>
+            <li><div><b>Déconnecter</b>Débranchez le câble réseau et coupez le Wi-Fi du poste touché. Ne l'éteignez pas.</div></li>
+            <li><div><b>Isoler les sauvegardes</b>Débranchez les disques et les serveurs de sauvegarde du réseau.</div></li>
+            <li><div><b>Documenter</b>Photographiez l'écran, notez l'heure et ce que vous avez vu.</div></li>
+          </ol>
+          <p class="avoid"><strong>À éviter&nbsp;:</strong> redémarrer trop tôt, payer une rançon sans accompagnement, agir seul.</p>
         </div>
-      </form>
-      <div class="success" id="diag-success" role="status" hidden>
-        <svg width="22" height="22" aria-hidden="true"><use href="#i-check"/></svg>
-        <p>Demande reçue. Un analyste vous rappelle au numéro indiqué pour fixer un créneau de diagnostic. En cas d'attaque en cours, n'attendez pas&nbsp;: appelez le <a href="tel:+33000000000">0X XX XX XX XX</a>.</p>
+      </div>
+
+      <div class="form-box box">
+        <h2 id="diag-title">Demander mon diagnostic gratuit</h2>
+        <p>Un analyste vous rappelle pour faire le point sur vos postes et NIS2.</p>
+        <span class="picked" id="picked"><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span></span></span>
+        <form id="diag-form" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-name">Nom</label>
+              <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="e-name">
+              <p class="err" id="e-name"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nom est vide. Indiquez qui l'analyste doit demander.</span></p>
+            </div>
+            <div class="field">
+              <label for="f-company">Entreprise</label>
+              <input class="input" id="f-company" name="company" autocomplete="organization" aria-describedby="e-company">
+              <p class="err" id="e-company"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nom de l'entreprise est vide.</span></p>
+            </div>
+            <div class="field">
+              <label for="f-seats">Nombre de postes</label>
+              <input class="input" id="f-seats" name="seats" type="number" min="1" inputmode="numeric" aria-describedby="h-seats e-seats">
+              <p class="help" id="h-seats">Ordinateurs et serveurs. Une estimation suffit.</p>
+              <p class="err" id="e-seats"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Le nombre de postes est vide. Nous en avons besoin pour préparer un diagnostic adapté. Une estimation suffit.</span></p>
+            </div>
+            <div class="field">
+              <label for="f-phone">Téléphone</label>
+              <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="e-phone">
+              <p class="err" id="e-phone"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Ce numéro ne semble pas complet. Il faut 10 chiffres pour qu'un analyste puisse vous rappeler. Exemple&nbsp;: 06 12 34 56 78.</span></p>
+            </div>
+            <div class="field full">
+              <label for="f-slot">Créneau de rappel</label>
+              <select class="input" id="f-slot" name="slot" aria-describedby="e-slot">
+                <option value="">Choisir un créneau</option>
+                <option>En matinée</option>
+                <option>À l'heure du déjeuner</option>
+                <option>Dans l'après-midi</option>
+                <option>En fin de journée</option>
+              </select>
+              <p class="err" id="e-slot"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Aucun créneau choisi. Indiquez quand vous êtes joignable.</span></p>
+            </div>
+            <div class="full">
+              <button class="btn btn-primary" type="submit" id="diag-submit">Envoyer ma demande de diagnostic</button>
+              <p class="privacy">Vos coordonnées servent uniquement à vous rappeler. Aucun traceur publicitaire.</p>
+            </div>
+          </div>
+        </form>
+        <div class="success" id="diag-success" role="status" hidden>
+          <svg width="22" height="22" aria-hidden="true"><use href="#i-check"/></svg>
+          <p>Demande reçue. Un analyste vous rappelle au numéro indiqué pour fixer un créneau de diagnostic. En cas d'attaque en cours, n'attendez pas&nbsp;: appelez le <a href="tel:+33000000000">0X XX XX XX XX</a>.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1027,13 +938,25 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
 
 </main>
 
-<footer class="site-footer on-navy">
-  <div class="container">
-    <div class="footer-grid">
+<footer class="site-footer">
+  <div class="col">
+    <div class="foot-grid">
       <div>
-        <a class="brand" href="#contenu"><svg aria-hidden="true" style="width:34px;height:34px"><use href="#i-logo-light"/></svg>Rempart</a>
-        <p style="margin-top:14px;max-width:36ch">Surveillance de sécurité 24 h/24 pour les PME et les ETI, depuis la France.</p>
+        <a class="brand" href="#test"><svg aria-hidden="true"><use href="#i-logo"/></svg>Rempart</a>
+        <p style="margin-top:12px;max-width:34ch;color:var(--muted)">Surveillance de sécurité 24 h/24 pour les PME et les ETI, depuis la France.</p>
       </div>
+      <nav aria-label="Chapitres (texte)">
+        <h3>Sommaire</h3>
+        <ul>
+          <li><a href="#test">01 Le test</a></li>
+          <li><a href="#offre">02 L'offre</a></li>
+          <li><a href="#attaque">03 En cas d'attaque</a></li>
+          <li><a href="#nis2">04 NIS2</a></li>
+          <li><a href="#preuves">05 Preuves</a></li>
+          <li><a href="#tarifs">06 Tarifs</a></li>
+          <li><a href="#contact">07 Diagnostic</a></li>
+        </ul>
+      </nav>
       <div>
         <h3>Pages</h3>
         <ul>
@@ -1054,52 +977,46 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="foot-bottom">
       <p><strong>Site de démonstration. Rempart est une entreprise fictive.</strong></p>
       <p>Prix, logos et témoignages affichés à titre d'exemple.</p>
     </div>
   </div>
 </footer>
-
-<a class="urgent-bar" href="tel:+33000000000"><svg width="20" height="20" aria-hidden="true"><use href="#i-phone"/></svg>Urgence&nbsp;: appeler le 0X XX XX XX XX</a>
+</div>
 
 <script>
 (function(){
   "use strict";
   var NB = " ";
-  var mqMobile = window.matchMedia("(max-width: 767px)");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+  function setErr(input, id, on){
+    var el = document.getElementById(id);
+    el.classList.toggle("show", on);
+    if (on) input.setAttribute("aria-invalid","true"); else input.removeAttribute("aria-invalid");
+  }
 
-  /* Mobile menu */
-  var menuBtn = document.querySelector(".menu-btn");
-  var nav = document.getElementById("main-nav");
-  menuBtn.addEventListener("click", function(){
-    var open = nav.classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    menuBtn.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
-  });
-  nav.addEventListener("click", function(e){
-    if (e.target.closest("a")) { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); menuBtn.setAttribute("aria-label","Ouvrir le menu"); }
-  });
-
-  /* Quiz */
+  /* ---------- The consultation (express test) ---------- */
   var QUESTIONS = [
-    { q: "Vos sauvegardes sont-elles testées ?", hint: "Une restauration a déjà été essayée, pas seulement lancée.",
+    { q: "Vos sauvegardes sont-elles testées régulièrement ?", hint: "Une restauration a déjà été essayée, pas seulement lancée.",
       reco: "Testez une restauration complète d'un dossier partagé, et gardez une copie des sauvegardes hors de votre réseau." },
-    { q: "La double authentification est-elle activée ?", hint: "Sur la messagerie, les accès à distance et les comptes administrateurs.",
+    { q: "La double authentification est-elle activée ?", hint: "Sur la messagerie, les accès à distance et les comptes administrateurs.",
       reco: "Activez la double authentification sur la messagerie, le VPN et les comptes administrateurs en priorité." },
-    { q: "Les mises à jour sont-elles installées régulièrement ?", hint: "Sur les postes, les serveurs et les équipements réseau.",
+    { q: "Les mises à jour sont-elles installées régulièrement ?", hint: "Sur les postes, les serveurs et les équipements réseau.",
       reco: "Activez les mises à jour automatiques des postes et fixez un créneau mensuel pour les serveurs." },
-    { q: "Vos équipes sont-elles sensibilisées au hameçonnage ?", hint: "Une session ou un exercice de faux e-mail piégé a eu lieu.",
+    { q: "Vos équipes sont-elles sensibilisées au hameçonnage ?", hint: "Une session ou un exercice de faux e-mail piégé a eu lieu.",
       reco: "Organisez une courte session sur le hameçonnage, puis un faux e-mail d'exercice pour vérifier les réflexes." },
-    { q: "Quelqu'un est-il d'astreinte la nuit et le week-end ?", hint: "Une personne traite une alerte en dehors des heures de bureau.",
+    { q: "Quelqu'un est-il d'astreinte la nuit et le week-end ?", hint: "Une personne traite une alerte en dehors des heures de bureau.",
       reco: "Désignez qui traite une alerte la nuit et le week-end, ou confiez cette veille à un SOC." }
   ];
   var EXTRA = [
-    "Faites confirmer vos réponses par un diagnostic gratuit : ce qui est déclaré n'est pas toujours ce qui est en place.",
-    "Rédigez une fiche d'une page : qui appeler et quoi faire en cas d'attaque.",
+    "Faites confirmer vos réponses par un diagnostic gratuit : ce qui est déclaré n'est pas toujours ce qui est en place.",
+    "Rédigez une fiche d'une page : qui appeler et quoi faire en cas d'attaque.",
     "Vérifiez chaque trimestre que les sauvegardes et la double authentification couvrent les nouveaux comptes."
   ];
   var ANSWERS = [ ["Oui",2], ["En partie",1], ["Non",0], ["Je ne sais pas",0] ];
+  var KEYS = ["A","B","C","D"];
   var LEVELS = {
     low:  { label:"Risque faible", cls:"low", icon:"#i-check", angle:-60,
             text:"Les bases sont en place. Reste à vérifier qu'elles tiennent dans la durée, la nuit et pendant les congés." },
@@ -1108,32 +1025,30 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
     high: { label:"Risque élevé", cls:"high", icon:"#i-alert", angle:60,
             text:"Plusieurs protections de base manquent. Les 3 actions ci-dessous sont prioritaires et se mettent en place sans tout changer." }
   };
+  function fr(s){ return esc(s).replace(/ ([?:!;])/g, NB + "$1"); }
 
   var stage = document.getElementById("quiz-stage");
   var progress = document.getElementById("quiz-progress");
-  var bar = document.getElementById("quiz-bar");
+  var ticks = document.querySelectorAll("#quiz-ticks i");
   var back = document.getElementById("quiz-back");
-  var closeBtn = document.getElementById("quiz-close");
-  var panel = document.getElementById("quiz");
+  var quizBox = document.getElementById("quiz");
   var answers = [];
   var current = 0;
-  var lastOpener = null;
 
-  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+  function setTicks(n){ ticks.forEach(function(t, i){ t.classList.toggle("on", i < n); }); }
 
   function renderQuestion(i, focus){
     current = i;
+    quizBox.classList.remove("is-result");
     var item = QUESTIONS[i];
-    progress.textContent = "Question " + (i+1) + "/" + QUESTIONS.length;
-    progress.hidden = false;
-    bar.style.setProperty("--p", ((i+1)/QUESTIONS.length*100) + "%");
-    bar.style.display = "";
+    progress.innerHTML = '<span class="sr-only">Question </span>' + (i+1) + "/" + QUESTIONS.length;
+    setTicks(i + 1);
     back.hidden = i === 0;
-    var html = '<div class="q-anim"><h3 class="q-legend" id="q-legend" tabindex="-1">' + esc(item.q) + '</h3>' +
+    var html = '<div class="q-anim"><h2 class="q-legend" id="q-legend" tabindex="-1">' + fr(item.q) + '</h2>' +
       '<p class="q-hint">' + esc(item.hint) + '</p><div class="answers" role="group" aria-labelledby="q-legend">';
     ANSWERS.forEach(function(a, k){
       var pressed = answers[i] !== undefined && answers[i].k === k;
-      html += '<button type="button" class="answer" data-k="' + k + '" aria-pressed="' + pressed + '"><span class="mark" aria-hidden="true"></span>' + esc(a[0]) + '</button>';
+      html += '<button type="button" class="answer" data-k="' + k + '" aria-pressed="' + pressed + '"><span class="key" aria-hidden="true">' + KEYS[k] + '</span>' + esc(a[0]) + '</button>';
     });
     html += '</div></div>';
     stage.innerHTML = html;
@@ -1149,7 +1064,7 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
     setTimeout(function(){
       if (current < QUESTIONS.length - 1) renderQuestion(current + 1, true);
       else renderResult();
-    }, 180);
+    }, reduce.matches ? 0 : 200);
   });
 
   back.addEventListener("click", function(){
@@ -1166,26 +1081,26 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
     var recos = order.slice(0,3).map(function(x){ return QUESTIONS[x.i].reco; });
     var e = 0; while (recos.length < 3) recos.push(EXTRA[e++]);
     progress.textContent = "Résultat";
-    bar.style.setProperty("--p", "100%");
+    quizBox.classList.add("is-result");
+    setTicks(5);
     back.hidden = false;
-    var needleStart = -90;
     stage.innerHTML =
       '<div class="result q-anim">' +
-        '<div>' +
+        '<div class="res-gauge">' +
           '<svg class="gauge" viewBox="0 0 200 120" aria-hidden="true">' +
-            '<path d="M20 104 A80 80 0 0 1 60 34.7" fill="none" stroke="#15803D" stroke-width="14"/>' +
-            '<path d="M64.6 32.3 A80 80 0 0 1 135.4 32.3" fill="none" stroke="#B45309" stroke-width="14"/>' +
-            '<path d="M140 34.7 A80 80 0 0 1 180 104" fill="none" stroke="#9A3412" stroke-width="14"/>' +
-            '<g class="needle" style="transform-origin:100px 104px;transform:rotate(' + needleStart + 'deg)">' +
-              '<path d="M100 104 L100 38" stroke="#0B1F3A" stroke-width="4" stroke-linecap="round"/></g>' +
-            '<circle cx="100" cy="104" r="9" fill="#0B1F3A"/>' +
+            '<path d="M20 104 A80 80 0 0 1 60 34.7" fill="none" stroke="#15803D" stroke-width="12"/>' +
+            '<path d="M64.6 32.3 A80 80 0 0 1 135.4 32.3" fill="none" stroke="#B45309" stroke-width="12"/>' +
+            '<path d="M140 34.7 A80 80 0 0 1 180 104" fill="none" stroke="#9A3412" stroke-width="12"/>' +
+            '<g class="needle" style="transform-origin:100px 104px;transform:rotate(' + (reduce.matches ? lvl.angle : -90) + 'deg)">' +
+              '<path d="M100 104 L100 40" stroke="#0B1F3A" stroke-width="3.5" stroke-linecap="round"/></g>' +
+            '<circle cx="100" cy="104" r="8" fill="#0B1F3A"/>' +
           '</svg>' +
-          '<div class="level ' + lvl.cls + '"><svg width="22" height="22" aria-hidden="true"><use href="' + lvl.icon + '"/></svg>' + lvl.label + '</div>' +
+          '<div class="level ' + lvl.cls + '"><svg width="20" height="20" aria-hidden="true"><use href="' + lvl.icon + '"/></svg>' + lvl.label + '</div>' +
         '</div>' +
         '<div>' +
-          '<h3 id="res-title" tabindex="-1" style="outline:none">Votre résultat : ' + lvl.label.toLowerCase() + '</h3>' +
-          '<p class="result-text">' + esc(lvl.text) + '</p>' +
-          '<ol class="recos">' + recos.map(function(r){ return '<li><span>' + esc(r) + '</span></li>'; }).join("") + '</ol>' +
+          '<h2 class="res-title" id="res-title" tabindex="-1">Votre résultat' + NB + ': ' + lvl.label.toLowerCase() + '</h2>' +
+          '<p class="res-text">' + esc(lvl.text) + '</p>' +
+          '<ol class="recos">' + recos.map(function(r){ return '<li><span>' + fr(r) + '</span></li>'; }).join("") + '</ol>' +
         '</div>' +
         '<div class="report">' +
           '<form id="report-form" novalidate>' +
@@ -1194,17 +1109,18 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
               '<input class="input" id="r-email" type="email" autocomplete="email" aria-describedby="e-email"></div>' +
               '<button class="btn btn-primary" type="submit">Recevoir mon rapport détaillé</button>' +
             '</div>' +
-            '<p class="err" id="e-email" style="margin-top:8px"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Adresse incomplète, il manque le @ ou le domaine. Exemple : prenom@entreprise.fr.</span></p>' +
+            '<p class="err" id="e-email" style="margin-top:6px"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Adresse incomplète, il manque le @ ou le domaine. Exemple' + NB + ': prenom@entreprise.fr.</span></p>' +
             '<label class="check"><input type="checkbox" id="r-consent" aria-describedby="e-consent"><span>J\'accepte de recevoir le rapport par e-mail, et rien d\'autre.</span></label>' +
-            '<p class="err" id="e-consent" style="margin-top:6px"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Case non cochée. Sans votre accord, pas d\'envoi possible.</span></p>' +
+            '<p class="err" id="e-consent" style="margin-top:4px"><svg width="16" height="16" aria-hidden="true"><use href="#i-alert"/></svg><span>Case non cochée. Sans votre accord, pas d\'envoi possible.</span></p>' +
           '</form>' +
-          '<button type="button" class="restart" id="restart">Refaire le test</button>' +
+          '<div class="res-actions"><button type="button" class="restart" id="res-back">Revoir la dernière question</button><button type="button" class="restart" id="restart">Refaire le test</button></div>' +
         '</div>' +
       '</div>';
     var needle = stage.querySelector(".needle");
-    requestAnimationFrame(function(){ requestAnimationFrame(function(){ needle.style.transform = "rotate(" + lvl.angle + "deg)"; }); });
+    if (!reduce.matches) requestAnimationFrame(function(){ requestAnimationFrame(function(){ needle.style.transform = "rotate(" + lvl.angle + "deg)"; }); });
     document.getElementById("res-title").focus({preventScroll:true});
     document.getElementById("restart").addEventListener("click", function(){ answers = []; renderQuestion(0, true); });
+    document.getElementById("res-back").addEventListener("click", function(){ renderQuestion(QUESTIONS.length - 1, true); });
     document.getElementById("report-form").addEventListener("submit", function(ev){
       ev.preventDefault();
       var email = document.getElementById("r-email");
@@ -1215,46 +1131,53 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
       setErr(consent, "e-consent", !okConsent);
       if (!okEmail) { email.focus(); return; }
       if (!okConsent) { consent.focus(); return; }
-      var wrap = ev.target.parentNode;
-      wrap.innerHTML = '<div class="success" role="status"><svg width="22" height="22" aria-hidden="true"><use href="#i-check"/></svg><p>C\'est noté. Votre rapport détaillé sera envoyé à <strong>' + esc(email.value.trim()) + '</strong>. Il reprend vos 5 réponses et un plan d\'action dans l\'ordre.</p></div>';
+      ev.target.outerHTML = '<div class="success" role="status"><svg width="22" height="22" aria-hidden="true"><use href="#i-check"/></svg><p>C\'est noté. Votre rapport détaillé sera envoyé à <strong>' + esc(email.value.trim()) + '</strong>. Il reprend vos 5 réponses et un plan d\'action dans l\'ordre.</p></div>';
     });
   }
 
-  function setErr(input, id, on){
-    var el = document.getElementById(id);
-    el.classList.toggle("show", on);
-    if (on) input.setAttribute("aria-invalid","true"); else input.removeAttribute("aria-invalid");
-  }
-
-  function openQuiz(opener){
-    if (mqMobile.matches) {
-      lastOpener = opener || null;
-      document.body.classList.add("quiz-open");
-      panel.setAttribute("role","dialog");
-      panel.setAttribute("aria-modal","true");
-      panel.scrollTop = 0;
-      var t = stage.querySelector("#q-legend, #res-title");
-      if (t) t.focus({preventScroll:true});
-    } else {
-      document.getElementById("test").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
-      setTimeout(function(){ var b = stage.querySelector(".answer, #res-title"); if (b) b.focus({preventScroll:true}); }, 450);
-    }
-  }
-  function closeQuiz(){
-    document.body.classList.remove("quiz-open");
-    panel.setAttribute("role","region");
-    panel.removeAttribute("aria-modal");
-    if (lastOpener) lastOpener.focus();
-  }
   document.querySelectorAll("[data-start-quiz]").forEach(function(el){
-    el.addEventListener("click", function(e){ e.preventDefault(); openQuiz(el); });
+    el.addEventListener("click", function(e){
+      e.preventDefault();
+      document.getElementById("test").scrollIntoView({behavior: reduce.matches ? "auto" : "smooth"});
+      setTimeout(function(){
+        var b = stage.querySelector('.answer[aria-pressed="true"]') || stage.querySelector(".answer, #res-title");
+        if (b) b.focus({preventScroll:true});
+      }, reduce.matches ? 0 : 500);
+    });
   });
-  closeBtn.addEventListener("click", closeQuiz);
-  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && document.body.classList.contains("quiz-open")) closeQuiz(); });
-  mqMobile.addEventListener("change", function(){ if (!mqMobile.matches) closeQuiz(); });
   renderQuestion(0, false);
 
-  /* NIS2 */
+  /* ---------- 24 h dial ---------- */
+  var tg = document.getElementById("dial-ticks");
+  var tickHtml = "";
+  for (var h = 0; h < 24; h++) {
+    var a = h * 15 * Math.PI / 180, major = h % 6 === 0;
+    var r1 = major ? 150 : 156, r2 = 162;
+    tickHtml += '<line x1="' + (200 + r1*Math.sin(a)).toFixed(1) + '" y1="' + (200 - r1*Math.cos(a)).toFixed(1) +
+      '" x2="' + (200 + r2*Math.sin(a)).toFixed(1) + '" y2="' + (200 - r2*Math.cos(a)).toFixed(1) + '"' + (major ? ' stroke-width="1.6" stroke="#0B1F3A"' : '') + '/>';
+  }
+  tg.innerHTML = tickHtml;
+  var ANG = [30, 90, 150, 210, 270, 330];
+  var hand = document.getElementById("dial-hand");
+  var nodes = document.querySelectorAll(".dial .node");
+  var stepsEls = document.querySelectorAll("#steps .step");
+  var handAngle = 30;
+  function setStep(i){
+    var target = ANG[i];
+    var d = ((target - handAngle) % 360 + 540) % 360 - 180;
+    handAngle += d;
+    hand.style.transform = "rotate(" + handAngle + "deg)";
+    nodes.forEach(function(n, k){ n.classList.toggle("on", k === i); });
+    stepsEls.forEach(function(s, k){ s.classList.toggle("on", k === i); });
+  }
+  document.querySelectorAll(".st-btn").forEach(function(b){
+    var i = +b.getAttribute("data-step");
+    b.addEventListener("click", function(){ setStep(i); });
+    b.addEventListener("focus", function(){ setStep(i); });
+  });
+  stepsEls.forEach(function(s, i){ s.addEventListener("mouseenter", function(){ setStep(i); }); });
+
+  /* ---------- NIS2 ---------- */
   var nisForm = document.getElementById("nis2-form");
   var nisResult = document.getElementById("nis2-result");
   nisForm.addEventListener("submit", function(e){ e.preventDefault(); });
@@ -1274,7 +1197,7 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
     nisResult.innerHTML = "<strong>" + t + "</strong>" + d;
   });
 
-  /* Simulator */
+  /* ---------- Simulator ---------- */
   var PRICE = 8.99;
   var range = document.getElementById("sim-range");
   var num = document.getElementById("sim-num");
@@ -1285,7 +1208,7 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
     n = Math.round(Math.min(500, Math.max(20, n || 20)));
     range.value = n;
     calc.textContent = n + " postes × 8,99" + NB + "$";
-    total.textContent = fmt.format(n * PRICE).replace(/ /g, NB) + NB + "$";
+    total.textContent = fmt.format(n * PRICE).replace(/\s/g, NB) + NB + "$";
     return n;
   }
   range.addEventListener("input", function(){ num.value = updateSim(+range.value); });
@@ -1293,16 +1216,7 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
   num.addEventListener("change", function(){ num.value = updateSim(+num.value); });
   updateSim(80);
 
-  /* Pricing carousel: centre Pro on mobile */
-  function centrePro(){
-    if (!mqMobile.matches) return;
-    var tiers = document.getElementById("tiers"), pro = document.getElementById("tier-pro");
-    tiers.scrollLeft = pro.offsetLeft - (tiers.clientWidth - pro.clientWidth) / 2;
-  }
-  centrePro();
-  window.addEventListener("load", centrePro);
-
-  /* Plan choice */
+  /* ---------- Plan choice and diagnostic form ---------- */
   var picked = document.getElementById("picked");
   document.querySelectorAll("[data-plan]").forEach(function(a){
     a.addEventListener("click", function(){
@@ -1310,8 +1224,6 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
       picked.classList.add("show");
     });
   });
-
-  /* Diagnostic form */
   var form = document.getElementById("diag-form");
   var submit = document.getElementById("diag-submit");
   form.addEventListener("submit", function(e){
@@ -1338,14 +1250,51 @@ input[type=range]{width:100%;height:44px;accent-color:var(--navy);background:tra
     setTimeout(function(){
       form.hidden = true;
       picked.classList.remove("show");
-      var ok = document.getElementById("diag-success");
-      ok.hidden = false;
+      document.getElementById("diag-success").hidden = false;
     }, 900);
   });
   ["f-name","f-company","f-seats","f-phone","f-slot"].forEach(function(id){
     var el = document.getElementById(id);
     el.addEventListener("input", function(){ if (el.getAttribute("aria-invalid")) setErr(el, "e-" + id.slice(2), false); });
   });
+
+  /* ---------- Rail: active chapter and reading progress ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll("[data-chap]"));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute("href")); });
+  var fill = document.getElementById("rail-fill");
+  var readOut = document.getElementById("rail-read");
+  var topProg = document.getElementById("topbar-progress");
+  var ticking = false;
+  var railList = document.getElementById("rail-list");
+  function centre(a){ return railList.offsetTop + a.offsetTop + a.offsetHeight / 2; }
+  function update(){
+    ticking = false;
+    var y = window.scrollY + window.innerHeight * 0.4;
+    var idx = 0;
+    secs.forEach(function(s, i){ if (s.offsetTop <= y) idx = i; });
+    var s = secs[idx];
+    var f = Math.max(0, Math.min(1, (y - s.offsetTop) / s.offsetHeight));
+    links.forEach(function(a, i){
+      a.classList.toggle("passed", i < idx);
+      if (i === idx) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+    if (links[0].offsetParent) {
+      var c0 = centre(links[0]);
+      var cI = centre(links[idx]);
+      var cN = idx < links.length - 1 ? centre(links[idx + 1]) : cI;
+      fill.style.top = c0 + "px";
+      fill.style.height = Math.max(0, cI - c0 + (cN - cI) * f) + "px";
+    }
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.round(window.scrollY / max * 100) : 0;
+    readOut.textContent = "Lu à " + pct + NB + "%";
+    topProg.style.width = pct + "%";
+  }
+  function req(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener("scroll", req, { passive:true });
+  window.addEventListener("resize", req);
+  window.addEventListener("load", update);
+  update();
 })();
 </script>
 </body>
