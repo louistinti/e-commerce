@@ -5,580 +5,465 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Veilla · Télésurveillance après chirurgie ambulatoire</title>
 <meta name="description" content="Veilla sécurise le retour à domicile après une chirurgie ambulatoire : un court questionnaire quotidien pour le patient, une alerte pour l'équipe seulement en cas de signal anormal. Site de démonstration, entreprise fictive.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%231F3A5F'/%3E%3Cpath d='M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5' fill='none' stroke='%23E3EBE4' stroke-width='3.2' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='13' r='3.2' fill='%239DBBA5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Veilla (entreprise fictive, site de démonstration)","description":"Logiciel de télésurveillance des patients après une chirurgie ambulatoire. Entreprise fictive.","address":{"@type":"PostalAddress","addressLocality":"Lyon","addressCountry":"FR"}}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"J'ai de la fièvre ce soir. Que faire ?","acceptedAnswer":{"@type":"Answer","text":"Le questionnaire ne remplace pas un appel. Si vous êtes inquiet, appelez le service qui vous a opéré. En cas d'urgence, appelez le 15."}},
+{"@type":"Question","name":"Je ne suis pas à l'aise avec le téléphone.","acceptedAnswer":{"@type":"Answer","text":"Un proche peut répondre avec vous. Le questionnaire existe aussi par SMS."}},
+{"@type":"Question","name":"Qui voit mes réponses ?","acceptedAnswer":{"@type":"Answer","text":"L'équipe de l'établissement qui vous suit. Ce site ne collecte aucune donnée de santé : votre espace patient est une application à part."}}]}
+</script>
 <style>
 :root{
-  --color-brand-primary:#1F3A5F;
-  --color-brand-primary-hover:#162B47;
-  --color-brand-primary-light:#2D5A8A;
-  --color-brand-secondary:#4E6B57;
-  --color-brand-secondary-strong:#3F5E49;
-  --color-brand-secondary-soft:#7A9A82;
-  --color-brand-secondary-tint:#E3EBE4;
-  --color-success:#2E6B47;
-  --color-alert:#B3261E;
-  --color-warning:#8A5A00;
-  --color-info:#1F5F8B;
-  --color-neutral-0:#FFFFFF;
-  --color-neutral-50:#FAF8F4;
-  --color-neutral-100:#EEEAE3;
-  --color-neutral-300:#D6D0C6;
-  --color-neutral-600:#5A6670;
-  --color-neutral-900:#1E2A33;
-  --alert-bg:#FBEAE8;
-  --warning-bg:#F6ECD8;
-  --success-bg:#E2EFE6;
-  --info-bg:#E4EDF4;
-  --font-body:"Atkinson Hyperlegible",Verdana,"Segoe UI",Tahoma,sans-serif;
-  --font-title:"Source Sans 3","Source Sans Pro","Segoe UI",Helvetica,Arial,sans-serif;
-  --radius-sm:4px;--radius-md:8px;--radius-lg:16px;--radius-full:999px;
-  --shadow-sm:0 1px 2px rgba(30,42,51,.06);
-  --shadow-md:0 4px 16px rgba(30,42,51,.08);
-  --shadow-lg:0 16px 40px rgba(30,42,51,.12);
-  --focus-ring:0 0 0 3px #FAF8F4,0 0 0 6px #2D5A8A;
-  --duration-fast:120ms;--duration-base:200ms;--duration-slow:400ms;
-  --ease-standard:cubic-bezier(.2,0,0,1);
-  --gutter:clamp(16px,4vw,48px);
-  --maxw:1320px;
-  --header-h:72px;
+  --blue:#1F3A5F;--blue-d:#162B47;--blue-l:#2D5A8A;--blue-ink:#C9D6E4;
+  --sage:#4E6B57;--sage-s:#3F5E49;--sage-soft:#7A9A82;--sage-t:#E3EBE4;--sage-t2:#D6E2D8;
+  --paper:#FAF8F4;--paper-2:#EEEAE3;--line:#D6D0C6;--ink:#1E2A33;--muted:#5A6670;
+  --alert:#B3261E;--alert-bg:#FBEAE8;--warn:#8A5A00;--warn-bg:#F6ECD8;--ok:#2E6B47;--ok-bg:#E2EFE6;--info:#1F5F8B;--info-bg:#E4EDF4;
+  --f-body:"Atkinson Hyperlegible",Verdana,"Segoe UI",Tahoma,sans-serif;
+  --f-title:"Source Sans 3","Source Sans Pro","Segoe UI",Helvetica,Arial,sans-serif;
+  --hdr:64px;
+  --gutter:clamp(16px,4vw,56px);
+  --maxw:1240px;
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none !important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--color-neutral-50);color:var(--color-neutral-900);font-family:var(--font-body);font-size:18px;line-height:1.6;overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:19px;line-height:1.6;overflow-x:hidden}
 img,svg{display:block;max-width:100%}
-h1,h2,h3{font-family:var(--font-title);color:var(--color-brand-primary);margin:0;text-wrap:balance}
-h1{font-size:52px;line-height:1.1;font-weight:700;letter-spacing:-.01em}
-h2{font-size:40px;line-height:1.2;font-weight:700;letter-spacing:-.005em}
-h3{font-size:24px;line-height:1.3;font-weight:600}
-p{margin:0}
-a{color:var(--color-brand-primary-light);text-underline-offset:3px}
-a:hover{color:var(--color-brand-primary)}
+h1,h2,h3{font-family:var(--f-title);margin:0;text-wrap:balance}
+p,ul,ol,dl,dd,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:var(--blue-l);text-underline-offset:3px}
+a:hover{color:var(--blue)}
 :focus{outline:none}
-:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
-.skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--color-brand-primary);color:#fff;padding:12px 20px;border-radius:var(--radius-md);font-weight:700;text-decoration:none}
-.skip:focus{top:12px;color:#fff}
+:focus-visible{outline:3px solid var(--blue-l);outline-offset:3px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
-.caption{font-size:18px;line-height:1.5;color:var(--color-neutral-600)}
-.lead{font-size:20px;line-height:1.6;max-width:62ch}
-.ico{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--blue);color:#fff;padding:12px 20px;font-weight:700;text-decoration:none;border-radius:6px}
+.skip:focus{top:12px;color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.ico{width:1.1em;height:1.1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.src{font-size:18px;line-height:1.5;color:var(--muted)}
+.tag-ex{display:inline-block;vertical-align:middle;font-family:var(--f-body);font-size:15px;font-weight:700;line-height:1;letter-spacing:.04em;text-transform:uppercase;color:var(--warn);border:1px solid currentColor;border-radius:3px;padding:4px 6px 3px}
+/* mode switching of copy */
+body[data-mode="pro"] [data-v="patient"],body[data-mode="patient"] [data-v="pro"]{display:none !important}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--radius-md);font-family:var(--font-body);font-size:18px;font-weight:700;line-height:1.2;text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color var(--duration-fast) var(--ease-standard),transform var(--duration-fast) var(--ease-standard),color var(--duration-fast)}
-.btn:active{transform:translateY(1px)}
-.btn-primary{background:var(--color-brand-primary);color:#fff}
-.btn-primary:hover{background:var(--color-brand-primary-hover);color:#fff}
-.btn-patient{background:var(--color-brand-secondary-strong);color:#fff;font-size:20px;min-height:56px}
-.btn-patient:hover{background:#334D3C;color:#fff}
-.btn-secondary{background:transparent;border-color:var(--color-brand-primary);color:var(--color-brand-primary)}
-.btn-secondary:hover{background:var(--color-brand-secondary-tint);color:var(--color-brand-primary)}
-.btn[disabled]{background:var(--color-neutral-300);color:var(--color-neutral-600);cursor:progress}
-.link-arrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;min-height:44px;max-width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:6px;font:700 19px/1.2 var(--f-body);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-d);color:#fff}
+.btn-sage{background:var(--sage-s);color:#fff;font-size:22px;min-height:64px;padding:0 32px}
+.btn-sage:hover{background:#334D3C;color:#fff}
+.btn-line{background:transparent;border-color:var(--blue);color:var(--blue)}
+.btn-line:hover{background:var(--sage-t);color:var(--blue)}
+.btn[disabled]{background:var(--line);color:var(--muted);cursor:progress}
+.more{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:700}
 
-/* Pro mention */
-.pro{display:inline-flex;align-items:center;gap:8px;font-size:18px;line-height:1.4;color:var(--color-info);background:var(--info-bg);border-radius:var(--radius-sm);padding:6px 12px;margin-bottom:20px}
+/* ===== Header : sélecteur segmenté ===== */
+.hdr{position:fixed;top:0;left:0;right:0;height:var(--hdr);z-index:60;background:var(--paper);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:16px;padding:0 var(--gutter)}
+.logo{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--blue);text-decoration:none;font:700 26px/1 var(--f-title);letter-spacing:-.01em;justify-self:start}
+.logo svg{width:32px;height:32px}
+.hdr-mid{display:flex;align-items:center;gap:6px;position:relative}
+.seg{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:#fff}
+.seg button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 22px;border:0;border-radius:999px;background:transparent;color:var(--ink);font:700 19px/1 var(--f-body);cursor:pointer}
+.seg button:hover{color:var(--blue)}
+.seg button[aria-pressed="true"]{color:#fff}
+.seg button[data-mode="pro"][aria-pressed="true"]{background:var(--blue)}
+.seg button[data-mode="patient"][aria-pressed="true"]{background:var(--sage-s)}
+.seg button:focus-visible{outline:3px solid var(--blue-l);outline-offset:2px}
+.toc-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 10px;border:0;background:none;color:var(--ink);font:400 19px/1 var(--f-body);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.toc-btn .ico{transition:transform .15s}
+.toc-btn[aria-expanded="true"] .ico-chev{transform:rotate(180deg)}
+.toc-btn:hover,.toc-btn:focus-visible{color:var(--blue-l)}
+.toc-btn:focus-visible{outline:none;text-decoration:underline;text-underline-offset:4px}
+.toc-btn .ico-list{display:none;width:28px;height:28px}
+.toc{position:absolute;top:calc(100% + 13px);right:0;width:340px;background:#fff;border:1px solid var(--line);padding:10px 0;z-index:61}
+.toc p{padding:6px 20px 8px;font-size:18px;color:var(--muted)}
+.toc a{display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:46px;padding:0 20px;color:var(--ink);text-decoration:none}
+.toc a:hover,.toc a:focus-visible{background:var(--paper);color:var(--blue);outline:none}
+.toc a .fl{font-size:16px;color:var(--muted)}
+.toc .toc-sep{border-top:1px solid var(--line);margin:8px 0 0;padding-top:12px}
+.hdr-end{justify-self:end;font-weight:700}
+.hdr-end a{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none}
+.hdr-end a[data-v="patient"]{color:var(--alert)}
 
-/* Status pills */
-.pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--radius-full);padding:3px 11px 3px 8px;font-weight:700;white-space:nowrap;line-height:1.3}
+/* ===== Hero : deux portes ===== */
+.hero{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;margin-top:var(--hdr);height:calc(100vh - var(--hdr));height:calc(100svh - var(--hdr));min-height:600px;position:relative}
+.plate{grid-column:1 / -1;grid-row:1;justify-self:center;position:relative;z-index:2;margin-top:clamp(28px,5vh,52px);width:min(860px,66vw);background:var(--paper);padding:30px 52px 26px;text-align:center}
+.plate h1{font-size:clamp(34px,3.3vw,48px);line-height:1.12;font-weight:700;color:var(--blue);letter-spacing:-.01em}
+.plate-choose{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:14px;font-size:19px;color:var(--muted)}
+.plate-choose .ico{width:22px;height:22px}
+.plate-choose .l{color:var(--blue)}
+.plate-choose .r{color:var(--sage-s)}
+.door{grid-row:1 / -1;display:grid;grid-template-rows:subgrid;overflow:hidden;text-decoration:none;position:relative}
+.door-pro{grid-column:1;background:var(--blue);color:var(--paper)}
+.door-pat{grid-column:2;background:var(--sage-t);color:var(--ink)}
+.door-pro:hover{background:var(--blue-d);color:var(--paper)}
+.door-pat:hover{background:var(--sage-t2);color:var(--ink)}
+.door:focus-visible{outline:4px solid var(--paper);outline-offset:-14px}
+.door-pat:focus-visible{outline-color:var(--blue)}
+.door-in{grid-row:2;display:flex;flex-direction:column;min-height:0;padding:clamp(24px,4vh,44px) clamp(28px,4.4vw,72px) 0}
+.door-kicker,.door-text{display:block}
+.door-kicker{font-size:19px;line-height:1.4}
+.door-pro .door-kicker{color:var(--blue-ink)}
+.door-pat .door-kicker{color:var(--sage-s)}
+.door-label{display:flex;align-items:center;gap:14px;margin-top:6px;font:700 clamp(32px,2.9vw,44px)/1.1 var(--f-title)}
+.door-label .ico{width:.8em;height:.8em;stroke-width:2.4}
+.door:hover .door-label span,.door:focus-visible .door-label span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.door-text{margin-top:14px;max-width:30em}
+.door-pro .door-text{font-size:20px;line-height:1.55}
+.door-pat .door-text{font-size:clamp(23px,1.8vw,27px);line-height:1.4;max-width:20em}
+.door-meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:18px}
+.door-meta span{display:inline-flex;align-items:center;gap:8px}
+.door-pro .door-meta{color:var(--blue-ink)}
+.door-pat .door-meta{color:var(--ink);font-weight:700}
+.door-pat .door-meta .ico{color:var(--alert)}
+.door-visual{margin-top:auto;padding-top:28px;min-height:0;display:flex;align-items:flex-start}
+/* dashboard mock (hero) */
+.mock{background:#fff;color:var(--ink);border-radius:8px 8px 0 0;font-size:15px;line-height:1.35;width:100%;max-width:600px}
+.mock-top{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--paper-2);font-weight:700}
+.mock-top .who{margin-left:auto;display:flex;align-items:center;gap:8px;font-weight:400;color:var(--muted)}
+.av{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--sage-t);color:var(--sage-s);font-size:12px;font-weight:700}
+.mock{display:block}
+.mock-rows{display:block}
+.mock-rows .r{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--paper-2)}
+.mock-rows .r.sel{background:#F7F4EE}
+.mock-rows .ini{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--paper-2);font-size:12px;font-weight:700;color:var(--blue)}
+.mock-rows .meta{display:block;color:var(--muted);font-size:14px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 8px;border-radius:999px;font-weight:700;white-space:nowrap;line-height:1.3}
 .pill .ico{stroke-width:2.4}
-.pill-alert{background:var(--alert-bg);color:var(--color-alert)}
-.pill-warn{background:var(--warning-bg);color:var(--color-warning)}
-.pill-ok{background:var(--success-bg);color:var(--color-success)}
-.pill-none{background:var(--color-neutral-100);color:var(--color-neutral-600)}
+.pill-alert{background:var(--alert-bg);color:var(--alert)}
+.pill-warn{background:var(--warn-bg);color:var(--warn)}
+.pill-ok{background:var(--ok-bg);color:var(--ok)}
+.pill-none{background:var(--paper-2);color:var(--muted)}
+/* phone mock (hero) */
+.phone{width:290px;margin-left:clamp(0px,4vw,60px);background:var(--ink);border-radius:36px 36px 0 0;padding:12px 12px 0}
+.phone-s{background:#fff;border-radius:26px 26px 0 0;padding:22px 20px 24px;font-size:16px;color:var(--ink)}
+.phone-notch{width:84px;height:6px;border-radius:3px;background:var(--paper-2);margin:0 auto 18px}
+.phone-hi{font:700 22px/1.2 var(--f-title);color:var(--blue)}
+.phone{display:block}
+.phone-o{display:flex}
+.phone-prog{display:flex;gap:6px;margin:14px 0 8px}
+.phone-prog i{flex:1;height:6px;border-radius:3px;background:var(--paper-2)}
+.phone-prog i.d{background:var(--sage)}
+.phone-prog i.n{background:var(--blue)}
+.phone-step{color:var(--muted);font-size:14px}
+.phone-q{font:700 21px/1.3 var(--f-title);margin:6px 0 14px}
+.phone-o{display:flex;align-items:center;gap:10px;border:2px solid var(--paper-2);border-radius:12px;padding:11px 14px;margin-bottom:8px;font-size:17px}
+.phone-o i{width:18px;height:18px;border-radius:50%;border:2px solid var(--line)}
+.phone-o.on{border-color:var(--sage-s);background:var(--sage-t)}
+.phone-o.on i{border:5px solid var(--sage-s)}
+.phone-sos{margin-top:12px;font-size:14px;color:var(--alert);font-weight:700;text-align:center}
 
-/* Header */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.94);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--color-neutral-300)}
-.header-row{display:flex;align-items:center;gap:24px;height:var(--header-h)}
-.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--color-brand-primary);font-family:var(--font-title);font-weight:700;font-size:28px;letter-spacing:-.01em;min-height:44px}
-.logo svg{width:34px;height:34px}
-.main-nav{margin-left:auto}
-.main-nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
-.main-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 9px;white-space:nowrap;color:var(--color-neutral-900);text-decoration:none;border-radius:var(--radius-sm)}
-.main-nav a:hover{color:var(--color-brand-primary);text-decoration:underline}
-.menu-btn{display:none;margin-left:auto;align-items:center;justify-content:center;width:48px;height:48px;padding:0;border:0;background:none;color:var(--color-brand-primary);cursor:pointer;-webkit-tap-highlight-color:transparent}
-.menu-btn .ico{width:30px;height:30px;transition:color var(--duration-fast),opacity var(--duration-fast)}
-.menu-btn .ico-close,.menu-btn[aria-expanded="true"] .ico-open{display:none}
-.menu-btn[aria-expanded="true"] .ico-close{display:block}
-.menu-btn:hover{color:var(--color-brand-secondary-strong)}
-.menu-btn:focus-visible{box-shadow:none;outline:none;color:var(--color-brand-secondary-strong)}
-.menu-btn:focus-visible .ico{opacity:.75}
-.mobile-nav{display:none}
+/* ===== Blocs ===== */
+.blk{padding:52px 0;border-top:1px solid var(--line);scroll-margin-top:var(--hdr)}
+.blk[data-aud="patient"]{background:var(--sage-t);border-top-color:var(--sage-t2)}
+.blk-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+.blk-titles{max-width:46em}
+.blk h2{font-size:44px;line-height:1.15;color:var(--blue);font-weight:700;letter-spacing:-.005em}
+.blk[data-aud="patient"] h2{color:var(--sage-s)}
+.blk h2:focus{outline:none}
+.lead{margin-top:12px;font-size:21px;line-height:1.55;max-width:40em}
+.pro-note{display:inline-flex;align-items:center;gap:8px;margin-bottom:8px;font-size:18px;line-height:1.4;color:var(--info)}
+.pro-note .ico{width:22px;height:22px}
+.fold-btn{display:inline-flex;align-items:center;gap:8px;flex:none;min-height:48px;padding:0 4px;border:0;background:none;color:var(--blue-l);font:700 19px/1 var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:4px;-webkit-tap-highlight-color:transparent}
+.fold-btn .ico{transition:transform .15s}
+.fold-btn[aria-expanded="true"] .ico{transform:rotate(180deg)}
+.fold-btn:hover,.fold-btn:focus-visible{color:var(--blue)}
+.fold-btn:focus-visible{outline:none;text-decoration-thickness:3px}
+.blk.is-folded{padding:22px 0;background:var(--paper)}
+.blk.is-folded .blk-head{margin-bottom:0;align-items:center}
+.blk.is-folded h2{font-size:28px;color:var(--ink)}
+.blk.is-folded .lead,.blk.is-folded .pro-note{display:none}
+.fold-group{padding:44px 0 26px;border-top:2px solid var(--ink)}
+.fold-group .fg-t{font:700 24px/1.3 var(--f-title);color:var(--ink)}
+.fold-group .fg-n{margin-top:6px;color:var(--muted);font-size:19px}
 
-/* Hero */
-.hero{padding:56px 0 72px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
-.hero-copy h1{max-width:13.5em}
-.hero-sub{margin-top:24px;font-size:20px;line-height:1.6;max-width:34em}
-.audience{display:flex;flex-wrap:wrap;gap:16px;margin-top:36px}
-.audience .btn{min-height:60px;padding:0 28px;font-size:20px}
-.audience .btn-patient{order:2}
-.audience .btn-primary{order:1}
-.audience-note{margin-top:16px}
+/* ===== Parcours : ligne de temps ===== */
+.tl{position:relative}
+.tl-chart{position:relative;height:240px;margin:0 0 6px}
+.tl-chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tl-chart .axis{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--ink)}
+.tl-thr{position:absolute;left:0;top:41.6%;transform:translateY(-120%);font-size:18px;color:var(--muted);background:var(--paper);padding-right:10px}
+.tl-dot{position:absolute;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--sage);color:var(--sage-s);display:grid;place-items:center}
+.tl-dot .ico{width:24px;height:24px;stroke-width:2.2}
+.tl-dot.al{background:var(--alert-bg);border-color:var(--alert);color:var(--alert)}
+.tl-dot.cl{background:var(--sage-s);border-color:var(--sage-s);color:#fff}
+.d0{left:12.5%;top:83.3%}.d1{left:37.5%;top:71.7%}.d2{left:62.5%;top:20.8%}.d3{left:87.5%;top:77.5%}
+.tl-flag{position:absolute;left:calc(62.5% + 36px);top:20.8%;transform:translateY(-50%);display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;color:var(--alert);background:var(--paper);padding:2px 8px}
+.tl-ticks{display:none}
+.tl-days{display:grid;grid-template-columns:repeat(4,1fr);gap:0 28px;text-align:center}
+.tl-day{padding-top:18px;position:relative}
+.tl-day::before{content:"";position:absolute;top:-6px;left:50%;width:2px;height:14px;background:var(--ink)}
+.tl-j{font:700 34px/1 var(--f-title);color:var(--blue)}
+.tl-st{display:block;margin-top:4px;font-size:18px;color:var(--muted)}
+.tl-day h3{margin-top:10px;font-size:23px;line-height:1.25;color:var(--ink);font-weight:700}
+.tl-day p{margin-top:8px;font-size:19px;line-height:1.5}
+.tl-note{margin-top:22px;font-size:18px;color:var(--muted);text-align:center}
+body[data-mode="patient"] .tl-day h3{font-size:25px}
+body[data-mode="patient"] .tl-day p{font-size:21px}
+body[data-mode="patient"] .tl-thr,body[data-mode="patient"] .tl-chart .thr-line{opacity:.9}
 
-.hero-visual{position:relative;padding:0 0 96px 150px}
-.dash-card{background:var(--color-neutral-0);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:1px solid #E6E1D8;overflow:hidden;font-family:var(--font-body)}
-.dash-top{display:flex;align-items:center;gap:10px;white-space:nowrap;padding:14px 18px;border-bottom:1px solid var(--color-neutral-100);font-size:14px;color:var(--color-neutral-600)}
-.dash-top b{color:var(--color-brand-primary);font-family:var(--font-title);font-size:16px}
-.dash-top .who{margin-left:auto;display:flex;align-items:center;gap:8px}
-.avatar-ide{width:26px;height:26px;border-radius:50%;background:var(--color-brand-secondary-tint);color:var(--color-brand-secondary-strong);display:grid;place-items:center;font-weight:700;font-size:12px}
-.dash-filters{display:flex;gap:8px;padding:12px 18px 4px;flex-wrap:wrap}
-.chip-mini{font-size:13px;border:1px solid var(--color-neutral-300);border-radius:var(--radius-full);padding:2px 10px;color:var(--color-neutral-600)}
-.chip-mini.on{background:var(--color-brand-primary);border-color:var(--color-brand-primary);color:#fff}
-.dash-rows{list-style:none;margin:0;padding:6px 10px 12px}
-.dash-rows li{display:grid;grid-template-columns:34px minmax(0,1fr) auto;white-space:nowrap;align-items:center;gap:12px;padding:10px 8px;border-radius:10px;font-size:15px;line-height:1.35}
-.dash-rows li + li{border-top:1px solid var(--color-neutral-100)}
-.dash-rows li.sel{background:#F6F4EF}
-.dash-rows .ini{width:34px;height:34px;border-radius:50%;background:var(--color-neutral-100);display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--color-neutral-900)}
-.dash-rows .meta{display:block;color:var(--color-neutral-600);font-size:13px}
-.dash-rows .pill{font-size:13px}
-.dash-foot{padding:10px 18px;border-top:1px solid var(--color-neutral-100);font-size:13px;color:var(--color-neutral-600);display:flex;justify-content:space-between;gap:8px}
+/* ===== Tableau de bord ===== */
+.db{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr);gap:44px;align-items:start}
+.cap{border:1px solid var(--line);border-radius:8px;background:#fff;font-size:15px;line-height:1.35;overflow:hidden}
+.cap .mock-top{background:var(--paper)}
+.cap-body{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr)}
+.cap-list{border-right:1px solid var(--paper-2)}
+.cap table{width:100%;border-collapse:collapse}
+.cap th{font-weight:700;color:var(--muted);text-align:left;padding:10px 14px;border-bottom:1px solid var(--paper-2);font-size:14px}
+.cap td{padding:9px 14px;border-bottom:1px solid var(--paper-2);vertical-align:middle}
+.cap td small{display:block;color:var(--muted);font-size:13px;white-space:nowrap}
+.cap tr.sel td{background:#F7F4EE}
+.cap .pill{font-size:13px}
+.cap-det{padding:14px 16px}
+.cap-det h4{margin:0 0 4px;font:700 17px/1.3 var(--f-title);color:var(--blue)}
+.cap-det .sub{color:var(--muted);font-size:14px;margin-bottom:6px}
+.hist th,.hist td{padding:3px 8px;text-align:center;border-bottom:1px solid var(--paper-2)}
+.hist td:first-child,.hist th:first-child{text-align:left}
+.cell{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:6px}
+.cell .ico{width:16px;height:16px;stroke-width:2.6}
+.c-ok{background:var(--ok-bg);color:var(--ok)}.c-warn{background:var(--warn-bg);color:var(--warn)}.c-alert{background:var(--alert-bg);color:var(--alert)}
+.cap-act{margin-top:12px;padding:10px 12px;border-left:3px solid var(--alert);background:var(--alert-bg);font-size:14px}
+.cap-act .row{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.fake{display:inline-block;padding:5px 10px;border-radius:5px;background:var(--blue);color:#fff;font-weight:700;font-size:13px}
+.fake.g{background:#fff;color:var(--blue);border:1px solid var(--line)}
+.an{display:inline-grid;place-items:center;width:22px;height:22px;margin-left:6px;border-radius:50%;background:var(--blue);color:#fff;font:700 13px/1 var(--f-body);vertical-align:middle}
+.anno{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin-top:18px}
+.anno li{display:flex;gap:10px;font-size:18px;line-height:1.4}
+.anno .an{flex:none;margin:2px 0 0;width:26px;height:26px;font-size:14px}
+.anno b{display:inline;margin-right:4px}
+.load{border-top:2px solid var(--ink)}
+.load div{padding:12px 0;border-bottom:1px solid var(--line);line-height:1.45}
+.load dt{display:inline;margin-right:6px}
+.load dd{display:inline}
+.load dt{font-weight:700;color:var(--blue)}
+.levels{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.levels .pill{font-size:16px}
+.peer{margin-top:20px;padding-left:20px;border-left:3px solid var(--sage-soft)}
+.peer blockquote{font-size:19px;line-height:1.5;font-style:italic}
+.peer figcaption{margin-top:8px;font-size:18px;color:var(--muted)}
+.db-cta{margin-top:24px}
 
-.phone{position:absolute;left:0;bottom:0;width:212px;height:430px;border-radius:34px;background:#1E2A33;padding:9px;box-shadow:var(--shadow-lg)}
-.phone-screen{height:100%;border-radius:26px;background:var(--color-neutral-50);overflow:hidden;display:flex;flex-direction:column;padding:14px 14px 12px;font-size:13px;line-height:1.35}
-.phone-notch{width:70px;height:18px;border-radius:10px;background:#1E2A33;margin:-6px auto 10px}
-.phone-hello{font-size:12px;color:var(--color-neutral-600)}
-.phone-prog{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:8px 0 6px}
-.phone-prog i{height:5px;border-radius:3px;background:var(--color-neutral-300)}
-.phone-prog i.done{background:var(--color-brand-secondary-strong)}
-.phone-prog i.now{background:var(--color-brand-primary)}
-.phone-step{font-size:12px;color:var(--color-neutral-600)}
-.phone-q{font-family:var(--font-title);font-weight:700;color:var(--color-brand-primary);font-size:19px;line-height:1.2;margin:10px 0 12px}
-.phone-opt{display:flex;align-items:center;gap:8px;border:2px solid var(--color-neutral-300);background:#fff;border-radius:12px;padding:9px 10px;margin-bottom:7px;font-weight:700;font-size:14px}
-.phone-opt .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--color-neutral-600);flex:none}
-.phone-opt.on{border-color:var(--color-brand-secondary-strong);background:var(--color-brand-secondary-tint)}
-.phone-opt.on .dot{border:4px solid var(--color-brand-secondary-strong)}
-.phone-next{margin-top:auto;background:var(--color-brand-primary);color:#fff;text-align:center;border-radius:12px;padding:9px;font-weight:700;font-size:14px}
-.phone-sos{margin-top:8px;font-size:11px;color:var(--color-info);text-align:center}
+/* ===== Preuves : fiches d'étude ===== */
+.proof{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:32px;align-items:start}
+.proof-main{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.proof-main .sheet{align-self:stretch}
+.sheet{background:#fff;border:1px solid var(--ink)}
+.sheet-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 20px;border-bottom:1px solid var(--ink);background:var(--paper)}
+.sheet-h b{font:700 18px/1.3 var(--f-title);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.sheet-h span{font-size:18px;color:var(--muted)}
+.sheet h3{padding:14px 20px 4px;font-size:23px;line-height:1.3;color:var(--blue)}
+.sheet table{width:100%;border-collapse:collapse;font-size:18px;line-height:1.45}
+.sheet th{width:36%;text-align:left;font-weight:400;color:var(--muted);padding:9px 20px;border-top:1px solid var(--paper-2);vertical-align:top}
+.sheet td{padding:9px 20px 9px 0;border-top:1px solid var(--paper-2)}
+.pending{display:flex;gap:10px;align-items:flex-start;margin:0;padding:14px 20px;background:var(--info-bg);color:var(--ink);border-top:1px solid var(--ink)}
+.pending .ico{margin-top:4px;color:var(--info)}
+.proof-side{display:flex;flex-direction:column;gap:14px}
+.ctx{padding:16px 20px;border-left:3px solid var(--blue);background:#fff}
+.ctx h3{font-size:21px;color:var(--ink);line-height:1.3}
+.ctx p{margin-top:4px;font-size:18px;line-height:1.5}
+.ctx .src{margin-top:8px}
 
-/* Trust band */
-.trust{border-top:1px solid var(--color-neutral-300);border-bottom:1px solid var(--color-neutral-300);background:var(--color-neutral-0)}
-.trust ul{list-style:none;margin:0;padding:18px 0;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
-.badge{display:inline-flex;align-items:center;gap:8px;border-radius:var(--radius-sm);padding:6px 12px;background:var(--color-brand-secondary-tint);color:var(--color-brand-secondary-strong);font-weight:700;line-height:1.35}
-.badge-warn{background:var(--warning-bg);color:var(--color-warning)}
-.trust .caption{margin-left:auto}
+/* ===== Conformité ===== */
+.reg{width:100%;border-collapse:collapse;border-top:2px solid var(--ink)}
+.reg th,.reg td{text-align:left;vertical-align:top;padding:16px 24px 16px 0;border-bottom:1px solid var(--line)}
+.reg thead th{font-size:18px;font-weight:400;color:var(--muted);padding:12px 18px 12px 0}
+.reg tbody th{font:700 22px/1.3 var(--f-title);color:var(--blue);width:27%}
+.reg tbody th .st{display:block;margin-top:8px;font-family:var(--f-body)}
+.reg td{font-size:18px;line-height:1.5}
+.reg td.doc{width:22%}
+.reg .more{display:inline}
+.reg .more .ico{display:inline-block;vertical-align:-3px;margin-left:6px}
+.reg td p+p{margin-top:4px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 10px;border-radius:4px;font-weight:700;font-size:18px;line-height:1.3}
+.b-warn{background:var(--warn-bg);color:var(--warn)}
+.b-ok{background:var(--ok-bg);color:var(--ok)}
+.b-n{background:var(--paper-2);color:var(--ink)}
+.reg-note{display:flex;gap:10px;margin-top:22px;font-size:19px}
+.reg-note .ico{margin-top:5px;color:var(--info)}
 
-/* Section base */
-.section{padding:104px 0}
-.section-tint{background:var(--color-brand-secondary-tint)}
-.section-head{max-width:760px;margin-bottom:48px}
-.section-head p{margin-top:16px}
+/* ===== Équipe ===== */
+.team{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:64px;align-items:start}
+.about p{font-size:23px;line-height:1.55;max-width:26em}
+.about svg{margin-top:28px;width:100%;max-width:440px;color:var(--blue)}
+.comm h3{font-size:28px;color:var(--blue)}
+.comm .src{margin-top:4px}
+.members{margin-top:14px;border-top:2px solid var(--ink)}
+.members li{padding:14px 0;border-bottom:1px solid var(--line)}
+.m-n{font-weight:700;font-size:20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.m-r{color:var(--muted)}
+.m-c{margin-top:4px;font-size:18px;line-height:1.5}
 
-/* Parcours */
-.journey{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
-.journey-art{background:var(--color-neutral-50);border-radius:var(--radius-lg);aspect-ratio:4/3;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
-.journey-art figure{margin:0;position:absolute;inset:0;display:grid;grid-template-rows:1fr auto;padding:28px 28px 22px;opacity:0;visibility:hidden;transition:opacity var(--duration-base) var(--ease-standard),visibility 0s linear var(--duration-base)}
-.journey-art figure.is-on{opacity:1;visibility:visible;transition:opacity var(--duration-base) var(--ease-standard)}
-.journey-art svg{width:100%;height:100%}
-.journey-art figcaption{font-size:18px;color:var(--color-neutral-600);text-align:center}
-.steps{list-style:none;margin:0;padding:0;position:relative}
-.steps::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:var(--color-neutral-300)}
-.step-btn{all:unset;box-sizing:border-box;display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;align-items:start;width:100%;padding:16px 16px 16px 0;cursor:pointer;border-radius:var(--radius-md);position:relative}
-.step-btn:focus-visible{box-shadow:var(--focus-ring)}
-.step-num{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--color-neutral-50);border:2px solid var(--color-neutral-300);font-family:var(--font-title);font-weight:700;font-size:22px;color:var(--color-neutral-600);position:relative;z-index:1;transition:background-color var(--duration-fast),border-color var(--duration-fast),color var(--duration-fast)}
-.step-btn .st{display:block;font-family:var(--font-title);font-weight:600;line-height:1.3;font-size:22px;color:var(--color-neutral-900);margin-top:12px}
-.step-btn .sp{display:block;margin-top:6px;color:var(--color-neutral-900)}
-.step-btn[aria-current="step"] .step-num{background:var(--color-brand-secondary-strong);border-color:var(--color-brand-secondary-strong);color:#fff}
-.step-btn[aria-current="step"] .st{color:var(--color-brand-primary)}
-.step-btn[aria-current="step"]::after{content:"";position:absolute;left:-14px;top:22px;bottom:22px;width:4px;border-radius:2px;background:var(--color-brand-primary)}
-.step-btn:hover .st{text-decoration:underline;text-underline-offset:4px}
-.steps-note{margin-top:20px;padding-left:76px}
+/* ===== Publications ===== */
+.pub-tools{display:flex;align-items:center;gap:6px 22px;flex-wrap:wrap;margin-bottom:12px}
+.pub-tools fieldset{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px}
+.pub-tools legend{float:left;margin-right:18px;color:var(--muted)}
+.filter{min-height:44px;padding:0 2px;border:0;border-bottom:3px solid transparent;background:none;color:var(--ink);font:400 19px/1 var(--f-body);cursor:pointer}
+.filter[aria-pressed="true"]{border-bottom-color:var(--blue);color:var(--blue);font-weight:700}
+.filter:hover{color:var(--blue)}
+.pubs{border-top:2px solid var(--ink)}
+.pub{display:grid;grid-template-columns:12em 7em 1fr;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.pub time{color:var(--muted)}
+.pub .k{font-weight:700;color:var(--sage-s)}
+.pub h3{font:700 21px/1.35 var(--f-title)}
+.pub h3 a{color:var(--blue)}
+.pub p{font-size:18px;color:var(--muted);margin-top:2px}
+.pub-empty{padding:22px 0;border-bottom:1px solid var(--line)}
+.pub-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:26px}
 
-/* Dashboard section */
-.dash-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:48px;align-items:start}
-.dash-big{position:relative}
-.dash-big .dash-card{font-size:15px}
-.db-body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);min-height:0}
-.db-list{border-right:1px solid var(--color-neutral-100)}
-.db-table{width:100%;border-collapse:collapse;font-size:14px}
-.db-table th{white-space:nowrap;text-align:left;font-weight:700;color:var(--color-neutral-600);font-size:13px;padding:10px 12px;border-bottom:1px solid var(--color-neutral-100)}
-.db-table td{white-space:nowrap;padding:10px 12px;border-bottom:1px solid var(--color-neutral-100);vertical-align:middle;line-height:1.3}
-.db-table tr.sel td{background:#F6F4EF}
-.db-table tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--color-brand-primary)}
-.db-table .pill{font-size:12.5px}
-.db-table small{display:block;color:var(--color-neutral-600);font-size:12.5px}
-.db-detail{padding:14px 16px}
-.db-detail h4{margin:0;font-family:var(--font-title);color:var(--color-brand-primary);font-size:17px}
-.db-detail .sub{color:var(--color-neutral-600);font-size:13px}
-.hist{width:100%;border-collapse:separate;border-spacing:0 2px;margin-top:10px;font-size:13px}
-.hist th{font-weight:700;color:var(--color-neutral-600);text-align:center;font-size:12px}
-.hist th:first-child,.hist td:first-child{text-align:left}
-.hist td{text-align:center;padding:3px 2px}
-.cell{display:inline-grid;place-items:center;width:26px;height:24px;border-radius:6px}
-.cell .ico{width:15px;height:15px;stroke-width:2.6}
-.c-ok{background:var(--success-bg);color:var(--color-success)}
-.c-warn{background:var(--warning-bg);color:var(--color-warning)}
-.c-alert{background:var(--alert-bg);color:var(--color-alert)}
-.db-action{margin-top:12px;border:1px solid #F0CFCB;background:#FFF8F7;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.4}
-.db-action b{color:var(--color-alert)}
-.db-action .row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.db-action span.fake-btn{border-radius:8px;padding:5px 10px;font-weight:700;font-size:12.5px;background:var(--color-brand-primary);color:#fff}
-.db-action span.fake-btn.ghost{background:#fff;color:var(--color-brand-primary);border:1px solid var(--color-brand-primary)}
-.anno-i{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--color-brand-primary);color:#fff;font-family:var(--font-title);font-weight:700;font-size:14px;line-height:1;vertical-align:middle;margin-left:6px;box-shadow:0 0 0 3px #fff}
-.anno-list{list-style:none;margin:0;padding:0;counter-reset:anno}
-.anno-list li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:16px;padding:14px 0}
-.anno-list li + li{border-top:1px solid var(--color-neutral-300)}
-.anno-list .n{width:34px;height:34px;border-radius:50%;background:var(--color-brand-primary);color:#fff;display:grid;place-items:center;font-family:var(--font-title);font-weight:700}
-.anno-list h3{font-size:20px}
-.anno-list p{margin-top:4px}
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.legend .pill{font-size:16px}
-
-.route{margin-top:72px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:48px;align-items:start}
-.route h3{font-size:28px}
-.route-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
-.route-steps li{position:relative;padding:0 16px 0 0}
-.route-steps .ri{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--color-neutral-0);border:2px solid var(--color-brand-secondary);color:var(--color-brand-secondary-strong);position:relative;z-index:1}
-.route-steps li:nth-child(3) .ri{border-color:var(--color-alert);color:var(--color-alert)}
-.route-steps li:not(:last-child)::after{content:"";position:absolute;left:52px;right:0;top:25px;height:2px;background:repeating-linear-gradient(90deg,var(--color-brand-secondary-soft) 0 8px,transparent 8px 14px)}
-.route-steps b{display:block;margin-top:14px;font-family:var(--font-title);font-size:20px;color:var(--color-brand-primary);line-height:1.25}
-.route-steps p{margin-top:6px}
-.load{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--color-brand-primary)}
-.load div{padding:20px 24px 0 0}
-.load div + div{padding-left:24px;border-left:1px solid var(--color-neutral-300)}
-.load dt{font-weight:700;color:var(--color-brand-primary)}
-.load dd{margin:6px 0 0}
-.peer{margin:64px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px;align-items:center;background:var(--color-brand-secondary-tint);border-radius:var(--radius-lg);padding:32px 40px}
-.peer .qmark{font-family:var(--font-title);font-weight:700;font-size:72px;line-height:.8;color:var(--color-brand-secondary);align-self:start}
-.peer blockquote{margin:0;font-family:var(--font-title);font-size:26px;line-height:1.35;color:var(--color-brand-primary);font-weight:600;max-width:34em}
-.peer figcaption{margin-top:10px;font-size:18px}
-.peer .tag-ex{justify-self:start}
-.tag-ex{display:inline-block;border:1.5px solid var(--color-neutral-600);color:var(--color-neutral-600);border-radius:var(--radius-sm);padding:0 8px;font-size:16px;font-weight:700;line-height:1.6;vertical-align:middle}
-
-/* Preuves */
-.proof-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:28px;align-items:stretch}
-.study{background:var(--color-neutral-0);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:32px;border:1px solid #ECE7DE}
-.study-type{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--color-brand-secondary-strong)}
-.study h3{margin-top:10px}
-.study dl{margin:24px 0 0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:0}
-.study dt,.study dd{padding:12px 0;border-top:1px solid var(--color-neutral-100)}
-.study dt{font-weight:700;padding-right:24px;color:var(--color-neutral-600)}
-.study dd{margin:0}
-.result-pending{display:flex;gap:12px;align-items:flex-start;margin-top:24px;padding:16px 18px;border-radius:var(--radius-md);background:var(--warning-bg);color:#5E3E00}
-.result-pending b{color:var(--color-warning)}
-.study-small{padding:28px}
-.study-small dl{grid-template-columns:1fr}
-.study-small dt{padding-bottom:0}
-.study-small dd{border-top:0;padding-top:2px}
-.proof-side{display:grid;gap:28px;align-content:start}
-.sites{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-.site{display:flex;gap:12px;align-items:center;font-weight:700}
-.site svg{width:40px;height:40px;color:var(--color-brand-secondary)}
-.context{margin-top:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:32px;align-items:start;border-top:2px solid var(--color-brand-primary);padding-top:28px}
-.context h3{font-size:22px}
-.context > .btn{align-self:end}
-.context p{margin-top:8px}
-.src{display:block;margin-top:10px}
-
-/* Conformité */
-.comp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.comp{background:var(--color-neutral-0);border-radius:var(--radius-lg);padding:32px;display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;align-items:start}
-.comp-ico{width:56px;height:56px;border-radius:14px;background:var(--color-brand-secondary-tint);color:var(--color-brand-secondary-strong);display:grid;place-items:center}
-.comp-ico .ico{width:28px;height:28px}
-.comp h3{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
-.comp p{margin-top:10px}
-.comp .badge{font-size:16px}
-.comp ul{margin:12px 0 0;padding-left:20px}
-.comp li + li{margin-top:4px}
-.comp .doc{margin-top:12px}
-.comp-note{margin-top:28px;display:flex;gap:12px;align-items:flex-start;max-width:70ch}
-
-/* Équipe */
-.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}
-.about-art{margin-top:36px;width:100%;max-width:420px;color:var(--color-brand-secondary-soft)}
-.about-text{font-size:22px;line-height:1.6;margin-top:24px;max-width:30em}
-.committee h3{font-size:28px}
-.committee .caption{margin-top:6px}
-.members{list-style:none;margin:24px 0 0;padding:0}
-.members li{padding:22px 0;border-top:1px solid var(--color-neutral-300)}
-.members li:last-child{border-bottom:1px solid var(--color-neutral-300)}
-.m-name{font-weight:700;font-size:20px;color:var(--color-neutral-900)}
-.m-role{margin-top:2px}
-.m-coi{margin-top:8px;font-size:18px;color:var(--color-neutral-600)}
-
-/* Publications */
-.pub-tools{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:28px}
-.pub-tools legend{font-weight:700;margin-right:8px;padding:0;float:left;line-height:48px}
-.pub-tools fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.filter{min-height:48px;padding:0 20px;border-radius:var(--radius-full);border:2px solid var(--color-brand-primary);background:transparent;color:var(--color-brand-primary);font:700 18px/1 var(--font-body);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-.filter[aria-pressed="true"]{background:var(--color-brand-primary);color:#fff}
-.filter[aria-pressed="true"]::before{content:"";width:8px;height:14px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-2px,-2px)}
-.filter:hover{background:var(--color-brand-secondary-tint)}
-.filter[aria-pressed="true"]:hover{background:var(--color-brand-primary-hover)}
-.pubs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
-.pub{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:24px 0;border-top:1px solid var(--color-neutral-300)}
-.pub[hidden]{display:none}
-.pub time{font-weight:700;color:var(--color-neutral-900);line-height:1.4}
-.pub .kind{display:inline-block;margin-top:6px;color:var(--color-brand-secondary-strong);font-weight:700}
-.pub h3{font-size:21px;line-height:1.35}
-.pub h3 a{color:var(--color-brand-primary);text-decoration:none}
-.pub h3 a:hover{text-decoration:underline}
-.pub p{margin-top:8px;color:var(--color-neutral-600)}
-.pub .tag-ex{margin-left:6px}
-.pub-empty{padding:32px;border:2px dashed var(--color-neutral-300);border-radius:var(--radius-lg);text-align:center}
-.pub-foot{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center}
-
-/* Contact */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:start}
-.panel{border-radius:var(--radius-lg);padding:40px}
-.panel-form{background:var(--color-neutral-0);box-shadow:var(--shadow-md);border:1px solid #ECE7DE}
-.panel-patient{background:var(--color-brand-secondary-tint);font-size:20px}
-.panel h2{font-size:32px;line-height:1.25}
-.panel-intro{margin-top:12px}
-.form{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:20px 20px}
-.field{display:grid;gap:8px;align-content:start}
-.field.full{grid-column:1/-1}
-.field label{font-weight:700;line-height:1.4}
-.field .opt{font-weight:400;color:var(--color-neutral-600)}
-.field input,.field textarea{width:100%;min-height:52px;padding:12px 14px;border:2px solid var(--color-neutral-600);border-radius:var(--radius-sm);background:#fff;color:var(--color-neutral-900);font:400 18px/1.4 var(--font-body)}
-.field textarea{min-height:120px;resize:vertical}
-.field input:focus-visible,.field textarea:focus-visible{box-shadow:var(--focus-ring);border-color:var(--color-brand-primary-light);border-radius:var(--radius-sm)}
-.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:var(--color-alert)}
-.hint{font-size:18px;color:var(--color-neutral-600);line-height:1.45}
-.err{display:flex;gap:8px;align-items:flex-start;color:var(--color-alert);font-size:18px;line-height:1.45}
-.err[hidden]{display:none}
-.err .ico{margin-top:3px}
-.no-health{grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-md);background:var(--info-bg);color:#16466A}
-.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
-.form-foot .caption{flex:1 1 260px}
-.spinner{width:18px;height:18px;border-radius:50%;border:3px solid rgba(90,102,112,.35);border-top-color:var(--color-neutral-600);animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.form-status{grid-column:1/-1}
-.success{margin-top:28px;padding:28px;border-radius:var(--radius-lg);background:var(--success-bg);color:#1F4A31;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px}
-.success .ico{width:32px;height:32px;color:var(--color-success)}
-.success h3{color:var(--color-success);font-size:24px}
+/* ===== Contact établissement ===== */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1 / -1}
+.field label{font-weight:700}
+.field .opt{font-weight:400;color:var(--muted)}
+.field input,.field textarea{width:100%;min-height:52px;padding:12px 14px;border:1.5px solid #8A939B;border-radius:6px;background:#fff;color:var(--ink);font:400 19px/1.4 var(--f-body)}
+.field textarea{min-height:92px;resize:vertical}
+.field input:focus-visible,.field textarea:focus-visible{outline:3px solid var(--blue-l);outline-offset:1px;border-color:var(--blue)}
+.field input[aria-invalid="true"]{border-color:var(--alert)}
+.hint{font-size:18px;color:var(--muted)}
+.err{display:flex;gap:8px;align-items:flex-start;font-size:18px;line-height:1.45;color:var(--alert)}
+.err .ico{margin-top:4px}
+.form-foot{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:4px}
+.form-foot .src a{color:inherit}
+.no-health{grid-column:1 / -1;display:flex;gap:10px;font-size:18px;color:var(--muted)}
+.no-health .ico{margin-top:4px}
+.send-fail{grid-column:1 / -1;display:flex;gap:10px;color:var(--alert);font-size:18px}
+.send-fail .ico{margin-top:4px}
+.spin{width:18px;height:18px;border:3px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.success{display:flex;gap:16px;padding:24px;border:1px solid var(--ok);background:var(--ok-bg)}
+.success>.ico{width:32px;height:32px;color:var(--ok)}
+.success h3{font-size:24px;color:var(--ok)}
 .success p{margin-top:6px}
-.send-fail{display:flex;gap:10px;color:var(--color-alert)}
+.success:focus{outline:none}
 
-.patient-lines{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:16px}
-.patient-lines li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;align-items:start}
-.patient-lines .ico{width:32px;height:32px;color:var(--color-brand-secondary-strong);stroke-width:1.8}
-.panel-patient .btn-patient{width:100%;min-height:64px;margin-top:32px;font-size:20px;white-space:normal;text-align:center}
-.panel-patient .link-arrow{margin-top:12px;font-size:20px;color:var(--color-brand-primary)}
-.urgent{margin-top:28px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-md);background:var(--color-neutral-0);border-left:6px solid var(--color-info)}
-.urgent .ico{width:36px;height:36px;color:var(--color-info)}
-.urgent b{font-family:var(--font-title);font-size:26px;color:var(--color-brand-primary);line-height:1.2;display:block}
-.urgent a{font-weight:700;color:var(--color-info)}
-.caregiver{margin-top:24px;font-size:20px}
+/* ===== Patient ===== */
+.pat{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:64px;align-items:start}
+.pat-lines li{display:flex;gap:18px;align-items:flex-start;font-size:24px;line-height:1.45;padding:14px 0;border-bottom:1px solid var(--sage-t2)}
+.pat-lines li:first-child{padding-top:0}
+.pat-lines .n{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--sage-s);color:#fff;font:700 20px/1 var(--f-title);margin-top:2px}
+.pat-cta{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:28px}
+.pat-cta .more{font-size:21px;color:var(--sage-s)}
+.care{margin-top:14px;font-size:21px}
+.urgent{display:flex;gap:16px;align-items:center;padding:20px 24px;background:#fff;border:2px solid var(--alert);border-radius:8px}
+.urgent .ico{width:36px;height:36px;color:var(--alert)}
+.urgent b{display:block;font:700 30px/1.15 var(--f-title);color:var(--alert)}
+.urgent span{font-size:20px}
+.urgent a{color:var(--alert);font-weight:700;white-space:nowrap}
+.faq{margin-top:22px}
+.faq h3{font-size:24px;color:var(--sage-s);margin-bottom:6px}
+.faq details{border-bottom:1px solid var(--sage-t2)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:60px;cursor:pointer;font-size:21px;font-weight:700;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ico{width:24px;height:24px;color:var(--sage-s);transition:transform .15s}
+.faq details[open] summary .ico{transform:rotate(45deg)}
+.faq summary:focus-visible{outline:none;color:var(--sage-s);text-decoration:underline}
+.faq details p{padding:0 0 16px;font-size:21px;line-height:1.5}
 
-/* Footer */
-.site-footer{background:var(--color-brand-primary);color:#E9EEF4;padding:64px 0 40px;font-size:18px}
-.site-footer a{color:#fff}
-.foot-grid{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr));gap:40px}
-.site-footer .logo{color:#fff}
-.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.site-footer ul a{display:inline-flex;min-height:36px;align-items:center}
-.site-footer h2{color:#fff;font-size:20px;margin-bottom:10px}
-.foot-reg{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.25);display:grid;gap:8px;color:#D5DEE8}
-.foot-demo{font-weight:700;color:#fff}
-.site-footer :focus-visible{box-shadow:0 0 0 3px #1F3A5F,0 0 0 6px #fff}
+/* ===== Footer ===== */
+.foot{border-top:2px solid var(--ink);padding:44px 0 36px;font-size:18px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.foot h2{font:700 19px/1.3 var(--f-title);color:var(--ink);margin-bottom:8px}
+.foot li a{display:inline-flex;min-height:40px;align-items:center;color:var(--ink)}
+.foot-reg{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted)}
+.foot-demo{margin-top:8px;font-weight:700;color:var(--ink)}
 
-/* Onglets (tableau de bord) */
-.db-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;align-items:start}
-.db-side .peer{margin:16px 0 0;padding:16px 20px;gap:14px;grid-template-columns:auto minmax(0,1fr)}
-.db-side .peer .tag-ex{grid-column:2}
-.db-side .peer blockquote{font-size:20px}
-.db-side .peer figcaption{margin-top:4px}
-.db-side .peer .qmark{font-size:52px}
-.tabs{display:flex;gap:4px;border-bottom:2px solid var(--color-neutral-300);margin-bottom:12px}
-.tab{min-height:52px;padding:0 12px;white-space:nowrap;border:0;background:none;font:700 18px/1.2 var(--font-body);color:var(--color-neutral-600);cursor:pointer;border-bottom:4px solid transparent;margin-bottom:-2px;border-radius:var(--radius-sm) var(--radius-sm) 0 0}
-.tab:hover{color:var(--color-brand-primary)}
-.tab[aria-selected="true"]{color:var(--color-brand-primary);border-bottom-color:var(--color-brand-primary)}
-.tab-panel:focus-visible{box-shadow:var(--focus-ring);border-radius:var(--radius-sm)}
-.db-side .anno-list li{padding:10px 0}
-.db-side .anno-list p{margin-top:2px}
-.db-cta{margin-top:16px}
-.route-v{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:0}
-.route-v li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;position:relative;padding-bottom:14px}
-.route-v li:not(:last-child)::after{content:"";position:absolute;left:23px;top:48px;bottom:0;width:2px;background:repeating-linear-gradient(180deg,var(--color-brand-secondary-soft) 0 6px,transparent 6px 11px)}
-.route-v .ri{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--color-neutral-0);border:2px solid var(--color-brand-secondary);color:var(--color-brand-secondary-strong)}
-.route-v .ri-alert{border-color:var(--color-alert);color:var(--color-alert)}
-.route-v b{font-family:var(--font-title);font-size:20px;color:var(--color-brand-primary);line-height:1.3;display:block;padding-top:2px}
-.route-v p{margin:0;line-height:1.45}
-.load-v{margin:8px 0 0;border-top:2px solid var(--color-brand-primary)}
-.load-v div{padding:10px 0;border-bottom:1px solid var(--color-neutral-300)}
-.load-v dt{font-weight:700;color:var(--color-brand-primary);display:inline}
-.load-v dt::after{content:" : "}
-.load-v dd{display:inline;margin:0}
-
-/* Preuves */
-.proof-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:48px;align-items:start}
-.context-v{display:grid;gap:20px;border-top:2px solid var(--color-brand-primary);padding-top:20px}
-.context-v h3{font-size:22px}
-.context-v p{margin-top:6px}
-.context-v .src{margin-top:6px}
-.proof-cta{margin-top:24px}
-.proof-main{display:grid;gap:20px}
-.proof-main .study{padding:22px 28px}
-.proof-main .study h3{font-size:22px;margin-top:6px}
-.study .facts{margin:16px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
-.study .facts div{padding:10px 0;border-top:1px solid var(--color-neutral-100)}
-.study .facts dt{padding:0;border:0;font-weight:700;color:var(--color-neutral-600);line-height:1.4}
-.study .facts dd{padding:0;border:0;margin:2px 0 0;line-height:1.45}
-.study .facts-1{grid-template-columns:1fr}
-.proof-main .result-pending{margin-top:14px;padding:12px 16px}
-.proof-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
-.proof-row .study-small{padding:20px 24px}
-.proof-row .study-small h3{font-size:20px}
-.sites-box{padding:4px 0}
-.sites-box .sites{grid-template-columns:1fr;gap:10px;margin-top:12px}
-.sites-box .caption{margin-top:10px}
-
-@media (min-width:961px){
-  .section{padding:48px 0}
-  .section-head{margin-bottom:24px}
-  .section-head p{margin-top:10px}
-  .section-head .pro{margin-bottom:12px}
-  .journey{gap:56px}
-  .journey-side .section-head{margin-bottom:12px}
-  .step-btn{padding:10px 16px 10px 0}
-  .step-btn .st{margin-top:8px}
-  .step-btn .sp{margin-top:2px;line-height:1.5}
-  .steps::before{top:24px;bottom:24px}
-  .comp-grid{gap:20px}
-  .comp{padding:24px 28px;grid-template-columns:48px minmax(0,1fr);gap:18px}
-  .comp-ico{width:48px;height:48px;border-radius:12px}
-  .comp-ico .ico{width:24px;height:24px}
-  .comp p{margin-top:8px}
-  .comp .doc{margin-top:4px}
-  .comp-note{margin-top:16px}
-  .about-text{margin-top:16px}
-  .about-art{margin-top:24px;max-width:380px}
-  .committee .pro{margin-bottom:12px}
-  .members{margin-top:14px}
-  .members li{padding:14px 0}
-  .m-coi{margin-top:4px}
-  .pub-tools{margin-bottom:16px}
-  .pub{padding:18px 0}
-  .pub-foot{margin-top:20px}
-  .panel{padding:32px 36px}
-  .panel h2{font-size:30px}
-  .panel-intro{margin-top:6px}
-  .form{margin-top:20px;gap:16px 20px}
-  .field textarea{min-height:86px}
-  .no-health{padding:10px 14px}
-  .patient-lines{margin-top:18px;gap:12px}
-  .panel-patient .btn-patient{margin-top:22px}
-  .panel-patient .link-arrow{margin-top:6px}
-  .caregiver{margin-top:12px}
-  .urgent{margin-top:18px;padding:14px 18px}
-}
+/* ===== Responsive ===== */
 @media (max-width:1180px){
-  .db-grid{grid-template-columns:minmax(0,1fr)}
+  .reg td.doc{width:auto}
 }
-@media (max-width:960px){
-  .proof-layout,.proof-row{grid-template-columns:minmax(0,1fr)}
-  .journey-side{display:contents}
-  .journey-side .section-head{order:-1;margin-bottom:0}
-}
-@media (max-width:767px){
-  .study .facts{grid-template-columns:1fr}
-  .tab{flex:1 1 0;white-space:normal;padding:6px;font-size:17px;line-height:1.25}
-  .tabs{gap:0}
-  .proof-cta{width:100%}
-}
-
-/* Responsive */
-@media (max-width:1300px){
-  .main-nav,.header-cta{display:none}
-  .menu-btn{display:inline-flex}
-  .mobile-nav{position:fixed;left:0;right:0;top:var(--header-h);background:var(--color-neutral-50);border-bottom:1px solid var(--color-neutral-300);box-shadow:var(--shadow-md);padding:12px var(--gutter) 24px;max-height:calc(100dvh - var(--header-h));overflow:auto}
-  .mobile-nav.open{display:block}
-  .mobile-nav ul{list-style:none;margin:0;padding:0}
-  .mobile-nav li a{display:flex;align-items:center;min-height:52px;font-size:20px;color:var(--color-neutral-900);text-decoration:none;border-bottom:1px solid var(--color-neutral-100)}
-  .mobile-nav .btn{width:100%;margin-top:16px}
-  .hero-grid{gap:40px}
-  .dash-layout{grid-template-columns:1fr}
-  .anno-list{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
-  .anno-list li + li{border-top:0}
-  .anno-list li{border-top:1px solid var(--color-neutral-300)}
-}
-@media (max-width:960px){
-  h1{font-size:44px}
-  .hero-grid,.journey,.about,.contact-grid,.proof-grid,.route{grid-template-columns:1fr}
-  .hero-visual{max-width:620px}
-  .context{grid-template-columns:1fr 1fr}
-  .context .btn{grid-column:1/-1;justify-self:start}
-  .pubs{grid-template-columns:1fr}
-  .comp-grid{grid-template-columns:1fr}
-  .journey-art{max-width:620px}
+@media (max-width:1023px){
+  .db,.proof,.team,.pat{grid-template-columns:1fr;gap:36px}
+  .phone{width:260px}
+  .hdr-end{display:none}
+  .hdr{grid-template-columns:auto 1fr;}
+  .hdr-mid{justify-self:end}
 }
 @media (max-width:767px){
-  :root{--header-h:64px}
+  :root{--hdr:60px}
   body{font-size:18px}
-  h1{font-size:36px;line-height:1.12}
-  h2{font-size:30px}
-  .section{padding:72px 0}
-  .logo{font-size:25px}
-  .hero{padding:28px 0 48px}
-  .hero-sub{font-size:19px;margin-top:16px}
-  .audience{flex-direction:column;gap:12px;margin-top:28px}
-  .audience .btn{width:100%;min-height:64px}
-  .audience .btn-patient{order:1}
-  .audience .btn-primary{order:2}
-  .hero-visual{padding:0 0 196px 0;margin-top:8px}
-  .phone{left:auto;right:4px;bottom:0;transform:scale(.62);transform-origin:bottom right}
-  .dash-rows li{grid-template-columns:30px minmax(0,1fr) auto;gap:10px;padding:9px 4px}
-  .dash-rows .ini{width:30px;height:30px}
-  .dash-rows .meta{display:none}
-  .trust ul{gap:10px}
-  .trust .caption{margin-left:0}
-  .steps-note{padding-left:0}
-  .journey{gap:32px}
-  .journey-art figure{padding:16px 16px 14px}
-  .journey-art figcaption{font-size:16px}
-  .db-body{grid-template-columns:1fr}
-  .dash-big .dash-top{white-space:normal;flex-wrap:wrap}
-  .dash-big .dash-top .who{display:none}
-  .panel-patient{order:-1}
-  .journey-art{position:sticky;top:calc(var(--header-h) + 16px);z-index:2;aspect-ratio:16/11;box-shadow:0 0 0 16px var(--color-brand-secondary-tint),var(--shadow-md)}
-  .db-list{border-right:0;border-bottom:1px solid var(--color-neutral-100)}
-  .db-table .col-int,.db-table .col-last{display:none}
-          .anno-list{grid-template-columns:1fr}
-  .route-steps{grid-template-columns:1fr;gap:24px}
-  .route-steps li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:0 16px;padding:0}
-  .route-steps li b{margin-top:0;grid-column:2}
-  .route-steps li p{grid-column:2}
-  .route-steps .ri{grid-row:1 / span 2}
-  .route-steps li:not(:last-child)::after{left:25px;right:auto;top:52px;bottom:-24px;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--color-brand-secondary-soft) 0 8px,transparent 8px 14px)}
-  .load{grid-template-columns:1fr}
-  .load div,.load div + div{padding:18px 0 0;border-left:0}
-  .peer{grid-template-columns:1fr;padding:28px 22px;gap:14px}
-  .peer blockquote{font-size:22px}
-  .study,.study-small{padding:24px 20px}
-  .study dl{grid-template-columns:1fr}
-  .study dt{padding-bottom:0;padding-right:0}
-  .study dd{border-top:0;padding-top:2px}
-  .context{grid-template-columns:1fr;gap:24px}
-  .btn{white-space:normal;text-align:center;padding:10px 20px}
-  .context > .btn,.pub-foot .btn,.dash-layout .btn{width:100%}
-  .comp{grid-template-columns:1fr;padding:24px 20px;gap:14px}
-  .about{gap:40px}
-  .about-text{font-size:20px}
-  .about-art{max-width:300px}
-  .pub{grid-template-columns:1fr;gap:6px}
-  .panel{padding:28px 20px}
-  .panel h2{font-size:28px}
+  .logo span{display:none}
+  .logo svg{width:36px;height:36px}
+  .hdr{column-gap:8px}
+  .seg button{padding:0 14px;font-size:18px}
+  .seg .ico{display:none}
+  .toc-btn{padding:0;width:44px;justify-content:center}
+  .toc-btn .t,.toc-btn .ico-chev{display:none}
+  .toc-btn .ico-list{display:block}
+  .toc{position:fixed;top:var(--hdr);left:0;right:0;width:auto;border-left:0;border-right:0}
+  .hero{display:flex;flex-direction:column;height:auto;min-height:0}
+  .plate{order:0;width:auto;margin:0;padding:22px 16px 20px}
+  .plate h1{font-size:30px}
+  .plate-choose{font-size:18px;margin-top:10px}
+  .plate-choose .ico{transform:rotate(90deg)}
+  .door{display:block}
+  .door-pat{order:1}
+  .door-pro{order:2}
+  .door-in{padding:22px 16px 24px}
+  .door-label{font-size:30px}
+  .door-pro .door-text{font-size:18px}
+  .door-pat .door-text{font-size:22px}
+  .door-visual{display:none}
+  .door:focus-visible{outline-offset:-6px}
+  .blk{padding:44px 0}
+  .blk h2{font-size:32px}
+  .lead{font-size:19px}
+  .blk-head{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:26px}
+  .blk.is-folded .blk-head{align-items:flex-start}
+  .blk.is-folded h2{font-size:24px}
+  .tl-chart{height:170px;margin-top:44px}
+  .tl-dot{width:38px;height:38px}
+  .tl-dot .ico{width:19px;height:19px}
+  .tl-flag{left:auto;right:0;top:-42px;transform:none;font-size:17px}
+  .tl-thr{font-size:16px;transform:translateY(-115%)}
+  .tl-ticks{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;font:700 20px/1 var(--f-title);color:var(--blue);padding-top:10px}
+  .tl-days{grid-template-columns:1fr;gap:0;text-align:left;margin-top:18px}
+  .tl-day{display:grid;grid-template-columns:64px 1fr;gap:0 14px;padding:16px 0;border-top:1px solid var(--line)}
+  .tl-day::before{display:none}
+  .tl-j{font-size:28px;grid-row:1 / span 3}
+  .tl-st{margin-top:0}
+  .tl-day h3{margin-top:2px;font-size:21px}
+  .tl-day p{grid-column:2;font-size:18px}
+  body[data-mode="patient"] .tl-day h3{font-size:22px}
+  body[data-mode="patient"] .tl-day p{font-size:19px}
+  .tl-note{text-align:left}
+  .cap-body{grid-template-columns:1fr}
+  .cap-list{border-right:0;border-bottom:1px solid var(--paper-2)}
+  .anno{grid-template-columns:1fr}
+  .load div{grid-template-columns:1fr;gap:2px}
+  .sheet th,.sheet td{display:block;width:auto;padding:0 16px}
+  .sheet th{padding-top:10px}
+  .sheet td{border-top:0;padding-bottom:10px}
+  .sheet h3{padding:12px 16px 4px;font-size:21px}
+  .sheet-h{padding:10px 16px;flex-wrap:wrap}
+  .pending{padding:12px 16px}
+  .reg thead{display:none}
+  .reg,.reg tbody,.reg tr,.reg th,.reg td{display:block;width:auto !important}
+  .reg tr{padding:16px 0;border-bottom:1px solid var(--line)}
+  .reg th,.reg td{padding:4px 0;border:0}
+  .about p{font-size:21px}
+  .pub{grid-template-columns:1fr;gap:2px}
+  .pub time,.pub .k{display:inline}
   .form{grid-template-columns:1fr}
-  .form-foot .btn{width:100%;min-height:56px}
-  .foot-grid{grid-template-columns:1fr}
-  .peer .qmark{font-size:56px}
-  .sites{grid-template-columns:1fr}
+  .btn{white-space:normal;text-align:center}
+  .btn-sage{width:100%;font-size:21px}
+  .pat-lines li{font-size:21px}
+  .urgent b{font-size:26px}
+  .foot-grid{grid-template-columns:1fr;gap:20px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{transition-duration:0ms !important;animation-duration:0ms !important;animation-iteration-count:1 !important}
-  .spinner{border-top-color:rgba(90,102,112,.35)}
+  *,*::before,*::after{transition:none !important;animation:none !important}
 }
 </style>
 </head>
-<body>
+<body data-mode="pro">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19L12 3.5z"/><path d="M12 10v4.5"/><path d="M12 17.4v.1"/></symbol>
@@ -587,280 +472,190 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
   <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><path d="M12 7.6v.1"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4.5-2.2 1.5a11 11 0 0 0 5.7 5.7l1.5-2.2 4.5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-l" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.1M4.5 12h.1M4.5 18h.1" stroke-width="3"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
   <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M11 14v2a4.5 4.5 0 0 0 9 0v-2"/><circle cx="20" cy="12" r="2"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
-  <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.1M8 16.5h.1"/></symbol>
-  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></symbol>
   <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
-  <symbol id="i-hand" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a4.5 4.5 0 0 1 6.5-4"/></symbol>
-  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M10 7H6a2 2 0 0 0-2 2v4h5v5H4" /><path d="M20 7h-4a2 2 0 0 0-2 2v4h5v5h-5"/></symbol>
-  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M15 10h4a1 1 0 0 1 1 1v10"/><path d="M3 21h18"/><path d="M8 8h3M8 12h3M8 16h3"/><path d="M9.5 2.5v3M8 4h3"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M15 10h4a1 1 0 0 1 1 1v10"/><path d="M3 21h18"/><path d="M8 8h3M8 12h3M8 16h3"/></symbol>
   <symbol id="i-clinic" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M12 9v6M9 12h6"/></symbol>
 </svg>
 
 <a class="skip" href="#contenu">Aller au contenu</a>
 
-<header class="site-header">
-  <div class="wrap header-row">
-    <a class="logo" href="#haut" aria-label="Veilla, retour en haut de page">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
-      Veilla
-    </a>
-    <nav class="main-nav" aria-label="Navigation principale">
-      <ul>
-        <li><a href="#parcours">Parcours</a></li>
-        <li><a href="#tableau-de-bord">Tableau de bord</a></li>
-        <li><a href="#preuves">Preuves</a></li>
-        <li><a href="#conformite">Conformité</a></li>
-        <li><a href="#equipe">Équipe</a></li>
-        <li><a href="#publications">Publications</a></li>
-      </ul>
-    </nav>
-    <a class="btn btn-primary header-cta" href="#contact">Demander une présentation</a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
-      <svg class="ico ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      <svg class="ico ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<!-- En-tête : le sélecteur segmenté est la navigation -->
+<header class="hdr">
+  <a class="logo" href="#haut" aria-label="Veilla, retour en haut de page">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
+    <span>Veilla</span>
+  </a>
+  <div class="hdr-mid">
+    <div class="seg" role="group" aria-label="Afficher la page pour">
+      <button type="button" data-mode="pro" aria-pressed="true"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Soignant</button>
+      <button type="button" data-mode="patient" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg>Patient</button>
+    </div>
+    <button class="toc-btn" type="button" aria-expanded="false" aria-controls="toc">
+      <span class="t">Sommaire</span><svg class="ico ico-chev" aria-hidden="true"><use href="#i-chev"/></svg>
+      <svg class="ico ico-list" aria-hidden="true"><use href="#i-list"/></svg><span class="sr-only">Sommaire</span>
     </button>
+    <nav class="toc" id="toc" aria-label="Sommaire de la page" hidden></nav>
   </div>
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation principale (mobile)">
-    <a class="btn btn-patient" href="#patient">Je suis un patient</a>
-    <ul>
-      <li><a href="#parcours">Parcours</a></li>
-      <li><a href="#tableau-de-bord">Tableau de bord</a></li>
-      <li><a href="#preuves">Preuves</a></li>
-      <li><a href="#conformite">Conformité</a></li>
-      <li><a href="#equipe">Équipe</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <div class="hdr-end">
+    <a href="#contact" data-v="pro">Demander une présentation <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a href="tel:15" data-v="patient"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Urgence : 15</a>
+  </div>
 </header>
+<p class="sr-only" id="mode-live" aria-live="polite"></p>
 
 <main id="contenu">
 
-<!-- 1. HERO -->
+<!-- 1. HERO : deux portes -->
 <section class="hero" id="haut" aria-labelledby="hero-title">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1 id="hero-title">Sécuriser le retour à domicile après une chirurgie ambulatoire</h1>
-      <p class="hero-sub">Chaque jour, votre patient répond à un court questionnaire. Votre équipe n'est alertée qu'en cas de signal anormal.</p>
-      <div class="audience">
-        <a class="btn btn-primary" href="#parcours">Je suis un établissement
-          <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-patient" href="#patient">Je suis un patient
-          <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-
-    <div class="hero-visual" role="img" aria-label="Aperçu du produit avec des données fictives : à droite, le tableau de bord de l'infirmière de coordination liste les patients opérés et leur niveau d'alerte ; à gauche, le questionnaire du jour sur téléphone, question 2 sur 5, « Avez-vous de la fièvre aujourd'hui ? ».">
-      <div class="dash-card" aria-hidden="true">
-        <div class="dash-top">
-          <svg width="22" height="22" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
-          <b>Suivi après sortie</b>
-          <span class="who"><span class="avatar-ide">IC</span>IDE de coordination</span>
-        </div>
-        <div class="dash-filters"><span class="chip-mini on">Tous</span><span class="chip-mini">À rappeler</span><span class="chip-mini">À surveiller</span><span class="chip-mini">Sans réponse</span></div>
-        <ul class="dash-rows">
-          <li class="sel"><span class="ini">RB</span><span>M. R. B.<span class="meta">Hernie inguinale, J+2</span></span><span class="pill pill-alert"><svg class="ico"><use href="#i-alert"/></svg>À rappeler</span></li>
-          <li><span class="ini">JL</span><span>Mme J. L.<span class="meta">Cataracte, J+1</span></span><span class="pill pill-warn"><svg class="ico"><use href="#i-watch"/></svg>À surveiller</span></li>
-          <li><span class="ini">AT</span><span>M. A. T.<span class="meta">Cholécystectomie, J+1</span></span><span class="pill pill-none"><svg class="ico"><use href="#i-none"/></svg>Sans réponse</span></li>
-          <li><span class="ini">MD</span><span>Mme M. D.<span class="meta">Arthroscopie du genou, J+3</span></span><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Réponses normales</span></li>
-          <li><span class="ini">SK</span><span>Mme S. K.<span class="meta">Canal carpien, J+2</span></span><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Réponses normales</span></li>
-        </ul>
-        <div class="dash-foot"><span></span><span>Données fictives, mises à jour à chaque réponse</span></div>
-      </div>
-      <div class="phone" aria-hidden="true">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <div class="phone-hello">Bonjour Jeanne</div>
-          <div class="phone-prog"><i class="done"></i><i class="now"></i><i></i><i></i><i></i></div>
-          <div class="phone-step">Question 2 sur 5</div>
-          <div class="phone-q">Avez-vous de la fièvre aujourd'hui ?</div>
-          <div class="phone-opt on"><span class="dot"></span>Non</div>
-          <div class="phone-opt"><span class="dot"></span>Oui</div>
-          <div class="phone-opt"><span class="dot"></span>Je ne sais pas</div>
-          <div class="phone-next">Question suivante</div>
-          <div class="phone-sos">En cas d'urgence, appelez le 15</div>
-        </div>
-      </div>
-    </div>
+  <div class="plate">
+    <h1 id="hero-title">Sécuriser le retour à domicile après une chirurgie ambulatoire</h1>
+    <p class="plate-choose"><svg class="ico l" aria-hidden="true"><use href="#i-arrow-l"/></svg>Choisissez votre accès<svg class="ico r" aria-hidden="true"><use href="#i-arrow"/></svg></p>
   </div>
+
+  <a class="door door-pro" href="#parcours" data-go="pro">
+    <span class="door-in">
+      <span class="door-kicker">Cadres de santé, directions, équipes soignantes</span>
+      <span class="door-label"><span>Je suis un établissement</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      <span class="door-text">Chaque jour, votre patient répond à un court questionnaire. Votre équipe n'est alertée qu'en cas de signal anormal.</span>
+      <span class="door-meta"><span><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg>Marquage CE : en cours</span><span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hébergeur certifié HDS</span></span>
+      <span class="door-visual" aria-hidden="true">
+        <span class="mock">
+          <span class="mock-top">
+            <svg width="22" height="22" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
+            Suivi après sortie
+            <span class="who"><span class="av">IC</span>IDE de coordination</span>
+          </span>
+          <span class="mock-rows">
+            <span class="r sel"><span class="ini">RB</span><span>M. R. B.<span class="meta">Hernie inguinale, J+2</span></span><span class="pill pill-alert"><svg class="ico"><use href="#i-alert"/></svg>À rappeler</span></span>
+            <span class="r"><span class="ini">JL</span><span>Mme J. L.<span class="meta">Cataracte, J+1</span></span><span class="pill pill-warn"><svg class="ico"><use href="#i-watch"/></svg>À surveiller</span></span>
+            <span class="r"><span class="ini">AT</span><span>M. A. T.<span class="meta">Cholécystectomie, J+1</span></span><span class="pill pill-none"><svg class="ico"><use href="#i-none"/></svg>Sans réponse</span></span>
+            <span class="r"><span class="ini">MD</span><span>Mme M. D.<span class="meta">Arthroscopie du genou, J+3</span></span><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Réponses normales</span></span>
+            <span class="r"><span class="ini">SK</span><span>Mme S. K.<span class="meta">Canal carpien, J+2</span></span><span class="pill pill-ok"><svg class="ico"><use href="#i-check"/></svg>Réponses normales</span></span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </a>
+
+  <a class="door door-pat" href="#patient" data-go="patient">
+    <span class="door-in">
+      <span class="door-kicker">Patients et proches</span>
+      <span class="door-label"><span>Je suis un patient</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      <span class="door-text">Rentrez chez vous. Votre équipe soignante veille avec vous.</span>
+      <span class="door-meta"><span><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>En cas d'urgence, appelez le 15.</span></span>
+      <span class="door-visual" aria-hidden="true">
+        <span class="phone"><span class="phone-s" style="display:block">
+          <span class="phone-notch" style="display:block"></span>
+          <span class="phone-hi" style="display:block">Bonjour Jeanne</span>
+          <span class="phone-prog"><i class="d"></i><i class="n"></i><i></i><i></i><i></i></span>
+          <span class="phone-step" style="display:block">Question 2 sur 5</span>
+          <span class="phone-q" style="display:block">Avez-vous de la fièvre aujourd'hui ?</span>
+          <span class="phone-o on"><i></i>Non</span>
+          <span class="phone-o"><i></i>Oui</span>
+          <span class="phone-o"><i></i>Je ne sais pas</span>
+          <span class="phone-sos" style="display:block">En cas d'urgence, appelez le 15</span>
+        </span></span>
+      </span>
+    </span>
+  </a>
 </section>
 
-<div class="trust">
+<!-- 2. PARCOURS : une ligne de temps -->
+<section class="blk" id="parcours" data-aud="both" aria-labelledby="parcours-title">
   <div class="wrap">
-    <ul aria-label="Statut réglementaire et hébergement">
-      <li><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-server"/></svg>Hébergeur certifié HDS</span></li>
-      <li><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>RGPD : DPO désigné</span></li>
-      <li><span class="badge badge-warn"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg>Marquage CE : en cours</span></li>
-      <li class="caption">Ce site ne collecte aucune donnée de santé.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- 2. PARCOURS -->
-<section class="section section-tint" id="parcours" aria-labelledby="parcours-title">
-  <div class="wrap">
-    <div class="journey">
-      <div class="journey-art" aria-live="polite">
-        <!-- Étape 1 -->
-        <figure class="is-on" data-step="1">
-          <svg viewBox="0 0 400 260" role="img" aria-labelledby="art1">
-            <title id="art1">Le patient quitte l'unité, son téléphone affiche l'accès activé, un chemin mène jusqu'à sa maison.</title>
-            <g fill="none" stroke="#4E6B57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="38" y="52" width="104" height="168" rx="6" fill="#E3EBE4"/>
-              <path d="M56 220V92a8 8 0 0 1 8-8h52a8 8 0 0 1 8 8v128"/>
-              <path d="M110 156h.1" stroke-width="6"/>
-              <path d="M76 66h28M90 58v16" stroke="#1F3A5F"/>
-              <path d="M150 220c50-6 70-40 120-40 30 0 40 14 64 14" stroke="#7A9A82" stroke-dasharray="2 12" stroke-width="4"/>
-              <path d="M292 140l38-32 38 32" />
-              <path d="M300 134v60h60v-60" fill="#FFFFFF"/>
-              <rect x="320" y="164" width="20" height="30" fill="#E3EBE4"/>
-              <rect x="176" y="62" width="64" height="112" rx="12" fill="#FFFFFF" stroke="#1F3A5F"/>
-              <path d="M198 74h20" stroke="#1F3A5F"/>
-              <circle cx="208" cy="118" r="20" fill="#E3EBE4"/>
-              <path d="M198 118l7 7 13-14" stroke="#3F5E49" stroke-width="4"/>
-              <path d="M192 152h32" stroke="#D6D0C6"/>
-            </g>
-          </svg>
-          <figcaption>Étape 1 : l'unité active l'accès avant la sortie.</figcaption>
-        </figure>
-        <!-- Étape 2 -->
-        <figure data-step="2">
-          <svg viewBox="0 0 400 260" role="img" aria-labelledby="art2">
-            <title id="art2">Un téléphone affiche les cinq questions du jour : douleur, fièvre, saignement, nausées, cicatrice.</title>
-            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-              <rect x="138" y="16" width="124" height="228" rx="20" fill="#FFFFFF" stroke="#1F3A5F"/>
-              <path d="M184 30h32" stroke="#1F3A5F"/>
-              <g stroke="#4E6B57">
-                <rect x="154" y="52" width="92" height="30" rx="8" fill="#E3EBE4"/>
-                <rect x="154" y="90" width="92" height="30" rx="8" fill="#E3EBE4"/>
-                <rect x="154" y="128" width="92" height="30" rx="8" fill="#FFFFFF" stroke="#1F3A5F"/>
-                <rect x="154" y="166" width="92" height="30" rx="8" fill="#FFFFFF" stroke="#D6D0C6"/>
-                <rect x="154" y="204" width="92" height="30" rx="8" fill="#FFFFFF" stroke="#D6D0C6"/>
-                <path d="M164 67l5 5 9-10M164 105l5 5 9-10" stroke="#3F5E49"/>
-                <path d="M188 67h46M188 105h40" stroke="#4E6B57"/>
-                <path d="M188 143h44" stroke="#1F3A5F"/>
-                <circle cx="171" cy="143" r="6" stroke="#1F3A5F"/>
-                <path d="M188 181h36M188 219h42" stroke="#D6D0C6"/>
-                <circle cx="171" cy="181" r="6" stroke="#D6D0C6"/>
-                <circle cx="171" cy="219" r="6" stroke="#D6D0C6"/>
-              </g>
-              <g stroke="#7A9A82">
-                <path d="M58 70c14-10 30-10 44 0"/><path d="M50 98h60"/><path d="M58 126c14 10 30 10 44 0"/>
-                <path d="M298 86h56M298 116h40M298 146h50"/>
-              </g>
-            </g>
-            <g font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="15" fill="#1E2A33">
-              <text x="66" y="176">Douleur</text><text x="66" y="198">Fièvre</text><text x="66" y="220">Saignement</text>
-              <text x="296" y="186">Nausées</text><text x="296" y="208">Cicatrice</text>
-            </g>
-          </svg>
-          <figcaption>Étape 2 : 5 questions, sur téléphone, tablette ou SMS.</figcaption>
-        </figure>
-        <!-- Étape 3 -->
-        <figure data-step="3">
-          <svg viewBox="0 0 400 260" role="img" aria-labelledby="art3">
-            <title id="art3">Les réponses passent par des règles paramétrées par l'équipe médicale : la plupart sont classées normales, une réponse anormale devient une alerte.</title>
-            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-              <g stroke="#4E6B57" fill="#E3EBE4">
-                <rect x="26" y="40" width="58" height="26" rx="8"/><rect x="26" y="78" width="58" height="26" rx="8"/><rect x="26" y="116" width="58" height="26" rx="8"/><rect x="26" y="154" width="58" height="26" rx="8"/><rect x="26" y="192" width="58" height="26" rx="8"/>
-              </g>
-              <path d="M84 53c40 0 40 60 70 74M84 91c30 0 40 30 70 38M84 129h70M84 167c30 0 40-30 70-36M84 205c40 0 40-62 70-72" stroke="#7A9A82"/>
-              <rect x="154" y="74" width="104" height="112" rx="14" fill="#FFFFFF" stroke="#1F3A5F"/>
-              <g stroke="#1F3A5F"><path d="M172 104h68M172 130h68M172 156h68"/></g>
-              <g fill="#1F3A5F" stroke="#FFFFFF" stroke-width="3"><circle cx="196" cy="104" r="7"/><circle cx="222" cy="130" r="7"/><circle cx="188" cy="156" r="7"/></g>
-              <path d="M258 110c30 0 34-40 60-40" stroke="#4E6B57"/>
-              <path d="M258 150c30 0 34 40 60 40" stroke="#B3261E"/>
-              <circle cx="342" cy="70" r="24" fill="#E3EBE4" stroke="#3F5E49"/>
-              <path d="M331 70l8 8 14-15" stroke="#3F5E49" stroke-width="4"/>
-              <path d="M342 168l26 44h-52z" fill="#FBEAE8" stroke="#B3261E"/>
-              <path d="M342 184v12M342 203v.1" stroke="#B3261E" stroke-width="4"/>
-            </g>
-          </svg>
-          <figcaption>Étape 3 : les règles de l'équipe médicale classent les réponses.</figcaption>
-        </figure>
-        <!-- Étape 4 -->
-        <figure data-step="4">
-          <svg viewBox="0 0 400 260" role="img" aria-labelledby="art4">
-            <title id="art4">L'infirmière de coordination, casque sur la tête, rappelle le patient chez lui.</title>
-            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-              <circle cx="96" cy="96" r="30" fill="#E3EBE4" stroke="#4E6B57"/>
-              <path d="M60 96a36 36 0 0 1 72 0" stroke="#1F3A5F"/>
-              <rect x="54" y="92" width="10" height="20" rx="4" fill="#1F3A5F" stroke="#1F3A5F"/>
-              <path d="M64 108c4 14 14 20 26 20" stroke="#1F3A5F"/>
-              <path d="M44 214c0-34 24-56 52-56s52 22 52 56" fill="#FFFFFF" stroke="#4E6B57"/>
-              <path d="M88 164l8 14 8-14" stroke="#4E6B57"/>
-              <path d="M168 96c10-8 10-24 0-32M184 108c18-16 18-48 0-64M200 120c26-24 26-72 0-96" stroke="#7A9A82"/>
-              <path d="M262 112l46-38 46 38" stroke="#4E6B57"/>
-              <path d="M272 104v104h72V104" fill="#FFFFFF" stroke="#4E6B57"/>
-              <rect x="290" y="132" width="36" height="58" rx="8" fill="#FFFFFF" stroke="#1F3A5F"/>
-              <path d="M302 140h12" stroke="#1F3A5F"/>
-              <path d="M300 168l6-8 6 4 8-10" stroke="#3F5E49"/>
-              <rect x="228" y="18" width="166" height="42" rx="12" fill="#FFFFFF" stroke="#1F3A5F"/><path d="M262 60l-4 14 18-14" fill="#FFFFFF" stroke="#1F3A5F"/>
-            </g>
-            <text x="242" y="45" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="15" fill="#1F3A5F" font-weight="700">Comment allez-vous ?</text>
-          </svg>
-          <figcaption>Étape 4 : l'infirmière rappelle si besoin.</figcaption>
-        </figure>
+    <header class="blk-head">
+      <div class="blk-titles">
+        <h2 id="parcours-title" tabindex="-1">Le parcours patient en 4 étapes</h2>
+        <p class="lead" data-v="pro">De la sortie de l'unité au rappel par l'infirmière, sur une seule ligne de temps.</p>
+        <p class="lead" data-v="patient">Ce qui se passe, jour après jour, après votre retour à la maison.</p>
       </div>
-
-      <div class="journey-side">
-        <div class="section-head">
-          <h2 id="parcours-title">Le parcours patient en 4 étapes</h2>
-          <p class="lead">De la sortie de l'unité au rappel par l'infirmière. Sélectionnez une étape pour voir son illustration.</p>
+      <button class="fold-btn" type="button" aria-expanded="true" aria-controls="parcours-body" hidden><span>Replier</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    </header>
+    <div class="blk-body" id="parcours-body">
+      <div class="tl">
+        <div class="tl-chart" role="img" aria-label="Illustration avec des données fictives. Une courbe suit les réponses du patient du jour de sa sortie, J0, au troisième jour, J+3. Elle reste basse à J0 et J+1, monte au-dessus du seuil fixé par l'équipe médicale à J+2, ce qui déclenche une alerte, puis redescend sous le seuil à J+3 après le rappel de l'infirmière.">
+          <svg viewBox="0 0 1200 240" preserveAspectRatio="none" aria-hidden="true">
+            <defs><clipPath id="above"><rect x="0" y="0" width="1200" height="100"/></clipPath></defs>
+            <g stroke="#D6D0C6" stroke-width="1" vector-effect="non-scaling-stroke">
+              <path d="M150 0V240M450 0V240M750 0V240M1050 0V240" vector-effect="non-scaling-stroke" stroke-dasharray="3 6"/>
+            </g>
+            <path d="M0,206 C60,204 100,202 150,200 C260,196 360,186 450,172 C560,154 640,50 750,50 C860,50 940,182 1050,186 C1110,188 1160,192 1200,194 L1200,240 L0,240Z" fill="#E3EBE4" opacity=".7"/>
+            <path class="thr-line" d="M0 100H1200" stroke="#5A6670" stroke-width="1.5" stroke-dasharray="8 6" vector-effect="non-scaling-stroke"/>
+            <path d="M0,206 C60,204 100,202 150,200 C260,196 360,186 450,172 C560,154 640,50 750,50 C860,50 940,182 1050,186 C1110,188 1160,192 1200,194" fill="none" stroke="#4E6B57" stroke-width="3.5" vector-effect="non-scaling-stroke"/>
+            <path d="M0,206 C60,204 100,202 150,200 C260,196 360,186 450,172 C560,154 640,50 750,50 C860,50 940,182 1050,186 C1110,188 1160,192 1200,194" fill="none" stroke="#B3261E" stroke-width="3.5" vector-effect="non-scaling-stroke" clip-path="url(#above)"/>
+          </svg>
+          <span class="tl-thr" aria-hidden="true">Seuil fixé par l'équipe médicale</span>
+          <span class="tl-dot d0" aria-hidden="true"><svg class="ico"><use href="#i-home"/></svg></span>
+          <span class="tl-dot d1" aria-hidden="true"><svg class="ico"><use href="#i-chat"/></svg></span>
+          <span class="tl-dot d2 al" aria-hidden="true"><svg class="ico"><use href="#i-alert"/></svg></span>
+          <span class="tl-dot d3 cl" aria-hidden="true"><svg class="ico"><use href="#i-phone"/></svg></span>
+          <span class="tl-flag" aria-hidden="true"><span data-v="pro">Alerte</span><span data-v="patient">L'équipe est prévenue</span></span>
+          <span class="axis" aria-hidden="true"></span>
         </div>
-        <ol class="steps">
-          <li><button class="step-btn" type="button" data-step="1" aria-current="step">
-            <span class="step-num" aria-hidden="true">1</span>
-            <span><span class="st">Sortie de l'unité, application activée</span>
-            <span class="sp">Avant le départ, l'équipe active l'accès du patient. Il n'a aucun compte à créer.</span></span>
-          </button></li>
-          <li><button class="step-btn" type="button" data-step="2">
-            <span class="step-num" aria-hidden="true">2</span>
-            <span><span class="st">5 questions chaque jour</span>
-            <span class="sp">Douleur, fièvre, saignement, nausées, cicatrice. Pendant la durée fixée par l'équipe médicale.</span></span>
-          </button></li>
-          <li><button class="step-btn" type="button" data-step="3">
-            <span class="step-num" aria-hidden="true">3</span>
-            <span><span class="st">Analyse des réponses</span>
-            <span class="sp">Des règles paramétrées par l'équipe médicale classent chaque réponse. Un signal anormal déclenche une alerte.</span></span>
-          </button></li>
-          <li><button class="step-btn" type="button" data-step="4">
-            <span class="step-num" aria-hidden="true">4</span>
-            <span><span class="st">L'infirmière rappelle si besoin</span>
-            <span class="sp">L'alerte arrive à l'infirmière de coordination de l'établissement, qui rappelle le patient.</span></span>
-          </button></li>
+        <div class="tl-ticks" aria-hidden="true"><span>J0</span><span>J+1</span><span>J+2</span><span>J+3</span></div>
+        <ol class="tl-days">
+          <li class="tl-day">
+            <span class="tl-j">J0</span><span class="tl-st">Étape 1</span>
+            <h3>Sortie de l'unité, application activée</h3>
+            <p data-v="pro">Avant le départ, l'équipe active l'accès du patient. Il n'a aucun compte à créer.</p>
+            <p data-v="patient">Avant votre départ, l'équipe active votre accès. Vous n'avez rien à créer.</p>
+          </li>
+          <li class="tl-day">
+            <span class="tl-j">J+1</span><span class="tl-st">Étape 2</span>
+            <h3>Questionnaire quotidien de 5 questions</h3>
+            <p data-v="pro">Douleur, fièvre, saignement, nausées, cicatrice. Sur téléphone, tablette ou SMS, pendant la durée fixée par l'équipe médicale.</p>
+            <p data-v="patient">Douleur, fièvre, saignement, nausées, cicatrice. Sur téléphone, tablette ou SMS.</p>
+          </li>
+          <li class="tl-day">
+            <span class="tl-j">J+2</span><span class="tl-st">Étape 3</span>
+            <h3>Analyse des réponses</h3>
+            <p data-v="pro">Des règles paramétrées par l'équipe médicale classent chaque réponse. Un signal anormal déclenche une alerte.</p>
+            <p data-v="patient">Si une réponse sort de l'habitude, l'équipe qui vous suit est prévenue.</p>
+          </li>
+          <li class="tl-day">
+            <span class="tl-j">J+3</span><span class="tl-st">Étape 4</span>
+            <h3>L'infirmière rappelle si besoin</h3>
+            <p data-v="pro">L'alerte arrive à l'infirmière de coordination de l'établissement, qui rappelle le patient.</p>
+            <p data-v="patient">Une infirmière de l'établissement vous appelle. Vous faites le point ensemble.</p>
+          </li>
         </ol>
+        <p class="tl-note">Illustration avec des données fictives : la courbe montre l'écart des réponses aux seuils de l'équipe médicale, ce n'est pas une mesure.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 3. TABLEAU DE BORD -->
-<section class="section" id="tableau-de-bord" aria-labelledby="db-title">
-  <div class="wrap db-grid">
-    <div class="db-main">
-      <div class="section-head">
-        <p class="pro"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
-        <h2 id="db-title">Le tableau de bord soignant</h2>
-        <p class="lead">Une seule personne reçoit les alertes : l'infirmière de coordination.</p>
+<section class="blk" id="tableau-de-bord" data-aud="pro" aria-labelledby="db-title">
+  <div class="wrap">
+    <header class="blk-head">
+      <div class="blk-titles">
+        <p class="pro-note"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
+        <h2 id="db-title" tabindex="-1">Le tableau de bord soignant</h2>
       </div>
-      <div class="dash-big" role="img" aria-label="Capture annotée du tableau de bord avec des données fictives : liste des patients opérés, niveau d'alerte de chacun, historique des réponses du patient sélectionné et alerte transmise à l'infirmière de coordination.">
-        <div class="dash-card" aria-hidden="true">
-          <div class="dash-top">
+      <button class="fold-btn" type="button" aria-expanded="true" aria-controls="db-body" hidden><span>Replier</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    </header>
+    <div class="blk-body db" id="db-body">
+      <div>
+        <div class="cap" role="img" aria-label="Capture annotée du tableau de bord avec des données fictives : liste des patients opérés, niveau d'alerte de chacun, historique des réponses du patient sélectionné et alerte transmise à l'infirmière de coordination.">
+          <div class="mock-top" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
-            <b>Suivi après sortie</b><span>Données fictives</span>
-            <span class="who"><span class="avatar-ide">IC</span>IDE de coordination</span>
+            Suivi après sortie <span style="font-weight:400;color:#5A6670">· données fictives</span>
+            <span class="who"><span class="av">IC</span>IDE de coordination</span>
           </div>
-          <div class="db-body">
-            <div class="db-list">
-              <table class="db-table">
-                <thead><tr><th>Patient<span class="anno-i">1</span></th><th>Niveau<span class="anno-i">2</span></th></tr></thead>
+          <div class="cap-body" aria-hidden="true">
+            <div class="cap-list">
+              <table>
+                <thead><tr><th>Patient<span class="an">1</span></th><th>Niveau<span class="an">2</span></th></tr></thead>
                 <tbody>
                   <tr class="sel"><td>M. R. B.<small>Hernie inguinale, J+3</small></td><td><span class="pill pill-alert"><svg class="ico"><use href="#i-alert"/></svg>À rappeler</span></td></tr>
                   <tr><td>Mme J. L.<small>Cataracte, J+1</small></td><td><span class="pill pill-warn"><svg class="ico"><use href="#i-watch"/></svg>À surveiller</span></td></tr>
@@ -870,9 +665,9 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
                 </tbody>
               </table>
             </div>
-            <div class="db-detail">
+            <div class="cap-det">
               <h4>M. R. B., hernie inguinale</h4>
-              <div class="sub">Historique des réponses<span class="anno-i">3</span></div>
+              <div class="sub">Historique des réponses<span class="an">3</span></div>
               <table class="hist">
                 <thead><tr><th></th><th>J+1</th><th>J+2</th><th>J+3</th></tr></thead>
                 <tbody>
@@ -883,116 +678,80 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
                   <tr><td>Cicatrice</td><td><span class="cell c-ok"><svg class="ico"><use href="#i-check"/></svg></span></td><td><span class="cell c-warn"><svg class="ico"><use href="#i-watch"/></svg></span></td><td><span class="cell c-warn"><svg class="ico"><use href="#i-watch"/></svg></span></td></tr>
                 </tbody>
               </table>
-              <div class="db-action"><span class="anno-i" style="margin:0 6px 0 0">4</span><b>Alerte : fièvre signalée ce matin.</b> Transmise à l'infirmière de coordination.
-                <div class="row"><span class="fake-btn">J'ai rappelé le patient</span><span class="fake-btn ghost">Noter une décision</span></div>
+              <div class="cap-act"><span class="an" style="margin:0 6px 0 0">4</span><b>Alerte : fièvre signalée ce matin.</b> Transmise à l'infirmière de coordination.
+                <div class="row"><span class="fake">J'ai rappelé le patient</span><span class="fake g">Noter une décision</span></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="db-side">
-      <div class="tabs" role="tablist" aria-label="Lire le tableau de bord">
-        <button class="tab" type="button" role="tab" id="tab-ecran" aria-controls="panel-ecran" aria-selected="true">L'écran</button>
-        <button class="tab" type="button" role="tab" id="tab-trajet" aria-controls="panel-trajet" aria-selected="false" tabindex="-1">Trajet d'une alerte</button>
-        <button class="tab" type="button" role="tab" id="tab-charge" aria-controls="panel-charge" aria-selected="false" tabindex="-1">Charge de l'équipe</button>
-      </div>
-      <div class="tab-panel" role="tabpanel" id="panel-ecran" aria-labelledby="tab-ecran" tabindex="0">
-        <ol class="anno-list">
-          <li><span class="n" aria-hidden="true">1</span><div><h3>La liste des patients</h3><p>Les patients opérés et suivis, avec le jour de suivi.</p></div></li>
-          <li><span class="n" aria-hidden="true">2</span><div><h3>Le niveau d'alerte</h3><p>Toujours une couleur, une icône et un mot.</p>
-            <div class="legend">
-              <span class="pill pill-alert"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>À rappeler</span>
-              <span class="pill pill-warn"><svg class="ico" aria-hidden="true"><use href="#i-watch"/></svg>À surveiller</span>
-              <span class="pill pill-ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Normal</span>
-              <span class="pill pill-none"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg>Sans réponse</span>
-            </div></div></li>
-          <li><span class="n" aria-hidden="true">3</span><div><h3>L'historique</h3><p>Les réponses jour après jour, question par question.</p></div></li>
-          <li><span class="n" aria-hidden="true">4</span><div><h3>L'alerte et sa suite</h3><p>Ce qui a déclenché l'alerte, puis le rappel et la décision notée.</p></div></li>
+        <ol class="anno">
+          <li><span class="an" aria-hidden="true">1</span><span><b>La liste des patients.</b>Opérés et suivis, avec le jour de suivi.</span></li>
+          <li><span class="an" aria-hidden="true">2</span><span><b>Le niveau d'alerte.</b>Toujours une couleur, une icône et un mot.</span></li>
+          <li><span class="an" aria-hidden="true">3</span><span><b>L'historique.</b>Les réponses jour après jour, question par question.</span></li>
+          <li><span class="an" aria-hidden="true">4</span><span><b>L'alerte et sa suite.</b>Le motif, le rappel, la décision notée.</span></li>
         </ol>
       </div>
-      <div class="tab-panel" role="tabpanel" id="panel-trajet" aria-labelledby="tab-trajet" tabindex="0" hidden>
-        <ol class="route-v">
-          <li><span class="ri"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span><div><b>Le patient répond</b><p>Depuis chez lui, au moment qui lui convient.</p></div></li>
-          <li><span class="ri"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></span><div><b>Les règles classent la réponse</b><p>Selon les seuils fixés par l'équipe médicale.</p></div></li>
-          <li><span class="ri ri-alert"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg></span><div><b>L'infirmière est alertée</b><p>Seulement si une réponse sort des règles.</p></div></li>
-          <li><span class="ri"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><div><b>Elle rappelle le patient</b><p>Puis décide de la suite, avec le médecin si besoin.</p></div></li>
-        </ol>
-      </div>
-      <div class="tab-panel" role="tabpanel" id="panel-charge" aria-labelledby="tab-charge" tabindex="0" hidden>
-        <dl class="load-v">
-          <div><dt>Qui reçoit l'alerte</dt><dd>L'infirmière de coordination. Pas toute l'équipe.</dd></div>
+      <div>
+        <dl class="load" aria-label="Le trajet d'une alerte et la charge pour l'équipe">
+          <div><dt>Qui la reçoit</dt><dd>L'infirmière de coordination. Pas toute l'équipe.</dd></div>
           <div><dt>À quel moment</dt><dd>Dès que le questionnaire du jour est classé anormal.</dd></div>
+          <div><dt>Ce qu'elle déclenche</dt><dd>Un rappel du patient, puis une décision notée, avec le médecin si besoin.</dd></div>
           <div><dt>Quand tout va bien</dt><dd>Rien à traiter : les réponses restent dans l'historique.</dd></div>
         </dl>
         <figure class="peer">
-          <span class="qmark" aria-hidden="true">«</span>
-          <div>
-            <blockquote>Je sais qui reçoit l'alerte et ce qu'elle déclenche. Le reste du temps, rien ne sonne.</blockquote>
-            <figcaption>Cadre de santé, unité de chirurgie ambulatoire, CHU</figcaption>
-          </div>
-          <span class="tag-ex">Exemple</span>
+          <blockquote>« Je sais qui reçoit l'alerte et ce qu'elle déclenche. Le reste du temps, rien ne sonne. »</blockquote>
+          <figcaption>Cadre de santé, unité de chirurgie ambulatoire, CHU <span class="tag-ex">Exemple</span></figcaption>
         </figure>
+        <a class="btn btn-line db-cta" href="#">Voir le tableau de bord en détail</a>
       </div>
-      <a class="btn btn-secondary db-cta" href="#">Voir le tableau de bord en détail</a>
     </div>
   </div>
 </section>
 
-<!-- 4. PREUVES -->
-<section class="section section-tint" id="preuves" aria-labelledby="preuves-title">
-  <div class="wrap proof-layout">
-    <div class="proof-intro">
-      <div class="section-head">
-        <p class="pro"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
-        <h2 id="preuves-title">Preuves</h2>
-        <p class="lead">Nous publions ce qui est mesuré, et rien d'autre. Chaque étude suit le même format.</p>
+<!-- 4. PREUVES : fiches d'étude -->
+<section class="blk" id="preuves" data-aud="pro" aria-labelledby="preuves-title">
+  <div class="wrap">
+    <header class="blk-head">
+      <div class="blk-titles">
+        <p class="pro-note"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
+        <h2 id="preuves-title" tabindex="-1">Preuves</h2>
+        <p class="lead">Nous publions ce qui est mesuré, et rien d'autre. Chaque étude suit la même fiche.</p>
       </div>
-      <div class="context-v">
-        <div>
-          <h3>La voie de remboursement</h3>
-          <p>Pas de prise en charge par l'Assurance maladie à ce jour. La voie visée : la PECAN, prise en charge anticipée d'un an, puis la LATM.</p>
-          <span class="caption src">Source : <a href="https://has-sante.fr/upload/docs/application/pdf/2025-09/principes_devaluation_de_la_cnedimts_liste_des_activites_de_telesurveillance_medicale_latm.pdf" rel="noopener">HAS, principes d'évaluation LATM</a>, vu le 13 novembre 2026.</span>
+      <button class="fold-btn" type="button" aria-expanded="true" aria-controls="preuves-body" hidden><span>Replier</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    </header>
+    <div class="blk-body" id="preuves-body">
+      <div class="proof">
+        <div class="proof-main">
+          <article class="sheet" aria-labelledby="s1-t">
+            <div class="sheet-h"><b>Fiche d'étude 1</b><span>Étude observationnelle pilote</span></div>
+            <h3 id="s1-t">Télésurveillance après chirurgie ambulatoire dans un CHU</h3>
+            <table>
+              <tr><th scope="row">Type</th><td>Observationnelle, monocentrique</td></tr>
+              <tr><th scope="row">Établissement</th><td>Un CHU, unité ambulatoire</td></tr>
+              <tr><th scope="row">n</th><td>Communiqué à la publication</td></tr>
+              <tr><th scope="row">Critère</th><td>Faisabilité du suivi et trajet des alertes</td></tr>
+              <tr><th scope="row">Lien</th><td><a href="#">Fiche de l'étude (bientôt)</a></td></tr>
+            </table>
+            <p class="pending" role="note"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg><span><b>Résultats du pilote : publication à venir.</b> Aucun chiffre d'ici là.</span></p>
+          </article>
+          <a class="btn btn-blue" href="#"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>Télécharger le dossier de preuves (PDF)</a>
         </div>
-        <div>
-          <h3>Ce que le remboursement exige</h3>
-          <p>Un dispositif marqué CE, certifié par l'ANS et évalué favorablement par la CNEDiMTS. Le marquage CE de Veilla est en cours.</p>
-          <span class="caption src">Source : <a href="https://www.centreoscarlambret.fr/sites/default/files/2026-05/galienn74.pdf" rel="noopener">Centre Oscar Lambret, GaLIEN n° 74</a>, mai 2026, vu le 13 novembre 2026.</span>
-        </div>
-      </div>
-      <a class="btn btn-primary proof-cta" href="#"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>Télécharger le dossier de preuves (PDF)</a>
-    </div>
-
-    <div class="proof-main">
-      <article class="study">
-        <span class="study-type"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Étude observationnelle pilote</span>
-        <h3>Télésurveillance après chirurgie ambulatoire dans un CHU</h3>
-        <dl class="facts">
-          <div><dt>Type</dt><dd>Observationnelle, monocentrique</dd></div>
-          <div><dt>Établissement</dt><dd>Un CHU, unité ambulatoire</dd></div>
-          <div><dt>n</dt><dd>Communiqué à la publication</dd></div>
-          <div><dt>Critère</dt><dd>Faisabilité du suivi et trajet des alertes</dd></div>
-          <div><dt>Lien</dt><dd><a href="#">Fiche de l'étude (bientôt)</a></dd></div>
-        </dl>
-        <p class="result-pending" role="note"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg><span><b>Résultats du pilote : publication à venir.</b> Aucun chiffre d'ici là.</span></p>
-      </article>
-      <div class="proof-row">
-        <article class="study study-small">
-          <span class="study-type"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>Déploiement pilote</span>
-          <h3>Retour d'expérience en cliniques privées</h3>
-          <dl class="facts">
-            <div><dt>Critère</dt><dd>Prise en main</dd></div>
-            <div><dt>Résultat</dt><dd>Non publié</dd></div>
-          </dl>
-        </article>
-        <div class="sites-box">
-          <h3>Établissements pilotes</h3>
-          <div class="sites">
-            <span class="site"><svg class="ico" aria-hidden="true"><use href="#i-building"/></svg>Un CHU</span>
-            <span class="site"><svg class="ico" aria-hidden="true"><use href="#i-clinic"/></svg>Des cliniques privées</span>
+        <div class="proof-side">
+          <article class="sheet" aria-labelledby="s2-t">
+            <div class="sheet-h"><b>Fiche d'étude 2</b><span>Déploiement pilote</span></div>
+            <h3 id="s2-t">Retour d'expérience en cliniques privées</h3>
+            <table>
+              <tr><th scope="row">Établissement</th><td>Des cliniques privées</td></tr>
+              <tr><th scope="row">Critère</th><td>Prise en main par les équipes</td></tr>
+              <tr><th scope="row">Résultat</th><td>Non publié</td></tr>
+            </table>
+          </article>
+          <p class="src">Établissements pilotes décrits par leur type, sans logo.</p>
+          <div class="ctx">
+            <h3>Remboursement</h3>
+            <p>Pas de prise en charge par l'Assurance maladie à ce jour. La voie visée : la PECAN, prise en charge anticipée d'un an, puis la LATM. Elle exige un dispositif marqué CE, certifié par l'ANS et évalué favorablement par la CNEDiMTS. Le marquage CE de Veilla est en cours.</p>
+            <p class="src">Sources : <a href="https://has-sante.fr/upload/docs/application/pdf/2025-09/principes_devaluation_de_la_cnedimts_liste_des_activites_de_telesurveillance_medicale_latm.pdf" rel="noopener">HAS, principes d'évaluation LATM</a> ; <a href="https://www.centreoscarlambret.fr/sites/default/files/2026-05/galienn74.pdf" rel="noopener">Centre Oscar Lambret, GaLIEN n° 74</a>, mai 2026. Vus le 13 novembre 2026.</p>
           </div>
-          <p class="caption">Décrits par leur type, sans logo.</p>
         </div>
       </div>
     </div>
@@ -1000,233 +759,262 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
 </section>
 
 <!-- 5. CONFORMITÉ -->
-<section class="section" id="conformite" aria-labelledby="conf-title">
+<section class="blk" id="conformite" data-aud="pro" aria-labelledby="conf-title">
   <div class="wrap">
-    <div class="section-head">
-      <h2 id="conf-title">Conformité et sécurité</h2>
-      <p class="lead">Le statut exact de chaque point, et le document qui le prouve.</p>
+    <header class="blk-head">
+      <div class="blk-titles">
+        <h2 id="conf-title" tabindex="-1">Conformité et sécurité</h2>
+        <p class="lead">Le statut exact de chaque point, et le document qui le prouve.</p>
+      </div>
+      <button class="fold-btn" type="button" aria-expanded="true" aria-controls="conf-body" hidden><span>Replier</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    </header>
+    <div class="blk-body" id="conf-body">
+      <table class="reg">
+        <thead><tr><th scope="col">Domaine et statut</th><th scope="col">Ce que cela recouvre</th><th scope="col">Document</th></tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">Dispositif médical<span class="st"><span class="badge b-warn"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg>Marquage CE : en cours</span></span></th>
+            <td><p>Logiciel dispositif médical, classe IIa visée (règle 11, annexe VIII du règlement (UE) 2017/745).</p><p class="src">Source : <a href="https://eur-lex.europa.eu/eli/reg/2017/745/oj/fra" rel="noopener">EUR-Lex, règlement (UE) 2017/745</a>, vu le 13 novembre 2026.</p></td>
+            <td class="doc"><a class="more" href="#">Notice réglementaire <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></td>
+          </tr>
+          <tr>
+            <th scope="row">Hébergement<span class="st"><span class="badge b-ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hébergeur certifié HDS</span></span></th>
+            <td><p>Les données de l'espace patient sont hébergées en France chez un hébergeur certifié Hébergeur de données de santé.</p></td>
+            <td class="doc"><a class="more" href="https://esante.gouv.fr/offres-services/hds/liste-des-hebergeurs-certifies" rel="noopener">Liste officielle (ANS) <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a></td>
+          </tr>
+          <tr>
+            <th scope="row">RGPD<span class="st"><span class="badge b-ok"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>DPO désigné</span></span></th>
+            <td><p>Délégué à la protection des données : <a href="mailto:dpo@veilla.example">dpo@veilla.example</a>. Base légale, finalités et durées de conservation dans la politique de confidentialité.</p></td>
+            <td class="doc"><a class="more" href="#">Politique de confidentialité <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></td>
+          </tr>
+          <tr>
+            <th scope="row">Sécurité<span class="st"><span class="badge b-n"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Chiffrement</span></span></th>
+            <td><p>Données chiffrées en transit et au repos. Accès au tableau de bord réservé aux soignants désignés par l'établissement.</p></td>
+            <td class="doc"><a class="more" href="#">Note de sécurité <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="reg-note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>Ce site vitrine ne collecte aucune donnée de santé. L'espace patient est une application distincte.</p>
     </div>
-    <div class="comp-grid">
-      <article class="comp" style="background:var(--color-brand-secondary-tint)">
-        <span class="comp-ico" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></span>
-        <div>
-          <h3>Dispositif médical <span class="badge badge-warn"><svg class="ico" aria-hidden="true"><use href="#i-none"/></svg>Marquage CE : en cours</span></h3>
-          <p>Logiciel dispositif médical, classe IIa visée (règle 11, annexe VIII du règlement (UE) 2017/745).</p>
-          <p class="caption">Source : <a href="https://eur-lex.europa.eu/eli/reg/2017/745/oj/fra" rel="noopener">EUR-Lex, règlement (UE) 2017/745</a>, vu le 13 novembre 2026.</p>
-          <a class="link-arrow doc" href="#">Notice réglementaire <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </article>
-      <article class="comp" style="background:var(--color-brand-secondary-tint)">
-        <span class="comp-ico" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-server"/></svg></span>
-        <div>
-          <h3>Hébergement <span class="badge" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hébergeur certifié HDS</span></h3>
-          <p>Les données de l'espace patient sont hébergées en France chez un hébergeur certifié Hébergeur de données de santé.</p>
-          <a class="link-arrow doc" href="https://esante.gouv.fr/offres-services/hds/liste-des-hebergeurs-certifies" rel="noopener">Liste officielle des hébergeurs (ANS) <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a>
-        </div>
-      </article>
-      <article class="comp" style="background:var(--color-brand-secondary-tint)">
-        <span class="comp-ico" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></span>
-        <div>
-          <h3>RGPD</h3>
-          <ul>
-            <li>Un délégué à la protection des données (DPO) : <a href="mailto:dpo@veilla.example">dpo@veilla.example</a></li>
-            <li>Base légale, finalités et durées de conservation : voir la politique de confidentialité</li>
-          </ul>
-          <a class="link-arrow doc" href="#">Politique de confidentialité <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </article>
-      <article class="comp" style="background:var(--color-brand-secondary-tint)">
-        <span class="comp-ico" style="background:#fff"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg></span>
-        <div>
-          <h3>Sécurité</h3>
-          <ul>
-            <li>Données chiffrées en transit et au repos</li>
-            <li>Accès au tableau de bord réservé aux soignants désignés par l'établissement</li>
-          </ul>
-          <a class="link-arrow doc" href="#">Note de sécurité <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </article>
-    </div>
-    <p class="comp-note caption"><svg class="ico" aria-hidden="true" style="margin-top:4px"><use href="#i-info"/></svg>Ce site vitrine ne collecte aucune donnée de santé. L'espace patient est une application distincte.</p>
   </div>
 </section>
 
 <!-- 6. QUI SOMMES-NOUS -->
-<section class="section section-tint" id="equipe" aria-labelledby="equipe-title">
-  <div class="wrap about">
-    <div>
-      <h2 id="equipe-title">Qui sommes-nous</h2>
-      <p class="about-text">Veilla est née à Lyon de la rencontre d'une anesthésiste-réanimatrice et d'un ingénieur. Ensemble, ils conçoivent un suivi simple pour les jours qui suivent une chirurgie ambulatoire, avec un comité scientifique de soignants.</p>
-      <svg class="about-art" viewBox="0 0 420 200" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M10 170h400"/>
-        <path d="M40 170V96l40-28 40 28v74" />
-        <path d="M70 170v-34h20v34"/>
-        <path d="M120 170V60h70v110"/>
-        <path d="M136 82h12M162 82h12M136 108h12M162 108h12M136 134h12M162 134h12"/>
-        <path d="M150 50V38M144 44h12" stroke="#4E6B57"/>
-        <path d="M210 170c30-50 70-74 110-74" stroke-dasharray="2 12"/>
-        <path d="M330 120l34-28 34 28"/>
-        <path d="M338 114v56h52v-56"/>
-        <path d="M356 170v-26h16v26"/>
-        <path d="M300 40c-6 22 6 38 28 40-12 8-30 8-42-4-14-14-12-34 14-36z" stroke="#4E6B57"/>
-        <circle cx="250" cy="44" r="2" fill="currentColor"/><circle cx="380" cy="34" r="2" fill="currentColor"/><circle cx="226" cy="76" r="2" fill="currentColor"/>
-      </svg>
-    </div>
-    <div class="committee">
-      <p class="pro"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
-      <h3>Comité scientifique</h3>
-      <p class="caption">En constitution. Composition de démonstration : noms et déclarations sont des exemples.</p>
-      <ul class="members">
-        <li>
-          <div class="m-name">Pr Hélène Marchetti <span class="tag-ex">Exemple</span></div>
-          <div class="m-role">Chirurgienne viscérale, CHU</div>
-          <p class="m-coi">Liens d'intérêts : membre rémunéré du comité scientifique de Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
-        </li>
-        <li>
-          <div class="m-name">Dr Karim Benali <span class="tag-ex">Exemple</span></div>
-          <div class="m-role">Anesthésiste-réanimateur, clinique privée</div>
-          <p class="m-coi">Liens d'intérêts : membre rémunéré du comité scientifique de Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
-        </li>
-        <li>
-          <div class="m-name">Odile Ferrand <span class="tag-ex">Exemple</span></div>
-          <div class="m-role">Infirmière de coordination en chirurgie ambulatoire</div>
-          <p class="m-coi">Liens d'intérêts : aucun lien déclaré avec Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
-        </li>
-      </ul>
+<section class="blk" id="equipe" data-aud="pro" aria-labelledby="equipe-title">
+  <div class="wrap">
+    <header class="blk-head">
+      <div class="blk-titles">
+        <h2 id="equipe-title" tabindex="-1">Qui sommes-nous</h2>
+      </div>
+      <button class="fold-btn" type="button" aria-expanded="true" aria-controls="equipe-body" hidden><span>Replier</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    </header>
+    <div class="blk-body team" id="equipe-body">
+      <div class="about">
+        <p>Veilla est née à Lyon de la rencontre d'une anesthésiste-réanimatrice et d'un ingénieur. Ensemble, ils conçoivent un suivi simple pour les jours qui suivent une chirurgie ambulatoire, avec un comité scientifique de soignants.</p>
+        <svg viewBox="0 0 420 200" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 170h400"/>
+          <path d="M120 170V60h70v110"/>
+          <path d="M136 82h12M162 82h12M136 108h12M162 108h12M136 134h12M162 134h12"/>
+          <path d="M150 50V38M144 44h12" stroke="#4E6B57"/>
+          <path d="M40 170V96l40-28 40 28v74"/><path d="M70 170v-34h20v34"/>
+          <path d="M210 170c30-50 70-74 110-74" stroke-dasharray="2 12"/>
+          <path d="M330 120l34-28 34 28"/><path d="M338 114v56h52v-56"/><path d="M356 170v-26h16v26"/>
+          <path d="M300 40c-6 22 6 38 28 40-12 8-30 8-42-4-14-14-12-34 14-36z" stroke="#4E6B57"/>
+        </svg>
+      </div>
+      <div class="comm">
+        <p class="pro-note"><svg class="ico" aria-hidden="true"><use href="#i-steth"/></svg>Information destinée aux professionnels de santé</p>
+        <h3>Comité scientifique</h3>
+        <p class="src">En constitution. Composition de démonstration : noms et déclarations sont des exemples.</p>
+        <ul class="members">
+          <li>
+            <div class="m-n">Pr Hélène Marchetti <span class="tag-ex">Exemple</span></div>
+            <div class="m-r">Chirurgienne viscérale, CHU</div>
+            <p class="m-c">Liens d'intérêts : membre rémunéré du comité scientifique de Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
+          </li>
+          <li>
+            <div class="m-n">Dr Karim Benali <span class="tag-ex">Exemple</span></div>
+            <div class="m-r">Anesthésiste-réanimateur, clinique privée</div>
+            <p class="m-c">Liens d'intérêts : membre rémunéré du comité scientifique de Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
+          </li>
+          <li>
+            <div class="m-n">Odile Ferrand <span class="tag-ex">Exemple</span></div>
+            <div class="m-r">Infirmière de coordination en chirurgie ambulatoire</div>
+            <p class="m-c">Liens d'intérêts : aucun lien déclaré avec Veilla. <a href="https://www.transparence.sante.gouv.fr/" rel="noopener">Consulter Transparence Santé</a></p>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- 7. PUBLICATIONS -->
-<section class="section" id="publications" aria-labelledby="pub-title">
+<section class="blk" id="publications" data-aud="pro" aria-labelledby="pub-title">
   <div class="wrap">
-    <div class="section-head">
-      <h2 id="pub-title">Publications et presse</h2>
-      <p class="lead">Études, congrès et articles, du plus récent au plus ancien. Les entrées ci-dessous sont des exemples.</p>
-    </div>
-    <div class="pub-tools">
-      <fieldset>
-        <legend>Filtrer par type</legend>
-        <button class="filter" type="button" data-filter="tous" aria-pressed="true">Tous</button>
-        <button class="filter" type="button" data-filter="etude" aria-pressed="false">Études</button>
-        <button class="filter" type="button" data-filter="congres" aria-pressed="false">Congrès</button>
-        <button class="filter" type="button" data-filter="presse" aria-pressed="false">Presse</button>
-      </fieldset>
-      <p class="sr-only" id="pub-count" aria-live="polite"></p>
-    </div>
-    <ul class="pubs" id="pubs">
-      <li class="pub" data-type="congres">
-        <div><time datetime="2026-10-08">8 octobre 2026</time><br><span class="kind">Congrès</span></div>
-        <div><h3><a href="#">Poster : organiser le trajet d'une alerte après la sortie en ambulatoire</a> <span class="tag-ex">Exemple</span></h3><p>Congrès national de chirurgie ambulatoire.</p></div>
-      </li>
-      <li class="pub" data-type="etude">
-        <div><time datetime="2026-09-15">15 septembre 2026</time><br><span class="kind">Étude</span></div>
-        <div><h3><a href="#">Protocole de l'étude observationnelle pilote en CHU</a> <span class="tag-ex">Exemple</span></h3><p>Critère, méthode et calendrier de publication.</p></div>
-      </li>
-      <li class="pub" data-type="presse">
-        <div><time datetime="2026-06-02">2 juin 2026</time><br><span class="kind">Presse</span></div>
-        <div><h3><a href="#">Une jeune pousse lyonnaise veut sécuriser le retour à domicile après l'ambulatoire</a> <span class="tag-ex">Exemple</span></h3><p>Presse régionale.</p></div>
-      </li>
-      <li class="pub" data-type="congres">
-        <div><time datetime="2026-03-20">20 mars 2026</time><br><span class="kind">Congrès</span></div>
-        <div><h3><a href="#">Communication : un questionnaire de 5 questions pour le suivi à J+1</a> <span class="tag-ex">Exemple</span></h3><p>Journée régionale d'anesthésie.</p></div>
-      </li>
-    </ul>
-    <div class="pub-empty" id="pub-empty" hidden>
-      <p><b>Aucune publication de ce type pour le moment.</b></p>
-      <p class="caption" style="margin-top:6px">Les nouvelles entrées s'afficheront ici dès leur parution. <button class="filter" type="button" data-filter="tous" style="margin-top:12px">Afficher tout</button></p>
-    </div>
-    <div class="pub-foot">
-      <a class="btn btn-secondary" href="#">Voir toutes les publications</a>
-      <a class="link-arrow" href="#">Kit presse <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <header class="blk-head">
+      <div class="blk-titles">
+        <h2 id="pub-title" tabindex="-1">Publications et presse</h2>
+        <p class="lead">Études, congrès et articles, du plus récent au plus ancien. Les entrées ci-dessous sont des exemples.</p>
+      </div>
+      <button class="fold-btn" type="button" aria-expanded="true" aria-controls="pub-body" hidden><span>Replier</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    </header>
+    <div class="blk-body" id="pub-body">
+      <div class="pub-tools">
+        <fieldset>
+          <legend>Filtrer par type</legend>
+          <button class="filter" type="button" data-filter="tous" aria-pressed="true">Tous</button>
+          <button class="filter" type="button" data-filter="etude" aria-pressed="false">Études</button>
+          <button class="filter" type="button" data-filter="congres" aria-pressed="false">Congrès</button>
+          <button class="filter" type="button" data-filter="presse" aria-pressed="false">Presse</button>
+        </fieldset>
+        <p class="sr-only" id="pub-count" aria-live="polite"></p>
+      </div>
+      <ul class="pubs">
+        <li class="pub" data-type="congres">
+          <time datetime="2026-10-08">8 octobre 2026</time><span class="k">Congrès</span>
+          <div><h3><a href="#">Poster : organiser le trajet d'une alerte après la sortie en ambulatoire</a> <span class="tag-ex">Exemple</span></h3><p>Congrès national de chirurgie ambulatoire.</p></div>
+        </li>
+        <li class="pub" data-type="etude">
+          <time datetime="2026-09-15">15 septembre 2026</time><span class="k">Étude</span>
+          <div><h3><a href="#">Protocole de l'étude observationnelle pilote en CHU</a> <span class="tag-ex">Exemple</span></h3><p>Critère, méthode et calendrier de publication.</p></div>
+        </li>
+        <li class="pub" data-type="presse">
+          <time datetime="2026-06-02">2 juin 2026</time><span class="k">Presse</span>
+          <div><h3><a href="#">Une jeune pousse lyonnaise veut sécuriser le retour à domicile après l'ambulatoire</a> <span class="tag-ex">Exemple</span></h3><p>Presse régionale.</p></div>
+        </li>
+        <li class="pub" data-type="congres">
+          <time datetime="2026-03-20">20 mars 2026</time><span class="k">Congrès</span>
+          <div><h3><a href="#">Communication : un questionnaire de 5 questions pour le suivi à J+1</a> <span class="tag-ex">Exemple</span></h3><p>Journée régionale d'anesthésie.</p></div>
+        </li>
+      </ul>
+      <div class="pub-empty" id="pub-empty" hidden>
+        <p><b>Aucune publication de ce type pour le moment.</b> Les nouvelles entrées s'afficheront ici dès leur parution.</p>
+      </div>
+      <div class="pub-foot">
+        <a class="btn btn-line" href="#">Voir toutes les publications</a>
+        <a class="more" href="#">Kit presse <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 8. CONTACT -->
-<section class="section section-tint" id="contact" aria-labelledby="contact-title">
+<!-- 8a. CONTACT ÉTABLISSEMENT -->
+<section class="blk" id="contact" data-aud="pro" aria-labelledby="contact-title">
   <div class="wrap">
-    <h2 id="contact-title" class="sr-only">Contact</h2>
-    <div class="contact-grid">
-      <div class="panel panel-form" id="etablissement">
-        <h2>Vous êtes un établissement</h2>
-        <p class="panel-intro">Nous préparons une présentation adaptée à votre unité.</p>
-        <form class="form" id="demo-form" novalidate>
-          <div class="field">
-            <label for="f-nom">Nom</label>
-            <input id="f-nom" name="nom" type="text" autocomplete="name" required aria-describedby="e-nom">
-            <p class="err" id="e-nom" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-etab">Établissement</label>
-            <input id="f-etab" name="etablissement" type="text" autocomplete="organization" required aria-describedby="e-etab">
-            <p class="err" id="e-etab" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-fonction">Fonction</label>
-            <input id="f-fonction" name="fonction" type="text" autocomplete="organization-title" required aria-describedby="e-fonction">
-            <p class="err" id="e-fonction" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-email">E-mail professionnel</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
-            <p class="err" id="e-email" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-tel">Téléphone <span class="opt">(facultatif)</span></label>
-            <input id="f-tel" name="telephone" type="tel" autocomplete="tel" aria-describedby="h-tel">
-            <p class="hint" id="h-tel">Format : 0X XX XX XX XX</p>
-          </div>
-          <div class="field">
-            <label for="f-msg">Message <span class="opt">(facultatif)</span></label>
-            <textarea id="f-msg" name="message" rows="3"></textarea>
-          </div>
-          <p class="no-health"><svg class="ico" aria-hidden="true" style="margin-top:4px"><use href="#i-info"/></svg><span>Patients : n'indiquez aucune information médicale ici.</span></p>
-          <div class="form-foot">
-            <button class="btn btn-primary" type="submit" id="f-submit">Demander une présentation</button>
-            <p class="caption">Utilisées uniquement pour vous répondre. <a href="#">Confidentialité</a></p>
-          </div>
-          <div class="form-status" id="form-status" aria-live="polite"></div>
-        </form>
-        <div class="success" id="form-success" tabindex="-1" hidden>
-          <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
-          <div>
-            <h3>Demande envoyée</h3>
-            <p>Merci, votre demande est bien envoyée. Nous vous répondons à l'adresse <b id="success-email"></b>. En attendant, vous pouvez consulter <a href="#publications">nos publications</a>.</p>
-          </div>
+    <header class="blk-head">
+      <div class="blk-titles">
+        <h2 id="contact-title" tabindex="-1">Vous êtes un établissement</h2>
+        <p class="lead">Nous préparons une présentation adaptée à votre unité.</p>
+      </div>
+      <button class="fold-btn" type="button" aria-expanded="true" aria-controls="contact-body" hidden><span>Replier</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    </header>
+    <div class="blk-body" id="contact-body">
+      <form class="form" id="demo-form" novalidate>
+        <div class="field">
+          <label for="f-nom">Nom</label>
+          <input id="f-nom" name="nom" type="text" autocomplete="name" required aria-describedby="e-nom">
+          <p class="err" id="e-nom" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-etab">Établissement</label>
+          <input id="f-etab" name="etablissement" type="text" autocomplete="organization" required aria-describedby="e-etab">
+          <p class="err" id="e-etab" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-fonction">Fonction</label>
+          <input id="f-fonction" name="fonction" type="text" autocomplete="organization-title" required aria-describedby="e-fonction">
+          <p class="err" id="e-fonction" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail professionnel</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+          <p class="err" id="e-email" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-tel">Téléphone <span class="opt">(facultatif)</span></label>
+          <input id="f-tel" name="telephone" type="tel" autocomplete="tel" aria-describedby="h-tel">
+          <p class="hint" id="h-tel">Format : 0X XX XX XX XX</p>
+        </div>
+        <div class="field">
+          <label for="f-msg">Message <span class="opt">(facultatif)</span></label>
+          <textarea id="f-msg" name="message" rows="2"></textarea>
+        </div>
+        <p class="no-health"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>Patients : n'indiquez aucune information médicale ici.</span></p>
+        <div class="form-foot">
+          <button class="btn btn-blue" type="submit" id="f-submit">Demander une présentation</button>
+          <p class="src">Utilisées uniquement pour vous répondre. <a href="#">Confidentialité</a></p>
+        </div>
+        <div class="form-status" id="form-status" aria-live="polite" style="grid-column:1 / -1"></div>
+      </form>
+      <div class="success" id="form-success" tabindex="-1" hidden>
+        <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+        <div>
+          <h3>Demande envoyée</h3>
+          <p>Merci, votre demande est bien envoyée. Nous vous répondons à l'adresse <b id="success-email"></b>. En attendant, vous pouvez consulter <a href="#publications">nos publications</a>.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <aside class="panel panel-patient" id="patient" aria-labelledby="patient-title">
-        <h2 id="patient-title">Vous êtes patient ou proche</h2>
-        <ul class="patient-lines">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg><span>Votre unité de soins active votre accès avant votre sortie. Vous n'avez rien à créer.</span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span>Chaque jour, vous répondez à 5 questions courtes, sur téléphone, tablette ou SMS.</span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span>Si une réponse le demande, une infirmière de l'établissement vous appelle.</span></li>
-        </ul>
-        <a class="btn btn-patient" href="#">Accéder à mon espace patient</a>
-        <a class="link-arrow" href="#">Lire les questions fréquentes <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <p class="caregiver"><b>Vous aidez un proche ?</b> Vous pouvez répondre avec lui, sur son téléphone.</p>
+<!-- 8b. BLOC PATIENT -->
+<section class="blk" id="patient" data-aud="patient" aria-labelledby="patient-title">
+  <div class="wrap">
+    <header class="blk-head">
+      <div class="blk-titles">
+        <h2 id="patient-title" tabindex="-1">Vous êtes patient ou proche</h2>
+      </div>
+      <button class="fold-btn" type="button" aria-expanded="true" aria-controls="patient-body" hidden><span>Replier</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    </header>
+    <div class="blk-body pat" id="patient-body">
+      <div>
+        <ol class="pat-lines">
+          <li><span class="n" aria-hidden="true">1</span><span>Votre unité de soins active votre accès avant votre sortie. Vous n'avez rien à créer.</span></li>
+          <li><span class="n" aria-hidden="true">2</span><span>Chaque jour, vous répondez à 5 questions courtes, sur téléphone, tablette ou SMS.</span></li>
+          <li><span class="n" aria-hidden="true">3</span><span>Si une réponse le demande, une infirmière de l'établissement vous appelle.</span></li>
+        </ol>
+        <div class="pat-cta">
+          <a class="btn btn-sage" href="#">Accéder à mon espace patient</a>
+          <a class="more" href="#">Lire les questions fréquentes <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="care"><b>Vous aidez un proche ?</b> Vous pouvez répondre avec lui, sur son téléphone.</p>
+      </div>
+      <div>
         <div class="urgent" role="note">
           <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
           <div><b>En cas d'urgence : 15</b><span>N'attendez pas le questionnaire. <a href="tel:15">Appeler le 15</a></span></div>
         </div>
-      </aside>
+        <div class="faq">
+          <h3>Vos questions</h3>
+          <details>
+            <summary>J'ai de la fièvre ce soir. Que faire ?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>Le questionnaire ne remplace pas un appel. Si vous êtes inquiet, appelez le service qui vous a opéré. En cas d'urgence, appelez le 15.</p>
+          </details>
+          <details>
+            <summary>Je ne suis pas à l'aise avec le téléphone.<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>Un proche peut répondre avec vous. Le questionnaire existe aussi par SMS.</p>
+          </details>
+          <details>
+            <summary>Qui voit mes réponses ?<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>L'équipe de l'établissement qui vous suit. Ce site ne collecte aucune donnée de santé : votre espace patient est une application à part.</p>
+          </details>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="site-footer">
+<footer class="foot">
   <div class="wrap">
     <div class="foot-grid">
       <div>
         <a class="logo" href="#haut" aria-label="Veilla, retour en haut de page">
-          <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#FAF8F4"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#1F3A5F" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#4E6B57"/></svg>
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#1F3A5F"/><path d="M11 13.5c1.8 7.6 5 12.5 9 12.5s7.2-4.9 9-12.5" fill="none" stroke="#E3EBE4" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="13" r="3.2" fill="#9DBBA5"/></svg>
           Veilla
         </a>
-        <p style="margin-top:12px;max-width:30em">Télésurveillance des patients après une chirurgie ambulatoire. Lyon.</p>
+        <p style="margin-top:10px;max-width:30em">Télésurveillance des patients après une chirurgie ambulatoire. Lyon.</p>
       </div>
       <nav aria-labelledby="f-nav1">
         <h2 id="f-nav1">Patients</h2>
@@ -1256,39 +1044,111 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
 
 <script>
 (function(){
-  /* Menu mobile */
-  var menuBtn=document.querySelector('.menu-btn'),mnav=document.getElementById('mobile-nav');
-  function closeMenu(){mnav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}
-  menuBtn.addEventListener('click',function(){
-    var open=mnav.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded',open?'true':'false');
-  });
-  mnav.addEventListener('click',function(e){if(e.target.closest('a'))closeMenu();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mnav.classList.contains('open')){closeMenu();menuBtn.focus();}});
+  var body=document.body,main=document.getElementById('contenu'),hero=document.getElementById('haut');
+  var LABEL={parcours:'Le parcours en 4 étapes','tableau-de-bord':'Le tableau de bord soignant',preuves:'Preuves',conformite:'Conformité et sécurité',equipe:'Qui sommes-nous',publications:'Publications et presse',contact:'Contact établissement',patient:'Espace patient et urgence'};
+  var MODES={
+    pro:{open:['parcours','tableau-de-bord','preuves','conformite','equipe','publications','contact'],folded:['patient'],
+      fg:'Pour les patients et leurs proches',fn:'Cette rubrique est repliée. Elle s\'ouvre d\'un clic.',live:'Page affichée pour les soignants. La rubrique patient est repliée en bas de page.'},
+    patient:{open:['patient','parcours'],folded:['tableau-de-bord','preuves','conformite','equipe','publications','contact'],
+      fg:'Pour les établissements et les professionnels de santé',fn:'Ces rubriques sont repliées. Chacune s\'ouvre d\'un clic.',live:'Page affichée pour les patients. Les rubriques destinées aux professionnels sont repliées en bas de page.'}
+  };
+  var segBtns=document.querySelectorAll('.seg button'),tocBtn=document.querySelector('.toc-btn'),toc=document.getElementById('toc'),live=document.getElementById('mode-live');
+  var mode='pro';
 
-  /* Parcours */
-  var stepBtns=document.querySelectorAll('.step-btn'),figs=document.querySelectorAll('.journey-art figure');
-  stepBtns.forEach(function(b){
-    b.addEventListener('click',function(){
-      var s=b.getAttribute('data-step');
-      stepBtns.forEach(function(x){x.removeAttribute('aria-current');});
-      b.setAttribute('aria-current','step');
-      figs.forEach(function(f){f.classList.toggle('is-on',f.getAttribute('data-step')===s);});
-    });
-  });
+  /* Groupe des rubriques repliées */
+  var fg=document.createElement('div');
+  fg.className='fold-group';
+  fg.innerHTML='<div class="wrap"><p class="fg-t"></p><p class="fg-n"></p></div>';
 
-  /* Onglets */
-  var tabs=document.querySelectorAll('.tab');
-  function selectTab(t,focus){
-    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
-    if(focus)t.focus();
+  function sec(id){return document.getElementById(id);}
+  function setFold(s,folded){
+    var b=s.querySelector('.fold-btn'),bd=s.querySelector('.blk-body');
+    s.classList.toggle('is-folded',folded);
+    bd.hidden=folded;
+    b.setAttribute('aria-expanded',folded?'false':'true');
+    b.querySelector('span').textContent=folded?'Afficher la rubrique':'Replier';
   }
-  tabs.forEach(function(t,i){
-    t.addEventListener('click',function(){selectTab(t);});
-    t.addEventListener('keydown',function(e){
-      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();selectTab(tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length],true);}
+  function applyMode(m){
+    mode=m;var M=MODES[m];
+    body.setAttribute('data-mode',m);
+    segBtns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-mode')===m?'true':'false');});
+    M.open.forEach(function(id){var s=sec(id);main.appendChild(s);setFold(s,false);s.querySelector('.fold-btn').hidden=true;});
+    fg.querySelector('.fg-t').textContent=M.fg;fg.querySelector('.fg-n').textContent=M.fn;
+    main.appendChild(fg);
+    M.folded.forEach(function(id){var s=sec(id);main.appendChild(s);setFold(s,true);s.querySelector('.fold-btn').hidden=false;});
+    buildToc();
+  }
+  function buildToc(){
+    var M=MODES[mode],h='<p>'+(mode==='pro'?'Vue soignant':'Vue patient')+'</p>';
+    M.open.forEach(function(id){h+='<a href="#'+id+'">'+LABEL[id]+'</a>';});
+    h+='<p class="toc-sep">'+M.fg+'</p>';
+    M.folded.forEach(function(id){h+='<a href="#'+id+'">'+LABEL[id]+'<span class="fl">'+(sec(id).classList.contains('is-folded')?'repliée':'ouverte')+'</span></a>';});
+    toc.innerHTML=h;
+  }
+  function goTo(id,focus){
+    var s=sec(id);if(!s)return;
+    if(s.classList.contains('is-folded')){setFold(s,false);buildToc();}
+    s.scrollIntoView({block:'start'});
+    if(history.replaceState)history.replaceState(null,'','#'+id);
+    if(focus){var h=s.querySelector('h2');if(h)h.focus({preventScroll:true});}
+  }
+
+  /* Sélecteur Soignant | Patient */
+  segBtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var m=b.getAttribute('data-mode');if(m===mode)return;
+      var deep=window.scrollY>hero.offsetHeight-120;
+      applyMode(m);
+      live.textContent=MODES[m].live;
+      if(deep)goTo(MODES[m].open[0],false);
     });
   });
+
+  /* Les deux portes */
+  document.querySelectorAll('.door').forEach(function(d){
+    d.addEventListener('click',function(e){
+      e.preventDefault();
+      var m=d.getAttribute('data-go');
+      applyMode(m);
+      live.textContent=MODES[m].live;
+      goTo(MODES[m].open[0],true);
+    });
+  });
+
+  /* Plier / déplier */
+  document.querySelectorAll('.fold-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var s=b.closest('.blk');setFold(s,!s.classList.contains('is-folded'));buildToc();
+    });
+  });
+
+  /* Sommaire */
+  function closeToc(){toc.hidden=true;tocBtn.setAttribute('aria-expanded','false');}
+  tocBtn.addEventListener('click',function(){
+    var open=toc.hidden;toc.hidden=!open;tocBtn.setAttribute('aria-expanded',open?'true':'false');
+    if(open){var a=toc.querySelector('a');if(a)a.focus();}
+  });
+  toc.addEventListener('click',function(e){
+    var a=e.target.closest('a');if(!a)return;
+    e.preventDefault();closeToc();goTo(a.getAttribute('href').slice(1),true);
+  });
+  document.addEventListener('click',function(e){if(!toc.hidden&&!e.target.closest('.hdr-mid'))closeToc();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!toc.hidden){closeToc();tocBtn.focus();}});
+
+  /* Liens internes vers une rubrique repliée */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]');
+    if(!a||a.closest('#toc')||a.classList.contains('door'))return;
+    var id=a.getAttribute('href').slice(1),s=sec(id);
+    if(s&&s.classList.contains('blk')&&s.classList.contains('is-folded')){e.preventDefault();goTo(id,true);}
+  });
+
+  /* État initial : Soignant sur desktop, Patient sur mobile, ou selon l'ancre */
+  var initial=window.matchMedia('(max-width: 767px)').matches?'patient':'pro';
+  var hash=location.hash.slice(1);
+  if(hash&&MODES[initial].folded.indexOf(hash)>-1)initial=initial==='pro'?'patient':'pro';
+  applyMode(initial);
+  if(hash&&sec(hash))requestAnimationFrame(function(){sec(hash).scrollIntoView({block:'start'});});
 
   /* Publications */
   var filters=document.querySelectorAll('.filter'),pubs=document.querySelectorAll('.pub'),empty=document.getElementById('pub-empty'),count=document.getElementById('pub-count');
@@ -1296,7 +1156,7 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
   filters.forEach(function(f){
     f.addEventListener('click',function(){
       var t=f.getAttribute('data-filter'),n=0;
-      document.querySelectorAll('.pub-tools .filter').forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-filter')===t?'true':'false');});
+      filters.forEach(function(x){x.setAttribute('aria-pressed',x===f?'true':'false');});
       pubs.forEach(function(p){var show=t==='tous'||p.getAttribute('data-type')===t;p.hidden=!show;if(show)n++;});
       empty.hidden=n>0;
       count.textContent=n+' publication'+(n>1?'s':'')+' affichée'+(n>1?'s':'')+' ('+labels[t]+').';
@@ -1326,7 +1186,9 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
     setErr(r,null);return true;
   }
   rules.forEach(function(r){
-    document.getElementById(r.id).addEventListener('blur',function(){if(this.value.trim()||this.hasAttribute('aria-invalid'))check(r);});
+    var el=document.getElementById(r.id);
+    el.addEventListener('blur',function(){if(this.value.trim()&&!this.hasAttribute('aria-invalid'))check(r);});
+    el.addEventListener('input',function(){if(this.hasAttribute('aria-invalid')&&this.value.trim())check(r);});
   });
   form.addEventListener('submit',function(e){
     e.preventDefault();
@@ -1335,7 +1197,7 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 1px)}
     rules.forEach(function(r){if(!check(r)&&!first)first=document.getElementById(r.id);});
     if(first){first.focus();return;}
     submit.disabled=true;
-    submit.innerHTML='<span class="spinner" aria-hidden="true"></span>Envoi en cours…';
+    submit.innerHTML='<span class="spin" aria-hidden="true"></span>Envoi en cours…';
     setTimeout(function(){
       submit.disabled=false;
       submit.textContent='Demander une présentation';
