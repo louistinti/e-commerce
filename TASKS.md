@@ -6,7 +6,7 @@
 ## Waiting On
 
 ## Someday
-- [ ] **Finir les sites** - pages d'accueil faites ; restent les pages annexes (mentions légales, confidentialité, pages SEO), les vrais visuels si on en veut, et la mise en ligne de chaque branche
+- [ ] **Finir les sites** - pages d'accueil faites mais retirées des branches publiques le 2026-11-17 (elles restent dans la galerie privée et dans l'historique Git, commits avant « Remove the … homepage from the public branch ») ; restent les pages annexes (mentions légales, confidentialité, pages SEO), les vrais visuels si on en veut, et la mise en ligne de chaque branche
 - [ ] **Prospection** - lister 10 vraies entreprises par catégorie (levées récentes, créations INSEE) avec leur site actuel
 - [ ] **Références non vérifiées restantes** - Behance, Land-book, Lapa Ninja (anti-robots) et Pinterest (compte requis) : à ouvrir à la main si besoin, elles sont marquées « non vérifié » dans chaque bench
 - [ ] **Combler les blocs sans inspiration** - listés dans le tableau « Couverture du brief » de chaque bench (ex. formulaires courts, zone d'intervention en liste de communes, tarifs ia-b2b, timeline horizontale). Dribbble affiche maintenant une vérification anti-robots sur les fiches : à chercher à la main
